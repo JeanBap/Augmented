@@ -87,6 +87,13 @@
   padding: 1.5rem;
   background: var(--paper);
   transition: border-color 0.3s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.role-card .btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.75rem;
 }
 .role-card:hover {
   border-color: var(--gold);
@@ -124,6 +131,7 @@
   color: var(--mid);
   line-height: 1.6;
   margin: 0;
+  flex: 1;
 }
 
 /* Comparison cards */
@@ -256,6 +264,7 @@
             <span class="role-ai">80% AI</span>
             <span class="role-price">$1,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-content" data-product-name="Content Marketer (monthly)" data-product-price="1999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>Technical Writer</h3>
@@ -264,6 +273,7 @@
             <span class="role-ai">75% AI</span>
             <span class="role-price">$1,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-techwriter" data-product-name="Technical Writer (monthly)" data-product-price="1999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>HR Policy Writer</h3>
@@ -272,6 +282,7 @@
             <span class="role-ai">75% AI</span>
             <span class="role-price">$1,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-hr" data-product-name="HR Policy Writer (monthly)" data-product-price="1999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>Sales Enablement</h3>
@@ -280,6 +291,7 @@
             <span class="role-ai">80% AI</span>
             <span class="role-price">$1,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-sales" data-product-name="Sales Enablement (monthly)" data-product-price="1999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>UX Writer</h3>
@@ -288,6 +300,7 @@
             <span class="role-ai">75% AI</span>
             <span class="role-price">$1,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-ux" data-product-name="UX Writer (monthly)" data-product-price="1999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>FP&A Analyst</h3>
@@ -296,6 +309,7 @@
             <span class="role-ai">65% AI</span>
             <span class="role-price">$2,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-fpa" data-product-name="FP&A Analyst (monthly)" data-product-price="2999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>Compliance</h3>
@@ -304,6 +318,7 @@
             <span class="role-ai">70% AI</span>
             <span class="role-price">$2,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-compliance" data-product-name="Compliance (monthly)" data-product-price="2999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>SQL Analyst</h3>
@@ -312,6 +327,7 @@
             <span class="role-ai">65% AI</span>
             <span class="role-price">$2,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-sql" data-product-name="SQL Analyst (monthly)" data-product-price="2999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>Contract Drafter</h3>
@@ -320,6 +336,7 @@
             <span class="role-ai">70% AI</span>
             <span class="role-price">$2,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-contracts" data-product-name="Contract Drafter (monthly)" data-product-price="2999">Add to Cart</button>
         </div>
         <div class="role-card">
           <h3>Product Manager</h3>
@@ -328,6 +345,7 @@
             <span class="role-ai">65% AI</span>
             <span class="role-price">$2,999/mo</span>
           </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="svc-pm" data-product-name="Product Manager (monthly)" data-product-price="2999">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -362,51 +380,65 @@
     </div>
   </section>
 
-  <!-- 1-on-1 Sessions -->
-  <section id="sessions" class="hire-sec">
-    <div class="hire-inner">
-      <h2>1-on-1 Sessions with Yanni</h2>
+  <!-- 1-on-1 Sessions & Model Building -->
+  <section id="sessions" class="svc-section">
+    <div class="svc-inner">
+      <h2 class="section-title">1-on-1 Sessions & Model Building</h2>
       <p class="section-subtitle">Direct guidance on your financial model from someone who has built and raised on them</p>
-      <div class="hire-grid">
-        <div class="hire-card">
-          <div class="hire-header">
-            <h3 class="hire-title">Intro Call</h3>
-            <div class="hire-price">$250</div>
+      <div class="services-role-grid">
+        <div class="role-card">
+          <h3>Intro Call</h3>
+          <p>30-minute session. Understand where your model stands and what needs work. Includes immediate feedback and next steps.</p>
+          <div class="role-meta">
+            <span class="role-ai">30 min</span>
+            <span class="role-price">$250</span>
           </div>
-          <p class="hire-description">30-minute session. Understand where your model stands and what needs work.</p>
-          <ul class="hire-features">
-            <li>30-minute session via Zoom</li>
-            <li>Review your current model</li>
-            <li>Immediate feedback and next steps</li>
-          </ul>
-          <button class="btn btn-secondary">Schedule Session</button>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="session-intro" data-product-name="Intro Call (30 min)" data-product-price="250">Add to Cart</button>
         </div>
-        <div class="hire-card featured">
-          <div class="hire-header">
-            <h3 class="hire-title">Working Session</h3>
-            <div class="hire-price">$500</div>
+        <div class="role-card">
+          <h3>Working Session</h3>
+          <p>60-minute deep-dive. Build or refine your model with real-time expert guidance. Recording and notes provided afterward.</p>
+          <div class="role-meta">
+            <span class="role-ai">60 min</span>
+            <span class="role-price">$500</span>
           </div>
-          <p class="hire-description">60-minute deep-dive. Build or refine your model with real-time expert guidance.</p>
-          <ul class="hire-features">
-            <li>60-minute focused working session</li>
-            <li>Hands-on help building your model</li>
-            <li>Recording and notes provided afterward</li>
-          </ul>
-          <button class="btn btn-primary">Schedule Session</button>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="session-working" data-product-name="Working Session (60 min)" data-product-price="500">Add to Cart</button>
         </div>
-        <div class="hire-card">
-          <div class="hire-header">
-            <h3 class="hire-title">Full Model Build</h3>
-            <div class="hire-price">Custom</div>
+        <div class="role-card">
+          <h3>Pre-Seed Model Build</h3>
+          <p>Lean model for early validation. Revenue drivers, basic COGS, headcount plan, and runway projection.</p>
+          <div class="role-meta">
+            <span class="role-ai">Full build</span>
+            <span class="role-price">$1,000</span>
           </div>
-          <p class="hire-description">Complete model-building packages tailored to your stage.</p>
-          <ul class="hire-features">
-            <li>Pre-Seed: $1,000</li>
-            <li>Seed: $2,000</li>
-            <li>Series A: $4,000</li>
-            <li>Series B: $8,000</li>
-          </ul>
-          <button class="btn btn-secondary">Get Quote</button>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="build-preseed" data-product-name="Pre-Seed Model Build" data-product-price="1000">Add to Cart</button>
+        </div>
+        <div class="role-card">
+          <h3>Seed Model Build</h3>
+          <p>Comprehensive model with unit economics, scenario planning, and investor-ready P&L and cash flow.</p>
+          <div class="role-meta">
+            <span class="role-ai">Full build</span>
+            <span class="role-price">$2,000</span>
+          </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="build-seed" data-product-name="Seed Model Build" data-product-price="2000">Add to Cart</button>
+        </div>
+        <div class="role-card">
+          <h3>Series A Model Build</h3>
+          <p>Advanced model with balance sheet, cash flow statement, departmental headcount, and sensitivity analysis.</p>
+          <div class="role-meta">
+            <span class="role-ai">Full build</span>
+            <span class="role-price">$4,000</span>
+          </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="build-seriesa" data-product-name="Series A Model Build" data-product-price="4000">Add to Cart</button>
+        </div>
+        <div class="role-card">
+          <h3>Series B Model Build</h3>
+          <p>Full P&L, balance sheet, and cash flow with detailed hiring plans and department-level budgeting.</p>
+          <div class="role-meta">
+            <span class="role-ai">Full build</span>
+            <span class="role-price">$8,000</span>
+          </div>
+          <button class="btn btn-secondary btn-add-to-cart" data-product-id="build-seriesb" data-product-name="Series B Model Build" data-product-price="8000">Add to Cart</button>
         </div>
       </div>
     </div>
