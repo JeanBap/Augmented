@@ -152,6 +152,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
   <div class="dash-header">
     <h1>Site Editor</h1>
     <div class="dash-header-right">
+      <button class="fr-toggle" id="indexnow-btn" onclick="triggerIndexNow()">IndexNow</button>
       <button class="fr-toggle" id="fr-toggle" onclick="toggleFindReplace()">Find & Replace</button>
       <button class="btn-logout" onclick="doLogout()">Log out</button>
     </div>
@@ -249,6 +250,37 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
   function apiHeaders() {
     return { 'Content-Type': 'application/json', 'X-Admin-Password': adminPassword };
   }
+
+  window.triggerIndexNow = function() {
+    var btn = document.getElementById('indexnow-btn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    // Collect all HTML pages from the sitemap URLs
+    var urls = [
+      '/', '/book/', '/services/', '/templates/', '/about/', '/contact/', '/blog/', '/careers/', '/search/'
+    ];
+    // Add all blog articles from the file list if loaded
+    allFiles.forEach(function(f) {
+      if (f.startsWith('blog/') && f.endsWith('.html') && f !== 'blog/index.html') {
+        urls.push('/' + f);
+      }
+    });
+    fetch('/.netlify/functions/indexnow', {
+      method: 'POST',
+      headers: apiHeaders(),
+      body: JSON.stringify({ urls: urls })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var ok = (data.results || []).filter(function(r) { return r.ok; }).length;
+      btn.textContent = 'Sent ' + data.submitted + ' URLs to ' + ok + '/' + (data.results || []).length + ' engines';
+      setTimeout(function() { btn.textContent = 'IndexNow'; btn.disabled = false; }, 4000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error';
+      setTimeout(function() { btn.textContent = 'IndexNow'; btn.disabled = false; }, 3000);
+    });
+  };
 
   function loadFileList() {
     $fileLoading.style.display = 'block';

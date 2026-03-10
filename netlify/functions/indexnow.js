@@ -29,7 +29,7 @@ exports.handler = async function(event) {
   var allowedOrigin = (origin === ALLOWED_ORIGIN || origin === 'https://raisereadybook.com') ? origin : ALLOWED_ORIGIN;
   var headers = {
     'Access-Control-Allow-Origin': allowedOrigin,
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Admin-Password',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Content-Type': 'application/json'
   };
@@ -37,11 +37,14 @@ exports.handler = async function(event) {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: headers, body: '' };
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers: headers, body: JSON.stringify({ error: 'Method not allowed' }) };
 
-  // Auth check
-  var authHeader = event.headers['authorization'] || '';
+  // Auth check (accepts X-Admin-Password or Authorization: Bearer)
+  var token = event.headers['x-admin-password'] || '';
+  if (!token) {
+    var authHeader = event.headers['authorization'] || '';
+    token = authHeader.replace(/^Bearer\s+/i, '');
+  }
   var password = process.env.ADMIN_PASSWORD;
   if (!password) return { statusCode: 500, headers: headers, body: JSON.stringify({ error: 'Admin not configured' }) };
-  var token = authHeader.replace(/^Bearer\s+/i, '');
   var expected = Buffer.from(password);
   var received = Buffer.from(token);
   if (expected.length !== received.length || !crypto.timingSafeEqual(expected, received)) {
