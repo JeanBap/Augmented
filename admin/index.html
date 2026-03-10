@@ -95,6 +95,43 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
 
 /* Loading */
 .loading { text-align: center; padding: 3rem; font-family: var(--mono); font-size: 0.85rem; color: var(--mid); }
+
+/* Find & Replace */
+.dash-header-right { display: flex; gap: 0.5rem; align-items: center; }
+.fr-toggle {
+  padding: 0.4rem 1rem; border: 1.5px solid var(--gold); border-radius: 6px;
+  background: transparent; color: var(--gold); font-family: var(--mono);
+  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.fr-toggle:hover, .fr-toggle.active { background: var(--gold); color: var(--ink); }
+.fr-panel { display: none; margin-bottom: 1.5rem; padding: 1.25rem; border: 1.5px solid var(--rule); border-radius: 8px; background: #fff; }
+.fr-panel.visible { display: block; }
+.fr-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
+.fr-row:last-child { margin-bottom: 0; }
+.fr-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); min-width: 60px; }
+.fr-input {
+  flex: 1; padding: 0.5rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 6px;
+  font-family: var(--mono); font-size: 0.82rem; background: var(--paper); color: var(--ink); min-width: 200px;
+}
+.fr-input:focus { outline: none; border-color: var(--gold); }
+.fr-btns { display: flex; gap: 0.5rem; }
+.btn-fr {
+  padding: 0.5rem 1rem; border: none; border-radius: 6px;
+  font-family: var(--sans); font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-fr-find { background: var(--ink); color: var(--paper); }
+.btn-fr-find:hover { opacity: 0.85; }
+.btn-fr-replace { background: var(--gold); color: var(--ink); }
+.btn-fr-replace:hover { background: var(--gold2); }
+.btn-fr:disabled { opacity: 0.4; cursor: not-allowed; }
+.fr-results { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+.fr-results ul { list-style: none; margin-top: 0.5rem; max-height: 200px; overflow-y: auto; }
+.fr-results li { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; }
+.fr-results .match-count { color: var(--gold); font-weight: 500; }
+.fr-status { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; }
+.fr-status.success { color: var(--green); }
+.fr-status.error { color: var(--red); }
+.fr-status.working { color: var(--gold); }
 </style>
 </head>
 <body>
@@ -114,7 +151,30 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
 <div id="dashboard" class="dashboard">
   <div class="dash-header">
     <h1>Site Editor</h1>
-    <button class="btn-logout" onclick="doLogout()">Log out</button>
+    <div class="dash-header-right">
+      <button class="fr-toggle" id="fr-toggle" onclick="toggleFindReplace()">Find & Replace</button>
+      <button class="btn-logout" onclick="doLogout()">Log out</button>
+    </div>
+  </div>
+
+  <!-- Find & Replace Panel -->
+  <div id="fr-panel" class="fr-panel">
+    <div class="fr-row">
+      <span class="fr-label">Find</span>
+      <input class="fr-input" id="fr-search" type="text" placeholder="Text to find across all pages...">
+    </div>
+    <div class="fr-row">
+      <span class="fr-label">Replace</span>
+      <input class="fr-input" id="fr-replace" type="text" placeholder="Replace with...">
+    </div>
+    <div class="fr-row">
+      <div class="fr-btns">
+        <button class="btn-fr btn-fr-find" id="fr-find-btn" onclick="doFind()">Preview matches</button>
+        <button class="btn-fr btn-fr-replace" id="fr-replace-btn" onclick="doReplace()" disabled>Replace all</button>
+      </div>
+    </div>
+    <div id="fr-results" class="fr-results" style="display:none;"></div>
+    <div id="fr-status" class="fr-status" style="display:none;"></div>
   </div>
 
   <!-- File browser -->
@@ -301,6 +361,114 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
         $saveStatus.classList.add('error');
       });
   };
+
+  // ---- Find & Replace ----
+  var $frPanel = document.getElementById('fr-panel');
+  var $frToggle = document.getElementById('fr-toggle');
+  var $frSearch = document.getElementById('fr-search');
+  var $frReplace = document.getElementById('fr-replace');
+  var $frResults = document.getElementById('fr-results');
+  var $frStatus = document.getElementById('fr-status');
+  var $frFindBtn = document.getElementById('fr-find-btn');
+  var $frReplaceBtn = document.getElementById('fr-replace-btn');
+  var lastMatches = null;
+
+  window.toggleFindReplace = function() {
+    $frPanel.classList.toggle('visible');
+    $frToggle.classList.toggle('active');
+    if ($frPanel.classList.contains('visible')) $frSearch.focus();
+  };
+
+  function setFrStatus(msg, cls) {
+    $frStatus.style.display = msg ? 'block' : 'none';
+    $frStatus.textContent = msg;
+    $frStatus.className = 'fr-status' + (cls ? ' ' + cls : '');
+  }
+
+  window.doFind = function() {
+    var search = $frSearch.value;
+    if (!search || search.length < 2) { setFrStatus('Enter at least 2 characters to search.', 'error'); return; }
+    $frFindBtn.disabled = true;
+    $frReplaceBtn.disabled = true;
+    $frResults.style.display = 'none';
+    setFrStatus('Searching across all pages...', 'working');
+
+    fetch('/.netlify/functions/admin-replace', {
+      method: 'POST',
+      headers: apiHeaders(),
+      body: JSON.stringify({ action: 'search', search: search })
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        $frFindBtn.disabled = false;
+        if (data.error) { setFrStatus('Error: ' + data.error, 'error'); return; }
+        lastMatches = data.matches;
+        if (data.matches.length === 0) {
+          setFrStatus('No matches found.', '');
+          $frResults.style.display = 'none';
+          $frReplaceBtn.disabled = true;
+          return;
+        }
+        setFrStatus('Found ' + data.total + ' occurrence' + (data.total === 1 ? '' : 's') + ' in ' + data.matches.length + ' file' + (data.matches.length === 1 ? '' : 's') + '.', 'success');
+        var html = '<ul>';
+        data.matches.forEach(function(m) {
+          html += '<li><span>' + m.path + '</span><span class="match-count">' + m.count + ' match' + (m.count === 1 ? '' : 'es') + '</span></li>';
+        });
+        html += '</ul>';
+        $frResults.innerHTML = html;
+        $frResults.style.display = 'block';
+        $frReplaceBtn.disabled = false;
+      })
+      .catch(function() {
+        $frFindBtn.disabled = false;
+        setFrStatus('Network error. Try again.', 'error');
+      });
+  };
+
+  window.doReplace = function() {
+    var search = $frSearch.value;
+    var replace = $frReplace.value;
+    if (!search || search.length < 2) { setFrStatus('Enter at least 2 characters to search.', 'error'); return; }
+    if (search === replace) { setFrStatus('Search and replace strings are identical.', 'error'); return; }
+
+    var fileCount = lastMatches ? lastMatches.length : '?';
+    if (!confirm('Replace "' + search + '" with "' + replace + '" across ' + fileCount + ' file(s)?\n\nThis will create a single commit with all changes.')) return;
+
+    $frFindBtn.disabled = true;
+    $frReplaceBtn.disabled = true;
+    setFrStatus('Replacing across all files... This may take a moment.', 'working');
+
+    fetch('/.netlify/functions/admin-replace', {
+      method: 'POST',
+      headers: apiHeaders(),
+      body: JSON.stringify({ action: 'replace', search: search, replace: replace })
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        $frFindBtn.disabled = false;
+        if (data.error) { setFrStatus('Error: ' + data.error, 'error'); return; }
+        if (data.changed.length === 0) {
+          setFrStatus('No matches found to replace.', '');
+          return;
+        }
+        setFrStatus('Replaced in ' + data.changed.length + ' file' + (data.changed.length === 1 ? '' : 's') + '. Commit: ' + (data.commitSha ? data.commitSha.substring(0, 7) : ''), 'success');
+        var html = '<ul>';
+        data.changed.forEach(function(p) { html += '<li><span>' + p + '</span><span class="match-count">updated</span></li>'; });
+        html += '</ul>';
+        $frResults.innerHTML = html;
+        $frResults.style.display = 'block';
+        $frReplaceBtn.disabled = true;
+        lastMatches = null;
+      })
+      .catch(function() {
+        $frFindBtn.disabled = false;
+        setFrStatus('Network error. Try again.', 'error');
+      });
+  };
+
+  // Enter key triggers find in search input
+  $frSearch.addEventListener('keydown', function(e) { if (e.key === 'Enter') doFind(); });
+  $frReplace.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !$frReplaceBtn.disabled) doReplace(); });
 
 })();
 </script>

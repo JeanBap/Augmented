@@ -68,7 +68,7 @@
       </div>
       <span>&copy; <span class="footer-year"></span> Augmented</span>
       <span>AI-Native Fractional Talent</span>
-      <span>hello@augmented.co</span>
+      <span>yanni@raisereadybook.com</span>
     </footer>
   `;
 
