@@ -1,8 +1,18 @@
 const https = require('https');
+const crypto = require('crypto');
 
 const REPO_OWNER = 'JeanBap';
 const REPO_NAME = 'Augmented';
 const BRANCH = 'main';
+const ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
+
+function timingSafeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 function githubRequest(path) {
   return new Promise((resolve, reject) => {
@@ -31,8 +41,10 @@ function githubRequest(path) {
 }
 
 exports.handler = async (event) => {
+  const origin = event.headers['origin'] || '';
+  const allowedOrigin = (origin === ALLOWED_ORIGIN || origin === 'https://raisereadybook.com') ? origin : ALLOWED_ORIGIN;
   const headers = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Password',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Content-Type': 'application/json'
@@ -41,12 +53,12 @@ exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers, body: '' };
 
   const password = event.headers['x-admin-password'];
-  if (!password || password !== process.env.ADMIN_PASSWORD) {
+  if (!password || !process.env.ADMIN_PASSWORD || !timingSafeEqual(password, process.env.ADMIN_PASSWORD)) {
     return { statusCode: 401, headers, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
   if (!process.env.GITHUB_TOKEN) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'GITHUB_TOKEN not configured' }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Server configuration error' }) };
   }
 
   // Recursively list .html files

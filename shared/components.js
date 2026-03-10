@@ -7,6 +7,8 @@
   'use strict';
 
   const NAV_HTML = `
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
     <nav>
       <a href="/" class="logo">Augmented</a>
       <div class="nav-tabs">
@@ -49,6 +51,7 @@
         </button>
       </div>
     </nav>
+    </header>
   `;
 
   const FOOTER_HTML = `
@@ -63,7 +66,7 @@
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </div>
-      <span>&copy; 2025 Augmented</span>
+      <span>&copy; <span class="footer-year"></span> Augmented</span>
       <span>AI-Native Fractional Talent</span>
       <span>hello@augmented.co</span>
     </footer>
@@ -84,7 +87,21 @@
     const footerPlaceholder = document.getElementById('site-footer');
     if (footerPlaceholder) {
       footerPlaceholder.innerHTML = FOOTER_HTML;
+      const yearSpan = footerPlaceholder.querySelector('.footer-year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     }
+
+    // Add labels to newsletter form inputs for accessibility
+    document.querySelectorAll('.newsletter-form input[type="email"]').forEach(function(input) {
+      if (!input.id) input.id = 'newsletter-email';
+      if (!input.parentElement.querySelector('label[for="' + input.id + '"]')) {
+        var label = document.createElement('label');
+        label.setAttribute('for', input.id);
+        label.className = 'sr-only';
+        label.textContent = 'Email address';
+        input.parentElement.insertBefore(label, input);
+      }
+    });
   }
 
   /**

@@ -1,8 +1,26 @@
 const https = require('https');
+const crypto = require('crypto');
 
 const REPO_OWNER = 'JeanBap';
 const REPO_NAME = 'Augmented';
 const BRANCH = 'main';
+
+const ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
+
+function timingSafeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
+function isValidPath(p) {
+  if (!p || typeof p !== 'string') return false;
+  if (p.includes('..') || p.includes('\0') || p.startsWith('/')) return false;
+  if (!p.endsWith('.html') && !p.endsWith('.css') && !p.endsWith('.js')) return false;
+  return /^[a-zA-Z0-9/_.-]+$/.test(p);
+}
 
 function githubRequest(method, path, body) {
   return new Promise((resolve, reject) => {
@@ -36,8 +54,10 @@ function githubRequest(method, path, body) {
 }
 
 exports.handler = async (event) => {
+  const origin = event.headers['origin'] || '';
+  const allowedOrigin = (origin === ALLOWED_ORIGIN || origin === 'https://raisereadybook.com') ? origin : ALLOWED_ORIGIN;
   const headers = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Password',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Content-Type': 'application/json'
@@ -45,14 +65,13 @@ exports.handler = async (event) => {
 
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers, body: '' };
 
-  // Verify admin password
   const password = event.headers['x-admin-password'];
-  if (!password || password !== process.env.ADMIN_PASSWORD) {
+  if (!password || !process.env.ADMIN_PASSWORD || !timingSafeEqual(password, process.env.ADMIN_PASSWORD)) {
     return { statusCode: 401, headers, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
   if (!process.env.GITHUB_TOKEN) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'GITHUB_TOKEN not configured' }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Server configuration error' }) };
   }
 
   const params = event.queryStringParameters || {};
@@ -61,6 +80,7 @@ exports.handler = async (event) => {
   if (event.httpMethod === 'GET') {
     const filePath = params.path;
     if (!filePath) return { statusCode: 400, headers, body: JSON.stringify({ error: 'Missing path param' }) };
+    if (!isValidPath(filePath)) return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid file path' }) };
 
     const res = await githubRequest('GET', `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=${BRANCH}`);
     if (res.status !== 200) return { statusCode: res.status, headers, body: JSON.stringify(res.data) };
@@ -74,6 +94,7 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body);
     const { path: filePath, content, sha, message } = body;
     if (!filePath || !content) return { statusCode: 400, headers, body: JSON.stringify({ error: 'Missing path or content' }) };
+    if (!isValidPath(filePath)) return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid file path' }) };
 
     const payload = {
       message: message || `Admin edit: ${filePath}`,
