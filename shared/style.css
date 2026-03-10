@@ -167,6 +167,34 @@ nav {
   color: var(--gold);
 }
 
+/* Book Features Badges */
+.book-features {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feature-badge {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  background: rgba(200, 164, 90, 0.06);
+}
+
+/* Blog Article Width Constraint */
+.blog-article {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Book Styles */
 .book-hero {
   padding: 64px 32px;
