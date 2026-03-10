@@ -118,6 +118,43 @@
 
 <p>Don't waste time building sensitivity matrices for everything. Some variables matter far more than others. Here's the hierarchy I use:</p>
 
+<table style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.9rem;">
+<thead>
+<tr style="border-bottom:2px solid #3a3830;">
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">Variable</th>
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">Impact Level</th>
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">Test Range</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid #d5d0c6; background:rgba(200,164,90,0.08);">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Revenue Growth Rate</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Critical</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">+/- 20-30%</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6; background:rgba(200,164,90,0.08);">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Monthly Burn</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Critical</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">+/- 20-30%</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6;">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">CAC Payback Period</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">High</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">+/- 25-35%</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6;">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Customer Churn</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">High</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">+/- 25-35%</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6;">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Take Rate (Marketplace)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">Medium</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">+/- 15-20%</td>
+</tr>
+</tbody>
+</table>
+
 <p><strong>Tier 1 (Must Do):</strong> Revenue growth rate and monthly burn. These two variables determine your runway, which determines your fundraising timeline. If you only build one sensitivity matrix, make it these two.</p>
 
 <p><strong>Tier 2 (Should Do):</strong> CAC payback period and customer churn. These determine whether your unit economics work at scale. A company with 8% MoM growth sounds healthy until you realize CAC payback is 24 months and churn is 6% monthly. Neither of those numbers works together.</p>
@@ -156,6 +193,37 @@
 <p>13% growth + $90K burn = $3.4M cash (strong position)</p>
 
 <p>Now color code: anything below $500K cash remaining (less than 4 months) is red. $500K-$1M is yellow. Above $1M is green. Suddenly the matrix shows you your vulnerability. If actual results are 8% growth and $135K burn, you're in the red zone by month 24. You know this now, during planning, not during panic.</p>
+
+<table style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.9rem;">
+<thead>
+<tr style="border-bottom:2px solid #3a3830;">
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">Growth / Burn</th>
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">7% MoM</th>
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">10% MoM</th>
+<th style="text-align:left; padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.8rem; color:#6e6a61;">13% MoM</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid #d5d0c6;">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$90K/mo Burn</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$900K (18mo)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$1.4M (28mo)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$2.1M (42mo)</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6;">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$120K/mo Burn</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$200K (4mo)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$1.2M (20mo)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$1.8M (30mo)</td>
+</tr>
+<tr style="border-bottom:1px solid #d5d0c6; background:rgba(200,164,90,0.08);">
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$150K/mo Burn</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">-$800K (fail)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$800K (16mo)</td>
+<td style="padding:0.5rem 0.75rem; font-family:'DM Mono',monospace; font-size:0.85rem;">$1.4M (28mo)</td>
+</tr>
+</tbody>
+</table>
 
 <h3>Reading a Sensitivity Matrix: What to Look For</h3>
 
