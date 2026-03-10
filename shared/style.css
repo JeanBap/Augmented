@@ -2373,6 +2373,11 @@ footer a {
   background: var(--ink);
   color: var(--paper);
 }
+.btn-calendly {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
 .btn-large {
   padding: 1rem 2.5rem;
   font-size: 0.95rem;

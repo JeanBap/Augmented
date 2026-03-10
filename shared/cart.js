@@ -56,6 +56,15 @@
 
       addToCart(id, name, price);
 
+      // GA event for add to cart
+      if (typeof gtag === 'function') {
+        gtag('event', 'add_to_cart', {
+          currency: 'USD',
+          value: price,
+          items: [{ item_id: id, item_name: name, price: price, quantity: 1 }]
+        });
+      }
+
       // Visual feedback: change button text briefly
       const originalText = btn.textContent;
       btn.textContent = 'Added!';
@@ -153,8 +162,31 @@
     }
   };
 
+  // Map product IDs to their downloadable file paths
+  const PRODUCT_FILES = {
+    'book':        '/files/book/raise-ready-book.pdf',
+    'exercises':   '/files/exercises/raise-ready-exercises.zip',
+    'bundle':      '/files/bundle/raise-ready-bundle.zip',
+    'tpl-preseed': '/files/tpl-preseed/pre-seed-model.xlsx',
+    'tpl-seed':    '/files/tpl-seed/seed-model.xlsx',
+    'tpl-seriesa': '/files/tpl-seriesa/series-a-model.xlsx',
+    'tpl-seriesb': '/files/tpl-seriesb/series-b-model.xlsx'
+  };
+
   /**
-   * Process checkout
+   * Trigger file download for a given URL
+   */
+  function triggerDownload(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  /**
+   * Process checkout - downloads files for all products in cart
    */
   window.cartCheckout = function() {
     if (cartItems.length === 0) {
@@ -162,8 +194,38 @@
       return;
     }
 
-    const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    alert('Checkout coming soon! Your cart total is: $' + total.toFixed(2));
+    var downloadable = cartItems.filter(function(item) {
+      return PRODUCT_FILES[item.id];
+    });
+
+    if (downloadable.length === 0) {
+      alert('No downloadable products in cart.');
+      return;
+    }
+
+    // GA event for checkout
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', {
+        currency: 'USD',
+        value: getCartTotal(),
+        items: cartItems.map(function(item) {
+          return { item_id: item.id, item_name: item.name, price: item.price, quantity: item.quantity };
+        })
+      });
+    }
+
+    // Download each product file with a small delay between them
+    downloadable.forEach(function(item, i) {
+      setTimeout(function() {
+        triggerDownload(PRODUCT_FILES[item.id]);
+      }, i * 500);
+    });
+
+    // Clear cart after initiating downloads
+    setTimeout(function() {
+      clearCart();
+      toggleCart();
+    }, downloadable.length * 500 + 200);
   };
 
   /**
@@ -205,6 +267,18 @@
     };
     return text.replace(/[&<>"']/g, char => map[char]);
   }
+
+  // Track Calendly "Book a Call" clicks via GA
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('.btn-calendly');
+    if (!link) return;
+    if (typeof gtag === 'function') {
+      var cardTitle = '';
+      var card = link.closest('.role-card');
+      if (card) { var h3 = card.querySelector('h3'); if (h3) cardTitle = h3.textContent; }
+      gtag('event', 'book_call', { event_category: 'Services', event_label: cardTitle || 'Unknown service' });
+    }
+  });
 
   /**
    * Initialize cart when DOM is ready
