@@ -10,9 +10,32 @@
     <nav>
       <a href="/" class="logo">Augmented</a>
       <div class="nav-tabs">
-        <a href="/book/" class="nav-tab" data-page="book">Book & Extras</a>
-        <a href="/services/" class="nav-tab" data-page="services">Services</a>
-        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <div class="nav-dropdown">
+          <a href="/book/" class="nav-tab" data-page="book">Book & Extras</a>
+          <div class="dropdown-menu">
+            <a href="/book/">Raise Ready Book</a>
+            <a href="/book/#companion">Companion Products</a>
+            <a href="/book/#templates">Financial Model Templates</a>
+            <a href="/templates/">All Templates</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="/services/" class="nav-tab" data-page="services">Services</a>
+          <div class="dropdown-menu">
+            <a href="/services/#roles">Fractional Operators</a>
+            <a href="/services/#sessions">1-on-1 Sessions</a>
+            <a href="/services/#compare">Why Augmented</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+          <div class="dropdown-menu">
+            <a href="/tools/#readiness">Readiness Scorecard</a>
+            <a href="/tools/#metrics">Metrics Calculators</a>
+            <a href="/tools/#financial-model">Financial Model Tools</a>
+            <a href="/tools/#cap-table">Cap Table Tools</a>
+          </div>
+        </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/careers/" class="nav-tab" data-page="careers">Careers</a>
       </div>

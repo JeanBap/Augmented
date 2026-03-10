@@ -114,10 +114,35 @@
           <button class="btn btn-primary btn-add-to-cart" data-product-id="book" data-product-name="Raise Ready Book" data-product-price="14.99">
             Add to Cart
           </button>
-          <a href="/blog/" class="btn btn-ghost">Read Free Articles</a>
+          <button class="btn btn-ghost toc-toggle" onclick="document.getElementById('inline-toc').classList.toggle('open'); this.classList.toggle('active')">
+            Table of Contents <span class="toc-arrow">&#9662;</span>
+          </button>
         </div>
 
         <p class="book-description-meta">Digital edition. Instant access after purchase. Compatible with all devices.</p>
+
+        <!-- Expandable TOC -->
+        <div id="inline-toc" class="inline-toc">
+          <ol class="inline-toc-list">
+            <li><strong>What a Financial Model Actually Is</strong></li>
+            <li><strong>How Investors Think About Your Numbers</strong></li>
+            <li><strong>The Architecture of a Fundraising Model</strong></li>
+            <li><strong>Revenue Modeling: From Drivers to Dollars</strong></li>
+            <li><strong>Cost Structure: COGS & Gross Margin</strong></li>
+            <li><strong>The Hiring Plan</strong></li>
+            <li><strong>Cash Flow and Runway</strong></li>
+            <li><strong>The Balance Sheet</strong></li>
+            <li><strong>Unit Economics That Actually Matter</strong></li>
+            <li><strong>Scenario Planning & Sensitivity Analysis</strong></li>
+            <li><strong>The Assumptions Tab</strong></li>
+            <li><strong>Diligence-Proofing Your Model</strong></li>
+            <li><strong>Running the Fundraise</strong></li>
+            <li><strong>Defending Your Numbers</strong></li>
+            <li><strong>Post-Raise Operations</strong></li>
+            <li><strong>The Exit: What Changes When You Sell</strong></li>
+          </ol>
+          <p class="inline-toc-appendix">+ Appendix A: Chapter Exercises &middot; Appendix B: Recommended Reading</p>
+        </div>
       </div>
       <div class="book-hero-cover">
         <img src="/book-cover.png" alt="Raise Ready Book Cover">
@@ -126,7 +151,7 @@
   </section>
 
   <!-- Companion Products Section -->
-  <section class="products-sec">
+  <section id="companion" class="products-sec">
     <div class="products-inner">
       <h2 class="section-title">Companion Products</h2>
       <p class="section-subtitle">Everything you need to master fundraising and financial modeling</p>
@@ -181,220 +206,63 @@
   </section>
 
   <!-- Financial Model Templates Section -->
-  <section class="templates-sec">
-    <div class="templates-inner">
+  <section id="templates" class="products-sec">
+    <div class="products-inner">
       <h2 class="section-title">Financial Model Templates</h2>
       <p class="section-subtitle">Pre-built models used in the book and refined through real fundraises</p>
 
-      <div class="templates-preview">
-        <div class="template-preview-card">
-          <h3>Pre-Seed Model</h3>
-          <p>Simple, focused model for earliest stage companies. Covers basic revenue, burn, and runway.</p>
-        </div>
-        <div class="template-preview-card">
-          <h3>Seed Model</h3>
-          <p>Comprehensive model with gross margin analysis, unit economics, and scenario planning.</p>
-        </div>
-        <div class="template-preview-card">
-          <h3>Series A Model</h3>
-          <p>Advanced model including balance sheet, cash flow statement, and detailed assumptions.</p>
-        </div>
-        <div class="template-preview-card">
-          <h3>Series B & Beyond</h3>
-          <p>Full P&L, balance sheet, and cash flow with detailed hiring plans and department-level budgeting.</p>
-        </div>
-      </div>
-
-      <div class="templates-cta">
-        <p>Access all financial model templates, including step-by-step instructions on how to build and modify them.</p>
-        <a href="/templates/" class="btn btn-primary">View All Templates</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Table of Contents Section -->
-  <section class="toc-sec">
-    <div class="toc-inner">
-      <h2 class="section-title">Table of Contents</h2>
-      <p class="section-subtitle">Master the complete fundraising playbook</p>
-
-      <div class="toc-grid">
-        <div class="toc-chapter">
-          <div class="toc-number">1</div>
-          <h3 class="toc-title">What a Financial Model Actually Is</h3>
-          <p class="toc-description">Start with fundamentals. Understand what investors expect to see and why financial modeling matters.</p>
+      <div class="products-grid products-grid-4">
+        <div class="product-card">
+          <div class="product-header">
+            <h3 class="product-name">Pre-Seed Model</h3>
+            <span class="product-badge">Foundation</span>
+          </div>
+          <p class="product-description">Revenue drivers, basic COGS, headcount plan, and 18-month runway projection.</p>
+          <div class="product-pricing">
+            <div class="price-main">$49</div>
+          </div>
+          <a href="/templates/" class="btn btn-secondary">View Details</a>
         </div>
 
-        <div class="toc-chapter">
-          <div class="toc-number">2</div>
-          <h3 class="toc-title">How Investors Think About Your Numbers</h3>
-          <p class="toc-description">Get inside the investor's head. Learn what they're really looking for in your financial projections.</p>
+        <div class="product-card">
+          <div class="product-header">
+            <h3 class="product-name">Seed Model</h3>
+            <span class="product-badge">Growth</span>
+          </div>
+          <p class="product-description">Cohort-based revenue, channel CAC, three scenarios, full P&L and cash flow.</p>
+          <div class="product-pricing">
+            <div class="price-main">$99</div>
+          </div>
+          <a href="/templates/" class="btn btn-secondary">View Details</a>
         </div>
 
-        <div class="toc-chapter">
-          <div class="toc-number">3</div>
-          <h3 class="toc-title">The Architecture of a Fundraising Model</h3>
-          <p class="toc-description">Design your model correctly from the start. Master the structure that every investor understands.</p>
+        <div class="product-card featured">
+          <div class="product-header">
+            <h3 class="product-name">Series A Model</h3>
+            <span class="product-badge featured-badge">Popular</span>
+          </div>
+          <p class="product-description">Multi-product revenue, departmental headcount, unit economics by segment, sensitivity analysis.</p>
+          <div class="product-pricing">
+            <div class="price-main">$149</div>
+          </div>
+          <a href="/templates/" class="btn btn-primary">View Details</a>
         </div>
 
-        <div class="toc-chapter">
-          <div class="toc-number">4</div>
-          <h3 class="toc-title">Revenue Modeling: From Drivers to Dollars</h3>
-          <p class="toc-description">Build revenue projections that tell a coherent story. From customer acquisition to unit economics.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">5</div>
-          <h3 class="toc-title">Cost Structure: COGS & Gross Margin</h3>
-          <p class="toc-description">Understand the hidden costs in your business. Model cost of goods sold and gross margin accurately.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">6</div>
-          <h3 class="toc-title">The Hiring Plan</h3>
-          <p class="toc-description">Plan headcount strategically. Model compensation, hiring timeline, and organizational structure.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">7</div>
-          <h3 class="toc-title">Cash Flow and Runway</h3>
-          <p class="toc-description">Master the metric that matters most. Calculate runway, burn rate, and path to profitability.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">8</div>
-          <h3 class="toc-title">The Balance Sheet</h3>
-          <p class="toc-description">Understand assets, liabilities, and equity. Build the balance sheet investors expect.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">9</div>
-          <h3 class="toc-title">Unit Economics That Actually Matter</h3>
-          <p class="toc-description">Move beyond vanity metrics. Calculate LTV, CAC, payback period, and other metrics that drive value.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">10</div>
-          <h3 class="toc-title">Scenario Planning & Sensitivity Analysis</h3>
-          <p class="toc-description">Prepare for different futures. Build best case, base case, and worst case scenarios with sensitivities.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">11</div>
-          <h3 class="toc-title">The Assumptions Tab</h3>
-          <p class="toc-description">Document and defend every assumption. Create the single source of truth for your financial model.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">12</div>
-          <h3 class="toc-title">Diligence-Proofing Your Model</h3>
-          <p class="toc-description">Prepare for investor scrutiny. Make sure your model can withstand detailed due diligence.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">13</div>
-          <h3 class="toc-title">Running the Fundraise</h3>
-          <p class="toc-description">Execute the fundraising process. Use your model as a tool for conversations with investors.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">14</div>
-          <h3 class="toc-title">Defending Your Numbers</h3>
-          <p class="toc-description">Answer tough questions. Learn how to articulate and defend your financial projections confidently.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">15</div>
-          <h3 class="toc-title">Post-Raise Operations</h3>
-          <p class="toc-description">Execute on your projections. Bridge from fundraising to building and hitting your targets.</p>
-        </div>
-
-        <div class="toc-chapter">
-          <div class="toc-number">16</div>
-          <h3 class="toc-title">The Exit: What Changes When You Sell</h3>
-          <p class="toc-description">Plan for the endgame. Understand exit multiples, financial engineering, and long-term value creation.</p>
-        </div>
-
-        <div class="toc-appendix">
-          <div class="toc-number">A</div>
-          <h3 class="toc-title">Chapter Exercises</h3>
-          <p class="toc-description">15 hands-on practice exercises with real financial modeling scenarios and solution templates.</p>
-        </div>
-
-        <div class="toc-appendix">
-          <div class="toc-number">B</div>
-          <h3 class="toc-title">Recommended Reading</h3>
-          <p class="toc-description">Curated resources and further reading to deepen your knowledge of fundraising and finance.</p>
+        <div class="product-card">
+          <div class="product-header">
+            <h3 class="product-name">Series B Model</h3>
+            <span class="product-badge">Enterprise</span>
+          </div>
+          <p class="product-description">Multi-geography, multi-currency, M&A tabs, LTV cohort waterfall, balance sheet and five-year plan.</p>
+          <div class="product-pricing">
+            <div class="price-main">$199</div>
+          </div>
+          <a href="/templates/" class="btn btn-secondary">View Details</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Hire Yanni Section -->
-  <section class="hire-sec">
-    <div class="hire-inner">
-      <h2 class="section-title">Hire Yanni for 1-on-1 Sessions</h2>
-      <p class="section-subtitle">Get direct guidance on your financial model from someone who has built and raised on them</p>
-
-      <div class="hire-grid">
-        <div class="hire-card">
-          <div class="hire-header">
-            <h3 class="hire-title">Intro Call</h3>
-            <div class="hire-price">$250</div>
-          </div>
-          <p class="hire-description">30-minute introductory session. Perfect for understanding where your model stands and what needs work.</p>
-          <ul class="hire-features">
-            <li>30-minute session via Zoom</li>
-            <li>Review your current model (if you have one)</li>
-            <li>Get immediate feedback and next steps</li>
-            <li>No recording or notes available afterward</li>
-          </ul>
-          <button class="btn btn-secondary">Schedule Session</button>
-        </div>
-
-        <div class="hire-card featured">
-          <div class="hire-header">
-            <h3 class="hire-title">Working Session</h3>
-            <div class="hire-price">$500</div>
-          </div>
-          <p class="hire-description">60-minute deep-dive working session. Build or refine your model with real-time expert guidance.</p>
-          <ul class="hire-features">
-            <li>60-minute focused working session</li>
-            <li>Hands-on help building your model</li>
-            <li>Detailed feedback on assumptions and structure</li>
-            <li>Recording and notes provided afterward</li>
-          </ul>
-          <button class="btn btn-primary">Schedule Session</button>
-        </div>
-
-        <div class="hire-card">
-          <div class="hire-header">
-            <h3 class="hire-title">Full Model Build</h3>
-            <div class="hire-price">Custom pricing</div>
-          </div>
-          <p class="hire-description">Complete model-building packages tailored to your stage. End-to-end support from start to fundraise.</p>
-          <ul class="hire-features">
-            <li>Pre-Seed: $1,000 — Lean model for early validation</li>
-            <li>Seed: $2,000 — Comprehensive model with unit economics</li>
-            <li>Series A: $4,000 — Advanced model with balance sheet and cash flow</li>
-            <li>Series B: $8,000 — Full P&L, balance sheet, and detailed hiring plan</li>
-          </ul>
-          <button class="btn btn-secondary">Get Quote</button>
-        </div>
-      </div>
-
-      <div class="hire-credentials">
-        <h3>Yanni's Background</h3>
-        <ul class="credentials-list">
-          <li><strong>5 Funding Rounds:</strong> Pre-seed through Series B experience across multiple companies</li>
-          <li><strong>7 VCs:</strong> Raised from top-tier venture capital firms</li>
-          <li><strong>9-Figure Exit:</strong> Successfully exited to Indeed (acquired for $9-figure valuation)</li>
-          <li><strong>Financial Expertise:</strong> Deep experience in FP&A, strategic planning, and M&A</li>
-          <li><strong>Model-Building Mastery:</strong> Built financial models that withstood investor due diligence and guided strategic decision-making</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- Related Resources Section -->
   <section class="related-resources-sec">
