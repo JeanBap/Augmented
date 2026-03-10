@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Round Dilution Tracker: How Founder Ownership Erodes From Seed to Series B | Raise Ready</title>
+<meta name="description" content="Model your cumulative dilution across funding rounds. See real examples: Seed, Series A, Series B valuations and dilution math. Option pools, vesting, and ownership trajectory.">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html">
+<meta property="og:title" content="Multi-Round Dilution Tracker: How Founder Ownership Erodes From Seed to Series B">
+<meta property="og:description" content="Model your cumulative dilution across funding rounds. See real examples of Seed, Series A, Series B valuations.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Fundraising">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multi-Round Dilution Tracker: How Founder Ownership Erodes From Seed to Series B">
+<meta name="twitter:description" content="Model your cumulative dilution across funding rounds. See real examples of Seed, Series A, Series B valuations.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Multi-Round Dilution Tracker: How Founder Ownership Erodes From Seed to Series B",
+  "description": "Model your cumulative dilution across funding rounds. See real examples: Seed, Series A, Series B valuations and dilution math. Option pools, vesting, and ownership trajectory.",
+  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
+  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "url": "https://www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html",
+  "articleSection": "Fundraising",
+  "wordCount": 2300,
+  "timeRequired": "PT12M"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What's a typical founder ownership trajectory across three rounds?", "acceptedAnswer": {"@type": "Answer", "text": "Seed: 60-70% ownership (after 20-30% dilution from Seed round). Series A: 40-50% ownership (another 25-30% dilution). Series B: 25-35% ownership (another 30-40% dilution). The exact numbers depend on your raise sizes and valuations. A founder who raised conservatively at each round ends up higher. One who raised aggressively (large rounds at low valuations) ends up lower. The median Series B founder has 25-30% ownership per Carta 2024 data. Founders with 35%+ at Series B are in the top quartile."}},
+    {"@type": "Question", "name": "How much does the option pool refresh dilute my ownership each round?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 10-15% per round. An investor will ask for an option pool refresh at each funding round to ensure the company has enough equity to hire new senior people. If you didn't have an option pool at Seed, you refresh 10% at Series A (this is dilution to all existing shareholders). If you had a 10% pool at Seed, an investor might ask for the pool to be topped up to 15% at Series A. The top-up itself is dilution. Over three rounds, option pool refreshes can represent 5-10% cumulative dilution beyond the investment dilution. Track this separately."}},
+    {"@type": "Question", "name": "Should I take less money to preserve ownership?", "acceptedAnswer": {"@type": "Answer", "text": "Depends on your situation. If you're raising at a much lower valuation than you should be, taking less money at the high valuation is better. If you're raising at a fair valuation but a larger round would significantly extend your runway, take the larger round. The math: a 100% founder ownership at failure is worth less than 40% founder ownership at Series C with significant exits available. The goal is not to preserve ownership at all costs. The goal is to own a meaningful percentage of a large outcome. Sometimes you need to take dilution to get to that outcome."}},
+    {"@type": "Question", "name": "What are typical Seed, Series A, and Series B raise amounts?", "acceptedAnswer": {"@type": "Answer", "text": "Per PitchBook 2024 data: Seed rounds average 1M to 4M median range (top quartile hitting 5-8M). Series A rounds average 5M to 15M median range (top quartile 15-30M). Series B rounds average 15M to 50M median range (top quartile 50-100M+). These are medians for VC-backed companies. Your specific round size depends on your stage, traction, and market. A B2B SaaS company with 500K ARR might raise 5-10M in Series A. A D2C e-commerce company at the same ARR might raise 2-5M. Marketplace companies often raise larger rounds earlier."}},
+    {"@type": "Question", "name": "How do I model the impact of taking a lower valuation on my future ownership?", "acceptedAnswer": {"@type": "Answer", "text": "Use the calculator at /tools/#multi-dilution. Input your Seed pre-money valuation, Series A pre-money valuation, Series B pre-money valuation, along with the investment amounts at each round. Specify the option pool percentage at each round. The tool shows you your ownership at each stage. Try different Series A valuation scenarios to see how much ownership difference it makes. A 15M Series A pre-money vs 12M Series A pre-money (same 5M investment) results in roughly 3% more founder ownership over the course of future rounds. Valuation negotiation matters profoundly."}},
+    {"@type": "Question", "name": "Can I model what happens if I don't raise Series B?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The dilution tracker shows your ownership at each stage assuming you raise all three rounds. But in practice, many companies exit after Series A without raising Series B. If you exit at 10B valuation after Series A, your 45% ownership is worth 4.5B. If you raise Series B at a lower valuation (defensive round) and get diluted to 30%, your ownership at the same 10B exit is only worth 3B. Sometimes not raising Series B is the right call. Use the calculator to model exit scenarios at different ownership levels to understand the trade-off."}}
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Fundraising</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Fundraising</span>
+      <span class="blog-time">12 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2026</span>
+    </div>
+    <h1>Multi-Round Dilution Tracker: How Founder Ownership Erodes From Seed to Series B</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=Multi-Round%20Dilution%20Tracker%3A%20How%20Founder%20Ownership%20Erodes%20From%20Seed%20to%20Series%20B&url=https%3A//www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='&#x3C;svg width=14 height=14 viewBox=0 0 24 24 fill=none stroke=currentColor stroke-width=2&#x3E;&#x3C;rect x=9 y=9 width=13 height=13 rx=2/&#x3E;&#x3C;path d=M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1/&#x3E;&#x3C;/svg&#x3E; Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Your ownership percentage erodes predictably across funding rounds. The median founder owns 60-65% after Seed, 40-50% after Series A, and 25-35% after Series B. This isn't a mistake --- it's the cost of growing a large company. But the speed of erosion depends on the valuations and raise sizes at each round. A founder who negotiates hard on valuation can end up with 5-10% more ownership at Series B than one who doesn't. The difference between 30% and 40% ownership on a 5B exit is 500M. Use the calculator to model your specific trajectory and understand the negotiation leverage at each round.</p>
+</div>
+
+<h3>The Reality of Founder Ownership Across Rounds</h3>
+
+<p>I've worked with founders across dozens of fundraising journeys, and one pattern is universal: ownership goes down with each round. This surprises nobody, but the magnitude often does. You raise Seed at a 2M valuation and own 100%. You raise Series A at a 15M valuation and you own 40%. You raise Series B at a 60M valuation and you own 28%. Those numbers are roughly accurate for a company that raises conservatively at each round.</p>
+
+<p>The key insight: your ownership trajectory is largely set by three decisions: the valuation you negotiate at each round, the amount you raise at each round, and the option pool percentage you agree to at each round. Small differences in valuation compound dramatically over time.</p>
+
+<p>According to Carta 2024 data analyzing 50,000+ cap tables, the median founder ownership post-Seed is 57%. Post-Series A, it's 41%. Post-Series B, it's 28%. These are medians. The top quartile of founders (those who negotiated harder or grew faster and had more leverage) have 70%+, 55%+, and 40%+ ownership at those same rounds. The bottom quartile dips below 50%, 30%, and 18%. The difference is not random. It's driven by valuation negotiation and raise discipline.</p>
+
+<h3>Understanding the Math: From 100% to 28% Ownership</h3>
+
+<p>Let me walk through a concrete example. You start with 100% founder ownership. You raise Seed:</p>
+
+<p><strong>Seed Round:</strong> 3M investment at 5M pre-money valuation. This means the 3M represents 3M / (5M + 3M) = 37.5% of the post-money valuation (8M). Your ownership after Seed: 62.5%. You've diluted 37.5% in one round.</p>
+
+<p>Now Series A:</p>
+
+<p><strong>Series A Round:</strong> 8M investment at 20M pre-money valuation. The post-money is 28M. Your 62.5% ownership applies to the pre-money cap table. You own 62.5% of 20M = 12.5M pre-money. The new Series A investors own 8M / 28M = 28.6% post-money. Your ownership in the new post-money is (12.5M) / 28M = 44.6%. You've diluted another 17.9% (from 62.5% to 44.6%).</p>
+
+<p>Now Series B:</p>
+
+<p><strong>Series B Round:</strong> 25M investment at 75M pre-money valuation. The post-money is 100M. Your 44.6% ownership applies to the pre-money. You own 44.6% of 75M = 33.45M pre-money. The Series B investors own 25M / 100M = 25% post-money. Your ownership in the new post-money is 33.45M / 100M = 33.45%. You've diluted another 11.1% (from 44.6% to 33.45%).</p>
+
+<p>Your ownership trajectory: 100% at inception, 62.5% after Seed, 44.6% after Series A, 33.45% after Series B. That's typical for a company that raised at fair valuations and raised increasing amounts at each round. This is not unusual, and it's not bad --- it's the natural result of raising capital to build a valuable company.</p>
+
+<h3>Typical Raise Amounts by Stage</h3>
+
+<p>To model your own trajectory, you need to know what's typical. Per PitchBook 2024 data:</p>
+
+<p><strong>Seed rounds:</strong> Median 1.5M to 3M for SaaS companies. Top quartile hitting 3.5M to 6M. Early-stage marketplaces or consumer companies sometimes raise smaller (500K to 1.5M). Hardware or deep-tech companies raise larger (3M to 8M). A typical Seed round for a SaaS company with early traction is 2-4M. If you're raising less than 1M at Seed, you're either self-funded or taking small angel rounds that don't require equity.</p>
+
+<p><strong>Series A rounds:</strong> Median 5M to 10M for SaaS companies, with strong companies hitting 10M to 20M. Marketplaces and consumer apps raise larger, 8M to 20M. Developer tools and B2B SaaS in undersaturated categories raise smaller, 3M to 8M. If you're raising Series A, expect to see check sizes from 1M to 5M per investor, with 4-6 investors in the round.</p>
+
+<p><strong>Series B rounds:</strong> Median 15M to 40M, with top companies raising 40M to 80M+. Growth capital becomes available at Series B, so round sizes spike. A company at 2-3M ARR with strong growth and clear path to Series C viability typically raises 15-30M. One at 5M+ ARR might raise 30-50M.</p>
+
+<h3>How Option Pools Compound Your Dilution</h3>
+
+<p>Every investor at Series A will ask: what's your option pool? Most pre-seed and seed companies don't have formal option pools. They use a pool of unallocated common stock. At Series A, the investor will require a "refresh" --- creating a dedicated option pool (typically 10-15% of post-money) to hire the next wave of senior employees.</p>
+
+<p>This is dilution. If you didn't have an option pool before Series A, the creation of a 12% pool dilutes all existing shareholders (founders and Seed investors) by 12% immediately. But mathematically, it's embedded in the pre-money valuation. The investor accounts for it. If you raise at 20M pre-money with a 12% option pool refresh, the implied fully-diluted pre-money value is 20M * (1 / 0.88) = 22.7M. You're negotiating on a lower effective valuation than stated.</p>
+
+<p>This matters more as you go through rounds. At Series B, the investor might ask for the option pool to be increased from 12% to 15% (a top-up). That 3% top-up dilutes all existing shareholders. If you're a founder with 44% ownership at Series A and the pool increases 3%, your ownership drops from 44% to about 42.6%.</p>
+
+<p>Over three rounds, option pools can represent 3-7% cumulative dilution beyond investment dilution. Track this. At Seed, negotiate for a 10% pool (not 12%). At Series A, try to keep it at 10% rather than increasing to 15%. Every percentage point of option pool is a percentage point of your ownership.</p>
+
+<h3>Valuation Negotiation: The Lever You Control</h3>
+
+<p>The ownership erosion is not inevitable. It's heavily influenced by the valuations you negotiate at each round. Let me show you the impact:</p>
+
+<p>Scenario A (Conservative Valuation): Seed at 5M pre-money, Series A at 18M pre-money, Series B at 70M pre-money. Raise amounts stay constant (3M Seed, 8M Series A, 25M Series B). Your ownership: 62.5% post-Seed, 42.9% post-Series A, 31.9% post-Series B.</p>
+
+<p>Scenario B (Aggressive Valuation): Seed at 5M pre-money, Series A at 22M pre-money, Series B at 85M pre-money. Same raise amounts. Your ownership: 62.5% post-Seed, 47.3% post-Series A, 35.2% post-Series B. The difference between conservative and aggressive valuations: 3.4% more ownership at Series A, 3.3% more at Series B.</p>
+
+<p>At a 5B exit, that 3.3% ownership difference is worth 165M. Valuation negotiation is not a cosmetic detail. It's the difference between founders owning 32% vs 35% at Series B, which compounds to enormous exit differences.</p>
+
+<p>How do you push for higher valuations? (1) demonstrate clear metrics --- strong MoM growth, unit economics showing a path to profitability, proven product-market fit in your segment; (2) create competitive tension --- have multiple investors interested, let Series A investors know you're running a process; (3) focus the conversation on valuation math --- show the investor that your valuation is reasonable relative to public comps and other private companies at your stage. Use PitchBook data to anchor your discussion. "Series A companies in our space with similar ARR are raising at 15-25M pre-money. We're at 2M ARR with higher growth. 22M is reasonable."</p>
+
+<h3>The Stacking Effect: Multiple Rounds of Option Pool Refreshes</h3>
+
+<p>Many founders miss this: option pool refreshes compound. If you start Seed with no pool, create a 10% pool at Series A, and increase to 12% at Series B, the cumulative effect is not just 12% dilution to founders. Each refresh dilutes all previous shareholders.</p>
+
+<p>Let me show the math. Seed founders own 60% of a 10M post-money valuation = 6M. You create a 10% pool at Series A. The pool is worth 10% * post-money. But it dilutes the pre-money. If your Series A pre-money is 20M and you create a 10% pool, the pool is 10% * (20M + investment). This gets complicated, but the effect is: founders' ownership ticks down another 1-2% from the pool alone.</p>
+
+<p>At Series B, if you increase the pool from 10% to 12%, that 2% increase is another 1.5-2% dilution to founders specifically (the increase is deducted from all pre-Series B shareholders proportionally).</p>
+
+<p>Over three rounds, if you mismanage option pools, you can lose 5-8% total ownership to pool refreshes and increases. Be disciplined: negotiate for the minimum pool size that satisfies the investor (usually 10% at Series A, 12% at Series B). Once you've agreed to a pool size, push hard to avoid refreshes at subsequent rounds. Only refresh if the existing pool is depleted.</p>
+
+<h3>Real Example: A Full Three-Round Journey</h3>
+
+<p>Let me give you a real example that many founders face. You start with two co-founders owning 100%. You take a small angel round first (I'm skipping this in the calculation to simplify, but assume you've diluted to 90% ownership by this point). Now your three institutional rounds:</p>
+
+<p><strong>Seed:</strong> You raise 2.5M at a 4M pre-money valuation. You have no existing option pool. Investors don't require one. Your ownership: 4M / 6.5M = 61.5% post-money. You've diluted 28.5% from the angel round.</p>
+
+<p><strong>Series A:</strong> You raise 6M at a 18M pre-money valuation. Investors require a 10% option pool. The pool is created and dilutes the pre-money effectively. Your 61.5% ownership at 4M pre-money value becomes 61.5% of 18M = 11.07M pre-money value. Post-Series A post-money is 24M. Your ownership: 11.07M / 24M = 46.1%. Dilution: 15.4% in this round.</p>
+
+<p><strong>Series B:</strong> You raise 20M at a 60M pre-money valuation. Investors want a 12% option pool (2% higher than Seed). Your 46.1% ownership becomes 46.1% of 60M = 27.66M pre-money value. Post-Series B post-money is 80M. Your ownership: 27.66M / 80M = 34.6%. Dilution: 11.5% in this round.</p>
+
+<p>Full journey: 90% (post-angel) → 61.5% (post-Seed) → 46.1% (post-Series A) → 34.6% (post-Series B). Total dilution from Series A onwards: 55.4% ownership loss across two institutional rounds. But you've raised 26.5M in capital to build a 80M post-money valued company. At exit, 34.6% ownership on a 2B exit is worth 692M. That's the whole point.</p>
+
+<h3>When Does Ownership Trajectory Become a Problem?</h3>
+
+<p>Ownership below 30% at Series B can become problematic for founder motivation and control. If you own less than 20% by Series B, you're effectively running the company for investors, not for yourself. This is rare for founder-led companies, but it happens when founders raise too aggressively early or negotiate poorly on valuation.</p>
+
+<p>The red flag: if your Series A ownership is below 40%, you need to be extremely careful at Series B. A typical Series B founder with 40%+ ownership can maintain 30%+ post-Series B. One with 35% or less will drop below 25%, which is significant.</p>
+
+<p>How to avoid this: (1) Negotiate Series A valuation hard. Every 2M increase in Series A valuation at the same investment size preserves 1-2% ownership. (2) Limit option pool sizes. Don't agree to 15% at Series A if 10% will suffice. (3) Consider taking smaller rounds. You don't need to raise the maximum available. A disciplined 5M Series A might be enough to hit Series B metrics, and the higher ownership percentage makes Series B better for you.</p>
+
+<h3>Using the Multi-Round Dilution Tracker</h3>
+
+<p>The calculator at <a href="/tools/#multi-dilution" style="color:#c8a45a;">/tools/#multi-dilution</a> lets you model your full three-round journey. Input: Seed pre-money valuation, Seed investment amount, Series A pre-money valuation, Series A investment amount, Series B pre-money valuation, Series B investment amount, option pool percentage at each round. The tool outputs your ownership at each stage and shows you the cumulative dilution effect.</p>
+
+<p>Try different scenarios. What if you negotiate 20% higher Series A valuation? What if you raise 2M less in Series A but at the same valuation? What if you increase option pool from 10% to 12%? The calculator shows you the ownership impact of each decision. Use it to understand your leverage in each round. Understanding the full-journey impact of valuation changes makes you a much better negotiator.</p>
+
+<h3>The Psychology of Ownership Dilution</h3>
+
+<p>Many founders struggle emotionally with ownership erosion. You started with 100%. Now you own 34%. It feels like you've lost 66%. But that's the wrong frame. You own 34% of a company that's worth 2B, not 100% of a company worth 200M. Your wealth increased even as your percentage decreased.</p>
+
+<p>The math: 100% of a 5M post-Seed company is 5M in value. 34% of a 2B Series B company is 680M in value. Ownership percentage is not the same as wealth. Focus on the latter.</p>
+
+<p>That said, if your ownership drops below 25%, you've genuinely lost control and significant upside. You should have pushed harder on valuation or raised less capital. The goal is to own a meaningful percentage (25%+ is meaningful) of a large company. You don't need 50%+. But you can't let yourself drop below 20% without understanding the trade-off.</p>
+
+<h3>Strategic Decisions: Raise Less vs Raise at Lower Valuation</h3>
+
+<p>You'll face a choice at some point: raise less money at a higher valuation, or raise more money at a lower valuation. This is the core negotiation:</p>
+
+<p>Scenario 1: You're raising Series A. Investor A offers 10M at 18M pre-money. Investor B offers 8M at 20M pre-money. Which is better?</p>
+
+<p>If you need 10M to hit your metrics, take Investor A. The 2M extra runway is worth the 2M valuation difference (approximately 5% more ownership post-Series A). If you only need 8M and can hit Series B with less capital, take Investor B. You preserve 2M+ in ownership and avoid burning through excess capital that will sit idle.</p>
+
+<p>Most founders take the larger check. They reason: more money, more runway, more safety. But excess cash breeds waste. A founder with 10M in the bank who doesn't have a clear 18-month plan will spend it inefficiently. A founder with 8M who must be disciplined will hit Series B metrics faster and with better unit economics. You'll raise Series B at a better valuation if you hit your numbers efficiently.</p>
+
+<h3>Summary</h3>
+
+<p>Founder ownership erodes predictably across funding rounds. The median founder owns 57% post-Seed, 41% post-Series A, 28% post-Series B per Carta data. This is not a mistake --- it's the cost of raising capital to scale. But the rate of erosion depends on the valuations you negotiate at each round and the option pool sizes you agree to. A founder who negotiates hard on valuation and raises disciplined amounts can maintain 35%+ ownership post-Series B. One who doesn't negotiate carefully drops below 25%.</p>
+
+<p>Model your trajectory before you start fundraising. Use the calculator at <a href="/tools/#multi-dilution" style="color:#c8a45a;">/tools/#multi-dilution</a> to understand how Series A and Series B valuation negotiations will impact your final ownership. Recognize that the goal is not to preserve ownership percentage at all costs --- it's to own a meaningful percentage of a large company. You need 25%+ at Series B to have genuine upside in an exit. Below that, the capital you've raised has primarily enriched investors, not founders. Use this knowledge to negotiate better terms and make more conscious decisions about how much capital you actually need.</p>
+
+    </div>
+<div class="related-articles">
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html" class="related-article-link">SAFE vs Convertible Note: Dilution Comparison for Founders</a>
+<a href="/blog/bridge-rounds-when-they-save-your-company-and-when-they-bury-it.html" class="related-article-link">Bridge Rounds: When They Save Your Company and When They Bury It</a>
+<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How To Build A Financial Model For Your Startup 2026 Guide</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>

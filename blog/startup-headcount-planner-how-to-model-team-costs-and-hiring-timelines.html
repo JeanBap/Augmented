@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Headcount Planner: How to Model Team Costs and Hiring Timelines | Raise Ready</title>
+<meta name="description" content="Model your startup team costs accurately. Calculate loaded salary costs by role and geography. Headcount planning by stage with real salary benchmarks.">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html">
+<meta property="og:title" content="Startup Headcount Planner: How to Model Team Costs and Hiring Timelines">
+<meta property="og:description" content="Model startup team costs accurately. Calculate loaded salary costs by role and geography. Headcount planning by stage.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Startup Headcount Planner: How to Model Team Costs and Hiring Timelines">
+<meta name="twitter:description" content="Model startup team costs and hiring timelines accurately.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Startup Headcount Planner: How to Model Team Costs and Hiring Timelines",
+  "description": "Model your startup team costs accurately. Calculate loaded salary costs by role and geography. Headcount planning by stage with real salary benchmarks.",
+  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
+  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "url": "https://www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html",
+  "articleSection": "Financial Modeling",
+  "wordCount": 2300,
+  "timeRequired": "PT13M"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What's a realistic fully-loaded cost multiplier for salary?", "acceptedAnswer": {"@type": "Answer", "text": "In the US, multiply base salary by 1.25-1.35. This includes taxes, benefits (health, dental, vision, 401k), payroll processing, and recruiting fees for replacement staff. In the UK, multiply by 1.15-1.25 (lower tax/benefits burden). In France, multiply by 1.40-1.50 (much higher payroll tax). These are conservative. If you include office space allocation, equipment, and admin overhead, the multiplier gets higher."}},
+    {"@type": "Question", "name": "When should I hire engineers vs. sales vs. operations?", "acceptedAnswer": {"@type": "Answer", "text": "Early stage: hire engineers first. You need a product. Mid-stage: add sales and product. Late stage (Series A): add finance, operations, and specialized roles. The ratio matters too. Seed stage: 70% engineering, 20% sales/marketing, 10% operations. Series A: 40-50% engineering, 30-35% sales/marketing, 15-20% operations/finance. Series B: 35-40% engineering, 35-40% sales/marketing, 20-25% operations/finance."}},
+    {"@type": "Question", "name": "How do you account for ramp time when hiring?", "acceptedAnswer": {"@type": "Answer", "text": "A new engineer takes 1-2 months to ramp. A new salesperson takes 3-4 months to reach full productivity. Account for this in your model by including only 50% of their contribution (revenue generated or cost saved) in month 1, 75% in month 2, 100% month 3+. This prevents you from modeling hockey stick growth immediately after hiring."}},
+    {"@type": "Question", "name": "What's revenue per employee by stage?", "acceptedAnswer": {"@type": "Answer", "text": "Seed stage: $100-150K ARR per employee. Series A: $150-250K ARR per employee. Series B: $250-400K ARR per employee. These are rules of thumb. Companies that are engineering-heavy or have efficient GTM reach $300-400K per employee at Series A. Companies that are sales-heavy might only reach $100-150K per employee. The ratio tells you if you're adding employees faster than your revenue is growing (inefficient) or slower (efficient)."}},
+    {"@type": "Question", "name": "Should I include contractors and part-time in headcount?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but clearly. Calculate FTE (full-time equivalent). Two part-time people at 50% each = 1 FTE. Contractors should be in your expense model, not your headcount, but they do increase your cost of team."}}
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">13 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2026</span>
+    </div>
+    <h1>Startup Headcount Planner: How to Model Team Costs and Hiring Timelines</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=Startup%20Headcount%20Planner%3A%20How%20to%20Model%20Team%20Costs%20and%20Hiring%20Timelines&url=https%3A//www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='&#x3C;svg width=14 height=14 viewBox=0 0 24 24 fill=none stroke=currentColor stroke-width=2&#x3E;&#x3C;rect x=9 y=9 width=13 height=13 rx=2/&#x3E;&#x3C;path d=M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1/&#x3E;&#x3C;/svg&#x3E; Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Headcount is typically 60-80% of startup burn. Getting it wrong breaks your unit economics and runway calculations. Multiply salaries by 1.25-1.35 in the US (or country-specific rate) to get loaded cost. Hire by stage: seed is 70% engineers, Series A is 40-50% engineers and 30% sales/marketing, Series B is more balanced. Track revenue per employee (should be $150-250K ARR per employee at Series A). Account for ramp time when hiring so you don't model hockey stick productivity. Plan headcount explicitly: who, when, why, how much.</p>
+</div>
+
+<h3>Why Headcount Kills Most Startup Burn Models</h3>
+
+<p>The most expensive thing at a startup is people. Headcount typically represents 60-80% of burn in the early stages (pre-profitability). Yet I see founders underestimate headcount costs constantly.</p>
+
+<p>They think of salary as the cost. Engineer at $120K per year? That's what goes in the model. Wrong. The fully-loaded cost is salary plus taxes, health insurance, benefits, 401K match, recruiting fees for replacement staff, equipment, office allocation, and admin. In the US, that multiplier is typically 1.25 to 1.35. So that $120K engineer costs the company $150-160K per year all-in.</p>
+
+<p>I've seen countless financial models where the founder underestimated team costs by 30-40% because they didn't include the loaded cost. You build your revenue projections and hire plan based on this model. Six months later, payroll is 40% higher than you expected, runway shrinks from 18 months to 12 months, and you're suddenly in a panic fundraising mode.</p>
+
+<p>Getting headcount costs right is foundational to an accurate financial model.</p>
+
+<h3>Calculating Loaded Salary Cost</h3>
+
+<p><strong>In the US:</strong> Take base salary and multiply by 1.25-1.35. For a $120K engineer, that's $150-162K. This multiplier includes:</p>
+
+<p>- Payroll taxes: ~7.65% (Social Security and Medicare)</p>
+<p>- Health insurance: $500-800/month per employee ($6-10K annually)</p>
+<p>- Other benefits (dental, vision, FSA, life insurance): $1-2K annually</p>
+<p>- 401K match: 3-4% of salary ($3.6-4.8K for $120K salary)</p>
+<p>- Recruiting fees for replacement: ~20% of salary (amortized across 3-4 year tenure)</p>
+<p>- Equipment and setup: $2-5K per employee amortized</p>
+
+<p>If you're including office space, that adds another 10-15%. A 10-person team in San Francisco headquarters with good office space can add $1-2K per person per month in rent and utilities.</p>
+
+<p><strong>In the UK:</strong> Multiply by 1.15-1.25. The multiplier is lower because while employer National Insurance (13.8%) is higher than US payroll tax, benefits and health insurance costs are lower (NHS is public). Typical loaded cost for a £85K engineer: £100-106K.</p>
+
+<p><strong>In France:</strong> Multiply by 1.40-1.50. French payroll taxes are high (42% of gross salary as employer contribution). This makes French hires significantly more expensive. A EUR 90K engineer costs the company EUR 126-135K fully loaded.</p>
+
+<p><strong>Remote/distributed teams:</strong> Multiply by 1.20-1.30. You save office space but add complexity. Distributed teams often have higher recruiting costs, tool costs, and timezone coordination overhead.</p>
+
+<p>Build a simple calculator: base salary × multiplier by geography = loaded cost. Use this for all headcount planning.</p>
+
+<h3>Headcount by Stage: What's Typical</h3>
+
+<p><strong>Seed Stage (5-10 people):</strong> Typically 70% engineering, 20% sales/marketing, 10% operations/admin. You're still building the product. Sales is a founder doing customer development, maybe one junior salesperson. Operations is likely the founder CEO managing cash and admin work. At seed stage, you cannot afford much headcount, so every hire needs to move the needle on product or revenue.</p>
+
+<p>Engineering team at seed stage includes the technical founder plus 1-3 additional engineers. These are not yet senior people (you can't afford them). They're mid-level engineers who can execute on technical roadmap but still need some direction.</p>
+
+<p><strong>Series A (15-30 people):</strong> Composition shifts to 40-50% engineering, 30-35% sales/marketing, 15-20% operations/finance. You've proven product-market fit. Now you're scaling sales and marketing. Operations grows because you need finance, HR, and admin infrastructure to support 25 people.</p>
+
+<p>Sales team at Series A now includes a VP Sales or Head of Sales (usually $150-200K base + commission), 2-4 sales development reps (SDRs) at $50-70K + commission, and often an account executive starting at $100K+ base + commission. These are real salespeople who will carry your company through Series A and beyond.</p>
+
+<p>Engineering is bigger but also includes more specialization. Frontend engineers, backend engineers, infrastructure/DevOps engineer, maybe a tech lead who manages other engineers.</p>
+
+<p><strong>Series B (50-100+ people):</strong> More balanced: 35-40% engineering, 35-40% sales/marketing, 20-25% operations/finance/HR. At this stage you need a CFO or VP Finance, a head of people/HR, a head of operations. These are not cheap hires (typically $150-200K base for director roles), but they're critical to managing a growing organization.</p>
+
+<p>Sales team expands. You might have a VP Sales plus multiple account executives, customer success managers (often 1 per 15-20 customers), and a marketing team that includes content, paid acquisition, and brand roles.</p>
+
+<h3>Salary Benchmarks by Role and Geography</h3>
+
+<p><strong>Engineers (base salary, not including equity or bonus):</strong></p>
+
+<p>- Junior engineer: $80-110K (US Bay Area), $60-80K (US Midwest), £50-65K (London), EUR 50-65K (Berlin)</p>
+<p>- Mid-level engineer: $120-160K (US Bay Area), $90-120K (US Midwest), £75-95K (London), EUR 70-90K (Berlin)</p>
+<p>- Senior engineer: $160-200K (US Bay Area), $120-150K (US Midwest), £100-130K (London), EUR 90-120K (Berlin)</p>
+<p>- Staff/Principal engineer: $200-250K+ (US Bay Area), rare in smaller markets</p>
+
+<p><strong>Sales roles (base + commission):</strong></p>
+
+<p>- Sales Development Rep (SDR): $50-70K base + $15-30K commission (US)</p>
+<p>- Account Executive: $100-150K base + $50-150K commission (US), varies widely by deal size</p>
+<p>- VP Sales: $150-250K base + commission/bonus (US), higher in Bay Area</p>
+
+<p><strong>Marketing roles:</strong></p>
+
+<p>- Content/Growth marketer: $80-120K (US), £50-75K (London)</p>
+<p>- Paid acquisition specialist: $100-150K (US)</p>
+<p>- VP Marketing: $150-200K+ (US), especially if also responsible for brand</p>
+
+<p><strong>Operations/Finance:</strong></p>
+
+<p>- Finance analyst/bookkeeper: $60-90K (US), £40-60K (London)</p>
+<p>- Controller/VP Finance: $150-200K (US), £90-130K (London)</p>
+<p>- Operations Manager: $80-130K (US)</p>
+
+<p>These are 2025-2026 ranges and they vary significantly by company stage, location, and market competition. Remote companies often pay between San Francisco and Midwest rates.</p>
+
+<h3>Revenue Per Employee: Your Efficiency Metric</h3>
+
+<p>Revenue per employee tells you if you're being efficient with headcount. Calculate it as: Annual Revenue / Number of Employees (in FTE).</p>
+
+<p><strong>Typical benchmarks:</strong></p>
+
+<p>- Seed stage: $100-150K ARR per employee</p>
+<p>- Series A: $150-250K ARR per employee</p>
+<p>- Series B: $250-400K ARR per employee</p>
+<p>- Mature SaaS companies: $300-500K+ ARR per employee</p>
+
+<p>A company at Series A with $2M ARR and 12 employees has $167K ARR per employee, which is reasonable. A company at Series A with $2M ARR and 20 employees has $100K ARR per employee, which suggests you've hired faster than you've grown revenue. This isn't necessarily bad---maybe you just closed a funding round and you're about to scale sales---but it's a red flag to monitor.</p>
+
+<p>As you scale, revenue per employee should improve because you're not hiring proportionally with revenue growth. You're building leverage.</p>
+
+<h3>Hiring Plans: Who, When, Why</h3>
+
+<p>The best headcount models don't just list headcount. They detail each hire: who, when, why, and what impact they'll have.</p>
+
+<p>Instead of "Add 3 engineers in Q3," the model should say: "Hire frontend engineer in Month 7 (currently bottleneck on web app), hire backend engineer in Month 9 (data processing performance), hire DevOps in Month 11 (infrastructure complexity)." Each hire has a rationale.</p>
+
+<p>Similarly for sales: "Hire VP Sales in Month 6 (need experienced sales leader), hire SDR in Month 7 (process leads from product-led trial), hire AE in Month 10 (close larger deals from VP Sales relationships)."</p>
+
+<p>This approach accomplishes three things. First, it forces you to think about hiring order and dependencies. Can't hire an AE before you have an SDR pipeline. Second, it lets you model the impact of each hire. When you hire the SDR, you increase pipeline. When you hire the AE, you increase close rate. Third, it surfaces when you're being unrealistic. If you're planning to hire 10 engineers in 4 months, you probably can't recruit and onboard that fast.</p>
+
+<h3>Accounting for Ramp Time</h3>
+
+<p>New employees don't reach full productivity immediately. Account for this in your model or you'll be surprised when hiring doesn't immediately solve your problems.</p>
+
+<p><strong>Engineering:</strong> Takes 1-2 months to ramp. A new engineer in month 1 is 30-40% productive. Month 2 is 60-70% productive. Month 3 onwards is 100% productive. Model this explicitly so you don't expect 100% contribution month 1.</p>
+
+<p><strong>Sales:</strong> Takes 3-4 months to ramp. Month 1: 20% productive (learning the product and pitch). Month 2: 40% productive (initial meetings). Month 3: 60% productive (starting to close deals). Month 4-5: 80-90% productive. Month 6 onwards: 100% productive. A new salesperson who costs $120K fully loaded will generate minimal revenue for the first 3 months. Budget for that or you'll miss cash flow targets.</p>
+
+<p><strong>Operations/Admin roles:</strong> Can ramp quickly, often 60-70% productive from day 1. These roles are less dependent on company-specific knowledge and more on execution.</p>
+
+<h3>The Hiring Budget vs. Revenue Growth Relationship</h3>
+
+<p>One of the most useful exercises is comparing your hiring plan to your revenue growth plan. If you're planning 15% MoM revenue growth but adding headcount that only costs 5% more per month, you're becoming more efficient (good). If you're planning 10% MoM growth but adding 20% more headcount cost, you're becoming less efficient (needs justification).</p>
+
+<p>Most founders go through phases: first phase is underhiring (bottlenecked by capacity), second phase is overhiring (excited about growth, hire too many people). The overhead of managing a larger team reduces productivity. Smart hiring plans account for both the benefit (more people can do more work) and the cost (more people means more management overhead).</p>
+
+<h3>Try It Yourself: Calculate Your Headcount Costs</h3>
+
+<p>The Headcount & Salary Planner at <a href="/tools/#headcount" style="color:#c8a45a;">/tools/#headcount</a> lets you build your hiring plan by department. Input the number of people in engineering, sales/marketing, operations, and leadership for each month. Input salary by department. The tool calculates your fully-loaded cost (you select your geography or provide a multiplier), shows you total team cost over time, and tracks revenue per employee as you grow. You'll see how hiring impacts your burn and when new hires should improve your ratio.</p>
+
+<div class="faq-section">
+<h3>Frequently Asked Questions</h3>
+<div class="faq-card">
+<p class="faq-q">What's a realistic fully-loaded cost multiplier for salary?</p>
+<p class="faq-a">In the US, multiply base salary by 1.25-1.35. This includes taxes, benefits, payroll processing, and recruiting fees for replacement staff. In the UK, multiply by 1.15-1.25. In France, multiply by 1.40-1.50 (much higher payroll tax). These are conservative. If you include office space allocation and equipment, the multiplier gets higher.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">When should I hire engineers vs. sales vs. operations?</p>
+<p class="faq-a">Early stage: hire engineers first. You need a product. Mid-stage: add sales and product. Late stage: add finance, operations, and specialized roles. Seed stage: 70% engineering, 20% sales/marketing, 10% operations. Series A: 40-50% engineering, 30-35% sales/marketing, 15-20% operations. Series B: more balanced across all three.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">How do you account for ramp time when hiring?</p>
+<p class="faq-a">A new engineer takes 1-2 months to ramp. A new salesperson takes 3-4 months to reach full productivity. Account for this by including only 30-40% of their contribution in month 1, 60-70% in month 2, 100% month 3+. This prevents you from modeling hockey stick growth immediately after hiring.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">What's revenue per employee by stage?</p>
+<p class="faq-a">Seed stage: $100-150K ARR per employee. Series A: $150-250K ARR per employee. Series B: $250-400K ARR per employee. These are rules of thumb. Companies that are engineering-heavy or have efficient GTM reach $300-400K per employee at Series A. Companies that are sales-heavy might only reach $100-150K.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">Should I include contractors and part-time in headcount?</p>
+<p class="faq-a">Yes, but clearly. Calculate FTE (full-time equivalent). Two part-time people at 50% each = 1 FTE. Contractors should be in your expense model but they do increase your cost of team.</p>
+</div>
+</div>
+
+<h3>Summary</h3>
+
+<p>Headcount is your largest expense and your most important resource. Get it right and you can scale efficiently. Get it wrong and runway collapses. Calculate loaded costs accurately by geography. Hire according to stage and need. Track revenue per employee to monitor efficiency. Plan hiring explicitly with rationale for each position. Account for ramp time so projections are realistic. The founders who raise capital most efficiently are not those who hire cheaply. They're those who hire strategically---the right people at the right time---and who track the efficiency of their hiring decisions. A CFO hire at Series A costs $180K fully loaded but might save you a bridge round because you fix financial management early. That's a good hire. Hiring a mid-level engineer when you need a staff engineer is a bad hire regardless of cost. Be strategic about headcount. It's the largest line item in your financial model and your biggest lever for building profitably.</p>
+
+    </div>
+<div class="related-articles">
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How To Build A Financial Model For Your Startup 2026 Guide</a>
+<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
+<a href="/blog/building-your-runway-model-a-month-by-month-survival-guide.html" class="related-article-link">Building Your Runway Model: A Month-by-Month Survival Guide</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>

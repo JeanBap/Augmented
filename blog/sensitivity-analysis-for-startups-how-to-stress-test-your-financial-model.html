@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model | Raise Ready</title>
+<meta name="description" content="Master sensitivity analysis for startups. Two-variable matrix approach, test ranges (+/- 20-30%), identify fragile assumptions. Which variables matter most: revenue growth, burn, churn, CAC.">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html">
+<meta property="og:title" content="Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model">
+<meta property="og:description" content="Master sensitivity analysis for startups. Two-variable matrix approach, test ranges (+/- 20-30%), identify fragile assumptions.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model">
+<meta name="twitter:description" content="Master sensitivity analysis for startups. Two-variable matrix approach, test ranges (+/- 20-30%), identify fragile assumptions.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model",
+  "description": "Master sensitivity analysis for startups. Two-variable matrix approach, test ranges (+/- 20-30%), identify fragile assumptions. Which variables matter most: revenue growth, burn, churn, CAC.",
+  "author": {"@type": "Person", "name": "Yanni Papoutski"},
+  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "url": "https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html",
+  "articleSection": "Financial Modeling",
+  "wordCount": 2300,
+  "timeRequired": "PT13M"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What's the difference between sensitivity and scenario analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Sensitivity analysis tests how one or two variables changing affect your output (usually runway or cash balance at a specific point). Scenario analysis builds complete, coherent alternative futures (base, bull, bear). Sensitivity is tactical: what if CAC doubles? Scenario is strategic: what if we enter a recession and growth slows and burn increases? Both matter. Sensitivity helps you identify which assumptions are most fragile. Scenario tests whether your business survives realistic alternative futures. Use sensitivity to find your risk areas, use scenarios to plan for them."}},
+    {"@type": "Question", "name": "Which two variables should I analyze together?", "acceptedAnswer": {"@type": "Answer", "text": "Start with Revenue Growth Rate and Monthly Burn. These are the two variables that most directly impact runway. Test +/- 20% on each. Then do a second matrix: CAC Payback Period and Monthly Churn. These determine whether your unit economics work at scale. Then if you're marketplace or e-commerce focused, do a third: Take Rate and Platform Costs. The top three pairs capture 80% of the variance in outcomes for most startups. Don't go overboard with sensitivity matrices. Two or three well-chosen pairs is better than ten poorly explained ones."}},
+    {"@type": "Question", "name": "What ranges should I test for sensitivity?", "acceptedAnswer": {"@type": "Answer", "text": "Test +/- 20-30% on key variables. For a 12-month model, +/- 20% is realistic. For 24+ month models, test +/- 30% because longer timeframes have more uncertainty. For revenue growth: if your base is 10% MoM, test 7% (-30%), 8% (-20%), 10% (base), 12% (+20%), 13% (+30%). For burn: if your base is $100K/month, test $70K, $80K, $100K, $120K, $130K. For CAC: if your base is $2000, test $1400-$2600. Don't test -50% or +100%. Those are fantasy scenarios, not realistic variance."}},
+    {"@type": "Question", "name": "How do I read a sensitivity table?", "acceptedAnswer": {"@type": "Answer", "text": "The rows typically represent one variable (e.g., monthly burn ranging from -30% to +30%), columns represent another (e.g., revenue growth from -30% to +30%). The intersections show your output metric (usually runway in months or cash balance at month 24). Color coding helps: green (good outcome, 18+ months runway), yellow (okay, 12-18 months), red (concerning, <12 months). You're looking for the area of the table that's all red or mostly yellow. That's your fragile zone where small changes in assumptions create crisis outcomes."}},
+    {"@type": "Question", "name": "When does sensitivity analysis reveal fragile assumptions?", "acceptedAnswer": {"@type": "Answer", "text": "When a 10% change in one variable creates a 20%+ change in output, you've found fragility. Example: if burn increases 10% and runway drops from 20 months to 15 months (25% change), that variable is fragile. Your plan is too sensitive to that assumption. This is a signal to either build more buffer (raise more capital), make the assumption more robust (reduce burn through different decisions), or prepare contingency plans for when that variable moves. Fragile assumptions are the ones that cause crises. Identifying them is the whole point of sensitivity analysis."}}
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">13 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2026</span>
+    </div>
+    <h1>Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=Sensitivity%20Analysis%20for%20Startups%3A%20How%20to%20Stress-Test%20Your%20Financial%20Model&url=https%3A//www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='&#x3C;svg width=14 height=14 viewBox=0 0 24 24 fill=none stroke=currentColor stroke-width=2&#x3E;&#x3C;rect x=9 y=9 width=13 height=13 rx=2/&#x3E;&#x3C;path d=M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1/&#x3E;&#x3C;/svg&#x3E; Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Sensitivity analysis tests which assumptions matter most. Build two-variable matrices testing realistic ranges (+/- 20-30% on key variables). The top variables that impact outcomes: revenue growth rate and monthly burn determine runway. CAC payback and churn determine unit economics sustainability. Color-code your matrices: green for good outcomes, yellow for concerning, red for crisis. When a 10% change in a variable creates 20%+ change in output, you've found fragility. These fragile assumptions need buffering (more capital), de-risking (better execution), or contingency plans. Investors use sensitivity tables during diligence to understand your risk profile.</p>
+</div>
+
+<h3>Why Single-Point Estimates Are Dangerous</h3>
+
+<p>Most founders build financial models with single-point estimates. Revenue growth is 10% MoM. Burn is $120K monthly. CAC payback is 14 months. These become facts in their minds. When reality diverges, they're shocked. If growth is 8% instead of 10%, suddenly the narrative is "we missed targets." If CAC payback is 18 months instead of 14, suddenly unit economics are questioned.</p>
+
+<p>Sensitivity analysis answers a different question: "If our assumption is wrong by 15%, what happens?" This is more useful than pretending you know the future with certainty. You don't know if growth will be 8% or 12%. You do know it will probably be somewhere in that range. Sensitivity analysis tells you what outcomes are possible and which assumptions matter most.</p>
+
+<p>I worked with a Series A company that built their entire narrative around a 12% month-over-month growth rate and projected raising Series B in 24 months based on that growth. Sensitivity analysis showed that at 10% growth, they'd need capital in 21 months. At 8%, they'd need it in 18 months. But at 14% growth, they'd reach near-breakeven by month 30. When they actually hit 9% growth (between their 10% and 8% scenarios), the 24-month plan no longer worked. Because they hadn't done sensitivity analysis, they were surprised. If they had, the 9% outcome would have been within the expected range and they would have had contingency plans ready.</p>
+
+<h3>The Two-Variable Matrix Approach</h3>
+
+<p>Sensitivity analysis can get complicated, but the most useful approach for startups is a two-variable matrix. One variable on the rows, another on the columns, output metric in the cells. This is simple to build and easy to read in a pitch deck or board meeting.</p>
+
+<p>Example: Revenue Growth Rate on the rows, Monthly Burn on the columns. Let's say your base case is 10% MoM growth and $120K monthly burn. You'd test growth at 7%, 8%, 10%, 12%, 13% (a range of -30% to +30% around your base). You'd test burn at $90K, $100K, $120K, $140K, $150K (same range). Now you have a 5x5 matrix with 25 cells. Each cell shows runway at month 24 (your chosen output metric). Color code: green for 18+ month runway, yellow for 12-18 months, red for <12 months.</p>
+
+<p>What this reveals: where are the danger zones? If most of the matrix is green, your business has built-in resilience. If half is red, you're fragile. If the red zone is in the top-left (low growth + high burn), you know exactly what to watch. A month where burn ticks above $130K and growth drops below 9%, you're in trouble.</p>
+
+<h3>Which Variables Matter Most</h3>
+
+<p>Don't waste time building sensitivity matrices for everything. Some variables matter far more than others. Here's the hierarchy I use:</p>
+
+<p><strong>Tier 1 (Must Do):</strong> Revenue growth rate and monthly burn. These two variables determine your runway, which determines your fundraising timeline. If you only build one sensitivity matrix, make it these two.</p>
+
+<p><strong>Tier 2 (Should Do):</strong> CAC payback period and customer churn. These determine whether your unit economics work at scale. A company with 8% MoM growth sounds healthy until you realize CAC payback is 24 months and churn is 6% monthly. Neither of those numbers works together.</p>
+
+<p><strong>Tier 3 (If Relevant to Your Model):</strong> For SaaS: Net Revenue Retention and expansion ACV. For marketplaces: take rate and platform costs. For e-commerce: gross margin and repeat purchase rate. These are business-model-specific and matter for unit economics at scale.</p>
+
+<p>The principle: identify the 2-3 pairs of variables that most directly drive whether your business works. Build matrices for those. Ignore everything else. Too many matrices kill clarity.</p>
+
+<h3>Defining Realistic Test Ranges</h3>
+
+<p>This is where most founders get it wrong. They either test fantasy scenarios (+/- 50%) or underestimate variance (+/- 5%). Real experience shows:</p>
+
+<p><strong>For 12-month models, +/- 20% is standard.</strong> If you plan 10% MoM growth, expect actual to be 8-12%. If you plan $100K burn, expect $80-120K. 20% variance is the norm, not an outlier.</p>
+
+<p><strong>For 24-month models, +/- 30% is realistic.</strong> The further out you model, the more uncertain it becomes. A 24-month forecast naturally has more variance than a 12-month one. Testing +/- 30% captures that.</p>
+
+<p><strong>For variables under your direct control, use narrower ranges.</strong> Headcount plans are relatively controllable (you decide hiring). So test +/- 15%. Customer acquisition channels you've already proven are more stable, so +/- 20%. New channels you're untested in are less stable, so +/- 30-40%.</p>
+
+<p><strong>Don't test asymmetric ranges unless there's reason.</strong> If you're concerned about downside but less concerned about upside, sure, test -40% and +20%. But usually, symmetric ranges make more sense.</p>
+
+<h3>Building the Matrix: Step by Step</h3>
+
+<p>Let's build a concrete example. Company: $50K MRR, 10% MoM growth, $120K monthly burn, $2M cash on hand. Question: what's runway at month 24 under different growth and burn scenarios?</p>
+
+<p>Row variable: monthly burn at $90K, $105K, $120K, $135K, $150K (representing -25%, -12.5%, base, +12.5%, +25%).</p>
+
+<p>Column variable: monthly growth at 7%, 8.5%, 10%, 11.5%, 13% (representing -30%, -15%, base, +15%, +30%).</p>
+
+<p>Now calculate month-by-month cash balance for each combination of row and column. This is tedious to do by hand, which is why the Sensitivity Analysis tool exists (more on that below).</p>
+
+<p>Example outputs (cash remaining at month 24):</p>
+
+<p>7% growth + $150K burn = -$800K cash (crisis)</p>
+<p>7% growth + $120K burn = $200K cash (tight, 1.5 month runway remaining)</p>
+<p>10% growth + $120K burn = $1.2M cash (comfortable)</p>
+<p>13% growth + $90K burn = $3.4M cash (strong position)</p>
+
+<p>Now color code: anything below $500K cash remaining (less than 4 months) is red. $500K-$1M is yellow. Above $1M is green. Suddenly the matrix shows you your vulnerability. If actual results are 8% growth and $135K burn, you're in the red zone by month 24. You know this now, during planning, not during panic.</p>
+
+<h3>Reading a Sensitivity Matrix: What to Look For</h3>
+
+<p>Once you have a matrix, here's what investors and you should look for:</p>
+
+<p><strong>Is the base case in the green zone?</strong> If your base case output (center cell) is green, you're in good shape. If it's yellow or red, your model is concerning even optimistically.</p>
+
+<p><strong>How much of the matrix is red?</strong> If only the extreme cells (low growth + high burn) are red, that's fine. If half the matrix is red, your plan is fragile. If 80% is red, you're not fundraisable in that state.</p>
+
+<p><strong>Is there a sharp boundary between green and red?</strong> If going from 10% to 8% growth tips you from green to red, you've found a fragile assumption. That's a signal to either raise more capital or reduce your burn. Fragile assumptions need de-risking.</p>
+
+<p><strong>Which direction matters more---growth or burn?</strong> Look at the matrix. Does changing growth have a bigger impact than changing burn? Usually growth does. This tells you that accelerating growth matters more than cutting costs. If the opposite is true, you have a unit economics problem that needs fixing.</p>
+
+<h3>When Sensitivity Analysis Reveals Fragility</h3>
+
+<p>A 10% swing in an assumption should create roughly a 10% swing in output (with compounding effects). But sometimes a 10% change creates a 30% change in output. That's fragility. It signals that your plan depends critically on that assumption being right.</p>
+
+<p>Example: CAC payback at 15 months and monthly churn at 4% gets you to unit economics that work. But if CAC payback extends to 18 months (just 20% worse), and churn jumps to 5% (25% worse), suddenly your unit economics break. Your LTV:CAC ratio swings from 2.5x (healthy) to 1.8x (concerning). Small changes in two variables created a big swing in outcome.</p>
+
+<p>When you find fragility, you have three options: (1) build more buffer by raising more capital, (2) de-risk the assumption through early progress (prove CAC payback is 12 months, not 15), or (3) find a different operating model that's less sensitive to that assumption.</p>
+
+<p>The worst option: ignore the fragility and hope reality cooperates. Investors notice fragile models immediately during diligence.</p>
+
+<h3>Connecting Sensitivity to Your Fundraising Narrative</h3>
+
+<p>A strong Series A pitch uses sensitivity analysis to show confidence with caveats. Here's the narrative: "Our base case models $3M ARR by month 24 with $12M in cash remaining. We tested sensitivity across growth (7-13% MoM) and burn ($90-150K monthly). In 95% of realistic scenarios, we reach Series B from a position of strength. The concern cases (7% growth + $150K burn) represent 1-in-20 scenarios where market adoption is significantly slower and we execute less efficiently. We've identified contingency triggers for these scenarios and have operational plans to reduce burn or accelerate growth if we approach them."</p>
+
+<p>This is vastly more credible than: "We'll grow 10% and need to raise Series B in 24 months." The first shows you understand variance and have thought about downside. The second shows you built a fantasy model.</p>
+
+<h3>Sensitivity vs. Scenario Analysis: Understand the Difference</h3>
+
+<p>These terms get confused. Sensitivity analysis tests how one or two variables changing affect one output metric (usually runway). It's tactical. "If growth is 2% lower, runway shrinks by 4 months." Scenario analysis builds complete alternative future states where multiple variables move together. It's strategic. "In a recession scenario, growth drops, CAC increases, and burn increases because we have hiring commitments. We need to model our path to profitability."</p>
+
+<p>Use sensitivity analysis to identify your fragile assumptions. Use scenario analysis to build contingency plans for those fragile scenarios. Do both. Sensitivity finds the risks. Scenarios test whether you survive them.</p>
+
+<h3>Building Sensitivity Analysis with the Tool</h3>
+
+<p>The Sensitivity Analysis tool at <a href="/tools/#sensitivity" style="color:#c8a45a;">/tools/#sensitivity</a> builds these matrices for you. Input your base monthly revenue, base monthly burn, cash on hand, and the output metric you care about (runway, cash balance, etc.). Define your variable ranges (or use defaults of +/- 20-30%). The tool generates the full matrix with color coding. You can download it, print it, present it to investors. This is the analysis that investors expect to see during Series A diligence.</p>
+
+<h3>Real Example: How Sensitivity Reveals Fragility</h3>
+
+<p>Company: B2B SaaS, $200K MRR, targeting 12% MoM growth, $150K monthly burn, $3M cash, 20-month goal to Series B.</p>
+
+<p>Base case sensitivity on growth and burn:</p>
+
+<p>At 12% growth, $150K burn: 20-month mark shows $1.8M cash remaining (healthy).</p>
+<p>At 10% growth, $150K burn: 20-month mark shows $1.2M cash (still okay).</p>
+<p>At 10% growth, $180K burn: 20-month mark shows $800K cash (concerning, fundraising should happen by month 18).</p>
+<p>At 8% growth, $180K burn: 20-month mark shows $200K cash (crisis, need capital by month 16).</p>
+
+<p>The gap between base case and the 8%/$180K scenario is a 4-month collapse in runway. This is material. During Series A conversations, an investor sees this matrix and asks: "What's your plan if you hit the 8%/$180K scenario?" A prepared founder has an answer. An unprepared one scrambles.</p>
+
+<h3>Presenting Sensitivity to Your Board Monthly</h3>
+
+<p>Once you have the matrix built, update it monthly with actual results. Show where you fall on the matrix. "Last month we grew 11% and burned $155K, which puts us in the 11% growth, $155K burn cell. That cell shows 19.5 months to Series B, which is in our target range. This is our second month tracking above base case growth."</p>
+
+<p>This creates accountability and early warning. If next month you fall into the 9% growth, $160K burn cell, that's a signal. The month after that, if you're at 8% growth and $165K burn, you're trending toward the fragile zone. Time to act, not wait.</p>
+
+<div class="faq-section">
+<h3>Frequently Asked Questions</h3>
+<div class="faq-card">
+<p class="faq-q">What's the difference between sensitivity and scenario analysis?</p>
+<p class="faq-a">Sensitivity analysis tests how one or two variables changing affect your output (usually runway or cash balance at a specific point). Scenario analysis builds complete, coherent alternative futures (base, bull, bear). Sensitivity is tactical: what if CAC doubles? Scenario is strategic: what if we enter a recession and growth slows and burn increases? Both matter. Sensitivity helps you identify which assumptions are most fragile. Scenario tests whether your business survives realistic alternative futures. Use sensitivity to find your risk areas, use scenarios to plan for them.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">Which two variables should I analyze together?</p>
+<p class="faq-a">Start with Revenue Growth Rate and Monthly Burn. These are the two variables that most directly impact runway. Test +/- 20% on each. Then do a second matrix: CAC Payback Period and Monthly Churn. These determine whether your unit economics work at scale. Then if you're marketplace or e-commerce focused, do a third: Take Rate and Platform Costs. The top three pairs capture 80% of the variance in outcomes for most startups. Don't go overboard with sensitivity matrices. Two or three well-chosen pairs is better than ten poorly explained ones.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">What ranges should I test for sensitivity?</p>
+<p class="faq-a">Test +/- 20-30% on key variables. For a 12-month model, +/- 20% is realistic. For 24+ month models, test +/- 30% because longer timeframes have more uncertainty. For revenue growth: if your base is 10% MoM, test 7% (-30%), 8% (-20%), 10% (base), 12% (+20%), 13% (+30%). For burn: if your base is $100K/month, test $70K, $80K, $100K, $120K, $130K. For CAC: if your base is $2000, test $1400-$2600. Don't test -50% or +100%. Those are fantasy scenarios, not realistic variance.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">How do I read a sensitivity table?</p>
+<p class="faq-a">The rows typically represent one variable (e.g., monthly burn ranging from -30% to +30%), columns represent another (e.g., revenue growth from -30% to +30%). The intersections show your output metric (usually runway in months or cash balance at month 24). Color coding helps: green (good outcome, 18+ months runway), yellow (okay, 12-18 months), red (concerning, <12 months). You're looking for the area of the table that's all red or mostly yellow. That's your fragile zone where small changes in assumptions create crisis outcomes.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">When does sensitivity analysis reveal fragile assumptions?</p>
+<p class="faq-a">When a 10% change in one variable creates a 20%+ change in output, you've found fragility. Example: if burn increases 10% and runway drops from 20 months to 15 months (25% change), that variable is fragile. Your plan is too sensitive to that assumption. This is a signal to either build more buffer (raise more capital), make the assumption more robust (reduce burn through different decisions), or prepare contingency plans for when that variable moves. Fragile assumptions are the ones that cause crises. Identifying them is the whole point of sensitivity analysis.</p>
+</div>
+</div>
+
+<h3>Summary</h3>
+
+<p>Sensitivity analysis stress-tests your financial model against realistic variance in key assumptions. Build two-variable matrices testing +/- 20-30% ranges on your most impactful variables: growth rate and burn determine runway; CAC payback and churn determine unit economics. A 5x5 matrix showing runway at different combinations reveals your fragility zones. Color-code for easy reading: green for good, yellow for concerning, red for crisis. When a 10% assumption change creates 20%+ output change, you've found fragility worth addressing. Update your matrices monthly with actual results. Use them to set early warning triggers and contingency plans. Present them to investors during fundraising. This is how you move from guessing about the future to systematically understanding the range of possible outcomes and preparing for variance.</p>
+
+    </div>
+<div class="related-articles">
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How To Build A Financial Model For Your Startup 2026 Guide</a>
+<a href="/blog/three-scenario-planning-for-startups-base-bull-and-bear-case-modeling.html" class="related-article-link">Three-Scenario Planning For Startups: Base, Bull, And Bear Case Modeling</a>
+<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>
