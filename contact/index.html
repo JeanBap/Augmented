@@ -93,7 +93,8 @@
 
       <div class="contact-wrapper">
         <div class="contact-form-container">
-          <form method="POST" action="https://formspree.io/f/placeholder" class="contact-form">
+          <form method="POST" data-netlify="true" name="contact" class="contact-form">
+            <input type="hidden" name="form-name" value="contact">
             <div class="form-group">
               <label for="name">Name <span class="required">*</span></label>
               <input type="text" id="name" name="name" required placeholder="Your full name">
