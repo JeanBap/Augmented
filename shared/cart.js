@@ -31,13 +31,40 @@
    * Initialize cart drawer on page load
    */
   function initializeCart() {
-    // Check if cart drawer already exists
+    // Inject cart drawer if not present
     if (!document.getElementById('cart-drawer')) {
-      // Inject cart drawer HTML at the end of body
       const cartContainer = document.createElement('div');
       cartContainer.innerHTML = CART_DRAWER_HTML;
       document.body.appendChild(cartContainer.firstElementChild);
     }
+
+    // Hide badge if cart is empty on load
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+      cartCount.style.display = cartItems.length > 0 ? 'flex' : 'none';
+    }
+
+    // Wire up .btn-add-to-cart buttons via event delegation
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.btn-add-to-cart');
+      if (!btn) return;
+
+      const id = btn.dataset.productId;
+      const name = btn.dataset.productName;
+      const price = parseFloat(btn.dataset.productPrice);
+      if (!id || !name || isNaN(price)) return;
+
+      addToCart(id, name, price);
+
+      // Visual feedback: change button text briefly
+      const originalText = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.pointerEvents = 'none';
+      setTimeout(function() {
+        btn.textContent = originalText;
+        btn.style.pointerEvents = '';
+      }, 1200);
+    });
   }
 
   /**
