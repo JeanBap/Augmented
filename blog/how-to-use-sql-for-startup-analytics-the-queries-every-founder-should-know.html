@@ -180,23 +180,30 @@
 <p>Use DATE_TRUNC everywhere. Most startup metrics are monthly. DATE_TRUNC('month', date_column) groups dates into months and is the most commonly used function in startup analytics.</p>
 <p>Save your queries. Create a folder of saved SQL files, one per metric. When an investor asks for updated cohort data, you run the saved query instead of rebuilding from scratch.</p>
 <p>Ask your CTO to set up a read replica. Running heavy queries against the production database can slow down the application. A read replica is a copy of the database designed for analytics queries. It is a standard setup that any competent engineering team can implement in a day.</p>
+<div class="faq-section">
 <h3>Frequently Asked Questions</h3>
-<p>What if our data is messy or incomplete?</p>
-<p>It always is. Start with what you have and improve it over time. If acquisition channel is not tracked, that is a problem to fix now, not a reason to skip the analysis. Every month you wait to start tracking clean data is a month of history you will never recover.</p>
-<p>Should I use SQL or a BI tool like Metabase or Looker?</p>
-<p>Both. SQL is the foundation: it gives you the raw queries. A BI tool turns those queries into dashboards that update automatically. Learn SQL first so you understand what the dashboard is actually showing. Then set up the BI tool for ongoing monitoring.</p>
+<div class="faq-card">
+<p class="faq-q">What if our data is messy or incomplete?</p>
+<p class="faq-a">It always is. Start with what you have and improve it over time. If acquisition channel is not tracked, that is a problem to fix now, not a reason to skip the analysis. Every month you wait to start tracking clean data is a month of history you will never recover.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">Should I use SQL or a BI tool like Metabase or Looker?</p>
+<p class="faq-a">Both. SQL is the foundation: it gives you the raw queries. A BI tool turns those queries into dashboards that update automatically. Learn SQL first so you understand what the dashboard is actually showing. Then set up the BI tool for ongoing monitoring.</p>
+</div>
+</div>
 <h3>Summary</h3>
 <p>SQL gives founders direct access to the metrics that drive their financial model. Eight core queries cover MRR, churn, cohort retention, CAC by channel, revenue by segment, NRR, active customers, and ARPA. These are the exact numbers investors ask for during diligence. Learning basic SQL is a one-time investment of a few hours that pays back every time you need to pull, verify, or update a metric. The model becomes traceable, the assumptions become verifiable, and the founder becomes someone who knows their numbers from the data up, not from a report down.</p>
 
     </div>
     <div class="related-articles">
-  <h3>Related Articles</h3>
-  <ul>
-    <li><a href="/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html">The 10 KPIs Every Founder Should Track (And the 20 They Should Ignore)</a></li>
-    <li><a href="/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html">How to Build a Metrics Dashboard That You Will Actually Use Every Week</a></li>
-    <li><a href="/blog/leading-vs-lagging-indicators-how-to-see-problems-three-months-before-they-hit-y.html">Leading vs. Lagging Indicators: How to See Problems Three Months Before They Hit Your Revenue</a></li>
-  </ul>
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html" class="related-article-link">The 10 KPIs Every Founder Should Track (And the 20 They Should Ignore)</a>
+<a href="/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html" class="related-article-link">How to Build a Metrics Dashboard That You Will Actually Use Every Week</a>
+<a href="/blog/leading-vs-lagging-indicators-how-to-see-problems-three-months-before-they-hit-y.html" class="related-article-link">Leading vs. Lagging Indicators: How to See Problems Three Months Before They Hit Your Revenue</a>
 </div>
+</div>
+
     <div class="blog-article-cta">
       <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
       <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>

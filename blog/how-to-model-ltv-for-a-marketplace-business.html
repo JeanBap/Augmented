@@ -196,25 +196,34 @@
 <p>If this were calculated on GMV instead (employer rate of, say, £1,500 per worker per month):</p>
 <p>Incorrect LTV = (3 × £1,500 × 55%) ÷ 0.03 = £82,500</p>
 <p>The GMV-based LTV is 6x the correct number. This is not an edge case --- it is the most common marketplace LTV error.</p>
+<div class="faq-section">
 <h3>Frequently Asked Questions</h3>
-<p>Should marketplace LTV include both buyer and seller sides?</p>
-<p>Only if you monetise both sides. If the marketplace charges workers or vendors a fee in addition to charging employers, model LTV for both sides. More commonly, two-sided LTV is calculated only for the monetised side, with supply-side retention modelled as a driver rather than a separate LTV component.</p>
-<p>How do you handle seasonal transaction patterns in marketplace LTV?</p>
-<p>Use annualised average transaction frequency rather than a specific month's data. If the marketplace is highly seasonal (e.g. retail staffing peaks at Christmas, summer festival staffing), the annualised average smooths the seasonality. Flag the seasonal pattern in the assumptions.</p>
-<p>At what stage should a marketplace start tracking LTV by customer segment?</p>
-<p>As soon as there are enough customers to create meaningful segments --- typically 50+ customers on the demand side. High-frequency, high-ACV buyers typically have very different LTV profiles from low-frequency, low-ACV buyers. Blending them into a single LTV hides the quality concentration that sophisticated investors will ask about.</p>
+<div class="faq-card">
+<p class="faq-q">Should marketplace LTV include both buyer and seller sides?</p>
+<p class="faq-a">Only if you monetise both sides. If the marketplace charges workers or vendors a fee in addition to charging employers, model LTV for both sides. More commonly, two-sided LTV is calculated only for the monetised side, with supply-side retention modelled as a driver rather than a separate LTV component.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">How do you handle seasonal transaction patterns in marketplace LTV?</p>
+<p class="faq-a">Use annualised average transaction frequency rather than a specific month's data. If the marketplace is highly seasonal (e.g. retail staffing peaks at Christmas, summer festival staffing), the annualised average smooths the seasonality. Flag the seasonal pattern in the assumptions.</p>
+</div>
+<div class="faq-card">
+<p class="faq-q">At what stage should a marketplace start tracking LTV by customer segment?</p>
+<p class="faq-a">As soon as there are enough customers to create meaningful segments --- typically 50+ customers on the demand side. High-frequency, high-ACV buyers typically have very different LTV profiles from low-frequency, low-ACV buyers. Blending them into a single LTV hides the quality concentration that sophisticated investors will ask about.</p>
+</div>
+</div>
 <h3>Summary</h3>
 <p>Marketplace LTV is calculated on gross profit from net revenue (the take rate portion), not on GMV. Transaction frequency evolves over time and should be modelled using cohort data where available. Supply-side retention drives demand-side LTV and should be modelled as a linked assumption even if supply-side LTV is not calculated directly. The most common error --- using GMV as the LTV basis --- overstates LTV by the inverse of the take rate, which at typical marketplace take rates is a 5-7x error. Get the LTV denominator right before any investor conversation about unit economics.</p>
 
     </div>
     <div class="related-articles">
-  <h3>Related Articles</h3>
-  <ul>
-    <li><a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html">CAC, LTV, and Payback Period: Calculated Correctly for Once</a></li>
-    <li><a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html">Why Blended CAC Is a Lie (And How to Model It by Channel)</a></li>
-    <li><a href="/blog/net-revenue-retention-the-number-that-predicts-everything.html">Net Revenue Retention: The Number That Predicts Everything</a></li>
-  </ul>
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html" class="related-article-link">CAC, LTV, and Payback Period: Calculated Correctly for Once</a>
+<a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html" class="related-article-link">Why Blended CAC Is a Lie (And How to Model It by Channel)</a>
+<a href="/blog/net-revenue-retention-the-number-that-predicts-everything.html" class="related-article-link">Net Revenue Retention: The Number That Predicts Everything</a>
 </div>
+</div>
+
     <div class="blog-article-cta">
       <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
       <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>

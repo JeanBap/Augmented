@@ -2313,6 +2313,84 @@ footer a {
   letter-spacing: 0.03em;
 }
 
+/* FAQ Cards (Issue 14) */
+.faq-section {
+  margin: 2.5rem 0;
+}
+.faq-section h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.faq-card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+  background: rgba(200, 164, 90, 0.03);
+}
+.faq-q {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.faq-a {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* Related Articles (Issue 15) */
+.related-articles {
+  margin: 3rem 0 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.related-articles h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.related-articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.related-article-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.related-article-link:hover {
+  border-color: var(--gold);
+  background: rgba(200, 164, 90, 0.04);
+  color: var(--gold);
+}
+
+/* Blog Article CTA spacing */
+.blog-article-cta {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+/* Price Styling (Issue 16) */
+.price-main {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.product-card .price-main {
+  font-size: 1.5rem;
+}
+
 /* Responsive - Multi-page */
 @media (max-width: 1024px) {
   .hero-title { font-size: 2.5rem; }
