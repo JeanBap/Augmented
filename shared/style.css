@@ -1643,8 +1643,153 @@ footer a {
   animation: blink 1.4s ease-in-out infinite;
 }
 
+/* Hamburger Menu Button */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Blog Card Styling (listing page) */
+.blog-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 164, 90, 0.08);
+}
+
+/* Blog List Width Constraint */
+.blog-list {
+  max-width: 900px;
+}
+
+/* Careers Form Styling */
+.careers-form {
+  max-width: 600px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: 0.25rem;
+}
+
+.careers-form label,
+.careers-form .form-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+.careers-form input[type="text"],
+.careers-form input[type="email"],
+.careers-form input[type="url"],
+.careers-form input[type="tel"],
+.careers-form select,
+.careers-form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.careers-form input:focus,
+.careers-form select:focus,
+.careers-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.careers-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.careers-form button[type="submit"],
+.careers-form .submit-btn {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.3s ease;
+}
+
+.careers-form button[type="submit"]:hover,
+.careers-form .submit-btn:hover {
+  background: var(--gold2);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   nav {
     padding: 12px 16px;
     flex-wrap: wrap;
@@ -1672,6 +1817,7 @@ footer a {
     padding: 16px;
     gap: 8px;
     width: 100%;
+    z-index: 999;
   }
 
   .nav-tab {

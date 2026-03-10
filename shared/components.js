@@ -15,10 +15,15 @@
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/careers/" class="nav-tab" data-page="careers">Careers</a>
       </div>
-      <button class="nbtn cart-btn" onclick="toggleCart()" style="position:relative">
-        <span>&#128722; Cart</span>
-        <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background-color: #c0392b; color: #f2ede4; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">0</span>
-      </button>
+      <div class="nav-right">
+        <button class="nbtn cart-btn" onclick="toggleCart()" style="position:relative">
+          <span>&#128722; Cart</span>
+          <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background-color: #c0392b; color: #f2ede4; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">0</span>
+        </button>
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   `;
 
