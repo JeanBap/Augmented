@@ -1509,7 +1509,7 @@ nav {
   background-color: var(--paper);
   border-left: 1px solid var(--rule);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   transition: right 0.3s ease;
