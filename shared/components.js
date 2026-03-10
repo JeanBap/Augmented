@@ -12,6 +12,7 @@
       <div class="nav-tabs">
         <a href="/book/" class="nav-tab" data-page="book">Book & Extras</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/careers/" class="nav-tab" data-page="careers">Careers</a>
       </div>
@@ -32,6 +33,7 @@
       <div class="footer-links">
         <a href="/book/">Book & Extras</a>
         <a href="/services/">Services</a>
+        <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/templates/">Templates</a>
         <a href="/careers/">Careers</a>

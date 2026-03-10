@@ -71,6 +71,100 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+/* Services Page Cards */
+.services-role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+.role-card {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem;
+  background: var(--paper);
+  transition: border-color 0.3s, transform 0.2s;
+}
+.role-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.role-card h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+.role-card .role-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+.role-card .role-ai {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  background: rgba(200,164,90,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+.role-card .role-price {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.role-card p {
+  font-size: 0.88rem;
+  color: var(--mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Comparison cards */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+@media (max-width: 600px) { .comparison-grid { grid-template-columns: 1fr; } }
+.compare-card {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.compare-card.alt { background: rgba(0,0,0,0.02); }
+.compare-card.us { background: rgba(200,164,90,0.04); border-color: var(--gold); }
+.compare-card h3 {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
+  color: var(--mid);
+}
+.compare-card.us h3 { color: var(--gold); }
+.compare-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.compare-card ul li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--rule);
+}
+.compare-card ul li:last-child { border-bottom: none; }
+</style>
 </head>
 <body data-page="services">
 <div id="site-nav"></div>
@@ -148,109 +242,116 @@
     </div>
   </section>
 
-  <!-- Section 03: Office Animation -->
-  <section class="osec">
-    <h2>Your AI-native team</h2>
-    <div class="office-container">
-      <canvas id="office" width="800" height="600"></canvas>
-    </div>
-  </section>
-
-  <!-- Section 04: What We Cover -->
+  <!-- Section 03: What We Cover (Cards) -->
   <section class="coverage-section">
     <h2>What we cover</h2>
-    <div class="roles-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Role</th>
-            <th>AI %</th>
-            <th>Starting Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Content Marketer</td>
-            <td>80%</td>
-            <td>$1,999/mo</td>
-          </tr>
-          <tr>
-            <td>Technical Writer</td>
-            <td>75%</td>
-            <td>$1,999/mo</td>
-          </tr>
-          <tr>
-            <td>HR Policy Writer</td>
-            <td>75%</td>
-            <td>$1,999/mo</td>
-          </tr>
-          <tr>
-            <td>Sales Enablement</td>
-            <td>80%</td>
-            <td>$1,999/mo</td>
-          </tr>
-          <tr>
-            <td>UX Writer</td>
-            <td>75%</td>
-            <td>$1,999/mo</td>
-          </tr>
-          <tr>
-            <td>FP&A Analyst</td>
-            <td>65%</td>
-            <td>$2,999/mo</td>
-          </tr>
-          <tr>
-            <td>Compliance</td>
-            <td>70%</td>
-            <td>$2,999/mo</td>
-          </tr>
-          <tr>
-            <td>SQL Analyst</td>
-            <td>65%</td>
-            <td>$2,999/mo</td>
-          </tr>
-          <tr>
-            <td>Contract Drafter</td>
-            <td>70%</td>
-            <td>$2,999/mo</td>
-          </tr>
-          <tr>
-            <td>Product Manager</td>
-            <td>65%</td>
-            <td>$2,999/mo</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="services-role-grid">
+      <div class="role-card">
+        <h3>Content Marketer</h3>
+        <p>Blog posts, landing pages, email sequences, and social content built with AI-first workflows.</p>
+        <div class="role-meta">
+          <span class="role-ai">80% AI</span>
+          <span class="role-price">$1,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>Technical Writer</h3>
+        <p>Documentation, API guides, knowledge bases, and help centers at software speed.</p>
+        <div class="role-meta">
+          <span class="role-ai">75% AI</span>
+          <span class="role-price">$1,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>HR Policy Writer</h3>
+        <p>Employee handbooks, policy documents, and compliance frameworks customized to your jurisdiction.</p>
+        <div class="role-meta">
+          <span class="role-ai">75% AI</span>
+          <span class="role-price">$1,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>Sales Enablement</h3>
+        <p>Battle cards, objection handlers, competitive analysis, and proposal templates that close.</p>
+        <div class="role-meta">
+          <span class="role-ai">80% AI</span>
+          <span class="role-price">$1,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>UX Writer</h3>
+        <p>Microcopy, onboarding flows, in-app messaging, and voice-of-product consistency.</p>
+        <div class="role-meta">
+          <span class="role-ai">75% AI</span>
+          <span class="role-price">$1,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>FP&A Analyst</h3>
+        <p>Financial models, board reports, scenario analysis, and investor-ready forecasts.</p>
+        <div class="role-meta">
+          <span class="role-ai">65% AI</span>
+          <span class="role-price">$2,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>Compliance</h3>
+        <p>Regulatory gap analysis, SOC 2 preparation, GDPR mapping, and audit readiness.</p>
+        <div class="role-meta">
+          <span class="role-ai">70% AI</span>
+          <span class="role-price">$2,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>SQL Analyst</h3>
+        <p>Data pipelines, dashboards, ad-hoc queries, and metrics infrastructure that scales.</p>
+        <div class="role-meta">
+          <span class="role-ai">65% AI</span>
+          <span class="role-price">$2,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>Contract Drafter</h3>
+        <p>NDAs, MSAs, SOWs, and employment agreements reviewed and customized by domain.</p>
+        <div class="role-meta">
+          <span class="role-ai">70% AI</span>
+          <span class="role-price">$2,999/mo</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <h3>Product Manager</h3>
+        <p>PRDs, user stories, roadmap synthesis, and competitive intelligence at founder pace.</p>
+        <div class="role-meta">
+          <span class="role-ai">65% AI</span>
+          <span class="role-price">$2,999/mo</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Section 05: Why This Is Different -->
+  <!-- Section 04: Why This Is Different -->
   <section class="wwrap">
     <h2>Not consultants. Not employees. Operators.</h2>
-    <div class="cmp">
-      <div class="crow">
-        <div class="cleft">The alternative</div>
-        <div class="cright">Augmented</div>
+    <div class="comparison-grid">
+      <div class="compare-card alt">
+        <h3>The alternative</h3>
+        <ul>
+          <li>Learn your stack slowly over months</li>
+          <li>Hourly billing with unpredictable outcomes</li>
+          <li>General skills across all industries</li>
+          <li>Available part-time only</li>
+          <li>You manage contractors</li>
+        </ul>
       </div>
-      <div class="crow">
-        <div class="cleft">Learn your stack slowly over months</div>
-        <div class="cright">Own your workflows from day one</div>
-      </div>
-      <div class="crow">
-        <div class="cleft">Hourly billing with unpredictable outcomes</div>
-        <div class="cright">Fixed monthly cost. You own the outputs.</div>
-      </div>
-      <div class="crow">
-        <div class="cleft">General skills across all industries</div>
-        <div class="cright">Deep specialization in your function</div>
-      </div>
-      <div class="crow">
-        <div class="cleft">Available part-time only</div>
-        <div class="cright">Integrated into your daily workflow</div>
-      </div>
-      <div class="crow">
-        <div class="cleft">You manage contractors</div>
-        <div class="cright">We manage quality and delivery</div>
+      <div class="compare-card us">
+        <h3>Augmented</h3>
+        <ul>
+          <li>Own your workflows from day one</li>
+          <li>Fixed monthly cost. You own the outputs.</li>
+          <li>Deep specialization in your function</li>
+          <li>Integrated into your daily workflow</li>
+          <li>We manage quality and delivery</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -269,58 +370,5 @@
 <div id="site-footer"></div>
 <script src="/shared/components.js"></script>
 <script src="/shared/cart.js"></script>
-<script>
-// Pixel art office animation
-(function() {
-  const canvas = document.getElementById('office');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  const pixelSize = 20;
-
-  function drawPixel(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-    ctx.strokeStyle = '#ddd';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-  }
-
-  function drawOffice() {
-    ctx.fillStyle = '#f5f5f5';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Draw walls
-    for (let i = 0; i < 40; i++) {
-      drawPixel(i, 5, '#333');
-      drawPixel(i, 25, '#333');
-    }
-    for (let i = 5; i < 26; i++) {
-      drawPixel(0, i, '#333');
-      drawPixel(39, i, '#333');
-    }
-
-    // Draw desks
-    drawPixel(5, 10, '#8B4513');
-    drawPixel(6, 10, '#8B4513');
-    drawPixel(12, 10, '#8B4513');
-    drawPixel(13, 10, '#8B4513');
-    drawPixel(20, 10, '#8B4513');
-    drawPixel(21, 10, '#8B4513');
-
-    // Draw computers
-    drawPixel(5, 9, '#0066cc');
-    drawPixel(12, 9, '#0066cc');
-    drawPixel(20, 9, '#0066cc');
-
-    // Draw operators (simple representation)
-    drawPixel(6, 12, '#ff6b6b');
-    drawPixel(13, 12, '#4ecdc4');
-    drawPixel(21, 12, '#ffe66d');
-  }
-
-  drawOffice();
-})();
-</script>
 </body>
 </html>
