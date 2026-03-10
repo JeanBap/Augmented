@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Your Purchase | Raise Ready</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.success-page { min-height: 100vh; background: var(--ink, #08080d); padding: 3rem 1.5rem; }
+.success-inner { max-width: 680px; margin: 0 auto; }
+.success-icon { font-size: 3rem; margin-bottom: 1rem; }
+.success-title {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700;
+  color: var(--paper, #f2ede4); margin: 0 0 0.5rem 0;
+}
+.success-subtitle {
+  font-family: 'Instrument Serif', serif; font-size: 1.1rem;
+  color: var(--mid, #6e6a61); margin: 0 0 2rem 0;
+}
+.preview-banner {
+  padding: 0.75rem 1rem; margin-bottom: 1.5rem; border-radius: 6px;
+  background: rgba(200,164,90,0.15); border: 1px solid rgba(200,164,90,0.3);
+  font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #c8a45a;
+}
+.download-card {
+  padding: 1.25rem; margin-bottom: 0.75rem; border-radius: 8px;
+  background: rgba(242,237,228,0.05); border: 1px solid rgba(200,164,90,0.18);
+}
+.download-card h3 {
+  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+  color: var(--paper, #f2ede4); margin: 0 0 0.5rem 0;
+}
+.download-card p {
+  font-family: 'Instrument Serif', serif; font-size: 0.9rem;
+  color: var(--mid, #6e6a61); margin: 0 0 0.75rem 0;
+}
+.dl-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;
+  font-family: 'DM Mono', monospace; font-size: 0.8rem; transition: all 0.2s;
+  background: #c8a45a; color: #08080d; font-weight: 500;
+}
+.dl-btn:hover { background: #e5c97e; }
+.back-link {
+  display: inline-block; margin-top: 2rem; font-family: 'DM Mono', monospace;
+  font-size: 0.85rem; color: #c8a45a; text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+.no-products {
+  font-family: 'Instrument Serif', serif; font-size: 1.1rem;
+  color: var(--mid, #6e6a61); text-align: center; padding: 3rem 0;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<main id="main" class="success-page">
+  <div class="success-inner">
+    <div class="success-icon">&#10003;</div>
+    <h1 class="success-title">Thank you for your purchase!</h1>
+    <p class="success-subtitle">Your downloads are ready. Save these files to your device.</p>
+    <div id="preview-banner" class="preview-banner" style="display:none;">
+      Preview mode: Stripe checkout is not yet active. These are your download links.
+    </div>
+    <div id="downloads"></div>
+    <a href="/book/" class="back-link">&larr; Back to Book & Extras</a>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+<script>
+(function() {
+  var PRODUCT_DOWNLOADS = {
+    'book': {
+      name: 'Raise Ready Book',
+      description: 'The complete ebook in PDF format.',
+      files: [
+        { label: 'Download PDF', url: '/dl/r7k2m9x/Raise_Ready_Book.pdf' }
+      ]
+    },
+    'exercises': {
+      name: 'Exercise Files',
+      description: 'Hands-on exercise templates and workbooks.',
+      files: [
+        { label: 'Exercise Templates', url: '/dl/e4j8n3w/Raise_Ready_Exercise_Templates.xlsx' },
+        { label: 'Exercises 051-075', url: '/dl/e4j8n3w/Raise_Ready_Exercises_051_075.xlsx' }
+      ]
+    },
+    'bundle': {
+      name: 'Complete Bundle',
+      description: 'The full book plus all exercise files.',
+      files: [
+        { label: 'Download Book (PDF)', url: '/dl/r7k2m9x/Raise_Ready_Book.pdf' },
+        { label: 'Exercise Templates', url: '/dl/e4j8n3w/Raise_Ready_Exercise_Templates.xlsx' },
+        { label: 'Exercises 051-075', url: '/dl/e4j8n3w/Raise_Ready_Exercises_051_075.xlsx' }
+      ]
+    },
+    'tpl-preseed': {
+      name: 'Pre-Seed Financial Model',
+      description: 'Revenue drivers, basic COGS, headcount plan, and 18-month runway projection.',
+      files: [
+        { label: 'Download .xlsx', url: '/dl/p1s6v0y/PreSeed_Financial_Model.xlsx' }
+      ]
+    },
+    'tpl-seed': {
+      name: 'Seed Financial Model',
+      description: 'Cohort-based revenue, channel CAC, three scenarios, full P&L and cash flow.',
+      files: [
+        { label: 'Download .xlsx', url: '/dl/s3d7g5h/Seed_Financial_Model.xlsx' }
+      ]
+    },
+    'tpl-seriesa': {
+      name: 'Series A Financial Model',
+      description: 'Multi-product revenue, departmental headcount, unit economics by segment.',
+      files: [
+        { label: 'Download .xlsx', url: '/dl/a8f2k6t/SeriesA_Financial_Model.xlsx' }
+      ]
+    },
+    'tpl-seriesb': {
+      name: 'Series B Financial Model',
+      description: 'Multi-geography, multi-currency, M&A tabs, LTV cohort waterfall, five-year plan.',
+      files: [
+        { label: 'Download .xlsx', url: '/dl/b5m9q1z/SeriesB_Financial_Model.xlsx' }
+      ]
+    }
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var productStr = params.get('products') || '';
+  var mode = params.get('mode') || '';
+  var productIds = productStr.split(',').filter(function(id) { return id && PRODUCT_DOWNLOADS[id]; });
+
+  if (mode === 'preview') {
+    document.getElementById('preview-banner').style.display = 'block';
+  }
+
+  var container = document.getElementById('downloads');
+  if (productIds.length === 0) {
+    container.innerHTML = '<div class="no-products">No products found. If you believe this is an error, please contact yanni@raisereadybook.com</div>';
+    return;
+  }
+
+  // GA purchase event
+  if (typeof gtag === 'function') {
+    var gaItems = productIds.map(function(id) { return { item_id: id, item_name: PRODUCT_DOWNLOADS[id].name }; });
+    gtag('event', 'purchase', { currency: 'USD', items: gaItems });
+  }
+
+  var html = '';
+  productIds.forEach(function(id) {
+    var product = PRODUCT_DOWNLOADS[id];
+    html += '<div class="download-card">';
+    html += '<h3>' + product.name + '</h3>';
+    html += '<p>' + product.description + '</p>';
+    html += '<div class="dl-links">';
+    product.files.forEach(function(file) {
+      html += '<a href="' + file.url + '" class="dl-btn" download>&#8595; ' + file.label + '</a>';
+    });
+    html += '</div></div>';
+  });
+  container.innerHTML = html;
+})();
+</script>
+</body>
+</html>

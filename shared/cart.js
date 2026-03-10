@@ -162,44 +162,12 @@
     }
   };
 
-  // Map product IDs to their downloadable file paths
-  const PRODUCT_FILES = {
-    'book':        '/files/book/raise-ready-book.pdf',
-    'exercises':   '/files/exercises/raise-ready-exercises.zip',
-    'bundle':      '/files/bundle/raise-ready-bundle.zip',
-    'tpl-preseed': '/files/tpl-preseed/pre-seed-model.xlsx',
-    'tpl-seed':    '/files/tpl-seed/seed-model.xlsx',
-    'tpl-seriesa': '/files/tpl-seriesa/series-a-model.xlsx',
-    'tpl-seriesb': '/files/tpl-seriesb/series-b-model.xlsx'
-  };
-
   /**
-   * Trigger file download for a given URL
-   */
-  function triggerDownload(url) {
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = '';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  /**
-   * Process checkout - downloads files for all products in cart
+   * Process checkout via Stripe Checkout
    */
   window.cartCheckout = function() {
     if (cartItems.length === 0) {
       alert('Your cart is empty');
-      return;
-    }
-
-    var downloadable = cartItems.filter(function(item) {
-      return PRODUCT_FILES[item.id];
-    });
-
-    if (downloadable.length === 0) {
-      alert('No downloadable products in cart.');
       return;
     }
 
@@ -214,18 +182,38 @@
       });
     }
 
-    // Download each product file with a small delay between them
-    downloadable.forEach(function(item, i) {
-      setTimeout(function() {
-        triggerDownload(PRODUCT_FILES[item.id]);
-      }, i * 500);
-    });
+    // Disable checkout button and show loading state
+    var checkoutBtn = document.querySelector('.cart-checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.textContent = 'Processing...';
+      checkoutBtn.disabled = true;
+    }
 
-    // Clear cart after initiating downloads
-    setTimeout(function() {
-      clearCart();
-      toggleCart();
-    }, downloadable.length * 500 + 200);
+    var payload = {
+      items: cartItems.map(function(item) {
+        return { id: item.id, quantity: item.quantity };
+      })
+    };
+
+    fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.url) {
+          clearCart();
+          window.location.href = data.url;
+        } else {
+          alert('Checkout error: ' + (data.error || 'Please try again.'));
+          if (checkoutBtn) { checkoutBtn.textContent = 'Checkout'; checkoutBtn.disabled = false; }
+        }
+      })
+      .catch(function() {
+        alert('Network error. Please try again.');
+        if (checkoutBtn) { checkoutBtn.textContent = 'Checkout'; checkoutBtn.disabled = false; }
+      });
   };
 
   /**
