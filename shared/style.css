@@ -81,6 +81,7 @@ nav {
 .nav-tabs {
   display: flex;
   gap: 32px;
+  align-items: center;
 }
 
 .nav-tab {
@@ -103,6 +104,8 @@ nav {
 /* Nav Dropdowns */
 .nav-dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .dropdown-menu {
   display: none;
