@@ -198,26 +198,54 @@ nav {
 /* Book Styles */
 .book-hero {
   padding: 64px 32px;
-  text-align: center;
   background: linear-gradient(135deg, var(--paper) 0%, rgba(200, 164, 90, 0.05) 100%);
   margin-bottom: 64px;
 }
 
-.book-hero h1 {
+.book-hero-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 48px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.book-hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-hero-cover {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.book-hero-cover img {
+  height: 100%;
+  width: auto;
+  max-height: 480px;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  object-fit: cover;
+}
+
+.book-hero h1, .book-hero .book-title {
   font-family: var(--serif);
-  font-size: 48px;
+  font-size: 42px;
   font-weight: bold;
   margin-bottom: 16px;
   color: var(--ink);
+  text-align: left;
 }
 
-.book-hero p {
+.book-hero p, .book-hero .book-subtitle {
   font-size: 18px;
   color: var(--mid);
   margin-bottom: 24px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left;
 }
 
 .book-cta {
@@ -356,6 +384,67 @@ nav {
 .template-card:hover {
   border-color: var(--gold);
   box-shadow: 0 4px 12px rgba(200, 164, 90, 0.1);
+}
+
+.template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(200, 164, 90, 0.04);
+}
+
+.template-header h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.template-price {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.template-features {
+  list-style: none;
+  padding: 16px 20px;
+  margin: 0;
+}
+
+.template-features li {
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.5;
+  border-bottom: 1px solid var(--rule);
+}
+
+.template-features li:last-child {
+  border-bottom: none;
+}
+
+.template-btn {
+  display: block;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--paper);
+  background-color: var(--gold);
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin: 0 20px 20px;
+  border-radius: 4px;
+}
+
+.template-btn:hover {
+  background-color: var(--gold2);
 }
 
 .template-stage {
@@ -1839,6 +1928,26 @@ footer a {
   .careers-hero {
     padding: 32px 16px;
     margin-bottom: 32px;
+  }
+
+  .book-hero-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .book-hero-cover img {
+    height: auto;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .book-hero h1, .book-hero .book-title {
+    text-align: center;
+  }
+
+  .book-hero p, .book-hero .book-subtitle {
+    text-align: center;
   }
 
   .book-hero h1,
