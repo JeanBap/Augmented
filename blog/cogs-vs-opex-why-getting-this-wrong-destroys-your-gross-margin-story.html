@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story | Raise Ready</title>
+<meta name="description" content="Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to ...">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html">
+<meta property="og:title" content="COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story">
+<meta property="og:description" content="Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to ...">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story">
+<meta name="twitter:description" content="Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to ...">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story",
+  "description": "Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to run the company regardless of how many customers you have. Confusing them, or misclassifying costs between the two, inflates or deflates your gross ",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html",
+  "articleSection": "Financial Modeling",
+  "wordCount": 1553,
+  "timeRequired": "PT7M",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".blog-article-content > h3:first-of-type + p",
+      "h1"
+    ]
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Financial Modeling",
+      "sameAs": "https://en.wikipedia.org/wiki/Financial_modeling"
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Financial Statements",
+      "sameAs": "https://en.wikipedia.org/wiki/Financial_statement"
+    },
+    {
+      "@type": "Thing",
+      "name": "Startup Company",
+      "sameAs": "https://en.wikipedia.org/wiki/Startup_company"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is engineering always OpEx?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Product development engineering is almost always OpEx (classified as R&D). However, engineers who maintain production infrastructure, run DevOps, or manage customer-facing systems can be partially COGS. The standard in software is to classify platform reliability and infrastructure engineering as COGS, and product feature development as R&D OpEx."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about software tool costs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the tool is used exclusively for product delivery (e.g., a third-party API that powers a feature customers use), it is COGS. If it is used for internal operations (e.g., Slack, Jira, Notion), it is OpEx. Tools used for both? Allocate by usage percentage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the classification affect my taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is where you should consult your accountant. The treatment of COGS vs. OpEx can affect gross profit reporting and certain tax calculations. For financial modeling purposes, follow the economic logic. For tax filing purposes, follow your accountant's guidance. They may differ slightly, and that is normal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "**Should I model COGS as a percentage of revenue or as absolute numbers?**",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. Model the individual cost items as absolute numbers (hosting cost, payment processing fees, support salaries). Then calculate the resulting gross margin percentage as a check. If you model COGS as only a percentage of revenue, you lose the ability to see which specific costs are driving margin changes, and you cannot show how economies of scale improve the margin over time."
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</nav>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">7 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
+    </div>
+    <h1>COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=COGS%20vs.%20OpEx%3A%20Why%20Getting%20This%20Wrong%20Destroys%20Your%20Gross%20Margin%20Story%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='9' y='9' width='13' height='13' rx='2'/><path d='M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1'/></svg> Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+    
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to run the company regardless of how many customers you have. Confusing them, or misclassifying costs between the two, inflates or deflates your gross margin, which is one of the first numbers every investor checks. Gross margin tells investors whether your business model can scale profitably. If it is wrong because costs are in the wrong bucket, every downstream number is unreliable. This article explains exactly how to classify costs correctly for SaaS, marketplace, and services businesses.</p>
+</div>
+
+      <p>Author: Yanni Papoutsi - VP Finance & Strategy - Author, Raise Ready Published: 2025-03-19 - Last updated: 2025-03-19</p>
+<p>Reading time: \~9 min</p>
+<h3>TL;DR</h3>
+<p>Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to run the company regardless of how many customers you have. Confusing them, or misclassifying costs between the two, inflates or deflates your gross margin, which is one of the first numbers every investor checks. Gross margin tells investors whether your business model can scale profitably. If it is wrong because costs are in the wrong bucket, every downstream number is unreliable. This article explains exactly how to classify costs correctly for SaaS, marketplace, and services businesses.</p>
+<h3>What Is COGS?</h3>
+<p>Cost of Goods Sold represents the direct costs of delivering your product or service. If you did not have the customer, you would not have the cost. The technical definition is: costs that vary directly with revenue.</p>
+<p>For a physical product company, this is intuitive: raw materials, manufacturing, shipping. For software and marketplace businesses, it is less obvious, which is where the mistakes happen.</p>
+<p>COGS for a SaaS Business</p>
+<p>In SaaS, COGS typically includes: hosting and infrastructure costs (AWS, GCP, Azure) that scale with user count, third-party software costs baked into the product (payment processing, data APIs, messaging services), customer support and onboarding staff (salaries of people directly serving customers), and DevOps or site reliability engineering costs. It does not include: engineering salaries for product development (that is R&D, an operating expense), sales and marketing costs (operating expense), office rent (operating expense), or executive salaries (operating expense).</p>
+<p>COGS for a Marketplace</p>
+<p>At Indeed Flex, COGS included the direct costs of fulfilling a shift: worker payments, employer liability insurance, payment processing fees, and the cost of the operations team that handled shift matching and dispute resolution. These costs existed only because shifts were being filled. No shifts, no COGS.</p>
+<p>The sales team that acquired employers? That was OpEx. The engineering team that built the platform? OpEx. The office in Holborn? OpEx. The distinction is clear once you apply the test: would this cost exist if we had zero transactions this month?</p>
+<p>COGS for a Services Business</p>
+<p>For consulting, professional services, or agency models, COGS is the cost of the people delivering the service and any direct costs associated with delivery (travel, subcontractors, specialized tools used exclusively for client work). The salaries of consultants billing hours are COGS. The salary of the office manager is OpEx.</p>
+<p>AWS hosting (scales with users) | COGS</p>
+<p>Stripe payment processing fees | COGS</p>
+<p>Customer support team salaries | COGS</p>
+<p>Engineering team salaries (product OpEx (R&D)</p>
+<p>dev)</p>
+<p>Sales team salaries | OpEx (Sales & Marketing) Google Ads spend | OpEx (Sales & Marketing) Office rent | OpEx (G&A)</p>
+<p>CEO salary | OpEx (G&A)</p>
+<p>Legal and accounting fees | OpEx (G&A)</p>
+<p>Worker payments in a marketplace | COGS</p>
+<p>Consultant salaries (billing hours) COGS</p>
+<p>Recruiter fees for hiring | OpEx (G&A)</p>
+<h3>Why Gross Margin Is the Number Investors Check First</h3>
+<p>Gross margin = (Revenue minus COGS) / Revenue. It tells investors how much money is left over from each dollar of revenue after paying for the direct costs of delivery. Everything else (salaries, marketing, office, growth) gets funded from what is left.</p>
+<p>A SaaS company with 75% gross margin has $0.75 of every revenue dollar available to fund growth. A marketplace with 25% net revenue margin has $0.25. A services company with 40% gross margin has $0.40. These numbers dictate the entire growth equation: how fast you can scale, how much you can spend on acquisition, and how quickly you reach profitability.</p>
+<p>SaaS (software delivery) | 70-85%</p>
+<p>Marketplace (net revenue basis) | 60-75%</p>
+<p>Marketplace (GMV basis) | 15-30%</p>
+<p>E-commerce (own inventory) | 30-50%</p>
+<p>Professional services | 35-55%</p>
+<p>Hardware + software | 40-60%</p>
+<h3>How to Model COGS Correctly</h3>
+<p>Step 1: List every cost in your business</p>
+<p>Write down every expense, from AWS bills to the CEO's salary. Do not categorize yet. Just list.</p>
+<p>Step 2: Apply the incremental customer test</p>
+<p>For each cost, ask: "If we added 100 more customers tomorrow, would this cost increase?" If yes, it is COGS (or at least partially). If no, it is OpEx. AWS hosting scales with users? COGS. Office rent stays the same regardless? OpEx. Customer support team needs more people as customer count grows? COGS.</p>
+<p>Step 3: Handle the gray areas</p>
+<p>Some costs do not fit neatly. DevOps engineers maintain the infrastructure (COGS-related) but also build tooling (R&D, which is OpEx). The standard approach: if more than 50% of their time is on infrastructure maintenance, classify the role as COGS. Otherwise, OpEx. Be consistent and document your allocation logic in the assumptions tab. Similarly, customer success roles that are partly onboarding (COGS) and partly upselling (Sales, OpEx) can be split. A 70/30 COGS/OpEx allocation is defensible if documented. A 100% COGS allocation for a role that spends half its time on expansion revenue is not. Step 4: Benchmark your gross margin</p>
+<p>Once you have classified everything, calculate your gross margin and compare it to comparable companies at your stage and business model. If your SaaS gross margin is 55% and the benchmark is 75%, something is likely misclassified, or you have a genuine delivery cost problem that needs to be addressed in the investor narrative.</p>
+<h3>How COGS Changes as You Scale</h3>
+<p>One of the most valuable things a model can show is how gross margin improves with scale. Most software businesses have economies of scale in COGS: the cost of hosting 1,000 users is not 10x the cost of hosting 100 users. Payment processing fees might decrease as volume increases (negotiated rates). Customer support can become more efficient with better tooling and knowledge bases.</p>
+<p>Model this trajectory explicitly. Show gross margin at current scale, at 2x revenue, and at 5x revenue. If gross margin improves from 68% to 78% over that range, it tells a compelling story about the leverage in your business model. If it stays flat or declines, you need to understand and explain why.</p>
+<p>At Indeed Flex, gross margin improved meaningfully as we scaled because the per-shift operational cost decreased with volume (better matching algorithms, lower support ticket rates per shift, negotiated insurance rates). Modeling that improvement was critical to the Series A narrative because it showed the business would become significantly more profitable at scale.</p>
+<h3>The Investor Conversation About Margins</h3>
+<p>When Creandum and B2Ventures looked at our model, the gross margin discussion went like this:</p>
+<p>Investor: "Walk me through your COGS."</p>
+<p>Us: "Per filled shift, we have worker payment, employer insurance, payment processing, and a per-shift allocation of the operations team. Here is the breakdown."</p>
+<p>Investor: "What happens to gross margin at 3x volume?"</p>
+<p>Us: "Insurance rate negotiation at higher volume gives us 2 points. Operations efficiency gives us 3 points. Payment processing scale discount gives us 1 point. We model gross margin improving from 22% to 28% net."</p>
+<p>Investor: "That is clear. Show me the sensitivity if insurance costs rise 15%."</p>
+<p>That conversation only works if your COGS classification is clean and your model has the structure to show margin evolution. If COGS is a single number with no breakdown, none of those questions can be answered, and the investor loses confidence in the model.</p>
+<h3>Frequently Asked Questions</h3>
+<p>Is engineering always OpEx?</p>
+<p>Product development engineering is almost always OpEx (classified as R&D). However, engineers who maintain production infrastructure, run DevOps, or manage customer-facing systems can be partially COGS. The standard in software is to classify platform reliability and infrastructure engineering as COGS, and product feature development as R&D OpEx.</p>
+<p>What about software tool costs?</p>
+<p>If the tool is used exclusively for product delivery (e.g., a third-party API that powers a feature customers use), it is COGS. If it is used for internal operations (e.g., Slack, Jira, Notion), it is OpEx. Tools used for both? Allocate by usage percentage.</p>
+<p>Does the classification affect my taxes?</p>
+<p>Yes, and this is where you should consult your accountant. The treatment of COGS vs. OpEx can affect gross profit reporting and certain tax calculations. For financial modeling purposes, follow the economic logic. For tax filing purposes, follow your accountant's guidance. They may differ slightly, and that is normal.</p>
+<p>**Should I model COGS as a percentage of revenue or as absolute numbers?**</p>
+<p>Both. Model the individual cost items as absolute numbers (hosting cost, payment processing fees, support salaries). Then calculate the resulting gross margin percentage as a check. If you model COGS as only a percentage of revenue, you lose the ability to see which specific costs are driving margin changes, and you cannot show how economies of scale improve the margin over time.</p>
+<h3>Summary</h3>
+<p>COGS is the cost of delivering your product. OpEx is the cost of running your company. Getting the classification right determines your gross margin, which is one of the most scrutinized numbers in any investor evaluation. Use the incremental customer test: if the cost scales with customers, it is COGS. Model each COGS component individually so you can show margin evolution at scale. Benchmark against comparable companies to ensure your classification matches industry standards. Document your allocation logic in the assumptions tab. A misclassified model does not just produce wrong numbers. It produces wrong conversations, and those are much harder to fix.</p>
+
+    </div>
+    <div class="related-articles">
+  <h3>Related Articles</h3>
+  <ul>
+    <li><a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html">How to Build a Financial Model for Your Startup (2026 Guide)</a></li>
+    <li><a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a></li>
+    <li><a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a></li>
+  </ul>
+</div>
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>

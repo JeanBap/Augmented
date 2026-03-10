@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Finance Articles | Raise Ready Blog</title>
+<meta name="description" content="Expert articles on AI and finance for startup founders. Practical guides from Yanni Papoutski covering AI tools, financial automation, and the future of founder-led finance.">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/category/ai-in-finance.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/category/ai-in-finance.html">
+<meta property="og:title" content="AI in Finance Articles | Raise Ready Blog">
+<meta property="og:description" content="Expert articles on AI and finance for startup founders. Practical guides covering AI tools, financial automation, and the future of founder-led finance.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI in Finance Articles | Raise Ready Blog">
+<meta name="twitter:description" content="Expert articles on AI and finance for startup founders. Practical guides covering AI tools, financial automation, and the future of founder-led finance.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AI in Finance Articles",
+  "description": "Expert articles on AI and finance for startup founders covering AI tools, financial automation, and the future of founder-led finance.",
+  "url": "https://www.raisereadybook.com/blog/category/ai-in-finance.html",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.raisereadybook.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.raisereadybook.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "AI in Finance",
+        "item": "https://www.raisereadybook.com/blog/category/ai-in-finance.html"
+      }
+    ]
+  },
+  "hasPart": [
+    {
+      "@type": "Article",
+      "url": "https://www.raisereadybook.com/blog/you-do-not-need-to-be-a-genius-with-excel-anymore-ai-does-that-now.html",
+      "headline": "You Do Not Need to Be a Genius with Excel Anymore. AI Does That Now."
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <nav class="breadcrumb"><a href="/">Home</a> <span class="breadcrumb-separator">/</span> <a href="/blog/">Blog</a> <span class="breadcrumb-separator">/</span> <span class="breadcrumb-current">AI in Finance</span></nav>
+
+  <div class="category-hero">
+    <h1>AI in Finance</h1>
+    <p>Explore how AI is transforming startup finance. From AI-powered financial modeling to automation of routine tasks, these articles cover how founders can leverage AI to build better models faster and make smarter financial decisions.</p>
+  </div>
+
+  <div class="article-list" id="article-list"></div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+<script src="/shared/blog_data.js"></script>
+<script>
+const articleList = document.getElementById('article-list');
+const categoryArticles = BLOG_ARTICLES.filter(a => a.category === "AI in Finance");
+
+articleList.innerHTML = categoryArticles.map(a => `
+  <a href="/blog/${a.slug}.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">${a.num}</span>
+    <div class="blog-card-body">
+      <h3>${a.title}</h3>
+      <p class="blog-tldr">${a.tldr}</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">${a.category}</span>
+      <span class="blog-time">${a.readTime} min read</span>
+    </div>
+  </a>
+`).join('');
+</script>
+</body>
+</html>

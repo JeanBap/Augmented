@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Articles | Raise Ready</title>
+<meta name="description" content="Search through 57+ expert articles on startup fundraising, financial modeling, unit economics, and more.">
+<link rel="canonical" href="https://www.raisereadybook.com/search/">
+<!-- OG Tags -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raisereadybook.com/search/">
+<meta property="og:title" content="Search Articles | Raise Ready">
+<meta property="og:description" content="Search through 57+ expert articles on startup fundraising, financial modeling, unit economics, and more.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Search Articles | Raise Ready">
+<meta name="twitter:description" content="Search through 57+ expert articles on startup fundraising, financial modeling, unit economics, and more.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<!-- Styles -->
+<link rel="stylesheet" href="/shared/style.css">
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="">
+<div id="site-nav"></div>
+<main class="page-content">
+  <section class="search-section">
+    <div class="search-inner">
+      <div class="search-header">
+        <h1>Search Articles</h1>
+      </div>
+
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" class="search-input" placeholder="Search by title, topic, or keyword...">
+          <span class="search-result-count" id="search-result-count"></span>
+        </div>
+
+        <div class="category-filters" id="category-filters"></div>
+      </div>
+
+      <div class="search-results" id="search-results">
+        <p class="no-results-message">Start typing to search articles...</p>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/blog_data.js"></script>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+<style>
+  .search-section {
+    padding: 4rem 2rem;
+    background-color: #08080d;
+    min-height: 100vh;
+  }
+
+  .search-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .search-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .search-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #f2ede4;
+    margin: 0;
+  }
+
+  .search-container {
+    margin-bottom: 3rem;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #3a3830;
+    border-radius: 4px;
+    background-color: #08080d;
+    color: #f2ede4;
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    transition: border-color 0.3s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #c8a45a;
+  }
+
+  .search-input::placeholder {
+    color: #6e6a61;
+  }
+
+  .search-result-count {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: #6e6a61;
+  }
+
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .category-filter {
+    padding: 8px 16px;
+    border: 1px solid #3a3830;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #6e6a61;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .category-filter:hover {
+    border-color: #c8a45a;
+    color: #c8a45a;
+  }
+
+  .category-filter.active {
+    background-color: #c8a45a;
+    color: #08080d;
+    border-color: #c8a45a;
+  }
+
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .no-results-message {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    color: #6e6a61;
+    text-align: center;
+    padding: 2rem;
+    margin: 0;
+  }
+
+  .search-result-card {
+    padding: 1.5rem;
+    border: 1px solid #3a3830;
+    border-radius: 4px;
+    background-color: rgba(200, 164, 90, 0.02);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .search-result-card:hover {
+    border-color: #c8a45a;
+    background-color: rgba(200, 164, 90, 0.05);
+  }
+
+  .search-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .search-result-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f2ede4;
+    margin: 0;
+  }
+
+  .search-result-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .search-result-category {
+    padding: 4px 12px;
+    background-color: rgba(200, 164, 90, 0.15);
+    color: #c8a45a;
+    border-radius: 3px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .search-result-readtime {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #6e6a61;
+  }
+
+  .search-result-excerpt {
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    color: #6e6a61;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .search-section {
+      padding: 2rem 1rem;
+    }
+
+    .search-header h1 {
+      font-size: 32px;
+    }
+
+    .search-result-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .search-result-title {
+      font-size: 18px;
+    }
+  }
+</style>
+<script>
+  let searchDebounceTimer;
+  let activeCategory = null;
+
+  function initializeSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const categoryFilters = document.getElementById('category-filters');
+
+    // Check if blog data is loaded
+    if (typeof BLOG_ARTICLES === 'undefined') {
+      searchResults.innerHTML = '<p class="no-results-message">Unable to load articles data.</p>';
+      return;
+    }
+
+    // Extract unique categories
+    const categories = [...new Set(BLOG_ARTICLES.map(article => article.category))].sort();
+
+    // Create category filter buttons
+    categories.forEach(category => {
+      const button = document.createElement('button');
+      button.className = 'category-filter';
+      button.textContent = category;
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        activeCategory = button.classList.contains('active') ? category : null;
+        performSearch();
+      });
+      categoryFilters.appendChild(button);
+    });
+
+    // Search input handler with debounce
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        performSearch();
+      }, 300);
+    });
+
+    function performSearch() {
+      const query = searchInput.value.toLowerCase().trim();
+      let results = BLOG_ARTICLES;
+
+      // Filter by search query
+      if (query) {
+        results = results.filter(article => {
+          const title = article.title.toLowerCase();
+          const tldr = article.tldr.toLowerCase();
+          const category = article.category.toLowerCase();
+          const body = (article.body || '').toLowerCase();
+
+          return title.includes(query) ||
+                 tldr.includes(query) ||
+                 category.includes(query) ||
+                 body.includes(query);
+        });
+      }
+
+      // Filter by category
+      if (activeCategory) {
+        results = results.filter(article => article.category === activeCategory);
+      }
+
+      // Display results
+      displayResults(results, query || activeCategory);
+    }
+
+    function displayResults(results, searchTerm) {
+      const searchResults = document.getElementById('search-results');
+      const resultCount = document.getElementById('search-result-count');
+
+      if (results.length === 0) {
+        searchResults.innerHTML = `<p class="no-results-message">No articles found${searchTerm ? ' for "' + searchTerm + '"' : ''}.</p>`;
+        resultCount.textContent = '';
+        return;
+      }
+
+      resultCount.textContent = `${results.length}`;
+      searchResults.innerHTML = results.map(article => `
+        <a href="${article.url}" class="search-result-card">
+          <div class="search-result-header">
+            <h2 class="search-result-title">${escapeHtml(article.title)}</h2>
+          </div>
+          <div class="search-result-meta">
+            <span class="search-result-category">${escapeHtml(article.category)}</span>
+            <span class="search-result-readtime">${article.readTime} min read</span>
+          </div>
+          <p class="search-result-excerpt">${escapeHtml(article.tldr)}</p>
+        </a>
+      `).join('');
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', initializeSearch);
+</script>
+</body>
+</html>

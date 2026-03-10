@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a Cohort Analysis That Actually Tells You Something | Raise Ready</title>
+<meta name="description" content="Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a grou...">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html">
+<meta property="og:title" content="How to Build a Cohort Analysis That Actually Tells You Something">
+<meta property="og:description" content="Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a grou...">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Unit Economics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Build a Cohort Analysis That Actually Tells You Something">
+<meta name="twitter:description" content="Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a grou...">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Build a Cohort Analysis That Actually Tells You Something",
+  "description": "Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a group of customers who started at the same time --- and tracking their revenue, activity, or retention together reveals patterns that aggregate metrics ",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html",
+  "articleSection": "Unit Economics",
+  "wordCount": 1215,
+  "timeRequired": "PT5M",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".blog-article-content > h3:first-of-type + p",
+      "h1"
+    ]
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Unit Economics",
+      "sameAs": "https://en.wikipedia.org/wiki/Unit_economics"
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Customer Lifetime Value",
+      "sameAs": "https://en.wikipedia.org/wiki/Customer_lifetime_value"
+    },
+    {
+      "@type": "Thing",
+      "name": "Customer Acquisition Cost"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many customers do you need for cohort analysis to be meaningful?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As a rule of thumb, a cohort with fewer than 10 customers is too small for statistical significance. A cohort with 20-50 customers gives directional signals. Cohorts of 100+ customers give reliable data. For early-stage startups with small cohorts, present the data honestly and flag the small sample size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should cohorts be monthly or quarterly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly cohorts give more granular data and are better for identifying early-month churn patterns. Quarterly cohorts are more readable for investor presentations when there are many periods of data. Build monthly cohorts internally; present quarterly cohorts externally if monthly data is too granular for the audience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle free trial conversions in cohort analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Define the cohort start date as the first paid period, not the trial start. Free trials that convert in month one are in the same cohort as those that convert in month three if both are measured from their paid start date. If you want to analyse conversion from trial to paid, build a separate funnel analysis rather than including it in the retention cohort."
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Unit Economics</nav>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Unit Economics</span>
+      <span class="blog-time">5 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
+    </div>
+    <h1>How to Build a Cohort Analysis That Actually Tells You Something</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=How%20to%20Build%20a%20Cohort%20Analysis%20That%20Actually%20Tells%20You%20Something%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='9' y='9' width='13' height='13' rx='2'/><path d='M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1'/></svg> Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+    
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a group of customers who started at the same time --- and tracking their revenue, activity, or retention together reveals patterns that aggregate metrics hide. Most early-stage cohort analyses show either raw retention data without context or aggregate metrics that make retention look better than it is. A cohort analysis that actually tells you something shows how revenue from each cohort evolves over time, whether retention is improving across cohorts, and what the LTV trajectory looks like as cohorts mature.</p>
+</div>
+
+      <p>Author: Yanni Papoutsi · VP Finance and Strategy · Author, *Raise Ready*</p>
+<p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
+<p>Reading time: \~7 min</p>
+<h3>TL;DR</h3>
+<p>Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a group of customers who started at the same time --- and tracking their revenue, activity, or retention together reveals patterns that aggregate metrics hide. Most early-stage cohort analyses show either raw retention data without context or aggregate metrics that make retention look better than it is. A cohort analysis that actually tells you something shows how revenue from each cohort evolves over time, whether retention is improving across cohorts, and what the LTV trajectory looks like as cohorts mature.</p>
+<h3>What Cohort Analysis Is and Why It Beats Aggregate Metrics</h3>
+<p>An aggregate retention metric --- "we retain 85% of customers annually" --- describes the current cross-section of the customer base. It does not tell you whether retention is improving or deteriorating, whether early cohorts behave differently from recent ones, or whether the 15% who churn do so in month one or month eighteen.</p>
+<p>Cohort analysis tracks the same group of customers from their start date forward. This reveals:</p>
+<p>When churn happens (is it front-loaded or distributed across the</p>
+<p>lifetime?)</p>
+<p>Whether newer cohorts retain better or worse than older ones How revenue per cohort evolves (does expansion offset churn? At what</p>
+<p>point?)</p>
+<p>What the actual LTV trajectory looks like from observed data rather</p>
+<p>than assumptions</p>
+<h3>The Structure of a Revenue Cohort Analysis</h3>
+<p>The standard revenue cohort table shows, for each acquisition cohort, the revenue generated in each subsequent period as a percentage of the revenue generated in the first period.</p>
+<p>Example structure (simplified):</p>
+<p>Jan 2024 | 100% | 92% | 88% | 85% | 90% Feb 2024 | 100% | 90% | 86% | 84% | 89% Mar 2024 | 100% | 91% | 87% | 85% | ---</p>
+<h3>What a Good vs. Problematic Cohort Chart Looks Like</h3>
+<p>Healthy patterns:</p>
+<p>Revenue curve flattens after initial churn and stabilises ---</p>
+<p>cohorts reach steady-state retention</p>
+<p>Later months show values above 100% --- expansion revenue drives NRR</p>
+<p>above 100%</p>
+<p>Newer cohorts show similar or better retention curves than older</p>
+<p>ones --- product-market fit is consistent</p>
+<p>Warning patterns:</p>
+<p>Revenue continues declining through month 12+ without stabilising</p>
+<p>--- ongoing churn with no floor</p>
+<p>Newer cohorts show worse retention than older ones --- potential</p>
+<p>product-market fit erosion or quality of acquisition declining</p>
+<p>All growth is in month 0 with rapid decay --- new customer</p>
+<p>acquisition driving the top line, not retention</p>
+<p>Only a few cohorts are large enough to read --- data concentration</p>
+<p>risk Key insight: Investors reviewing cohort data are specifically looking for the "smile curve" --- a revenue cohort that dips in early months due to initial churn, then recovers and climbs above 100% as expansion revenue kicks in. Businesses with smile curves on their cohort data have materially stronger unit economics conversations than those without.</p>
+<h3>The Three Cohort Analyses Every Startup Should Have</h3>
+<p>1. Revenue retention cohort</p>
+<p>Tracks revenue from each cohort over time, as a percentage of first-period revenue. This is the primary cohort analysis for any subscription or recurring revenue business. Shows NRR, GRR, and the expansion pattern all in one view.</p>
+<p>2. Customer count cohort (logo retention)</p>
+<p>Tracks the number of customers from each cohort that are still active in subsequent periods. This is different from revenue retention --- a cohort might show improving revenue retention but declining logo retention if a few large customers are growing while many small ones churn. Both dimensions tell part of the story.</p>
+<p>3. Usage or engagement cohort</p>
+<p>For PLG businesses or products with usage-based pricing, cohort analysis on product usage (active sessions, feature adoption, API calls) is often the leading indicator of future revenue retention. Declining engagement cohorts predict revenue churn before it appears in the financials.</p>
+<h3>How to Build Cohort Analysis in Excel</h3>
+<p>The structure:</p>
+<p>Rows: acquisition cohorts (each row is a group of customers who</p>
+<p>started in the same month)</p>
+<p>Columns: periods since acquisition (month 0, month 1, month 2\...) Values: revenue (or customers) from that cohort in that period The calculation for each cell is: revenue from cohort X in period N ÷ revenue from cohort X in period 0.</p>
+<p>Important: normalise to cohort start revenue, not absolute revenue. Absolute revenue comparisons across cohorts are misleading because later cohorts are typically larger. Percentage of starting revenue puts all cohorts on the same scale.</p>
+<p>For startups with fewer than 12 months of data, the cohort table will have a triangular shape --- early cohorts have more periods of data than recent ones. This is normal. Plot what you have and fill in the rest as data accumulates.</p>
+<h3>What Investors Ask When They See Cohort Data</h3>
+<p>"Show me the cohort where retention stabilises."</p>
+<p>This asks for the month at which the decay curve flattens. Businesses where retention never stabilises have a churn problem that compounds over time. The stabilisation point also determines the appropriate LTV calculation window.</p>
+<p>"Are your newer cohorts better or worse than your older ones?" Improving cohorts signal that retention is getting better as the product matures. Deteriorating cohorts signal that quality of acquisition may be declining (less targeted growth) or that the product is regressing. **"What drives the expansion in cohorts that show revenue above 100%?"**</p>
+<p>Investors want to understand whether expansion is from organic usage growth, from proactive upselling, from seat additions, or from price increases. Each has different implications for sustainability and scalability.</p>
+<h3>Frequently Asked Questions</h3>
+<p>How many customers do you need for cohort analysis to be meaningful?</p>
+<p>As a rule of thumb, a cohort with fewer than 10 customers is too small for statistical significance. A cohort with 20-50 customers gives directional signals. Cohorts of 100+ customers give reliable data. For early-stage startups with small cohorts, present the data honestly and flag the small sample size.</p>
+<p>Should cohorts be monthly or quarterly?</p>
+<p>Monthly cohorts give more granular data and are better for identifying early-month churn patterns. Quarterly cohorts are more readable for investor presentations when there are many periods of data. Build monthly cohorts internally; present quarterly cohorts externally if monthly data is too granular for the audience.</p>
+<p>How do you handle free trial conversions in cohort analysis?</p>
+<p>Define the cohort start date as the first paid period, not the trial start. Free trials that convert in month one are in the same cohort as those that convert in month three if both are measured from their paid start date. If you want to analyse conversion from trial to paid, build a separate funnel analysis rather than including it in the retention cohort.</p>
+<h3>Summary</h3>
+<p>Cohort analysis reveals what aggregate metrics hide: when churn happens, whether newer cohorts retain better than older ones, and how revenue evolves over the lifetime of a customer relationship. The revenue retention cohort table --- showing each cohort's revenue as a percentage of its first-period revenue over time --- is the primary tool. A healthy cohort chart shows a decay that stabilises and then recovers above 100% (the smile curve). Build all three cohort analyses (revenue, logo, engagement), keep the data monthly internally, and present it in investor materials as evidence of the retention dynamics the financial model is based on.</p>
+
+    </div>
+    <div class="related-articles">
+  <h3>Related Articles</h3>
+  <ul>
+    <li><a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html">CAC, LTV, and Payback Period: Calculated Correctly for Once</a></li>
+    <li><a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html">Why Blended CAC Is a Lie (And How to Model It by Channel)</a></li>
+    <li><a href="/blog/net-revenue-retention-the-number-that-predicts-everything.html">Net Revenue Retention: The Number That Predicts Everything</a></li>
+  </ul>
+</div>
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>

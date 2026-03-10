@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Operations Articles | Raise Ready Blog</title>
+<meta name="description" content="Expert articles on finance operations for startup founders. Practical guides from Yanni Papoutski covering KPI tracking, analytics, SQL queries, metrics dashboards, and leading indicators.">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/category/finance-operations.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/category/finance-operations.html">
+<meta property="og:title" content="Finance Operations Articles | Raise Ready Blog">
+<meta property="og:description" content="Expert articles on finance operations for startup founders. Practical guides covering KPI tracking, analytics, SQL queries, metrics dashboards, and leading indicators.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Finance Operations Articles | Raise Ready Blog">
+<meta name="twitter:description" content="Expert articles on finance operations for startup founders. Practical guides covering KPI tracking, analytics, SQL queries, metrics dashboards, and leading indicators.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Finance Operations Articles",
+  "description": "Expert articles on finance operations for startup founders covering KPI tracking, analytics, SQL queries, metrics dashboards, and leading indicators.",
+  "url": "https://www.raisereadybook.com/blog/category/finance-operations.html",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.raisereadybook.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.raisereadybook.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Finance Operations",
+        "item": "https://www.raisereadybook.com/blog/category/finance-operations.html"
+      }
+    ]
+  },
+  "hasPart": [
+    {
+      "@type": "Article",
+      "url": "https://www.raisereadybook.com/blog/how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know.html",
+      "headline": "How to Use SQL for Startup Analytics"
+    },
+    {
+      "@type": "Article",
+      "url": "https://www.raisereadybook.com/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html",
+      "headline": "The 10 KPIs Every Founder Should Track"
+    },
+    {
+      "@type": "Article",
+      "url": "https://www.raisereadybook.com/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html",
+      "headline": "How to Build a Metrics Dashboard"
+    },
+    {
+      "@type": "Article",
+      "url": "https://www.raisereadybook.com/blog/leading-vs-lagging-indicators-how-to-see-problems-three-months-before-they-hit-y.html",
+      "headline": "Leading vs Lagging Indicators"
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <nav class="breadcrumb"><a href="/">Home</a> <span class="breadcrumb-separator">/</span> <a href="/blog/">Blog</a> <span class="breadcrumb-separator">/</span> <span class="breadcrumb-current">Finance Operations</span></nav>
+
+  <div class="category-hero">
+    <h1>Finance Operations</h1>
+    <p>Build and maintain the financial infrastructure that powers your startup. From SQL queries and KPI dashboards to leading indicators and metrics tracking, these articles help you create operational discipline and early warning systems.</p>
+  </div>
+
+  <div class="article-list" id="article-list"></div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+<script src="/shared/blog_data.js"></script>
+<script>
+const articleList = document.getElementById('article-list');
+const categoryArticles = BLOG_ARTICLES.filter(a => a.category === "Finance Operations");
+
+articleList.innerHTML = categoryArticles.map(a => `
+  <a href="/blog/${a.slug}.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">${a.num}</span>
+    <div class="blog-card-body">
+      <h3>${a.title}</h3>
+      <p class="blog-tldr">${a.tldr}</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">${a.category}</span>
+      <span class="blog-time">${a.readTime} min read</span>
+    </div>
+  </a>
+`).join('');
+</script>
+</body>
+</html>

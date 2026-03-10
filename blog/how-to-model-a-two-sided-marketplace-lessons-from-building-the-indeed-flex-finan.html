@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Model a Two-Sided Marketplace: Lessons From Building the Indeed Flex Financial Model | Raise Ready</title>
+<meta name="description" content="A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply ...">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html">
+<meta property="og:title" content="How to Model a Two-Sided Marketplace: Lessons From Building the Indeed Flex Financial Model">
+<meta property="og:description" content="A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply ...">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Model a Two-Sided Marketplace: Lessons From Building the Indeed Flex Financial Model">
+<meta name="twitter:description" content="A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply ...">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Model a Two-Sided Marketplace: Lessons From Building the Indeed Flex Financial Model",
+  "description": "A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply and demand interact: the value of one side depends on the size and quality of the other. Revenue is not subscription-based; it is transaction-based,",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html",
+  "articleSection": "Financial Modeling",
+  "wordCount": 1864,
+  "timeRequired": "PT8M",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".blog-article-content > h3:first-of-type + p",
+      "h1"
+    ]
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Financial Modeling",
+      "sameAs": "https://en.wikipedia.org/wiki/Financial_modeling"
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Financial Statements",
+      "sameAs": "https://en.wikipedia.org/wiki/Financial_statement"
+    },
+    {
+      "@type": "Thing",
+      "name": "Startup Company",
+      "sameAs": "https://en.wikipedia.org/wiki/Startup_company"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I model a marketplace with no transaction history?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with comparable marketplaces. Look for published metrics from companies in adjacent spaces: take rates, fill rates, retention curves, supply-demand ratios. Use these as starting assumptions and label them clearly. Then, as your own data comes in, replace benchmarks with actuals. The structure should be built from day one even if the numbers are estimated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I model supply-side costs in the P&L?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Worker payments (in a staffing marketplace), seller payouts (in an e-commerce marketplace), or driver payments (in a ride-sharing marketplace) are COGS. They are the direct cost of fulfilling the transaction. Model them as part of COGS, not as a separate line that sits outside the gross margin calculation."
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</nav>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">8 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
+    </div>
+    <h1>How to Model a Two-Sided Marketplace: Lessons From Building the Indeed Flex Financial Model</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=How%20to%20Model%20a%20Two-Sided%20Marketplace%3A%20Lessons%20From%20Building%20the%20Indeed%20Flex%20Financial%20Model%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+  <button onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='9' y='9' width='13' height='13' rx='2'/><path d='M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1'/></svg> Copy Link'},2000)}})" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#f2ede4; background:transparent; font-family:'DM Mono',monospace; font-size:0.75rem; cursor:pointer; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy Link
+  </button>
+</div>
+    
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply and demand interact: the value of one side depends on the size and quality of the other. Revenue is not subscription-based; it is transaction-based, driven by GMV and take rate. Having built and rebuilt the Indeed Flex (formerly Syft) financial model from seed through a 9-figure exit to Indeed, I have made every marketplace modeling mistake there is, and then found the fixes. This article walks through exactly how to build a marketplace model that captures the dynamics investors actually care about.</p>
+</div>
+
+      <p>Author: Yanni Papoutsi - VP Finance & Strategy - Author, Raise Ready Published: 2025-03-22 - Last updated: 2025-03-22</p>
+<p>Reading time: \~10 min</p>
+<h3>TL;DR</h3>
+<p>A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply and demand interact: the value of one side depends on the size and quality of the other. Revenue is not subscription-based; it is transaction-based, driven by GMV and take rate. Having built and rebuilt the Indeed Flex (formerly Syft) financial model from seed through a 9-figure exit to Indeed, I have made every marketplace modeling mistake there is, and then found the fixes. This article walks through exactly how to build a marketplace model that captures the dynamics investors actually care about.</p>
+<h3>Why Marketplace Models Are Different</h3>
+<p>A SaaS company acquires one type of customer and charges them a subscription. A marketplace operates two customer types whose behavior is interconnected. A staffing marketplace like Indeed Flex needed workers (supply) and employers (demand). Without enough workers, employers would not post shifts. Without enough employers, workers would not sign up. The financial model had to capture that interdependence or it was structurally wrong.</p>
+<p>The most common mistake founders make is modeling a marketplace like a SaaS business: project total customers, multiply by average revenue, done. This ignores the dynamics that define marketplace economics. Fill rate (the percentage of demand that gets matched to supply) is a variable that changes based on the supply-demand ratio. Take rate can compress as volume grows. Unit economics differ by side, by geography, and by segment.</p>
+<p>*Key insight: A marketplace model is a system model, not a customer model. You are modeling the interaction between two groups and the transactions that result. If your model does not capture the supply-demand balance, it will produce projections that look reasonable in a spreadsheet and are wrong in reality.*</p>
+<h3>The Architecture of a Marketplace Model</h3>
+<p>At Indeed Flex, the financial model was built around seven interconnected modules. Each one fed the next, and changing any single input rippled through the entire system.</p>
+<p>Module 1: Supply Acquisition and Retention</p>
+<p>Workers registered per month, activation rate (percentage who completed their first shift), retention at 30, 60, and 90 days, and reactivation rate for dormant workers. The supply pool at any given time was the cumulative registered workers minus churned ones, plus reactivated ones. The key insight from building this: worker retention was not a simple churn curve. Workers would go dormant for weeks and then reactivate when a shift matched their availability. The model needed to distinguish between true churn (permanently left) and dormancy (temporarily inactive), because the two required completely different strategies and had different financial implications.</p>
+<p>Module 2: Demand Acquisition and Retention</p>
+<p>Employers onboarded per month, conversion rate from sign-up to first shift posted, retention (percentage still posting shifts after 3, 6, 12 months), and frequency (shifts posted per active employer per month). Demand-side metrics were more stable than supply-side because employer contracts were stickier, but frequency varied significantly by segment. A large hospitality chain posted 50+ shifts per week. A small office posted 2-3 per month.</p>
+<p>Module 3: Matching and Fill Rate</p>
+<p>This is the module that makes marketplace modeling hard. Fill rate = shifts filled / shifts posted. It depends on the supply-demand balance in each market. A market with 500 available workers and 100 shifts per day has a very different fill rate than one with 500 workers and 1,000 shifts per day.</p>
+<p>We modeled fill rate as a function of supply density (available workers per shift). Below a certain density threshold, fill rate dropped sharply. Above it, fill rate plateaued near 90-95%. This S-curve relationship was critical for the model because it meant that adding supply in a market with low density had a disproportionate impact on revenue.</p>
+<p>Module 4: GMV Calculation</p>
+<p>GMV (Gross Merchandise Value) = shifts filled x average shift value. Average shift value = hours per shift x hourly rate. This sounds simple, but hourly rates varied by role type, geography, and time of day. Night shifts and weekend shifts commanded premiums. London rates were higher than Manchester rates. The model needed to capture the mix, not just the average.</p>
+<p>Module 5: Revenue and Take Rate</p>
+<p>Revenue = GMV x take rate. The take rate was the percentage of each transaction that the marketplace kept as revenue. But take rate was not a constant. It varied by client segment (enterprise clients negotiated lower rates), by worker type, and by market. Over time, as the marketplace scaled and competition increased, there was pressure on take rate.</p>
+<p>Modeling take rate as a single number would have been wrong by 3-5 percentage points depending on the mix. We segmented it by client size (SMB, mid-market, enterprise) and geography, which produced much more accurate revenue projections.</p>
+<p>Module 6: Cost of Fulfillment (COGS)</p>
+<p>For each filled shift: worker payment, employer liability insurance, payment processing fee, and a per-shift allocation of the operations team cost. Gross margin per shift was the take rate minus these costs. At early stages, gross margin per shift was thin, 15-20% of net revenue. At scale, it improved to 25-30% as insurance rates came down with volume and operations became more efficient.</p>
+<p>Module 7: Unit Economics by Cohort</p>
+<p>Each employer cohort's LTV was calculated as: average monthly gross profit per employer x average retention duration. Each cohort had its own acquisition cost (tracked by channel and month). The LTV:CAC ratio by cohort was the number that told us whether the marketplace was working, and it was the number the acquirer scrutinized most during exit diligence.</p>
+<h3>The Supply-Demand Balance: Modeling the Flywheel</h3>
+<p>The marketplace flywheel is the dynamic that makes or breaks a two-sided platform: more supply attracts more demand, which attracts more supply. In the model, this translates to:</p>
+<p>Higher worker density in a market leads to higher fill rates. Higher fill rates lead to better employer experience. Better employer experience leads to higher employer retention and referrals. More employers lead to more shifts posted. More shifts lead to better worker experience (more work available). Better worker experience leads to higher worker retention.</p>
+<p>Modeling this loop requires careful thought about which direction to start from. We chose to model supply first (worker acquisition and retention), then demand (employer acquisition and retention), then the matching layer (fill rate as a function of the supply-demand ratio), and finally economics (revenue, COGS, unit economics).</p>
+<p>The flywheel creates a non-linear relationship between investment and output. Doubling marketing spend in a market that is already past the liquidity threshold might improve fill rate by 2 points. Doubling spend in a market below the threshold might improve fill rate by 15 points. The model needed to capture this non-linearity, or capital allocation decisions would be wrong.</p>
+<p>*Key insight: The financial model for a marketplace is also the strategic model. It tells you which markets to invest in (those closest to liquidity threshold), which to slow-play (those too far from threshold for current budgets), and which to monitor (those already at high fill rates where additional supply has diminishing returns). At Indeed Flex, the model directly informed market expansion sequencing.*</p>
+<h3>How This Model Supported a 9-Figure Exit</h3>
+<p>When Indeed acquired Syft, the financial model was the centerpiece of the valuation discussion. The acquirer's diligence team ran their own analysis on our data, but the structure of our model gave them a framework to work within.</p>
+<p>Three specific elements of the marketplace model made a material difference during exit:</p>
+<p>Cohort-level employer economics. The model showed that employer cohorts were not just retained, they were spending more over time. This expansion pattern, visible only because we tracked cohort economics, was one of the key factors supporting the revenue multiple.</p>
+<p>Fill rate dynamics by market. The model demonstrated that newer markets were still climbing the fill rate curve, meaning significant untapped value in the existing footprint. The acquirer could see where growth would come from without entering new markets.</p>
+<p>Take rate sensitivity. When the acquirer asked what would happen if take rate compressed by 2 points, we could show the impact across every segment and geography within minutes. That responsiveness built confidence in the model and, by extension, in the management team.</p>
+<h3>Common Marketplace Modeling Mistakes</h3>
+<p>Modeling revenue without modeling both sides. If your model shows revenue growing without an explicit supply and demand layer, it is a SaaS model wearing a marketplace costume. Model each side independently and connect them through the matching function.</p>
+<p>Using a constant take rate. Take rates evolve with scale,</p>
+<p>competition, and client mix. Model the components that affect take rate rather than hardcoding a single percentage.</p>
+<p>Ignoring geographic variation. A marketplace in London and a marketplace in Manchester have different supply costs, demand densities, and competitive dynamics. Aggregate models hide these differences and produce misleading unit economics.</p>
+<p>Confusing GMV with revenue. A $10M GMV marketplace with a 15% take rate generates $1.5M in revenue. Investors have seen founders pitch GMV as if it were revenue. It destroys credibility instantly.</p>
+<p>Not modeling the liquidity threshold. Every marketplace has a point where supply-demand density is sufficient for reliable matching. Below it, the marketplace does not work. Above it, network effects kick in. If your model does not capture this threshold, it cannot tell you how much you need to invest to get a new market to viability.</p>
+<h3>Frequently Asked Questions</h3>
+<p>How do I model a marketplace with no transaction history?</p>
+<p>Start with comparable marketplaces. Look for published metrics from companies in adjacent spaces: take rates, fill rates, retention curves, supply-demand ratios. Use these as starting assumptions and label them clearly. Then, as your own data comes in, replace benchmarks with actuals. The structure should be built from day one even if the numbers are estimated.</p>
+<p>Should I model supply-side costs in the P&L?</p>
+<p>Yes. Worker payments (in a staffing marketplace), seller payouts (in an e-commerce marketplace), or driver payments (in a ride-sharing marketplace) are COGS. They are the direct cost of fulfilling the transaction. Model them as part of COGS, not as a separate line that sits outside the gross margin calculation.</p>
+<p>How do I present marketplace metrics to SaaS-focused investors? Translate marketplace metrics into language they understand. Net revenue (after supply-side payments) is your equivalent of SaaS revenue. Gross margin on net revenue is comparable to SaaS gross margin. Employer retention is comparable to logo retention. Monthly active employers times average net revenue per employer is comparable to MRR. The underlying structure is different, but the investor questions are the same: is this business acquiring customers efficiently, retaining them, and making money on each one?</p>
+<h3>Summary</h3>
+<p>A two-sided marketplace model is a system model that captures the interaction between supply and demand. Build it in modules: supply acquisition and retention, demand acquisition and retention, matching and fill rate, GMV, revenue and take rate, COGS, and unit economics by cohort. Model the supply-demand balance explicitly because it drives fill rate, which drives revenue, which drives everything. Segment by geography and customer size. Track take rate evolution. And remember that the marketplace flywheel is a real dynamic that the model must capture, not just a slide in the pitch deck.</p>
+
+    </div>
+    <div class="related-articles">
+  <h3>Related Articles</h3>
+  <ul>
+    <li><a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html">How to Build a Financial Model for Your Startup (2026 Guide)</a></li>
+    <li><a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a></li>
+    <li><a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a></li>
+  </ul>
+</div>
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $14.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across 5 rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets with $20M+ raised and $100M+ in exits.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js"></script>
+<script src="/shared/cart.js"></script>
+</body>
+</html>
