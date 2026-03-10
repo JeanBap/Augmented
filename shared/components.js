@@ -22,14 +22,6 @@
           </div>
         </div>
         <div class="nav-dropdown">
-          <a href="/services/" class="nav-tab" data-page="services">Services</a>
-          <div class="dropdown-menu">
-            <a href="/services/#roles">Fractional Operators</a>
-            <a href="/services/#sessions">1-on-1 Sessions</a>
-            <a href="/services/#compare">Why Augmented</a>
-          </div>
-        </div>
-        <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
             <a href="/tools/#readiness">Readiness Scorecard</a>
@@ -39,7 +31,6 @@
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/careers/" class="nav-tab" data-page="careers">Careers</a>
       </div>
       <div class="nav-right">
         <button class="nbtn cart-btn" onclick="toggleCart()" style="position:relative">
@@ -58,11 +49,9 @@
     <footer>
       <div class="footer-links">
         <a href="/book/">Book & Extras</a>
-        <a href="/services/">Services</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/templates/">Templates</a>
-        <a href="/careers/">Careers</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </div>
