@@ -372,6 +372,11 @@ nav {
   padding: 24px;
   background-color: var(--paper);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.product-card .product-description {
+  flex: 1;
 }
 
 .product-card:hover {
