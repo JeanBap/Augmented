@@ -1541,6 +1541,29 @@ footer a {
   color: var(--gold);
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(200, 164, 90, 0.2);
+}
+
+.footer-links a {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold2);
+}
+
 /* Animations */
 @keyframes fadeUp {
   from {

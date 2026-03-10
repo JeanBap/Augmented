@@ -24,6 +24,15 @@
 
   const FOOTER_HTML = `
     <footer>
+      <div class="footer-links">
+        <a href="/book/">Book & Extras</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">Blog</a>
+        <a href="/templates/">Templates</a>
+        <a href="/careers/">Careers</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
       <span>&copy; 2025 Augmented</span>
       <span>AI-Native Fractional Talent</span>
       <span>hello@augmented.co</span>
