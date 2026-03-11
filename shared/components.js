@@ -29,6 +29,8 @@
             <a href="/tools/#metrics">Metrics Calculators</a>
             <a href="/tools/#financial-model">Financial Model Tools</a>
             <a href="/tools/#cap-table">Cap Table Tools</a>
+            <a href="/tools/101-vcs-angels-cold-outreach-2026.html">101 VCs & Angels Directory</a>
+            <a href="/tools/best-business-tools-2026.html">Best Business Tools 2026</a>
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
