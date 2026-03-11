@@ -1,4 +1,5 @@
 var https = require('https');
+var notify = require('./notify');
 
 var REPO_OWNER = 'JeanBap';
 var REPO_NAME = 'Augmented';
@@ -109,6 +110,17 @@ exports.handler = async function(event) {
 
     var writeRes = await ghRequest('PUT', '/contents/' + DATA_PATH, writeBody);
     if (writeRes.status === 200 || writeRes.status === 201) {
+      await notify.sendEmail(
+        'New Bounty: ' + company + ' (' + budget + ')',
+        '<h2>New Bounty Submission</h2>' +
+        '<table style="border-collapse:collapse;font-family:sans-serif;">' +
+        '<tr><td style="padding:6px 12px;font-weight:bold;">Name</td><td style="padding:6px 12px;">' + name + '</td></tr>' +
+        '<tr><td style="padding:6px 12px;font-weight:bold;">Email</td><td style="padding:6px 12px;"><a href="mailto:' + email + '">' + email + '</a></td></tr>' +
+        '<tr><td style="padding:6px 12px;font-weight:bold;">Company</td><td style="padding:6px 12px;">' + company + '</td></tr>' +
+        '<tr><td style="padding:6px 12px;font-weight:bold;">Budget</td><td style="padding:6px 12px;">$' + budget + '</td></tr>' +
+        '<tr><td style="padding:6px 12px;font-weight:bold;">Description</td><td style="padding:6px 12px;">' + description.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</td></tr>' +
+        '</table>'
+      );
       return { statusCode: 200, headers: headers, body: JSON.stringify({ ok: true }) };
     } else {
       return { statusCode: 500, headers: headers, body: JSON.stringify({ error: 'Failed to save' }) };

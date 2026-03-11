@@ -1,4 +1,5 @@
 var https = require('https');
+var notify = require('./notify');
 
 var REPO_OWNER = 'JeanBap';
 var REPO_NAME = 'Augmented';
@@ -95,6 +96,13 @@ exports.handler = async function(event) {
 
     var writeRes = await ghRequest('PUT', '/contents/' + DATA_PATH, writeBody);
     if (writeRes.status === 200 || writeRes.status === 201) {
+      await notify.sendEmail(
+        'New Waitlist Signup: ' + email,
+        '<h2>New Waitlist Signup</h2>' +
+        '<p><strong>Email:</strong> <a href="mailto:' + email + '">' + email + '</a></p>' +
+        '<p><strong>Source:</strong> ' + source + '</p>' +
+        '<p><strong>Date:</strong> ' + new Date().toISOString() + '</p>'
+      );
       return { statusCode: 200, headers: headers, body: JSON.stringify({ ok: true, message: 'Added to waitlist' }) };
     } else {
       return { statusCode: 500, headers: headers, body: JSON.stringify({ error: 'Failed to save' }) };
