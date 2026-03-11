@@ -11,18 +11,18 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services | Coming Soon | Augmented</title>
-<meta name="description" content="AI-native fractional operators for startups. Join the waitlist to be first in line when we launch.">
+<title>Bounty | Automation Services for Startups | Augmented</title>
+<meta name="description" content="Tell us what you need automated, set your budget, and we deliver. Fixed-price automation bounties for startups — no retainers, no hourly billing.">
 <link rel="canonical" href="https://www.raisereadybook.com/services/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/services/">
-<meta property="og:title" content="Services | Coming Soon | Augmented">
-<meta property="og:description" content="AI-native fractional operators for startups. Join the waitlist to be first in line when we launch.">
+<meta property="og:title" content="Bounty | Automation Services for Startups | Augmented">
+<meta property="og:description" content="Tell us what you need automated, set your budget, and we deliver. Fixed-price automation bounties for startups.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Raise Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Services | Coming Soon | Augmented">
-<meta name="twitter:description" content="AI-native fractional operators for startups. Join the waitlist to be first in line when we launch.">
+<meta name="twitter:title" content="Bounty | Automation Services for Startups | Augmented">
+<meta name="twitter:description" content="Tell us what you need automated, set your budget, and we deliver. Fixed-price automation bounties for startups.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,53 +35,257 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <style>
-.coming-soon-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
+/* ── Bounty Hero ── */
+.bounty-hero {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3.5rem 2rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
 }
-.coming-soon-badge {
+.bounty-badge {
+  display: inline-block;
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
   background: rgba(200,164,90,0.1);
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
-.coming-soon-wrap h1 {
+.bounty-hero h1 {
   font-family: var(--serif);
   font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.15;
-  max-width: 640px;
   margin: 0 0 1rem;
 }
-.coming-soon-wrap .subtitle {
+.bounty-hero .subtitle {
   font-size: 1.05rem;
   color: var(--dim);
-  max-width: 520px;
-  margin: 0 0 2.5rem;
+  max-width: 560px;
+  margin: 0 auto 0;
   line-height: 1.7;
 }
-.waitlist-form {
-  display: flex;
-  gap: 0.75rem;
-  max-width: 460px;
-  width: 100%;
+
+/* ── How It Works ── */
+.bounty-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 780px;
+  margin: 3rem auto;
+  padding: 0 2rem;
 }
-.waitlist-form input[type="email"] {
-  flex: 1;
-  padding: 0.85rem 1.1rem;
+.bounty-step {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+.bounty-step h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+}
+.bounty-step p {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .bounty-steps { grid-template-columns: 1fr; gap: 0.5rem; }
+  .bounty-step { text-align: left; display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; }
+  .step-num { flex-shrink: 0; margin-bottom: 0; }
+}
+
+/* ── Divider ── */
+.bounty-divider {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.bounty-divider hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Form Section ── */
+.bounty-form-section {
+  max-width: 580px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 2rem;
+}
+.bounty-form-section h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0 0 0.4rem;
+}
+.bounty-form-section .form-sub {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--mid);
+  margin: 0 0 2rem;
+}
+.bounty-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.form-field label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 0.8rem 1rem;
   border: 1.5px solid var(--rule);
   border-radius: 8px;
   font-family: var(--mono);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%236e6a61' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+.bounty-submit {
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 0.5rem;
+}
+.bounty-submit:hover { opacity: 0.85; }
+.bounty-submit:disabled { opacity: 0.5; cursor: default; }
+
+.bounty-msg {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  min-height: 1.5em;
+}
+.bounty-msg.success { color: var(--green); }
+.bounty-msg.error { color: var(--red); }
+
+.bounty-trust {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--mid);
+  letter-spacing: 0.03em;
+}
+.trust-item svg { flex-shrink: 0; }
+
+/* ── Coming Soon Teaser ── */
+.coming-teaser {
+  max-width: 580px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  text-align: center;
+}
+.coming-teaser .teaser-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200,164,90,0.1);
+  padding: 0.3rem 0.9rem;
+  border-radius: 16px;
+  margin-bottom: 0.75rem;
+}
+.coming-teaser h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+.coming-teaser p {
+  font-size: 0.85rem;
+  color: var(--mid);
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+.waitlist-form {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.waitlist-form input[type="email"] {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
   background: var(--paper);
   color: var(--ink);
   transition: border-color 0.2s;
@@ -91,14 +295,14 @@
   border-color: var(--gold);
 }
 .waitlist-form button {
-  padding: 0.85rem 1.8rem;
+  padding: 0.7rem 1.2rem;
   border: none;
   border-radius: 8px;
   background: var(--ink);
   color: var(--paper);
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   cursor: pointer;
   transition: opacity 0.2s;
   white-space: nowrap;
@@ -110,39 +314,13 @@
   .waitlist-form button { width: 100%; }
 }
 .waitlist-msg {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   font-family: var(--mono);
-  font-size: 0.85rem;
-  min-height: 1.5em;
+  font-size: 0.78rem;
+  min-height: 1.3em;
 }
-.waitlist-msg.success { color: #27ae60; }
-.waitlist-msg.error { color: #c0392b; }
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  max-width: 760px;
-  margin: 3rem auto 0;
-  padding: 0 1rem;
-}
-.preview-card {
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 1.25rem;
-  text-align: left;
-}
-.preview-card h3 {
-  font-family: var(--serif);
-  font-size: 1rem;
-  margin: 0 0 0.4rem;
-}
-.preview-card p {
-  font-size: 0.82rem;
-  color: var(--mid);
-  margin: 0;
-  line-height: 1.5;
-}
+.waitlist-msg.success { color: var(--green); }
+.waitlist-msg.error { color: var(--red); }
 </style>
 </head>
 <body data-page="services">
@@ -150,44 +328,113 @@
 <main id="main" class="page-content">
   <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Services</div>
 
-  <div class="coming-soon-wrap">
-    <div class="coming-soon-badge">Coming Soon</div>
-    <h1>AI-Native Fractional Operators for Startups</h1>
-    <p class="subtitle">Pre-configured AI toolset + human operators who ship real deliverables from week one. 12 business functions. From $1,999/month.</p>
+  <!-- ── Bounty Hero ── -->
+  <div class="bounty-hero">
+    <div class="bounty-badge">Now accepting bounties</div>
+    <h1>You describe it.<br><em>We automate it.</em></h1>
+    <p class="subtitle">Tell us what's eating your team's time. We review your operations, find what can be automated, and deliver a working solution for a fixed price.</p>
+  </div>
 
+  <!-- ── How It Works ── -->
+  <div class="bounty-steps">
+    <div class="bounty-step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Submit your bounty</h3>
+        <p>Describe the process you want automated and pick a budget. Takes 2 minutes.</p>
+      </div>
+    </div>
+    <div class="bounty-step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>We scope &amp; accept</h3>
+        <p>We review feasibility within 48 hours. If we can deliver within your budget, we take it on.</p>
+      </div>
+    </div>
+    <div class="bounty-step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>You get the solution</h3>
+        <p>We build, test, and hand off a working automation. You only pay on delivery.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bounty-divider"><hr></div>
+
+  <!-- ── Bounty Form ── -->
+  <div class="bounty-form-section">
+    <h2>Submit a bounty</h2>
+    <p class="form-sub">No commitment. We'll review and get back within 48h.</p>
+
+    <form class="bounty-form" id="bounty-form" onsubmit="return submitBounty(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="b-name">Your name</label>
+          <input type="text" id="b-name" name="name" required autocomplete="name" placeholder="Jane Doe">
+        </div>
+        <div class="form-field">
+          <label for="b-email">Work email</label>
+          <input type="email" id="b-email" name="email" required autocomplete="email" placeholder="jane@company.com">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="b-company">Company name</label>
+        <input type="text" id="b-company" name="company" required placeholder="Acme Inc.">
+      </div>
+
+      <div class="form-field">
+        <label for="b-description">What do you want automated?</label>
+        <textarea id="b-description" name="description" required placeholder="E.g. Every Monday we manually pull data from 3 sources into a spreadsheet, clean it, and email it to the team. Takes ~4 hours."></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="b-budget">Your budget</label>
+        <select id="b-budget" name="budget" required>
+          <option value="" disabled selected>Select a range</option>
+          <option value="1000-2500">$1,000 &ndash; $2,500</option>
+          <option value="2500-5000">$2,500 &ndash; $5,000</option>
+          <option value="5000-10000">$5,000 &ndash; $10,000</option>
+          <option value="10000-25000">$10,000 &ndash; $25,000</option>
+          <option value="25000+">$25,000+</option>
+        </select>
+      </div>
+
+      <button type="submit" class="bounty-submit" id="bounty-btn">Submit Bounty</button>
+    </form>
+
+    <div class="bounty-msg" id="bounty-msg"></div>
+
+    <div class="bounty-trust">
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No payment upfront
+      </span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        48h response time
+      </span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Pay on delivery
+      </span>
+    </div>
+  </div>
+
+  <div class="bounty-divider" style="margin-bottom:2.5rem;"><hr></div>
+
+  <!-- ── Fractional Ops Teaser ── -->
+  <div class="coming-teaser">
+    <div class="teaser-badge">Coming Soon</div>
+    <h3>AI-Native Fractional Operators</h3>
+    <p>Pre-configured AI toolset + human operators who ship real deliverables from week one. 12 business functions starting at $1,999/month.</p>
     <form class="waitlist-form" id="waitlist-form" onsubmit="return submitWaitlist(event)">
       <label for="waitlist-email" class="sr-only">Email address</label>
       <input type="email" id="waitlist-email" name="email" placeholder="you@company.com" required autocomplete="email">
       <button type="submit" id="waitlist-btn">Join Waitlist</button>
     </form>
     <div class="waitlist-msg" id="waitlist-msg"></div>
-
-    <div class="preview-grid">
-      <div class="preview-card">
-        <h3>Content & Marketing</h3>
-        <p>Blog posts, landing pages, email sequences, and social content.</p>
-      </div>
-      <div class="preview-card">
-        <h3>FP&A & Finance</h3>
-        <p>Financial models, board reports, scenario analysis, and forecasts.</p>
-      </div>
-      <div class="preview-card">
-        <h3>Sales Enablement</h3>
-        <p>Battle cards, objection handlers, competitive analysis, and proposals.</p>
-      </div>
-      <div class="preview-card">
-        <h3>Compliance & Legal</h3>
-        <p>Regulatory gap analysis, SOC 2 prep, GDPR mapping, and contracts.</p>
-      </div>
-      <div class="preview-card">
-        <h3>Product & UX</h3>
-        <p>PRDs, user stories, microcopy, onboarding flows, and roadmaps.</p>
-      </div>
-      <div class="preview-card">
-        <h3>Data & Analytics</h3>
-        <p>SQL pipelines, dashboards, ad-hoc queries, and metrics infrastructure.</p>
-      </div>
-    </div>
   </div>
 
 </main>
@@ -195,6 +442,55 @@
 <script src="/shared/components.js" defer></script>
 <script src="/shared/cart.js" defer></script>
 <script>
+function submitBounty(e) {
+  e.preventDefault();
+  var btn = document.getElementById('bounty-btn');
+  var msg = document.getElementById('bounty-msg');
+  var form = document.getElementById('bounty-form');
+
+  var name = document.getElementById('b-name').value.trim();
+  var email = document.getElementById('b-email').value.trim();
+  var company = document.getElementById('b-company').value.trim();
+  var description = document.getElementById('b-description').value.trim();
+  var budget = document.getElementById('b-budget').value;
+
+  if (!name || !email || !company || !description || !budget) return false;
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting\u2026';
+  msg.textContent = '';
+  msg.className = 'bounty-msg';
+
+  fetch('/.netlify/functions/bounty', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, company: company, description: description, budget: budget })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.ok) {
+      msg.textContent = 'Bounty submitted! We\u2019ll review and get back within 48 hours.';
+      msg.className = 'bounty-msg success';
+      form.reset();
+      if (typeof gtag === 'function') {
+        gtag('event', 'bounty_submit', { event_category: 'services', event_label: budget });
+      }
+    } else {
+      msg.textContent = data.error || 'Something went wrong. Please try again.';
+      msg.className = 'bounty-msg error';
+    }
+  })
+  .catch(function() {
+    msg.textContent = 'Network error. Please try again.';
+    msg.className = 'bounty-msg error';
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit Bounty';
+  });
+  return false;
+}
+
 function submitWaitlist(e) {
   e.preventDefault();
   var emailInput = document.getElementById('waitlist-email');
@@ -204,7 +500,7 @@ function submitWaitlist(e) {
   if (!email) return false;
 
   btn.disabled = true;
-  btn.textContent = 'Joining...';
+  btn.textContent = 'Joining\u2026';
   msg.textContent = '';
   msg.className = 'waitlist-msg';
 
@@ -216,7 +512,7 @@ function submitWaitlist(e) {
   .then(function(r) { return r.json(); })
   .then(function(data) {
     if (data.ok) {
-      msg.textContent = data.message === 'Already on the list' ? 'You\'re already on the list!' : 'You\'re in! We\'ll reach out when we launch.';
+      msg.textContent = data.message === 'Already on the list' ? 'You\u2019re already on the list!' : 'You\u2019re in! We\u2019ll reach out when we launch.';
       msg.className = 'waitlist-msg success';
       emailInput.value = '';
       if (typeof gtag === 'function') {
@@ -235,7 +531,6 @@ function submitWaitlist(e) {
     btn.disabled = false;
     btn.textContent = 'Join Waitlist';
   });
-
   return false;
 }
 </script>
