@@ -7,5 +7,14 @@
     "budget": "10000-25000",
     "status": "new",
     "date": "2026-03-11T11:30:34.703Z"
+  },
+  {
+    "name": "Email Test",
+    "email": "papoutsis89@gmail.com",
+    "company": "Test Co",
+    "description": "Testing email notification. This is a test submission to verify that Resend emails arrive at papoutsis89@gmail.com.",
+    "budget": "1000-2500",
+    "status": "new",
+    "date": "2026-03-11T11:42:25.315Z"
   }
 ]
