@@ -264,23 +264,126 @@
   </section>
 
 
-  <!-- Related Resources Section -->
-  <section class="related-resources-sec">
-    <div class="related-resources-inner">
-      <h2 class="section-title">Explore More Resources</h2>
-      <div class="related-links-grid">
-        <a href="/blog/" class="related-link-card">
-          <h3>Free Articles</h3>
-          <p>Read in-depth articles on fundraising strategy, financial modeling, and building sustainable businesses.</p>
-        </a>
-        <a href="/services/" class="related-link-card">
-          <h3>Services</h3>
-          <p>Get AI-native fractional FP&A and strategy support for your startup. 65-80% AI-powered, human-refined.</p>
-        </a>
-        <a href="/careers/" class="related-link-card">
-          <h3>Join Our Team</h3>
-          <p>Interested in becoming an AI-native operator? We're hiring fractional finance and strategy experts.</p>
-        </a>
+  <!-- 1-on-1 Sessions & Model Building -->
+  <style>
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  .session-card {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.5rem;
+    background: var(--paper);
+    transition: border-color 0.3s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .session-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .session-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+  .session-card p {
+    font-size: 0.9rem;
+    color: var(--dim);
+    flex: 1;
+  }
+  .session-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .session-badge {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--gold);
+    background: rgba(200,164,90,0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+  }
+  .session-price {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .session-card .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+  </style>
+  <section id="sessions" class="svc-section">
+    <div class="svc-inner">
+      <h2 class="section-title">1-on-1 Sessions & Model Building</h2>
+      <p class="section-subtitle">Direct guidance on your financial model from someone who has built and raised on them</p>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <h3>Intro Call</h3>
+          <p>30-minute session. Understand where your model stands and what needs work. Includes immediate feedback and next steps.</p>
+          <div class="session-meta">
+            <span class="session-badge">30 min</span>
+            <span class="session-price">$250</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
+        <div class="session-card">
+          <h3>Working Session</h3>
+          <p>60-minute deep-dive. Build or refine your model with real-time expert guidance. Recording and notes provided afterward.</p>
+          <div class="session-meta">
+            <span class="session-badge">60 min</span>
+            <span class="session-price">$500</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
+        <div class="session-card">
+          <h3>Pre-Seed Model Build</h3>
+          <p>Lean model for early validation. Revenue drivers, basic COGS, headcount plan, and runway projection.</p>
+          <div class="session-meta">
+            <span class="session-badge">Full build</span>
+            <span class="session-price">$1,000</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
+        <div class="session-card">
+          <h3>Seed Model Build</h3>
+          <p>Comprehensive model with unit economics, scenario planning, and investor-ready P&L and cash flow.</p>
+          <div class="session-meta">
+            <span class="session-badge">Full build</span>
+            <span class="session-price">$2,000</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
+        <div class="session-card">
+          <h3>Series A Model Build</h3>
+          <p>Advanced model with balance sheet, cash flow statement, departmental headcount, and sensitivity analysis.</p>
+          <div class="session-meta">
+            <span class="session-badge">Full build</span>
+            <span class="session-price">$4,000</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
+        <div class="session-card">
+          <h3>Series B Model Build</h3>
+          <p>Full P&L, balance sheet, and cash flow with detailed hiring plans and department-level budgeting.</p>
+          <div class="session-meta">
+            <span class="session-badge">Full build</span>
+            <span class="session-price">$8,000</span>
+          </div>
+          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
+        </div>
       </div>
     </div>
   </section>
