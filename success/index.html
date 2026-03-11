@@ -86,60 +86,7 @@
 <script src="/shared/cart.js" defer></script>
 <script>
 (function() {
-  var PRODUCT_DOWNLOADS = {
-    'book': {
-      name: 'Raise Ready Book',
-      description: 'The complete ebook in PDF format.',
-      files: [
-        { label: 'Download PDF', url: '/dl/r7k2m9x/Raise_Ready_Book.pdf' }
-      ]
-    },
-    'exercises': {
-      name: 'Exercise Files',
-      description: 'Hands-on exercise templates and workbooks.',
-      files: [
-        { label: 'Exercise Templates', url: '/dl/e4j8n3w/Raise_Ready_Exercise_Templates.xlsx' },
-        { label: 'Exercises 051-075', url: '/dl/e4j8n3w/Raise_Ready_Exercises_051_075.xlsx' }
-      ]
-    },
-    'bundle': {
-      name: 'Complete Bundle',
-      description: 'The full book plus all exercise files.',
-      files: [
-        { label: 'Download Book (PDF)', url: '/dl/r7k2m9x/Raise_Ready_Book.pdf' },
-        { label: 'Exercise Templates', url: '/dl/e4j8n3w/Raise_Ready_Exercise_Templates.xlsx' },
-        { label: 'Exercises 051-075', url: '/dl/e4j8n3w/Raise_Ready_Exercises_051_075.xlsx' }
-      ]
-    },
-    'tpl-preseed': {
-      name: 'Pre-Seed Financial Model',
-      description: 'Revenue drivers, basic COGS, headcount plan, and 18-month runway projection.',
-      files: [
-        { label: 'Download .xlsx', url: '/dl/p1s6v0y/PreSeed_Financial_Model.xlsx' }
-      ]
-    },
-    'tpl-seed': {
-      name: 'Seed Financial Model',
-      description: 'Cohort-based revenue, channel CAC, three scenarios, full P&L and cash flow.',
-      files: [
-        { label: 'Download .xlsx', url: '/dl/s3d7g5h/Seed_Financial_Model.xlsx' }
-      ]
-    },
-    'tpl-seriesa': {
-      name: 'Series A Financial Model',
-      description: 'Multi-product revenue, departmental headcount, unit economics by segment.',
-      files: [
-        { label: 'Download .xlsx', url: '/dl/a8f2k6t/SeriesA_Financial_Model.xlsx' }
-      ]
-    },
-    'tpl-seriesb': {
-      name: 'Series B Financial Model',
-      description: 'Multi-geography, multi-currency, M&A tabs, LTV cohort waterfall, five-year plan.',
-      files: [
-        { label: 'Download .xlsx', url: '/dl/b5m9q1z/SeriesB_Financial_Model.xlsx' }
-      ]
-    }
-  };
+  var PRODUCT_DOWNLOADS = {};
 
   var params = new URLSearchParams(window.location.search);
   var productStr = params.get('products') || '';
