@@ -21,7 +21,6 @@
             <a href="/templates/">All Templates</a>
           </div>
         </div>
-        <a href="/services/" class="nav-tab" data-page="services">Services</a>
         <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
@@ -34,7 +33,6 @@
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/careers/" class="nav-tab" data-page="careers">Careers</a>
       </div>
       <div class="nav-right">
         <button class="nbtn cart-btn" onclick="toggleCart()" style="position:relative">
@@ -53,11 +51,9 @@
     <footer>
       <div class="footer-links">
         <a href="/book/">Book & Extras</a>
-        <a href="/services/">Services</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/templates/">Templates</a>
-        <a href="/careers/">Careers</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </div>
