@@ -18,20 +18,9 @@
             <a href="/book/">Raise Ready Book</a>
             <a href="/book/#companion">Companion Products</a>
             <a href="/book/#templates">Financial Model Templates</a>
-            <a href="/templates/">All Templates</a>
           </div>
         </div>
-        <div class="nav-dropdown">
-          <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
-          <div class="dropdown-menu">
-            <a href="/tools/#readiness">Readiness Scorecard</a>
-            <a href="/tools/#metrics">Metrics Calculators</a>
-            <a href="/tools/#financial-model">Financial Model Tools</a>
-            <a href="/tools/#cap-table">Cap Table Tools</a>
-            <a href="/tools/101-vcs-angels-cold-outreach-2026.html">101 VCs & Angels Directory</a>
-            <a href="/tools/best-business-tools-2026.html">Best Business Tools 2026</a>
-          </div>
-        </div>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
       </div>
       <div class="nav-right">
