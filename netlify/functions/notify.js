@@ -1,7 +1,7 @@
 var https = require('https');
 
 var NOTIFY_TO = 'papoutsis89@gmail.com';
-var FROM = 'Augmented <onboarding@resend.dev>';
+var FROM = 'Raise Ready <onboarding@resend.dev>';
 
 function sendEmail(subject, html) {
   if (!process.env.RESEND_API_KEY) return Promise.resolve();

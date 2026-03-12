@@ -1,6 +1,6 @@
 /**
  * cart.js - Shopping cart functionality
- * Manages cart state and UI for the Augmented website
+ * Manages cart state and UI for the Raise Ready website
  */
 
 (function() {
