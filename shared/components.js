@@ -71,6 +71,21 @@
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Inject sticky bundle bar
+    if (!document.getElementById('bundle-bar')) {
+      var bar = document.createElement('div');
+      bar.id = 'bundle-bar';
+      bar.innerHTML = '<div style="position:fixed;bottom:0;left:0;right:0;background:#08080d;border-top:1px solid rgba(200,164,90,0.3);padding:0.65rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.25rem;z-index:100;flex-wrap:wrap;" id="bundle-bar-inner">'
+        + '<span style="font-family:\'DM Mono\',monospace;font-size:0.8rem;color:rgba(242,237,228,0.7);"><strong style="color:#f2ede4;">Raise Ready Bundle</strong></span>'
+        + '<span style="font-family:\'DM Mono\',monospace;font-size:0.8rem;color:rgba(242,237,228,0.7);">Book + All Templates + Audit</span>'
+        + '<span style="font-family:\'DM Mono\',monospace;font-size:0.8rem;color:rgba(242,237,228,0.4);text-decoration:line-through;">$715</span>'
+        + '<span style="font-family:\'Instrument Serif\',serif;font-size:1.2rem;color:#c8a45a;">$499</span>'
+        + '<a href="/book/#bundle-section" style="padding:0.45rem 1.1rem;background:#c8a45a;color:#08080d;border:none;border-radius:6px;font-family:\'DM Mono\',monospace;font-size:0.8rem;font-weight:500;cursor:pointer;text-decoration:none;">Get the Bundle</a>'
+        + '<button onclick="document.getElementById(\'bundle-bar\').style.display=\'none\'" style="background:none;border:none;color:rgba(242,237,228,0.4);font-size:1.2rem;cursor:pointer;padding:0 0.25rem;line-height:1;" aria-label="Dismiss">&times;</button>'
+        + '</div>';
+      document.body.appendChild(bar);
+    }
+
     // Add labels to newsletter form inputs for accessibility
     document.querySelectorAll('.newsletter-form input[type="email"]').forEach(function(input) {
       if (!input.id) input.id = 'newsletter-email';

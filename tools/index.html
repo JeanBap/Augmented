@@ -36,6 +36,46 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <style>
+/* Email Gate Modal */
+.gate-overlay {
+  position: fixed; inset: 0; background: rgba(8,8,13,0.6); display: flex;
+  align-items: center; justify-content: center; z-index: 200; padding: 1rem;
+}
+.gate-overlay.hidden { display: none; }
+.gate-modal {
+  background: var(--paper); border-radius: 12px; max-width: 420px; width: 100%;
+  padding: 2rem; text-align: center; border: 1px solid var(--rule); position: relative;
+}
+.gate-close {
+  position: absolute; top: 0.75rem; right: 1rem; background: none; border: none;
+  font-size: 1.5rem; color: var(--mid); cursor: pointer; line-height: 1;
+}
+.gate-close:hover { color: var(--ink); }
+.gate-modal h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.gate-modal p { font-size: 0.85rem; color: var(--mid); margin-bottom: 1.25rem; line-height: 1.5; }
+.gate-input {
+  width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--rule); border-radius: 6px;
+  font-family: var(--mono); font-size: 0.85rem; background: var(--paper); color: var(--ink);
+  margin-bottom: 0.75rem; box-sizing: border-box;
+}
+.gate-input:focus { outline: none; border-color: var(--gold); }
+.gate-submit {
+  width: 100%; padding: 0.75rem; background: var(--gold); color: var(--paper); border: none;
+  border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer;
+}
+.gate-submit:hover { background: var(--gold2); }
+.gate-fine { font-family: var(--mono); font-size: 0.7rem; color: var(--mid); margin-top: 0.75rem; }
+.gate-error { color: #c0392b; font-size: 0.8rem; margin-bottom: 0.5rem; display: none; }
+.gate-success { color: var(--green, #2E7D32); font-size: 0.85rem; }
+
+/* Save Results Button (injected into each tool result) */
+.save-results-btn {
+  display: inline-block; padding: 0.55rem 1.2rem; background: transparent; color: var(--gold);
+  border: 1px solid var(--gold); border-radius: 6px; font-family: var(--mono); font-size: 0.8rem;
+  cursor: pointer; margin-top: 1rem; transition: all 0.2s;
+}
+.save-results-btn:hover { background: var(--gold); color: var(--paper); }
+
 /* Tools Page Styles */
 .tools-hero { text-align: center; padding: 4rem 2rem 2rem; }
 .tools-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
@@ -334,6 +374,14 @@
     <p>Interactive calculators built from real fundraising experience. Know your numbers before investors ask.</p>
     <div class="tool-count" id="tool-count">14 tools</div>
   </section>
+
+  <!-- Credential Bar -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2rem;padding:1rem 2rem;border-radius:10px;border:1px solid var(--rule);max-width:900px;margin:0 auto 2rem;">
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">5</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Fundraising rounds</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">7</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">VC investors</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">9-figure</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Exit to Indeed</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">14</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Free tools</div></div>
+  </div>
 
   <!-- Filter Bar -->
   <div class="filter-bar" id="filter-bar">
@@ -1285,6 +1333,25 @@
     </form>
   </section>
 
+  <!-- Email Gate Modal -->
+  <div id="email-gate" class="gate-overlay hidden">
+    <div class="gate-modal">
+      <button class="gate-close" onclick="closeGate()">&times;</button>
+      <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,164,90,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;">&#9733;</div>
+      <h3>Save Your Results</h3>
+      <p>Enter your email to save your results and receive stage-specific benchmarks.</p>
+      <div id="gate-error" class="gate-error"></div>
+      <div id="gate-success" class="gate-success" style="display:none;">
+        <p>Results saved. Check your inbox.</p>
+      </div>
+      <div id="gate-form-fields">
+        <input id="gate-email" class="gate-input" type="email" placeholder="you@startup.com">
+        <button class="gate-submit" onclick="submitGate()">Save My Results</button>
+      </div>
+      <div class="gate-fine">No spam. Unsubscribe anytime.</div>
+    </div>
+  </div>
+
 </main>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
@@ -1891,6 +1958,68 @@ function calcExit() {
   if (multiple < 1) note += ' Warning: investors lose money at this exit price.';
   document.getElementById('e-note').textContent = note;
   document.getElementById('e-results').classList.add('visible');
+}
+
+// ===== EMAIL GATE =====
+var currentGateTool = '';
+
+// Inject "Save Results" button into every tool-results div
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.tool-results').forEach(function(res) {
+    var card = res.closest('.tool-card');
+    var toolName = card ? card.querySelector('h2').textContent.trim() : 'Tool';
+    var btn = document.createElement('button');
+    btn.className = 'save-results-btn';
+    btn.textContent = 'Save Results';
+    btn.onclick = function() { openGate(toolName); };
+    res.appendChild(btn);
+  });
+});
+
+function openGate(toolName) {
+  currentGateTool = toolName;
+  document.getElementById('gate-error').style.display = 'none';
+  document.getElementById('gate-success').style.display = 'none';
+  document.getElementById('gate-form-fields').style.display = 'block';
+  document.getElementById('gate-email').value = '';
+  document.getElementById('email-gate').classList.remove('hidden');
+}
+
+function closeGate() {
+  document.getElementById('email-gate').classList.add('hidden');
+}
+
+function submitGate() {
+  var email = document.getElementById('gate-email').value.trim().toLowerCase();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('gate-error').textContent = 'Please enter a valid email.';
+    document.getElementById('gate-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('gate-error').style.display = 'none';
+  var btn = document.querySelector('.gate-submit');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+
+  fetch('/.netlify/functions/email-gate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tool: currentGateTool })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    document.getElementById('gate-form-fields').style.display = 'none';
+    document.getElementById('gate-success').style.display = 'block';
+    setTimeout(closeGate, 2000);
+  })
+  .catch(function() {
+    document.getElementById('gate-error').textContent = 'Something went wrong. Try again.';
+    document.getElementById('gate-error').style.display = 'block';
+  })
+  .finally(function() {
+    btn.textContent = 'Save My Results';
+    btn.disabled = false;
+  });
 }
 </script>
 </body>

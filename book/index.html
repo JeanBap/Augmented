@@ -204,64 +204,138 @@
     </div>
   </section>
 
-  <!-- Financial Model Templates Section -->
+  <!-- Credential Bar -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2rem;padding:1rem 2rem;border-radius:10px;border:1px solid var(--rule);max-width:900px;margin:2rem auto;">
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">5</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Fundraising rounds</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">7</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">VC investors</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">9-figure</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Exit to Indeed</div></div>
+    <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">14</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Free tools</div></div>
+  </div>
+
+  <!-- Financial Model Templates Section (Stage-Colored) -->
+  <style>
+  .tpl-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; }
+  .tpl-card { border:1px solid var(--rule); border-radius:10px; overflow:hidden; background:var(--paper); display:flex; flex-direction:column; transition:border-color 0.3s; }
+  .tpl-card:hover { border-color:var(--gold); }
+  .tpl-accent { height:4px; }
+  .tpl-body { padding:1.25rem; flex:1; display:flex; flex-direction:column; }
+  .tpl-stage { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:12px; display:inline-block; width:fit-content; }
+  .tpl-name { font-family:var(--serif); font-size:1.15rem; margin:0.5rem 0; }
+  .tpl-price-row { display:flex; align-items:baseline; gap:0.5rem; }
+  .tpl-price { font-family:var(--mono); font-size:1.3rem; font-weight:500; }
+  .tpl-price-note { font-family:var(--mono); font-size:0.65rem; color:var(--mid); }
+  .tpl-features { list-style:none; margin:1rem 0; flex:1; padding:0; }
+  .tpl-features li { font-size:0.82rem; color:var(--dim); padding:0.25rem 0 0.25rem 1.2rem; position:relative; }
+  .tpl-features li::before { content:"\2713"; position:absolute; left:0; font-weight:bold; color:var(--gold); }
+  .tpl-popular { font-family:var(--mono); font-size:0.7rem; text-align:center; padding:0.35rem; border-radius:4px; margin-bottom:0.75rem; background:#e8f5e9; color:#2E7D32; }
+  </style>
   <section id="templates" class="products-sec">
     <div class="products-inner">
       <h2 class="section-title">Financial Model Templates</h2>
       <p class="section-subtitle">Pre-built models used in the book and refined through real fundraises</p>
 
-      <div class="products-grid products-grid-4">
-        <div class="product-card">
-          <div class="product-header">
-            <h3 class="product-name">Pre-Seed Model</h3>
-            <span class="product-badge">Foundation</span>
+      <div class="tpl-grid">
+        <!-- Pre-Seed -->
+        <div class="tpl-card">
+          <div class="tpl-accent" style="background:#1565C0;"></div>
+          <div class="tpl-body">
+            <span class="tpl-stage" style="background:#e3f2fd;color:#1565C0;">Pre-Seed</span>
+            <div class="tpl-name">Foundation Model</div>
+            <div class="tpl-price-row"><span class="tpl-price">$49</span><span class="tpl-price-note">one-time</span></div>
+            <ul class="tpl-features">
+              <li>Revenue drivers</li>
+              <li>Basic COGS</li>
+              <li>Headcount plan</li>
+              <li>18-month runway</li>
+            </ul>
+            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
           </div>
-          <p class="product-description">Revenue drivers, basic COGS, headcount plan, and 18-month runway projection.</p>
-          <div class="product-pricing">
-            <div class="price-main">$49</div>
-          </div>
-          <span style="display:inline-block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.5rem 0;margin-top:0.5rem;">Coming Soon</span>
         </div>
-
-        <div class="product-card">
-          <div class="product-header">
-            <h3 class="product-name">Seed Model</h3>
-            <span class="product-badge">Growth</span>
+        <!-- Seed -->
+        <div class="tpl-card">
+          <div class="tpl-accent" style="background:#2E7D32;"></div>
+          <div class="tpl-body">
+            <span class="tpl-stage" style="background:#e8f5e9;color:#2E7D32;">Seed</span>
+            <div class="tpl-name">Growth Model</div>
+            <div class="tpl-price-row"><span class="tpl-price">$99</span><span class="tpl-price-note">one-time</span></div>
+            <ul class="tpl-features">
+              <li>Cohort-based revenue</li>
+              <li>Channel CAC</li>
+              <li>Three scenarios</li>
+              <li>Full P&L & cash flow</li>
+            </ul>
+            <div class="tpl-popular">Most Popular for First-Time Fundraisers</div>
+            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
           </div>
-          <p class="product-description">Cohort-based revenue, channel CAC, three scenarios, full P&L and cash flow.</p>
-          <div class="product-pricing">
-            <div class="price-main">$99</div>
-          </div>
-          <span style="display:inline-block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.5rem 0;margin-top:0.5rem;">Coming Soon</span>
         </div>
-
-        <div class="product-card featured">
-          <div class="product-header">
-            <h3 class="product-name">Series A Model</h3>
-            <span class="product-badge featured-badge">Popular</span>
+        <!-- Series A -->
+        <div class="tpl-card">
+          <div class="tpl-accent" style="background:var(--gold);"></div>
+          <div class="tpl-body">
+            <span class="tpl-stage" style="background:#fff8e7;color:var(--gold);">Series A</span>
+            <div class="tpl-name">Scale Model</div>
+            <div class="tpl-price-row"><span class="tpl-price">$149</span><span class="tpl-price-note">one-time</span></div>
+            <ul class="tpl-features">
+              <li>Multi-product revenue</li>
+              <li>Departmental headcount</li>
+              <li>Unit economics by segment</li>
+              <li>Sensitivity analysis</li>
+            </ul>
+            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
           </div>
-          <p class="product-description">Multi-product revenue, departmental headcount, unit economics by segment, sensitivity analysis.</p>
-          <div class="product-pricing">
-            <div class="price-main">$149</div>
-          </div>
-          <span style="display:inline-block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.5rem 0;margin-top:0.5rem;">Coming Soon</span>
         </div>
-
-        <div class="product-card">
-          <div class="product-header">
-            <h3 class="product-name">Series B Model</h3>
-            <span class="product-badge">Enterprise</span>
+        <!-- Series B -->
+        <div class="tpl-card">
+          <div class="tpl-accent" style="background:#C62828;"></div>
+          <div class="tpl-body">
+            <span class="tpl-stage" style="background:#fff0f0;color:#C62828;">Series B</span>
+            <div class="tpl-name">Enterprise Model</div>
+            <div class="tpl-price-row"><span class="tpl-price">$199</span><span class="tpl-price-note">one-time</span></div>
+            <ul class="tpl-features">
+              <li>Multi-geography</li>
+              <li>Multi-currency</li>
+              <li>M&A bolt-on tabs</li>
+              <li>LTV cohort waterfall</li>
+              <li>Balance sheet & five-year plan</li>
+            </ul>
+            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
           </div>
-          <p class="product-description">Multi-geography, multi-currency, M&A tabs, LTV cohort waterfall, balance sheet and five-year plan.</p>
-          <div class="product-pricing">
-            <div class="price-main">$199</div>
-          </div>
-          <span style="display:inline-block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.5rem 0;margin-top:0.5rem;">Coming Soon</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- $499 Bundle -->
+  <section id="bundle-section" class="products-sec">
+    <div class="products-inner">
+      <div style="border:2px solid var(--gold);border-radius:12px;overflow:hidden;max-width:640px;margin:0 auto;">
+        <div style="background:var(--gold);color:var(--paper);text-align:center;padding:0.5rem;font-family:var(--mono);font-size:0.8rem;font-weight:500;">Save over 30% vs buying separately</div>
+        <div style="padding:2rem;">
+          <div style="display:flex;align-items:baseline;justify-content:center;gap:0.75rem;margin-bottom:2rem;">
+            <span style="font-family:var(--serif);font-size:2.5rem;">$499</span>
+            <span style="font-family:var(--mono);font-size:1rem;color:var(--mid);text-decoration:line-through;">$715</span>
+            <span style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">one-time</span>
+          </div>
+          <div style="margin-bottom:2rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Raise Ready Book (16 chapters, 72 articles)</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$14.99</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Exercise Files with Solutions</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$4.99</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Pre-Seed Financial Model Template</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$49</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Seed Financial Model Template</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$99</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Series A Financial Model Template</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$149</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--rule);font-size:0.85rem;"><span>&#10003; Series B Financial Model Template</span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$199</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;font-size:0.85rem;"><span style="color:var(--gold);font-weight:600;">&#10003; Fundraise-Ready Audit <span style="font-family:var(--mono);font-size:0.65rem;background:rgba(200,164,90,0.12);padding:0.15rem 0.5rem;border-radius:10px;margin-left:0.25rem;">Bundle Exclusive</span></span><span style="font-family:var(--mono);font-size:0.8rem;color:var(--mid);">$499 value</span></div>
+          </div>
+          <span style="display:block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-align:center;padding:0.75rem 0;">Coming Soon</span>
+          <div style="text-align:center;font-family:var(--mono);font-size:0.7rem;color:var(--mid);margin-top:0.5rem;">Instant access to all templates. Audit delivered within 48 hours.</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <div style="text-align:center;font-family:var(--mono);font-size:0.7rem;color:var(--mid);">&#128737; 30-day refund guarantee</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.7rem;color:var(--mid);">&#8635; Lifetime template updates</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.7rem;color:var(--mid);">&#128274; Secure checkout</div>
+      </div>
+    </div>
+  </section>
 
   <!-- Sessions & Model Building -->
   <style>
