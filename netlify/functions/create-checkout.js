@@ -1,17 +1,51 @@
-const https = require('https');
-const crypto = require('crypto');
+var https = require('https');
 
-const ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
+var ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
+var SITE_URL = 'https://www.raisereadybook.com';
 
-// Product catalog with Stripe Price IDs (to be filled in when Stripe keys are added)
-const PRODUCTS = {
-  'book':        { name: 'Raise Ready Book',             price: 1499,  stripePriceId: null },
-  'exercises':   { name: 'Raise Ready Exercise Files',   price: 499,   stripePriceId: null },
-  'bundle':      { name: 'Raise Ready Bundle',            price: 49900, stripePriceId: null },
-  'tpl-preseed': { name: 'Pre-Seed Financial Model',     price: 4900,  stripePriceId: null },
-  'tpl-seed':    { name: 'Seed Financial Model',         price: 9900,  stripePriceId: null },
-  'tpl-seriesa': { name: 'Series A Financial Model',     price: 14900, stripePriceId: null },
-  'tpl-seriesb': { name: 'Series B Financial Model',     price: 19900, stripePriceId: null }
+var PRODUCTS = {
+  'tpl-preseed': {
+    name: 'Pre-Seed Financial Model',
+    description: '6-sheet foundation model: Assumptions, Revenue, Headcount, P&L, Cash Flow. 24-month projections.',
+    price: 4900,
+    file: '/products/23bc1ead2a64a5e1/01_PreSeed_Foundation.xlsx'
+  },
+  'tpl-seed': {
+    name: 'Seed Financial Model',
+    description: '6-sheet growth model with scenario analysis: Assumptions, Revenue, Headcount, P&L, Cash Flow. 30-month projections.',
+    price: 9900,
+    file: '/products/86a0831810349c4a/02_Seed_Growth.xlsx'
+  },
+  'tpl-seriesa': {
+    name: 'Series A Financial Model',
+    description: '10-sheet model: Assumptions, Revenue, Headcount, P&L, Cash Flow, Balance Sheet, Unit Economics, KPI Dashboard, Sensitivity. 44-month projections.',
+    price: 14900,
+    file: '/products/c814b24c455c3847/03_SeriesA_Popular.xlsx'
+  },
+  'tpl-seriesb': {
+    name: 'Series B Financial Model',
+    description: '11-sheet complete model: Assumptions, Revenue, Headcount, P&L, Cash Flow, Balance Sheet, KPI Dashboard, Cap Table, Fundraise Scenarios, Data Room. 66-month projections.',
+    price: 19900,
+    file: '/products/1d0531a7a2ccf19f/05_Complete_Everything.xlsx'
+  },
+  'book': {
+    name: 'Raise Ready Book',
+    description: '16 chapters of battle-tested fundraising knowledge.',
+    price: 1499,
+    file: null
+  },
+  'exercises': {
+    name: 'Raise Ready Exercise Files',
+    description: '15 hands-on exercises with real financial modeling scenarios.',
+    price: 499,
+    file: null
+  },
+  'bundle': {
+    name: 'Raise Ready Bundle',
+    description: 'Book + Exercises + All 4 Templates + Fundraise-Ready Audit.',
+    price: 49900,
+    file: null
+  }
 };
 
 function stripeRequest(method, path, body) {
@@ -79,16 +113,16 @@ exports.handler = async function(event) {
     return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No items provided' }) };
   }
 
-  // Validate all items exist in our catalog
-  var validItems = items.filter(function(item) { return PRODUCTS[item.id]; });
+  // Only allow products that have files ready
+  var validItems = items.filter(function(item) {
+    return PRODUCTS[item.id] && PRODUCTS[item.id].file;
+  });
   if (validItems.length === 0) {
-    return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No valid products' }) };
+    return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No purchasable products' }) };
   }
 
-  // Build product IDs string for success page
   var productIds = validItems.map(function(item) { return item.id; }).join(',');
 
-  // If Stripe is not configured, redirect directly to success page (placeholder mode)
   if (!process.env.STRIPE_SECRET_KEY) {
     return {
       statusCode: 200,
@@ -100,27 +134,23 @@ exports.handler = async function(event) {
     };
   }
 
-  // Create Stripe Checkout Session
   var lineItems = {};
   validItems.forEach(function(item, i) {
     var product = PRODUCTS[item.id];
-    var qty = Math.min(Math.max(parseInt(item.quantity) || 1, 1), 10);
-    if (product.stripePriceId) {
-      lineItems['line_items[' + i + '][price]'] = product.stripePriceId;
-      lineItems['line_items[' + i + '][quantity]'] = qty;
-    } else {
-      lineItems['line_items[' + i + '][price_data][currency]'] = 'usd';
-      lineItems['line_items[' + i + '][price_data][product_data][name]'] = product.name;
-      lineItems['line_items[' + i + '][price_data][unit_amount]'] = product.price;
-      lineItems['line_items[' + i + '][quantity]'] = qty;
-    }
+    var qty = 1;
+    lineItems['line_items[' + i + '][price_data][currency]'] = 'usd';
+    lineItems['line_items[' + i + '][price_data][product_data][name]'] = product.name;
+    lineItems['line_items[' + i + '][price_data][product_data][description]'] = product.description;
+    lineItems['line_items[' + i + '][price_data][unit_amount]'] = product.price;
+    lineItems['line_items[' + i + '][quantity]'] = qty;
   });
 
   var sessionParams = Object.assign({
     'mode': 'payment',
-    'success_url': 'https://www.raisereadybook.com/success/?session_id={CHECKOUT_SESSION_ID}&products=' + encodeURIComponent(productIds),
-    'cancel_url': 'https://www.raisereadybook.com/book/',
-    'metadata[products]': productIds
+    'success_url': SITE_URL + '/success/?session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url': SITE_URL + '/book/#templates',
+    'metadata[products]': productIds,
+    'payment_intent_data[metadata][products]': productIds
   }, lineItems);
 
   try {
@@ -128,8 +158,13 @@ exports.handler = async function(event) {
     if (result.status === 200 && result.data.url) {
       return { statusCode: 200, headers: headers, body: JSON.stringify({ url: result.data.url }) };
     }
+    console.log('Stripe error:', JSON.stringify(result.data));
     return { statusCode: 500, headers: headers, body: JSON.stringify({ error: 'Failed to create checkout session' }) };
   } catch (err) {
+    console.log('Checkout error:', err.message);
     return { statusCode: 500, headers: headers, body: JSON.stringify({ error: 'Checkout service unavailable' }) };
   }
 };
+
+// Export PRODUCTS for use by other functions
+exports.PRODUCTS = PRODUCTS;

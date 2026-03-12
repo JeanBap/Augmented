@@ -12,7 +12,7 @@
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download Your Purchase | Raise Ready</title>
+<title>Purchase Complete | Raise Ready</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,49 +22,55 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
 .success-page { min-height: 100vh; background: var(--ink, #08080d); padding: 3rem 1.5rem; }
-.success-inner { max-width: 680px; margin: 0 auto; }
-.success-icon { font-size: 3rem; margin-bottom: 1rem; }
+.success-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.success-check {
+  width: 64px; height: 64px; border-radius: 50%; background: rgba(200,164,90,0.15);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+  font-size: 2rem; color: #c8a45a;
+}
 .success-title {
   font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700;
-  color: var(--paper, #f2ede4); margin: 0 0 0.5rem 0;
+  color: var(--paper, #f2ede4); margin: 0 0 0.75rem 0;
 }
 .success-subtitle {
-  font-family: 'Instrument Serif', serif; font-size: 1.1rem;
-  color: var(--mid, #6e6a61); margin: 0 0 2rem 0;
+  font-family: 'Instrument Serif', serif; font-size: 1.15rem;
+  color: var(--mid, #6e6a61); margin: 0 0 2rem 0; line-height: 1.6;
 }
-.preview-banner {
-  padding: 0.75rem 1rem; margin-bottom: 1.5rem; border-radius: 6px;
-  background: rgba(200,164,90,0.15); border: 1px solid rgba(200,164,90,0.3);
-  font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #c8a45a;
-}
-.download-card {
-  padding: 1.25rem; margin-bottom: 0.75rem; border-radius: 8px;
+.email-box {
+  padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;
   background: rgba(242,237,228,0.05); border: 1px solid rgba(200,164,90,0.18);
+  text-align: left;
 }
-.download-card h3 {
-  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
-  color: var(--paper, #f2ede4); margin: 0 0 0.5rem 0;
+.email-box h3 {
+  font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--paper, #f2ede4); margin: 0 0 0.75rem;
 }
-.download-card p {
+.email-box p {
   font-family: 'Instrument Serif', serif; font-size: 0.9rem;
-  color: var(--mid, #6e6a61); margin: 0 0 0.75rem 0;
+  color: var(--mid, #6e6a61); margin: 0 0 0.5rem; line-height: 1.5;
 }
-.dl-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.dl-btn {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;
-  font-family: 'DM Mono', monospace; font-size: 0.8rem; transition: all 0.2s;
-  background: #c8a45a; color: #08080d; font-weight: 500;
+.email-box ul {
+  list-style: none; padding: 0; margin: 0.75rem 0 0;
 }
-.dl-btn:hover { background: #e5c97e; }
+.email-box ul li {
+  font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--paper, #f2ede4);
+  padding: 0.4rem 0; border-bottom: 1px solid rgba(200,164,90,0.1);
+}
+.email-box ul li::before { content: "\2713\00a0"; color: #c8a45a; }
+.help-text {
+  font-family: 'DM Mono', monospace; font-size: 0.78rem;
+  color: var(--dim, #3a3830); margin-top: 1.5rem; line-height: 1.6;
+}
+.help-text a { color: #c8a45a; }
 .back-link {
   display: inline-block; margin-top: 2rem; font-family: 'DM Mono', monospace;
   font-size: 0.85rem; color: #c8a45a; text-decoration: none;
 }
 .back-link:hover { text-decoration: underline; }
-.no-products {
-  font-family: 'Instrument Serif', serif; font-size: 1.1rem;
-  color: var(--mid, #6e6a61); text-align: center; padding: 3rem 0;
+.preview-banner {
+  padding: 0.75rem 1rem; margin-bottom: 1.5rem; border-radius: 6px;
+  background: rgba(200,164,90,0.15); border: 1px solid rgba(200,164,90,0.3);
+  font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #c8a45a;
 }
 </style>
 <script
@@ -78,57 +84,60 @@
 <div id="site-nav"></div>
 <main id="main" class="success-page">
   <div class="success-inner">
-    <div class="success-icon">&#10003;</div>
-    <h1 class="success-title">Thank you for your purchase!</h1>
-    <p class="success-subtitle">Your downloads are ready. Save these files to your device.</p>
+    <div class="success-check">&#10003;</div>
+    <h1 class="success-title">Purchase complete!</h1>
+    <p class="success-subtitle">Your download links have been sent to your email.</p>
+
     <div id="preview-banner" class="preview-banner" style="display:none;">
-      Preview mode: Stripe checkout is not yet active. These are your download links.
+      Preview mode: Stripe is not yet active. No payment was processed.
     </div>
-    <div id="downloads"></div>
+
+    <div class="email-box">
+      <h3>What happens next</h3>
+      <p>Check your inbox for an email from Raise Ready with your personal download links. Links are valid for 72 hours.</p>
+      <div id="product-list"></div>
+    </div>
+
+    <div class="email-box">
+      <h3>Getting started</h3>
+      <p>Open your template in Excel or Google Sheets. Start on the ASSUMPTIONS tab and work through the yellow highlighted cells. Every other sheet auto-calculates from your inputs.</p>
+    </div>
+
+    <p class="help-text">
+      Didn't receive an email? Check your spam folder, or contact <a href="mailto:yanni@raisereadybook.com">yanni@raisereadybook.com</a>
+    </p>
     <a href="/book/" class="back-link">&larr; Back to Book & Extras</a>
   </div>
 </main>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
-<script src="/shared/cart.js" defer></script>
 <script>
 (function() {
-  var PRODUCT_DOWNLOADS = {};
-
+  var NAMES = {
+    'tpl-preseed': 'Pre-Seed Financial Model',
+    'tpl-seed': 'Seed Financial Model',
+    'tpl-seriesa': 'Series A Financial Model',
+    'tpl-seriesb': 'Series B Financial Model'
+  };
   var params = new URLSearchParams(window.location.search);
-  var productStr = params.get('products') || '';
   var mode = params.get('mode') || '';
-  var productIds = productStr.split(',').filter(function(id) { return id && PRODUCT_DOWNLOADS[id]; });
+  var products = (params.get('products') || '').split(',').filter(function(k) { return NAMES[k]; });
 
   if (mode === 'preview') {
     document.getElementById('preview-banner').style.display = 'block';
   }
 
-  var container = document.getElementById('downloads');
-  if (productIds.length === 0) {
-    container.innerHTML = '<div class="no-products">No products found. If you believe this is an error, please contact yanni@raisereadybook.com</div>';
-    return;
+  if (products.length > 0) {
+    var html = '<ul>';
+    products.forEach(function(k) { html += '<li>' + NAMES[k] + '</li>'; });
+    html += '</ul>';
+    document.getElementById('product-list').innerHTML = html;
   }
 
-  // GA purchase event
-  if (typeof gtag === 'function') {
-    var gaItems = productIds.map(function(id) { return { item_id: id, item_name: PRODUCT_DOWNLOADS[id].name }; });
+  if (typeof gtag === 'function' && products.length > 0) {
+    var gaItems = products.map(function(id) { return { item_id: id, item_name: NAMES[id] }; });
     gtag('event', 'purchase', { currency: 'USD', items: gaItems });
   }
-
-  var html = '';
-  productIds.forEach(function(id) {
-    var product = PRODUCT_DOWNLOADS[id];
-    html += '<div class="download-card">';
-    html += '<h3>' + product.name + '</h3>';
-    html += '<p>' + product.description + '</p>';
-    html += '<div class="dl-links">';
-    product.files.forEach(function(file) {
-      html += '<a href="' + file.url + '" class="dl-btn" download>&#8595; ' + file.label + '</a>';
-    });
-    html += '</div></div>';
-  });
-  container.innerHTML = html;
 })();
 </script>
 </body>

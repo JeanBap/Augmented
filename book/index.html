@@ -229,6 +229,13 @@
   .tpl-features li { font-size:0.82rem; color:var(--dim); padding:0.25rem 0 0.25rem 1.2rem; position:relative; }
   .tpl-features li::before { content:"\2713"; position:absolute; left:0; font-weight:bold; color:var(--gold); }
   .tpl-popular { font-family:var(--mono); font-size:0.7rem; text-align:center; padding:0.35rem; border-radius:4px; margin-bottom:0.75rem; background:#e8f5e9; color:#2E7D32; }
+  .tpl-buy-btn {
+    display:block; width:100%; padding:0.65rem; margin-top:auto; border:none; border-radius:6px; cursor:pointer;
+    background:var(--gold); color:var(--ink); font-family:var(--mono); font-size:0.8rem; font-weight:500;
+    letter-spacing:0.05em; transition:background 0.2s;
+  }
+  .tpl-buy-btn:hover { background:#e5c97e; }
+  .tpl-buy-btn:disabled { opacity:0.6; cursor:wait; }
   </style>
   <section id="templates" class="products-sec">
     <div class="products-inner">
@@ -244,12 +251,12 @@
             <div class="tpl-name">Foundation Model</div>
             <div class="tpl-price-row"><span class="tpl-price">$49</span><span class="tpl-price-note">one-time</span></div>
             <ul class="tpl-features">
-              <li>Revenue drivers</li>
-              <li>Basic COGS</li>
-              <li>Headcount plan</li>
-              <li>18-month runway</li>
+              <li>6 sheets: Assumptions to Cash Flow</li>
+              <li>Revenue drivers &amp; headcount plan</li>
+              <li>24-month projections</li>
+              <li>Yellow-cell inputs, everything else auto-calculates</li>
             </ul>
-            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
+            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-preseed')">Buy Now</button>
           </div>
         </div>
         <!-- Seed -->
@@ -260,13 +267,13 @@
             <div class="tpl-name">Growth Model</div>
             <div class="tpl-price-row"><span class="tpl-price">$99</span><span class="tpl-price-note">one-time</span></div>
             <ul class="tpl-features">
-              <li>Cohort-based revenue</li>
-              <li>Channel CAC</li>
-              <li>Three scenarios</li>
-              <li>Full P&L & cash flow</li>
+              <li>6 sheets with scenario analysis</li>
+              <li>Three growth scenarios (base/bull/bear)</li>
+              <li>30-month projections</li>
+              <li>Full P&amp;L &amp; cash flow with runway</li>
             </ul>
             <div class="tpl-popular">Most Popular for First-Time Fundraisers</div>
-            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
+            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-seed')">Buy Now</button>
           </div>
         </div>
         <!-- Series A -->
@@ -277,12 +284,12 @@
             <div class="tpl-name">Scale Model</div>
             <div class="tpl-price-row"><span class="tpl-price">$149</span><span class="tpl-price-note">one-time</span></div>
             <ul class="tpl-features">
-              <li>Multi-product revenue</li>
-              <li>Departmental headcount</li>
-              <li>Unit economics by segment</li>
-              <li>Sensitivity analysis</li>
+              <li>10 sheets incl. Balance Sheet &amp; Unit Economics</li>
+              <li>Marketplace + SaaS dual revenue</li>
+              <li>KPI Dashboard &amp; sensitivity analysis</li>
+              <li>44-month projections</li>
             </ul>
-            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
+            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-seriesa')">Buy Now</button>
           </div>
         </div>
         <!-- Series B -->
@@ -290,16 +297,15 @@
           <div class="tpl-accent" style="background:#C62828;"></div>
           <div class="tpl-body">
             <span class="tpl-stage" style="background:#fff0f0;color:#C62828;">Series B</span>
-            <div class="tpl-name">Enterprise Model</div>
+            <div class="tpl-name">Complete Model</div>
             <div class="tpl-price-row"><span class="tpl-price">$199</span><span class="tpl-price-note">one-time</span></div>
             <ul class="tpl-features">
-              <li>Multi-geography</li>
-              <li>Multi-currency</li>
-              <li>M&A bolt-on tabs</li>
-              <li>LTV cohort waterfall</li>
-              <li>Balance sheet & five-year plan</li>
+              <li>11 sheets: everything in Series A plus more</li>
+              <li>Cap table &amp; fundraise scenario planner</li>
+              <li>Data room checklist &amp; metrics</li>
+              <li>66-month projections</li>
             </ul>
-            <span style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Coming Soon</span>
+            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-seriesb')">Buy Now</button>
           </div>
         </div>
       </div>
@@ -465,6 +471,32 @@
 </main>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
-<script src="/shared/cart.js" defer></script>
+<script>
+function buyTemplate(productId) {
+  var btn = event.target;
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  fetch('/.netlify/functions/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ items: [{ id: productId }] })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('Checkout unavailable. Please try again or contact yanni@raisereadybook.com');
+      btn.disabled = false;
+      btn.textContent = 'Buy Now';
+    }
+  })
+  .catch(function() {
+    alert('Connection error. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Buy Now';
+  });
+}
+</script>
 </body>
 </html>
