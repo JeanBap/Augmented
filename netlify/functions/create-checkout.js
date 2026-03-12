@@ -7,7 +7,7 @@ const ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
 const PRODUCTS = {
   'book':        { name: 'Raise Ready Book',             price: 1499,  stripePriceId: null },
   'exercises':   { name: 'Raise Ready Exercise Files',   price: 499,   stripePriceId: null },
-  'bundle':      { name: 'Raise Ready Complete Bundle',  price: 1799,  stripePriceId: null },
+  'bundle':      { name: 'Raise Ready Bundle',            price: 49900, stripePriceId: null },
   'tpl-preseed': { name: 'Pre-Seed Financial Model',     price: 4900,  stripePriceId: null },
   'tpl-seed':    { name: 'Seed Financial Model',         price: 9900,  stripePriceId: null },
   'tpl-seriesa': { name: 'Series A Financial Model',     price: 14900, stripePriceId: null },

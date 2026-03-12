@@ -42,12 +42,11 @@
         <a href="/book/">Book & Extras</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
-        <a href="/templates/">Templates</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </div>
       <span>&copy; <span class="footer-year"></span> Augmented</span>
-      <span>AI-Native Fractional Talent</span>
+      <span>Fundraising Intelligence for Founders</span>
       <span>yanni@raisereadybook.com</span>
     </footer>
   `;
