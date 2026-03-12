@@ -469,17 +469,66 @@
   </section>
 
 </main>
+
+<!-- Email capture modal -->
+<div id="email-gate" style="display:none;position:fixed;inset:0;background:rgba(8,8,13,0.85);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:var(--paper);border-radius:12px;padding:2rem;max-width:400px;width:90%;position:relative;">
+    <button onclick="closeEmailGate()" style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;font-size:1.5rem;color:var(--mid);cursor:pointer;">&times;</button>
+    <h3 style="font-family:var(--serif);font-size:1.4rem;margin:0 0 0.25rem;">Almost there!</h3>
+    <p style="font-family:var(--mono);font-size:0.78rem;color:var(--dim);margin:0 0 1.25rem;">Enter your email so we can send you the download link after purchase.</p>
+    <input id="gate-email" type="email" placeholder="you@company.com" style="width:100%;padding:0.7rem 0.9rem;border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:0.85rem;box-sizing:border-box;margin-bottom:0.75rem;background:#fff;">
+    <div id="gate-error" style="display:none;font-family:var(--mono);font-size:0.75rem;color:#C62828;margin-bottom:0.5rem;"></div>
+    <button id="gate-submit" onclick="submitEmailGate()" style="width:100%;padding:0.7rem;border:none;border-radius:6px;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:0.85rem;font-weight:500;cursor:pointer;">Continue to Checkout</button>
+    <p style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin:0.75rem 0 0;text-align:center;">We'll email your download links here. No spam.</p>
+  </div>
+</div>
+
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 <script>
+var pendingProductId = null;
+var pendingBtn = null;
+
 function buyTemplate(productId) {
-  var btn = event.target;
-  btn.disabled = true;
-  btn.textContent = 'Processing...';
+  pendingProductId = productId;
+  pendingBtn = event.target;
+  document.getElementById('gate-email').value = '';
+  document.getElementById('gate-error').style.display = 'none';
+  document.getElementById('email-gate').style.display = 'flex';
+  document.getElementById('gate-email').focus();
+}
+
+function closeEmailGate() {
+  document.getElementById('email-gate').style.display = 'none';
+  pendingProductId = null;
+  pendingBtn = null;
+}
+
+function submitEmailGate() {
+  var email = document.getElementById('gate-email').value.trim();
+  var errorEl = document.getElementById('gate-error');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorEl.textContent = 'Please enter a valid email address.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  errorEl.style.display = 'none';
+  var submitBtn = document.getElementById('gate-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Processing...';
+
+  // Save email as lead (fire-and-forget)
+  fetch('/.netlify/functions/email-gate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tool: 'purchase-' + pendingProductId })
+  }).catch(function() {});
+
+  // Create checkout with email
   fetch('/.netlify/functions/create-checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: productId }] })
+    body: JSON.stringify({ items: [{ id: pendingProductId }], email: email })
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
@@ -487,16 +536,25 @@ function buyTemplate(productId) {
       window.location.href = data.url;
     } else {
       alert('Checkout unavailable. Please try again or contact yanni@raisereadybook.com');
-      btn.disabled = false;
-      btn.textContent = 'Buy Now';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Continue to Checkout';
     }
   })
   .catch(function() {
     alert('Connection error. Please try again.');
-    btn.disabled = false;
-    btn.textContent = 'Buy Now';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Continue to Checkout';
   });
 }
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeEmailGate();
+});
+// Close on backdrop click
+document.getElementById('email-gate').addEventListener('click', function(e) {
+  if (e.target === this) closeEmailGate();
+});
 </script>
 </body>
 </html>

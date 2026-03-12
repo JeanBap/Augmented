@@ -145,6 +145,7 @@ exports.handler = async function(event) {
     lineItems['line_items[' + i + '][quantity]'] = qty;
   });
 
+  var customerEmail = body.email;
   var sessionParams = Object.assign({
     'mode': 'payment',
     'success_url': SITE_URL + '/success/?session_id={CHECKOUT_SESSION_ID}',
@@ -152,6 +153,9 @@ exports.handler = async function(event) {
     'metadata[products]': productIds,
     'payment_intent_data[metadata][products]': productIds
   }, lineItems);
+  if (customerEmail) {
+    sessionParams['customer_email'] = customerEmail;
+  }
 
   try {
     var result = await stripeRequest('POST', '/v1/checkout/sessions', sessionParams);
