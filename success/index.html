@@ -67,6 +67,22 @@
   font-size: 0.85rem; color: #c8a45a; text-decoration: none;
 }
 .back-link:hover { text-decoration: underline; }
+.dl-btn {
+  display: inline-block; background: #c8a45a; color: #08080d; padding: 10px 20px;
+  border-radius: 6px; text-decoration: none; font-family: 'DM Mono', monospace;
+  font-size: 0.85rem; font-weight: 700; margin: 0.3rem 0; width: 100%; box-sizing: border-box;
+  text-align: center; transition: opacity 0.2s;
+}
+.dl-btn:hover { opacity: 0.85; }
+.dl-item { margin-bottom: 0.5rem; }
+.dl-item-name {
+  font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--paper, #f2ede4);
+  margin: 0 0 0.25rem;
+}
+.dl-loading {
+  font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--mid, #6e6a61);
+  padding: 1rem 0;
+}
 .preview-banner {
   padding: 0.75rem 1rem; margin-bottom: 1.5rem; border-radius: 6px;
   background: rgba(200,164,90,0.15); border: 1px solid rgba(200,164,90,0.3);
@@ -86,16 +102,15 @@
   <div class="success-inner">
     <div class="success-check">&#10003;</div>
     <h1 class="success-title">Purchase complete!</h1>
-    <p class="success-subtitle">Your download links have been sent to your email.</p>
+    <p class="success-subtitle">Download your templates below. We also sent the links to your email.</p>
 
     <div id="preview-banner" class="preview-banner" style="display:none;">
       Preview mode: Stripe is not yet active. No payment was processed.
     </div>
 
-    <div class="email-box">
-      <h3>What happens next</h3>
-      <p>Check your inbox for an email from Raise Ready with your personal download links. Links are valid for 72 hours.</p>
-      <div id="product-list"></div>
+    <div class="email-box" id="download-box">
+      <h3>Your downloads</h3>
+      <div id="download-links"><p class="dl-loading">Loading your download links...</p></div>
     </div>
 
     <div class="email-box">
@@ -104,7 +119,7 @@
     </div>
 
     <p class="help-text">
-      Didn't receive an email? Check your spam folder, or contact <a href="mailto:yanni@raisereadybook.com">yanni@raisereadybook.com</a>
+      Links expire in 72 hours. We also emailed them to you. Need help? Contact <a href="mailto:yanni@raisereadybook.com">yanni@raisereadybook.com</a>
     </p>
     <a href="/book/" class="back-link">&larr; Back to Book & Extras</a>
   </div>
@@ -113,31 +128,44 @@
 <script src="/shared/components.js" defer></script>
 <script>
 (function() {
-  var NAMES = {
-    'tpl-preseed': 'Pre-Seed Financial Model',
-    'tpl-seed': 'Seed Financial Model',
-    'tpl-seriesa': 'Series A Financial Model',
-    'tpl-seriesb': 'Series B Financial Model'
-  };
   var params = new URLSearchParams(window.location.search);
   var mode = params.get('mode') || '';
-  var products = (params.get('products') || '').split(',').filter(function(k) { return NAMES[k]; });
+  var sessionId = params.get('session_id') || '';
+  var products = (params.get('products') || '').split(',').filter(Boolean);
 
   if (mode === 'preview') {
     document.getElementById('preview-banner').style.display = 'block';
+    document.getElementById('download-links').innerHTML = '<p class="dl-loading">Preview mode: no downloads available.</p>';
+    return;
   }
 
-  if (products.length > 0) {
-    var html = '<ul>';
-    products.forEach(function(k) { html += '<li>' + NAMES[k] + '</li>'; });
-    html += '</ul>';
-    document.getElementById('product-list').innerHTML = html;
+  if (!sessionId) {
+    document.getElementById('download-links').innerHTML = '<p class="dl-loading">No session found. Check your email for download links.</p>';
+    return;
   }
 
-  if (typeof gtag === 'function' && products.length > 0) {
-    var gaItems = products.map(function(id) { return { item_id: id, item_name: NAMES[id] }; });
-    gtag('event', 'purchase', { currency: 'USD', items: gaItems });
-  }
+  fetch('/.netlify/functions/get-downloads?session_id=' + encodeURIComponent(sessionId))
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.downloads || data.downloads.length === 0) {
+        document.getElementById('download-links').innerHTML = '<p class="dl-loading">Download links are being prepared. Check your email shortly.</p>';
+        return;
+      }
+      var html = '';
+      var gaItems = [];
+      data.downloads.forEach(function(d) {
+        html += '<div class="dl-item"><p class="dl-item-name">' + d.name + '</p>'
+          + '<a href="' + d.url + '" class="dl-btn">Download .xlsx</a></div>';
+        gaItems.push({ item_id: d.id, item_name: d.name });
+      });
+      document.getElementById('download-links').innerHTML = html;
+      if (typeof gtag === 'function') {
+        gtag('event', 'purchase', { currency: 'USD', items: gaItems });
+      }
+    })
+    .catch(function() {
+      document.getElementById('download-links').innerHTML = '<p class="dl-loading">Could not load downloads. Check your email for the links.</p>';
+    });
 })();
 </script>
 </body>
