@@ -4,10 +4,9 @@ var https = require('https');
 var SITE_URL = 'https://www.raisereadybook.com';
 
 var FILES = {
-  'tpl-preseed': { name: 'PreSeed_Foundation.xlsx', path: '/products/23bc1ead2a64a5e1/01_PreSeed_Foundation.xlsx' },
-  'tpl-seed':    { name: 'Seed_Growth.xlsx',        path: '/products/86a0831810349c4a/02_Seed_Growth.xlsx' },
-  'tpl-seriesa': { name: 'SeriesA_Popular.xlsx',     path: '/products/c814b24c455c3847/03_SeriesA_Popular.xlsx' },
-  'tpl-seriesb': { name: 'Complete_Everything.xlsx',  path: '/products/1d0531a7a2ccf19f/05_Complete_Everything.xlsx' }
+  'book':                 { name: 'Raise_Ready_Book.pdf',          path: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf',          mime: 'application/pdf' },
+  'tpl-complete':         { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
+  'tpl-complete-support': { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
 };
 
 exports.handler = async function(event) {
@@ -58,7 +57,7 @@ exports.handler = async function(event) {
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'Content-Type': FILES[productKey].mime || 'application/octet-stream',
         'Content-Disposition': 'attachment; filename="' + fileName + '"',
         'Cache-Control': 'no-store'
       },

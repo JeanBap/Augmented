@@ -4,47 +4,23 @@ var ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
 var SITE_URL = 'https://www.raisereadybook.com';
 
 var PRODUCTS = {
-  'tpl-preseed': {
-    name: 'Pre-Seed Financial Model',
-    description: '6-sheet foundation model: Assumptions, Revenue, Headcount, P&L, Cash Flow. 24-month projections.',
-    price: 4900,
-    file: '/products/23bc1ead2a64a5e1/01_PreSeed_Foundation.xlsx'
-  },
-  'tpl-seed': {
-    name: 'Seed Financial Model',
-    description: '6-sheet growth model with scenario analysis: Assumptions, Revenue, Headcount, P&L, Cash Flow. 30-month projections.',
-    price: 9900,
-    file: '/products/86a0831810349c4a/02_Seed_Growth.xlsx'
-  },
-  'tpl-seriesa': {
-    name: 'Series A Financial Model',
-    description: '10-sheet model: Assumptions, Revenue, Headcount, P&L, Cash Flow, Balance Sheet, Unit Economics, KPI Dashboard, Sensitivity. 44-month projections.',
-    price: 14900,
-    file: '/products/c814b24c455c3847/03_SeriesA_Popular.xlsx'
-  },
-  'tpl-seriesb': {
-    name: 'Series B Financial Model',
-    description: '11-sheet complete model: Assumptions, Revenue, Headcount, P&L, Cash Flow, Balance Sheet, KPI Dashboard, Cap Table, Fundraise Scenarios, Data Room. 66-month projections.',
-    price: 19900,
-    file: '/products/1d0531a7a2ccf19f/05_Complete_Everything.xlsx'
-  },
   'book': {
     name: 'Raise Ready Book',
-    description: '16 chapters of battle-tested fundraising knowledge.',
-    price: 1499,
-    file: null
+    description: '16 chapters of battle-tested fundraising knowledge. Financial modeling, unit economics, fundraising strategy, and exit planning.',
+    price: 2999,
+    file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf'
   },
-  'exercises': {
-    name: 'Raise Ready Exercise Files',
-    description: '15 hands-on exercises with real financial modeling scenarios.',
-    price: 499,
-    file: null
+  'tpl-complete': {
+    name: 'Complete Financial Model Template',
+    description: '11-sheet model: Assumptions, Revenue, Headcount, P&L, Cash Flow, Balance Sheet, KPI Dashboard, Cap Table, Fundraise Scenarios, Data Room. 66-month projections.',
+    price: 9900,
+    file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx'
   },
-  'bundle': {
-    name: 'Raise Ready Bundle',
-    description: 'Book + Exercises + All 4 Templates + Fundraise-Ready Audit.',
-    price: 49900,
-    file: null
+  'tpl-complete-support': {
+    name: 'Complete Financial Model + 1hr Video Support',
+    description: '11-sheet complete model with 66-month projections, plus a 1-hour video walkthrough session to customize it for your business.',
+    price: 29900,
+    file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx'
   }
 };
 

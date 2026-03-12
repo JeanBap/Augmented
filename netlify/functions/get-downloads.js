@@ -4,10 +4,9 @@ var https = require('https');
 var SITE_URL = 'https://www.raisereadybook.com';
 
 var PRODUCTS = {
-  'tpl-preseed': { name: 'Pre-Seed Financial Model' },
-  'tpl-seed':    { name: 'Seed Financial Model' },
-  'tpl-seriesa': { name: 'Series A Financial Model' },
-  'tpl-seriesb': { name: 'Series B Financial Model' }
+  'book':                 { name: 'Raise Ready Book' },
+  'tpl-complete':         { name: 'Complete Financial Model Template' },
+  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support' }
 };
 
 function stripeGet(path) {

@@ -6,10 +6,9 @@ var FROM_EMAIL = 'Raise Ready <onboarding@resend.dev>';
 var ADMIN_EMAIL = 'papoutsis89@gmail.com';
 
 var PRODUCTS = {
-  'tpl-preseed': { name: 'Pre-Seed Financial Model', file: '/products/23bc1ead2a64a5e1/01_PreSeed_Foundation.xlsx' },
-  'tpl-seed':    { name: 'Seed Financial Model',     file: '/products/86a0831810349c4a/02_Seed_Growth.xlsx' },
-  'tpl-seriesa': { name: 'Series A Financial Model',  file: '/products/c814b24c455c3847/03_SeriesA_Popular.xlsx' },
-  'tpl-seriesb': { name: 'Series B Financial Model',  file: '/products/1d0531a7a2ccf19f/05_Complete_Everything.xlsx' }
+  'book':                 { name: 'Raise Ready Book',                          file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf' },
+  'tpl-complete':         { name: 'Complete Financial Model Template',         file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' },
+  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' }
 };
 
 function verifySignature(payload, sigHeader, secret) {
