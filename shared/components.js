@@ -15,7 +15,8 @@
         <div class="nav-dropdown">
           <a href="/book/" class="nav-tab" data-page="book">Books & Extras</a>
           <div class="dropdown-menu">
-            <a href="/book/">Raise Ready Book</a>
+            <a href="/book/#start-ready">Start Ready Book</a>
+            <a href="/book/#raise-ready">Raise Ready Book</a>
             <a href="/book/#exit-ready">Exit Ready Book</a>
             <a href="/book/#templates">Financial Model Template</a>
             <a href="/book/#sessions">Sessions & Model Building</a>

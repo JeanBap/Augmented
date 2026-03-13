@@ -4,6 +4,12 @@ var ALLOWED_ORIGIN = 'https://www.raisereadybook.com';
 var SITE_URL = 'https://www.raisereadybook.com';
 
 var PRODUCTS = {
+  'start-book': {
+    name: 'Start Ready Book',
+    description: 'The personal finance playbook for your first decade of adult life. Budgeting, debt, credit, taxes, investing, insurance, real estate, and the bridge to founder life. 25 chapters across 6 parts.',
+    price: 999,
+    file: '/products/a7e2f19d3b064c81/Start_Ready_Book.pdf'
+  },
   'book': {
     name: 'Raise Ready Book',
     description: 'The operator-led guide to building a financial model that closes rounds. Fundraising dynamics, driver-based modeling, unit economics, and post-round operations.',
