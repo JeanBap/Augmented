@@ -207,8 +207,8 @@ function modelOZ() {
   }
 
   const totalTaxRate = fedTax + stateTax;
-  const immediate税 = capitalGain * totalTaxRate;
-  const netAfterTax = capitalGain - immediate税;
+  const immediateTax = capitalGain * totalTaxRate;
+  const netAfterTax = capitalGain - immediateTax;
 
   // Scenario 1: Pay tax now and invest remainder
   const s1FutureValue = netAfterTax * Math.pow(1 + annualReturn, holdingPeriod);
@@ -216,7 +216,7 @@ function modelOZ() {
   // Scenario 2: Defer tax with OZ
   // Tax is deferred until end of 2026 (worst case), then re-invested
   // If held 10+ years, OZ appreciation is tax-free
-  const deferredTax = immediate税; // Same as above
+  const deferredTax = immediateTax; // Same as above
   const invested = capitalGain; // Full amount invested
   const futureOZValue = invested * Math.pow(1 + annualReturn, holdingPeriod);
   const ozGain = futureOZValue - invested;
@@ -245,7 +245,7 @@ function modelOZ() {
 
   // Scenario 1
   document.getElementById('s1-gain').textContent = fmt(capitalGain);
-  document.getElementById('s1-tax').textContent = fmt(immediate税);
+  document.getElementById('s1-tax').textContent = fmt(immediateTax);
   document.getElementById('s1-net').textContent = fmt(netAfterTax);
   document.getElementById('s1-future').textContent = fmt(s1FutureValue);
 
@@ -274,7 +274,7 @@ function modelOZ() {
 
   const details = `<strong>Key Findings:</strong><br />
     Original capital gain: ${fmt(capitalGain)}<br />
-    Immediate tax (${(totalTaxRate*100).toFixed(1)}%): ${fmt(immediate税)}<br />
+    Immediate tax (${(totalTaxRate*100).toFixed(1)}%): ${fmt(immediateTax)}<br />
     <br />
     <strong>OZ Advantage:</strong><br />
     By investing in a QOZ, you defer ${fmt(deferredTax)} in taxes until 2026.<br />
