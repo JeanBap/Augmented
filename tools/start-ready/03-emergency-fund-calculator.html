@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emergency Fund Target Calculator | Start Ready</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
+.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
+.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
+.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.section{margin-bottom:1.5rem}
+.section h2{font-family:var(--serif);font-size:1.2rem;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}
+input[type=number],input[type=text],input[type=date],select,textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box;margin-bottom:.75rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+button{background:var(--gold);color:var(--paper);border:none;padding:.7rem 1.5rem;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .3s}
+button:hover{background:var(--gold2)}
+.result-box{background:rgba(200,164,90,.06);border-left:3px solid var(--gold);padding:1.25rem;border-radius:0 8px 8px 0;margin-top:1.25rem}
+.result-box h3{font-family:var(--mono);font-size:.85rem;color:var(--gold);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em}
+.result-box .big{font-family:var(--serif);font-size:1.8rem;color:var(--ink)}
+.result-box .sub{font-size:.85rem;color:var(--mid);margin-top:.35rem;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{background:rgba(200,164,90,.04);border:1px solid var(--rule);border-radius:8px;padding:1rem;text-align:center}
+.card .label{font-family:var(--mono);font-size:.75rem;color:var(--mid)}
+.card .value{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin-top:.25rem}
+.card.green{border-color:var(--green)}
+.card.yellow{border-color:#f39c12}
+.card.red{border-color:var(--red)}
+.card.blue{border-color:var(--gold)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem}
+th{background:var(--ink);color:var(--paper);padding:.6rem .75rem;text-align:left;font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:.85rem}
+tr:nth-child(even){background:rgba(200,164,90,.03)}
+.row-add{display:flex;gap:.5rem;margin-bottom:.75rem;align-items:end}
+.row-add>div{flex:1}
+.row-add button{width:auto;padding:.6rem 1rem;margin-bottom:.75rem}
+.remove-btn{background:var(--red);color:var(--paper);border:none;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:var(--mono);font-size:.75rem;width:auto}
+.remove-btn:hover{background:#a93226}
+.chart-wrap{margin:1.25rem 0;position:relative;height:300px}
+.hidden{display:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-family:var(--mono);font-size:.75rem;font-weight:500}
+.tag-green{background:rgba(39,174,96,.1);color:#1e8449}
+.tag-yellow{background:rgba(243,156,18,.1);color:#b7950b}
+.tag-red{background:rgba(192,57,43,.1);color:#c0392b}
+.tool-footer{padding:1.25rem 2rem;text-align:center;font-family:var(--mono);font-size:.8rem;color:var(--mid);border-top:1px solid var(--rule);margin-top:2rem}
+.tool-footer a{color:var(--gold);text-decoration:none}
+.tool-footer a:hover{color:var(--gold2)}
+.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}
+.back-link:hover{color:var(--gold2)}
+.range-row{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem}
+.range-row input[type=range]{flex:1;margin:0}
+.range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
+@media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
+<div class="tool-hero"><h1>Emergency Fund Target Calculator</h1><p>Chapter 4: The Emergency Fund</p></div>
+<div class="tool-container">
+<div class="section">
+<label>Monthly Essential Expenses ($)</label>
+<input type="number" id="exp" placeholder="2500" value="2500">
+<label>Your Situation</label>
+<select id="sit">
+<option value="3">Stable job, no dependants, family safety net</option>
+<option value="4.5">Stable job, with dependants</option>
+<option value="6" selected>Self-employed or volatile industry</option>
+<option value="9">Planning to start a business</option>
+<option value="12">Starting a business (founder track)</option>
+</select>
+<label>Current Emergency Savings ($)</label>
+<input type="number" id="cur" placeholder="0" value="0">
+<label>Monthly Amount You Can Save ($)</label>
+<input type="number" id="sav" placeholder="400" value="400">
+<button onclick="calc()">Calculate Target</button>
+</div><div id="res"></div></div>
+</div>
+<script>
+function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+function calc(){
+  const exp=parseFloat(document.getElementById('exp').value)||0;
+  const months=parseFloat(document.getElementById('sit').value);
+  const cur=parseFloat(document.getElementById('cur').value)||0;
+  const sav=parseFloat(document.getElementById('sav').value)||0;
+  const target=exp*months;
+  const gap=Math.max(0,target-cur);
+  const monthsToTarget=sav>0?Math.ceil(gap/sav):Infinity;
+  const pct=target>0?Math.min(100,(cur/target*100)).toFixed(0):0;
+  const cls=pct>=100?'green':pct>=50?'yellow':'red';
+  document.getElementById('res').innerHTML=`
+  <div class="grid" style="margin-top:16px">
+    <div class="card ${cls}"><div class="label">Target Emergency Fund</div><div class="value">${fmt(target)}</div><div class="sub">${months} months of expenses</div></div>
+    <div class="card blue"><div class="label">Current Progress</div><div class="value">${pct}%</div><div class="sub">${fmt(cur)} saved</div></div>
+  </div>
+  ${gap>0?`<div class="result-box" style="margin-top:16px"><h3>Gap: ${fmt(gap)}</h3>
+  <div>At ${fmt(sav)}/month, you will reach your target in <strong>${monthsToTarget} months</strong> (${(monthsToTarget/12).toFixed(1)} years).</div>
+  <div class="sub">Keep this in a high-yield savings account. Do not invest it.</div></div>`
+  :`<div class="result-box" style="margin-top:16px;border-left-color:#27ae60"><h3>Fully Funded</h3><div>Your emergency fund meets or exceeds your target. Redirect savings to debt payoff or investing.</div></div>`}`;
+}
+</script>
+
+<div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+</body></html>

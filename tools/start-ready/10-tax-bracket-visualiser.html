@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tax Bracket Visualiser | Start Ready</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
+.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
+.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
+.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.section{margin-bottom:1.5rem}
+.section h2{font-family:var(--serif);font-size:1.2rem;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}
+input[type=number],input[type=text],input[type=date],select,textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box;margin-bottom:.75rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+button{background:var(--gold);color:var(--paper);border:none;padding:.7rem 1.5rem;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .3s}
+button:hover{background:var(--gold2)}
+.result-box{background:rgba(200,164,90,.06);border-left:3px solid var(--gold);padding:1.25rem;border-radius:0 8px 8px 0;margin-top:1.25rem}
+.result-box h3{font-family:var(--mono);font-size:.85rem;color:var(--gold);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em}
+.result-box .big{font-family:var(--serif);font-size:1.8rem;color:var(--ink)}
+.result-box .sub{font-size:.85rem;color:var(--mid);margin-top:.35rem;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{background:rgba(200,164,90,.04);border:1px solid var(--rule);border-radius:8px;padding:1rem;text-align:center}
+.card .label{font-family:var(--mono);font-size:.75rem;color:var(--mid)}
+.card .value{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin-top:.25rem}
+.card.green{border-color:var(--green)}
+.card.yellow{border-color:#f39c12}
+.card.red{border-color:var(--red)}
+.card.blue{border-color:var(--gold)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem}
+th{background:var(--ink);color:var(--paper);padding:.6rem .75rem;text-align:left;font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:.85rem}
+tr:nth-child(even){background:rgba(200,164,90,.03)}
+.row-add{display:flex;gap:.5rem;margin-bottom:.75rem;align-items:end}
+.row-add>div{flex:1}
+.row-add button{width:auto;padding:.6rem 1rem;margin-bottom:.75rem}
+.remove-btn{background:var(--red);color:var(--paper);border:none;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:var(--mono);font-size:.75rem;width:auto}
+.remove-btn:hover{background:#a93226}
+.chart-wrap{margin:1.25rem 0;position:relative;height:300px}
+.hidden{display:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-family:var(--mono);font-size:.75rem;font-weight:500}
+.tag-green{background:rgba(39,174,96,.1);color:#1e8449}
+.tag-yellow{background:rgba(243,156,18,.1);color:#b7950b}
+.tag-red{background:rgba(192,57,43,.1);color:#c0392b}
+.tool-footer{padding:1.25rem 2rem;text-align:center;font-family:var(--mono);font-size:.8rem;color:var(--mid);border-top:1px solid var(--rule);margin-top:2rem}
+.tool-footer a{color:var(--gold);text-decoration:none}
+.tool-footer a:hover{color:var(--gold2)}
+.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}
+.back-link:hover{color:var(--gold2)}
+.range-row{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem}
+.range-row input[type=range]{flex:1;margin:0}
+.range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
+@media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
+<div class="tool-hero"><h1>Tax Bracket Visualiser</h1><p>Chapter 11: How Taxes Actually Work</p></div>
+<div class="tool-container">
+<div class="section">
+<div class="grid">
+<div><label>Annual Gross Income ($)</label><input type="number" id="income" value="70000"></div>
+<div><label>Filing Status</label><select id="status">
+<option value="single" selected>Single</option>
+<option value="married">Married Filing Jointly</option>
+</select></div>
+</div>
+<button onclick="calc()">Visualise Brackets</button>
+</div>
+<div class="chart-wrap"><canvas id="chart"></canvas></div>
+<div id="res"></div></div>
+</div>
+<script>
+function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+const brackets={
+  single:[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]],
+  married:[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]]
+};
+const deductions={single:14600,married:29200};
+let myChart=null;
+function calc(){
+  const gross=parseFloat(document.getElementById('income').value)||0;
+  const status=document.getElementById('status').value;
+  const ded=deductions[status];
+  const taxable=Math.max(0,gross-ded);
+  const brk=brackets[status];
+  let remaining=taxable,totalTax=0,prev=0;
+  const labels=[],taxes=[],colors=['#3498db','#2ecc71','#e67e22','#e74c3c','#9b59b6','#1abc9c','#f39c12'];
+  let rows='';
+  for(let i=0;i<brk.length;i++){
+    const [ceiling,rate]=brk[i];
+    const width=ceiling-prev;
+    const inBracket=Math.min(remaining,width);
+    if(inBracket<=0){prev=ceiling;continue;}
+    const tax=inBracket*rate;
+    totalTax+=tax;remaining-=inBracket;
+    labels.push((rate*100)+'%');
+    taxes.push(Math.round(tax));
+    rows+=`<tr><td>${(rate*100).toFixed(0)}%</td><td>${fmt(prev)} - ${ceiling===Infinity?'above':fmt(ceiling)}</td><td>${fmt(inBracket)}</td><td>${fmt(tax)}</td></tr>`;
+    prev=ceiling;
+  }
+  const effective=gross>0?(totalTax/gross*100).toFixed(1):0;
+  const marginal=(brk.find(([c])=>taxable<=c)||brk[brk.length-1])[1]*100;
+  if(myChart)myChart.destroy();
+  myChart=new Chart(document.getElementById('chart'),{type:'bar',
+    data:{labels,datasets:[{label:'Tax Paid',data:taxes,backgroundColor:colors}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()}},x:{title:{display:true,text:'Bracket Rate'}}}}
+  });
+  document.getElementById('res').innerHTML=`
+  <div class="grid-3" style="margin-top:16px">
+    <div class="card blue"><div class="label">Marginal Rate</div><div class="value">${marginal}%</div><div class="sub">Rate on next dollar</div></div>
+    <div class="card green"><div class="label">Effective Rate</div><div class="value">${effective}%</div><div class="sub">What you actually pay</div></div>
+    <div class="card"><div class="label">Total Federal Tax</div><div class="value">${fmt(totalTax)}</div><div class="sub">After ${fmt(ded)} standard deduction</div></div>
+  </div>
+  <table style="margin-top:16px"><thead><tr><th>Rate</th><th>Bracket Range</th><th>Income in Bracket</th><th>Tax</th></tr></thead><tbody>${rows}</tbody></table>
+  <div class="result-box" style="margin-top:16px"><h3>Key Insight</h3>
+  <div>Your marginal rate is ${marginal}% but you only pay ${effective}% overall. Earning more <strong>always</strong> means taking home more. A raise never puts you in a worse position.</div></div>`;
+}
+</script>
+
+<div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+</body></html>

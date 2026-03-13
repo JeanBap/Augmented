@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mortgage Affordability Calculator | Start Ready</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
+.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
+.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
+.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.section{margin-bottom:1.5rem}
+.section h2{font-family:var(--serif);font-size:1.2rem;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}
+input[type=number],input[type=text],input[type=date],select,textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box;margin-bottom:.75rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+button{background:var(--gold);color:var(--paper);border:none;padding:.7rem 1.5rem;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;width:100%;transition:background .3s}
+button:hover{background:var(--gold2)}
+.result-box{background:rgba(200,164,90,.06);border-left:3px solid var(--gold);padding:1.25rem;border-radius:0 8px 8px 0;margin-top:1.25rem}
+.result-box h3{font-family:var(--mono);font-size:.85rem;color:var(--gold);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em}
+.result-box .big{font-family:var(--serif);font-size:1.8rem;color:var(--ink)}
+.result-box .sub{font-size:.85rem;color:var(--mid);margin-top:.35rem;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{background:rgba(200,164,90,.04);border:1px solid var(--rule);border-radius:8px;padding:1rem;text-align:center}
+.card .label{font-family:var(--mono);font-size:.75rem;color:var(--mid)}
+.card .value{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin-top:.25rem}
+.card.green{border-color:var(--green)}
+.card.yellow{border-color:#f39c12}
+.card.red{border-color:var(--red)}
+.card.blue{border-color:var(--gold)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem}
+th{background:var(--ink);color:var(--paper);padding:.6rem .75rem;text-align:left;font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:.85rem}
+tr:nth-child(even){background:rgba(200,164,90,.03)}
+.row-add{display:flex;gap:.5rem;margin-bottom:.75rem;align-items:end}
+.row-add>div{flex:1}
+.row-add button{width:auto;padding:.6rem 1rem;margin-bottom:.75rem}
+.remove-btn{background:var(--red);color:var(--paper);border:none;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:var(--mono);font-size:.75rem;width:auto}
+.remove-btn:hover{background:#a93226}
+.chart-wrap{margin:1.25rem 0;position:relative;height:300px}
+.hidden{display:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-family:var(--mono);font-size:.75rem;font-weight:500}
+.tag-green{background:rgba(39,174,96,.1);color:#1e8449}
+.tag-yellow{background:rgba(243,156,18,.1);color:#b7950b}
+.tag-red{background:rgba(192,57,43,.1);color:#c0392b}
+.tool-footer{padding:1.25rem 2rem;text-align:center;font-family:var(--mono);font-size:.8rem;color:var(--mid);border-top:1px solid var(--rule);margin-top:2rem}
+.tool-footer a{color:var(--gold);text-decoration:none}
+.tool-footer a:hover{color:var(--gold2)}
+.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}
+.back-link:hover{color:var(--gold2)}
+.range-row{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem}
+.range-row input[type=range]{flex:1;margin:0}
+.range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
+@media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
+<div class="tool-hero"><h1>Mortgage Affordability Calculator</h1><p>Chapter 19: Buying Your First Home</p></div>
+<div class="tool-container">
+<div class="section">
+<div class="grid">
+<div><label>Annual Gross Income ($)</label><input type="number" id="income" value="85000"></div>
+<div><label>Monthly Debt Payments (excl. mortgage) ($)</label><input type="number" id="debt" value="300"></div>
+<div><label>Down Payment Available ($)</label><input type="number" id="down" value="60000"></div>
+<div><label>Mortgage Rate (%)</label><input type="number" id="rate" value="7" step="0.1"></div>
+<div><label>Loan Term (years)</label><input type="number" id="term" value="30"></div>
+<div><label>Property Tax Rate (%/yr)</label><input type="number" id="ptax" value="1.2" step="0.1"></div>
+<div><label>Homeowners Insurance ($/mo)</label><input type="number" id="ins" value="150"></div>
+</div>
+<button onclick="calc()">Calculate</button>
+</div><div id="res"></div></div>
+</div>
+<script>
+function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+function calc(){
+  const income=parseFloat(document.getElementById('income').value)||0;
+  const debt=parseFloat(document.getElementById('debt').value)||0;
+  const down=parseFloat(document.getElementById('down').value)||0;
+  const rate=(parseFloat(document.getElementById('rate').value)||7)/100/12;
+  const term=(parseInt(document.getElementById('term').value)||30)*12;
+  const ptax=(parseFloat(document.getElementById('ptax').value)||1.2)/100;
+  const ins=parseFloat(document.getElementById('ins').value)||0;
+  const monthlyIncome=income/12;
+  // Bank says: 43% DTI
+  const bankMaxPayment=monthlyIncome*0.43-debt;
+  // Safe: 28% housing ratio
+  const safeMaxPayment=monthlyIncome*0.28;
+  // Stress: can you afford at 20% income drop?
+  const stressMaxPayment=(monthlyIncome*0.8)*0.28;
+  function priceFromPayment(maxPay){
+    const housingBudget=maxPay-ins;
+    // Iteratively solve: mortgage + taxes = housingBudget
+    // mortgage = loan * rate * (1+rate)^n / ((1+rate)^n - 1)
+    // taxes = price * ptax / 12
+    // price = loan + down
+    // Approximate: try a few iterations
+    let price=down;
+    for(let i=0;i<20;i++){
+      const loan=Math.max(0,price-down);
+      const mp=loan>0?loan*rate*Math.pow(1+rate,term)/(Math.pow(1+rate,term)-1):0;
+      const taxes=price*ptax/12;
+      const totalPay=mp+taxes+ins;
+      const diff=maxPay-totalPay;
+      price+=diff*100;// rough adjustment
+      if(Math.abs(diff)<1)break;
+    }
+    return Math.max(0,Math.round(price));
+  }
+  const bankPrice=priceFromPayment(bankMaxPayment);
+  const safePrice=priceFromPayment(safeMaxPayment);
+  const stressPrice=priceFromPayment(stressMaxPayment);
+  const pmi=down/safePrice<0.2?'Yes (add 0.5-1.5% of loan/yr)':'No';
+  document.getElementById('res').innerHTML=`
+  <div class="grid-3" style="margin-top:20px">
+    <div class="card red"><div class="label">Bank Says</div><div class="value">${fmt(bankPrice)}</div><div class="sub">43% DTI limit</div></div>
+    <div class="card green"><div class="label">Safe Number</div><div class="value">${fmt(safePrice)}</div><div class="sub">28% housing ratio</div></div>
+    <div class="card blue"><div class="label">Stress-Tested</div><div class="value">${fmt(stressPrice)}</div><div class="sub">Affordable at 20% income drop</div></div>
+  </div>
+  <div class="result-box" style="margin-top:16px"><h3>Recommendation: Target ${fmt(stressPrice)} - ${fmt(safePrice)}</h3>
+  <div>The bank will approve up to ${fmt(bankPrice)}. That number is designed to maximise the loan, not protect you. The safe number (${fmt(safePrice)}) keeps housing at 28% of gross income. The stress-tested number (${fmt(stressPrice)}) ensures you can still pay if your income drops 20%.</div>
+  <div class="sub" style="margin-top:8px">Down payment: ${fmt(down)} (${(down/safePrice*100).toFixed(1)}% of safe price). PMI required: ${pmi}.</div></div>`;
+}
+</script>
+
+<div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+</body></html>
