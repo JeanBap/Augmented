@@ -27,6 +27,18 @@ var PRODUCTS = {
     description: '11-sheet complete model with 66-month projections, plus a 1-hour video walkthrough session to customize it for your business.',
     price: 29900,
     file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx'
+  },
+  'audit': {
+    name: 'Fundraise-Ready Audit',
+    description: 'Asynchronous review of your financial model and pitch deck with written report and actionable feedback. Optional follow-up call included.',
+    price: 49900,
+    service: true
+  },
+  'working-session': {
+    name: 'Working Session (60 min)',
+    description: '60-minute deep-dive to build or refine your model with real-time expert guidance. Recording and notes provided afterward.',
+    price: 25000,
+    service: true
   }
 };
 
@@ -95,9 +107,9 @@ exports.handler = async function(event) {
     return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No items provided' }) };
   }
 
-  // Only allow products that have files ready
+  // Allow products with files or services
   var validItems = items.filter(function(item) {
-    return PRODUCTS[item.id] && PRODUCTS[item.id].file;
+    return PRODUCTS[item.id] && (PRODUCTS[item.id].file || PRODUCTS[item.id].service);
   });
   if (validItems.length === 0) {
     return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No purchasable products' }) };

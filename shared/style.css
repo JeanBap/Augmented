@@ -300,6 +300,40 @@ nav {
   object-fit: cover;
 }
 
+/* Expandable book descriptions */
+.book-long-desc.book-long-desc {
+  border: none;
+}
+.desc-toggle {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--gold);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+}
+.desc-toggle::-webkit-details-marker { display: none; }
+.desc-toggle::marker { display: none; content: ""; }
+.desc-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  font-size: 0.75rem;
+}
+details[open] .desc-arrow {
+  transform: rotate(180deg);
+}
+.desc-content {
+  padding-top: 1rem;
+  animation: desc-fade-in 0.3s ease;
+}
+@keyframes desc-fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Inline expandable TOC */
 .toc-toggle { position: relative; }
 .toc-toggle .toc-arrow { transition: transform 0.3s; display: inline-block; }

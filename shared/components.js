@@ -13,9 +13,10 @@
       <a href="/" class="logo">Raise Ready</a>
       <div class="nav-tabs">
         <div class="nav-dropdown">
-          <a href="/book/" class="nav-tab" data-page="book">Book & Extras</a>
+          <a href="/book/" class="nav-tab" data-page="book">Books & Extras</a>
           <div class="dropdown-menu">
             <a href="/book/">Raise Ready Book</a>
+            <a href="/book/#exit-ready">Exit Ready Book</a>
             <a href="/book/#templates">Financial Model Template</a>
             <a href="/book/#sessions">Sessions & Model Building</a>
           </div>
@@ -24,10 +25,6 @@
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
       </div>
       <div class="nav-right">
-        <button class="nbtn cart-btn" onclick="toggleCart()" style="position:relative">
-          <span>&#128722; Cart</span>
-          <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background-color: #c0392b; color: #f2ede4; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">0</span>
-        </button>
         <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
@@ -39,7 +36,7 @@
   const FOOTER_HTML = `
     <footer>
       <div class="footer-links">
-        <a href="/book/">Book & Extras</a>
+        <a href="/book/">Books & Extras</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>
