@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOI Term Sheet Comparator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 900px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.loi-section { margin-bottom: 2rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); }
+.loi-section h3 { font-family: var(--serif); font-size: 1.1rem; margin-top: 0; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; overflow-x: auto; }
+.tool-results.visible { display: block; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-bottom: 1.5rem; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.comparison-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.comparison-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.75rem; border-bottom: 2px solid var(--rule); background: rgba(200,164,90,0.05); }
+.comparison-table td { padding: 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.comparison-table .text-right { text-align: right; }
+.loi-number { display: inline-block; font-family: var(--mono); font-size: 0.75rem; color: var(--gold); background: rgba(200,164,90,0.15); padding: 0.25rem 0.5rem; border-radius: 4px; }
+.add-loi-btn { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.add-loi-btn:hover { background: rgba(200,164,90,0.1); }
+.remove-loi { padding: 0.4rem 0.6rem; font-size: 0.75rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 4px; cursor: pointer; float: right; }
+.remove-loi:hover { color: #d00; border-color: #d00; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>LOI Term Sheet Comparator</h1>
+    <p>Compare up to 4 competing LOIs and rank by certainty-adjusted net proceeds.</p>
+    <div class="chapter-ref">From Chapter 21: Comparing Offers</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>LOI Offers</h2>
+      </div>
+      <div class="tool-card-body">
+        <div id="loi-container"></div>
+        <button class="add-loi-btn" onclick="addLOI()">+ Add Another Bidder</button>
+        <button class="tool-btn" onclick="compareLOIs()">Compare</button>
+        <button class="tool-btn-reset" onclick="resetLOIs()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-note" id="r-recommendation"></div>
+      <table class="comparison-table" id="r-table"></table>
+      <div class="result-note" id="r-analysis"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+let loiCount = 0;
+
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function initializeLOIs() {
+  const container = document.getElementById('loi-container');
+  container.innerHTML = '';
+  for(let i = 0; i < 2; i++) {
+    addLOI();
+  }
+}
+
+function addLOI() {
+  if(loiCount >= 4) {
+    alert('Maximum 4 LOIs allowed');
+    return;
+  }
+
+  const container = document.getElementById('loi-container');
+  const id = loiCount++;
+  const section = document.createElement('div');
+  section.className = 'loi-section';
+  section.id = 'loi-' + id;
+  section.innerHTML = `
+    <h3><span class="loi-number">LOI ${id + 1}</span><button class="remove-loi" onclick="removeLOI(${id})">Remove</button></h3>
+    <div class="tool-row single">
+      <div class="tool-field">
+        <label for="loi-name-${id}">Bidder Name</label>
+        <input type="text" id="loi-name-${id}" placeholder="Company Name" />
+      </div>
+    </div>
+    <div class="tool-row triple">
+      <div class="tool-field">
+        <label for="loi-ev-${id}">Enterprise Value ($)</label>
+        <input type="number" id="loi-ev-${id}" placeholder="0" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-cash-${id}">Cash at Close (%)</label>
+        <input type="number" id="loi-cash-${id}" placeholder="100" min="0" max="100" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-earnout-${id}">Earnout Amount ($)</label>
+        <input type="number" id="loi-earnout-${id}" placeholder="0" />
+      </div>
+    </div>
+    <div class="tool-row triple">
+      <div class="tool-field">
+        <label for="loi-earnout-prob-${id}">Earnout Prob (%)</label>
+        <input type="number" id="loi-earnout-prob-${id}" placeholder="100" min="0" max="100" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-escrow-${id}">Escrow/Holdback (%)</label>
+        <input type="number" id="loi-escrow-${id}" placeholder="0" min="0" max="100" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-noncompete-${id}">Non-Compete (years)</label>
+        <input type="number" id="loi-noncompete-${id}" placeholder="0" min="0" max="10" />
+      </div>
+    </div>
+    <div class="tool-row triple">
+      <div class="tool-field">
+        <label for="loi-transition-${id}">Transition Period (mo)</label>
+        <input type="number" id="loi-transition-${id}" placeholder="0" min="0" max="36" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-dd-${id}">Due Diligence (weeks)</label>
+        <input type="number" id="loi-dd-${id}" placeholder="8" min="0" max="52" />
+      </div>
+      <div class="tool-field">
+        <label for="loi-financing-${id}">Financing Contingency?</label>
+        <select id="loi-financing-${id}">
+          <option value="no">No (all-cash)</option>
+          <option value="yes">Yes (has risk)</option>
+        </select>
+      </div>
+    </div>
+    <div class="tool-row single">
+      <div class="tool-field">
+        <label for="loi-certainty-${id}">Certainty of Close (1-5)</label>
+        <input type="number" id="loi-certainty-${id}" placeholder="3" min="1" max="5" />
+      </div>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+function removeLOI(id) {
+  const section = document.getElementById('loi-' + id);
+  if(section) section.remove();
+}
+
+function compareLOIs() {
+  const lois = [];
+  document.querySelectorAll('.loi-section').forEach((section, idx) => {
+    const id = section.id.split('-')[1];
+    const name = document.getElementById('loi-name-' + id).value || `Bidder ${idx + 1}`;
+    const ev = parseFloat(document.getElementById('loi-ev-' + id).value) || 0;
+    const cashPct = (parseFloat(document.getElementById('loi-cash-' + id).value) || 100) / 100;
+    const earnout = parseFloat(document.getElementById('loi-earnout-' + id).value) || 0;
+    const earnoutProb = (parseFloat(document.getElementById('loi-earnout-prob-' + id).value) || 100) / 100;
+    const escrow = (parseFloat(document.getElementById('loi-escrow-' + id).value) || 0) / 100;
+    const certainty = parseFloat(document.getElementById('loi-certainty-' + id).value) || 3;
+
+    if(ev > 0) {
+      // Calculate certainty-adjusted value
+      const cashAtClose = ev * cashPct;
+      const escrowHold = ev * escrow;
+      const availableAtClose = cashAtClose - escrowHold;
+      const earnoutExpected = earnout * earnoutProb;
+      const certaintyScoredValue = (availableAtClose + earnoutExpected * 0.5) * (certainty / 5);
+
+      lois.push({
+        name, ev, cashAtClose, earnout, earnoutProb, escrow, certainty,
+        availableAtClose, earnoutExpected, certaintyScoredValue
+      });
+    }
+  });
+
+  if(lois.length === 0) {
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+
+  // Sort by certainty-adjusted value
+  lois.sort((a, b) => b.certaintyScoredValue - a.certaintyScoredValue);
+
+  // Build comparison table
+  let html = '<thead><tr><th>Rank</th><th>Bidder</th><th class="text-right">Enterprise Value</th><th class="text-right">At Close</th><th class="text-right">Earnout (Expected)</th><th class="text-right">Certainty-Adjusted</th></tr></thead><tbody>';
+
+  lois.forEach((loi, idx) => {
+    const rank = idx + 1;
+    html += `
+      <tr${rank === 1 ? ' style="background: rgba(200,164,90,0.1);"' : ''}>
+        <td><strong>${rank}</strong></td>
+        <td><strong>${loi.name}</strong></td>
+        <td class="text-right">${fmt(loi.ev)}</td>
+        <td class="text-right">${fmt(loi.availableAtClose)}</td>
+        <td class="text-right">${fmt(loi.earnoutExpected)}</td>
+        <td class="text-right"><strong>${fmt(loi.certaintyScoredValue)}</strong></td>
+      </tr>
+    `;
+  });
+  html += '</tbody>';
+  document.getElementById('r-table').innerHTML = html;
+
+  // Recommendation
+  const winner = lois[0];
+  const runner = lois.length > 1 ? lois[1] : null;
+  let recText = `<strong>Recommendation: ${winner.name}</strong><br />`;
+  if(runner) {
+    const diff = winner.certaintyScoredValue - runner.certaintyScoredValue;
+    const pctDiff = (diff / runner.certaintyScoredValue * 100).toFixed(1);
+    recText += `${pctDiff}% higher adjusted value than ${runner.name}.<br />`;
+  }
+  recText += `Certainty of close: ${winner.certainty}/5. Cash at close: ${fmt(winner.availableAtClose)}.`;
+  document.getElementById('r-recommendation').innerHTML = recText;
+
+  // Analysis
+  let analysis = '<strong>Details:</strong><br />';
+  analysis += `${winner.name}: EV ${fmt(winner.ev)}, ${(winner.cashPct * 100).toFixed(0)}% cash at close, earnout of ${fmt(winner.earnout)} (${(winner.earnoutProb * 100).toFixed(0)}% probable).`;
+  if(lois.length > 1) {
+    analysis += ` Runner-up: ${runner.name} at ${fmt(runner.certaintyScoredValue)} adjusted value.`;
+  }
+  document.getElementById('r-analysis').innerHTML = analysis;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetLOIs() {
+  loiCount = 0;
+  initializeLOIs();
+  document.getElementById('results').classList.remove('visible');
+}
+
+// Initialize on load
+initializeLOIs();
+</script>
+</body>
+</html>

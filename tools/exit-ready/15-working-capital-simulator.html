@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Working Capital True-Up Simulator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.result-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+.result-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--rule); }
+.result-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.result-table .text-right { text-align: right; }
+.result-bar { height: 12px; border-radius: 6px; background: var(--rule); margin: 0.5rem 0; overflow: hidden; }
+.result-bar-fill { height: 100%; border-radius: 6px; background: var(--gold); }
+.months-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.month-field { margin-bottom: 0; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Working Capital True-Up Simulator</h1>
+    <p>Model working capital adjustments at closing based on monthly historical data.</p>
+    <div class="chapter-ref">From Chapter 31: Closing Mechanics Details</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Working Capital Inputs</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="target-wc">Target Working Capital ($)</label>
+            <input type="number" id="target-wc" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="close-month">Closing Month</label>
+            <select id="close-month">
+              <option value="">-- Select --</option>
+              <option value="0">January</option>
+              <option value="1">February</option>
+              <option value="2">March</option>
+              <option value="3">April</option>
+              <option value="4">May</option>
+              <option value="5">June</option>
+              <option value="6">July</option>
+              <option value="7">August</option>
+              <option value="8">September</option>
+              <option value="9">October</option>
+              <option value="10">November</option>
+              <option value="11">December</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <label style="display: block; font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem; color: var(--ink);">Monthly Working Capital (Last 12 Months)</label>
+          <div class="months-grid">
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">January</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">February</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">March</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">April</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">May</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">June</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">July</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">August</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">September</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">October</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">November</label><input type="number" class="month-wc" placeholder="0" /></div>
+            <div class="month-field"><label style="display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem;">December</label><input type="number" class="month-wc" placeholder="0" /></div>
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calculateWC()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetWC()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-average">$0</div>
+          <div class="result-label">Avg WC (12 mo)</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-closing">$0</div>
+          <div class="result-label">WC at Close</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-adjustment">$0</div>
+          <div class="result-label">Adjustment</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-direction">Buyer Pays</div>
+          <div class="result-label">Direction</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details"></div>
+      <table class="result-table" id="r-table">
+        <thead>
+          <tr><th>Month</th><th class="text-right">Working Capital</th><th class="text-right">vs Target</th><th class="text-right">% of Avg</th></tr>
+        </thead>
+        <tbody id="r-body"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function calculateWC() {
+  const targetWC = parseFloat(document.getElementById('target-wc').value) || 0;
+  const closeMonthIdx = parseInt(document.getElementById('close-month').value);
+
+  if(isNaN(closeMonthIdx)) {
+    alert('Please select a closing month');
+    return;
+  }
+
+  const values = [];
+  document.querySelectorAll('.month-wc').forEach(input => {
+    values.push(parseFloat(input.value) || 0);
+  });
+
+  const avg = values.reduce((a, b) => a + b, 0) / 12;
+  const atClose = values[closeMonthIdx];
+  const adjustment = targetWC - atClose;
+
+  document.getElementById('r-average').textContent = fmt(avg);
+  document.getElementById('r-closing').textContent = fmt(atClose);
+  document.getElementById('r-adjustment').textContent = fmt(Math.abs(adjustment));
+  document.getElementById('r-direction').textContent = adjustment >= 0 ? 'Buyer Pays' : 'Seller Pays';
+
+  // Build table
+  const tbody = document.getElementById('r-body');
+  tbody.innerHTML = '';
+  values.forEach((val, idx) => {
+    const tr = document.createElement('tr');
+    const vsTarget = val - targetWC;
+    const pctAvg = avg > 0 ? (val / avg * 100) : 0;
+    const highlight = idx === closeMonthIdx ? 'style="background: rgba(200,164,90,0.15)"' : '';
+    tr.innerHTML = `
+      <td ${highlight}><strong>${months[idx]}</strong></td>
+      <td class="text-right" ${highlight}>${fmt(val)}</td>
+      <td class="text-right" ${highlight}>${fmt(vsTarget)}</td>
+      <td class="text-right" ${highlight}>${pctAvg.toFixed(0)}%</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // High/low analysis
+  const minWC = Math.min(...values);
+  const maxWC = Math.max(...values);
+  const minMonth = months[values.indexOf(minWC)];
+  const maxMonth = months[values.indexOf(maxWC)];
+
+  const details = `<strong>Analysis:</strong><br />
+    Target working capital: ${fmt(targetWC)}<br />
+    12-month average: ${fmt(avg)}<br />
+    Working capital at close (${months[closeMonthIdx]}): ${fmt(atClose)}<br />
+    <br />
+    <strong>Adjustment:</strong><br />
+    ${adjustment >= 0 ? `Buyer pays seller ${fmt(adjustment)} (WC below target at close)` : `Seller pays buyer ${fmt(Math.abs(adjustment))} (WC above target at close)`}<br />
+    <br />
+    <strong>Seasonal Pattern:</strong><br />
+    Highest: ${maxMonth} at ${fmt(maxWC)}<br />
+    Lowest: ${minMonth} at ${fmt(minWC)}<br />
+    Swing: ${fmt(maxWC - minWC)}`;
+
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetWC() {
+  document.getElementById('target-wc').value = '';
+  document.getElementById('close-month').value = '';
+  document.querySelectorAll('.month-wc').forEach(input => input.value = '');
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<script
+  defer
+  data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"
+  data-domain="raisereadybook.com"
+  src="https://datafa.st/js/script.js">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raise Ready Tools | Free Startup Calculators</title>
+<meta name="description" content="Free interactive tools for startup founders. Runway calculator, unit economics, funding readiness score, valuation estimator, dilution simulator, revenue modeler, and more.">
+<link rel="canonical" href="https://www.raisereadybook.com/tools/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raisereadybook.com/tools/">
+<meta property="og:title" content="Free Startup Tools | Fundraising Calculators & Readiness Checks">
+<meta property="og:description" content="Free interactive tools for startup founders. Runway calculator, unit economics, funding readiness score, valuation estimator, dilution simulator, revenue modeler, and more.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Startup Tools | Fundraising Calculators & Readiness Checks">
+<meta name="twitter:description" content="Free interactive tools for startup founders. Runway calculator, unit economics, funding readiness score, valuation estimator, dilution simulator, revenue modeler, and more.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+/* Email Gate Modal */
+.gate-overlay {
+  position: fixed; inset: 0; background: rgba(8,8,13,0.6); display: flex;
+  align-items: center; justify-content: center; z-index: 200; padding: 1rem;
+}
+.gate-overlay.hidden { display: none; }
+.gate-modal {
+  background: var(--paper); border-radius: 12px; max-width: 420px; width: 100%;
+  padding: 2rem; text-align: center; border: 1px solid var(--rule); position: relative;
+}
+.gate-close {
+  position: absolute; top: 0.75rem; right: 1rem; background: none; border: none;
+  font-size: 1.5rem; color: var(--mid); cursor: pointer; line-height: 1;
+}
+.gate-close:hover { color: var(--ink); }
+.gate-modal h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.gate-modal p { font-size: 0.85rem; color: var(--mid); margin-bottom: 1.25rem; line-height: 1.5; }
+.gate-input {
+  width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--rule); border-radius: 6px;
+  font-family: var(--mono); font-size: 0.85rem; background: var(--paper); color: var(--ink);
+  margin-bottom: 0.75rem; box-sizing: border-box;
+}
+.gate-input:focus { outline: none; border-color: var(--gold); }
+.gate-submit {
+  width: 100%; padding: 0.75rem; background: var(--gold); color: var(--paper); border: none;
+  border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer;
+}
+.gate-submit:hover { background: var(--gold2); }
+.gate-fine { font-family: var(--mono); font-size: 0.7rem; color: var(--mid); margin-top: 0.75rem; }
+.gate-error { color: #c0392b; font-size: 0.8rem; margin-bottom: 0.5rem; display: none; }
+.gate-success { color: var(--green, #2E7D32); font-size: 0.85rem; }
+
+/* Save Results Button (injected into each tool result) */
+.save-results-btn {
+  display: inline-block; padding: 0.55rem 1.2rem; background: transparent; color: var(--gold);
+  border: 1px solid var(--gold); border-radius: 6px; font-family: var(--mono); font-size: 0.8rem;
+  cursor: pointer; margin-top: 1rem; transition: all 0.2s;
+}
+.save-results-btn:hover { background: var(--gold); color: var(--paper); }
+
+/* Tools Page Styles */
+.tools-hero { text-align: center; padding: 4rem 2rem 2rem; }
+.tools-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+.tools-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+.tools-hero .tool-count { font-family: var(--mono); font-size: 0.85rem; color: var(--gold); margin-top: 0.75rem; }
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  padding: 0 2rem;
+}
+.filter-btn {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--mid);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--gold); color: var(--ink); }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.tool-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  transition: border-color 0.3s, opacity 0.3s;
+}
+.tool-card:hover { border-color: var(--gold); }
+.tool-card.hidden { display: none; }
+
+.tool-card-header {
+  padding: 1.5rem 2rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tool-card-header h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0;
+}
+.tool-card-header .tool-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  background: rgba(200,164,90,0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.tool-card-desc {
+  padding: 0 2rem;
+  color: var(--mid);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+.tool-card-body { padding: 1rem 2rem 2rem; }
+
+.tool-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 600px) { .tool-row, .tool-row.triple { grid-template-columns: 1fr; } }
+
+.tool-field label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--mid);
+  margin-bottom: 0.35rem;
+}
+.tool-field input, .tool-field select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+.tool-field input:focus, .tool-field select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.tool-btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: var(--gold);
+  color: var(--paper);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.3s;
+}
+.tool-btn:hover { background: var(--gold2); }
+
+.tool-btn-reset {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  color: var(--mid);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  transition: all 0.2s;
+}
+.tool-btn-reset:hover { border-color: var(--ink); color: var(--ink); }
+
+.tool-results {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: rgba(200,164,90,0.03);
+  display: none;
+}
+.tool-results.visible { display: block; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+.result-item { text-align: center; }
+.result-value {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.result-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mid);
+  margin-top: 0.25rem;
+}
+
+.result-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--rule);
+  margin: 1rem 0 0.5rem;
+  overflow: hidden;
+}
+.result-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.result-note {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.6;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Result table for multi-row outputs */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+.result-table th {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mid);
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--rule);
+  white-space: nowrap;
+}
+.result-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.result-table tr:last-child td { border-bottom: none; }
+.result-table .text-right { text-align: right; }
+
+.tool-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.tool-toggle {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: transparent;
+  color: var(--mid);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tool-toggle.active {
+  background: var(--gold);
+  color: var(--paper);
+  border-color: var(--gold);
+}
+
+.tools-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tools-cta h2 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1rem; }
+.tools-cta p { color: var(--mid); margin-bottom: 1.5rem; line-height: 1.7; }
+
+.tool-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 2rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.tool-guide-link:hover { color: var(--gold2); text-decoration: underline; }
+.tool-guide-link svg { flex-shrink: 0; }
+
+.no-results {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--mid);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  display: none;
+}
+</style>
+<script
+  defer
+  data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"
+  data-domain="raisereadybook.com"
+  src="https://datafa.st/js/script.js">
+</script>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Raise Ready</div>
+  <a href="/tools/" style="display: inline-block; margin-bottom: 1rem; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none;">← Back to All Tools</a>
+
+  <section class="tools-hero">
+    <h1>Raise Ready Tools</h1>
+    <p>Interactive calculators built from real fundraising experience.</p>
+    <div class="tool-count" id="tool-count">14 tools</div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-filter="all" onclick="filterTools('all', this)">All</button>
+    <button class="filter-btn" data-filter="readiness" onclick="filterTools('readiness', this)">Readiness</button>
+    <button class="filter-btn" data-filter="financial-model" onclick="filterTools('financial-model', this)">Financial Model</button>
+    <button class="filter-btn" data-filter="metrics" onclick="filterTools('metrics', this)">Metrics</button>
+    <button class="filter-btn" data-filter="fundraising" onclick="filterTools('fundraising', this)">Fundraising</button>
+    <button class="filter-btn" data-filter="cap-table" onclick="filterTools('cap-table', this)">Cap Table</button>
+    <button class="filter-btn" data-filter="exit" onclick="filterTools('exit', this)">Exit</button>
+  </div>
+
+  <div class="no-results" id="no-results">No tools match this filter.</div>
+
+  <div class="tools-grid" id="tools-grid">
+
+    <!-- Tool 1: Funding Readiness Score -->
+    <div class="tool-card" id="readiness" data-category="readiness">
+      <div class="tool-card-header">
+        <h2>Funding Readiness Score</h2>
+        <span class="tool-tag">Readiness</span>
+      </div>
+      <p class="tool-card-desc">Score your startup across the metrics, traction, and signals investors evaluate in under 5 minutes. Know whether you are truly fundable at the round you want.</p>
+      <a href="/blog/funding-readiness-score-how-to-know-if-your-startup-is-ready-to-raise.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Current Stage</label>
+            <select id="r-current">
+              <option value="pre-seed">Pre-Seed</option>
+              <option value="seed" selected>Seed</option>
+              <option value="series-a">Series A</option>
+              <option value="series-b">Series B+</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Target Round</label>
+            <select id="r-target">
+              <option value="seed">Seed</option>
+              <option value="series-a" selected>Series A</option>
+              <option value="series-b">Series B</option>
+              <option value="series-c">Series C+</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Annual Recurring Revenue ($)</label>
+            <input type="number" id="r-arr" placeholder="e.g. 500000">
+          </div>
+          <div class="tool-field">
+            <label>MoM Growth Rate (%)</label>
+            <input type="number" id="r-growth" placeholder="e.g. 15" step="0.1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="r-margin" placeholder="e.g. 70" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Net Revenue Retention (%)</label>
+            <input type="number" id="r-nrr" placeholder="e.g. 110" step="0.1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Burn Multiple (Net Burn / Net New ARR)</label>
+            <input type="number" id="r-burn" placeholder="e.g. 2.5" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>CAC Payback (months)</label>
+            <input type="number" id="r-payback" placeholder="e.g. 12" step="0.1">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0">Team & Product (self-assess 1-5)</p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Team Strength (1-5)</label>
+            <input type="number" id="r-team" placeholder="3" min="1" max="5">
+          </div>
+          <div class="tool-field">
+            <label>Product-Market Fit (1-5)</label>
+            <input type="number" id="r-pmf" placeholder="3" min="1" max="5">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcReadiness()">Score My Readiness</button>
+        <button class="tool-btn-reset" onclick="resetTool('readiness')">Reset</button>
+        <div class="tool-results" id="r-results">
+          <div class="result-bar"><div class="result-bar-fill" id="r-bar"></div></div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="r-score">--</div>
+              <div class="result-label">Overall Score</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="r-verdict">--</div>
+              <div class="result-label">Verdict</div>
+            </div>
+          </div>
+          <div class="result-note" id="r-gaps"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 2: Runway & Burn Calculator -->
+    <div class="tool-card" id="runway" data-category="metrics">
+      <div class="tool-card-header">
+        <h2>Runway & Burn Calculator</h2>
+        <span class="tool-tag">Metrics</span>
+      </div>
+      <p class="tool-card-desc">Model your runway with real numbers. Toggle hiring, churn, and revenue scenarios to see how each decision shifts your survival timeline.</p>
+      <a href="/blog/startup-runway-calculator-how-to-model-your-burn-rate-and-survival-timeline.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Cash on Hand ($)</label>
+            <input type="number" id="rw-cash" placeholder="e.g. 1500000">
+          </div>
+          <div class="tool-field">
+            <label>Monthly Burn ($)</label>
+            <input type="number" id="rw-burn" placeholder="e.g. 80000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Monthly Revenue ($)</label>
+            <input type="number" id="rw-rev" placeholder="e.g. 30000">
+          </div>
+          <div class="tool-field">
+            <label>MoM Revenue Growth (%)</label>
+            <input type="number" id="rw-growth" placeholder="e.g. 10" step="0.1">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0">Toggle scenarios:</p>
+        <div class="tool-toggle-row">
+          <button class="tool-toggle" data-mod="hire" onclick="toggleScenario(this)">+ New Hire ($10K/mo)</button>
+          <button class="tool-toggle" data-mod="cut" onclick="toggleScenario(this)">- Cut 1 Head ($8K/mo)</button>
+          <button class="tool-toggle" data-mod="churn" onclick="toggleScenario(this)">+ Churn Spike ($5K/mo)</button>
+          <button class="tool-toggle" data-mod="deal" onclick="toggleScenario(this)">+ Close Deal ($10K/mo)</button>
+          <button class="tool-toggle" data-mod="halfmktg" onclick="toggleScenario(this)">- Halve Marketing</button>
+        </div>
+        <button class="tool-btn" onclick="calcRunway()">Calculate Runway</button>
+        <button class="tool-btn-reset" onclick="resetTool('runway')">Reset</button>
+        <div class="tool-results" id="rw-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="rw-months">--</div>
+              <div class="result-label">Months of Runway</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rw-netburn">--</div>
+              <div class="result-label">Net Monthly Burn</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rw-zero">--</div>
+              <div class="result-label">Cash Zero Date</div>
+            </div>
+          </div>
+          <div class="result-note" id="rw-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 3: Unit Economics Calculator -->
+    <div class="tool-card" id="unit-econ" data-category="metrics">
+      <div class="tool-card-header">
+        <h2>Unit Economics Calculator</h2>
+        <span class="tool-tag">Metrics</span>
+      </div>
+      <p class="tool-card-desc">Calculate CAC, LTV, LTV:CAC ratio, and payback period. The numbers that determine whether your business model works at scale.</p>
+      <a href="/blog/unit-economics-calculator-cac-ltv-payback-period-benchmarks-for-startups.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Total Acquisition Spend ($/mo)</label>
+            <input type="number" id="ue-spend" placeholder="e.g. 50000">
+          </div>
+          <div class="tool-field">
+            <label>New Customers Acquired (per month)</label>
+            <input type="number" id="ue-customers" placeholder="e.g. 100">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Avg Revenue Per Customer ($/mo)</label>
+            <input type="number" id="ue-arpc" placeholder="e.g. 200" step="0.01">
+          </div>
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="ue-margin" placeholder="e.g. 75" step="0.1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Monthly Churn Rate (%)</label>
+            <input type="number" id="ue-churn" placeholder="e.g. 5" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Net Revenue Retention (%)</label>
+            <input type="number" id="ue-nrr" placeholder="e.g. 100" step="0.1">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
+        <button class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
+        <div class="tool-results" id="ue-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="ue-cac">--</div>
+              <div class="result-label">CAC</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-ltv">--</div>
+              <div class="result-label">LTV</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-ratio">--</div>
+              <div class="result-label">LTV:CAC</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-payback">--</div>
+              <div class="result-label">Payback (months)</div>
+            </div>
+          </div>
+          <div class="result-note" id="ue-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 4: Revenue Model Builder -->
+    <div class="tool-card" id="revenue-model" data-category="financial-model">
+      <div class="tool-card-header">
+        <h2>Revenue Model Builder</h2>
+        <span class="tool-tag">Financial Model</span>
+      </div>
+      <p class="tool-card-desc">Project your monthly revenue over 18 months using starting MRR, growth rate, and churn. See how compounding works for and against you.</p>
+      <a href="/blog/revenue-model-builder-how-to-project-mrr-growth-with-real-drivers.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Starting MRR ($)</label>
+            <input type="number" id="rev-mrr" placeholder="e.g. 20000">
+          </div>
+          <div class="tool-field">
+            <label>MoM New Revenue Growth (%)</label>
+            <input type="number" id="rev-growth" placeholder="e.g. 12" step="0.1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Monthly Churn Rate (%)</label>
+            <input type="number" id="rev-churn" placeholder="e.g. 3" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Avg Expansion Rate (% of existing MRR/mo)</label>
+            <input type="number" id="rev-expansion" placeholder="e.g. 2" step="0.1">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
+        <button class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
+        <div class="tool-results" id="rev-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="rev-m6">--</div>
+              <div class="result-label">MRR at Month 6</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-m12">--</div>
+              <div class="result-label">MRR at Month 12</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-m18">--</div>
+              <div class="result-label">MRR at Month 18</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-arr18">--</div>
+              <div class="result-label">ARR at Month 18</div>
+            </div>
+          </div>
+          <div id="rev-table-wrap"></div>
+          <div class="result-note" id="rev-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 5: Headcount & Salary Planner -->
+    <div class="tool-card" id="headcount" data-category="financial-model">
+      <div class="tool-card-header">
+        <h2>Headcount & Salary Planner</h2>
+        <span class="tool-tag">Financial Model</span>
+      </div>
+      <p class="tool-card-desc">Plan your team build and see total loaded cost. Headcount is the largest expense for most startups. Model it before you commit.</p>
+      <a href="/blog/startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <p class="tool-card-desc" style="padding:0">Enter headcount per department and average annual salary:</p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Engineering (# people)</label>
+            <input type="number" id="hc-eng" placeholder="e.g. 5">
+          </div>
+          <div class="tool-field">
+            <label>Avg Eng Salary ($)</label>
+            <input type="number" id="hc-eng-sal" placeholder="e.g. 150000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Sales & Marketing (# people)</label>
+            <input type="number" id="hc-sales" placeholder="e.g. 3">
+          </div>
+          <div class="tool-field">
+            <label>Avg Sales Salary ($)</label>
+            <input type="number" id="hc-sales-sal" placeholder="e.g. 120000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Operations & Support (# people)</label>
+            <input type="number" id="hc-ops" placeholder="e.g. 2">
+          </div>
+          <div class="tool-field">
+            <label>Avg Ops Salary ($)</label>
+            <input type="number" id="hc-ops-sal" placeholder="e.g. 90000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Leadership / G&A (# people)</label>
+            <input type="number" id="hc-ga" placeholder="e.g. 2">
+          </div>
+          <div class="tool-field">
+            <label>Avg G&A Salary ($)</label>
+            <input type="number" id="hc-ga-sal" placeholder="e.g. 175000">
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label>Benefits & Tax Burden (% of salary)</label>
+            <input type="number" id="hc-burden" placeholder="e.g. 25" step="1">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcHeadcount()">Calculate Team Cost</button>
+        <button class="tool-btn-reset" onclick="resetTool('headcount')">Reset</button>
+        <div class="tool-results" id="hc-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="hc-total">--</div>
+              <div class="result-label">Total Headcount</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="hc-monthly">--</div>
+              <div class="result-label">Monthly Loaded Cost</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="hc-annual">--</div>
+              <div class="result-label">Annual Loaded Cost</div>
+            </div>
+          </div>
+          <div id="hc-table-wrap"></div>
+          <div class="result-note" id="hc-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 6: P&L Snapshot -->
+    <div class="tool-card" id="pnl" data-category="financial-model">
+      <div class="tool-card-header">
+        <h2>P&L Snapshot</h2>
+        <span class="tool-tag">Financial Model</span>
+      </div>
+      <p class="tool-card-desc">Build a quick monthly P&L summary. Enter your revenue and cost lines, get gross margin, operating margin, and net income at a glance.</p>
+      <a href="/blog/startup-pnl-guide-how-to-build-a-profit-and-loss-statement-that-investors-trust.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <p class="tool-card-desc" style="padding:0"><strong>Revenue</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Monthly Revenue ($)</label>
+            <input type="number" id="pl-rev" placeholder="e.g. 80000">
+          </div>
+          <div class="tool-field">
+            <label>COGS / Cost of Revenue ($)</label>
+            <input type="number" id="pl-cogs" placeholder="e.g. 20000">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0"><strong>Operating Expenses</strong></p>
+        <div class="tool-row triple">
+          <div class="tool-field">
+            <label>Salaries & Wages ($)</label>
+            <input type="number" id="pl-salaries" placeholder="e.g. 60000">
+          </div>
+          <div class="tool-field">
+            <label>Marketing & Sales ($)</label>
+            <input type="number" id="pl-marketing" placeholder="e.g. 15000">
+          </div>
+          <div class="tool-field">
+            <label>Tools & Infrastructure ($)</label>
+            <input type="number" id="pl-tools" placeholder="e.g. 5000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Rent & Office ($)</label>
+            <input type="number" id="pl-rent" placeholder="e.g. 3000">
+          </div>
+          <div class="tool-field">
+            <label>Other Expenses ($)</label>
+            <input type="number" id="pl-other" placeholder="e.g. 2000">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcPnL()">Generate P&L</button>
+        <button class="tool-btn-reset" onclick="resetTool('pnl')">Reset</button>
+        <div class="tool-results" id="pl-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="pl-gross-margin">--</div>
+              <div class="result-label">Gross Margin %</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-opex-total">--</div>
+              <div class="result-label">Total OpEx</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-net">--</div>
+              <div class="result-label">Net Income</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-net-margin">--</div>
+              <div class="result-label">Net Margin %</div>
+            </div>
+          </div>
+          <div id="pl-table-wrap"></div>
+          <div class="result-note" id="pl-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 7: Scenario Planner -->
+    <div class="tool-card" id="scenario" data-category="financial-model">
+      <div class="tool-card-header">
+        <h2>Three-Scenario Planner</h2>
+        <span class="tool-tag">Financial Model</span>
+      </div>
+      <p class="tool-card-desc">Model base, bull, and bear cases side-by-side. Every financial model shown to investors should have three scenarios. See how different assumptions change your trajectory.</p>
+      <a href="/blog/three-scenario-planning-for-startups-base-bull-and-bear-case-modeling.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <p class="tool-card-desc" style="padding:0"><strong>Base Case</strong></p>
+        <div class="tool-row triple">
+          <div class="tool-field">
+            <label>Starting MRR ($)</label>
+            <input type="number" id="sc-mrr" placeholder="e.g. 30000">
+          </div>
+          <div class="tool-field">
+            <label>MoM Growth (%)</label>
+            <input type="number" id="sc-growth-base" placeholder="e.g. 10" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Monthly Burn ($)</label>
+            <input type="number" id="sc-burn-base" placeholder="e.g. 80000">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0"><strong>Adjustment Multipliers</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Bull Case Growth Multiplier</label>
+            <input type="number" id="sc-bull-mult" placeholder="e.g. 1.5" step="0.1" value="1.5">
+          </div>
+          <div class="tool-field">
+            <label>Bear Case Growth Multiplier</label>
+            <input type="number" id="sc-bear-mult" placeholder="e.g. 0.5" step="0.1" value="0.5">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Cash on Hand ($)</label>
+            <input type="number" id="sc-cash" placeholder="e.g. 1000000">
+          </div>
+          <div class="tool-field">
+            <label>Projection Period (months)</label>
+            <input type="number" id="sc-months" placeholder="12" value="12" min="3" max="36">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcScenario()">Compare Scenarios</button>
+        <button class="tool-btn-reset" onclick="resetTool('scenario')">Reset</button>
+        <div class="tool-results" id="sc-results">
+          <div id="sc-table-wrap"></div>
+          <div class="result-note" id="sc-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 8: Sensitivity Analysis -->
+    <div class="tool-card" id="sensitivity" data-category="financial-model">
+      <div class="tool-card-header">
+        <h2>Sensitivity Analysis</h2>
+        <span class="tool-tag">Financial Model</span>
+      </div>
+      <p class="tool-card-desc">See how changes in two key variables affect your outcome. Pick your X and Y drivers, set ranges, and see the resulting matrix of outcomes.</p>
+      <a href="/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Base Monthly Revenue ($)</label>
+            <input type="number" id="sens-rev" placeholder="e.g. 50000">
+          </div>
+          <div class="tool-field">
+            <label>Base Monthly Burn ($)</label>
+            <input type="number" id="sens-burn" placeholder="e.g. 80000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Cash on Hand ($)</label>
+            <input type="number" id="sens-cash" placeholder="e.g. 1000000">
+          </div>
+          <div class="tool-field">
+            <label>Output Metric</label>
+            <select id="sens-metric">
+              <option value="runway">Runway (months)</option>
+              <option value="net-monthly">Net Monthly Cash Flow ($)</option>
+            </select>
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0">The table will show: <strong>rows</strong> = revenue change (-30% to +30%), <strong>columns</strong> = burn change (-30% to +30%)</p>
+        <button class="tool-btn" onclick="calcSensitivity()">Run Sensitivity</button>
+        <button class="tool-btn-reset" onclick="resetTool('sensitivity')">Reset</button>
+        <div class="tool-results" id="sens-results">
+          <div id="sens-table-wrap"></div>
+          <div class="result-note" id="sens-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 9: Startup Valuation Estimator -->
+    <div class="tool-card" id="valuation" data-category="fundraising">
+      <div class="tool-card-header">
+        <h2>Valuation Estimator</h2>
+        <span class="tool-tag">Fundraising</span>
+      </div>
+      <p class="tool-card-desc">Get a stage-appropriate valuation range based on your ARR, growth, and market benchmarks. Not a prediction, but a grounded starting point for negotiations.</p>
+      <a href="/blog/startup-valuation-how-to-estimate-your-company-worth-by-stage.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Stage</label>
+            <select id="v-stage">
+              <option value="pre-seed">Pre-Seed</option>
+              <option value="seed" selected>Seed</option>
+              <option value="series-a">Series A</option>
+              <option value="series-b">Series B</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Annual Recurring Revenue ($)</label>
+            <input type="number" id="v-arr" placeholder="e.g. 500000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>YoY Growth Rate (%)</label>
+            <input type="number" id="v-growth" placeholder="e.g. 200" step="1">
+          </div>
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="v-margin" placeholder="e.g. 75" step="0.1">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
+        <button class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
+        <div class="tool-results" id="v-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="v-low">--</div>
+              <div class="result-label">Low Range</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="v-mid">--</div>
+              <div class="result-label">Midpoint</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="v-high">--</div>
+              <div class="result-label">High Range</div>
+            </div>
+          </div>
+          <div class="result-note" id="v-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 10: Dilution Simulator -->
+    <div class="tool-card" id="dilution" data-category="cap-table">
+      <div class="tool-card-header">
+        <h2>Dilution Simulator</h2>
+        <span class="tool-tag">Cap Table</span>
+      </div>
+      <p class="tool-card-desc">See how each funding round dilutes founder ownership. Model option pools, multiple rounds, and understand what you'll actually own at exit.</p>
+      <a href="/blog/founder-dilution-how-much-equity-you-lose-each-funding-round.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Founder Ownership Before Round (%)</label>
+            <input type="number" id="d-ownership" placeholder="e.g. 80" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Pre-Money Valuation ($)</label>
+            <input type="number" id="d-premoney" placeholder="e.g. 5000000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Investment Amount ($)</label>
+            <input type="number" id="d-investment" placeholder="e.g. 1500000">
+          </div>
+          <div class="tool-field">
+            <label>Option Pool Increase (%)</label>
+            <input type="number" id="d-pool" placeholder="e.g. 10" step="0.1">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
+        <button class="tool-btn-reset" onclick="resetTool('dilution')">Reset</button>
+        <div class="tool-results" id="d-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="d-after">--</div>
+              <div class="result-label">Founder % After</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="d-investor">--</div>
+              <div class="result-label">Investor %</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="d-postmoney">--</div>
+              <div class="result-label">Post-Money Valuation</div>
+            </div>
+          </div>
+          <div class="result-note" id="d-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 11: SAFE vs Convertible Note Calculator -->
+    <div class="tool-card" id="safe" data-category="cap-table">
+      <div class="tool-card-header">
+        <h2>SAFE vs Convertible Note</h2>
+        <span class="tool-tag">Cap Table</span>
+      </div>
+      <p class="tool-card-desc">Compare pre-money vs post-money SAFEs and convertible notes. See the actual dilution difference that most first-time founders miss.</p>
+      <a href="/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Instrument Type</label>
+            <select id="s-type">
+              <option value="pre-safe">Pre-Money SAFE</option>
+              <option value="post-safe" selected>Post-Money SAFE</option>
+              <option value="note">Convertible Note</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Investment Amount ($)</label>
+            <input type="number" id="s-amount" placeholder="e.g. 500000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Valuation Cap ($)</label>
+            <input type="number" id="s-cap" placeholder="e.g. 5000000">
+          </div>
+          <div class="tool-field">
+            <label>Discount Rate (%)</label>
+            <input type="number" id="s-discount" placeholder="e.g. 20" step="1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Next Round Pre-Money Valuation ($)</label>
+            <input type="number" id="s-nextround" placeholder="e.g. 10000000">
+          </div>
+          <div class="tool-field">
+            <label>Next Round Investment ($)</label>
+            <input type="number" id="s-nextinv" placeholder="e.g. 2000000">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcSafe()">Compare Dilution</button>
+        <button class="tool-btn-reset" onclick="resetTool('safe')">Reset</button>
+        <div class="tool-results" id="s-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="s-safepct">--</div>
+              <div class="result-label">SAFE Investor %</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="s-founderpct">--</div>
+              <div class="result-label">Founder % After</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="s-priceshare">--</div>
+              <div class="result-label">Effective Price/Share</div>
+            </div>
+          </div>
+          <div class="result-note" id="s-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 12: Multi-Round Dilution Tracker -->
+    <div class="tool-card" id="multi-dilution" data-category="cap-table">
+      <div class="tool-card-header">
+        <h2>Multi-Round Dilution Tracker</h2>
+        <span class="tool-tag">Cap Table</span>
+      </div>
+      <p class="tool-card-desc">Track founder dilution across Seed, Series A, and Series B. See cumulative ownership erosion and what you own at exit after three rounds.</p>
+      <a href="/blog/multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <p class="tool-card-desc" style="padding:0"><strong>Seed Round</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Seed Pre-Money ($)</label>
+            <input type="number" id="md-seed-pre" placeholder="e.g. 5000000">
+          </div>
+          <div class="tool-field">
+            <label>Seed Investment ($)</label>
+            <input type="number" id="md-seed-inv" placeholder="e.g. 1500000">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0"><strong>Series A</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Series A Pre-Money ($)</label>
+            <input type="number" id="md-a-pre" placeholder="e.g. 20000000">
+          </div>
+          <div class="tool-field">
+            <label>Series A Investment ($)</label>
+            <input type="number" id="md-a-inv" placeholder="e.g. 5000000">
+          </div>
+        </div>
+        <p class="tool-card-desc" style="padding:0"><strong>Series B</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Series B Pre-Money ($)</label>
+            <input type="number" id="md-b-pre" placeholder="e.g. 80000000">
+          </div>
+          <div class="tool-field">
+            <label>Series B Investment ($)</label>
+            <input type="number" id="md-b-inv" placeholder="e.g. 15000000">
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label>Option Pool (% at each round)</label>
+            <input type="number" id="md-pool" placeholder="e.g. 10" step="0.1" value="10">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcMultiDilution()">Track Dilution</button>
+        <button class="tool-btn-reset" onclick="resetTool('multi-dilution')">Reset</button>
+        <div class="tool-results" id="md-results">
+          <div id="md-table-wrap"></div>
+          <div class="result-note" id="md-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 13: Pitch Deck Scorecard -->
+    <div class="tool-card" id="deck-score" data-category="fundraising">
+      <div class="tool-card-header">
+        <h2>Pitch Deck Scorecard</h2>
+        <span class="tool-tag">Fundraising</span>
+      </div>
+      <p class="tool-card-desc">Score your pitch deck across the 10 signals investors evaluate in the first 30 seconds. Identify weak slides before they silently kill your raise.</p>
+      <a href="/blog/pitch-deck-scorecard-10-signals-investors-evaluate-in-30-seconds.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <p class="tool-card-desc" style="padding:0">Rate each element 1 (weak) to 5 (strong)</p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Problem clarity (1-5)</label>
+            <input type="number" id="pd-problem" min="1" max="5" placeholder="3">
+          </div>
+          <div class="tool-field">
+            <label>Solution uniqueness (1-5)</label>
+            <input type="number" id="pd-solution" min="1" max="5" placeholder="3">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Market size credibility (1-5)</label>
+            <input type="number" id="pd-market" min="1" max="5" placeholder="3">
+          </div>
+          <div class="tool-field">
+            <label>Traction evidence (1-5)</label>
+            <input type="number" id="pd-traction" min="1" max="5" placeholder="3">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Business model clarity (1-5)</label>
+            <input type="number" id="pd-bizmodel" min="1" max="5" placeholder="3">
+          </div>
+          <div class="tool-field">
+            <label>Team credibility (1-5)</label>
+            <input type="number" id="pd-team" min="1" max="5" placeholder="3">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Competitive moat (1-5)</label>
+            <input type="number" id="pd-moat" min="1" max="5" placeholder="3">
+          </div>
+          <div class="tool-field">
+            <label>Financial model quality (1-5)</label>
+            <input type="number" id="pd-financials" min="1" max="5" placeholder="3">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Ask clarity (amount, use, timeline) (1-5)</label>
+            <input type="number" id="pd-ask" min="1" max="5" placeholder="3">
+          </div>
+          <div class="tool-field">
+            <label>Design and narrative flow (1-5)</label>
+            <input type="number" id="pd-design" min="1" max="5" placeholder="3">
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcDeckScore()">Score My Deck</button>
+        <button class="tool-btn-reset" onclick="resetTool('deck-score')">Reset</button>
+        <div class="tool-results" id="pd-results">
+          <div class="result-bar"><div class="result-bar-fill" id="pd-bar"></div></div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="pd-score">--</div>
+              <div class="result-label">Deck Score</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pd-verdict">--</div>
+              <div class="result-label">Verdict</div>
+            </div>
+          </div>
+          <div class="result-note" id="pd-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 14: Exit Proceeds Estimator -->
+    <div class="tool-card" id="exit-calc" data-category="exit">
+      <div class="tool-card-header">
+        <h2>Exit Proceeds Estimator</h2>
+        <span class="tool-tag">Exit</span>
+      </div>
+      <p class="tool-card-desc">Model your exit outcome. See what founders, investors, and option holders actually take home after preferences, participation, and escrow.</p>
+      <a href="/blog/startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts.html" class="tool-guide-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Read the guide: benchmarks &amp; how to fill this in</a>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Exit Valuation ($)</label>
+            <input type="number" id="e-valuation" placeholder="e.g. 50000000">
+          </div>
+          <div class="tool-field">
+            <label>Total Raised ($)</label>
+            <input type="number" id="e-raised" placeholder="e.g. 8000000">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Founder Ownership (%)</label>
+            <input type="number" id="e-founder" placeholder="e.g. 35" step="0.1">
+          </div>
+          <div class="tool-field">
+            <label>Option Pool (%)</label>
+            <input type="number" id="e-options" placeholder="e.g. 10" step="0.1">
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Liquidation Preference (1x, 2x)</label>
+            <select id="e-pref">
+              <option value="1">1x (standard)</option>
+              <option value="1.5">1.5x</option>
+              <option value="2">2x</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Participation</label>
+            <select id="e-participation">
+              <option value="none" selected>Non-participating</option>
+              <option value="capped">Participating (capped 3x)</option>
+              <option value="full">Full participating</option>
+            </select>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calcExit()">Estimate Proceeds</button>
+        <button class="tool-btn-reset" onclick="resetTool('exit-calc')">Reset</button>
+        <div class="tool-results" id="e-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="e-fpay">--</div>
+              <div class="result-label">Founder Take-Home</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="e-ipay">--</div>
+              <div class="result-label">Investor Returns</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="e-multiple">--</div>
+              <div class="result-label">Investor Multiple</div>
+            </div>
+          </div>
+          <div class="result-note" id="e-note"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Guides & Resources -->
+  <section class="tools-guides" style="max-width:900px; margin:3rem auto 0; padding:0 2rem;">
+    <h2 style="font-family:var(--serif); font-size:clamp(1.5rem,3vw,2rem); text-align:center; margin-bottom:0.5rem;">Guides & Resources</h2>
+    <p style="text-align:center; color:var(--mid); margin-bottom:2rem; font-size:1rem;">In-depth references to complement the calculators above.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+
+      <a href="/tools/101-vcs-angels-cold-outreach-2026.html" style="display:block; border:1px solid var(--rule); border-radius:8px; padding:1.75rem; text-decoration:none; color:inherit; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(200,164,90,0.12)'" onmouseout="this.style.borderColor='var(--rule)'; this.style.boxShadow='none'">
+        <span style="font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold);">Fundraising</span>
+        <h3 style="font-family:var(--serif); font-size:1.25rem; margin:0.5rem 0; color:var(--ink); line-height:1.3;">101 VCs & Angels Open to Cold Outreach in 2026</h3>
+        <p style="font-size:0.9rem; color:var(--mid); margin:0; line-height:1.6;">Verified investors who accept cold pitches. Fund sizes, check sizes, portfolio companies, notable exits, and direct contacts.</p>
+        <span style="display:inline-block; margin-top:1rem; font-family:var(--mono); font-size:0.8rem; color:var(--gold);">Read guide &#8594;</span>
+      </a>
+
+      <a href="/tools/best-business-tools-2026.html" style="display:block; border:1px solid var(--rule); border-radius:8px; padding:1.75rem; text-decoration:none; color:inherit; transition:border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(200,164,90,0.12)'" onmouseout="this.style.borderColor='var(--rule)'; this.style.boxShadow='none'">
+        <span style="font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold);">Tools</span>
+        <h3 style="font-family:var(--serif); font-size:1.25rem; margin:0.5rem 0; color:var(--ink); line-height:1.3;">The Best Business Tools & Services for Founders in 2026</h3>
+        <p style="font-size:0.9rem; color:var(--mid); margin:0; line-height:1.6;">Curated guide to EOR, SaaS, financial services, hosting, AI tools, and business formation platforms.</p>
+        <span style="display:inline-block; margin-top:1rem; font-family:var(--mono); font-size:0.8rem; color:var(--gold);">Read guide &#8594;</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="tools-cta">
+    <h2>Go deeper with the full playbook</h2>
+    <p>These tools scratch the surface. The Raise Ready book covers the frameworks, benchmarks, and strategies behind every number.</p>
+    <a href="/book/" class="btn btn-primary btn-large">Explore the Book</a>
+  </section>
+
+  <section class="newsletter-signup">
+    <h3>Stay sharp on startup finance</h3>
+    <p>Get new articles on fundraising, financial modeling, and unit economics. No spam, unsubscribe anytime.</p>
+    <form class="newsletter-form" method="POST" data-netlify="true" name="newsletter">
+      <input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="you@startup.com" required>
+      <input type="hidden" name="_subject" value="New newsletter signup">
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Email Gate Modal -->
+  <div id="email-gate" class="gate-overlay hidden">
+    <div class="gate-modal">
+      <button class="gate-close" onclick="closeGate()">&times;</button>
+      <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,164,90,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;">&#9733;</div>
+      <h3>Save Your Results</h3>
+      <p>Enter your email to save your results and receive stage-specific benchmarks.</p>
+      <div id="gate-error" class="gate-error"></div>
+      <div id="gate-success" class="gate-success" style="display:none;">
+        <p>Results saved. Check your inbox.</p>
+      </div>
+      <div id="gate-form-fields">
+        <input id="gate-email" class="gate-input" type="email" placeholder="you@startup.com">
+        <button class="gate-submit" onclick="submitGate()">Save My Results</button>
+      </div>
+      <div class="gate-fine">No spam. Unsubscribe anytime.</div>
+    </div>
+  </div>
+
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+function pct(n) { return n.toFixed(1) + '%'; }
+
+// Filter system
+function filterTools(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('.tool-card');
+  let visible = 0;
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+  document.getElementById('tool-count').textContent = visible + ' tool' + (visible !== 1 ? 's' : '');
+}
+
+// Reset tool
+function resetTool(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  card.querySelectorAll('input[type="number"]').forEach(i => { i.value = ''; });
+  card.querySelectorAll('select').forEach(s => { s.selectedIndex = 0; });
+  card.querySelectorAll('.tool-toggle').forEach(t => t.classList.remove('active'));
+  card.querySelectorAll('.tool-results').forEach(r => r.classList.remove('visible'));
+}
+
+// Scenario toggle
+function toggleScenario(btn) { btn.classList.toggle('active'); }
+
+// Tool 1: Funding Readiness
+function calcReadiness() {
+  const target = document.getElementById('r-target').value;
+  const arr = parseFloat(document.getElementById('r-arr').value) || 0;
+  const growth = parseFloat(document.getElementById('r-growth').value) || 0;
+  const margin = parseFloat(document.getElementById('r-margin').value) || 0;
+  const nrr = parseFloat(document.getElementById('r-nrr').value) || 0;
+  const burn = parseFloat(document.getElementById('r-burn').value) || 99;
+  const payback = parseFloat(document.getElementById('r-payback').value) || 99;
+  const team = Math.min(5, Math.max(1, parseFloat(document.getElementById('r-team').value) || 3));
+  const pmf = Math.min(5, Math.max(1, parseFloat(document.getElementById('r-pmf').value) || 3));
+
+  const benchmarks = {
+    'seed':     { arr: [0, 200000],     growth: 10, margin: 50, nrr: 90,  burn: 5,   payback: 24 },
+    'series-a': { arr: [500000, 2000000], growth: 12, margin: 60, nrr: 100, burn: 3,   payback: 18 },
+    'series-b': { arr: [2000000, 10000000], growth: 8, margin: 65, nrr: 110, burn: 2, payback: 15 },
+    'series-c': { arr: [10000000, 50000000], growth: 5, margin: 70, nrr: 115, burn: 1.5, payback: 12 }
+  };
+
+  const b = benchmarks[target] || benchmarks['series-a'];
+  let score = 0;
+  let gaps = [];
+
+  if (arr >= b.arr[1]) score += 25;
+  else if (arr >= b.arr[0]) score += 15;
+  else { score += Math.max(0, 10 * (arr / Math.max(b.arr[0], 1))); gaps.push('ARR is below the typical ' + fmt(b.arr[0]) + '-' + fmt(b.arr[1]) + ' range for ' + target.replace('-', ' ')); }
+
+  if (growth >= b.growth) score += 15;
+  else { score += 15 * (growth / b.growth); gaps.push('Growth of ' + growth + '% MoM is below the ' + b.growth + '% benchmark'); }
+
+  if (margin >= b.margin) score += 15;
+  else { score += 15 * (margin / b.margin); gaps.push('Gross margin of ' + margin + '% is below the ' + b.margin + '% floor'); }
+
+  if (nrr >= b.nrr) score += 10;
+  else { score += 10 * (nrr / b.nrr); gaps.push('NRR of ' + nrr + '% is below ' + b.nrr + '%'); }
+
+  if (burn <= b.burn) score += 10;
+  else if (burn < b.burn * 2) score += 5;
+  else { gaps.push('Burn multiple of ' + burn + 'x is too high (target below ' + b.burn + 'x)'); }
+
+  if (payback <= b.payback) score += 10;
+  else if (payback < b.payback * 1.5) score += 5;
+  else { gaps.push('CAC payback of ' + payback + ' months exceeds the ' + b.payback + ' month target'); }
+
+  score += (team / 5) * 7.5;
+  score += (pmf / 5) * 7.5;
+  if (team < 3) gaps.push('Team strength rated below benchmark');
+  if (pmf < 3) gaps.push('Product-market fit signals are weak');
+
+  score = Math.min(100, Math.round(score));
+
+  let verdict, barColor;
+  if (score >= 75) { verdict = 'Ready'; barColor = '#2ecc71'; }
+  else if (score >= 50) { verdict = 'Close'; barColor = '#f39c12'; }
+  else { verdict = 'Not Yet'; barColor = '#e74c3c'; }
+
+  document.getElementById('r-score').textContent = score + '/100';
+  document.getElementById('r-verdict').textContent = verdict;
+  document.getElementById('r-bar').style.width = score + '%';
+  document.getElementById('r-bar').style.background = barColor;
+
+  let gapHTML = gaps.length > 0
+    ? '<strong>Priority gaps to close:</strong><br>' + gaps.map(g => '&bull; ' + g).join('<br>')
+    : 'All key metrics meet or exceed benchmarks for this stage.';
+  document.getElementById('r-gaps').innerHTML = gapHTML;
+  document.getElementById('r-results').classList.add('visible');
+}
+
+// Tool 2: Runway
+function calcRunway() {
+  let cash = parseFloat(document.getElementById('rw-cash').value) || 0;
+  let burn = parseFloat(document.getElementById('rw-burn').value) || 0;
+  let rev = parseFloat(document.getElementById('rw-rev').value) || 0;
+  const growthRate = (parseFloat(document.getElementById('rw-growth').value) || 0) / 100;
+
+  document.querySelectorAll('#runway .tool-toggle.active').forEach(t => {
+    const mod = t.dataset.mod;
+    if (mod === 'hire') burn += 10000;
+    if (mod === 'cut') burn -= 8000;
+    if (mod === 'churn') rev -= 5000;
+    if (mod === 'deal') rev += 10000;
+    if (mod === 'halfmktg') burn -= burn * 0.15;
+  });
+
+  let months = 0;
+  let simCash = cash;
+  let simRev = Math.max(0, rev);
+  while (simCash > 0 && months < 120) {
+    const netBurn = burn - simRev;
+    simCash -= netBurn;
+    simRev *= (1 + growthRate);
+    months++;
+    if (simRev >= burn) { months = 120; break; }
+  }
+
+  const netBurn = burn - Math.max(0, rev);
+  const zeroDate = new Date();
+  zeroDate.setMonth(zeroDate.getMonth() + (months < 120 ? months : 0));
+
+  document.getElementById('rw-months').textContent = months >= 120 ? 'Infinite' : months;
+  document.getElementById('rw-netburn').textContent = fmt(Math.max(0, netBurn));
+  document.getElementById('rw-zero').textContent = months >= 120 ? 'N/A' : zeroDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+  let note = '';
+  if (months < 6) note = 'Critical: Less than 6 months of runway. You should not be fundraising from this position. Focus on extending runway immediately.';
+  else if (months < 12) note = 'Caution: 6-12 months of runway. Begin fundraise preparations now. Most rounds take 3-6 months to close.';
+  else if (months < 18) note = 'Healthy: 12-18 months gives you optionality. Good position to start a fundraise if metrics support it.';
+  else if (months < 120) note = 'Strong: 18+ months of runway. You can be selective about timing and terms.';
+  else note = 'Your revenue growth outpaces burn. You are approaching profitability without additional funding.';
+
+  document.getElementById('rw-note').textContent = note;
+  document.getElementById('rw-results').classList.add('visible');
+}
+
+// Tool 3: Unit Economics
+function calcUnitEcon() {
+  const spend = parseFloat(document.getElementById('ue-spend').value) || 0;
+  const customers = parseFloat(document.getElementById('ue-customers').value) || 1;
+  const arpc = parseFloat(document.getElementById('ue-arpc').value) || 0;
+  const margin = (parseFloat(document.getElementById('ue-margin').value) || 75) / 100;
+  const churn = (parseFloat(document.getElementById('ue-churn').value) || 5) / 100;
+  const nrr = (parseFloat(document.getElementById('ue-nrr').value) || 100) / 100;
+
+  const cac = spend / customers;
+  const avgLifeMonths = churn > 0 ? (1 / churn) : 120;
+  const effectiveARPC = arpc * nrr;
+  const ltv = effectiveARPC * margin * avgLifeMonths;
+  const ratio = ltv / cac;
+  const payback = cac / (arpc * margin);
+
+  document.getElementById('ue-cac').textContent = fmt(cac);
+  document.getElementById('ue-ltv').textContent = fmt(ltv);
+  document.getElementById('ue-ratio').textContent = ratio.toFixed(1) + 'x';
+  document.getElementById('ue-payback').textContent = payback.toFixed(1);
+
+  let notes = [];
+  if (ratio < 1) notes.push('LTV:CAC below 1x means you lose money on every customer. This is not sustainable.');
+  else if (ratio < 3) notes.push('LTV:CAC between 1-3x is common at early stages but needs improvement for Series A.');
+  else if (ratio < 5) notes.push('LTV:CAC of 3-5x is the benchmark range most investors look for.');
+  else notes.push('LTV:CAC above 5x is strong. Consider whether you are underinvesting in growth.');
+
+  if (payback > 18) notes.push('CAC payback over 18 months is a red flag for most investors.');
+  else if (payback > 12) notes.push('CAC payback of 12-18 months is acceptable for Seed but tight for Series A.');
+  else notes.push('CAC payback under 12 months signals strong unit economics.');
+
+  document.getElementById('ue-note').innerHTML = notes.join('<br>');
+  document.getElementById('ue-results').classList.add('visible');
+}
+
+// Tool 4: Revenue Model Builder
+function calcRevenueModel() {
+  let mrr = parseFloat(document.getElementById('rev-mrr').value) || 0;
+  const growthPct = (parseFloat(document.getElementById('rev-growth').value) || 0) / 100;
+  const churnPct = (parseFloat(document.getElementById('rev-churn').value) || 0) / 100;
+  const expansionPct = (parseFloat(document.getElementById('rev-expansion').value) || 0) / 100;
+
+  if (mrr <= 0) { alert('Please enter a starting MRR greater than 0.'); return; }
+
+  let rows = [];
+  let current = mrr;
+  for (let m = 1; m <= 18; m++) {
+    const newRev = current * growthPct;
+    const churnRev = current * churnPct;
+    const expansion = current * expansionPct;
+    current = current + newRev - churnRev + expansion;
+    rows.push({ month: m, mrr: current, newRev, churnRev, expansion });
+  }
+
+  document.getElementById('rev-m6').textContent = fmt(rows[5].mrr);
+  document.getElementById('rev-m12').textContent = fmt(rows[11].mrr);
+  document.getElementById('rev-m18').textContent = fmt(rows[17].mrr);
+  document.getElementById('rev-arr18').textContent = fmt(rows[17].mrr * 12);
+
+  let html = '<table class="result-table"><thead><tr><th>Month</th><th class="text-right">MRR</th><th class="text-right">New</th><th class="text-right">Churn</th><th class="text-right">Expansion</th></tr></thead><tbody>';
+  rows.forEach(r => {
+    html += '<tr><td>' + r.month + '</td><td class="text-right">' + fmt(r.mrr) + '</td><td class="text-right">' + fmt(r.newRev) + '</td><td class="text-right" style="color:#e74c3c">-' + fmt(r.churnRev) + '</td><td class="text-right" style="color:#2ecc71">+' + fmt(r.expansion) + '</td></tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('rev-table-wrap').innerHTML = html;
+
+  const netGrowth = ((rows[17].mrr / mrr) - 1) * 100;
+  document.getElementById('rev-note').textContent = 'Net revenue growth over 18 months: ' + netGrowth.toFixed(0) + '%. Your MRR grows from ' + fmt(mrr) + ' to ' + fmt(rows[17].mrr) + ', reaching ' + fmt(rows[17].mrr * 12) + ' ARR.';
+  document.getElementById('rev-results').classList.add('visible');
+}
+
+// Tool 5: Headcount Planner
+function calcHeadcount() {
+  const depts = [
+    { name: 'Engineering', count: parseFloat(document.getElementById('hc-eng').value) || 0, sal: parseFloat(document.getElementById('hc-eng-sal').value) || 0 },
+    { name: 'Sales & Marketing', count: parseFloat(document.getElementById('hc-sales').value) || 0, sal: parseFloat(document.getElementById('hc-sales-sal').value) || 0 },
+    { name: 'Operations & Support', count: parseFloat(document.getElementById('hc-ops').value) || 0, sal: parseFloat(document.getElementById('hc-ops-sal').value) || 0 },
+    { name: 'Leadership / G&A', count: parseFloat(document.getElementById('hc-ga').value) || 0, sal: parseFloat(document.getElementById('hc-ga-sal').value) || 0 }
+  ];
+  const burden = (parseFloat(document.getElementById('hc-burden').value) || 25) / 100;
+
+  let totalHead = 0, totalAnnual = 0;
+  let html = '<table class="result-table"><thead><tr><th>Department</th><th class="text-right">People</th><th class="text-right">Avg Salary</th><th class="text-right">Loaded Annual</th><th class="text-right">Loaded Monthly</th></tr></thead><tbody>';
+  depts.forEach(d => {
+    totalHead += d.count;
+    const loaded = d.sal * (1 + burden);
+    const deptAnnual = d.count * loaded;
+    totalAnnual += deptAnnual;
+    if (d.count > 0) {
+      html += '<tr><td>' + d.name + '</td><td class="text-right">' + d.count + '</td><td class="text-right">' + fmt(d.sal) + '</td><td class="text-right">' + fmt(deptAnnual) + '</td><td class="text-right">' + fmt(deptAnnual / 12) + '</td></tr>';
+    }
+  });
+  html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Total</td><td class="text-right">' + totalHead + '</td><td></td><td class="text-right">' + fmt(totalAnnual) + '</td><td class="text-right">' + fmt(totalAnnual / 12) + '</td></tr>';
+  html += '</tbody></table>';
+  document.getElementById('hc-table-wrap').innerHTML = html;
+
+  document.getElementById('hc-total').textContent = totalHead;
+  document.getElementById('hc-monthly').textContent = fmt(totalAnnual / 12);
+  document.getElementById('hc-annual').textContent = fmt(totalAnnual);
+
+  const costPerHead = totalHead > 0 ? totalAnnual / totalHead : 0;
+  document.getElementById('hc-note').textContent = 'Average fully-loaded cost per employee: ' + fmt(costPerHead) + '/year (' + fmt(costPerHead/12) + '/month). The ' + (burden*100).toFixed(0) + '% burden covers benefits, taxes, equipment, and overhead.';
+  document.getElementById('hc-results').classList.add('visible');
+}
+
+// Tool 6: P&L Snapshot
+function calcPnL() {
+  const rev = parseFloat(document.getElementById('pl-rev').value) || 0;
+  const cogs = parseFloat(document.getElementById('pl-cogs').value) || 0;
+  const salaries = parseFloat(document.getElementById('pl-salaries').value) || 0;
+  const marketing = parseFloat(document.getElementById('pl-marketing').value) || 0;
+  const tools = parseFloat(document.getElementById('pl-tools').value) || 0;
+  const rent = parseFloat(document.getElementById('pl-rent').value) || 0;
+  const other = parseFloat(document.getElementById('pl-other').value) || 0;
+
+  const grossProfit = rev - cogs;
+  const grossMargin = rev > 0 ? (grossProfit / rev) * 100 : 0;
+  const totalOpex = salaries + marketing + tools + rent + other;
+  const netIncome = grossProfit - totalOpex;
+  const netMargin = rev > 0 ? (netIncome / rev) * 100 : 0;
+
+  document.getElementById('pl-gross-margin').textContent = grossMargin.toFixed(1) + '%';
+  document.getElementById('pl-opex-total').textContent = fmt(totalOpex);
+  document.getElementById('pl-net').textContent = fmt(netIncome);
+  document.getElementById('pl-net-margin').textContent = netMargin.toFixed(1) + '%';
+
+  let html = '<table class="result-table"><tbody>';
+  html += '<tr><td>Revenue</td><td class="text-right">' + fmt(rev) + '</td></tr>';
+  html += '<tr><td>COGS</td><td class="text-right" style="color:#e74c3c">(' + fmt(cogs) + ')</td></tr>';
+  html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Gross Profit</td><td class="text-right">' + fmt(grossProfit) + '</td></tr>';
+  html += '<tr><td>&nbsp;&nbsp;Salaries & Wages</td><td class="text-right">(' + fmt(salaries) + ')</td></tr>';
+  html += '<tr><td>&nbsp;&nbsp;Marketing & Sales</td><td class="text-right">(' + fmt(marketing) + ')</td></tr>';
+  html += '<tr><td>&nbsp;&nbsp;Tools & Infrastructure</td><td class="text-right">(' + fmt(tools) + ')</td></tr>';
+  html += '<tr><td>&nbsp;&nbsp;Rent & Office</td><td class="text-right">(' + fmt(rent) + ')</td></tr>';
+  html += '<tr><td>&nbsp;&nbsp;Other</td><td class="text-right">(' + fmt(other) + ')</td></tr>';
+  html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Net Income</td><td class="text-right" style="color:' + (netIncome >= 0 ? '#2ecc71' : '#e74c3c') + '">' + fmt(netIncome) + '</td></tr>';
+  html += '</tbody></table>';
+  document.getElementById('pl-table-wrap').innerHTML = html;
+
+  let note = 'Gross margin of ' + grossMargin.toFixed(0) + '% ';
+  if (grossMargin >= 70) note += 'is strong for a SaaS business. ';
+  else if (grossMargin >= 50) note += 'is acceptable but below the 70%+ SaaS benchmark. ';
+  else note += 'is low. Consider optimizing COGS. ';
+  note += 'Monthly net ' + (netIncome >= 0 ? 'profit' : 'loss') + ' of ' + fmt(Math.abs(netIncome)) + ' (' + fmt(Math.abs(netIncome) * 12) + '/year).';
+  document.getElementById('pl-note').textContent = note;
+  document.getElementById('pl-results').classList.add('visible');
+}
+
+// Tool 7: Scenario Planner
+function calcScenario() {
+  const mrr = parseFloat(document.getElementById('sc-mrr').value) || 0;
+  const growthBase = (parseFloat(document.getElementById('sc-growth-base').value) || 0) / 100;
+  const burnBase = parseFloat(document.getElementById('sc-burn-base').value) || 0;
+  const bullMult = parseFloat(document.getElementById('sc-bull-mult').value) || 1.5;
+  const bearMult = parseFloat(document.getElementById('sc-bear-mult').value) || 0.5;
+  const cash = parseFloat(document.getElementById('sc-cash').value) || 0;
+  const months = Math.min(36, Math.max(3, parseInt(document.getElementById('sc-months').value) || 12));
+
+  if (mrr <= 0) { alert('Please enter a starting MRR greater than 0.'); return; }
+
+  function simulate(growth) {
+    let rev = mrr, cashLeft = cash;
+    let runwayMonths = 0, hitProfitable = false;
+    const data = [];
+    for (let m = 1; m <= months; m++) {
+      rev *= (1 + growth);
+      const netBurn = burnBase - rev;
+      cashLeft -= netBurn;
+      if (cashLeft > 0 || hitProfitable) runwayMonths = m;
+      if (rev >= burnBase && !hitProfitable) hitProfitable = true;
+      data.push({ month: m, mrr: rev, cash: cashLeft });
+    }
+    return { finalMrr: rev, finalCash: cashLeft, runway: hitProfitable ? 'Infinite' : runwayMonths, data };
+  }
+
+  const base = simulate(growthBase);
+  const bull = simulate(growthBase * bullMult);
+  const bear = simulate(growthBase * bearMult);
+
+  let html = '<table class="result-table"><thead><tr><th></th><th class="text-right">Bear</th><th class="text-right">Base</th><th class="text-right">Bull</th></tr></thead><tbody>';
+  html += '<tr><td>Growth Rate</td><td class="text-right">' + (growthBase * bearMult * 100).toFixed(1) + '%</td><td class="text-right">' + (growthBase * 100).toFixed(1) + '%</td><td class="text-right">' + (growthBase * bullMult * 100).toFixed(1) + '%</td></tr>';
+  html += '<tr><td>MRR at Month ' + months + '</td><td class="text-right">' + fmt(bear.finalMrr) + '</td><td class="text-right">' + fmt(base.finalMrr) + '</td><td class="text-right">' + fmt(bull.finalMrr) + '</td></tr>';
+  html += '<tr><td>ARR at Month ' + months + '</td><td class="text-right">' + fmt(bear.finalMrr * 12) + '</td><td class="text-right">' + fmt(base.finalMrr * 12) + '</td><td class="text-right">' + fmt(bull.finalMrr * 12) + '</td></tr>';
+  html += '<tr><td>Cash Remaining</td><td class="text-right" style="color:' + (bear.finalCash >= 0 ? '#2ecc71' : '#e74c3c') + '">' + fmt(bear.finalCash) + '</td><td class="text-right" style="color:' + (base.finalCash >= 0 ? '#2ecc71' : '#e74c3c') + '">' + fmt(base.finalCash) + '</td><td class="text-right" style="color:' + (bull.finalCash >= 0 ? '#2ecc71' : '#e74c3c') + '">' + fmt(bull.finalCash) + '</td></tr>';
+  html += '<tr><td>Runway</td><td class="text-right">' + bear.runway + (bear.runway !== 'Infinite' ? ' mo' : '') + '</td><td class="text-right">' + base.runway + (base.runway !== 'Infinite' ? ' mo' : '') + '</td><td class="text-right">' + bull.runway + (bull.runway !== 'Infinite' ? ' mo' : '') + '</td></tr>';
+  html += '</tbody></table>';
+  document.getElementById('sc-table-wrap').innerHTML = html;
+
+  let note = 'The spread between bear and bull MRR at month ' + months + ' is ' + fmt(bull.finalMrr - bear.finalMrr) + '. ';
+  if (bear.finalCash < 0) note += 'In the bear case, you run out of cash. Plan for this scenario by identifying cost cuts or bridge financing.';
+  else note += 'All three scenarios maintain positive cash through the projection period.';
+  document.getElementById('sc-note').textContent = note;
+  document.getElementById('sc-results').classList.add('visible');
+}
+
+// Tool 8: Sensitivity Analysis
+function calcSensitivity() {
+  const baseRev = parseFloat(document.getElementById('sens-rev').value) || 0;
+  const baseBurn = parseFloat(document.getElementById('sens-burn').value) || 0;
+  const cash = parseFloat(document.getElementById('sens-cash').value) || 0;
+  const metric = document.getElementById('sens-metric').value;
+
+  if (baseRev <= 0 && baseBurn <= 0) { alert('Please enter revenue and burn values.'); return; }
+
+  const revChanges = [-30, -20, -10, 0, 10, 20, 30];
+  const burnChanges = [-30, -20, -10, 0, 10, 20, 30];
+
+  let html = '<table class="result-table"><thead><tr><th>Rev \\ Burn</th>';
+  burnChanges.forEach(bc => { html += '<th class="text-right">' + (bc >= 0 ? '+' : '') + bc + '%</th>'; });
+  html += '</tr></thead><tbody>';
+
+  revChanges.forEach(rc => {
+    html += '<tr><td style="font-weight:600">' + (rc >= 0 ? '+' : '') + rc + '%</td>';
+    burnChanges.forEach(bc => {
+      const adjRev = baseRev * (1 + rc/100);
+      const adjBurn = baseBurn * (1 + bc/100);
+      let val, color;
+      if (metric === 'runway') {
+        const netBurn = adjBurn - adjRev;
+        val = netBurn <= 0 ? 'Inf' : Math.round(cash / netBurn);
+        color = val === 'Inf' || val >= 18 ? '#2ecc71' : val >= 12 ? '#f39c12' : '#e74c3c';
+      } else {
+        val = adjRev - adjBurn;
+        color = val >= 0 ? '#2ecc71' : '#e74c3c';
+        val = fmt(val);
+      }
+      html += '<td class="text-right" style="color:' + color + '">' + (metric === 'runway' ? val : val) + '</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('sens-table-wrap').innerHTML = html;
+
+  document.getElementById('sens-note').textContent = metric === 'runway'
+    ? 'Values show months of runway. Green = 18+ months, yellow = 12-17, red = under 12. "Inf" means revenue exceeds burn.'
+    : 'Values show net monthly cash flow. Green = positive, red = negative.';
+  document.getElementById('sens-results').classList.add('visible');
+}
+
+// Tool 9: Valuation
+function calcValuation() {
+  const stage = document.getElementById('v-stage').value;
+  const arr = parseFloat(document.getElementById('v-arr').value) || 0;
+  const growth = parseFloat(document.getElementById('v-growth').value) || 0;
+  const margin = parseFloat(document.getElementById('v-margin').value) || 50;
+
+  const multiples = {
+    'pre-seed': { low: 10, mid: 20, high: 40, note: 'Pre-seed valuations are primarily team and vision driven. Revenue multiples matter less.' },
+    'seed':     { low: 15, mid: 30, high: 60, note: 'Seed valuations blend ARR multiples with growth trajectory and market size.' },
+    'series-a': { low: 10, mid: 20, high: 40, note: 'Series A multiples depend heavily on growth rate, retention, and capital efficiency.' },
+    'series-b': { low: 8, mid: 15, high: 30, note: 'Series B multiples compress. Investors weigh profitability path alongside growth.' }
+  };
+
+  const m = multiples[stage];
+  let growthAdj = 1;
+  if (growth > 300) growthAdj = 1.3;
+  else if (growth > 200) growthAdj = 1.15;
+  else if (growth > 100) growthAdj = 1;
+  else if (growth > 50) growthAdj = 0.8;
+  else growthAdj = 0.6;
+
+  let marginAdj = margin >= 70 ? 1.1 : margin >= 50 ? 1 : 0.85;
+
+  const base = Math.max(arr, stage === 'pre-seed' ? 500000 : 0);
+  const low = base * m.low * growthAdj * marginAdj / 10;
+  const mid = base * m.mid * growthAdj * marginAdj / 10;
+  const high = base * m.high * growthAdj * marginAdj / 10;
+
+  document.getElementById('v-low').textContent = fmt(low);
+  document.getElementById('v-mid').textContent = fmt(mid);
+  document.getElementById('v-high').textContent = fmt(high);
+  document.getElementById('v-note').textContent = m.note + ' These ranges are directional estimates based on 2024-2026 market data, not precise valuations.';
+  document.getElementById('v-results').classList.add('visible');
+}
+
+// Tool 10: Dilution
+function calcDilution() {
+  const ownership = parseFloat(document.getElementById('d-ownership').value) || 100;
+  const premoney = parseFloat(document.getElementById('d-premoney').value) || 0;
+  const investment = parseFloat(document.getElementById('d-investment').value) || 0;
+  const pool = parseFloat(document.getElementById('d-pool').value) || 0;
+
+  const postmoney = premoney + investment;
+  const investorPct = (investment / postmoney) * 100;
+  const remainingAfterInvestor = 100 - investorPct;
+  const founderAfter = ownership * (remainingAfterInvestor - pool) / 100;
+
+  document.getElementById('d-after').textContent = founderAfter.toFixed(1) + '%';
+  document.getElementById('d-investor').textContent = investorPct.toFixed(1) + '%';
+  document.getElementById('d-postmoney').textContent = fmt(postmoney);
+
+  const dilution = ownership - founderAfter;
+  let note = 'You are diluted by ' + dilution.toFixed(1) + ' percentage points in this round.';
+  if (pool > 0) note += ' The ' + pool + '% option pool increases pre-round dilution.';
+  if (investorPct > 25) note += ' Giving up more than 25% in a single round is aggressive. Most founders target 15-20% dilution per round.';
+  else if (investorPct > 20) note += ' This dilution is within normal range for most rounds.';
+  else note += ' Conservative dilution. Good for preserving long-term ownership.';
+
+  document.getElementById('d-note').textContent = note;
+  document.getElementById('d-results').classList.add('visible');
+}
+
+// Tool 11: SAFE Calculator
+function calcSafe() {
+  const type = document.getElementById('s-type').value;
+  const amount = parseFloat(document.getElementById('s-amount').value) || 0;
+  const cap = parseFloat(document.getElementById('s-cap').value) || 0;
+  const discount = (parseFloat(document.getElementById('s-discount').value) || 0) / 100;
+  const nextPre = parseFloat(document.getElementById('s-nextround').value) || 0;
+  const nextInv = parseFloat(document.getElementById('s-nextinv').value) || 0;
+
+  let safePct, founderPct;
+  const nextPost = nextPre + nextInv;
+  const nextRoundPPS = nextPre > 0 ? nextPre / 10000000 : 1;
+  const discountPPS = nextRoundPPS * (1 - discount);
+  const capPPS = cap > 0 ? cap / 10000000 : nextRoundPPS;
+  const effectivePPS = Math.min(discountPPS, capPPS);
+
+  if (type === 'post-safe') {
+    safePct = cap > 0 ? (amount / cap) * 100 : 0;
+    const nextInvPct = (nextInv / nextPost) * 100;
+    founderPct = 100 - safePct - nextInvPct;
+  } else if (type === 'pre-safe') {
+    const effectivePre = Math.min(cap, nextPre * (1 - discount));
+    safePct = (amount / (effectivePre + amount + nextInv)) * 100;
+    const nextInvPct = (nextInv / (effectivePre + amount + nextInv)) * 100;
+    founderPct = 100 - safePct - nextInvPct;
+  } else {
+    const effectiveVal = Math.min(cap, nextPre * (1 - discount));
+    safePct = (amount / (effectiveVal + nextInv)) * 100;
+    founderPct = 100 - safePct - (nextInv / (effectiveVal + nextInv)) * 100;
+  }
+
+  document.getElementById('s-safepct').textContent = safePct.toFixed(1) + '%';
+  document.getElementById('s-founderpct').textContent = Math.max(0, founderPct).toFixed(1) + '%';
+  document.getElementById('s-priceshare').textContent = '$' + effectivePPS.toFixed(4);
+
+  let note = '';
+  if (type === 'post-safe') {
+    note = 'Post-money SAFEs give investors a fixed ownership percentage (' + safePct.toFixed(1) + '%) regardless of how many SAFEs you issue. Additional SAFEs dilute founders, not earlier investors. This is the most common SAFE structure in 2024-2026.';
+  } else {
+    note = 'Pre-money SAFEs dilute all existing shareholders proportionally when they convert. Multiple pre-money SAFEs stack, meaning each additional SAFE dilutes earlier SAFE holders too.';
+  }
+  document.getElementById('s-note').textContent = note;
+  document.getElementById('s-results').classList.add('visible');
+}
+
+// Tool 12: Multi-Round Dilution
+function calcMultiDilution() {
+  const rounds = [
+    { name: 'Seed', pre: parseFloat(document.getElementById('md-seed-pre').value) || 0, inv: parseFloat(document.getElementById('md-seed-inv').value) || 0 },
+    { name: 'Series A', pre: parseFloat(document.getElementById('md-a-pre').value) || 0, inv: parseFloat(document.getElementById('md-a-inv').value) || 0 },
+    { name: 'Series B', pre: parseFloat(document.getElementById('md-b-pre').value) || 0, inv: parseFloat(document.getElementById('md-b-inv').value) || 0 }
+  ];
+  const poolPct = (parseFloat(document.getElementById('md-pool').value) || 10) / 100;
+
+  let founderOwnership = 100;
+  let html = '<table class="result-table"><thead><tr><th>Round</th><th class="text-right">Pre-Money</th><th class="text-right">Raised</th><th class="text-right">Dilution</th><th class="text-right">Founder %</th></tr></thead><tbody>';
+  html += '<tr><td>Start</td><td></td><td></td><td></td><td class="text-right" style="font-weight:600">100.0%</td></tr>';
+
+  rounds.forEach(r => {
+    if (r.inv <= 0 || r.pre <= 0) return;
+    const post = r.pre + r.inv;
+    const investorPct = (r.inv / post) * 100;
+    const poolDilution = poolPct * 100;
+    const keepRatio = (100 - investorPct - poolDilution) / 100;
+    founderOwnership = founderOwnership * keepRatio;
+    const dilutionThisRound = 100 - (keepRatio * 100);
+    html += '<tr><td>' + r.name + '</td><td class="text-right">' + fmt(r.pre) + '</td><td class="text-right">' + fmt(r.inv) + '</td><td class="text-right" style="color:#e74c3c">-' + dilutionThisRound.toFixed(1) + '%</td><td class="text-right" style="font-weight:600">' + founderOwnership.toFixed(1) + '%</td></tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('md-table-wrap').innerHTML = html;
+
+  document.getElementById('md-note').textContent = 'After all modeled rounds, founder ownership lands at ' + founderOwnership.toFixed(1) + '%. The ' + (poolPct*100).toFixed(0) + '% option pool at each round compounds dilution. Most successful founders retain 15-30% through Series B.';
+  document.getElementById('md-results').classList.add('visible');
+}
+
+// Tool 13: Pitch Deck Scorecard
+function calcDeckScore() {
+  const fields = ['pd-problem','pd-solution','pd-market','pd-traction','pd-bizmodel','pd-team','pd-moat','pd-financials','pd-ask','pd-design'];
+  const labels = ['Problem','Solution','Market','Traction','Business Model','Team','Moat','Financials','Ask','Design'];
+  let total = 0;
+  let weak = [];
+  fields.forEach((f, i) => {
+    const v = Math.min(5, Math.max(1, parseInt(document.getElementById(f).value) || 3));
+    total += v;
+    if (v <= 2) weak.push(labels[i] + ' (scored ' + v + '/5)');
+  });
+
+  const scorePct = Math.round((total / 50) * 100);
+  let verdict, barColor;
+  if (scorePct >= 80) { verdict = 'Strong'; barColor = '#2ecc71'; }
+  else if (scorePct >= 60) { verdict = 'Decent'; barColor = '#f39c12'; }
+  else { verdict = 'Needs Work'; barColor = '#e74c3c'; }
+
+  document.getElementById('pd-score').textContent = total + '/50';
+  document.getElementById('pd-verdict').textContent = verdict;
+  document.getElementById('pd-bar').style.width = scorePct + '%';
+  document.getElementById('pd-bar').style.background = barColor;
+
+  let noteHTML = '';
+  if (weak.length > 0) {
+    noteHTML = '<strong>Weak signals investors will flag:</strong><br>' + weak.map(w => '&bull; ' + w).join('<br>');
+    noteHTML += '<br><br>Investors make a gut decision in 30 seconds. These weak slides create silent no\'s before you get a chance to explain.';
+  } else {
+    noteHTML = 'Your deck scores well across all dimensions. Focus on narrative flow and making the first 3 slides impossible to ignore.';
+  }
+  document.getElementById('pd-note').innerHTML = noteHTML;
+  document.getElementById('pd-results').classList.add('visible');
+}
+
+// Tool 14: Exit Proceeds
+function calcExit() {
+  const exitVal = parseFloat(document.getElementById('e-valuation').value) || 0;
+  const raised = parseFloat(document.getElementById('e-raised').value) || 0;
+  const founderPct = (parseFloat(document.getElementById('e-founder').value) || 0) / 100;
+  const optionPct = (parseFloat(document.getElementById('e-options').value) || 0) / 100;
+  const pref = parseFloat(document.getElementById('e-pref').value) || 1;
+  const participation = document.getElementById('e-participation').value;
+
+  const investorPct = 1 - founderPct - optionPct;
+  const prefAmount = raised * pref;
+  let investorTake, founderTake;
+
+  if (participation === 'none') {
+    const investorAsCommon = exitVal * investorPct;
+    investorTake = investorAsCommon > prefAmount ? investorAsCommon : Math.min(prefAmount, exitVal);
+  } else if (participation === 'capped') {
+    const cappedReturn = raised * 3;
+    investorTake = Math.min(cappedReturn, prefAmount + (exitVal - prefAmount) * investorPct);
+    investorTake = Math.max(investorTake, Math.min(prefAmount, exitVal));
+  } else {
+    investorTake = Math.min(exitVal, prefAmount + Math.max(0, exitVal - prefAmount) * investorPct);
+  }
+
+  founderTake = Math.max(0, (exitVal - investorTake) * (founderPct / (founderPct + optionPct)));
+  const multiple = raised > 0 ? (investorTake / raised) : 0;
+
+  document.getElementById('e-fpay').textContent = fmt(founderTake);
+  document.getElementById('e-ipay').textContent = fmt(investorTake);
+  document.getElementById('e-multiple').textContent = multiple.toFixed(1) + 'x';
+
+  let note = 'At a ' + fmt(exitVal) + ' exit, founders take home ' + fmt(founderTake) + ' (' + (founderTake/exitVal*100).toFixed(1) + '% of proceeds).';
+  if (pref > 1) note += ' The ' + pref + 'x liquidation preference means investors get ' + fmt(prefAmount) + ' before common shareholders see anything.';
+  if (participation === 'full') note += ' Full participation means investors double-dip: they get their preference AND their pro-rata share of remaining proceeds.';
+  if (multiple < 1) note += ' Warning: investors lose money at this exit price.';
+  document.getElementById('e-note').textContent = note;
+  document.getElementById('e-results').classList.add('visible');
+}
+
+// ===== EMAIL GATE =====
+var currentGateTool = '';
+
+// Inject "Save Results" button into every tool-results div
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.tool-results').forEach(function(res) {
+    var card = res.closest('.tool-card');
+    var toolName = card ? card.querySelector('h2').textContent.trim() : 'Tool';
+    var btn = document.createElement('button');
+    btn.className = 'save-results-btn';
+    btn.textContent = 'Save Results';
+    btn.onclick = function() { openGate(toolName); };
+    res.appendChild(btn);
+  });
+});
+
+function openGate(toolName) {
+  currentGateTool = toolName;
+  document.getElementById('gate-error').style.display = 'none';
+  document.getElementById('gate-success').style.display = 'none';
+  document.getElementById('gate-form-fields').style.display = 'block';
+  document.getElementById('gate-email').value = '';
+  document.getElementById('email-gate').classList.remove('hidden');
+}
+
+function closeGate() {
+  document.getElementById('email-gate').classList.add('hidden');
+}
+
+function submitGate() {
+  var email = document.getElementById('gate-email').value.trim().toLowerCase();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('gate-error').textContent = 'Please enter a valid email.';
+    document.getElementById('gate-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('gate-error').style.display = 'none';
+  var btn = document.querySelector('.gate-submit');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+
+  fetch('/.netlify/functions/email-gate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tool: currentGateTool })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    document.getElementById('gate-form-fields').style.display = 'none';
+    document.getElementById('gate-success').style.display = 'block';
+    setTimeout(closeGate, 2000);
+  })
+  .catch(function() {
+    document.getElementById('gate-error').textContent = 'Something went wrong. Try again.';
+    document.getElementById('gate-error').style.display = 'block';
+  })
+  .finally(function() {
+    btn.textContent = 'Save My Results';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>

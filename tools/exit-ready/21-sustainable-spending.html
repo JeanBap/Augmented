@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sustainable Spending Calculator | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}.tool-row.single{grid-template-columns:1fr}.tool-row.triple{grid-template-columns:1fr 1fr 1fr}@media(max-width:600px){.tool-row,.tool-row.triple{grid-template-columns:1fr}}.tool-field label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}.tool-field input,.tool-field select,.tool-field textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box}.tool-field input:focus,.tool-field select:focus{outline:none;border-color:var(--gold)}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-btn-reset{display:inline-block;padding:.7rem 1.2rem;background:transparent;color:var(--mid);border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:.85rem;cursor:pointer;margin-top:.5rem;margin-left:.5rem}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}.result-item{text-align:center}.result-value{font-family:var(--serif);font-size:1.8rem;color:var(--ink)}.result-label{font-family:var(--mono);font-size:.75rem;color:var(--mid);margin-top:.25rem}.result-note{font-size:.85rem;color:var(--mid);line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--rule)}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}.result-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.85rem}.result-table th{font-family:var(--mono);font-size:.75rem;color:var(--mid);text-align:left;padding:.5rem .75rem;border-bottom:2px solid var(--rule)}.result-table td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono)}.result-table .text-right{text-align:right}
+		.spending-categories { margin: 1.5rem 0; }
+		.category-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+		.category-item { display: grid; grid-template-columns: 1fr auto; gap: 1rem; margin-bottom: 0.75rem; align-items: center; }
+		.category-item input { flex: 1; }
+		.category-item button { padding: 0.4rem 0.75rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 4px; font-family: var(--mono); font-size: 0.75rem; cursor: pointer; }
+		.category-item button:hover { color: var(--ink); border-color: var(--gold); }
+		.add-category { padding: 0.6rem 1rem; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; }
+		.add-category:hover { background: rgba(200,164,90,0.05); }
+		.spending-breakdown { margin-top: 2rem; }
+		.breakdown-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem; }
+		.breakdown-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+		.breakdown-item { display: flex; align-items: center; gap: 0.75rem; }
+		.breakdown-label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); width: 100px; }
+		.breakdown-bar { height: 24px; background: var(--rule); border-radius: 4px; position: relative; flex-grow: 1; display: flex; align-items: center; padding: 0 0.5rem; }
+		.breakdown-bar.housing { background: #a67c3b; }
+		.breakdown-bar.travel { background: #d4af7f; }
+		.breakdown-bar.education { background: #8b6f47; }
+		.breakdown-bar.healthcare { background: #c8a45a; }
+		.breakdown-bar.philanthropy { background: #9d8458; }
+		.breakdown-bar.family { background: #b89968; }
+		.breakdown-bar.entertainment { background: #d9b789; }
+		.breakdown-bar.other { background: #7a6d62; }
+		.breakdown-value { font-family: var(--mono); font-size: 0.75rem; color: var(--paper); font-weight: 500; }
+		.gap-analysis { margin-top: 1.5rem; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--gold); background: rgba(200,164,90,0.05); }
+		.gap-analysis p { font-family: var(--mono); font-size: 0.85rem; color: var(--ink); margin: 0; line-height: 1.6; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Sustainable Spending Calculator</h1>
+		<p>Plan your long-term spending from post-exit wealth and ensure financial sustainability</p>
+		<div class="chapter-ref">Chapter 33</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Main Inputs -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Financial Parameters</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="tool-row">
+					<div class="tool-field">
+						<label for="totalWealth">Total Post-Exit Liquid Wealth ($)</label>
+						<input type="number" id="totalWealth" placeholder="1000000" value="1000000">
+					</div>
+					<div class="tool-field">
+						<label for="investmentReturn">Expected Investment Return (%)</label>
+						<input type="number" id="investmentReturn" placeholder="5" value="5" step="0.1">
+					</div>
+				</div>
+				<div class="tool-row">
+					<div class="tool-field">
+						<label for="inflationRate">Inflation Rate (%)</label>
+						<input type="number" id="inflationRate" placeholder="2.5" value="2.5" step="0.1">
+					</div>
+					<div class="tool-field">
+						<label for="safeWithdrawal">Safe Withdrawal Rate (%)</label>
+						<input type="number" id="safeWithdrawal" placeholder="4" value="4" step="0.1">
+					</div>
+				</div>
+				<div class="tool-row single">
+					<div class="tool-field">
+						<label for="desiredSpending">Desired Annual Lifestyle Spend ($)</label>
+						<input type="number" id="desiredSpending" placeholder="80000" value="80000">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Spending Categories -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Spending Breakdown (Optional)</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem;">Add spending categories to see how your budget breaks down:</p>
+				<div class="spending-categories">
+					<ul class="category-list" id="categoryList">
+						<li class="category-item">
+							<input type="text" placeholder="Category name" value="Housing" class="category-name" readonly>
+							<input type="number" placeholder="Amount" class="category-amount" value="24000">
+							<button class="remove-category">Remove</button>
+						</li>
+						<li class="category-item">
+							<input type="text" placeholder="Category name" value="Travel" class="category-name" readonly>
+							<input type="number" placeholder="Amount" class="category-amount" value="18000">
+							<button class="remove-category">Remove</button>
+						</li>
+						<li class="category-item">
+							<input type="text" placeholder="Category name" value="Education" class="category-name" readonly>
+							<input type="number" placeholder="Amount" class="category-amount" value="12000">
+							<button class="remove-category">Remove</button>
+						</li>
+						<li class="category-item">
+							<input type="text" placeholder="Category name" value="Healthcare" class="category-name" readonly>
+							<input type="number" placeholder="Amount" class="category-amount" value="8000">
+							<button class="remove-category">Remove</button>
+						</li>
+						<li class="category-item">
+							<input type="text" placeholder="Category name" value="Entertainment" class="category-name" readonly>
+							<input type="number" placeholder="Amount" class="category-amount" value="10000">
+							<button class="remove-category">Remove</button>
+						</li>
+					</ul>
+					<button class="add-category" id="addCategory">+ Add Category</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="calculateBtn">Calculate</button>
+			<button class="tool-btn-reset" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<div class="result-grid">
+				<div class="result-item">
+					<div class="result-value" id="annualSpending">$80,000</div>
+					<div class="result-label">Annual Spending</div>
+				</div>
+				<div class="result-item">
+					<div class="result-value" id="monthlySpending">$6,667</div>
+					<div class="result-label">Monthly Spending</div>
+				</div>
+				<div class="result-item">
+					<div class="result-value" id="yearsLasts">12.5</div>
+					<div class="result-label">Years Wealth Lasts</div>
+				</div>
+			</div>
+
+			<!-- Spending Breakdown -->
+			<div class="spending-breakdown" id="breakdownSection" style="display: none;">
+				<div class="breakdown-title">Spending Breakdown</div>
+				<div class="breakdown-bars" id="breakdownBars"></div>
+			</div>
+
+			<!-- Gap Analysis -->
+			<div class="gap-analysis" id="gapAnalysis">
+				<p><strong>Gap Analysis:</strong> Your desired spending is within sustainable range.</p>
+			</div>
+
+			<div class="result-note" id="resultNote">
+				Based on a 4% safe withdrawal rate, your portfolio of $1,000,000 can sustainably support annual withdrawals of approximately $40,000 without depleting your principal over 30 years. Your desired annual spending of $80,000 exceeds this, which means you'd need to adjust spending or increase investment returns.
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function fmt(n){if(Math.abs(n)>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(Math.abs(n)>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(Math.abs(n)>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+n.toFixed(0)}
+
+		const defaultCategories = ['Housing', 'Travel', 'Education', 'Healthcare', 'Philanthropy', 'Family', 'Entertainment', 'Other'];
+		const categoryColors = { Housing: '#a67c3b', Travel: '#d4af7f', Education: '#8b6f47', Healthcare: '#c8a45a', Philanthropy: '#9d8458', Family: '#b89968', Entertainment: '#d9b789', Other: '#7a6d62' };
+
+		document.getElementById('addCategory').addEventListener('click', () => {
+			const list = document.getElementById('categoryList');
+			const availableCategories = defaultCategories.filter(cat => !Array.from(list.querySelectorAll('.category-name')).some(el => el.value === cat));
+
+			if (availableCategories.length === 0) return;
+
+			const category = availableCategories[0];
+			const li = document.createElement('li');
+			li.className = 'category-item';
+			li.innerHTML = `
+				<input type="text" placeholder="Category name" value="${category}" class="category-name" readonly>
+				<input type="number" placeholder="Amount" class="category-amount" value="5000">
+				<button class="remove-category">Remove</button>
+			`;
+			li.querySelector('.remove-category').addEventListener('click', () => li.remove());
+			list.appendChild(li);
+		});
+
+		document.addEventListener('click', (e) => {
+			if (e.target.classList.contains('remove-category')) {
+				e.target.closest('.category-item').remove();
+			}
+		});
+
+		function calculate() {
+			const wealth = parseFloat(document.getElementById('totalWealth').value) || 0;
+			const investReturn = parseFloat(document.getElementById('investmentReturn').value) || 0;
+			const inflation = parseFloat(document.getElementById('inflationRate').value) || 0;
+			const swr = parseFloat(document.getElementById('safeWithdrawal').value) || 4;
+			const desired = parseFloat(document.getElementById('desiredSpending').value) || 0;
+
+			const sustainableAnnual = (wealth * swr) / 100;
+			const monthlySpending = desired / 12;
+			const realReturn = investReturn - inflation;
+
+			let yearsLasts = 0;
+			if (desired > 0 && realReturn > 0) {
+				yearsLasts = Math.log(1 + (wealth * realReturn / 100) / desired) / Math.log(1 + realReturn / 100);
+			} else if (desired > 0) {
+				yearsLasts = wealth / desired;
+			}
+
+			const requiredReturn = (desired / wealth) * 100;
+
+			document.getElementById('annualSpending').textContent = fmt(desired);
+			document.getElementById('monthlySpending').textContent = fmt(monthlySpending);
+			document.getElementById('yearsLasts').textContent = Math.max(0, yearsLasts).toFixed(1);
+
+			// Breakdown
+			const categories = Array.from(document.querySelectorAll('.category-item'));
+			const breakdownSection = document.getElementById('breakdownSection');
+			const breakdownBars = document.getElementById('breakdownBars');
+
+			if (categories.length > 0) {
+				const totalCat = categories.reduce((sum, el) => sum + (parseFloat(el.querySelector('.category-amount').value) || 0), 0);
+
+				if (totalCat > 0) {
+					breakdownBars.innerHTML = '';
+					categories.forEach(el => {
+						const name = el.querySelector('.category-name').value;
+						const amount = parseFloat(el.querySelector('.category-amount').value) || 0;
+						const pct = (amount / totalCat) * 100;
+						const color = categoryColors[name] || '#c8a45a';
+
+						if (amount > 0) {
+							breakdownBars.innerHTML += `
+								<div class="breakdown-item">
+									<div class="breakdown-label">${name}</div>
+									<div class="breakdown-bar" style="background: ${color};">
+										<div class="breakdown-value">${pct.toFixed(0)}%</div>
+									</div>
+								</div>
+							`;
+						}
+					});
+					breakdownSection.style.display = 'block';
+				}
+			}
+
+			// Gap Analysis
+			const gap = Math.abs(desired - sustainableAnnual);
+			let gapText = '';
+			if (desired <= sustainableAnnual) {
+				gapText = `<strong>Surplus:</strong> Your desired annual spending of ${fmt(desired)} is ${fmt(sustainableAnnual - desired)} below the safe withdrawal amount of ${fmt(sustainableAnnual)}. You could increase spending or save for additional wealth.`;
+			} else {
+				gapText = `<strong>Shortfall:</strong> Your desired annual spending of ${fmt(desired)} exceeds sustainable spending of ${fmt(sustainableAnnual)} by ${fmt(desired - sustainableAnnual)}. Consider reducing spending or increasing investment returns to ${requiredReturn.toFixed(1)}%.`;
+			}
+			document.getElementById('gapAnalysis').innerHTML = `<p>${gapText}</p>`;
+
+			// Result note
+			const noteText = `Based on a ${swr}% safe withdrawal rate, your portfolio of ${fmt(wealth)} can sustainably support annual withdrawals of approximately ${fmt(sustainableAnnual)} without depleting principal. With a ${realReturn.toFixed(1)}% real return (${investReturn}% investment return - ${inflation}% inflation), your wealth would sustain ${Math.max(0, yearsLasts).toFixed(1)} years at your desired ${fmt(desired)} annual spending.`;
+			document.getElementById('resultNote').textContent = noteText;
+
+			document.getElementById('results').classList.add('visible');
+		}
+
+		document.getElementById('calculateBtn').addEventListener('click', calculate);
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('totalWealth').value = '1000000';
+			document.getElementById('investmentReturn').value = '5';
+			document.getElementById('inflationRate').value = '2.5';
+			document.getElementById('safeWithdrawal').value = '4';
+			document.getElementById('desiredSpending').value = '80000';
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

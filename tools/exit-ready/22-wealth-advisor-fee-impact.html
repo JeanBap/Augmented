@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wealth Advisor Fee Impact | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}.tool-row.single{grid-template-columns:1fr}.tool-row.triple{grid-template-columns:1fr 1fr 1fr}@media(max-width:600px){.tool-row,.tool-row.triple{grid-template-columns:1fr}}.tool-field label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}.tool-field input,.tool-field select,.tool-field textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box}.tool-field input:focus,.tool-field select:focus{outline:none;border-color:var(--gold)}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-btn-reset{display:inline-block;padding:.7rem 1.2rem;background:transparent;color:var(--mid);border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:.85rem;cursor:pointer;margin-top:.5rem;margin-left:.5rem}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}.result-item{text-align:center}.result-value{font-family:var(--serif);font-size:1.8rem;color:var(--ink)}.result-label{font-family:var(--mono);font-size:.75rem;color:var(--mid);margin-top:.25rem}.result-note{font-size:.85rem;color:var(--mid);line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--rule)}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}.result-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.85rem}.result-table th{font-family:var(--mono);font-size:.75rem;color:var(--mid);text-align:left;padding:.5rem .75rem;border-bottom:2px solid var(--rule)}.result-table td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono)}.result-table .text-right{text-align:right}
+		.comparison-section { margin-top: 1.5rem; }
+		.comparison-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+		.comparison-card { border: 1px solid var(--rule); border-radius: 8px; padding: 1.25rem; background: var(--paper); }
+		.comparison-card h3 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.75rem; }
+		.comparison-card .metric { margin-bottom: 0.75rem; display: flex; justify-content: space-between; }
+		.comparison-card .metric-label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+		.comparison-card .metric-value { font-family: var(--serif); font-size: 0.95rem; font-weight: bold; color: var(--ink); }
+		.fee-comparison-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+		.fee-comparison-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--rule); }
+		.fee-comparison-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 0.8rem; }
+		.fee-comparison-table td.text-right { text-align: right; }
+		@media(max-width:600px) { .comparison-cards { grid-template-columns: 1fr; } }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Wealth Advisor Fee Impact</h1>
+		<p>Compare the long-term cost of different advisor fee structures</p>
+		<div class="chapter-ref">Chapter 33</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Main Inputs -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Fee Model Comparison</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="tool-row">
+					<div class="tool-field">
+						<label for="portfolio">Portfolio Value ($)</label>
+						<input type="number" id="portfolio" placeholder="2000000" value="2000000">
+					</div>
+					<div class="tool-field">
+						<label for="feeOnly">Fee-Only Annual Fee (%)</label>
+						<input type="number" id="feeOnly" placeholder="0.75" value="0.75" step="0.05">
+					</div>
+				</div>
+				<div class="tool-row">
+					<div class="tool-field">
+						<label for="commissionBased">Commission-Based Annual Fee (%)</label>
+						<input type="number" id="commissionBased" placeholder="1.5" value="1.5" step="0.05">
+					</div>
+					<div class="tool-field">
+						<label for="expectedReturn">Expected Annual Return (%)</label>
+						<input type="number" id="expectedReturn" placeholder="6.5" value="6.5" step="0.1">
+					</div>
+				</div>
+				<div class="tool-row single">
+					<div class="tool-field">
+						<label for="timeHorizon">Time Horizon (years)</label>
+						<select id="timeHorizon">
+							<option value="10">10 years</option>
+							<option value="20" selected>20 years</option>
+							<option value="30">30 years</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="calculateBtn">Calculate</button>
+			<button class="tool-btn-reset" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<div class="comparison-section">
+				<div class="comparison-cards">
+					<div class="comparison-card">
+						<h3>Fee-Only Model</h3>
+						<div class="metric">
+							<span class="metric-label">Ending Portfolio</span>
+							<span class="metric-value" id="feeOnlyEnding">$3,847,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Total Fees Paid</span>
+							<span class="metric-value" id="feeOnlyTotal">$267,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Fee Drag (Lost Growth)</span>
+							<span class="metric-value" id="feeOnlyDrag">$267,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Net After Fees</span>
+							<span class="metric-value" id="feeOnlyNet">$3,847,000</span>
+						</div>
+					</div>
+					<div class="comparison-card">
+						<h3>Commission-Based Model</h3>
+						<div class="metric">
+							<span class="metric-label">Ending Portfolio</span>
+							<span class="metric-value" id="commEnding">$3,551,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Total Fees Paid</span>
+							<span class="metric-value" id="commTotal">$553,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Fee Drag (Lost Growth)</span>
+							<span class="metric-value" id="commDrag">$553,000</span>
+						</div>
+						<div class="metric">
+							<span class="metric-label">Net After Fees</span>
+							<span class="metric-value" id="commNet">$3,551,000</span>
+						</div>
+					</div>
+				</div>
+
+				<div style="padding: 1rem; border-radius: 8px; background: rgba(200,164,90,0.05); border-left: 4px solid var(--gold); margin-bottom: 1.5rem;">
+					<p style="font-family: var(--mono); font-size: 0.85rem; color: var(--ink); margin: 0; line-height: 1.6;">
+						<strong id="totalDifference">The fee difference costs you $286,000 over 20 years</strong> — that's the difference between ending with $3,847,000 (fee-only) vs $3,551,000 (commission-based).
+					</p>
+				</div>
+			</div>
+
+			<!-- Year-by-Year Table -->
+			<div style="overflow-x: auto;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.75rem;">Year-by-Year Comparison</h3>
+				<table class="fee-comparison-table">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th class="text-right">Fee-Only Value</th>
+							<th class="text-right">Comm-Based Value</th>
+							<th class="text-right">Fee Difference</th>
+						</tr>
+					</thead>
+					<tbody id="yearTable">
+						<tr>
+							<td>1</td>
+							<td class="text-right">$2,100,000</td>
+							<td class="text-right">$2,050,000</td>
+							<td class="text-right">$50,000</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="result-note" id="resultNote">
+				Fee-only advisors align their interests with yours. Commission-based advisors may have conflicts of interest. Over 20 years, this fee difference could be substantial.
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function fmt(n){if(Math.abs(n)>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(Math.abs(n)>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(Math.abs(n)>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+n.toFixed(0)}
+
+		function calculate() {
+			const portfolio = parseFloat(document.getElementById('portfolio').value) || 0;
+			const feeOnlyRate = parseFloat(document.getElementById('feeOnly').value) || 0;
+			const commRate = parseFloat(document.getElementById('commissionBased').value) || 0;
+			const returnRate = parseFloat(document.getElementById('expectedReturn').value) || 0;
+			const years = parseInt(document.getElementById('timeHorizon').value);
+
+			const feeOnlyNetReturn = returnRate - feeOnlyRate;
+			const commNetReturn = returnRate - commRate;
+
+			let feeOnlyValue = portfolio;
+			let commValue = portfolio;
+			let feeOnlyTotalFees = 0;
+			let commTotalFees = 0;
+			const yearData = [];
+
+			for (let y = 1; y <= years; y++) {
+				const feeOnlyFees = feeOnlyValue * (feeOnlyRate / 100);
+				const commFees = commValue * (commRate / 100);
+
+				feeOnlyValue = (feeOnlyValue - feeOnlyFees) * (1 + returnRate / 100);
+				commValue = (commValue - commFees) * (1 + returnRate / 100);
+
+				feeOnlyTotalFees += feeOnlyFees;
+				commTotalFees += commFees;
+
+				if (y === 1 || y === Math.floor(years / 4) || y === Math.floor(years / 2) || y === Math.floor(3 * years / 4) || y === years) {
+					yearData.push({
+						year: y,
+						feeOnly: feeOnlyValue,
+						comm: commValue,
+						diff: feeOnlyValue - commValue
+					});
+				}
+			}
+
+			const feeOnlyDrag = portfolio * Math.pow(1 + returnRate / 100, years) - feeOnlyValue;
+			const commDrag = portfolio * Math.pow(1 + returnRate / 100, years) - commValue;
+
+			document.getElementById('feeOnlyEnding').textContent = fmt(feeOnlyValue);
+			document.getElementById('feeOnlyTotal').textContent = fmt(feeOnlyTotalFees);
+			document.getElementById('feeOnlyDrag').textContent = fmt(feeOnlyDrag);
+			document.getElementById('feeOnlyNet').textContent = fmt(feeOnlyValue);
+
+			document.getElementById('commEnding').textContent = fmt(commValue);
+			document.getElementById('commTotal').textContent = fmt(commTotalFees);
+			document.getElementById('commDrag').textContent = fmt(commDrag);
+			document.getElementById('commNet').textContent = fmt(commValue);
+
+			const difference = feeOnlyValue - commValue;
+			document.getElementById('totalDifference').textContent = `The fee difference costs you ${fmt(Math.abs(difference))} over ${years} years`;
+
+			const tableBody = document.getElementById('yearTable');
+			tableBody.innerHTML = yearData.map(d => `
+				<tr>
+					<td>Year ${d.year}</td>
+					<td class="text-right">${fmt(d.feeOnly)}</td>
+					<td class="text-right">${fmt(d.comm)}</td>
+					<td class="text-right">${fmt(d.diff)}</td>
+				</tr>
+			`).join('');
+
+			const noteText = `Over ${years} years, fee-only advisors charge ${feeOnlyRate}% annually, resulting in ${fmt(feeOnlyTotalFees)} in total fees. Commission-based advisors at ${commRate}% charge ${fmt(commTotalFees)}, a difference of ${fmt(Math.abs(commTotalFees - feeOnlyTotalFees))}. This compounds to ${fmt(difference)} in portfolio value difference.`;
+			document.getElementById('resultNote').textContent = noteText;
+
+			document.getElementById('results').classList.add('visible');
+		}
+
+		document.getElementById('calculateBtn').addEventListener('click', calculate);
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('portfolio').value = '2000000';
+			document.getElementById('feeOnly').value = '0.75';
+			document.getElementById('commissionBased').value = '1.5';
+			document.getElementById('expectedReturn').value = '6.5';
+			document.getElementById('timeHorizon').value = '20';
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

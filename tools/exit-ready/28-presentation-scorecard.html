@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Presentation Dry Run Scorecard | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:900px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.dimension-block { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+		.dimension-title { font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem; color: var(--ink); }
+		.dimension-subtitle { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 1rem; line-height: 1.5; }
+		.score-slider { width: 100%; height: 6px; border-radius: 3px; background: var(--rule); outline: none; accent-color: var(--gold); margin-bottom: 1rem; cursor: pointer; }
+		.score-display { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+		.score-value { font-family: var(--serif); font-size: 1.5rem; font-weight: bold; color: var(--ink); }
+		.score-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; color: var(--mid); margin-bottom: 1rem; }
+		.notes-textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.85rem; box-sizing: border-box; min-height: 80px; }
+		.result-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+		.result-card { text-align: center; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+		.result-value { font-family: var(--serif); font-size: 2rem; font-weight: bold; color: var(--ink); margin-bottom: 0.5rem; }
+		.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); }
+		.grade-badge { display: inline-block; padding: 0.5rem 1rem; background: var(--gold); color: var(--paper); border-radius: 6px; font-family: var(--serif); font-size: 1.2rem; font-weight: bold; }
+		.dimension-breakdown { display: grid; gap: 1rem; margin: 1.5rem 0; }
+		.dimension-item { padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+		.dimension-bar { display: flex; align-items: center; gap: 1rem; }
+		.dimension-label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); width: 140px; }
+		.dimension-fill { height: 24px; border-radius: 4px; background: linear-gradient(to right, #c8a45a, #e5c97e); flex-grow: 1; display: flex; align-items: center; padding: 0 0.5rem; }
+		.dimension-score { font-family: var(--serif); font-size: 0.9rem; font-weight: bold; color: var(--paper); }
+		.dimension-score-label { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); width: 40px; text-align: right; }
+		.strength-badge { display: inline-block; padding: 0.3rem 0.6rem; background: rgba(166,124,59,0.2); color: #a67c3b; border-radius: 3px; font-family: var(--mono); font-size: 0.7rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+		.weakness-badge { display: inline-block; padding: 0.3rem 0.6rem; background: rgba(229,201,126,0.2); color: #8b6f47; border-radius: 3px; font-family: var(--mono); font-size: 0.7rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+		.recommendation-block { margin: 1.5rem 0; padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05); }
+		.recommendation-block h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0; color: var(--ink); }
+		.recommendation-block ul { list-style: none; padding: 0; margin: 0; }
+		.recommendation-block li { padding: 0.5rem 0; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); border-bottom: 1px solid var(--rule); }
+		.recommendation-block li:last-child { border-bottom: none; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Presentation Dry Run Scorecard</h1>
+		<p>Score and gather feedback for your management presentation practice</p>
+		<div class="chapter-ref">Chapter 16</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Scoring Dimensions -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Evaluation Scorecard</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem;">Score each dimension on a scale of 1-10. Add notes for specific feedback.</p>
+
+				<!-- Dimension 1: Opening Impact -->
+				<div class="dimension-block">
+					<div class="dimension-title">1. Opening Impact</div>
+					<div class="dimension-subtitle">Did the first 2 minutes hook the audience? Was there a clear, compelling opening?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="opening" min="1" max="10" value="5" oninput="updateScore('opening')">
+						<div class="score-value" id="opening-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="opening-notes" placeholder="Add notes on opening impact..."></textarea>
+				</div>
+
+				<!-- Dimension 2: Financial Fluency -->
+				<div class="dimension-block">
+					<div class="dimension-title">2. Financial Fluency</div>
+					<div class="dimension-subtitle">Could the team discuss numbers without notes? Did they own the financial story?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="financial" min="1" max="10" value="5" oninput="updateScore('financial')">
+						<div class="score-value" id="financial-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="financial-notes" placeholder="Add notes on financial fluency..."></textarea>
+				</div>
+
+				<!-- Dimension 3: Growth Story -->
+				<div class="dimension-block">
+					<div class="dimension-title">3. Growth Story</div>
+					<div class="dimension-subtitle">Was the forward narrative compelling and specific? Did they articulate the vision?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="growth" min="1" max="10" value="5" oninput="updateScore('growth')">
+						<div class="score-value" id="growth-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="growth-notes" placeholder="Add notes on growth story..."></textarea>
+				</div>
+
+				<!-- Dimension 4: Team Credibility -->
+				<div class="dimension-block">
+					<div class="dimension-title">4. Team Credibility</div>
+					<div class="dimension-subtitle">Did each presenter demonstrate depth? Did they show they know their area?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="credibility" min="1" max="10" value="5" oninput="updateScore('credibility')">
+						<div class="score-value" id="credibility-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="credibility-notes" placeholder="Add notes on team credibility..."></textarea>
+				</div>
+
+				<!-- Dimension 5: Q&A Handling -->
+				<div class="dimension-block">
+					<div class="dimension-title">5. Q&A Handling</div>
+					<div class="dimension-subtitle">Were tough questions handled confidently? Did they stay composed?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="qa" min="1" max="10" value="5" oninput="updateScore('qa')">
+						<div class="score-value" id="qa-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="qa-notes" placeholder="Add notes on Q&A handling..."></textarea>
+				</div>
+
+				<!-- Dimension 6: Competitive Positioning -->
+				<div class="dimension-block">
+					<div class="dimension-title">6. Competitive Positioning</div>
+					<div class="dimension-subtitle">Was differentiation clear? Did they articulate why they're winning?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="competitive" min="1" max="10" value="5" oninput="updateScore('competitive')">
+						<div class="score-value" id="competitive-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="competitive-notes" placeholder="Add notes on competitive positioning..."></textarea>
+				</div>
+
+				<!-- Dimension 7: Cultural Fit -->
+				<div class="dimension-block">
+					<div class="dimension-title">7. Cultural Fit</div>
+					<div class="dimension-subtitle">Did the team come across as collaborative and coachable? Were they likeable?</div>
+					<div class="score-display">
+						<input type="range" class="score-slider" id="culture" min="1" max="10" value="5" oninput="updateScore('culture')">
+						<div class="score-value" id="culture-value">5</div>
+					</div>
+					<div class="score-labels">
+						<span>Weak</span>
+						<span>Excellent</span>
+					</div>
+					<textarea class="notes-textarea" id="culture-notes" placeholder="Add notes on cultural fit..."></textarea>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="analyzeBtn">Generate Report</button>
+			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<h3 style="font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1.5rem;">Presentation Scorecard Results</h3>
+
+			<!-- Summary Cards -->
+			<div class="result-cards">
+				<div class="result-card">
+					<div class="result-value" id="totalScore">0</div>
+					<div class="result-label">Total Score /70</div>
+				</div>
+				<div class="result-card">
+					<div class="result-value"><span class="grade-badge" id="gradeBadge">—</span></div>
+					<div class="result-label">Grade</div>
+				</div>
+				<div class="result-card">
+					<div class="result-value" id="percentile">0%</div>
+					<div class="result-label">Percentile vs Buyer Expectations</div>
+				</div>
+			</div>
+
+			<!-- Dimension Breakdown -->
+			<h4 style="font-family: var(--serif); font-size: 1rem; margin: 2rem 0 1rem 0;">Dimension Breakdown</h4>
+			<div class="dimension-breakdown" id="dimensionBreakdown"></div>
+
+			<!-- Strengths -->
+			<div id="strengthsSection" style="display: none; margin: 2rem 0;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Strengths (Score > 7)</h4>
+				<div id="strengthsList"></div>
+			</div>
+
+			<!-- Weaknesses -->
+			<div id="weaknessesSection" style="display: none; margin: 2rem 0;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Areas for Development (Score < 5)</h4>
+				<div id="weaknessesList"></div>
+			</div>
+
+			<!-- Recommended Focus -->
+			<div class="recommendation-block">
+				<h4>Recommended Focus Areas for Next Practice</h4>
+				<ul id="focusAreas">
+					<li>Review and refine opening narrative</li>
+					<li>Practice financial discussion without notes</li>
+					<li>Strengthen Q&A preparation</li>
+				</ul>
+			</div>
+
+			<!-- Buyer Expectations -->
+			<div style="margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.05);">
+				<h4 style="font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0;">Comparison to Typical Buyer Expectations</h4>
+				<p id="buyerComparison" style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.6;">Most buyers expect an average score of 50-55/70 from strong management teams. You scored <strong id="scoreText">0</strong>.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		const dimensions = ['opening', 'financial', 'growth', 'credibility', 'qa', 'competitive', 'culture'];
+
+		function updateScore(dimension) {
+			const value = document.getElementById(dimension).value;
+			document.getElementById(dimension + '-value').textContent = value;
+		}
+
+		document.getElementById('analyzeBtn').addEventListener('click', () => {
+			const scores = {};
+			let totalScore = 0;
+
+			dimensions.forEach(dim => {
+				const score = parseInt(document.getElementById(dim).value);
+				scores[dim] = score;
+				totalScore += score;
+			});
+
+			document.getElementById('totalScore').textContent = totalScore;
+
+			// Grade
+			let grade = 'F';
+			if (totalScore >= 63) grade = 'A+';
+			else if (totalScore >= 57) grade = 'A';
+			else if (totalScore >= 51) grade = 'B+';
+			else if (totalScore >= 45) grade = 'B';
+			else if (totalScore >= 39) grade = 'C+';
+			else if (totalScore >= 33) grade = 'C';
+
+			document.getElementById('gradeBadge').textContent = grade;
+
+			// Percentile
+			const percentile = Math.round((totalScore / 70) * 100);
+			document.getElementById('percentile').textContent = percentile + '%';
+
+			// Dimension breakdown
+			const dimensionNames = {
+				opening: 'Opening Impact',
+				financial: 'Financial Fluency',
+				growth: 'Growth Story',
+				credibility: 'Team Credibility',
+				qa: 'Q&A Handling',
+				competitive: 'Competitive Positioning',
+				culture: 'Cultural Fit'
+			};
+
+			const breakdownHTML = dimensions.map(dim => {
+				const score = scores[dim];
+				const pct = (score / 10) * 100;
+				const color = score >= 7 ? '#a67c3b' : score >= 5 ? '#c8a45a' : '#e5c97e';
+
+				return `
+					<div class="dimension-item">
+						<div class="dimension-bar">
+							<div class="dimension-label">${dimensionNames[dim]}</div>
+							<div class="dimension-fill" style="background: ${color}; width: ${pct}%;">
+								<div class="dimension-score">${score}/10</div>
+							</div>
+							<div class="dimension-score-label">${score}</div>
+						</div>
+					</div>
+				`;
+			}).join('');
+
+			document.getElementById('dimensionBreakdown').innerHTML = breakdownHTML;
+
+			// Strengths
+			const strengths = dimensions.filter(dim => scores[dim] >= 7);
+			if (strengths.length > 0) {
+				document.getElementById('strengthsSection').style.display = 'block';
+				document.getElementById('strengthsList').innerHTML = strengths.map(s => `
+					<p style="margin: 0.5rem 0; font-family: var(--mono); font-size: 0.85rem; color: var(--ink);">
+						<span class="strength-badge">Strong</span> ${dimensionNames[s]} (${scores[s]}/10)
+					</p>
+				`).join('');
+			}
+
+			// Weaknesses
+			const weaknesses = dimensions.filter(dim => scores[dim] < 5);
+			if (weaknesses.length > 0) {
+				document.getElementById('weaknessesSection').style.display = 'block';
+				document.getElementById('weaknessesList').innerHTML = weaknesses.map(w => `
+					<p style="margin: 0.5rem 0; font-family: var(--mono); font-size: 0.85rem; color: var(--ink);">
+						<span class="weakness-badge">Develop</span> ${dimensionNames[w]} (${scores[w]}/10)
+					</p>
+				`).join('');
+			}
+
+			// Focus areas
+			const focusAreas = [];
+			if (scores['opening'] < 6) focusAreas.push('1. Strengthen opening hook and audience engagement');
+			if (scores['financial'] < 6) focusAreas.push('2. Practice financial discussion without relying on notes');
+			if (scores['growth'] < 6) focusAreas.push('3. Develop compelling growth narrative with specific milestones');
+			if (scores['credibility'] < 6) focusAreas.push('4. Build deeper subject matter expertise for each presenter');
+			if (scores['qa'] < 6) focusAreas.push('5. Practice tough question scenarios and response frameworks');
+			if (scores['competitive'] < 6) focusAreas.push('6. Clarify competitive differentiation and win rationale');
+			if (scores['culture'] < 6) focusAreas.push('7. Improve team dynamic and collaborative presentation style');
+
+			if (focusAreas.length === 0) {
+				focusAreas.push('1. Continue refining existing strengths');
+				focusAreas.push('2. Practice under pressure (investor simulations)');
+				focusAreas.push('3. Gather feedback from external advisors or potential buyers');
+			}
+
+			document.getElementById('focusAreas').innerHTML = focusAreas.map(f => `<li>${f}</li>`).join('');
+
+			// Buyer comparison
+			document.getElementById('scoreText').textContent = totalScore;
+			const expectedScore = 52.5;
+			let comparison = '';
+			if (totalScore >= expectedScore + 10) {
+				comparison = `Your score of ${totalScore} is <strong>well above</strong> typical buyer expectations (${expectedScore}). This is a strong presentation.`;
+			} else if (totalScore >= expectedScore) {
+				comparison = `Your score of ${totalScore} meets typical buyer expectations (${expectedScore}). This demonstrates solid preparation.`;
+			} else {
+				comparison = `Your score of ${totalScore} is below typical expectations (${expectedScore}). Focus on development areas before buyer meetings.`;
+			}
+
+			document.getElementById('buyerComparison').innerHTML = comparison;
+
+			document.getElementById('results').classList.add('visible');
+		});
+
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			dimensions.forEach(dim => {
+				document.getElementById(dim).value = '5';
+				document.getElementById(dim + '-value').textContent = '5';
+				document.getElementById(dim + '-notes').value = '';
+			});
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

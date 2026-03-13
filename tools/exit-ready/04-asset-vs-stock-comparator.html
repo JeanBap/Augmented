@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset vs Stock Sale Comparator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+@media(max-width: 600px) {
+  .tool-row { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.comparison-col { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; background: var(--paper); }
+.comparison-col h3 { font-family: var(--serif); font-size: 1.2rem; margin-top: 0; margin-bottom: 1rem; }
+.comparison-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.85rem; }
+.comparison-row:last-child { border-bottom: none; }
+.comparison-label { font-family: var(--mono); color: var(--mid); }
+.comparison-value { font-family: var(--serif); color: var(--ink); font-weight: bold; }
+.winner { background: rgba(200,164,90,0.1); padding: 0.5rem; border-radius: 4px; margin-top: 1rem; font-size: 0.85rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+@media(max-width: 600px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+}
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Asset vs Stock Sale Comparator</h1>
+    <p>Model the tax implications and net proceeds of an asset sale vs a stock sale.</p>
+    <div class="chapter-ref">From Chapter 18: Deal Structure & Negotiation</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Deal Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="purchasePrice">Purchase Price ($)</label>
+            <input type="number" id="purchasePrice" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="entityType">Entity Type</label>
+            <select id="entityType">
+              <option value="c-corp">C-Corporation</option>
+              <option value="s-corp">S-Corporation</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="assetBasis">Asset Basis ($)</label>
+            <input type="number" id="assetBasis" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="stockBasis">Stock Basis ($)</label>
+            <input type="number" id="stockBasis" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="goodwill">Goodwill/Intangibles ($)</label>
+            <input type="number" id="goodwill" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="tangible">Tangible Asset Value ($)</label>
+            <input type="number" id="tangible" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="fedOrdinary">Federal Ordinary Income Tax Rate (%)</label>
+            <input type="number" id="fedOrdinary" placeholder="37" min="0" max="100" />
+          </div>
+          <div class="tool-field">
+            <label for="fedCapGains">Federal Capital Gains Rate (%)</label>
+            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="stateTax">State Tax Rate (%)</label>
+            <input type="number" id="stateTax" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateComparison()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetComparison()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="comparison-grid">
+        <div class="comparison-col">
+          <h3>Asset Sale</h3>
+          <div class="comparison-row">
+            <span class="comparison-label">Purchase Price</span>
+            <span class="comparison-value" id="asset-purchasePrice">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Taxable Gain</span>
+            <span class="comparison-value" id="asset-gain">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Tax on Tangible</span>
+            <span class="comparison-value" id="asset-taxTangible">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Tax on Goodwill</span>
+            <span class="comparison-value" id="asset-taxGoodwill">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Total Tax</span>
+            <span class="comparison-value" id="asset-totalTax">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Net Proceeds</span>
+            <span class="comparison-value" id="asset-netProceeds">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Effective Tax Rate</span>
+            <span class="comparison-value" id="asset-effectiveTax">0%</span>
+          </div>
+          <div class="winner" id="asset-winner"></div>
+        </div>
+
+        <div class="comparison-col">
+          <h3>Stock Sale</h3>
+          <div class="comparison-row">
+            <span class="comparison-label">Purchase Price</span>
+            <span class="comparison-value" id="stock-purchasePrice">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Taxable Gain</span>
+            <span class="comparison-value" id="stock-gain">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Federal Tax</span>
+            <span class="comparison-value" id="stock-fedTax">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">State Tax</span>
+            <span class="comparison-value" id="stock-stateTax">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Total Tax</span>
+            <span class="comparison-value" id="stock-totalTax">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Net Proceeds</span>
+            <span class="comparison-value" id="stock-netProceeds">$0</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-label">Effective Tax Rate</span>
+            <span class="comparison-value" id="stock-effectiveTax">0%</span>
+          </div>
+          <div class="winner" id="stock-winner"></div>
+        </div>
+      </div>
+
+      <div class="result-note" id="r-summary"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateComparison() {
+  const purchasePrice = parseFloat(document.getElementById('purchasePrice').value) || 0;
+  const entityType = document.getElementById('entityType').value;
+  const assetBasis = parseFloat(document.getElementById('assetBasis').value) || 0;
+  const stockBasis = parseFloat(document.getElementById('stockBasis').value) || 0;
+  const goodwill = parseFloat(document.getElementById('goodwill').value) || 0;
+  const tangible = parseFloat(document.getElementById('tangible').value) || 0;
+  const fedOrdinary = (parseFloat(document.getElementById('fedOrdinary').value) || 37) / 100;
+  const fedCapGains = (parseFloat(document.getElementById('fedCapGains').value) || 20) / 100;
+  const stateTax = (parseFloat(document.getElementById('stateTax').value) || 0) / 100;
+
+  // ASSET SALE
+  // Goodwill and intangibles taxed at ordinary income rates, tangible assets at cap gains rates
+  const assetGain = purchasePrice - assetBasis;
+  const goodwillGain = goodwill; // typically all goodwill
+  const tangibleGain = tangible - Math.min(assetBasis, tangible);
+
+  const assetTaxOrdinary = goodwillGain * fedOrdinary + goodwillGain * stateTax;
+  const assetTaxCapGains = tangibleGain * fedCapGains + tangibleGain * stateTax;
+  const assetTotalTax = assetTaxOrdinary + assetTaxCapGains;
+  const assetNetProceeds = purchasePrice - assetTotalTax;
+  const assetEffectiveTax = purchasePrice > 0 ? (assetTotalTax / purchasePrice) : 0;
+
+  // STOCK SALE
+  const stockGain = purchasePrice - stockBasis;
+  let stockTotalTax = 0;
+
+  if (entityType === 'c-corp') {
+    // C-Corp: Double taxation (corp level + shareholder level)
+    const corpTax = stockGain * 0.21; // Federal corp tax rate
+    const taxableToShareholder = purchasePrice - corpTax - stockBasis;
+    const shareholderTax = taxableToShareholder * fedCapGains + taxableToShareholder * stateTax;
+    stockTotalTax = corpTax + shareholderTax;
+  } else {
+    // S-Corp: Single taxation at shareholder level
+    stockTotalTax = stockGain * fedCapGains + stockGain * stateTax;
+  }
+
+  const stockNetProceeds = purchasePrice - stockTotalTax;
+  const stockEffectiveTax = purchasePrice > 0 ? (stockTotalTax / purchasePrice) : 0;
+
+  // Display Asset Sale
+  document.getElementById('asset-purchasePrice').textContent = fmt(purchasePrice);
+  document.getElementById('asset-gain').textContent = fmt(assetGain);
+  document.getElementById('asset-taxTangible').textContent = fmt(assetTaxCapGains);
+  document.getElementById('asset-taxGoodwill').textContent = fmt(assetTaxOrdinary);
+  document.getElementById('asset-totalTax').textContent = fmt(assetTotalTax);
+  document.getElementById('asset-netProceeds').textContent = fmt(assetNetProceeds);
+  document.getElementById('asset-effectiveTax').textContent = (assetEffectiveTax * 100).toFixed(1) + '%';
+
+  // Display Stock Sale
+  document.getElementById('stock-purchasePrice').textContent = fmt(purchasePrice);
+  document.getElementById('stock-gain').textContent = fmt(stockGain);
+  document.getElementById('stock-fedTax').textContent = fmt(stockTotalTax * (fedCapGains / (fedCapGains + stateTax)));
+  document.getElementById('stock-stateTax').textContent = fmt(stockTotalTax * (stateTax / (fedCapGains + stateTax)));
+  document.getElementById('stock-totalTax').textContent = fmt(stockTotalTax);
+  document.getElementById('stock-netProceeds').textContent = fmt(stockNetProceeds);
+  document.getElementById('stock-effectiveTax').textContent = (stockEffectiveTax * 100).toFixed(1) + '%';
+
+  // Determine winner
+  const assetWins = assetNetProceeds > stockNetProceeds;
+  const difference = Math.abs(assetNetProceeds - stockNetProceeds);
+
+  document.getElementById('asset-winner').innerHTML = assetWins ?
+    `<strong>Better by ${fmt(difference)}</strong>` :
+    `<strong>Worse by ${fmt(difference)}</strong>`;
+
+  document.getElementById('stock-winner').innerHTML = !assetWins ?
+    `<strong>Better by ${fmt(difference)}</strong>` :
+    `<strong>Worse by ${fmt(difference)}</strong>`;
+
+  const summary = `
+    <strong>Summary & Buyer Perspective:</strong><br />
+    In an asset sale, the buyer can step up the basis of assets and depreciate/amortize them, saving taxes over time. This step-up benefit is worth approximately ${fmt(difference * 0.15)} to the buyer in NPV terms.<br />
+    <br />
+    Since the buyer gets this tax benefit in an asset sale, they typically offer lower headline prices to compensate. Stock sales are "cleaner" for buyers but offer no step-up, so prices may be higher (but you pay more tax).<br />
+    <br />
+    In this scenario, you keep <strong>${fmt(Math.max(assetNetProceeds, stockNetProceeds))}</strong> with the more favorable structure.
+  `;
+  document.getElementById('r-summary').innerHTML = summary;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetComparison() {
+  document.getElementById('purchasePrice').value = '';
+  document.getElementById('entityType').value = 'c-corp';
+  document.getElementById('assetBasis').value = '';
+  document.getElementById('stockBasis').value = '';
+  document.getElementById('goodwill').value = '';
+  document.getElementById('tangible').value = '';
+  document.getElementById('fedOrdinary').value = '37';
+  document.getElementById('fedCapGains').value = '20';
+  document.getElementById('stateTax').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

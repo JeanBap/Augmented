@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process Timeline Planner | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.timeline-phase { margin-bottom: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+.timeline-phase h3 { font-family: var(--serif); font-size: 1.05rem; margin: 0 0 0.5rem 0; color: var(--ink); }
+.phase-dates { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-bottom: 0.75rem; }
+.phase-items { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 1.6; }
+.phase-items li { margin-bottom: 0.35rem; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Process Timeline Planner</h1>
+    <p>Generate a backward-planned timeline for your M&A process based on target close date and deal type.</p>
+    <div class="chapter-ref">From Chapter 10 & 13: Process Management</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Timeline Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="close-date">Target Close Date</label>
+            <input type="date" id="close-date" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="process-type">Process Type</label>
+            <select id="process-type">
+              <option value="">-- Select --</option>
+              <option value="auction">Broad Auction</option>
+              <option value="targeted">Targeted</option>
+              <option value="proprietary">Proprietary Deal</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label for="complexity">Business Complexity</label>
+            <select id="complexity">
+              <option value="">-- Select --</option>
+              <option value="simple">Simple</option>
+              <option value="moderate">Moderate</option>
+              <option value="complex">Complex</option>
+            </select>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="generateTimeline()">Generate Timeline</button>
+        <button class="tool-btn-reset" onclick="resetTimeline()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-totalDays">0</div>
+          <div class="result-label">Total Days</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-startDate">--</div>
+          <div class="result-label">Recommended Start Date</div>
+        </div>
+      </div>
+      <div id="r-timeline"></div>
+      <div class="result-note" id="r-notes"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function addDays(date, days) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+function formatDate(date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function daysToDate(days) {
+  const d = new Date();
+  d.setDate(d.getDate() - days);
+  return d;
+}
+
+function generateTimeline() {
+  const closeDate = document.getElementById('close-date').value;
+  const processType = document.getElementById('process-type').value;
+  const complexity = document.getElementById('complexity').value;
+
+  if(!closeDate || !processType || !complexity) {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  const close = new Date(closeDate);
+
+  // Determine durations (in days from close going backward)
+  let phases = [];
+
+  if(processType === 'auction') {
+    phases = [
+      { name: 'Phase 5: Closing', duration: complexity === 'complex' ? 42 : 28, items: ['Purchase agreement', 'Regulatory approvals', 'Transition planning', 'Final legal review'] },
+      { name: 'Phase 4: Due Diligence', duration: complexity === 'complex' ? 56 : 42, items: ['Financial DD', 'Legal DD', 'Commercial DD', 'Environmental review', 'Technology assessment'] },
+      { name: 'Phase 3: Bidding', duration: complexity === 'complex' ? 42 : 28, items: ['First round bids received', 'Shortlist creation', 'Management presentations', 'Second round bids', 'Final bids'] },
+      { name: 'Phase 2: Marketing', duration: complexity === 'complex' ? 70 : 56, items: ['Teaser distribution', 'NDA distribution', 'CIM distribution', 'Management presentations', 'Q&A period'] },
+      { name: 'Phase 1: Preparation', duration: complexity === 'complex' ? 140 : 84, items: ['Hire M&A advisors', 'Prepare CIM', 'Clean financials', 'Build data room', 'Regulatory review'] }
+    ];
+  } else if(processType === 'targeted') {
+    phases = [
+      { name: 'Phase 5: Closing', duration: complexity === 'complex' ? 35 : 21, items: ['Purchase agreement', 'Regulatory approvals', 'Transition planning'] },
+      { name: 'Phase 4: Due Diligence', duration: complexity === 'complex' ? 49 : 35, items: ['Financial DD', 'Legal DD', 'Commercial DD'] },
+      { name: 'Phase 3: Bidding', duration: complexity === 'complex' ? 35 : 21, items: ['Initial proposal', 'Refined bid', 'Final offer'] },
+      { name: 'Phase 2: Marketing', duration: complexity === 'complex' ? 56 : 35, items: ['Approach targets', 'NDA execution', 'CIM distribution', 'Initial meetings'] },
+      { name: 'Phase 1: Preparation', duration: complexity === 'complex' ? 112 : 70, items: ['Hire advisors', 'Prepare CIM', 'Clean financials', 'Data room prep'] }
+    ];
+  } else {
+    phases = [
+      { name: 'Phase 5: Closing', duration: complexity === 'complex' ? 28 : 14, items: ['Purchase agreement finalization', 'Transition planning'] },
+      { name: 'Phase 4: Due Diligence', duration: complexity === 'complex' ? 42 : 28, items: ['Deep financial DD', 'Legal review', 'Operations review'] },
+      { name: 'Phase 3: Negotiation', duration: complexity === 'complex' ? 35 : 21, items: ['Term sheet negotiation', 'Price discussion', 'Structure refinement'] },
+      { name: 'Phase 2: Discussion', duration: complexity === 'complex' ? 42 : 28, items: ['Executive meetings', 'Business overview', 'Strategic fit discussion'] },
+      { name: 'Phase 1: Preparation', duration: complexity === 'complex' ? 84 : 56, items: ['Advisor engagement', 'Financial prep', 'Confidentiality setup'] }
+    ];
+  }
+
+  // Calculate total days
+  const totalDays = phases.reduce((sum, p) => sum + p.duration, 0);
+  const startDate = addDays(close, -totalDays);
+
+  document.getElementById('r-totalDays').textContent = totalDays;
+  document.getElementById('r-startDate').textContent = formatDate(startDate);
+
+  // Build timeline display
+  let currentDate = new Date(startDate);
+  let timelineHtml = '';
+
+  // Reverse phases to display chronologically
+  for(let i = phases.length - 1; i >= 0; i--) {
+    const phase = phases[i];
+    const phaseStart = new Date(currentDate);
+    const phaseEnd = addDays(currentDate, phase.duration);
+
+    timelineHtml += `
+      <div class="timeline-phase">
+        <h3>${phase.name}</h3>
+        <div class="phase-dates">${formatDate(phaseStart)} → ${formatDate(phaseEnd)} (${phase.duration} days)</div>
+        <ul class="phase-items">
+          ${phase.items.map(item => `<li>• ${item}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+
+    currentDate = phaseEnd;
+  }
+
+  document.getElementById('r-timeline').innerHTML = timelineHtml;
+
+  const notes = `<strong>Critical Path Items:</strong><br />
+    • Target close: ${formatDate(close)}<br />
+    • Must start: ${formatDate(startDate)}<br />
+    • Total process duration: ${Math.round(totalDays / 7)} weeks<br />
+    • ${complexity === 'complex' ? 'Complex business may require longer due diligence and regulatory review.' : complexity === 'moderate' ? 'Moderate complexity allows standard process timeline.' : 'Simple business can move through process quickly.'}`;
+
+  document.getElementById('r-notes').innerHTML = notes;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetTimeline() {
+  document.getElementById('close-date').value = '';
+  document.getElementById('process-type').value = '';
+  document.getElementById('complexity').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

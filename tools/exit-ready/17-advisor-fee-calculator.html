@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&A Advisor Fee Calculator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.conditional { display: none; margin-top: 1rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); }
+.conditional.visible { display: block; }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.fee-breakdown { margin-top: 1rem; padding: 1rem; background: var(--paper); border-radius: 8px; font-family: var(--mono); font-size: 0.85rem; line-height: 1.8; }
+.fee-breakdown div { display: flex; justify-content: space-between; }
+.fee-breakdown .total { border-top: 1px solid var(--rule); padding-top: 0.5rem; margin-top: 0.5rem; font-weight: bold; color: var(--ink); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>M&A Advisor Fee Calculator</h1>
+    <p>Model investment banker or M&A advisor fees based on enterprise value and fee structure.</p>
+    <div class="chapter-ref">From Chapter 14: Choosing & Managing Advisors</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Fee Inputs</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="ev">Expected Enterprise Value ($)</label>
+            <input type="number" id="ev" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="fee-structure">Fee Structure</label>
+            <select id="fee-structure" onchange="updateFeeStructure()">
+              <option value="">-- Select --</option>
+              <option value="lehman">Lehman Scale (standard)</option>
+              <option value="double-lehman">Double Lehman (2x)</option>
+              <option value="flat">Flat Percentage</option>
+              <option value="custom">Custom Structure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="conditional" id="flat-pct-section">
+          <div class="tool-field">
+            <label for="flat-pct">Flat Fee Rate (%)</label>
+            <input type="number" id="flat-pct" placeholder="1.5" step="0.1" />
+          </div>
+        </div>
+
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="retainer">Monthly Retainer ($)</label>
+            <input type="number" id="retainer" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="retainer-months">Retainer Duration (months)</label>
+            <input type="number" id="retainer-months" placeholder="6" min="1" max="24" />
+          </div>
+        </div>
+
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="minimum-fee">Minimum Success Fee ($)</label>
+            <input type="number" id="minimum-fee" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="retainer-credit">Credit Retainer Against Success Fee?</label>
+            <select id="retainer-credit">
+              <option value="yes">Yes (standard)</option>
+              <option value="no">No (separate)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calculateFees()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetFees()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-success">$0</div>
+          <div class="result-label">Success Fee</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-retainer">$0</div>
+          <div class="result-label">Total Retainer</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-net">$0</div>
+          <div class="result-label">Net Fee</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-total">$0</div>
+          <div class="result-label">Total Cost</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details"></div>
+      <div class="fee-breakdown" id="r-breakdown"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function updateFeeStructure() {
+  const structure = document.getElementById('fee-structure').value;
+  document.getElementById('flat-pct-section').classList.toggle('visible', structure === 'flat' || structure === 'custom');
+}
+
+function calculateFees() {
+  const ev = parseFloat(document.getElementById('ev').value) || 0;
+  const structure = document.getElementById('fee-structure').value;
+  const flatPct = (parseFloat(document.getElementById('flat-pct').value) || 0) / 100;
+  const retainer = parseFloat(document.getElementById('retainer').value) || 0;
+  const retainerMonths = parseFloat(document.getElementById('retainer-months').value) || 6;
+  const minimumFee = parseFloat(document.getElementById('minimum-fee').value) || 0;
+  const retainerCredit = document.getElementById('retainer-credit').value === 'yes';
+
+  if(ev <= 0 || !structure) {
+    alert('Please fill in EV and select a fee structure');
+    return;
+  }
+
+  let successFee = 0;
+
+  // Calculate success fee based on structure
+  if(structure === 'lehman' || structure === 'double-lehman') {
+    const multiplier = structure === 'double-lehman' ? 2 : 1;
+    // Lehman: 5% of first $1M, 4% of $1-2M, 3% of $2-3M, 2% of $3-4M, 1% above $4M
+    const brackets = [
+      { max: 1e6, rate: 0.05 },
+      { max: 2e6, rate: 0.04 },
+      { max: 3e6, rate: 0.03 },
+      { max: 4e6, rate: 0.02 },
+      { max: Infinity, rate: 0.01 }
+    ];
+
+    let remaining = ev;
+    let prevMax = 0;
+    for(const bracket of brackets) {
+      const sliceMax = Math.min(bracket.max, ev);
+      const sliceAmount = sliceMax - prevMax;
+      if(sliceAmount > 0) {
+        successFee += sliceAmount * bracket.rate * multiplier;
+      }
+      prevMax = sliceMax;
+      if(remaining <= sliceMax) break;
+    }
+  } else {
+    // Flat fee
+    successFee = ev * flatPct;
+  }
+
+  // Apply minimum
+  successFee = Math.max(successFee, minimumFee);
+
+  // Calculate retainer
+  const totalRetainer = retainer * retainerMonths;
+
+  // Net success fee (after retainer credit)
+  let netSuccessFee = successFee;
+  if(retainerCredit && totalRetainer > 0) {
+    netSuccessFee = Math.max(0, successFee - totalRetainer);
+  }
+
+  const totalCost = retainerCredit ? successFee : (netSuccessFee + totalRetainer);
+  const asPercentEV = (totalCost / ev * 100).toFixed(2);
+
+  // Advisor breakeven analysis
+  const minimumEVNeeded = netSuccessFee > 0 ? (netSuccessFee / 0.01) : ev; // How much EV to pay for itself
+  const priceImpact = (totalCost / ev * 100).toFixed(1);
+
+  document.getElementById('r-success').textContent = fmt(successFee);
+  document.getElementById('r-retainer').textContent = fmt(totalRetainer);
+  document.getElementById('r-net').textContent = fmt(netSuccessFee);
+  document.getElementById('r-total').textContent = fmt(totalCost);
+
+  // Breakdown
+  let breakdown = '<div><span>Success Fee (Lehman):</span><span>' + fmt(successFee) + '</span></div>';
+  if(totalRetainer > 0) {
+    breakdown += '<div><span>Total Retainer (' + retainerMonths + ' mo × ' + fmt(retainer) + '):</span><span>' + fmt(totalRetainer) + '</span></div>';
+    if(retainerCredit) {
+      breakdown += '<div><span>Retainer Credit Against Success:</span><span>(' + fmt(totalRetainer) + ')</span></div>';
+      breakdown += '<div><span>Net Success Fee:</span><span>' + fmt(netSuccessFee) + '</span></div>';
+    }
+  }
+  breakdown += '<div class="total"><span>Total Advisor Cost:</span><span>' + fmt(totalCost) + '</span></div>';
+  breakdown += '<div style="margin-top: 0.75rem; border-top: 1px solid var(--rule); padding-top: 0.75rem;"><span>As % of EV:</span><span>' + asPercentEV + '%</span></div>';
+  document.getElementById('r-breakdown').innerHTML = breakdown;
+
+  const details = `<strong>Analysis:</strong><br />
+    Enterprise value: ${fmt(ev)}<br />
+    Success fee (${structure === 'lehman' ? 'Lehman scale' : structure === 'double-lehman' ? 'Double Lehman' : 'flat ' + (flatPct*100).toFixed(1) + '%'}): ${fmt(successFee)}<br />
+    ${totalRetainer > 0 ? 'Total retainer: ' + fmt(totalRetainer) + '<br />' : ''}
+    Total advisor cost: ${fmt(totalCost)} (${asPercentEV}% of EV)<br />
+    <br />
+    <strong>Valuation Perspective:</strong><br />
+    This cost represents approximately ${priceImpact}% drag on your proceeds.<br />
+    The advisor needs to improve deal terms by at least ${priceImpact}% to pay for themselves.<br />
+    ${minimumEVNeeded > ev ? `Minimum EV to justify fees: ${fmt(minimumEVNeeded)}` : `Fees are easily justified at current EV.`}`;
+
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetFees() {
+  document.getElementById('ev').value = '';
+  document.getElementById('fee-structure').value = '';
+  document.getElementById('flat-pct').value = '';
+  document.getElementById('retainer').value = '';
+  document.getElementById('retainer-months').value = '6';
+  document.getElementById('minimum-fee').value = '';
+  document.getElementById('retainer-credit').value = 'yes';
+  document.getElementById('flat-pct-section').classList.remove('visible');
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

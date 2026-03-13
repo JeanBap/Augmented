@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Psychology Self-Assessment | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-btn-reset{display:inline-block;padding:.7rem 1.2rem;background:transparent;color:var(--mid);border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:.85rem;cursor:pointer;margin-top:.5rem;margin-left:.5rem}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.assessment-group { margin-bottom: 2rem; }
+		.assessment-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--ink); }
+		.assessment-subtitle { font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem; line-height: 1.6; }
+		.assessment-item { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+		.assessment-item label { font-size: 0.9rem; color: var(--ink); }
+		.assessment-item input[type="range"] { width: 150px; accent-color: var(--gold); }
+		.scale-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; color: var(--mid); margin-top: 0.5rem; }
+		.score-display { font-family: var(--serif); font-size: 1.2rem; font-weight: bold; color: var(--ink); }
+		.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+		.result-item { text-align: center; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+		.result-value { font-family: var(--serif); font-size: 2rem; color: var(--ink); margin-bottom: 0.25rem; }
+		.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); }
+		.risk-areas { margin: 1.5rem 0; }
+		.risk-area { margin-bottom: 1rem; padding: 1rem; border-left: 4px solid #e5c97e; background: rgba(229,201,126,0.05); border-radius: 4px; }
+		.risk-area h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.5rem 0; color: var(--ink); }
+		.risk-area p { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.5; }
+		.strength-area { margin-bottom: 1rem; padding: 1rem; border-left: 4px solid #a67c3b; background: rgba(166,124,59,0.05); border-radius: 4px; }
+		.strength-area h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.5rem 0; color: var(--ink); }
+		.strength-area p { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.5; }
+		.recommendation { margin: 1rem 0; padding: 1rem; border-radius: 6px; background: rgba(200,164,90,0.08); border: 1px solid var(--rule); }
+		.recommendation p { font-family: var(--mono); font-size: 0.85rem; color: var(--ink); margin: 0; line-height: 1.6; }
+		.dimension-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+		.dimension-label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); width: 120px; }
+		.dimension-fill { height: 20px; border-radius: 4px; background: linear-gradient(to right, #a67c3b 0%, #c8a45a 50%, #e5c97e 100%); flex-grow: 1; }
+		.dimension-score { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); width: 40px; text-align: right; }
+		.timeline { margin: 1.5rem 0; }
+		.timeline-item { display: flex; gap: 1rem; margin-bottom: 1rem; }
+		.timeline-marker { width: 20px; height: 20px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.25rem; }
+		.timeline-content { flex-grow: 1; }
+		.timeline-content h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.25rem 0; color: var(--ink); }
+		.timeline-content p { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.5; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Psychology Self-Assessment</h1>
+		<p>Evaluate your readiness for the psychological transition of exit</p>
+		<div class="chapter-ref">Chapter 32</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- The Five Losses Framework -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>The Five Losses Framework</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem;">Rate how much each loss applies to you (1 = not at all, 5 = very much)</p>
+
+				<div class="assessment-group">
+					<div class="assessment-title">1. Loss of Identity</div>
+					<div class="assessment-subtitle">"I am [company] and [company] is me" — How much is your identity tied to being a founder?</div>
+					<div class="assessment-item">
+						<label for="identityLoss">Identity Loss Score</label>
+						<div>
+							<input type="range" id="identityLoss" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Not at all</span>
+								<span>Very much</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-title">2. Loss of Purpose</div>
+					<div class="assessment-subtitle">How much of your daily purpose comes from running this business?</div>
+					<div class="assessment-item">
+						<label for="purposeLoss">Purpose Loss Score</label>
+						<div>
+							<input type="range" id="purposeLoss" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Not at all</span>
+								<span>Very much</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-title">3. Loss of Community</div>
+					<div class="assessment-subtitle">How central is your work network to your social life?</div>
+					<div class="assessment-item">
+						<label for="communityLoss">Community Loss Score</label>
+						<div>
+							<input type="range" id="communityLoss" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Not at all</span>
+								<span>Very much</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-title">4. Loss of Structure</div>
+					<div class="assessment-subtitle">How much does work provide your daily routine and structure?</div>
+					<div class="assessment-item">
+						<label for="structureLoss">Structure Loss Score</label>
+						<div>
+							<input type="range" id="structureLoss" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Not at all</span>
+								<span>Very much</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-title">5. Loss of Status</div>
+					<div class="assessment-subtitle">How much does your role as founder define how others see you?</div>
+					<div class="assessment-item">
+						<label for="statusLoss">Status Loss Score</label>
+						<div>
+							<input type="range" id="statusLoss" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Not at all</span>
+								<span>Very much</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Additional Factors -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Additional Factors</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem;">Rate your strengths in these areas (1 = low, 5 = high)</p>
+
+				<div class="assessment-group">
+					<div class="assessment-item">
+						<label for="supportSystem">Strength of Support System</label>
+						<div>
+							<input type="range" id="supportSystem" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Low</span>
+								<span>High</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-item">
+						<label for="transitions">Handled Major Life Transitions Well</label>
+						<div>
+							<input type="range" id="transitions" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Low</span>
+								<span>High</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-item">
+						<label for="health">Physical & Mental Health Baseline</label>
+						<div>
+							<input type="range" id="health" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Low</span>
+								<span>High</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-item">
+						<label for="security">Financial Security Confidence</label>
+						<div>
+							<input type="range" id="security" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Low</span>
+								<span>High</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="assessment-group">
+					<div class="assessment-item">
+						<label for="clarity">Clarity on Next Chapter</label>
+						<div>
+							<input type="range" id="clarity" min="1" max="5" value="3">
+							<div class="scale-labels">
+								<span>Low</span>
+								<span>High</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="calculateBtn">Calculate Assessment</button>
+			<button class="tool-btn-reset" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<div class="result-grid">
+				<div class="result-item">
+					<div class="result-value" id="overallScore">72</div>
+					<div class="result-label">Overall Readiness Score</div>
+				</div>
+				<div class="result-item">
+					<div class="result-value" id="readinessGrade">B+</div>
+					<div class="result-label">Readiness Grade</div>
+				</div>
+			</div>
+
+			<!-- Dimension Breakdown -->
+			<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-top: 2rem; margin-bottom: 1rem;">The Five Losses Breakdown</h3>
+			<div id="dimensionBars"></div>
+
+			<!-- Risk Areas -->
+			<div class="risk-areas" id="riskAreas" style="display: none;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Risk Areas (Score 4-5)</h3>
+				<div id="riskList"></div>
+			</div>
+
+			<!-- Strength Areas -->
+			<div class="risk-areas" id="strengthAreas" style="display: none;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Strength Areas (Score 4-5)</h3>
+				<div id="strengthList"></div>
+			</div>
+
+			<!-- Recommendations -->
+			<div style="margin-top: 2rem;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Personalized Preparation Suggestions</h3>
+				<div id="recommendations"></div>
+			</div>
+
+			<!-- Timeline -->
+			<div class="timeline" id="timeline" style="display: none;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Recommended Action Timeline</h3>
+				<div id="timelineItems"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function calculate() {
+			const losses = {
+				identity: parseInt(document.getElementById('identityLoss').value),
+				purpose: parseInt(document.getElementById('purposeLoss').value),
+				community: parseInt(document.getElementById('communityLoss').value),
+				structure: parseInt(document.getElementById('structureLoss').value),
+				status: parseInt(document.getElementById('statusLoss').value)
+			};
+
+			const factors = {
+				support: parseInt(document.getElementById('supportSystem').value),
+				transitions: parseInt(document.getElementById('transitions').value),
+				health: parseInt(document.getElementById('health').value),
+				security: parseInt(document.getElementById('security').value),
+				clarity: parseInt(document.getElementById('clarity').value)
+			};
+
+			const lossesTotal = Object.values(losses).reduce((a, b) => a + b, 0);
+			const factorsTotal = Object.values(factors).reduce((a, b) => a + b, 0);
+
+			const riskScore = lossesTotal / 5;
+			const strengthScore = factorsTotal / 5;
+
+			const overallScore = Math.round((strengthScore * 20) + (100 - riskScore * 20));
+
+			let grade = 'A+';
+			if (overallScore < 60) grade = 'D';
+			else if (overallScore < 70) grade = 'C';
+			else if (overallScore < 80) grade = 'B';
+			else if (overallScore < 90) grade = 'B+';
+
+			document.getElementById('overallScore').textContent = overallScore;
+			document.getElementById('readinessGrade').textContent = grade;
+
+			// Dimension bars
+			const dimensionBars = document.getElementById('dimensionBars');
+			dimensionBars.innerHTML = `
+				<div class="dimension-bar">
+					<div class="dimension-label">Identity</div>
+					<div class="dimension-fill" style="background: linear-gradient(to right, #c8a45a ${losses.identity * 20}%, #f2ede4 ${losses.identity * 20}%);"></div>
+					<div class="dimension-score">${losses.identity}/5</div>
+				</div>
+				<div class="dimension-bar">
+					<div class="dimension-label">Purpose</div>
+					<div class="dimension-fill" style="background: linear-gradient(to right, #c8a45a ${losses.purpose * 20}%, #f2ede4 ${losses.purpose * 20}%);"></div>
+					<div class="dimension-score">${losses.purpose}/5</div>
+				</div>
+				<div class="dimension-bar">
+					<div class="dimension-label">Community</div>
+					<div class="dimension-fill" style="background: linear-gradient(to right, #c8a45a ${losses.community * 20}%, #f2ede4 ${losses.community * 20}%);"></div>
+					<div class="dimension-score">${losses.community}/5</div>
+				</div>
+				<div class="dimension-bar">
+					<div class="dimension-label">Structure</div>
+					<div class="dimension-fill" style="background: linear-gradient(to right, #c8a45a ${losses.structure * 20}%, #f2ede4 ${losses.structure * 20}%);"></div>
+					<div class="dimension-score">${losses.structure}/5</div>
+				</div>
+				<div class="dimension-bar">
+					<div class="dimension-label">Status</div>
+					<div class="dimension-fill" style="background: linear-gradient(to right, #c8a45a ${losses.status * 20}%, #f2ede4 ${losses.status * 20}%);"></div>
+					<div class="dimension-score">${losses.status}/5</div>
+				</div>
+			`;
+
+			// Risk areas
+			const riskList = [];
+			const riskNames = { identity: 'Loss of Identity', purpose: 'Loss of Purpose', community: 'Loss of Community', structure: 'Loss of Structure', status: 'Loss of Status' };
+
+			Object.entries(losses).forEach(([key, score]) => {
+				if (score >= 4) {
+					riskList.push({ name: riskNames[key], score, key });
+				}
+			});
+
+			if (riskList.length > 0) {
+				document.getElementById('riskAreas').style.display = 'block';
+				document.getElementById('riskList').innerHTML = riskList.map(r => `
+					<div class="risk-area">
+						<h4>${r.name}</h4>
+						<p>You rated this ${r.score}/5. Consider building practices to address this transition.</p>
+					</div>
+				`).join('');
+			}
+
+			// Strength areas
+			const strengthList = [];
+			const strengthNames = { support: 'Support System', transitions: 'Life Transitions', health: 'Health Baseline', security: 'Financial Security', clarity: 'Clarity on Next Chapter' };
+
+			Object.entries(factors).forEach(([key, score]) => {
+				if (score >= 4) {
+					strengthList.push({ name: strengthNames[key], score });
+				}
+			});
+
+			if (strengthList.length > 0) {
+				document.getElementById('strengthAreas').style.display = 'block';
+				document.getElementById('strengthList').innerHTML = strengthList.map(s => `
+					<div class="strength-area">
+						<h4>${s.name}</h4>
+						<p>You rated this ${s.score}/5. This is a strong foundation for your transition.</p>
+					</div>
+				`).join('');
+			}
+
+			// Recommendations
+			const recommendations = [];
+			if (losses.identity >= 4) recommendations.push('Identity: Rebuild your sense of self beyond the company. Consider therapy or coaching focused on identity transitions.');
+			if (losses.purpose >= 4) recommendations.push('Purpose: Explore new sources of meaning. Mentoring, volunteering, or passion projects can fill this void.');
+			if (losses.community >= 4) recommendations.push('Community: Intentionally build new social circles. Join clubs, groups, or communities aligned with your interests.');
+			if (losses.structure >= 4) recommendations.push('Structure: Create new daily routines and rituals. Exercise, meditation, or learning schedules provide structure.');
+			if (losses.status >= 4) recommendations.push('Status: Redefine success. Remember your value extends beyond your title.');
+
+			if (factors.support < 3) recommendations.push('Support: Build or strengthen your support network before exit. Family, friends, or professional support are crucial.');
+			if (factors.health < 3) recommendations.push('Health: Invest in physical and mental health now. Establish routines that will sustain you post-exit.');
+			if (factors.clarity < 3) recommendations.push('Clarity: Spend time exploring your next chapter. Consider mentorship, sabbaticals, or exploratory projects.');
+
+			document.getElementById('recommendations').innerHTML = recommendations.map(r => `
+				<div class="recommendation">
+					<p>${r}</p>
+				</div>
+			`).join('');
+
+			// Timeline
+			document.getElementById('timeline').style.display = 'block';
+			document.getElementById('timelineItems').innerHTML = `
+				<div class="timeline-item">
+					<div class="timeline-marker"></div>
+					<div class="timeline-content">
+						<h4>Now (3-6 months before exit)</h4>
+						<p>Start exploring identity and purpose. Build support systems. Begin researching interests.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-marker"></div>
+					<div class="timeline-content">
+						<h4>At closing</h4>
+						<p>Celebrate. Allow yourself to rest. Set up financial foundations. Notify key relationships.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-marker"></div>
+					<div class="timeline-content">
+						<h4>First 90 days</h4>
+						<p>Focus on reconnecting with people. Explore new activities. Rebuild routines and structure.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-marker"></div>
+					<div class="timeline-content">
+						<h4>6 months post-exit</h4>
+						<p>Deepen exploration. Formalize new interests or activities. Assess overall wellbeing.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-marker"></div>
+					<div class="timeline-content">
+						<h4>12 months post-exit</h4>
+						<p>Define your next chapter. Clarify new sources of purpose, identity, and community.</p>
+					</div>
+				</div>
+			`;
+
+			document.getElementById('results').classList.add('visible');
+		}
+
+		document.getElementById('calculateBtn').addEventListener('click', calculate);
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			['identityLoss', 'purposeLoss', 'communityLoss', 'structureLoss', 'statusLoss', 'supportSystem', 'transitions', 'health', 'security', 'clarity'].forEach(id => {
+				document.getElementById(id).value = '3';
+			});
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

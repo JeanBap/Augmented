@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Concentration Risk | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media(max-width: 600px) {
+  .tool-row, .tool-row.triple { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select, .tool-field textarea { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-btn-add { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn-add:hover { background: rgba(200,164,90,0.1); }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.result-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+.result-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--rule); }
+.result-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.result-table .text-right { text-align: right; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.customer-row { display: grid; grid-template-columns: 2fr 1fr auto; gap: 1rem; margin-bottom: 0.75rem; align-items: end; }
+.customer-row .tool-field { margin-bottom: 0; }
+.customer-row .remove-btn { padding: 0.6rem 0.8rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.8rem; cursor: pointer; width: auto; }
+.customer-row .remove-btn:hover { color: #d00; border-color: #d00; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Customer Concentration Risk</h1>
+    <p>Analyze revenue concentration risk using HHI index and identify diversification needs.</p>
+    <div class="chapter-ref">From Chapter 8: Revenue Durability</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Customer List</h2>
+      </div>
+      <div class="tool-card-body">
+        <div id="customers-container"></div>
+        <button class="tool-btn-add" onclick="addCustomer()">+ Add Customer</button>
+        <button class="tool-btn" onclick="calculateConcentration()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetConcentration()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-hhi">0</div>
+          <div class="result-label">HHI Index</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-riskTier">Low</div>
+          <div class="result-label">Risk Tier</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-top1">0%</div>
+          <div class="result-label">Top Client %</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-top3">0%</div>
+          <div class="result-label">Top 3 %</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-discount">0%</div>
+          <div class="result-label">Multiple Discount</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details"></div>
+      <table class="result-table" id="r-table">
+        <thead>
+          <tr><th>Customer</th><th class="text-right">Revenue</th><th class="text-right">Market Share</th></tr>
+        </thead>
+        <tbody id="r-body"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+let customerCount = 0;
+
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function initializeCustomers() {
+  const container = document.getElementById('customers-container');
+  container.innerHTML = '';
+  for(let i = 0; i < 5; i++) {
+    const id = i;
+    customerCount = Math.max(customerCount, id + 1);
+    const row = document.createElement('div');
+    row.className = 'customer-row';
+    row.id = 'customer-' + id;
+    row.innerHTML = `
+      <div class="tool-field"><label>Customer Name</label><input type="text" class="cust-name" placeholder="Customer ${i+1}" /></div>
+      <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" class="cust-revenue" placeholder="0" /></div>
+      <button class="remove-btn" onclick="removeCustomer(${id})">Remove</button>
+    `;
+    container.appendChild(row);
+  }
+}
+
+function addCustomer() {
+  const container = document.getElementById('customers-container');
+  const id = customerCount++;
+  const row = document.createElement('div');
+  row.className = 'customer-row';
+  row.id = 'customer-' + id;
+  row.innerHTML = `
+    <div class="tool-field"><label>Customer Name</label><input type="text" class="cust-name" placeholder="Customer" /></div>
+    <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" class="cust-revenue" placeholder="0" /></div>
+    <button class="remove-btn" onclick="removeCustomer(${id})">Remove</button>
+  `;
+  container.appendChild(row);
+}
+
+function removeCustomer(id) {
+  const row = document.getElementById('customer-' + id);
+  if(row) row.remove();
+}
+
+function calculateConcentration() {
+  const customers = [];
+  document.querySelectorAll('.customer-row').forEach(row => {
+    const name = row.querySelector('.cust-name').value || '(Unnamed)';
+    const revenue = parseFloat(row.querySelector('.cust-revenue').value) || 0;
+    if(revenue > 0) customers.push({name, revenue});
+  });
+
+  if(customers.length === 0) {
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+
+  // Sort by revenue descending
+  customers.sort((a, b) => b.revenue - a.revenue);
+
+  const totalRevenue = customers.reduce((sum, c) => sum + c.revenue, 0);
+  const shares = customers.map(c => (c.revenue / totalRevenue) * 100);
+
+  // HHI Index: sum of squared market shares
+  const hhi = shares.reduce((sum, s) => sum + Math.pow(s, 2), 0);
+
+  // Risk tier based on HHI
+  let riskTier = 'Low';
+  if(hhi >= 2500) riskTier = 'High';
+  else if(hhi >= 1000) riskTier = 'Medium';
+
+  // Multiple discount based on risk
+  let discount = 0;
+  if(riskTier === 'Medium') discount = -7.5;
+  else if(riskTier === 'High') discount = -20;
+
+  // Top 1 and top 3 concentration
+  const top1 = shares[0] || 0;
+  const top3 = shares.slice(0, 3).reduce((sum, s) => sum + s, 0);
+
+  // Display results
+  document.getElementById('r-hhi').textContent = hhi.toFixed(0);
+  document.getElementById('r-riskTier').textContent = riskTier;
+  document.getElementById('r-top1').textContent = top1.toFixed(1) + '%';
+  document.getElementById('r-top3').textContent = top3.toFixed(1) + '%';
+  document.getElementById('r-discount').textContent = (discount >= 0 ? '+' : '') + discount.toFixed(1) + '%';
+
+  // Build table
+  const tbody = document.getElementById('r-body');
+  tbody.innerHTML = '';
+  customers.forEach((c, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${c.name}</td>
+      <td class="text-right">${fmt(c.revenue)}</td>
+      <td class="text-right">${shares[i].toFixed(1)}%</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const details = `
+    <strong>Findings:</strong><br />
+    Total annual revenue: ${fmt(totalRevenue)}<br />
+    Number of customers: ${customers.length}<br />
+    HHI Index: ${hhi.toFixed(0)} (${riskTier} concentration risk)<br />
+    Top customer represents ${top1.toFixed(1)}% of revenue<br />
+    Top 3 customers represent ${top3.toFixed(1)}% of revenue<br />
+    <br />
+    <strong>Valuation Impact:</strong><br />
+    Expected multiple discount: ${discount > 0 ? '+' : ''}${discount.toFixed(1)}%<br />
+    ${riskTier === 'High' ? 'High concentration significantly reduces valuation multiples. Strong recommendation to diversify or implement long-term customer contracts.' : riskTier === 'Medium' ? 'Moderate concentration risk. Consider customer retention agreements or diversification strategy.' : 'Low concentration risk. Healthy customer base diversity supports valuation.'}
+  `;
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetConcentration() {
+  initializeCustomers();
+  document.getElementById('results').classList.remove('visible');
+}
+
+// Initialize on load
+initializeCustomers();
+</script>
+</body>
+</html>

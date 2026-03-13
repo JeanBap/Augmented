@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QSBS Savings Calculator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+@media(max-width: 600px) {
+  .tool-row { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.alert { padding: 0.75rem; border-radius: 6px; margin: 0.5rem 0; font-size: 0.85rem; border-left: 3px solid var(--gold); background: rgba(200,164,90,0.05); }
+.alert.warning { border-left-color: #e5c97e; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>QSBS Savings Calculator</h1>
+    <p>Calculate your potential tax savings from Qualified Small Business Stock (QSBS) exclusion.</p>
+    <div class="chapter-ref">From Chapter 24: Tax Planning & Risk Management</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>QSBS Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="acqDate">Stock Acquisition Date</label>
+            <input type="date" id="acqDate" />
+          </div>
+          <div class="tool-field">
+            <label for="saleDate">Sale Date</label>
+            <input type="date" id="saleDate" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="originalInvest">Original Investment ($)</label>
+            <input type="number" id="originalInvest" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="saleProceeds">Sale Proceeds ($)</label>
+            <input type="number" id="saleProceeds" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="filingStatus">Filing Status</label>
+            <select id="filingStatus">
+              <option value="single">Single</option>
+              <option value="mfj">Married Filing Jointly</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="state">State</label>
+            <select id="state">
+              <option value="ca">California</option>
+              <option value="ny">New York</option>
+              <option value="tx">Texas</option>
+              <option value="fl">Florida</option>
+              <option value="wa">Washington</option>
+              <option value="il">Illinois</option>
+              <option value="pa">Pennsylvania</option>
+              <option value="oh">Ohio</option>
+              <option value="ga">Georgia</option>
+              <option value="nc">North Carolina</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label for="otherExclusions">Other QSBS Exclusions Used ($)</label>
+            <input type="number" id="otherExclusions" placeholder="0" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateQSBS()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetQSBS()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-holdingPeriod">0 yrs</div>
+          <div class="result-label">Holding Period</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-eligible">No</div>
+          <div class="result-label">QSBS Eligible?</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-exclusion">$0</div>
+          <div class="result-label">Max Exclusion</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-taxSaved">$0</div>
+          <div class="result-label">Federal Tax Saved</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-totalSavings">$0</div>
+          <div class="result-label">Total Tax Savings</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-effectiveTax">0%</div>
+          <div class="result-label">Effective Tax Rate</div>
+        </div>
+      </div>
+
+      <div id="alerts-container"></div>
+
+      <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateQSBS() {
+  const acqDate = new Date(document.getElementById('acqDate').value);
+  const saleDate = new Date(document.getElementById('saleDate').value);
+  const originalInvest = parseFloat(document.getElementById('originalInvest').value) || 0;
+  const saleProceeds = parseFloat(document.getElementById('saleProceeds').value) || 0;
+  const filingStatus = document.getElementById('filingStatus').value;
+  const state = document.getElementById('state').value;
+  const otherExclusions = parseFloat(document.getElementById('otherExclusions').value) || 0;
+
+  if (!acqDate || !saleDate) {
+    alert('Please enter both acquisition and sale dates');
+    return;
+  }
+
+  // Calculate holding period
+  const holdingPeriod = (saleDate - acqDate) / (1000 * 60 * 60 * 24 * 365.25);
+  const meetsHoldingPeriod = holdingPeriod >= 5;
+
+  // Check QSBS eligibility
+  const gain = saleProceeds - originalInvest;
+
+  // Calculate maximum exclusion
+  // 2023 rules: Exclusion = max of $10M or 10x original investment, limited by gain
+  const tenTimesInvest = originalInvest * 10;
+  const maxExclusionBeforeCap = Math.max(10000000, tenTimesInvest);
+  let maxExclusionAllowed = Math.min(maxExclusionBeforeCap, Math.max(0, gain));
+
+  // Reduce by other exclusions already used
+  maxExclusionAllowed = Math.max(0, maxExclusionAllowed - otherExclusions);
+
+  // Taxable gain after exclusion
+  const taxableGain = Math.max(0, gain - maxExclusionAllowed);
+
+  // Tax calculations
+  const fedCapGainsRate = 0.20; // 20% long-term cap gains for high earners
+  const fedSurtax = 0.038; // 3.8% NIIT
+  const totalFedRate = fedCapGainsRate + fedSurtax;
+
+  const fedTaxWithout = gain * totalFedRate;
+  const fedTaxWith = taxableGain * totalFedRate;
+  const fedTaxSaved = Math.max(0, fedTaxWithout - fedTaxWith);
+
+  // State tax rates
+  const stateTaxRates = {
+    ca: 0.135, ny: 0.0685, tx: 0, fl: 0, wa: 0.07,
+    il: 0.05, pa: 0.05, oh: 0.055, ga: 0.05, nc: 0.05, other: 0.05
+  };
+  const stateRate = stateTaxRates[state] || 0;
+  const stateTaxSaved = Math.max(0, maxExclusionAllowed * stateRate);
+
+  const totalSavings = fedTaxSaved + stateTaxSaved;
+  const proceedsAfterTax = saleProceeds - (gain * totalFedRate - fedTaxSaved) - (gain * stateRate - stateTaxSaved);
+  const effectiveTaxRate = saleProceeds > 0 ? ((gain * totalFedRate + gain * stateRate - totalSavings) / saleProceeds) : 0;
+
+  // Display results
+  document.getElementById('r-holdingPeriod').textContent = holdingPeriod.toFixed(1) + ' yrs';
+  document.getElementById('r-eligible').textContent = meetsHoldingPeriod ? 'YES' : 'NO';
+  document.getElementById('r-exclusion').textContent = fmt(maxExclusionAllowed);
+  document.getElementById('r-taxSaved').textContent = fmt(fedTaxSaved);
+  document.getElementById('r-totalSavings').textContent = fmt(totalSavings);
+  document.getElementById('r-effectiveTax').textContent = (effectiveTaxRate * 100).toFixed(1) + '%';
+
+  // Build alerts
+  let alertsHtml = '';
+  if (!meetsHoldingPeriod) {
+    alertsHtml += `<div class="alert warning"><strong>Holding period not met:</strong> You've held this stock for ${holdingPeriod.toFixed(1)} years. QSBS requires 5 years. You may not qualify for the exclusion.</div>`;
+  } else {
+    alertsHtml += `<div class="alert"><strong>Holding period satisfied:</strong> You've held this stock for ${holdingPeriod.toFixed(1)} years, meeting the 5-year minimum.</div>`;
+  }
+
+  if (otherExclusions > 0) {
+    alertsHtml += `<div class="alert warning"><strong>Lifetime limit:</strong> You've already used ${fmt(otherExclusions)} of your QSBS exclusion. Remaining: ${fmt(Math.max(10000000 - otherExclusions, 0))}</div>`;
+  }
+
+  if (stateRate === 0) {
+    alertsHtml += `<div class="alert"><strong>State tax benefit:</strong> ${state.toUpperCase()} has no capital gains tax. Additional savings!</div>`;
+  }
+
+  document.getElementById('alerts-container').innerHTML = alertsHtml;
+
+  const details = `
+    <strong>QSBS Calculation Details:</strong><br />
+    Holding period: ${holdingPeriod.toFixed(1)} years (minimum 5 years required)<br />
+    Original investment: ${fmt(originalInvest)}<br />
+    Sale proceeds: ${fmt(saleProceeds)}<br />
+    Gain: ${fmt(gain)}<br />
+    <br />
+    Maximum exclusion available: ${fmt(Math.max(10000000, originalInvest * 10))}<br />
+    Limited by actual gain: ${fmt(maxExclusionAllowed)}<br />
+    <br />
+    Federal tax without QSBS: ${fmt(gain * (fedCapGainsRate + fedSurtax))}<br />
+    Federal tax with QSBS: ${fmt(taxableGain * (fedCapGainsRate + fedSurtax))}<br />
+    Federal tax saved: ${fmt(fedTaxSaved)}<br />
+    <br />
+    State tax saved: ${fmt(stateTaxSaved)}<br />
+    <strong>Total tax savings: ${fmt(totalSavings)}</strong><br />
+    <br />
+    Net proceeds after all taxes: ${fmt(proceedsAfterTax)}<br />
+    Effective tax rate: ${(effectiveTaxRate * 100).toFixed(1)}%
+  `;
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetQSBS() {
+  document.getElementById('acqDate').value = '';
+  document.getElementById('saleDate').value = '';
+  document.getElementById('originalInvest').value = '';
+  document.getElementById('saleProceeds').value = '';
+  document.getElementById('filingStatus').value = 'single';
+  document.getElementById('state').value = 'ca';
+  document.getElementById('otherExclusions').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

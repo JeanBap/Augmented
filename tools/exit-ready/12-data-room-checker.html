@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Room Completeness Checker | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.category { margin-bottom: 2rem; }
+.category h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 1rem 0; color: var(--ink); }
+.checkbox-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.checkbox-item { display: flex; align-items: center; gap: 0.5rem; }
+.checkbox-item input[type="checkbox"] { cursor: pointer; }
+.checkbox-item label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); cursor: pointer; margin: 0; }
+.result-bar { height: 12px; border-radius: 6px; background: var(--rule); margin: 0.5rem 0; overflow: hidden; }
+.result-bar-fill { height: 100%; border-radius: 6px; background: var(--gold); }
+.category-result { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+.category-result-name { font-family: var(--mono); font-size: 0.85rem; color: var(--ink); }
+.category-result-pct { font-family: var(--serif); font-size: 1.2rem; color: var(--gold); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Data Room Completeness Checker</h1>
+    <p>Track and assess the completeness of your data room across seven critical categories.</p>
+    <div class="chapter-ref">From Chapter 7: Preparing for Due Diligence</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Document Checklist</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="category">
+          <h3>Corporate</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="corp-1" /> <label for="corp-1">Articles of incorporation</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="corp-2" /> <label for="corp-2">Bylaws</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="corp-3" /> <label for="corp-3">Operating agreement</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="corp-4" /> <label for="corp-4">Board minutes (2 yrs)</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="corp-5" /> <label for="corp-5">Capitalization table</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="corp-6" /> <label for="corp-6">Stock option plan</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>Financial</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="fin-1" /> <label for="fin-1">3 yrs audited financials</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="fin-2" /> <label for="fin-2">Current year P&L</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="fin-3" /> <label for="fin-3">Balance sheet</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="fin-4" /> <label for="fin-4">Cash flow statement</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="fin-5" /> <label for="fin-5">AR/AP aging</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="fin-6" /> <label for="fin-6">Tax returns (3 yrs)</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>Legal</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="legal-1" /> <label for="legal-1">Material contracts</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="legal-2" /> <label for="legal-2">Customer agreements</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="legal-3" /> <label for="legal-3">Vendor agreements</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="legal-4" /> <label for="legal-4">IP assignments</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="legal-5" /> <label for="legal-5">Employment agreements</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="legal-6" /> <label for="legal-6">Litigation history</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>Commercial</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="comm-1" /> <label for="comm-1">Customer list</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="comm-2" /> <label for="comm-2">Revenue by customer</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="comm-3" /> <label for="comm-3">Sales pipeline</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="comm-4" /> <label for="comm-4">Pricing documentation</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="comm-5" /> <label for="comm-5">Customer churn data</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>HR & Organization</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="hr-1" /> <label for="hr-1">Org chart</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hr-2" /> <label for="hr-2">Employee list w/ comp</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hr-3" /> <label for="hr-3">Benefits summary</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hr-4" /> <label for="hr-4">Employee handbook</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="hr-5" /> <label for="hr-5">Key person insurance</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>Technology</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="tech-1" /> <label for="tech-1">Architecture docs</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tech-2" /> <label for="tech-2">IP portfolio</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tech-3" /> <label for="tech-3">Security audit</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tech-4" /> <label for="tech-4">Data privacy compliance</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="tech-5" /> <label for="tech-5">Vendor dependencies</label></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <h3>Insurance</h3>
+          <div class="checkbox-list">
+            <div class="checkbox-item"><input type="checkbox" id="ins-1" /> <label for="ins-1">All policies</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="ins-2" /> <label for="ins-2">Claims history</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="ins-3" /> <label for="ins-3">D&O coverage</label></div>
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="checkCompletion()">Check Completion</button>
+        <button class="tool-btn-reset" onclick="resetChecker()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-overall">0%</div>
+          <div class="result-label">Overall Completion</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-weeks">0</div>
+          <div class="result-label">Est. Weeks to Complete</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details" style="margin-top: 1.5rem; padding-top: 0; border-top: none;"><strong>Completion by Category:</strong></div>
+      <div id="r-categories"></div>
+      <div class="result-note" id="r-missing"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+const categories = {
+  'Corporate': ['corp-1', 'corp-2', 'corp-3', 'corp-4', 'corp-5', 'corp-6'],
+  'Financial': ['fin-1', 'fin-2', 'fin-3', 'fin-4', 'fin-5', 'fin-6'],
+  'Legal': ['legal-1', 'legal-2', 'legal-3', 'legal-4', 'legal-5', 'legal-6'],
+  'Commercial': ['comm-1', 'comm-2', 'comm-3', 'comm-4', 'comm-5'],
+  'HR & Organization': ['hr-1', 'hr-2', 'hr-3', 'hr-4', 'hr-5'],
+  'Technology': ['tech-1', 'tech-2', 'tech-3', 'tech-4', 'tech-5'],
+  'Insurance': ['ins-1', 'ins-2', 'ins-3']
+};
+
+function checkCompletion() {
+  const results = {};
+  let totalChecked = 0;
+  let totalItems = 0;
+  const critical = ['corp-5', 'fin-1', 'fin-6', 'legal-1', 'comm-1', 'comm-2', 'hr-1', 'tech-2'];
+  const missing = [];
+
+  for(const [cat, ids] of Object.entries(categories)) {
+    const checked = ids.filter(id => document.getElementById(id).checked).length;
+    results[cat] = { checked, total: ids.length, pct: (checked / ids.length) * 100 };
+    totalChecked += checked;
+    totalItems += ids.length;
+
+    ids.forEach(id => {
+      if(!document.getElementById(id).checked) {
+        const label = document.querySelector(`label[for="${id}"]`).textContent;
+        if(critical.includes(id)) {
+          missing.push(`<strong style="color: var(--gold);">${cat}</strong> → ${label}`);
+        }
+      }
+    });
+  }
+
+  const overall = (totalChecked / totalItems) * 100;
+  const weeksPerItem = 0.5;
+  const itemsRemaining = totalItems - totalChecked;
+  const weeksEstimate = Math.ceil(itemsRemaining * weeksPerItem);
+
+  document.getElementById('r-overall').textContent = overall.toFixed(0) + '%';
+  document.getElementById('r-weeks').textContent = weeksEstimate;
+
+  const catHtml = Object.entries(results).map(([cat, data]) => `
+    <div class="category-result">
+      <div class="category-result-name">${cat}</div>
+      <div style="flex: 1; margin: 0 1rem;"><div class="result-bar"><div class="result-bar-fill" style="width: ${data.pct}%"></div></div></div>
+      <div class="category-result-pct">${data.checked}/${data.total}</div>
+    </div>
+  `).join('');
+  document.getElementById('r-categories').innerHTML = catHtml;
+
+  let missingSummary = '<strong>Critical items pending:</strong><br />';
+  if(missing.length > 0) {
+    missingSummary += missing.slice(0, 5).join('<br />');
+    if(missing.length > 5) missingSummary += '<br />... and ' + (missing.length - 5) + ' more';
+  } else {
+    missingSummary += 'All critical items are complete. Focus on remaining supporting documents.';
+  }
+  document.getElementById('r-missing').innerHTML = missingSummary;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetChecker() {
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

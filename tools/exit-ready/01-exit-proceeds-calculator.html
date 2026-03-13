@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exit Proceeds Calculator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media(max-width: 600px) {
+  .tool-row, .tool-row.triple { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select, .tool-field textarea { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Exit Proceeds Calculator</h1>
+    <p>Model your net proceeds from an exit, accounting for ownership %, preferences, and taxes.</p>
+    <div class="chapter-ref">From Chapter 21: Closing Mechanics</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Inputs</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="headline">Headline Purchase Price ($)</label>
+            <input type="number" id="headline" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="ownership">Founder Ownership (%)</label>
+            <input type="number" id="ownership" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="liquidation">Liquidation Preferences ($) [non-participating preferred]</label>
+            <input type="number" id="liquidation" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="escrow">Escrow/Holdback (%)</label>
+            <input type="number" id="escrow" placeholder="0" min="0" max="100" />
+          </div>
+          <div class="tool-field">
+            <label for="txFees">Transaction Fees (%)</label>
+            <input type="number" id="txFees" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="fedCapGains">Federal Cap Gains Tax Rate (%)</label>
+            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" />
+          </div>
+          <div class="tool-field">
+            <label for="stateTax">State Tax Rate (%)</label>
+            <input type="number" id="stateTax" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="advisorFees">Advisor Fees ($)</label>
+            <input type="number" id="advisorFees" placeholder="0" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateProceeds()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetProceeds()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-headline">$0</div>
+          <div class="result-label">Headline Price</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-grossProceeds">$0</div>
+          <div class="result-label">Gross to Founder</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-afterFees">$0</div>
+          <div class="result-label">After Fees</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-takeHome">$0</div>
+          <div class="result-label">After Taxes</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-effectiveTax">0%</div>
+          <div class="result-label">Effective Tax Rate</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-gap">0%</div>
+          <div class="result-label">Headline → Take-Home</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateProceeds() {
+  const headline = parseFloat(document.getElementById('headline').value) || 0;
+  const ownership = (parseFloat(document.getElementById('ownership').value) || 0) / 100;
+  const liquidation = parseFloat(document.getElementById('liquidation').value) || 0;
+  const escrow = (parseFloat(document.getElementById('escrow').value) || 0) / 100;
+  const txFees = (parseFloat(document.getElementById('txFees').value) || 0) / 100;
+  const fedCapGains = (parseFloat(document.getElementById('fedCapGains').value) || 0) / 100;
+  const stateTax = (parseFloat(document.getElementById('stateTax').value) || 0) / 100;
+  const advisorFees = parseFloat(document.getElementById('advisorFees').value) || 0;
+
+  // Step 1: Gross proceeds = headline * ownership - liquidation prefs
+  const grossProceeds = headline * ownership - liquidation;
+
+  // Step 2: Escrow holdback (reduce available proceeds)
+  const escrowAmount = grossProceeds * escrow;
+  const afterEscrow = grossProceeds - escrowAmount;
+
+  // Step 3: Transaction & advisor fees
+  const totalFees = (grossProceeds * txFees) + advisorFees;
+  const afterFees = afterEscrow - totalFees;
+
+  // Step 4: Calculate taxes on the gain
+  // Tax basis assumption: $0 (founder typically has minimal basis)
+  const taxableGain = grossProceeds;
+  const totalTaxRate = fedCapGains + stateTax;
+  const taxes = taxableGain * totalTaxRate;
+
+  // Step 5: Take-home
+  const takeHome = afterFees - taxes;
+
+  // Step 6: Effective tax rate on gross proceeds
+  const effectiveTaxRate = grossProceeds > 0 ? (taxes / grossProceeds) : 0;
+
+  // Step 7: Gap between headline and take-home
+  const gap = headline > 0 ? ((headline - takeHome) / headline) : 0;
+
+  // Display results
+  document.getElementById('r-headline').textContent = fmt(headline);
+  document.getElementById('r-grossProceeds').textContent = fmt(grossProceeds);
+  document.getElementById('r-afterFees').textContent = fmt(afterFees);
+  document.getElementById('r-takeHome').textContent = fmt(takeHome);
+  document.getElementById('r-effectiveTax').textContent = (effectiveTaxRate * 100).toFixed(1) + '%';
+  document.getElementById('r-gap').textContent = (gap * 100).toFixed(1) + '%';
+
+  const details = `
+    <strong>Breakdown:</strong><br />
+    Gross proceeds (${(ownership*100).toFixed(1)}% of headline): ${fmt(grossProceeds)}<br />
+    Less escrow holdback (${(escrow*100).toFixed(1)}%): ${fmt(escrowAmount)}<br />
+    Less transaction fees (${(txFees*100).toFixed(1)}%): ${fmt(grossProceeds * txFees)}<br />
+    Less advisor fees: ${fmt(advisorFees)}<br />
+    Less capital gains taxes (${(totalTaxRate*100).toFixed(1)}%): ${fmt(taxes)}<br />
+    <strong>Net take-home: ${fmt(takeHome)}</strong><br />
+    <br />
+    Of the headline ${fmt(headline)}, you keep ${(Math.max(takeHome, 0) / headline * 100).toFixed(1)}% after all costs and taxes.
+  `;
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetProceeds() {
+  document.getElementById('headline').value = '';
+  document.getElementById('ownership').value = '';
+  document.getElementById('liquidation').value = '';
+  document.getElementById('escrow').value = '';
+  document.getElementById('txFees').value = '';
+  document.getElementById('fedCapGains').value = '20';
+  document.getElementById('stateTax').value = '';
+  document.getElementById('advisorFees').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

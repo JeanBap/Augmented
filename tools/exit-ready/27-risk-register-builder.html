@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Risk Register Builder | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:900px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.risk-category { margin-bottom: 2rem; border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; background: var(--paper); }
+		.category-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem; color: var(--ink); }
+		.risk-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+		.risk-item { padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); margin-bottom: 0.75rem; }
+		.risk-form { display: grid; gap: 0.75rem; }
+		.risk-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+		.risk-form-row.full { grid-template-columns: 1fr; }
+		.risk-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-bottom: 0.25rem; display: block; }
+		.risk-input { padding: 0.5rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.8rem; box-sizing: border-box; }
+		.risk-textarea { padding: 0.5rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.8rem; box-sizing: border-box; min-height: 60px; }
+		.risk-select { padding: 0.5rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.8rem; }
+		.btn-small { padding: 0.4rem 0.75rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 4px; font-family: var(--mono); font-size: 0.7rem; cursor: pointer; }
+		.btn-small:hover { color: var(--ink); border-color: var(--gold); }
+		.btn-add { padding: 0.5rem 1rem; background: var(--gold); color: var(--paper); border: none; border-radius: 4px; font-family: var(--mono); font-size: 0.8rem; cursor: pointer; margin-top: 0.75rem; }
+		.btn-add:hover { background: var(--gold2); }
+		.heatmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 1.5rem 0; width: 100%; max-width: 300px; }
+		.heatmap-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule); border-radius: 4px; font-family: var(--mono); font-size: 0.7rem; font-weight: bold; cursor: pointer; }
+		.heatmap-cell.low { background: rgba(200,164,90,0.1); color: var(--mid); }
+		.heatmap-cell.medium { background: rgba(200,164,90,0.4); color: var(--paper); }
+		.heatmap-cell.high { background: #a67c3b; color: var(--paper); }
+		.result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+		.result-card { text-align: center; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+		.result-value { font-family: var(--serif); font-size: 2rem; color: var(--ink); }
+		.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.5rem; }
+		.risk-list-result { list-style: none; padding: 0; margin: 0; }
+		.risk-item-result { padding: 0.75rem; border-left: 4px solid var(--gold); background: rgba(200,164,90,0.05); margin-bottom: 0.75rem; border-radius: 4px; }
+		.risk-item-result h5 { font-family: var(--serif); font-size: 0.9rem; margin: 0 0 0.25rem 0; color: var(--ink); }
+		.risk-item-result p { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin: 0; }
+		.profile-badge { display: inline-block; padding: 0.4rem 0.8rem; background: var(--gold); color: var(--paper); border-radius: 4px; font-family: var(--serif); font-size: 0.9rem; font-weight: bold; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Risk Register Builder</h1>
+		<p>Document and prioritize business risks for buyers</p>
+		<div class="chapter-ref">Chapter 8</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Risk Categories -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Build Your Risk Register</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem;">Add risks for each category. Rate likelihood (1-5) and impact (1-5), document mitigation, and track status.</p>
+
+				<!-- Financial Risks -->
+				<div class="risk-category">
+					<div class="category-title">1. Financial Risks</div>
+					<ul class="risk-list" id="financial-risks"></ul>
+					<button class="btn-add" onclick="addRisk('financial')">+ Add Financial Risk</button>
+				</div>
+
+				<!-- Operational Risks -->
+				<div class="risk-category">
+					<div class="category-title">2. Operational Risks</div>
+					<ul class="risk-list" id="operational-risks"></ul>
+					<button class="btn-add" onclick="addRisk('operational')">+ Add Operational Risk</button>
+				</div>
+
+				<!-- Legal/Regulatory Risks -->
+				<div class="risk-category">
+					<div class="category-title">3. Legal & Regulatory Risks</div>
+					<ul class="risk-list" id="legal-risks"></ul>
+					<button class="btn-add" onclick="addRisk('legal')">+ Add Legal Risk</button>
+				</div>
+
+				<!-- Market/Competitive Risks -->
+				<div class="risk-category">
+					<div class="category-title">4. Market & Competitive Risks</div>
+					<ul class="risk-list" id="market-risks"></ul>
+					<button class="btn-add" onclick="addRisk('market')">+ Add Market Risk</button>
+				</div>
+
+				<!-- People Risks -->
+				<div class="risk-category">
+					<div class="category-title">5. People Risks</div>
+					<ul class="risk-list" id="people-risks"></ul>
+					<button class="btn-add" onclick="addRisk('people')">+ Add People Risk</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="analyzeBtn">Analyze & Generate Report</button>
+			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<h3 style="font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1.5rem;">Risk Analysis Report</h3>
+
+			<!-- Summary Cards -->
+			<div class="result-grid">
+				<div class="result-card">
+					<div class="result-value" id="totalRisks">0</div>
+					<div class="result-label">Total Risks</div>
+				</div>
+				<div class="result-card">
+					<div class="result-value" id="mitigatedPct">0%</div>
+					<div class="result-label">Mitigation Progress</div>
+				</div>
+				<div class="result-card">
+					<div class="result-value" id="profileBadge">—</div>
+					<div class="result-label">Risk Profile</div>
+				</div>
+			</div>
+
+			<!-- Risk Heat Map -->
+			<div style="margin: 2rem 0;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Risk Heat Map (Likelihood × Impact)</h4>
+				<div class="heatmap" id="heatmap"></div>
+				<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 1rem;">
+					Low Risk &nbsp; | &nbsp; Medium Risk &nbsp; | &nbsp; High Risk
+				</div>
+			</div>
+
+			<!-- Risks by Category -->
+			<div style="margin: 1.5rem 0;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Risks by Category</h4>
+				<div id="categoryBreakdown" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;"></div>
+			</div>
+
+			<!-- Top 5 Risks -->
+			<div style="margin: 1.5rem 0;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Top 5 Priority Risks (High Likelihood + High Impact)</h4>
+				<ul class="risk-list-result" id="topRisks"></ul>
+			</div>
+
+			<!-- Overall Profile -->
+			<div style="margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.05);">
+				<h4 style="font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0;">Overall Risk Profile</h4>
+				<p id="profileSummary" style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.6;"></p>
+			</div>
+
+			<!-- Mitigation Recommendations -->
+			<div style="margin-top: 1.5rem;">
+				<h4 style="font-family: var(--serif); font-size: 1rem; margin-bottom: 1rem;">Next Steps for Risk Mitigation</h4>
+				<ul id="recommendations" style="list-style: none; padding: 0; margin: 0;"></ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		const risks = {
+			financial: [],
+			operational: [],
+			legal: [],
+			market: [],
+			people: []
+		};
+
+		let riskId = 0;
+
+		function addRisk(category) {
+			const id = riskId++;
+			const risk = {
+				id,
+				description: '',
+				likelihood: 3,
+				impact: 3,
+				mitigation: '',
+				status: 'Open'
+			};
+			risks[category].push(risk);
+			renderRisks(category);
+		}
+
+		function removeRisk(category, id) {
+			risks[category] = risks[category].filter(r => r.id !== id);
+			renderRisks(category);
+		}
+
+		function renderRisks(category) {
+			const container = document.getElementById(category + '-risks');
+			container.innerHTML = risks[category].map(risk => `
+				<li class="risk-item">
+					<div class="risk-form">
+						<div class="risk-form-row full">
+							<label class="risk-label">Risk Description</label>
+							<textarea class="risk-textarea" placeholder="Describe the risk..." data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'description', this.value)">${risk.description}</textarea>
+						</div>
+						<div class="risk-form-row">
+							<div>
+								<label class="risk-label">Likelihood (1-5)</label>
+								<input type="number" class="risk-input" min="1" max="5" value="${risk.likelihood}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'likelihood', this.value)">
+							</div>
+							<div>
+								<label class="risk-label">Impact (1-5)</label>
+								<input type="number" class="risk-input" min="1" max="5" value="${risk.impact}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'impact', this.value)">
+							</div>
+						</div>
+						<div class="risk-form-row full">
+							<label class="risk-label">Current Mitigation</label>
+							<textarea class="risk-textarea" placeholder="How are you mitigating this risk?" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'mitigation', this.value)">${risk.mitigation}</textarea>
+						</div>
+						<div class="risk-form-row">
+							<div>
+								<label class="risk-label">Status</label>
+								<select class="risk-select" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'status', this.value)">
+									<option ${risk.status === 'Open' ? 'selected' : ''}>Open</option>
+									<option ${risk.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+									<option ${risk.status === 'Mitigated' ? 'selected' : ''}>Mitigated</option>
+								</select>
+							</div>
+							<div style="display: flex; align-items: flex-end;">
+								<button class="btn-small" onclick="removeRisk('${category}', ${risk.id})">Delete</button>
+							</div>
+						</div>
+					</div>
+				</li>
+			`).join('');
+		}
+
+		function updateRisk(category, id, field, value) {
+			const risk = risks[category].find(r => r.id === id);
+			if (risk) risk[field] = field === 'likelihood' || field === 'impact' ? parseInt(value) : value;
+		}
+
+		function analyze() {
+			let allRisks = [];
+			Object.values(risks).forEach(cat => allRisks = allRisks.concat(cat));
+
+			if (allRisks.length === 0) {
+				alert('Please add at least one risk');
+				return;
+			}
+
+			// Calculate metrics
+			const totalRisks = allRisks.length;
+			const mitigated = allRisks.filter(r => r.status === 'Mitigated').length;
+			const mitigatedPct = Math.round((mitigated / totalRisks) * 100);
+
+			// Risk profile
+			const avgLikelihood = allRisks.reduce((s, r) => s + r.likelihood, 0) / totalRisks;
+			const avgImpact = allRisks.reduce((s, r) => s + r.impact, 0) / totalRisks;
+			const avgScore = (avgLikelihood + avgImpact) / 2;
+
+			let profile = 'Low';
+			if (avgScore >= 3.5) profile = 'High';
+			else if (avgScore >= 2.5) profile = 'Medium';
+
+			document.getElementById('totalRisks').textContent = totalRisks;
+			document.getElementById('mitigatedPct').textContent = mitigatedPct + '%';
+			document.getElementById('profileBadge').innerHTML = `<span class="profile-badge">${profile}</span>`;
+
+			// Heat map
+			const heatmap = Array(25).fill(0);
+			allRisks.forEach(r => {
+				const idx = (r.likelihood - 1) * 5 + (r.impact - 1);
+				heatmap[idx]++;
+			});
+
+			const heatmapEl = document.getElementById('heatmap');
+			heatmapEl.innerHTML = heatmap.map((count, idx) => {
+				const likelihood = Math.floor(idx / 5) + 1;
+				const impact = (idx % 5) + 1;
+				const score = likelihood + impact;
+				let color = 'low';
+				if (score >= 7) color = 'high';
+				else if (score >= 5) color = 'medium';
+
+				return `
+					<div class="heatmap-cell ${color}">
+						${count > 0 ? count : ''}
+					</div>
+				`;
+			}).join('');
+
+			// Category breakdown
+			const categoryBreakdown = document.getElementById('categoryBreakdown');
+			categoryBreakdown.innerHTML = Object.entries(risks).map(([cat, items]) => {
+				const high = items.filter(r => (r.likelihood + r.impact) >= 7).length;
+				return `
+					<div style="padding: 1rem; border: 1px solid var(--rule); border-radius: 6px;">
+						<div style="font-family: var(--serif); font-size: 0.9rem; color: var(--ink); margin-bottom: 0.5rem;">
+							${cat.charAt(0).toUpperCase() + cat.slice(1)}
+						</div>
+						<div style="font-family: var(--serif); font-size: 1.5rem; color: var(--ink);">${items.length}</div>
+						<div style="font-family: var(--mono); font-size: 0.7rem; color: var(--mid);">${high} high priority</div>
+					</div>
+				`;
+			}).join('');
+
+			// Top 5 risks
+			const topRisks = allRisks
+				.sort((a, b) => (b.likelihood + b.impact) - (a.likelihood + a.impact))
+				.slice(0, 5);
+
+			document.getElementById('topRisks').innerHTML = topRisks.map((r, i) => `
+				<li class="risk-item-result">
+					<h5>${i + 1}. ${r.description || 'Unnamed Risk'}</h5>
+					<p>Likelihood: ${r.likelihood}/5 | Impact: ${r.impact}/5 | Score: ${r.likelihood + r.impact} | Status: ${r.status}</p>
+				</li>
+			`).join('');
+
+			// Profile summary
+			const profileText = profile === 'High' ? 'Your business has significant identified risks. Prioritize mitigation before exit.' :
+							   profile === 'Medium' ? 'Your risk profile is moderate. Continue strengthening mitigation strategies.' :
+							   'Your identified risks are well-managed. Good positioning for exit conversations.';
+
+			document.getElementById('profileSummary').textContent = profileText;
+
+			// Recommendations
+			const recs = [];
+			if (mitigatedPct < 30) recs.push('1. Develop mitigation plans for at least 30% of identified risks before exit');
+			if (profile === 'High') recs.push(`2. Focus on the top 5 high-priority risks; develop buyer-ready remediation plans`);
+			recs.push(`3. Document all mitigation efforts and status for buyer transparency`);
+			recs.push(`4. Regular risk register reviews (quarterly) through exit`);
+
+			document.getElementById('recommendations').innerHTML = recs.map(r => `
+				<li style="padding: 0.75rem; border-left: 4px solid var(--gold); background: rgba(200,164,90,0.05); margin-bottom: 0.75rem; border-radius: 4px;">
+					<p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0;">${r}</p>
+				</li>
+			`).join('');
+
+			document.getElementById('results').classList.add('visible');
+		}
+
+		document.getElementById('analyzeBtn').addEventListener('click', analyze);
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			Object.keys(risks).forEach(key => risks[key] = []);
+			['financial', 'operational', 'legal', 'market', 'people'].forEach(cat => {
+				document.getElementById(cat + '-risks').innerHTML = '';
+			});
+			document.getElementById('results').classList.remove('visible');
+		});
+
+		// Initialize with example risks
+		addRisk('financial');
+		addRisk('operational');
+		addRisk('legal');
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

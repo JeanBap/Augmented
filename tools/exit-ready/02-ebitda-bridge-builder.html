@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBITDA Bridge Builder | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+@media(max-width: 600px) {
+  .tool-row { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.adjustment-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 1rem; align-items: flex-end; }
+.adjustment-row input, .adjustment-row select { padding: 0.5rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; }
+.btn-remove { padding: 0.5rem 0.75rem; background: transparent; border: 1px solid var(--rule); color: var(--mid); cursor: pointer; border-radius: 6px; font-size: 0.8rem; }
+.btn-remove:hover { background: rgba(200,164,90,0.1); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.result-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
+.result-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.5rem; border-bottom: 2px solid var(--rule); }
+.result-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.result-table .text-right { text-align: right; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>EBITDA Bridge Builder</h1>
+    <p>Start with reported EBITDA and add/subtract adjustments to model Adjusted EBITDA for valuation.</p>
+    <div class="chapter-ref">From Chapter 6: Valuation & Multiple Analysis</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Reported EBITDA</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="reportedEbitda">Reported EBITDA ($)</label>
+            <input type="number" id="reportedEbitda" placeholder="0" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Adjustments</h2>
+      </div>
+      <div class="tool-card-body">
+        <div id="adjustments-container"></div>
+        <button class="tool-btn" onclick="addAdjustment()">+ Add Adjustment</button>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Multiples & Valuation</h2>
+      </div>
+      <div class="tool-card-body">
+        <button class="tool-btn" onclick="calculateBridge()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetBridge()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-reported">$0</div>
+          <div class="result-label">Reported EBITDA</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-addbacks">$0</div>
+          <div class="result-label">Total Add-backs</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-subtractions">$0</div>
+          <div class="result-label">Total Subtractions</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-adjusted">$0</div>
+          <div class="result-label">Adjusted EBITDA</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-weighted">$0</div>
+          <div class="result-label">Confidence-Weighted</div>
+        </div>
+      </div>
+
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Multiple</th>
+            <th class="text-right">Enterprise Value</th>
+          </tr>
+        </thead>
+        <tbody id="multiples-table"></tbody>
+      </table>
+
+      <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+let adjustmentCount = 0;
+
+const prePopulated = [
+  { desc: 'Owner salary above market', type: 'add-back' },
+  { desc: 'One-time legal/consulting', type: 'add-back' },
+  { desc: 'Related party rent above market', type: 'add-back' },
+  { desc: 'Non-recurring expenses', type: 'add-back' },
+  { desc: 'Stock-based compensation', type: 'add-back' }
+];
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function initializeAdjustments() {
+  const container = document.getElementById('adjustments-container');
+  container.innerHTML = '';
+  adjustmentCount = 0;
+  prePopulated.forEach(adj => {
+    addAdjustment(adj.desc, adj.type);
+  });
+}
+
+function addAdjustment(desc = '', type = 'add-back') {
+  const container = document.getElementById('adjustments-container');
+  const id = adjustmentCount++;
+  const row = document.createElement('div');
+  row.className = 'adjustment-row';
+  row.id = `adj-${id}`;
+  row.innerHTML = `
+    <input type="text" class="adj-desc" placeholder="Description" value="${desc}" />
+    <input type="number" class="adj-amount" placeholder="Amount" />
+    <select class="adj-type">
+      <option value="add-back" ${type === 'add-back' ? 'selected' : ''}>Add-back</option>
+      <option value="subtraction" ${type === 'subtraction' ? 'selected' : ''}>Subtraction</option>
+    </select>
+    <select class="adj-confidence">
+      <option value="high">High</option>
+      <option value="medium" selected>Medium</option>
+      <option value="low">Low</option>
+    </select>
+    <button type="button" class="btn-remove" onclick="removeAdjustment(${id})">Remove</button>
+  `;
+  container.appendChild(row);
+}
+
+function removeAdjustment(id) {
+  const row = document.getElementById(`adj-${id}`);
+  if (row) row.remove();
+}
+
+function calculateBridge() {
+  const reported = parseFloat(document.getElementById('reportedEbitda').value) || 0;
+
+  let addbacks = 0;
+  let subtractions = 0;
+  let weightedTotal = reported;
+
+  document.querySelectorAll('.adjustment-row').forEach(row => {
+    const amount = parseFloat(row.querySelector('.adj-amount').value) || 0;
+    const type = row.querySelector('.adj-type').value;
+    const confidence = row.querySelector('.adj-confidence').value;
+
+    const confidenceMultiplier = confidence === 'high' ? 1.0 : (confidence === 'medium' ? 0.7 : 0.4);
+    const adjustedAmount = amount * confidenceMultiplier;
+
+    if (type === 'add-back') {
+      addbacks += amount;
+      weightedTotal += adjustedAmount;
+    } else {
+      subtractions += amount;
+      weightedTotal -= adjustedAmount;
+    }
+  });
+
+  const adjustedEbitda = reported + addbacks - subtractions;
+
+  // Build multiples table
+  const multiples = [4, 6, 8, 10];
+  let tableHtml = '';
+  multiples.forEach(mult => {
+    const ev = adjustedEbitda * mult;
+    tableHtml += `<tr><td>${mult}x</td><td class="text-right">${fmt(ev)}</td></tr>`;
+  });
+  document.getElementById('multiples-table').innerHTML = tableHtml;
+
+  // Display results
+  document.getElementById('r-reported').textContent = fmt(reported);
+  document.getElementById('r-addbacks').textContent = fmt(addbacks);
+  document.getElementById('r-subtractions').textContent = fmt(subtractions);
+  document.getElementById('r-adjusted').textContent = fmt(adjustedEbitda);
+  document.getElementById('r-weighted').textContent = fmt(weightedTotal);
+
+  const details = `
+    <strong>Bridge Summary:</strong><br />
+    Starting reported EBITDA: ${fmt(reported)}<br />
+    Plus add-backs: ${fmt(addbacks)}<br />
+    Less subtractions: ${fmt(subtractions)}<br />
+    <strong>Adjusted EBITDA: ${fmt(adjustedEbitda)}</strong><br />
+    <br />
+    Confidence-weighted EBITDA (accounting for certainty of adjustments): ${fmt(weightedTotal)}<br />
+    <br />
+    <strong>Valuation range using adjusted EBITDA:</strong><br />
+    At 4x: ${fmt(adjustedEbitda * 4)} | At 6x: ${fmt(adjustedEbitda * 6)} | At 8x: ${fmt(adjustedEbitda * 8)} | At 10x: ${fmt(adjustedEbitda * 10)}
+  `;
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetBridge() {
+  document.getElementById('reportedEbitda').value = '';
+  initializeAdjustments();
+  document.getElementById('results').classList.remove('visible');
+}
+
+// Initialize on load
+window.addEventListener('load', initializeAdjustments);
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installment Sale Bracket Optimizer | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; overflow-x: auto; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.result-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.result-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--rule); }
+.result-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.result-table .text-right { text-align: right; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Installment Sale Bracket Optimizer</h1>
+    <p>Compare lump sum tax vs spreading gains over multiple years using 2024 tax brackets.</p>
+    <div class="chapter-ref">From Chapter 25: Tax-Efficient Exit Structures</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Sale Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="sale-price">Total Sale Price ($)</label>
+            <input type="number" id="sale-price" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="cost-basis">Cost Basis ($)</label>
+            <input type="number" id="cost-basis" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="period">Installment Period (years)</label>
+            <input type="number" id="period" placeholder="5" min="2" max="10" />
+          </div>
+          <div class="tool-field">
+            <label for="filing-status">Filing Status</label>
+            <select id="filing-status">
+              <option value="single">Single</option>
+              <option value="mfj">Married Filing Jointly</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="other-income">Other Taxable Income ($)</label>
+            <input type="number" id="other-income" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="installments-per-year">Installments Per Year</label>
+            <input type="number" id="installments-per-year" placeholder="1" min="1" max="12" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="optimizeInstallments()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetInstallments()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-lump">$0</div>
+          <div class="result-label">Lump Sum Tax</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-installment">$0</div>
+          <div class="result-label">Installment Tax</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-savings">$0</div>
+          <div class="result-label">Tax Savings</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-savings-pct">0%</div>
+          <div class="result-label">Savings %</div>
+        </div>
+      </div>
+      <div class="result-note" id="r-details"></div>
+      <table class="result-table" id="r-table">
+        <thead>
+          <tr><th>Year</th><th class="text-right">Payment</th><th class="text-right">Gain Recognized</th><th class="text-right">Income (Total)</th><th class="text-right">Tax</th><th class="text-right">Net (After Tax)</th></tr>
+        </thead>
+        <tbody id="r-body"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function getTaxRate(income, filingStatus) {
+  // 2024 long-term capital gains rates: 0%, 15%, 20%
+  // Simplified: using combined LTCG + NIIT (3.8%)
+  const brackets2024 = {
+    single: [
+      { limit: 47025, rate: 0.00 },
+      { limit: 518900, rate: 0.15 },
+      { limit: Infinity, rate: 0.20 }
+    ],
+    mfj: [
+      { limit: 94050, rate: 0.00 },
+      { limit: 583750, rate: 0.15 },
+      { limit: Infinity, rate: 0.20 }
+    ]
+  };
+
+  const brackets = brackets2024[filingStatus] || brackets2024.single;
+  for(const bracket of brackets) {
+    if(income <= bracket.limit) {
+      return bracket.rate;
+    }
+  }
+  return 0.20;
+}
+
+function optimizeInstallments() {
+  const salePrice = parseFloat(document.getElementById('sale-price').value) || 0;
+  const costBasis = parseFloat(document.getElementById('cost-basis').value) || 0;
+  const period = parseInt(document.getElementById('period').value) || 5;
+  const filingStatus = document.getElementById('filing-status').value;
+  const otherIncome = parseFloat(document.getElementById('other-income').value) || 0;
+  const installmentsPerYear = parseInt(document.getElementById('installments-per-year').value) || 1;
+
+  if(salePrice <= 0) {
+    alert('Please enter a sale price');
+    return;
+  }
+
+  const totalGain = salePrice - costBasis;
+  const discountRate = 0.05; // 5% discount for NPV
+
+  // Lump sum scenario
+  const lumpSumIncome = otherIncome + totalGain;
+  const lumpSumRate = getTaxRate(lumpSumIncome, filingStatus);
+  const lumpSumTax = totalGain * lumpSumRate;
+  const lumpSumNet = salePrice - lumpSumTax;
+
+  // Installment scenario
+  const installmentsTotal = period * installmentsPerYear;
+  const paymentPerInstallment = salePrice / installmentsTotal;
+  const gainPerInstallment = totalGain / installmentsTotal;
+
+  let installmentTaxTotal = 0;
+  let rows = [];
+
+  for(let year = 1; year <= period; year++) {
+    let yearPayment = 0;
+    let yearGain = 0;
+    let yearTax = 0;
+
+    for(let inst = 1; inst <= installmentsPerYear; inst++) {
+      const idx = (year - 1) * installmentsPerYear + inst;
+      if(idx <= installmentsTotal) {
+        yearPayment += paymentPerInstallment;
+        yearGain += gainPerInstallment;
+      }
+    }
+
+    const yearIncome = otherIncome + yearGain;
+    const yearRate = getTaxRate(yearIncome, filingStatus);
+    yearTax = yearGain * yearRate;
+    installmentTaxTotal += yearTax;
+
+    const netPayment = yearPayment - yearTax;
+    rows.push({
+      year,
+      payment: yearPayment,
+      gain: yearGain,
+      income: yearIncome,
+      tax: yearTax,
+      net: netPayment
+    });
+  }
+
+  const taxSavings = lumpSumTax - installmentTaxTotal;
+  const taxSavingsPct = lumpSumTax > 0 ? (taxSavings / lumpSumTax * 100) : 0;
+
+  document.getElementById('r-lump').textContent = fmt(lumpSumTax);
+  document.getElementById('r-installment').textContent = fmt(installmentTaxTotal);
+  document.getElementById('r-savings').textContent = fmt(taxSavings);
+  document.getElementById('r-savings-pct').textContent = taxSavingsPct.toFixed(1) + '%';
+
+  // Build table
+  const tbody = document.getElementById('r-body');
+  tbody.innerHTML = '';
+  rows.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>Year ${row.year}</td>
+      <td class="text-right">${fmt(row.payment)}</td>
+      <td class="text-right">${fmt(row.gain)}</td>
+      <td class="text-right">${fmt(row.income)}</td>
+      <td class="text-right">${fmt(row.tax)}</td>
+      <td class="text-right">${fmt(row.net)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const details = `<strong>Analysis:</strong><br />
+    Total sale price: ${fmt(salePrice)}<br />
+    Cost basis: ${fmt(costBasis)}<br />
+    Total gain: ${fmt(totalGain)}<br />
+    <br />
+    <strong>Lump Sum (Year 1):</strong><br />
+    Taxable income: ${fmt(lumpSumIncome)} (other income + gain)<br />
+    Tax rate on gain: ${(lumpSumRate * 100).toFixed(1)}%<br />
+    Total tax: ${fmt(lumpSumTax)}<br />
+    Net proceeds: ${fmt(lumpSumNet)}<br />
+    <br />
+    <strong>Installment Spread (${period} years):</strong><br />
+    Total tax: ${fmt(installmentTaxTotal)}<br />
+    Tax savings: ${fmt(taxSavings)} (${taxSavingsPct.toFixed(1)}%)<br />
+    <br />
+    Spreading gains across years keeps you in lower tax brackets each year.`;
+
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetInstallments() {
+  document.getElementById('sale-price').value = '';
+  document.getElementById('cost-basis').value = '';
+  document.getElementById('period').value = '5';
+  document.getElementById('filing-status').value = 'single';
+  document.getElementById('other-income').value = '';
+  document.getElementById('installments-per-year').value = '1';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

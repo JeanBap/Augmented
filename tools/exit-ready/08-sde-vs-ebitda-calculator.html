@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDE vs EBITDA Calculator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+@media(max-width: 600px) {
+  .tool-row { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+.result-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.5rem 0.5rem; border-bottom: 2px solid var(--rule); }
+.result-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.result-table .text-right { text-align: right; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>SDE vs EBITDA Calculator</h1>
+    <p>Compare SDE and EBITDA valuations for your business size and profitability.</p>
+    <div class="chapter-ref">From Chapter 28: Small Business Valuations</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Income Statement</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="revenue">Annual Revenue ($)</label>
+            <input type="number" id="revenue" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="cogs">Cost of Goods Sold ($)</label>
+            <input type="number" id="cogs" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="opex">Operating Expenses ($)</label>
+            <input type="number" id="opex" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-card-header" style="padding: 1rem 0 0.5rem; border: none;">
+          <h3 style="font-family: var(--serif); font-size: 1.1rem; margin: 0;">Owner Compensation & Add-backs</h3>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="ownerSalary">Owner Salary ($)</label>
+            <input type="number" id="ownerSalary" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="ownerBenefits">Owner Benefits ($)</label>
+            <input type="number" id="ownerBenefits" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="ownerPerks">Owner Perks ($)</label>
+            <input type="number" id="ownerPerks" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="interest">Interest Expense ($)</label>
+            <input type="number" id="interest" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="depreciation">Depreciation ($)</label>
+            <input type="number" id="depreciation" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="amortization">Amortization ($)</label>
+            <input type="number" id="amortization" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="oneTime">One-time Expenses ($)</label>
+            <input type="number" id="oneTime" placeholder="0" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateSDEvsEBITDA()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetSDEvsEBITDA()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-sde">$0</div>
+          <div class="result-label">SDE</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-ebitda">$0</div>
+          <div class="result-label">EBITDA</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-appropriate">SDE</div>
+          <div class="result-label">Better Method</div>
+        </div>
+      </div>
+
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th class="text-right">Value</th>
+          </tr>
+        </thead>
+        <tbody id="calc-table"></tbody>
+      </table>
+
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Valuation Method</th>
+            <th class="text-right">Multiple Range</th>
+            <th class="text-right">Valuation</th>
+          </tr>
+        </thead>
+        <tbody id="valuation-table"></tbody>
+      </table>
+
+      <div class="result-note" id="r-summary"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateSDEvsEBITDA() {
+  const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+  const cogs = parseFloat(document.getElementById('cogs').value) || 0;
+  const opex = parseFloat(document.getElementById('opex').value) || 0;
+  const ownerSalary = parseFloat(document.getElementById('ownerSalary').value) || 0;
+  const ownerBenefits = parseFloat(document.getElementById('ownerBenefits').value) || 0;
+  const ownerPerks = parseFloat(document.getElementById('ownerPerks').value) || 0;
+  const interest = parseFloat(document.getElementById('interest').value) || 0;
+  const depreciation = parseFloat(document.getElementById('depreciation').value) || 0;
+  const amortization = parseFloat(document.getElementById('amortization').value) || 0;
+  const oneTime = parseFloat(document.getElementById('oneTime').value) || 0;
+
+  // Calculate Net Income (before adding back owner comp)
+  const netIncome = revenue - cogs - opex - ownerSalary - ownerBenefits - ownerPerks - interest - depreciation - amortization - oneTime;
+
+  // SDE = Net Income + Owner Salary + Owner Benefits + Owner Perks + D&A + Interest + One-time
+  const sde = netIncome + ownerSalary + ownerBenefits + ownerPerks + depreciation + amortization + interest + oneTime;
+
+  // EBITDA = Net Income + Interest + Taxes + D&A
+  // For simplification, assume taxes are embedded; EBITDA is similar but doesn't add owner comp
+  // EBITDA = Revenue - COGS - OPEX - D&A interest + D&A
+  const ebitda = revenue - cogs - opex + depreciation + amortization;
+
+  // Determine which is more appropriate
+  // SDE for small businesses (< $5M), EBITDA for larger
+  let appropriate = 'SDE';
+  if (revenue > 5000000) {
+    appropriate = 'EBITDA';
+  }
+
+  // Multiple ranges
+  const sdeMultipliers = { low: 2, high: 4 };
+  const ebitdaMultipliers = { low: 4, high: 8 };
+
+  // Calculate valuations
+  const sdeValLow = sde * sdeMultipliers.low;
+  const sdeValHigh = sde * sdeMultipliers.high;
+  const ebitdaValLow = ebitda * ebitdaMultipliers.low;
+  const ebitdaValHigh = ebitda * ebitdaMultipliers.high;
+
+  // Display results
+  document.getElementById('r-sde').textContent = fmt(sde);
+  document.getElementById('r-ebitda').textContent = fmt(ebitda);
+  document.getElementById('r-appropriate').textContent = appropriate;
+
+  // Build calculation table
+  let calcHtml = `
+    <tr><td><strong>Revenue</strong></td><td class="text-right">${fmt(revenue)}</td></tr>
+    <tr><td>Less: COGS</td><td class="text-right">($${Math.round(cogs).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Operating Expenses</td><td class="text-right">($${Math.round(opex).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Owner Salary</td><td class="text-right">($${Math.round(ownerSalary).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Owner Benefits</td><td class="text-right">($${Math.round(ownerBenefits).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Owner Perks</td><td class="text-right">($${Math.round(ownerPerks).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Interest Expense</td><td class="text-right">($${Math.round(interest).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Depreciation</td><td class="text-right">($${Math.round(depreciation).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Amortization</td><td class="text-right">($${Math.round(amortization).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: One-time Expenses</td><td class="text-right">($${Math.round(oneTime).toLocaleString('en-US')})</td></tr>
+    <tr><td><strong>Net Income</strong></td><td class="text-right"><strong>${fmt(netIncome)}</strong></td></tr>
+    <tr style="border-top: 2px solid var(--gold);"><td><strong>SDE Calculation</strong></td><td></td></tr>
+    <tr><td>Net Income</td><td class="text-right">${fmt(netIncome)}</td></tr>
+    <tr><td>Add back: Owner Salary</td><td class="text-right">+${fmt(ownerSalary)}</td></tr>
+    <tr><td>Add back: Owner Benefits</td><td class="text-right">+${fmt(ownerBenefits)}</td></tr>
+    <tr><td>Add back: Owner Perks</td><td class="text-right">+${fmt(ownerPerks)}</td></tr>
+    <tr><td>Add back: Interest</td><td class="text-right">+${fmt(interest)}</td></tr>
+    <tr><td>Add back: Depreciation</td><td class="text-right">+${fmt(depreciation)}</td></tr>
+    <tr><td>Add back: Amortization</td><td class="text-right">+${fmt(amortization)}</td></tr>
+    <tr><td>Add back: One-time Expenses</td><td class="text-right">+${fmt(oneTime)}</td></tr>
+    <tr><td><strong>SDE (Owner Cash Available)</strong></td><td class="text-right"><strong>${fmt(sde)}</strong></td></tr>
+    <tr style="border-top: 2px solid var(--gold);"><td><strong>EBITDA Calculation</strong></td><td></td></tr>
+    <tr><td>Revenue</td><td class="text-right">${fmt(revenue)}</td></tr>
+    <tr><td>Less: COGS</td><td class="text-right">($${Math.round(cogs).toLocaleString('en-US')})</td></tr>
+    <tr><td>Less: Operating Expenses</td><td class="text-right">($${Math.round(opex).toLocaleString('en-US')})</td></tr>
+    <tr><td>Add back: Depreciation</td><td class="text-right">+${fmt(depreciation)}</td></tr>
+    <tr><td>Add back: Amortization</td><td class="text-right">+${fmt(amortization)}</td></tr>
+    <tr><td><strong>EBITDA</strong></td><td class="text-right"><strong>${fmt(ebitda)}</strong></td></tr>
+  `;
+  document.getElementById('calc-table').innerHTML = calcHtml;
+
+  // Build valuation table
+  let valuationHtml = `
+    <tr>
+      <td>SDE at ${sdeMultipliers.low}x - ${sdeMultipliers.high}x</td>
+      <td class="text-right">${sdeMultipliers.low}x - ${sdeMultipliers.high}x</td>
+      <td class="text-right">${fmt(sdeValLow)} - ${fmt(sdeValHigh)}</td>
+    </tr>
+    <tr>
+      <td>EBITDA at ${ebitdaMultipliers.low}x - ${ebitdaMultipliers.high}x</td>
+      <td class="text-right">${ebitdaMultipliers.low}x - ${ebitdaMultipliers.high}x</td>
+      <td class="text-right">${fmt(ebitdaValLow)} - ${fmt(ebitdaValHigh)}</td>
+    </tr>
+  `;
+  document.getElementById('valuation-table').innerHTML = valuationHtml;
+
+  // Summary
+  const summary = `
+    <strong>Analysis Summary:</strong><br />
+    <br />
+    <strong>SDE (Seller Discretionary Earnings)</strong> = ${fmt(sde)}<br />
+    SDE represents the total cash earnings available to an owner. It adds back all owner-related expenses and one-time costs.
+    Used for small businesses typically under $5M revenue.<br />
+    SDE valuation range: ${fmt(sdeValLow)} - ${fmt(sdeValHigh)}<br />
+    <br />
+    <strong>EBITDA (Earnings Before Interest, Taxes, Depreciation, Amortization)</strong> = ${fmt(ebitda)}<br />
+    EBITDA represents operational earnings without owner compensation. Used for larger, more established companies.
+    Typical multiples for profitable businesses: 4x - 8x.<br />
+    EBITDA valuation range: ${fmt(ebitdaValLow)} - ${fmt(ebitdaValHigh)}<br />
+    <br />
+    <strong>Recommended Method: ${appropriate}</strong><br />
+    ${appropriate === 'SDE' ?
+      'Your company is sized for SDE valuation. SDE is the standard for smaller businesses where owner compensation is a significant component of return.' :
+      'Your company is sized for EBITDA valuation. EBITDA allows for higher multiples due to the business\'s established, scalable operations.'
+    }
+  `;
+
+  document.getElementById('r-summary').innerHTML = summary;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetSDEvsEBITDA() {
+  document.getElementById('revenue').value = '';
+  document.getElementById('cogs').value = '';
+  document.getElementById('opex').value = '';
+  document.getElementById('ownerSalary').value = '';
+  document.getElementById('ownerBenefits').value = '';
+  document.getElementById('ownerPerks').value = '';
+  document.getElementById('interest').value = '';
+  document.getElementById('depreciation').value = '';
+  document.getElementById('amortization').value = '';
+  document.getElementById('oneTime').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

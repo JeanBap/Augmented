@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder Dependence Audit | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 900px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.function-group { margin-bottom: 1.5rem; }
+.function-label { font-family: var(--mono); font-size: 0.85rem; color: var(--mid); margin-bottom: 0.35rem; display: flex; justify-content: space-between; }
+.function-slider { width: 100%; height: 6px; border-radius: 3px; background: var(--rule); outline: none; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.function-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+}
+.function-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.function-value { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 2rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.risk-badge { display: inline-block; padding: 0.5rem 1rem; border-radius: 6px; background: rgba(200,164,90,0.1); font-family: var(--mono); font-size: 0.85rem; margin-bottom: 1rem; }
+.risk-low { border-left: 3px solid #4caf50; }
+.risk-medium { border-left: 3px solid #ff9800; }
+.risk-high { border-left: 3px solid #f44336; }
+.risk-critical { border-left: 3px solid #8b0000; }
+.functions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.function-item { border: 1px solid var(--rule); border-radius: 6px; padding: 0.75rem; background: var(--paper); }
+.function-item-name { font-family: var(--serif); font-size: 0.9rem; margin-bottom: 0.35rem; }
+.function-item-score { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+.priority-plan { background: rgba(200,164,90,0.05); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; }
+.priority-plan h4 { font-family: var(--serif); margin-top: 0; margin-bottom: 0.75rem; }
+.priority-plan ul { margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6; }
+.priority-plan li { margin-bottom: 0.5rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+@media(max-width: 900px) {
+  .functions-list { grid-template-columns: 1fr; }
+}
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Founder Dependence Audit</h1>
+    <p>Assess key business functions and identify founder dependence risks. Flag delegation priorities.</p>
+    <div class="chapter-ref">From Chapter 9: Team, Culture & Retention</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Rate Your Delegation (1 = Delegated, 5 = Founder Only)</h2>
+      </div>
+      <div class="tool-card-body">
+        <div id="functions-container"></div>
+        <button class="tool-btn" onclick="calculateDependence()">Calculate Audit</button>
+        <button class="tool-btn-reset" onclick="resetDependence()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-overallScore">0/5</div>
+          <div class="result-label">Overall Dependence Score</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-riskLevel">Low</div>
+          <div class="result-label">Risk Level</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-multipleDiscount">0%</div>
+          <div class="result-label">Estimated Multiple Discount</div>
+        </div>
+      </div>
+
+      <div id="risk-badge"></div>
+
+      <h3 style="font-family: var(--serif); margin-bottom: 1rem;">Function-by-Function Results</h3>
+      <div class="functions-list" id="functions-results"></div>
+
+      <div class="priority-plan">
+        <h4>90-Day Delegation Priority Plan</h4>
+        <p style="margin-top: 0; font-size: 0.85rem; color: var(--mid);">Focus on delegating these functions in the next 90 days:</p>
+        <ul id="delegation-plan"></ul>
+      </div>
+
+      <div class="result-note" id="r-summary"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+const functions = [
+  'Sales Leadership',
+  'Key Account Relationships',
+  'Product Vision',
+  'Technical Decisions',
+  'Hiring/Firing',
+  'Financial Oversight',
+  'Investor Relations',
+  'Strategic Partnerships',
+  'Marketing/Brand',
+  'Operations Management',
+  'Customer Success',
+  'Pricing Decisions',
+  'Vendor Management',
+  'Culture/Morale',
+  'Crisis Management'
+];
+
+function initializeFunctions() {
+  const container = document.getElementById('functions-container');
+  container.innerHTML = '';
+  functions.forEach((fn, idx) => {
+    const group = document.createElement('div');
+    group.className = 'function-group';
+    group.id = `func-${idx}`;
+    group.innerHTML = `
+      <div class="function-label">
+        <span>${fn}</span>
+        <span class="function-value" id="value-${idx}">3</span>
+      </div>
+      <input type="range" class="function-slider" id="slider-${idx}" min="1" max="5" value="3" />
+    `;
+    container.appendChild(group);
+
+    // Add event listener for live updates
+    document.getElementById(`slider-${idx}`).addEventListener('input', (e) => {
+      document.getElementById(`value-${idx}`).textContent = e.target.value;
+    });
+  });
+}
+
+function calculateDependence() {
+  const scores = [];
+  functions.forEach((_, idx) => {
+    const score = parseInt(document.getElementById(`slider-${idx}`).value);
+    scores.push(score);
+  });
+
+  // Calculate overall score (average)
+  const overallScore = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+
+  // Determine risk level
+  let riskLevel = 'Low';
+  let riskClass = 'risk-low';
+  if (overallScore > 3.5) {
+    riskLevel = 'Critical';
+    riskClass = 'risk-critical';
+  } else if (overallScore > 3) {
+    riskLevel = 'High';
+    riskClass = 'risk-high';
+  } else if (overallScore > 2) {
+    riskLevel = 'Medium';
+    riskClass = 'risk-medium';
+  }
+
+  // Calculate multiple discount
+  // Low (< 2): 0%, Medium (2-3): -10%, High (3-3.5): -20%, Critical (> 3.5): -30%
+  let multipleDiscount = 0;
+  if (overallScore > 3.5) multipleDiscount = -30;
+  else if (overallScore > 3) multipleDiscount = -20;
+  else if (overallScore > 2) multipleDiscount = -10;
+
+  // Display results
+  document.getElementById('r-overallScore').textContent = overallScore + '/5';
+  document.getElementById('r-riskLevel').textContent = riskLevel;
+  document.getElementById('r-multipleDiscount').textContent = multipleDiscount + '%';
+
+  // Risk badge
+  const badgeHtml = `<div class="risk-badge ${riskClass}"><strong>Risk Level: ${riskLevel}</strong> - Founder dependence discount: ${multipleDiscount}%</div>`;
+  document.getElementById('risk-badge').innerHTML = badgeHtml;
+
+  // Function results
+  let functionsHtml = '';
+  scores.forEach((score, idx) => {
+    const delegationLevel = score === 1 ? 'Fully delegated' : score === 2 ? 'Mostly delegated' : score === 3 ? 'Mixed' : score === 4 ? 'Mostly founder' : 'Founder only';
+    functionsHtml += `
+      <div class="function-item">
+        <div class="function-item-name">${functions[idx]}</div>
+        <div class="function-item-score">
+          <span>${score}/5</span>
+          <span style="color: var(--gold);">${delegationLevel}</span>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('functions-results').innerHTML = functionsHtml;
+
+  // Identify top 5 high-dependence functions
+  const indexed = scores.map((s, i) => ({ score: s, idx: i }));
+  const highDep = indexed.sort((a, b) => b.score - a.score).slice(0, 5);
+
+  // Build 90-day plan
+  let planHtml = '';
+  highDep.forEach((item, rank) => {
+    const fn = functions[item.idx];
+    planHtml += `<li><strong>Month ${Math.ceil((rank + 1) / 2)}:</strong> Delegate ${fn} (currently ${item.score}/5)</li>`;
+  });
+  document.getElementById('delegation-plan').innerHTML = planHtml;
+
+  // Summary
+  const summary = `
+    <strong>Founder Dependence Analysis:</strong><br />
+    Your overall dependence score is <strong>${overallScore}/5</strong>, indicating a <strong>${riskLevel}</strong> risk level.<br />
+    <br />
+    <strong>What This Means:</strong><br />
+    ${overallScore < 2 ? 'Excellent delegation! Your business is well-positioned to operate without you.' :
+      overallScore < 3 ? 'Good progress on delegation. A few key functions still depend on you.' :
+      overallScore < 3.5 ? 'Significant founder dependence. Buyers will see this as a major risk and discount valuation accordingly.' :
+      'Critical dependence. This business will be very difficult to sell or will command a deep discount until you delegate.'
+    }
+    <br />
+    <br />
+    <strong>Multiple Impact:</strong><br />
+    Estimated valuation impact: <strong>${multipleDiscount}%</strong> discount to EBITDA multiple<br />
+    If base multiple is 6x, your adjusted range = ${(6 + (6 * multipleDiscount / 100)).toFixed(1)}x<br />
+    <br />
+    <strong>Recommended Action:</strong><br />
+    ${overallScore > 3.5 ? 'Immediate action required. Begin systematic delegation of critical functions over the next 60-90 days.' :
+      overallScore > 3 ? 'Accelerate delegation timeline. Target completion within 6 months.' :
+      'Continue delegating key functions. You are on the right track.'
+    }
+  `;
+
+  document.getElementById('r-summary').innerHTML = summary;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetDependence() {
+  initializeFunctions();
+  document.getElementById('results').classList.remove('visible');
+}
+
+// Initialize on load
+window.addEventListener('load', initializeFunctions);
+</script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Purchase Price Allocation Prep | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:900px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}.tool-row.single{grid-template-columns:1fr}.tool-row.triple{grid-template-columns:1fr 1fr 1fr}@media(max-width:600px){.tool-row,.tool-row.triple{grid-template-columns:1fr}}.tool-field label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}.tool-field input,.tool-field select{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box}.tool-field input:focus{outline:none;border-color:var(--gold)}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.result-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.85rem}.result-table th{font-family:var(--mono);font-size:.75rem;color:var(--mid);text-align:left;padding:.5rem .75rem;border-bottom:2px solid var(--rule)}.result-table td{padding:.5rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono)}.result-table .text-right{text-align:right}.allocation-item { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; }
+		.allocation-label { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+		.allocation-value { font-family: var(--mono); font-size: 0.9rem; color: var(--ink); }
+		.result-card { padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); margin-bottom: 1rem; }
+		.result-card h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0; color: var(--ink); }
+		.scenario-analysis { margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.05); }
+		.scenario-analysis h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0; color: var(--ink); }
+		.scenario-analysis p { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.6; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Purchase Price Allocation Prep</h1>
+		<p>Optimize tax allocation of deal proceeds</p>
+		<div class="chapter-ref">Chapter 18, 21</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Main Inputs -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Deal Parameters</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="tool-row single">
+					<div class="tool-field">
+						<label for="totalPrice">Total Purchase Price ($)</label>
+						<input type="number" id="totalPrice" placeholder="5000000" value="5000000">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Asset Allocation -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Asset Allocation</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem;">Allocate the purchase price across asset categories:</p>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Cash & Cash Equivalents ($)</label>
+						<input type="number" class="allocation-input" id="cash" placeholder="0" value="0">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Accounts Receivable ($)</label>
+						<input type="number" class="allocation-input" id="ar" placeholder="100000" value="100000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Inventory ($)</label>
+						<input type="number" class="allocation-input" id="inventory" placeholder="200000" value="200000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Equipment & Machinery ($)</label>
+						<input type="number" class="allocation-input" id="equipment" placeholder="300000" value="300000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Section 1250 Recapture</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Real Property ($)</label>
+						<input type="number" class="allocation-input" id="realprop" placeholder="500000" value="500000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Section 1250</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Intellectual Property ($)</label>
+						<input type="number" class="allocation-input" id="ip" placeholder="800000" value="800000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Customer Relationships ($)</label>
+						<input type="number" class="allocation-input" id="customers" placeholder="600000" value="600000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
+				</div>
+
+				<div class="allocation-item">
+					<div>
+						<label class="allocation-label">Non-Compete Agreements ($)</label>
+						<input type="number" class="allocation-input" id="noncompete" placeholder="200000" value="200000">
+					</div>
+					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
+				</div>
+
+				<div style="padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05); margin-bottom: 1rem;">
+					<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.5rem;">Goodwill (Auto-calculated):</div>
+					<div style="font-family: var(--serif); font-size: 1.2rem; color: var(--ink);" id="goodwill-display">$2,300,000</div>
+					<input type="hidden" id="goodwill">
+				</div>
+			</div>
+		</div>
+
+		<!-- Tax Rates -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Seller's Tax Rates</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="tool-row triple">
+					<div class="tool-field">
+						<label for="ordinaryRate">Ordinary Income Tax Rate (%)</label>
+						<input type="number" id="ordinaryRate" placeholder="45.3" value="45.3" step="0.1">
+					</div>
+					<div class="tool-field">
+						<label for="capGainsRate">Capital Gains Tax Rate (%)</label>
+						<input type="number" id="capGainsRate" placeholder="23.8" value="23.8" step="0.1">
+					</div>
+					<div class="tool-field">
+						<label for="recaptureRate">Section 1250 Recapture Rate (%)</label>
+						<input type="number" id="recaptureRate" placeholder="25" value="25" step="0.1">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="calculateBtn">Calculate & Analyze</button>
+			<button class="tool-btn-reset" id="resetBtn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<h3 style="font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1.5rem;">Purchase Price Allocation Analysis</h3>
+
+			<!-- Allocation Table -->
+			<h4 style="font-family: var(--serif); font-size: 1rem; margin: 1.5rem 0 1rem 0;">Asset Allocation & Tax Treatment</h4>
+			<table class="result-table">
+				<thead>
+					<tr>
+						<th>Asset Category</th>
+						<th class="text-right">Allocation</th>
+						<th>Tax Treatment</th>
+						<th class="text-right">Tax Rate</th>
+						<th class="text-right">Tax Owed</th>
+					</tr>
+				</thead>
+				<tbody id="allocationTable"></tbody>
+			</table>
+
+			<!-- Summary Cards -->
+			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+				<div class="result-card">
+					<h4>Total Taxes (Seller)</h4>
+					<div style="font-family: var(--serif); font-size: 2rem; color: var(--ink);" id="totalTax">$0</div>
+					<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-top: 0.5rem;">Effective Rate: <span id="effectiveRate">0%</span></div>
+				</div>
+				<div class="result-card">
+					<h4>Net Proceeds (After Tax)</h4>
+					<div style="font-family: var(--serif); font-size: 2rem; color: var(--ink);" id="netProceeds">$0</div>
+					<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-top: 0.5rem;"><span id="netsPercent">0%</span> of deal price</div>
+				</div>
+			</div>
+
+			<!-- What-If Analysis -->
+			<div class="scenario-analysis">
+				<h4>What-If Scenario: Shift $100K from Ordinary Income to Capital Gains</h4>
+				<p id="whatIf">Moving $100,000 from ordinary income (45.3% tax) to capital gains (23.8% tax) would save you approximately <strong>$2,150 in taxes</strong>.</p>
+			</div>
+
+			<!-- Buyer Perspective -->
+			<div class="scenario-analysis" style="margin-top: 1rem;">
+				<h4>Buyer's Depreciation & Amortization Benefit</h4>
+				<div id="buyerBenefit" style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 1.8;"></div>
+			</div>
+
+			<div style="margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--gold); border-radius: 6px; background: rgba(200,164,90,0.08);">
+				<p style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin: 0; line-height: 1.6;">
+					<strong>Tax Planning Note:</strong> Work with your tax advisor and CPA to optimize allocation in negotiation with the buyer. Both parties must agree on allocation, and it must be supportable with valuation analysis. A good allocation maximizes your tax efficiency while remaining defensible to the IRS.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function fmt(n){if(Math.abs(n)>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(Math.abs(n)>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(Math.abs(n)>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+n.toFixed(0)}
+
+		function updateGoodwill() {
+			const total = parseFloat(document.getElementById('totalPrice').value) || 0;
+			const cash = parseFloat(document.getElementById('cash').value) || 0;
+			const ar = parseFloat(document.getElementById('ar').value) || 0;
+			const inventory = parseFloat(document.getElementById('inventory').value) || 0;
+			const equipment = parseFloat(document.getElementById('equipment').value) || 0;
+			const realprop = parseFloat(document.getElementById('realprop').value) || 0;
+			const ip = parseFloat(document.getElementById('ip').value) || 0;
+			const customers = parseFloat(document.getElementById('customers').value) || 0;
+			const noncompete = parseFloat(document.getElementById('noncompete').value) || 0;
+
+			const allocated = cash + ar + inventory + equipment + realprop + ip + customers + noncompete;
+			const goodwill = Math.max(0, total - allocated);
+
+			document.getElementById('goodwill').value = goodwill;
+			document.getElementById('goodwill-display').textContent = fmt(goodwill);
+		}
+
+		['totalPrice', 'cash', 'ar', 'inventory', 'equipment', 'realprop', 'ip', 'customers', 'noncompete'].forEach(id => {
+			document.getElementById(id).addEventListener('input', updateGoodwill);
+		});
+
+		document.getElementById('calculateBtn').addEventListener('click', () => {
+			const total = parseFloat(document.getElementById('totalPrice').value) || 0;
+			const cash = parseFloat(document.getElementById('cash').value) || 0;
+			const ar = parseFloat(document.getElementById('ar').value) || 0;
+			const inventory = parseFloat(document.getElementById('inventory').value) || 0;
+			const equipment = parseFloat(document.getElementById('equipment').value) || 0;
+			const realprop = parseFloat(document.getElementById('realprop').value) || 0;
+			const ip = parseFloat(document.getElementById('ip').value) || 0;
+			const customers = parseFloat(document.getElementById('customers').value) || 0;
+			const noncompete = parseFloat(document.getElementById('noncompete').value) || 0;
+
+			const goodwill = Math.max(0, total - (cash + ar + inventory + equipment + realprop + ip + customers + noncompete));
+
+			const ordinaryRate = parseFloat(document.getElementById('ordinaryRate').value) || 45.3;
+			const capGainsRate = parseFloat(document.getElementById('capGainsRate').value) || 23.8;
+			const recaptureRate = parseFloat(document.getElementById('recaptureRate').value) || 25;
+
+			// Tax calculations
+			const cashTax = cash * (ordinaryRate / 100);
+			const arTax = ar * (ordinaryRate / 100);
+			const inventoryTax = inventory * (ordinaryRate / 100);
+			const equipmentTax = equipment * (recaptureRate / 100);
+			const realpropTax = realprop * (recaptureRate / 100);
+			const ipTax = ip * (capGainsRate / 100);
+			const customersTax = customers * (capGainsRate / 100);
+			const noncomputeTax = noncompete * (capGainsRate / 100);
+			const goodwillTax = goodwill * (capGainsRate / 100);
+
+			const totalTax = cashTax + arTax + inventoryTax + equipmentTax + realpropTax + ipTax + customersTax + noncomputeTax + goodwillTax;
+			const effectiveRate = (totalTax / total * 100).toFixed(2);
+			const netProceeds = total - totalTax;
+			const netPercent = (netProceeds / total * 100).toFixed(1);
+
+			// Build allocation table
+			const allocations = [
+				{ name: 'Cash & Cash Equivalents', value: cash, treatment: 'Ordinary Income', rate: ordinaryRate, tax: cashTax },
+				{ name: 'Accounts Receivable', value: ar, treatment: 'Ordinary Income', rate: ordinaryRate, tax: arTax },
+				{ name: 'Inventory', value: inventory, treatment: 'Ordinary Income', rate: ordinaryRate, tax: inventoryTax },
+				{ name: 'Equipment & Machinery', value: equipment, treatment: 'Section 1250', rate: recaptureRate, tax: equipmentTax },
+				{ name: 'Real Property', value: realprop, treatment: 'Section 1250', rate: recaptureRate, tax: realpropTax },
+				{ name: 'Intellectual Property', value: ip, treatment: 'Capital Gains', rate: capGainsRate, tax: ipTax },
+				{ name: 'Customer Relationships', value: customers, treatment: 'Capital Gains', rate: capGainsRate, tax: customersTax },
+				{ name: 'Non-Compete Agreements', value: noncompete, treatment: 'Capital Gains', rate: capGainsRate, tax: noncomputeTax },
+				{ name: 'Goodwill', value: goodwill, treatment: 'Capital Gains', rate: capGainsRate, tax: goodwillTax }
+			];
+
+			const tableHTML = allocations.filter(a => a.value > 0).map(a => `
+				<tr>
+					<td>${a.name}</td>
+					<td class="text-right">${fmt(a.value)}</td>
+					<td>${a.treatment}</td>
+					<td class="text-right">${a.rate.toFixed(1)}%</td>
+					<td class="text-right">${fmt(a.tax)}</td>
+				</tr>
+			`).join('');
+
+			document.getElementById('allocationTable').innerHTML = tableHTML;
+			document.getElementById('totalTax').textContent = fmt(totalTax);
+			document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+			document.getElementById('netProceeds').textContent = fmt(netProceeds);
+			document.getElementById('netsPercent').textContent = netPercent;
+
+			// What-if scenario
+			const whatIfSavings = 100000 * ((ordinaryRate - capGainsRate) / 100);
+			document.getElementById('whatIf').innerHTML = `Moving $100,000 from ordinary income (${ordinaryRate.toFixed(1)}% tax) to capital gains (${capGainsRate.toFixed(1)}% tax) would save you approximately <strong>${fmt(whatIfSavings)}</strong> in taxes.`;
+
+			// Buyer benefit
+			const buyerBenefitHTML = `
+				<div>Equipment & Machinery: ${fmt(equipment)} (depreciable over 5-7 years)</div>
+				<div>Real Property: ${fmt(realprop)} (depreciable over 39 years)</div>
+				<div>Intangibles (IP, Customers, Non-Compete): ${fmt(ip + customers + noncompete)} (amortizable over 15 years)</div>
+				<div>Goodwill: ${fmt(goodwill)} (non-amortizable)</div>
+				<div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--rule);">Total Annual Tax Deductions: ~${fmt((equipment / 6 + realprop / 39 + (ip + customers + noncompete) / 15))} per year</div>
+			`;
+			document.getElementById('buyerBenefit').innerHTML = buyerBenefitHTML;
+
+			document.getElementById('results').classList.add('visible');
+		});
+
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('totalPrice').value = '5000000';
+			document.getElementById('cash').value = '0';
+			document.getElementById('ar').value = '100000';
+			document.getElementById('inventory').value = '200000';
+			document.getElementById('equipment').value = '300000';
+			document.getElementById('realprop').value = '500000';
+			document.getElementById('ip').value = '800000';
+			document.getElementById('customers').value = '600000';
+			document.getElementById('noncompete').value = '200000';
+			document.getElementById('ordinaryRate').value = '45.3';
+			document.getElementById('capGainsRate').value = '23.8';
+			document.getElementById('recaptureRate').value = '25';
+			updateGoodwill();
+			document.getElementById('results').classList.remove('visible');
+		});
+
+		updateGoodwill();
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

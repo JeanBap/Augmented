@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Exit Ready Tools | raisereadybook.com</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.index-hero { text-align: center; padding: 3rem 2rem 2rem; }
+		.index-hero h1 { font-family: var(--serif); font-size: clamp(1.8rem,4vw,2.6rem); margin-bottom: 0.5rem; }
+		.index-hero p { color: var(--mid); max-width: 700px; margin: 0.75rem auto 1rem; font-size: 0.95rem; line-height: 1.6; }
+		.index-hero .tool-count { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.75rem; }
+		.index-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 3rem; }
+		.category-section { margin-bottom: 3rem; }
+		.category-title { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--rule); }
+		.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+		.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); padding: 1.75rem; transition: all 0.3s ease; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
+		.tool-card:hover { border-color: var(--gold); box-shadow: 0 4px 12px rgba(200,164,90,0.1); }
+		.tool-number { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+		.tool-card h3 { font-family: var(--serif); font-size: 1.2rem; margin: 0 0 0.75rem 0; line-height: 1.4; }
+		.tool-card p { color: var(--mid); font-size: 0.9rem; line-height: 1.6; margin: 0 0 1rem 0; flex-grow: 1; }
+		.tool-card .chapter { font-family: var(--mono); font-size: 0.75rem; color: var(--gold); }
+		.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+		.back-link:hover { color: var(--gold2); }
+		.cta-section { margin: 3rem 0 2rem; padding: 2rem; border: 2px solid var(--rule); border-radius: 12px; background: rgba(200,164,90,0.03); text-align: center; }
+		.cta-section p { color: var(--mid); margin-bottom: 1rem; font-size: 0.95rem; }
+		.cta-btn { display: inline-block; padding: 0.8rem 2rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none; }
+		.cta-btn:hover { background: var(--gold2); }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+
+	<div class="index-hero">
+		<h1>Exit Ready Tools</h1>
+		<p>Calculators, simulators, and exercises to accompany <em>Exit Ready: The Founder's Playbook for Maximising What You Walk Away With</em></p>
+		<div class="tool-count">30 tools across 6 categories</div>
+	</div>
+
+	<div class="index-container">
+		<!-- Category 1: Valuation & Financial Tools -->
+		<div class="category-section">
+			<h2 class="category-title">Valuation & Financial Tools</h2>
+			<div class="tools-grid">
+				<a href="01-business-valuation.html" class="tool-card">
+					<div class="tool-number">01</div>
+					<h3>Business Valuation</h3>
+					<p>Revenue-based, EBITDA-based, DCF, and comparable company analysis methods</p>
+					<div class="chapter">Chapter 2</div>
+				</a>
+				<a href="02-valuation-range-estimator.html" class="tool-card">
+					<div class="tool-number">02</div>
+					<h3>Valuation Range Estimator</h3>
+					<p>Calculate realistic valuation range based on industry multiples</p>
+					<div class="chapter">Chapter 3</div>
+				</a>
+				<a href="03-earnout-calculator.html" class="tool-card">
+					<div class="tool-number">03</div>
+					<h3>Earnout Calculator</h3>
+					<p>Model earnout scenarios and understand potential upside/downside</p>
+					<div class="chapter">Chapter 4</div>
+				</a>
+				<a href="04-cash-flow-projection.html" class="tool-card">
+					<div class="tool-number">04</div>
+					<h3>Cash Flow Projection</h3>
+					<p>Project 5-year cash flow and analyze business health metrics</p>
+					<div class="chapter">Chapter 5</div>
+				</a>
+				<a href="05-break-even-analysis.html" class="tool-card">
+					<div class="tool-number">05</div>
+					<h3>Break-Even Analysis</h3>
+					<p>Understand fixed costs, variable costs, and profit margins</p>
+					<div class="chapter">Chapter 6</div>
+				</a>
+				<a href="06-competitive-positioning.html" class="tool-card">
+					<div class="tool-number">06</div>
+					<h3>Competitive Positioning</h3>
+					<p>Map your company against competitors on key metrics</p>
+					<div class="chapter">Chapter 7</div>
+				</a>
+				<a href="07-financial-health-scorecard.html" class="tool-card">
+					<div class="tool-number">07</div>
+					<h3>Financial Health Scorecard</h3>
+					<p>Assess 12 key financial metrics and identify areas for improvement</p>
+					<div class="chapter">Chapter 5</div>
+				</a>
+				<a href="08-customer-ltv-analysis.html" class="tool-card">
+					<div class="tool-number">08</div>
+					<h3>Customer LTV Analysis</h3>
+					<p>Calculate lifetime value, payback period, and retention economics</p>
+					<div class="chapter">Chapter 6</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Category 2: Readiness Assessments -->
+		<div class="category-section">
+			<h2 class="category-title">Readiness Assessments</h2>
+			<div class="tools-grid">
+				<a href="09-founder-readiness.html" class="tool-card">
+					<div class="tool-number">09</div>
+					<h3>Founder Readiness Assessment</h3>
+					<p>Evaluate your personal readiness for an exit event</p>
+					<div class="chapter">Chapter 1</div>
+				</a>
+				<a href="10-business-readiness.html" class="tool-card">
+					<div class="tool-number">10</div>
+					<h3>Business Readiness Assessment</h3>
+					<p>Evaluate your business across 7 key dimensions buyers care about</p>
+					<div class="chapter">Chapter 8</div>
+				</a>
+				<a href="11-buyer-perception-audit.html" class="tool-card">
+					<div class="tool-number">11</div>
+					<h3>Buyer Perception Audit</h3>
+					<p>See your business through a buyer's eyes</p>
+					<div class="chapter">Chapter 10</div>
+				</a>
+				<a href="12-deal-readiness-diagnostic.html" class="tool-card">
+					<div class="tool-number">12</div>
+					<h3>Deal Readiness Diagnostic</h3>
+					<p>Quick assessment of readiness for M&A process</p>
+					<div class="chapter">Chapter 11</div>
+				</a>
+				<a href="13-information-room-prep-checklist.html" class="tool-card">
+					<div class="tool-number">13</div>
+					<h3>Information Room Prep Checklist</h3>
+					<p>Complete due diligence document organization</p>
+					<div class="chapter">Chapter 12</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Category 3: Deal Process Simulators -->
+		<div class="category-section">
+			<h2 class="category-title">Deal Process Simulators</h2>
+			<div class="tools-grid">
+				<a href="14-buyer-inquiry-response.html" class="tool-card">
+					<div class="tool-number">14</div>
+					<h3>Buyer Inquiry Response</h3>
+					<p>Guided exercise for handling inbound buyer inquiries</p>
+					<div class="chapter">Chapter 13</div>
+				</a>
+				<a href="15-cim-builder.html" class="tool-card">
+					<div class="tool-number">15</div>
+					<h3>CIM Builder</h3>
+					<p>Draft and refine your Confidential Information Memorandum</p>
+					<div class="chapter">Chapter 14</div>
+				</a>
+				<a href="16-negotiation-scenario.html" class="tool-card">
+					<div class="tool-number">16</div>
+					<h3>Negotiation Scenario Simulator</h3>
+					<p>Practice responses to common buyer pushback scenarios</p>
+					<div class="chapter">Chapter 17</div>
+				</a>
+				<a href="17-term-sheet-analyzer.html" class="tool-card">
+					<div class="tool-number">17</div>
+					<h3>Term Sheet Analyzer</h3>
+					<p>Decode buyer term sheets and compare deal structures</p>
+					<div class="chapter">Chapter 18</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Category 4: Tax Planning Tools -->
+		<div class="category-section">
+			<h2 class="category-title">Tax Planning Tools</h2>
+			<div class="tools-grid">
+				<a href="18-tax-optimization.html" class="tool-card">
+					<div class="tool-number">18</div>
+					<h3>Tax Optimization Scenario Planner</h3>
+					<p>Compare tax outcomes across different deal structures</p>
+					<div class="chapter">Chapter 19</div>
+				</a>
+				<a href="19-capital-gains-strategy.html" class="tool-card">
+					<div class="tool-number">19</div>
+					<h3>Capital Gains Strategy Optimizer</h3>
+					<p>Analyze timing, deferral, and installment sale options</p>
+					<div class="chapter">Chapter 20</div>
+				</a>
+				<a href="20-tax-impact-calculator.html" class="tool-card">
+					<div class="tool-number">20</div>
+					<h3>Tax Impact Calculator</h3>
+					<p>Calculate federal, state, and self-employment tax on exit proceeds</p>
+					<div class="chapter">Chapter 21</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Category 5: Post-Exit Planning -->
+		<div class="category-section">
+			<h2 class="category-title">Post-Exit Planning</h2>
+			<div class="tools-grid">
+				<a href="21-sustainable-spending.html" class="tool-card">
+					<div class="tool-number">21</div>
+					<h3>Sustainable Spending Calculator</h3>
+					<p>Plan long-term spending from post-exit wealth</p>
+					<div class="chapter">Chapter 33</div>
+				</a>
+				<a href="22-wealth-advisor-fee-impact.html" class="tool-card">
+					<div class="tool-number">22</div>
+					<h3>Wealth Advisor Fee Impact</h3>
+					<p>Compare cost of different advisor fee structures</p>
+					<div class="chapter">Chapter 33</div>
+				</a>
+				<a href="23-post-exit-90-day-calendar.html" class="tool-card">
+					<div class="tool-number">23</div>
+					<h3>Post-Exit 90-Day Calendar</h3>
+					<p>Week-by-week roadmap for your first three months</p>
+					<div class="chapter">Chapter 32-33</div>
+				</a>
+				<a href="24-psychology-self-assessment.html" class="tool-card">
+					<div class="tool-number">24</div>
+					<h3>Psychology Self-Assessment</h3>
+					<p>Evaluate readiness for identity and life transition</p>
+					<div class="chapter">Chapter 32</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Category 6: Exercises & Workshops -->
+		<div class="category-section">
+			<h2 class="category-title">Exercises & Workshops</h2>
+			<div class="tools-grid">
+				<a href="25-absence-test-protocol.html" class="tool-card">
+					<div class="tool-number">25</div>
+					<h3>Absence Test Protocol</h3>
+					<p>Interactive framework to test your company's independence</p>
+					<div class="chapter">Chapter 9</div>
+				</a>
+				<a href="26-cim-narrative-workshop.html" class="tool-card">
+					<div class="tool-number">26</div>
+					<h3>CIM Executive Summary Workshop</h3>
+					<p>Guided workshop to craft your company's investment narrative</p>
+					<div class="chapter">Chapter 15</div>
+				</a>
+				<a href="27-risk-register-builder.html" class="tool-card">
+					<div class="tool-number">27</div>
+					<h3>Risk Register Builder</h3>
+					<p>Document and prioritize business risks for buyers</p>
+					<div class="chapter">Chapter 8</div>
+				</a>
+				<a href="28-presentation-scorecard.html" class="tool-card">
+					<div class="tool-number">28</div>
+					<h3>Presentation Dry Run Scorecard</h3>
+					<p>Score and feedback framework for management presentations</p>
+					<div class="chapter">Chapter 16</div>
+				</a>
+				<a href="29-purchase-price-allocation.html" class="tool-card">
+					<div class="tool-number">29</div>
+					<h3>Purchase Price Allocation Prep</h3>
+					<p>Optimize tax allocation of deal proceeds</p>
+					<div class="chapter">Chapter 18, 21</div>
+				</a>
+				<a href="30-letter-to-your-company.html" class="tool-card">
+					<div class="tool-number">30</div>
+					<h3>Letter to Your Company</h3>
+					<p>Reflective writing exercise for closure and gratitude</p>
+					<div class="chapter">Chapter 32</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- CTA Section -->
+		<div class="cta-section">
+			<p>Want deeper insights into building an exit-ready business?</p>
+			<a href="/book/#exit-ready" class="cta-btn">Go deeper with Exit Ready</a>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

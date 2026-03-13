@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opportunity Zone Investment Modeler | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.scenario-box { margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+.scenario-box h3 { font-family: var(--serif); font-size: 1rem; margin-top: 0; }
+.scenario-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.timeline { margin-top: 1.5rem; display: flex; justify-content: space-around; text-align: center; font-family: var(--mono); font-size: 0.8rem; }
+.timeline-item { flex: 1; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05); margin: 0 0.25rem; }
+.timeline-item .year { color: var(--gold); font-weight: bold; }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Opportunity Zone Investment Modeler</h1>
+    <p>Calculate the tax benefits of reinvesting exit proceeds in a Qualified Opportunity Zone investment.</p>
+    <div class="chapter-ref">From Chapter 25: Tax-Efficient Exit Structures</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>OZ Investment Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="capital-gain">Capital Gain Amount ($)</label>
+            <input type="number" id="capital-gain" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="inv-date">Investment Date</label>
+            <input type="date" id="inv-date" />
+          </div>
+          <div class="tool-field">
+            <label for="original-gain-date">Original Gain Date</label>
+            <input type="date" id="original-gain-date" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="annual-return">Expected Annual Return (%)</label>
+            <input type="number" id="annual-return" placeholder="8" step="0.5" />
+          </div>
+          <div class="tool-field">
+            <label for="holding-period">Holding Period (years)</label>
+            <input type="number" id="holding-period" placeholder="10" min="1" max="20" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="state-tax">State Tax Rate (%)</label>
+            <input type="number" id="state-tax" placeholder="0" min="0" max="15" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="modelOZ()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetOZ()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-deferred">$0</div>
+          <div class="result-label">Tax Deferred</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-future-value">$0</div>
+          <div class="result-label">Future OZ Value</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-oz-gain">$0</div>
+          <div class="result-label">OZ Appreciation</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-oz-tax">$0</div>
+          <div class="result-label">Tax on OZ Gain</div>
+        </div>
+      </div>
+
+      <div class="scenario-box">
+        <h3>Immediate Exit Scenario (Pay Tax Now)</h3>
+        <div class="scenario-row">
+          <span>Capital gain:</span>
+          <span id="s1-gain">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Federal + state tax (20% + %):</span>
+          <span id="s1-tax">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Net to invest:</span>
+          <span id="s1-net">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Value after 10 years at 8%:</span>
+          <span id="s1-future">$0</span>
+        </div>
+      </div>
+
+      <div class="scenario-box">
+        <h3>Opportunity Zone Scenario (Defer Tax)</h3>
+        <div class="scenario-row">
+          <span>Capital gain (deferred):</span>
+          <span id="s2-gain">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Tax deferred until 2026:</span>
+          <span id="s2-deferred">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Invested in OZ fund:</span>
+          <span id="s2-invested">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Future value (held 10+ yrs):</span>
+          <span id="s2-future">$0</span>
+        </div>
+        <div class="scenario-row">
+          <span>Tax on OZ appreciation (0% if 10+ yrs):</span>
+          <span id="s2-tax">$0</span>
+        </div>
+        <div class="scenario-row" style="border-top: 1px solid var(--rule); padding-top: 0.5rem; margin-top: 0.5rem;">
+          <span><strong>Net after all taxes:</strong></span>
+          <span id="s2-net"><strong>$0</strong></span>
+        </div>
+      </div>
+
+      <div class="timeline" id="r-timeline"></div>
+
+      <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function modelOZ() {
+  const capitalGain = parseFloat(document.getElementById('capital-gain').value) || 0;
+  const annualReturn = (parseFloat(document.getElementById('annual-return').value) || 8) / 100;
+  const holdingPeriod = parseInt(document.getElementById('holding-period').value) || 10;
+  const stateTax = (parseFloat(document.getElementById('state-tax').value) || 0) / 100;
+  const fedTax = 0.20; // 20% LTCG
+
+  if(capitalGain <= 0) {
+    alert('Please enter a capital gain');
+    return;
+  }
+
+  const totalTaxRate = fedTax + stateTax;
+  const immediate税 = capitalGain * totalTaxRate;
+  const netAfterTax = capitalGain - immediate税;
+
+  // Scenario 1: Pay tax now and invest remainder
+  const s1FutureValue = netAfterTax * Math.pow(1 + annualReturn, holdingPeriod);
+
+  // Scenario 2: Defer tax with OZ
+  // Tax is deferred until end of 2026 (worst case), then re-invested
+  // If held 10+ years, OZ appreciation is tax-free
+  const deferredTax = immediate税; // Same as above
+  const invested = capitalGain; // Full amount invested
+  const futureOZValue = invested * Math.pow(1 + annualReturn, holdingPeriod);
+  const ozGain = futureOZValue - invested;
+
+  // Tax on OZ appreciation: 0% if held 10+ years from investment date
+  let ozGainTax = 0;
+  if(holdingPeriod < 10) {
+    // If less than 10 years, still owe tax on OZ appreciation
+    ozGainTax = ozGain * totalTaxRate;
+  }
+
+  // Also owe tax on original deferred gain in 2026 (worst case)
+  // For simplicity, assume paid in year of investment or at end
+  const originalGainTax = deferredTax;
+  const s2NetAfterTaxes = futureOZValue - originalGainTax - ozGainTax;
+
+  // Benefit
+  const benefit = s2NetAfterTaxes - s1FutureValue;
+  const benefitPct = s1FutureValue > 0 ? (benefit / s1FutureValue * 100) : 0;
+
+  // Display results
+  document.getElementById('r-deferred').textContent = fmt(deferredTax);
+  document.getElementById('r-future-value').textContent = fmt(futureOZValue);
+  document.getElementById('r-oz-gain').textContent = fmt(ozGain);
+  document.getElementById('r-oz-tax').textContent = fmt(ozGainTax);
+
+  // Scenario 1
+  document.getElementById('s1-gain').textContent = fmt(capitalGain);
+  document.getElementById('s1-tax').textContent = fmt(immediate税);
+  document.getElementById('s1-net').textContent = fmt(netAfterTax);
+  document.getElementById('s1-future').textContent = fmt(s1FutureValue);
+
+  // Scenario 2
+  document.getElementById('s2-gain').textContent = fmt(capitalGain);
+  document.getElementById('s2-deferred').textContent = fmt(deferredTax);
+  document.getElementById('s2-invested').textContent = fmt(invested);
+  document.getElementById('s2-future').textContent = fmt(futureOZValue);
+  document.getElementById('s2-tax').textContent = fmt(ozGainTax);
+  document.getElementById('s2-net').textContent = fmt(s2NetAfterTaxes);
+
+  // Timeline
+  let timeline = `
+    <div class="timeline-item"><div class="year">Year 0</div><div>Gain realized</div></div>
+    <div class="timeline-item"><div class="year">2026</div><div>Tax deferred due</div></div>
+    <div class="timeline-item"><div class="year">Year ${holdingPeriod}</div><div>OZ investment matures</div></div>
+  `;
+  if(holdingPeriod >= 10) {
+    timeline = `
+      <div class="timeline-item"><div class="year">Year 0</div><div>Gain realized</div></div>
+      <div class="timeline-item"><div class="year">2026</div><div>Deferred tax due</div></div>
+      <div class="timeline-item"><div class="year">Year 10+</div><div>OZ gain tax-free!</div></div>
+    `;
+  }
+  document.getElementById('r-timeline').innerHTML = timeline;
+
+  const details = `<strong>Key Findings:</strong><br />
+    Original capital gain: ${fmt(capitalGain)}<br />
+    Immediate tax (${(totalTaxRate*100).toFixed(1)}%): ${fmt(immediate税)}<br />
+    <br />
+    <strong>OZ Advantage:</strong><br />
+    By investing in a QOZ, you defer ${fmt(deferredTax)} in taxes until 2026.<br />
+    You invest the full ${fmt(capitalGain)} instead of ${fmt(netAfterTax)}.<br />
+    ${holdingPeriod >= 10 ? 'Since you hold for 10+ years, ALL appreciation in the OZ fund is tax-free!' : 'Note: If you hold less than 10 years, you\'ll owe tax on OZ appreciation.'}<br />
+    <br />
+    <strong>Bottom Line:</strong><br />
+    Scenario 1 net: ${fmt(s1FutureValue)}<br />
+    Scenario 2 net: ${fmt(s2NetAfterTaxes)}<br />
+    Advantage: ${fmt(benefit)} (${benefitPct.toFixed(1)}% better)<br />
+    <br />
+    <em>Disclaimer: This is a simplified model. Consult a tax advisor about QOZ eligibility, timing, and structuring.</em>`;
+
+  document.getElementById('r-details').innerHTML = details;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetOZ() {
+  document.getElementById('capital-gain').value = '';
+  document.getElementById('inv-date').value = '';
+  document.getElementById('original-gain-date').value = '';
+  document.getElementById('annual-return').value = '8';
+  document.getElementById('holding-period').value = '10';
+  document.getElementById('state-tax').value = '';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

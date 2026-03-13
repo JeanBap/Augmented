@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-Border Tax Rate Comparator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 900px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; overflow-x: auto; }
+.tool-results.visible { display: block; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-bottom: 1rem; }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.comparison-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.comparison-table th { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); text-align: left; padding: 0.75rem; border-bottom: 2px solid var(--rule); background: rgba(200,164,90,0.05); }
+.comparison-table td { padding: 0.75rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); }
+.comparison-table .text-right { text-align: right; }
+.comparison-table .text-center { text-align: center; }
+.highlight-best { background: rgba(200,164,90,0.2); }
+.flag-zero { color: var(--gold); font-weight: bold; }
+.disclaimer { font-size: 0.8rem; color: var(--mid); font-style: italic; line-height: 1.5; margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.05); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Cross-Border Tax Rate Comparator</h1>
+    <p>Compare capital gains tax rates across 9 major jurisdictions for your exit proceeds.</p>
+    <div class="chapter-ref">From Chapter 26: International Structuring</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Gain & Holding Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="capital-gain">Capital Gain Amount ($)</label>
+            <input type="number" id="capital-gain" placeholder="10000000" />
+          </div>
+          <div class="tool-field">
+            <label for="holding-period">Holding Period</label>
+            <select id="holding-period">
+              <option value="short">Short-term (&lt;1 year)</option>
+              <option value="long" selected>Long-term (1+ years)</option>
+            </select>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="compareTaxRates()">Compare Rates</button>
+        <button class="tool-btn-reset" onclick="resetComparison()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-note" id="r-intro"></div>
+      <table class="comparison-table" id="r-table"></table>
+      <div class="disclaimer" id="r-disclaimer"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+// Tax rates by jurisdiction (long-term capital gains, approximate effective rate)
+const jurisdictions = [
+  { name: 'USA', longTerm: 0.20, shortTerm: 0.37, notes: 'Federal + 3.8% NIIT. State varies. Example: 20% federal.' },
+  { name: 'UK', longTerm: 0.10, shortTerm: 0.20, notes: 'UK capital gains tax. First £3,000 tax-free (2024/25).' },
+  { name: 'Canada', longTerm: 0.27, shortTerm: 0.27, notes: '50% inclusion rate on gains, then taxed at marginal rate ~27% effective.' },
+  { name: 'Australia', longTerm: 0.24, shortTerm: 0.48, notes: '50% discount if held 12+ months. Short-term = no discount.' },
+  { name: 'Singapore', longTerm: 0.00, shortTerm: 0.00, notes: 'No capital gains tax. Singapore tax resident treatment. Consult advisors.' },
+  { name: 'UAE', longTerm: 0.00, shortTerm: 0.00, notes: 'No capital gains tax. Some activities may be subject to corporate tax.' },
+  { name: 'Portugal', longTerm: 0.10, shortTerm: 0.28, notes: 'For non-residents, lower rates possible under NHR regime (pre-2024). Now ~10% standard.' },
+  { name: 'Ireland', longTerm: 0.33, shortTerm: 0.33, notes: 'Capital gains tax 33%. Ireland corporate tax for companies 12.5%.' },
+  { name: 'Switzerland', longTerm: 0.00, shortTerm: 0.00, notes: 'No federal capital gains tax. Cantonal taxes vary (typically 0-15% on wealth, not gains).' }
+];
+
+function compareTaxRates() {
+  const gain = parseFloat(document.getElementById('capital-gain').value) || 10000000;
+  const holdingPeriod = document.getElementById('holding-period').value;
+
+  const rateType = holdingPeriod === 'short' ? 'shortTerm' : 'longTerm';
+
+  // Calculate tax for each jurisdiction
+  const results = jurisdictions.map(j => ({
+    name: j.name,
+    rate: j[rateType],
+    tax: gain * j[rateType],
+    netProceeds: gain - (gain * j[rateType]),
+    notes: j.notes
+  }));
+
+  // Sort by net proceeds (best to worst)
+  results.sort((a, b) => b.netProceeds - a.netProceeds);
+
+  // Build table
+  let html = `<thead><tr>
+    <th>Jurisdiction</th>
+    <th class="text-right">Tax Rate</th>
+    <th class="text-right">Tax on ${fmt(gain)}</th>
+    <th class="text-right">Net Proceeds</th>
+    <th style="font-size: 0.7rem; padding: 0.5rem;">Notes</th>
+  </tr></thead><tbody>`;
+
+  results.forEach((r, idx) => {
+    const highlight = idx === 0 ? 'highlight-best' : '';
+    const zeroRate = r.rate === 0 ? 'flag-zero' : '';
+    html += `
+      <tr class="${highlight}">
+        <td><strong>${r.name}</strong></td>
+        <td class="text-right ${zeroRate}">${(r.rate * 100).toFixed(1)}%</td>
+        <td class="text-right">${fmt(r.tax)}</td>
+        <td class="text-right"><strong>${fmt(r.netProceeds)}</strong></td>
+        <td style="font-size: 0.7rem; padding: 0.5rem; color: var(--mid);">${r.notes}</td>
+      </tr>
+    `;
+  });
+  html += '</tbody>';
+  document.getElementById('r-table').innerHTML = html;
+
+  // Introduction
+  const intro = `Assuming a ${fmt(gain)} capital gain with ${holdingPeriod === 'short' ? 'short-term' : 'long-term'} holding period. The jurisdiction with the lowest tax (highlighted) preserves the most proceeds.`;
+  document.getElementById('r-intro').innerHTML = intro;
+
+  // Disclaimer
+  const disclaimer = `<strong>Important Disclaimers:</strong><br />
+    • These rates are simplified and may not reflect your specific situation<br />
+    • Tax residency, citizenship, and domicile significantly affect your obligations<br />
+    • Many jurisdictions have tax treaties that may reduce rates<br />
+    • Some jurisdictions (Singapore, UAE, Switzerland) have specific conditions for tax-free treatment<br />
+    • You must consult a qualified international tax advisor before structuring any transaction<br />
+    • Rates shown are approximate and current as of 2024. Tax laws change frequently<br />
+    • Relocating for tax purposes may trigger exit taxes in your current jurisdiction`;
+
+  document.getElementById('r-disclaimer').innerHTML = disclaimer;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetComparison() {
+  document.getElementById('capital-gain').value = '';
+  document.getElementById('holding-period').value = 'long';
+  document.getElementById('results').classList.remove('visible');
+}
+
+// Pre-populate with example
+document.getElementById('capital-gain').value = '10000000';
+</script>
+</body>
+</html>

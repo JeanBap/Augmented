@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CIM Executive Summary Workshop | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.section-block { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+		.section-label { font-family: var(--serif); font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; display: block; }
+		.section-prompt { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.75rem; line-height: 1.5; }
+		.section-input { width: 100%; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; min-height: 100px; }
+		.quality-scores { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+		.score-field { }
+		.score-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-bottom: 0.4rem; display: block; }
+		.score-input { width: 100%; padding: 0.5rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.85rem; box-sizing: border-box; }
+		.result-summary { margin-bottom: 1.5rem; }
+		.result-card { border: 1px solid var(--rule); border-radius: 8px; padding: 1.25rem; background: var(--paper); margin-bottom: 1rem; }
+		.result-card h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0; color: var(--ink); }
+		.result-score { display: flex; gap: 1rem; align-items: center; margin: 0.5rem 0; }
+		.score-bar { height: 24px; border-radius: 4px; background: linear-gradient(to right, #a67c3b 0%, #c8a45a 50%, #e5c97e 100%); flex-grow: 1; display: flex; align-items: center; padding: 0 0.5rem; }
+		.score-value { font-family: var(--mono); font-size: 0.75rem; color: var(--paper); font-weight: bold; }
+		.score-label-small { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); width: 80px; }
+		.preview { margin-top: 1.5rem; padding: 1.5rem; border: 2px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.05); font-family: var(--serif); line-height: 1.8; color: var(--ink); }
+		.preview-label { font-family: var(--mono); font-size: 0.75rem; color: var(--gold); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+		.feedback-badge { display: inline-block; padding: 0.3rem 0.6rem; border-radius: 4px; font-family: var(--mono); font-size: 0.7rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+		.feedback-strong { background: rgba(166,124,59,0.2); color: #a67c3b; }
+		.feedback-weak { background: rgba(229,201,126,0.2); color: #8b6f47; }
+		.wc-display { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-top: 0.5rem; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>CIM Executive Summary Workshop</h1>
+		<p>Guided exercise to craft your company's compelling investment narrative</p>
+		<div class="chapter-ref">Chapter 15</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Company Name -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Company Information</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="section-block">
+					<label class="section-label" for="companyName">Company Name</label>
+					<input type="text" id="companyName" class="section-input" placeholder="e.g., Acme Software" style="min-height: 40px;">
+				</div>
+			</div>
+		</div>
+
+		<!-- Executive Summary Sections -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Executive Summary Sections</h2>
+			</div>
+			<div class="tool-card-body">
+				<!-- Section 1: The Hook -->
+				<div class="section-block">
+					<label class="section-label">1. The Hook</label>
+					<div class="section-prompt">In one sentence, why should a buyer care? What's the compelling reason?</div>
+					<textarea id="hook" class="section-input" placeholder="e.g., 'We've built the industry's only AI-powered platform for enterprise waste optimization, serving 200+ Fortune 500 companies with 92% net retention.'"></textarea>
+					<div class="wc-display"><span id="hookWc">0</span> words (target: 15-25)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="hookSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="hookEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="hookBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+
+				<!-- Section 2: Company Overview -->
+				<div class="section-block">
+					<label class="section-label">2. Company Overview</label>
+					<div class="section-prompt">Business description, founding story, and mission. Why did you start this? What problem are you solving?</div>
+					<textarea id="overview" class="section-input" placeholder="Describe your company, how you started, and the problem you solve..."></textarea>
+					<div class="wc-display"><span id="overviewWc">0</span> words (target: 100-150)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="overviewSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="overviewEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="overviewBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+
+				<!-- Section 3: Market Opportunity -->
+				<div class="section-block">
+					<label class="section-label">3. Market Opportunity</label>
+					<div class="section-prompt">Market size, growth drivers, your competitive position. What's the TAM? Why is this market growing?</div>
+					<textarea id="market" class="section-input" placeholder="Describe your market size, growth rate, competitive position..."></textarea>
+					<div class="wc-display"><span id="marketWc">0</span> words (target: 100-150)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="marketSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="marketEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="marketBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+
+				<!-- Section 4: Financial Highlights -->
+				<div class="section-block">
+					<label class="section-label">4. Financial Highlights</label>
+					<div class="section-prompt">Revenue, growth rate, margins, profitability trajectory. What are the key financial metrics?</div>
+					<textarea id="financial" class="section-input" placeholder="e.g., '$25M ARR growing 40% YoY, 65% gross margin, EBITDA positive since Y3, strong unit economics'"></textarea>
+					<div class="wc-display"><span id="financialWc">0</span> words (target: 50-75)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="financialSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="financialEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="financialBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+
+				<!-- Section 5: Investment Thesis -->
+				<div class="section-block">
+					<label class="section-label">5. Investment Thesis</label>
+					<div class="section-prompt">Why now? What can a buyer do to accelerate growth or create value? Why is this an attractive investment?</div>
+					<textarea id="thesis" class="section-input" placeholder="Explain the investment opportunity and how a buyer can create value..."></textarea>
+					<div class="wc-display"><span id="thesisWc">0</span> words (target: 100-150)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="thesisSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="thesisEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="thesisBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+
+				<!-- Section 6: Growth Levers -->
+				<div class="section-block">
+					<label class="section-label">6. Growth Levers</label>
+					<div class="section-prompt">3-5 specific opportunities a new owner can pursue. What would you do if you had more resources or different capabilities?</div>
+					<textarea id="levers" class="section-input" placeholder="e.g., 'Enter APAC markets, build strategic partnerships with major systems integrators, develop native mobile app, expand into adjacent verticals, build API ecosystem'"></textarea>
+					<div class="wc-display"><span id="leversWc">0</span> words (target: 75-125)</div>
+					<div class="quality-scores">
+						<div class="score-field">
+							<label class="score-label">Specificity (1-5)</label>
+							<input type="number" class="score-input" id="leversSpec" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Evidence-based (1-5)</label>
+							<input type="number" class="score-input" id="leversEvid" min="1" max="5" value="3">
+						</div>
+						<div class="score-field">
+							<label class="score-label">Buyer Relevance (1-5)</label>
+							<input type="number" class="score-input" id="leversBuyer" min="1" max="5" value="3">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="analyzeBtn">Analyze & Generate Summary</button>
+			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<h3 style="font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1.5rem;">Quality Assessment</h3>
+
+			<!-- Overall Score -->
+			<div class="result-summary">
+				<div class="result-card">
+					<h4>Overall Quality Score</h4>
+					<div style="font-family: var(--serif); font-size: 2rem; color: var(--ink); margin-bottom: 0.5rem;">
+						<span id="overallScore">0</span><span style="font-size: 1.1rem; color: var(--mid);">/180</span>
+					</div>
+					<p id="qualityInterpretation" style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0;"></p>
+				</div>
+			</div>
+
+			<!-- Section Scores -->
+			<h3 style="font-family: var(--serif); font-size: 1.1rem; margin: 1.5rem 0 1rem 0;">Section Breakdown</h3>
+			<div id="sectionScores"></div>
+
+			<!-- Weak Sections -->
+			<div id="weakSections" style="display: none; margin: 1.5rem 0;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Areas to Strengthen</h3>
+				<div id="weakList"></div>
+			</div>
+
+			<!-- Strong Sections -->
+			<div id="strongSections" style="display: none; margin: 1.5rem 0;">
+				<h3 style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 1rem;">Strengths</h3>
+				<div id="strongList"></div>
+			</div>
+
+			<!-- Word Count Summary -->
+			<div style="margin-top: 1.5rem; padding: 1rem; background: rgba(200,164,90,0.05); border: 1px solid var(--rule); border-radius: 6px;">
+				<h4 style="font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.75rem 0;">Word Count Summary</h4>
+				<div id="wordCounts" style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 1.8;"></div>
+			</div>
+
+			<!-- Executive Summary Preview -->
+			<div class="preview">
+				<div class="preview-label">Executive Summary Preview</div>
+				<div id="summaryPreview" style="font-size: 0.95rem; line-height: 1.8; color: var(--ink);"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function countWords(text) {
+			return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+		}
+
+		function updateWordCount(id, displayId, targetMin, targetMax) {
+			const text = document.getElementById(id).value;
+			const wc = countWords(text);
+			document.getElementById(displayId).textContent = wc;
+			return wc;
+		}
+
+		['hook', 'overview', 'market', 'financial', 'thesis', 'levers'].forEach(section => {
+			document.getElementById(section).addEventListener('input', () => {
+				const targets = {
+					hook: [15, 25],
+					overview: [100, 150],
+					market: [100, 150],
+					financial: [50, 75],
+					thesis: [100, 150],
+					levers: [75, 125]
+				};
+				updateWordCount(section, section + 'Wc', targets[section][0], targets[section][1]);
+			});
+		});
+
+		document.getElementById('analyzeBtn').addEventListener('click', () => {
+			const company = document.getElementById('companyName').value || '[Company]';
+
+			const sections = {
+				hook: { text: document.getElementById('hook').value, spec: 'hookSpec', evid: 'hookEvid', buyer: 'hookBuyer' },
+				overview: { text: document.getElementById('overview').value, spec: 'overviewSpec', evid: 'overviewEvid', buyer: 'overviewBuyer' },
+				market: { text: document.getElementById('market').value, spec: 'marketSpec', evid: 'marketEvid', buyer: 'marketBuyer' },
+				financial: { text: document.getElementById('financial').value, spec: 'financialSpec', evid: 'financialEvid', buyer: 'financialBuyer' },
+				thesis: { text: document.getElementById('thesis').value, spec: 'thesisSpec', evid: 'thesisEvid', buyer: 'thesisBuyer' },
+				levers: { text: document.getElementById('levers').value, spec: 'leversSpec', evid: 'leversEvid', buyer: 'leversBuyer' }
+			};
+
+			let totalScore = 0;
+			const sectionScoreCards = [];
+
+			Object.entries(sections).forEach(([key, data]) => {
+				const spec = parseInt(document.getElementById(data.spec).value) || 3;
+				const evid = parseInt(document.getElementById(data.evid).value) || 3;
+				const buyer = parseInt(document.getElementById(data.buyer).value) || 3;
+				const sectionScore = (spec + evid + buyer);
+
+				totalScore += sectionScore;
+
+				const sectionNames = {
+					hook: '1. The Hook',
+					overview: '2. Company Overview',
+					market: '3. Market Opportunity',
+					financial: '4. Financial Highlights',
+					thesis: '5. Investment Thesis',
+					levers: '6. Growth Levers'
+				};
+
+				sectionScoreCards.push(`
+					<div class="result-card">
+						<h4>${sectionNames[key]}</h4>
+						<div class="result-score">
+							<div class="score-label-small">Quality</div>
+							<div class="score-bar" style="width: 200px;">
+								<div class="score-value">${sectionScore}/15</div>
+							</div>
+						</div>
+						<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.5rem;">
+							Specificity: ${spec}/5 | Evidence: ${evid}/5 | Buyer fit: ${buyer}/5
+						</div>
+					</div>
+				`);
+			});
+
+			document.getElementById('overallScore').textContent = totalScore;
+			document.getElementById('sectionScores').innerHTML = sectionScoreCards.join('');
+
+			let interpretation = '';
+			if (totalScore >= 150) {
+				interpretation = 'Excellent. Your narrative is compelling, specific, and buyer-focused. This is competitive-grade material.';
+			} else if (totalScore >= 120) {
+				interpretation = 'Strong. Your narrative has solid foundation. Some sections need more specificity or evidence.';
+			} else if (totalScore >= 90) {
+				interpretation = 'Good. Your narrative covers the basics. Strengthen weak sections with more detail and buyer-specific benefits.';
+			} else {
+				interpretation = 'Fair. Your narrative needs development. Add more specificity, evidence, and buyer-relevant insights to each section.';
+			}
+
+			document.getElementById('qualityInterpretation').textContent = interpretation;
+
+			// Identify weak and strong sections
+			const weakSections = [];
+			const strongSections = [];
+
+			Object.entries(sections).forEach(([key, data]) => {
+				const spec = parseInt(document.getElementById(data.spec).value) || 3;
+				const evid = parseInt(document.getElementById(data.evid).value) || 3;
+				const buyer = parseInt(document.getElementById(data.buyer).value) || 3;
+				const score = spec + evid + buyer;
+
+				if (score < 8) weakSections.push(key);
+				if (score >= 13) strongSections.push(key);
+			});
+
+			if (weakSections.length > 0) {
+				document.getElementById('weakSections').style.display = 'block';
+				document.getElementById('weakList').innerHTML = weakSections.map(s => {
+					const labels = { hook: 'The Hook', overview: 'Company Overview', market: 'Market Opportunity', financial: 'Financial Highlights', thesis: 'Investment Thesis', levers: 'Growth Levers' };
+					return `
+						<div style="margin-bottom: 0.75rem; padding: 0.75rem; background: rgba(229,201,126,0.08); border-radius: 4px;">
+							<p style="font-family: var(--serif); font-size: 0.9rem; margin: 0 0 0.5rem 0; color: var(--ink);">${labels[s]}</p>
+							<p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.5;">Add more specificity with concrete examples and data. Make the buyer benefit clear.</p>
+						</div>
+					`;
+				}).join('');
+			}
+
+			if (strongSections.length > 0) {
+				document.getElementById('strongSections').style.display = 'block';
+				document.getElementById('strongList').innerHTML = strongSections.map(s => {
+					const labels = { hook: 'The Hook', overview: 'Company Overview', market: 'Market Opportunity', financial: 'Financial Highlights', thesis: 'Investment Thesis', levers: 'Growth Levers' };
+					return `
+						<div style="margin-bottom: 0.5rem; padding: 0.5rem; font-family: var(--mono); font-size: 0.8rem; color: var(--mid);">✓ ${labels[s]}</div>
+					`;
+				}).join('');
+			}
+
+			// Word counts
+			const wordCounts = {
+				hook: ['Hook', 15, 25],
+				overview: ['Company Overview', 100, 150],
+				market: ['Market Opportunity', 100, 150],
+				financial: ['Financial Highlights', 50, 75],
+				thesis: ['Investment Thesis', 100, 150],
+				levers: ['Growth Levers', 75, 125]
+			};
+
+			let wcHtml = '';
+			Object.entries(wordCounts).forEach(([key, [label, min, max]]) => {
+				const wc = countWords(sections[key].text);
+				const status = wc >= min && wc <= max ? '✓' : '!';
+				wcHtml += `${status} ${label}: ${wc} words (target: ${min}-${max})<br>`;
+			});
+			document.getElementById('wordCounts').innerHTML = wcHtml;
+
+			// Summary preview
+			const preview = `
+				<strong>${company}</strong><br><br>
+				${document.getElementById('hook').value}<br><br>
+				${document.getElementById('overview').value}<br><br>
+				<strong>Market:</strong> ${document.getElementById('market').value}<br><br>
+				<strong>Financials:</strong> ${document.getElementById('financial').value}<br><br>
+				<strong>Investment Thesis:</strong> ${document.getElementById('thesis').value}<br><br>
+				<strong>Growth Opportunities:</strong> ${document.getElementById('levers').value}
+			`;
+			document.getElementById('summaryPreview').innerHTML = preview;
+
+			document.getElementById('results').classList.add('visible');
+		});
+
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('companyName').value = '';
+			['hook', 'overview', 'market', 'financial', 'thesis', 'levers'].forEach(id => {
+				document.getElementById(id).value = '';
+				document.getElementById(id + 'Wc').textContent = '0';
+			});
+			['hookSpec', 'hookEvid', 'hookBuyer', 'overviewSpec', 'overviewEvid', 'overviewBuyer', 'marketSpec', 'marketEvid', 'marketBuyer', 'financialSpec', 'financialEvid', 'financialBuyer', 'thesisSpec', 'thesisEvid', 'thesisBuyer', 'leversSpec', 'leversEvid', 'leversBuyer'].forEach(id => {
+				document.getElementById(id).value = '3';
+			});
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

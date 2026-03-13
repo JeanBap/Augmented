@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Estimator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media(max-width: 600px) {
+  .tool-row, .tool-row.triple { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.factor-list { font-size: 0.85rem; line-height: 1.8; margin-top: 1rem; }
+.factor-positive { color: var(--ink); }
+.factor-negative { color: var(--mid); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Multiple Estimator</h1>
+    <p>Estimate your company's exit multiple based on industry, growth, profitability, and quality factors.</p>
+    <div class="chapter-ref">From Chapters 3–5: Valuation Fundamentals</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Business Profile</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="industry">Industry</label>
+            <select id="industry">
+              <option value="saas">SaaS</option>
+              <option value="services">Services</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="fintech">Fintech</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="revenue">Annual Revenue ($)</label>
+            <input type="number" id="revenue" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="growth">Revenue Growth Rate (% YoY)</label>
+            <input type="number" id="growth" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="ebitdaMargin">EBITDA Margin (%)</label>
+            <input type="number" id="ebitdaMargin" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="revenueType">Revenue Type</label>
+            <select id="revenueType">
+              <option value="recurring">Recurring/Subscription</option>
+              <option value="transactional">Transactional</option>
+              <option value="project">Project-based</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="concentration">Top Client % of Revenue</label>
+            <input type="number" id="concentration" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="founderDep">Founder Dependence</label>
+            <select id="founderDep">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label for="moat">IP/Moat Strength</label>
+            <select id="moat">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateMultiple()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetMultiple()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-baseMultiple">0x</div>
+          <div class="result-label">Base Multiple Range</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-adjustedMultiple">0x</div>
+          <div class="result-label">Adjusted Multiple Range</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-evRange">$0</div>
+          <div class="result-label">Estimated EV Range</div>
+        </div>
+      </div>
+
+      <div class="result-note" id="r-factors"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+// Base multiples by industry
+const baseMultiples = {
+  saas: { low: 6, high: 12 },
+  services: { low: 3, high: 6 },
+  manufacturing: { low: 4, high: 8 },
+  ecommerce: { low: 2, high: 5 },
+  healthcare: { low: 5, high: 10 },
+  fintech: { low: 8, high: 14 },
+  other: { low: 4, high: 7 }
+};
+
+function calculateMultiple() {
+  const industry = document.getElementById('industry').value;
+  const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+  const growth = parseFloat(document.getElementById('growth').value) || 0;
+  const ebitdaMargin = parseFloat(document.getElementById('ebitdaMargin').value) || 0;
+  const revenueType = document.getElementById('revenueType').value;
+  const concentration = parseFloat(document.getElementById('concentration').value) || 0;
+  const founderDep = document.getElementById('founderDep').value;
+  const moat = document.getElementById('moat').value;
+
+  // Get base multiple range
+  const base = baseMultiples[industry];
+  const baseLow = base.low;
+  const baseHigh = base.high;
+
+  // Calculate adjustments
+  let adjustmentLow = 0;
+  let adjustmentHigh = 0;
+  let factors = [];
+
+  // Growth adjustment (high growth increases multiple)
+  if (growth > 30) {
+    adjustmentLow += 1;
+    adjustmentHigh += 2;
+    factors.push('<span class="factor-positive">+ High growth (>30%): +1.0-2.0x</span>');
+  } else if (growth > 15) {
+    adjustmentLow += 0.5;
+    adjustmentHigh += 1;
+    factors.push('<span class="factor-positive">+ Solid growth (15-30%): +0.5-1.0x</span>');
+  } else if (growth < 5) {
+    adjustmentLow -= 0.5;
+    adjustmentHigh -= 0.25;
+    factors.push('<span class="factor-negative">- Slow growth (<5%): -0.5-0.25x</span>');
+  }
+
+  // Profitability adjustment
+  if (ebitdaMargin > 30) {
+    adjustmentLow += 0.5;
+    adjustmentHigh += 1;
+    factors.push('<span class="factor-positive">+ High profitability (>30%): +0.5-1.0x</span>');
+  } else if (ebitdaMargin < 5) {
+    adjustmentLow -= 0.5;
+    adjustmentHigh -= 0.25;
+    factors.push('<span class="factor-negative">- Low profitability (<5%): -0.5-0.25x</span>');
+  }
+
+  // Revenue type adjustment
+  if (revenueType === 'recurring') {
+    adjustmentLow += 0.5;
+    adjustmentHigh += 1;
+    factors.push('<span class="factor-positive">+ Recurring revenue: +0.5-1.0x</span>');
+  } else if (revenueType === 'project') {
+    adjustmentLow -= 0.5;
+    adjustmentHigh -= 0.25;
+    factors.push('<span class="factor-negative">- Project-based: -0.5-0.25x</span>');
+  }
+
+  // Customer concentration adjustment
+  if (concentration > 30) {
+    adjustmentLow -= 1;
+    adjustmentHigh -= 0.5;
+    factors.push('<span class="factor-negative">- High customer concentration (>30%): -1.0-0.5x</span>');
+  } else if (concentration < 10) {
+    adjustmentLow += 0.5;
+    adjustmentHigh += 0.75;
+    factors.push('<span class="factor-positive">+ Diversified customer base (<10%): +0.5-0.75x</span>');
+  }
+
+  // Founder dependence adjustment
+  if (founderDep === 'high') {
+    adjustmentLow -= 1;
+    adjustmentHigh -= 0.5;
+    factors.push('<span class="factor-negative">- High founder dependence: -1.0-0.5x</span>');
+  } else if (founderDep === 'low') {
+    adjustmentLow += 0.5;
+    adjustmentHigh += 1;
+    factors.push('<span class="factor-positive">+ Low founder dependence: +0.5-1.0x</span>');
+  }
+
+  // Moat/IP adjustment
+  if (moat === 'high') {
+    adjustmentLow += 1;
+    adjustmentHigh += 1.5;
+    factors.push('<span class="factor-positive">+ Strong IP/moat: +1.0-1.5x</span>');
+  } else if (moat === 'low') {
+    adjustmentLow -= 0.75;
+    adjustmentHigh -= 0.5;
+    factors.push('<span class="factor-negative">- Weak IP/moat: -0.75-0.5x</span>');
+  }
+
+  // Calculate final multiples
+  const adjustedLow = Math.max(0.5, baseLow + adjustmentLow);
+  const adjustedHigh = Math.max(0.5, baseHigh + adjustmentHigh);
+
+  // Calculate enterprise value range
+  const ebitda = revenue * (ebitdaMargin / 100);
+  const evLow = ebitda * adjustedLow;
+  const evHigh = ebitda * adjustedHigh;
+
+  // Display results
+  document.getElementById('r-baseMultiple').textContent = baseLow.toFixed(1) + 'x - ' + baseHigh.toFixed(1) + 'x';
+  document.getElementById('r-adjustedMultiple').textContent = adjustedLow.toFixed(1) + 'x - ' + adjustedHigh.toFixed(1) + 'x';
+  document.getElementById('r-evRange').textContent = fmt(evLow) + ' - ' + fmt(evHigh);
+
+  const factorsHtml = `
+    <strong>Key Factors:</strong><br />
+    ${factors.join('<br />')}
+    <br /><br />
+    <strong>Valuation Summary:</strong><br />
+    EBITDA (revenue × margin): ${fmt(ebitda)}<br />
+    Adjusted multiple: ${adjustedLow.toFixed(1)}x - ${adjustedHigh.toFixed(1)}x<br />
+    Enterprise value range: ${fmt(evLow)} - ${fmt(evHigh)}<br />
+    <br />
+    This range reflects your business quality, growth, and risk profile relative to ${industry.toUpperCase()} market standards.
+  `;
+  document.getElementById('r-factors').innerHTML = factorsHtml;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetMultiple() {
+  document.getElementById('industry').value = 'saas';
+  document.getElementById('revenue').value = '';
+  document.getElementById('growth').value = '';
+  document.getElementById('ebitdaMargin').value = '';
+  document.getElementById('revenueType').value = 'recurring';
+  document.getElementById('concentration').value = '';
+  document.getElementById('founderDep').value = 'medium';
+  document.getElementById('moat').value = 'medium';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE Rollover / Second Bite Simulator | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 900px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.tool-row.single { grid-template-columns: 1fr; }
+.tool-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media(max-width: 600px) {
+  .tool-row, .tool-row.triple { grid-template-columns: 1fr; }
+}
+.tool-field { margin-bottom: 0.5rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.scenario-card { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; background: var(--paper); }
+.scenario-card h3 { font-family: var(--serif); font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem; }
+.scenario-row { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid var(--rule); font-size: 0.8rem; }
+.scenario-row:last-child { border-bottom: none; }
+.scenario-label { font-family: var(--mono); color: var(--mid); }
+.scenario-value { font-family: var(--serif); color: var(--ink); font-weight: bold; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+@media(max-width: 900px) {
+  .scenario-grid { grid-template-columns: 1fr; }
+}
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>PE Rollover / Second Bite Simulator</h1>
+    <p>Model a PE-backed rollover scenario with a second exit 3-5 years later.</p>
+    <div class="chapter-ref">From Chapter 12: PE Ownership Structures</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>First Sale Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="firstEV">Enterprise Value at First Sale ($)</label>
+            <input type="number" id="firstEV" placeholder="0" />
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="founderOwnership">Founder Ownership (%)</label>
+            <input type="number" id="founderOwnership" placeholder="0" min="0" max="100" />
+          </div>
+          <div class="tool-field">
+            <label for="cashOut">Cash Out Percentage (%)</label>
+            <input type="number" id="cashOut" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="rollover">Rollover Percentage (remaining ownership)</label>
+            <input type="number" id="rollover" placeholder="0" min="0" max="100" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Second Sale Parameters</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="secondMultiple">Second Sale Multiple (on original EV)</label>
+            <input type="number" id="secondMultiple" placeholder="1.5" step="0.1" />
+          </div>
+        </div>
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label for="taxRate">Tax Rate on Second Exit (%)</label>
+            <input type="number" id="taxRate" placeholder="20" min="0" max="100" />
+          </div>
+        </div>
+        <button class="tool-btn" onclick="calculateRollover()">Calculate</button>
+        <button class="tool-btn-reset" onclick="resetRollover()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <h3 style="font-family: var(--serif); margin-bottom: 1rem;">Three Scenarios</h3>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <h3>Bull Case (1.5x growth)</h3>
+          <div class="scenario-row">
+            <span class="scenario-label">First Bite</span>
+            <span class="scenario-value" id="bull-firstBite">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second EV</span>
+            <span class="scenario-value" id="bull-secondEV">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Equity Value</span>
+            <span class="scenario-value" id="bull-equityValue">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second Bite (after tax)</span>
+            <span class="scenario-value" id="bull-secondBite">$0</span>
+          </div>
+          <div class="scenario-row" style="border-top: 2px solid var(--gold); padding-top: 0.75rem; font-weight: bold;">
+            <span class="scenario-label">Total Proceeds</span>
+            <span class="scenario-value" id="bull-total">$0</span>
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <h3>Base Case (1.0x)</h3>
+          <div class="scenario-row">
+            <span class="scenario-label">First Bite</span>
+            <span class="scenario-value" id="base-firstBite">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second EV</span>
+            <span class="scenario-value" id="base-secondEV">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Equity Value</span>
+            <span class="scenario-value" id="base-equityValue">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second Bite (after tax)</span>
+            <span class="scenario-value" id="base-secondBite">$0</span>
+          </div>
+          <div class="scenario-row" style="border-top: 2px solid var(--gold); padding-top: 0.75rem; font-weight: bold;">
+            <span class="scenario-label">Total Proceeds</span>
+            <span class="scenario-value" id="base-total">$0</span>
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <h3>Bear Case (0.5x shrink)</h3>
+          <div class="scenario-row">
+            <span class="scenario-label">First Bite</span>
+            <span class="scenario-value" id="bear-firstBite">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second EV</span>
+            <span class="scenario-value" id="bear-secondEV">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Equity Value</span>
+            <span class="scenario-value" id="bear-equityValue">$0</span>
+          </div>
+          <div class="scenario-row">
+            <span class="scenario-label">Second Bite (after tax)</span>
+            <span class="scenario-value" id="bear-secondBite">$0</span>
+          </div>
+          <div class="scenario-row" style="border-top: 2px solid var(--gold); padding-top: 0.75rem; font-weight: bold;">
+            <span class="scenario-label">Total Proceeds</span>
+            <span class="scenario-value" id="bear-total">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-note" id="r-summary"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateRollover() {
+  const firstEV = parseFloat(document.getElementById('firstEV').value) || 0;
+  const founderOwn = (parseFloat(document.getElementById('founderOwnership').value) || 0) / 100;
+  const cashOutPct = (parseFloat(document.getElementById('cashOut').value) || 0) / 100;
+  const rolloverPct = (parseFloat(document.getElementById('rollover').value) || 0) / 100;
+  const taxRate = (parseFloat(document.getElementById('taxRate').value) || 20) / 100;
+
+  // First bite cash
+  const firstBite = firstEV * founderOwn * cashOutPct;
+
+  // Rollover equity value at first sale
+  const rolloverEquityValue = firstEV * rolloverPct;
+
+  // Calculate scenarios
+  const scenarios = [
+    { name: 'Bull', growth: 1.5 },
+    { name: 'Base', growth: 1.0 },
+    { name: 'Bear', growth: 0.5 }
+  ];
+
+  scenarios.forEach(scenario => {
+    const secondEV = firstEV * scenario.growth;
+    const equityValue = rolloverEquityValue * scenario.growth;
+    const taxOnSecond = equityValue * taxRate;
+    const secondBite = equityValue - taxOnSecond;
+    const totalProceeds = firstBite + secondBite;
+
+    const prefix = scenario.name.toLowerCase();
+    document.getElementById(`${prefix}-firstBite`).textContent = fmt(firstBite);
+    document.getElementById(`${prefix}-secondEV`).textContent = fmt(secondEV);
+    document.getElementById(`${prefix}-equityValue`).textContent = fmt(equityValue);
+    document.getElementById(`${prefix}-secondBite`).textContent = fmt(secondBite);
+    document.getElementById(`${prefix}-total`).textContent = fmt(totalProceeds);
+  });
+
+  // Summary
+  const hundredPercentSaleEV = firstEV;
+  const hundredPercentCash = hundredPercentSaleEV * founderOwn;
+
+  const summary = `
+    <strong>Rollover Analysis:</strong><br />
+    First exit EV: ${fmt(firstEV)}<br />
+    Founder ownership: ${(founderOwn * 100).toFixed(1)}%<br />
+    Cash out: ${(cashOutPct * 100).toFixed(1)}%<br />
+    Rollover: ${(rolloverPct * 100).toFixed(1)}%<br />
+    <br />
+    <strong>First Bite (at sale):</strong> ${fmt(firstBite)}<br />
+    <strong>Rolled-over Equity Value:</strong> ${fmt(rolloverEquityValue)}<br />
+    <br />
+    <strong>Comparison to 100% Sale at First Exit:</strong><br />
+    If you sold 100%, you would have received: ${fmt(hundredPercentCash)}<br />
+    Rollover + first bite = ${fmt(firstBite)} + ${fmt(rolloverEquityValue)} = ${fmt(firstBite + rolloverEquityValue)}<br />
+    <br />
+    <strong>Rollover Benefit:</strong><br />
+    In the base case (no growth), you make the same: ${fmt(firstBite)} now + ${fmt(rolloverEquityValue * (1 - taxRate))} later = ${fmt(firstBite + rolloverEquityValue * (1 - taxRate))}<br />
+    In bull case (1.5x growth), total proceeds reach ${fmt(firstBite + rolloverEquityValue * 1.5 * (1 - taxRate))}<br />
+    In bear case (0.5x), they drop to ${fmt(firstBite + rolloverEquityValue * 0.5 * (1 - taxRate))}<br />
+  `;
+
+  document.getElementById('r-summary').innerHTML = summary;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetRollover() {
+  document.getElementById('firstEV').value = '';
+  document.getElementById('founderOwnership').value = '';
+  document.getElementById('cashOut').value = '';
+  document.getElementById('rollover').value = '';
+  document.getElementById('secondMultiple').value = '1.5';
+  document.getElementById('taxRate').value = '20';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

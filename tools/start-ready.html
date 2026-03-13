@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Ready Tools - Personal Budgeting Calculators | Raise Ready</title>
+    <meta name="description" content="Free personal finance calculators for your first decade of adult life. APR, Mortgage, Retirement, Budget, Wealth Tracker, and Financial Plan tools.">
+
+    <!-- Analytics -->
+    <script async src="https://cdn.counter.dev/script.js" data-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-utc="true"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BXXBYNXWZ7');
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="/shared/style.css">
+
+    <style>
+        :root {
+            --ink: #08080d;
+            --paper: #f2ede4;
+            --gold: #c8a45a;
+            --gold2: #e5c97e;
+            --dim: #3a3830;
+            --mid: #6e6a61;
+            --rule: rgba(200, 164, 90, 0.18);
+            --serif: 'Instrument Serif';
+            --mono: 'DM Mono';
+            --sans: 'Syne';
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+            background-color: var(--paper);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-family: var(--mono);
+            font-size: 0.875rem;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--rule);
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            font-family: var(--mono);
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid);
+            max-width: 700px;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        .tool-count {
+            font-family: var(--mono);
+            color: var(--gold);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Main Container */
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .tab-button {
+            font-family: var(--mono);
+            background: transparent;
+            border: 1px solid var(--rule);
+            color: var(--dim);
+            padding: 0.75rem 1.25rem;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .tab-button.active {
+            background-color: var(--gold);
+            color: var(--paper);
+            border-color: var(--gold);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-card-header {
+            font-family: var(--serif);
+            font-size: 1.75rem;
+            margin: 0 0 1.5rem 0;
+            color: var(--ink);
+        }
+
+        /* Form Fields */
+        .tool-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-field label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--dim);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .tool-field input,
+        .tool-field select {
+            font-family: var(--sans);
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-size: 1rem;
+            color: var(--ink);
+            background-color: white;
+        }
+
+        .tool-field input:focus,
+        .tool-field select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(200, 164, 90, 0.1);
+        }
+
+        /* Buttons */
+        .tool-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-btn,
+        .tool-btn-reset {
+            font-family: var(--sans);
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .tool-btn {
+            background-color: var(--gold);
+            color: var(--paper);
+        }
+
+        .tool-btn:hover {
+            background-color: var(--gold2);
+        }
+
+        .tool-btn-reset {
+            background-color: transparent;
+            color: var(--mid);
+            border: 1px solid var(--rule);
+        }
+
+        .tool-btn-reset:hover {
+            border-color: var(--mid);
+            background-color: rgba(58, 56, 48, 0.05);
+        }
+
+        /* Results Panel */
+        .tool-results {
+            background-color: rgba(200, 164, 90, 0.08);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 2rem;
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .tool-results.show {
+            display: block;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-item {
+            text-align: left;
+        }
+
+        .result-value {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--ink);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .result-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--dim);
+            margin-top: 0.5rem;
+        }
+
+        /* Category Sections */
+        .category-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+        }
+
+        .category-header {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .category-target {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--mid);
+            margin-bottom: 1rem;
+        }
+
+        .item-input-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-input-row input {
+            flex: 1;
+        }
+
+        .item-add-btn {
+            font-family: var(--sans);
+            padding: 0.75rem 1.25rem;
+            background-color: var(--gold);
+            color: var(--paper);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .item-add-btn:hover {
+            background-color: var(--gold2);
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background-color: white;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-amount {
+            font-family: var(--mono);
+            font-weight: 500;
+            color: var(--gold);
+        }
+
+        .item-delete-btn {
+            font-family: var(--mono);
+            background: none;
+            border: none;
+            color: var(--mid);
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .item-delete-btn:hover {
+            color: var(--ink);
+        }
+
+        /* Status Indicators */
+        .status-good {
+            color: #2d7d3f;
+        }
+
+        .status-warning {
+            color: #d97706;
+        }
+
+        .status-danger {
+            color: #dc2626;
+        }
+
+        /* Health Score Section */
+        .health-score-container {
+            background-color: rgba(200, 164, 90, 0.08);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .health-score-value {
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .health-metric {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .health-metric-label {
+            font-family: var(--sans);
+            font-size: 0.95rem;
+        }
+
+        .health-metric-value {
+            font-family: var(--mono);
+            font-weight: 500;
+        }
+
+        .health-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 1rem;
+        }
+
+        /* Amortization Table */
+        .amortization-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        .amortization-table th {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--rule);
+            background-color: rgba(200, 164, 90, 0.08);
+        }
+
+        .amortization-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .amortization-table tr:hover {
+            background-color: rgba(200, 164, 90, 0.04);
+        }
+
+        /* Projection Table */
+        .projection-table {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: collapse;
+        }
+
+        .projection-table th {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--rule);
+            background-color: rgba(200, 164, 90, 0.08);
+        }
+
+        .projection-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            margin-top: 2rem;
+        }
+
+        .bar-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .bar-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--dim);
+        }
+
+        .bar-container {
+            height: 24px;
+            background-color: rgba(200, 164, 90, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: white;
+        }
+
+        /* APR Reference */
+        .apr-reference {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(200, 164, 90, 0.08);
+            border-left: 3px solid var(--gold);
+            border-radius: 6px;
+        }
+
+        .apr-reference-title {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            margin: 0 0 1rem 0;
+            color: var(--ink);
+        }
+
+        .apr-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .apr-reference-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--rule);
+        }
+
+        .apr-reference-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .apr-reference-value {
+            font-family: var(--sans);
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        /* Not Calculated Message */
+        .not-calculated {
+            background-color: rgba(200, 164, 90, 0.08);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--mid);
+        }
+
+        .not-calculated p {
+            margin: 0 0 1rem 0;
+        }
+
+        .not-calculated a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .not-calculated a:hover {
+            text-decoration: underline;
+        }
+
+        /* Print Button */
+        .print-btn {
+            font-family: var(--sans);
+            padding: 0.875rem 1.75rem;
+            background-color: var(--gold);
+            color: var(--paper);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .print-btn:hover {
+            background-color: var(--gold2);
+        }
+
+        @media print {
+            .tab-nav,
+            .tool-buttons,
+            .print-btn,
+            .breadcrumb,
+            .back-link,
+            #site-nav,
+            #site-footer {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tool-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-nav {
+                gap: 0.5rem;
+            }
+
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+
+            .tool-buttons {
+                flex-direction: column;
+            }
+
+            .tool-btn,
+            .tool-btn-reset {
+                width: 100%;
+            }
+        }
+
+        /* Cheaper Alternatives Warning */
+        .apr-warning {
+            background-color: rgba(220, 38, 38, 0.1);
+            border-left: 3px solid #dc2626;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .apr-warning.show {
+            display: block;
+        }
+
+        .apr-warning-title {
+            font-family: var(--serif);
+            color: #dc2626;
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .apr-warning-text {
+            font-size: 0.9rem;
+            color: var(--dim);
+            margin: 0;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+            border-top: 1px solid var(--rule);
+        }
+
+        .footer-cta-content {
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-family: var(--serif);
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
+            color: var(--ink);
+        }
+
+        .footer-cta a {
+            font-family: var(--sans);
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            background-color: var(--gold);
+            color: var(--paper);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-cta a:hover {
+            background-color: var(--gold2);
+        }
+
+        .newsletter-form {
+            max-width: 400px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            font-family: var(--sans);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1.25rem;
+            background-color: var(--gold);
+            color: var(--paper);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: var(--sans);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--gold2);
+        }
+    </style>
+</head>
+<body data-page="tools">
+
+    <div id="site-nav"></div>
+
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/tools/">Tools</a> / Start Ready
+    </div>
+
+    <a href="/tools/" class="back-link">← Back to All Tools</a>
+
+    <div class="hero">
+        <h1>Start Ready Tools</h1>
+        <p class="hero-subtitle">Personal finance calculators for your first decade of adult life. Know your numbers, build your plan.</p>
+        <div class="tool-count">6 tools</div>
+    </div>
+
+    <div class="tools-container">
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="apr-calculator">APR Calculator</button>
+            <button class="tab-button" data-tab="mortgage-calculator">Mortgage Calculator</button>
+            <button class="tab-button" data-tab="retirement-calculator">Retirement Calculator</button>
+            <button class="tab-button" data-tab="budget-calculator">Budget Calculator</button>
+            <button class="tab-button" data-tab="wealth-tracker">Wealth Tracker</button>
+            <button class="tab-button" data-tab="financial-plan">Financial Plan</button>
+        </div>
+
+        <!-- TAB 1: APR CALCULATOR -->
+        <div id="apr-calculator" class="tab-content active">
+            <div class="tool-card">
+                <h2 class="tool-card-header">APR Calculator</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Calculate the true annual percentage rate of a loan, factoring in all fees and costs.</p>
+
+                <div class="tool-fields">
+                    <div class="tool-field">
+                        <label for="apr-loan-amount">Loan Amount</label>
+                        <input type="number" id="apr-loan-amount" placeholder="$5,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="apr-fees">Fees</label>
+                        <input type="number" id="apr-fees" placeholder="$250" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="apr-interest-rate">Interest Rate</label>
+                        <input type="number" id="apr-interest-rate" placeholder="15" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="apr-other-costs">Other Costs</label>
+                        <input type="number" id="apr-other-costs" placeholder="$100" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="apr-days">Days Until Repayment</label>
+                        <input type="number" id="apr-days" placeholder="365" min="1" step="1">
+                    </div>
+                </div>
+
+                <div class="tool-buttons">
+                    <button class="tool-btn" onclick="calculateAPR()">Calculate APR</button>
+                    <button class="tool-btn-reset" onclick="resetAPR()">Reset</button>
+                </div>
+
+                <div id="apr-results" class="tool-results">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value" id="apr-result-apr">0%</p>
+                            <p class="result-label">Annual Percentage Rate</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="apr-result-total-cost">$0</p>
+                            <p class="result-label">Total Cost of Borrowing</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="apr-result-daily-rate">0%</p>
+                            <p class="result-label">Effective Daily Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="apr-warning" class="apr-warning">
+                    <p class="apr-warning-title">⚠ High APR Alert</p>
+                    <p class="apr-warning-text" id="apr-warning-text"></p>
+                </div>
+
+                <div class="apr-reference">
+                    <h3 class="apr-reference-title">APR Reference Ranges</h3>
+                    <div class="apr-reference-grid">
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Personal Loans</p>
+                            <p class="apr-reference-value">5.9% - 295%</p>
+                        </div>
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Credit Cards</p>
+                            <p class="apr-reference-value">12% - 36%</p>
+                        </div>
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Earned Wage Access</p>
+                            <p class="apr-reference-value">100% - 330%</p>
+                        </div>
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Pawn Shop</p>
+                            <p class="apr-reference-value">100% - 300%</p>
+                        </div>
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Payday Loan</p>
+                            <p class="apr-reference-value">300% - 660%</p>
+                        </div>
+                        <div class="apr-reference-item">
+                            <p class="apr-reference-label">Title Loans</p>
+                            <p class="apr-reference-value">~300%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MORTGAGE CALCULATOR -->
+        <div id="mortgage-calculator" class="tab-content">
+            <div class="tool-card">
+                <h2 class="tool-card-header">Mortgage Calculator</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Calculate monthly payment, total interest, and amortization schedule for your home loan.</p>
+
+                <div class="tool-fields">
+                    <div class="tool-field">
+                        <label for="mort-home-price">Home Price</label>
+                        <input type="number" id="mort-home-price" placeholder="$400,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="mort-down-payment">Down Payment %</label>
+                        <input type="number" id="mort-down-payment" placeholder="20" min="0" max="100" step="0.1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="mort-loan-term">Loan Term (Years)</label>
+                        <select id="mort-loan-term">
+                            <option value="15">15 years</option>
+                            <option value="20">20 years</option>
+                            <option value="25">25 years</option>
+                            <option value="30" selected>30 years</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="mort-interest-rate">Interest Rate %</label>
+                        <input type="number" id="mort-interest-rate" placeholder="6.5" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="mort-annual-tax">Annual Property Tax</label>
+                        <input type="number" id="mort-annual-tax" placeholder="$3,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="mort-annual-insurance">Annual Insurance</label>
+                        <input type="number" id="mort-annual-insurance" placeholder="$1,200" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="tool-buttons">
+                    <button class="tool-btn" onclick="calculateMortgage()">Calculate</button>
+                    <button class="tool-btn-reset" onclick="resetMortgage()">Reset</button>
+                </div>
+
+                <div id="mort-results" class="tool-results">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-monthly-pi">$0</p>
+                            <p class="result-label">Monthly P&I</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-monthly-tax">$0</p>
+                            <p class="result-label">Monthly Tax</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-monthly-insurance">$0</p>
+                            <p class="result-label">Monthly Insurance</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-monthly-total">$0</p>
+                            <p class="result-label">Total Monthly Payment</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-total-interest">$0</p>
+                            <p class="result-label">Total Interest</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-total-cost">$0</p>
+                            <p class="result-label">Total Cost</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="mort-result-ltv">0%</p>
+                            <p class="result-label">Loan-to-Value Ratio</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-family: var(--serif); margin-top: 2rem; margin-bottom: 1rem;">Amortization Summary</h3>
+                    <table class="amortization-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Principal Paid</th>
+                                <th>Interest Paid</th>
+                                <th>Remaining Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mort-amortization-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: RETIREMENT CALCULATOR -->
+        <div id="retirement-calculator" class="tab-content">
+            <div class="tool-card">
+                <h2 class="tool-card-header">Retirement Calculator</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Project your retirement savings and income based on current contributions and expected returns.</p>
+
+                <div class="tool-fields">
+                    <div class="tool-field">
+                        <label for="ret-current-age">Current Age</label>
+                        <input type="number" id="ret-current-age" placeholder="25" min="1" max="120" step="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-retirement-age">Retirement Age</label>
+                        <input type="number" id="ret-retirement-age" placeholder="65" min="1" max="120" step="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-current-savings">Current Savings</label>
+                        <input type="number" id="ret-current-savings" placeholder="$10,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-annual-income">Annual Income</label>
+                        <input type="number" id="ret-annual-income" placeholder="$60,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-contribution-rate">Contribution Rate %</label>
+                        <input type="number" id="ret-contribution-rate" placeholder="10" min="0" max="100" step="0.1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-annual-return">Expected Annual Return %</label>
+                        <input type="number" id="ret-annual-return" placeholder="7" min="0" step="0.1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ret-annual-fee">Annual Fee %</label>
+                        <input type="number" id="ret-annual-fee" placeholder="0.5" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="tool-buttons">
+                    <button class="tool-btn" onclick="calculateRetirement()">Calculate</button>
+                    <button class="tool-btn-reset" onclick="resetRetirement()">Reset</button>
+                </div>
+
+                <div id="ret-results" class="tool-results">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-monthly-contrib">$0</p>
+                            <p class="result-label">Monthly Contribution</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-projected-savings">$0</p>
+                            <p class="result-label">Projected Retirement Savings</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-total-contrib">$0</p>
+                            <p class="result-label">Total Contributions</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-total-growth">$0</p>
+                            <p class="result-label">Total Growth</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-years-income">0 years</p>
+                            <p class="result-label">Years of 4% Withdrawal</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="ret-result-monthly-income">$0</p>
+                            <p class="result-label">Monthly Retirement Income</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-family: var(--serif); margin-top: 2rem; margin-bottom: 1rem;">Savings Projection</h3>
+                    <table class="projection-table">
+                        <thead>
+                            <tr>
+                                <th>Age</th>
+                                <th>Years Saving</th>
+                                <th>Projected Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ret-projection-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: BUDGET CALCULATOR -->
+        <div id="budget-calculator" class="tab-content">
+            <div class="tool-card">
+                <h2 class="tool-card-header">Budget Calculator</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Plan your budget using the 50/30/20 method: 50% Needs, 30% Wants, 20% Savings.</p>
+
+                <div class="tool-fields">
+                    <div class="tool-field">
+                        <label for="budget-gross-income">Gross Monthly Income</label>
+                        <input type="number" id="budget-gross-income" placeholder="$5,000" min="0" step="0.01">
+                    </div>
+                    <div class="tool-field">
+                        <label for="budget-tax-rate">Tax Rate %</label>
+                        <input type="number" id="budget-tax-rate" placeholder="25" min="0" max="100" step="0.1">
+                    </div>
+                </div>
+
+                <div class="tool-buttons">
+                    <button class="tool-btn" onclick="updateBudgetTargets()">Update Income</button>
+                    <button class="tool-btn-reset" onclick="resetBudget()">Reset All</button>
+                </div>
+
+                <!-- NEEDS -->
+                <div class="category-section">
+                    <h3 class="category-header">Needs (50%)</h3>
+                    <p class="category-target" id="budget-needs-target">Target: $2,500/month</p>
+                    <div class="item-input-row">
+                        <input type="text" id="budget-needs-item-name" placeholder="Item name (e.g., Rent)">
+                        <input type="number" id="budget-needs-item-amount" placeholder="Amount" min="0" step="0.01">
+                        <button class="item-add-btn" onclick="addBudgetItem('needs')">Add</button>
+                    </div>
+                    <ul id="budget-needs-list" class="item-list"></ul>
+                </div>
+
+                <!-- WANTS -->
+                <div class="category-section">
+                    <h3 class="category-header">Wants (30%)</h3>
+                    <p class="category-target" id="budget-wants-target">Target: $1,500/month</p>
+                    <div class="item-input-row">
+                        <input type="text" id="budget-wants-item-name" placeholder="Item name (e.g., Dining Out)">
+                        <input type="number" id="budget-wants-item-amount" placeholder="Amount" min="0" step="0.01">
+                        <button class="item-add-btn" onclick="addBudgetItem('wants')">Add</button>
+                    </div>
+                    <ul id="budget-wants-list" class="item-list"></ul>
+                </div>
+
+                <!-- SAVINGS -->
+                <div class="category-section">
+                    <h3 class="category-header">Savings (20%)</h3>
+                    <p class="category-target" id="budget-savings-target">Target: $1,000/month</p>
+                    <div class="item-input-row">
+                        <input type="text" id="budget-savings-item-name" placeholder="Item name (e.g., Emergency Fund)">
+                        <input type="number" id="budget-savings-item-amount" placeholder="Amount" min="0" step="0.01">
+                        <button class="item-add-btn" onclick="addBudgetItem('savings')">Add</button>
+                    </div>
+                    <ul id="budget-savings-list" class="item-list"></ul>
+                </div>
+
+                <div id="budget-results" class="tool-results">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value" id="budget-result-net-income">$0</p>
+                            <p class="result-label">Net Monthly Income</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="budget-result-needs-total">$0</p>
+                            <p class="result-label">Needs Total</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="budget-result-wants-total">$0</p>
+                            <p class="result-label">Wants Total</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="budget-result-savings-total">$0</p>
+                            <p class="result-label">Savings Total</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-family: var(--serif); margin-top: 2rem; margin-bottom: 1rem;">Budget Allocation</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Needs vs Target</div>
+                            <div class="bar-container">
+                                <div id="budget-needs-bar" class="bar-segment" style="background-color: var(--gold);">0%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Wants vs Target</div>
+                            <div class="bar-container">
+                                <div id="budget-wants-bar" class="bar-segment" style="background-color: var(--gold2);">0%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Savings vs Target</div>
+                            <div class="bar-container">
+                                <div id="budget-savings-bar" class="bar-segment" style="background-color: var(--gold);">0%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding: 1rem; background-color: white; border-radius: 6px; border: 1px solid var(--rule);">
+                        <p style="margin: 0; font-family: var(--mono); font-size: 0.75rem; color: var(--dim); margin-bottom: 0.5rem;">REMAINING/SURPLUS</p>
+                        <p style="margin: 0; font-family: var(--serif); font-size: 1.5rem;" id="budget-remaining">$0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: WEALTH TRACKER -->
+        <div id="wealth-tracker" class="tab-content">
+            <div class="tool-card">
+                <h2 class="tool-card-header">Wealth Tracker</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Track your net worth by listing all assets and liabilities.</p>
+
+                <!-- ASSETS -->
+                <div class="category-section" style="margin-top: 0;">
+                    <h3 class="category-header">Assets</h3>
+                    <p class="category-target">Cash & Savings, Investments, Retirement, Property, Vehicles, Other</p>
+                    <div class="item-input-row">
+                        <input type="text" id="wealth-asset-name" placeholder="Asset name (e.g., Savings Account)">
+                        <input type="number" id="wealth-asset-amount" placeholder="Amount" min="0" step="0.01">
+                        <button class="item-add-btn" onclick="addWealthItem('asset')">Add</button>
+                    </div>
+                    <ul id="wealth-asset-list" class="item-list"></ul>
+                </div>
+
+                <!-- LIABILITIES -->
+                <div class="category-section">
+                    <h3 class="category-header">Liabilities</h3>
+                    <p class="category-target">Mortgage, Student Loans, Car Loans, Credit Cards, Other Debt</p>
+                    <div class="item-input-row">
+                        <input type="text" id="wealth-liability-name" placeholder="Liability name (e.g., Student Loan)">
+                        <input type="number" id="wealth-liability-amount" placeholder="Amount" min="0" step="0.01">
+                        <button class="item-add-btn" onclick="addWealthItem('liability')">Add</button>
+                    </div>
+                    <ul id="wealth-liability-list" class="item-list"></ul>
+                </div>
+
+                <div class="tool-buttons" style="margin-top: 2rem;">
+                    <button class="tool-btn" onclick="calculateWealth()">Calculate Net Worth</button>
+                    <button class="tool-btn-reset" onclick="resetWealth()">Reset</button>
+                </div>
+
+                <div id="wealth-results" class="tool-results">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value" id="wealth-result-assets">$0</p>
+                            <p class="result-label">Total Assets</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="wealth-result-liabilities">$0</p>
+                            <p class="result-label">Total Liabilities</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="wealth-result-net-worth">$0</p>
+                            <p class="result-label">Net Worth</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value" id="wealth-result-debt-ratio">0%</p>
+                            <p class="result-label">Debt-to-Asset Ratio</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-family: var(--serif); margin-top: 2rem; margin-bottom: 1rem;">Assets vs Liabilities</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Visual Breakdown</div>
+                            <div class="bar-container" id="wealth-bar-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: FINANCIAL PLAN -->
+        <div id="financial-plan" class="tab-content">
+            <div class="tool-card">
+                <h2 class="tool-card-header">Financial Plan Summary</h2>
+                <p style="color: var(--mid); margin-bottom: 1.5rem;">Your complete financial snapshot across all tools. Go to any tab above to update your information.</p>
+
+                <button class="print-btn" onclick="window.print()">🖨 Print Results</button>
+
+                <!-- HEALTH SCORE -->
+                <div class="health-score-container">
+                    <div class="health-score-value" id="plan-health-score">0</div>
+                    <p style="margin: 0 0 1.5rem 0; color: var(--mid); font-family: var(--mono); font-size: 0.875rem;">Overall Financial Health (0-100)</p>
+
+                    <div id="plan-health-metrics"></div>
+                </div>
+
+                <!-- BUDGET SUMMARY -->
+                <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0 0 1rem 0;">Monthly Budget Summary</h3>
+                    <div id="plan-budget-summary" class="not-calculated">
+                        <p>Not yet calculated</p>
+                        <p><a href="#" onclick="switchTab('budget-calculator')">Go to Budget Calculator</a></p>
+                    </div>
+                </div>
+
+                <!-- DEBT COST ANALYSIS -->
+                <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0 0 1rem 0;">Debt Cost Analysis</h3>
+                    <div id="plan-apr-summary" class="not-calculated">
+                        <p>Not yet calculated</p>
+                        <p><a href="#" onclick="switchTab('apr-calculator')">Go to APR Calculator</a></p>
+                    </div>
+                </div>
+
+                <!-- HOUSING -->
+                <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0 0 1rem 0;">Housing Costs</h3>
+                    <div id="plan-mortgage-summary" class="not-calculated">
+                        <p>Not yet calculated</p>
+                        <p><a href="#" onclick="switchTab('mortgage-calculator')">Go to Mortgage Calculator</a></p>
+                    </div>
+                </div>
+
+                <!-- RETIREMENT -->
+                <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0 0 1rem 0;">Retirement Projection</h3>
+                    <div id="plan-retirement-summary" class="not-calculated">
+                        <p>Not yet calculated</p>
+                        <p><a href="#" onclick="switchTab('retirement-calculator')">Go to Retirement Calculator</a></p>
+                    </div>
+                </div>
+
+                <!-- NET WORTH -->
+                <div style="background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem;">
+                    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0 0 1rem 0;">Net Worth</h3>
+                    <div id="plan-wealth-summary" class="not-calculated">
+                        <p>Not yet calculated</p>
+                        <p><a href="#" onclick="switchTab('wealth-tracker')">Go to Wealth Tracker</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer CTA -->
+    <div class="footer-cta">
+        <div class="footer-cta-content">
+            <h2>Go deeper with Start Ready</h2>
+            <a href="/book/#start-ready">Read the full Start Ready chapter →</a>
+
+            <form class="newsletter-form" onsubmit="return handleNewsletterSignup(event)">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <!-- Scripts -->
+    <script src="/shared/components.js"></script>
+    <script src="/shared/cart.js"></script>
+
+    <script>
+        // Global data storage
+        window.startReadyData = {
+            apr: null,
+            mortgage: null,
+            retirement: null,
+            budget: null,
+            wealth: null
+        };
+
+        // Tab switching
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab
+            const tabContent = document.getElementById(tabName);
+            if (tabContent) {
+                tabContent.classList.add('active');
+
+                // Activate button
+                const button = document.querySelector(`[data-tab="${tabName}"]`);
+                if (button) {
+                    button.classList.add('active');
+                }
+
+                // Update Financial Plan if switching to it
+                if (tabName === 'financial-plan') {
+                    updateFinancialPlan();
+                }
+            }
+        }
+
+        // ==================== APR CALCULATOR ====================
+        function calculateAPR() {
+            const principal = parseFloat(document.getElementById('apr-loan-amount').value) || 0;
+            const fees = parseFloat(document.getElementById('apr-fees').value) || 0;
+            const rate = parseFloat(document.getElementById('apr-interest-rate').value) || 0;
+            const otherCosts = parseFloat(document.getElementById('apr-other-costs').value) || 0;
+            const days = parseFloat(document.getElementById('apr-days').value) || 365;
+
+            if (principal <= 0 || days <= 0) {
+                alert('Please enter valid loan amount and days');
+                return;
+            }
+
+            // Calculate interest accrued
+            const interestAccrued = (principal * rate * days) / (365 * 100);
+            const totalCost = fees + interestAccrued + otherCosts;
+
+            // APR formula: (totalCost / principal) * (365 / days) * 100
+            const apr = (totalCost / principal) * (365 / days) * 100;
+            const dailyRate = (rate / 365);
+
+            // Display results
+            document.getElementById('apr-result-apr').textContent = apr.toFixed(2) + '%';
+            document.getElementById('apr-result-total-cost').textContent = '$' + totalCost.toFixed(2);
+            document.getElementById('apr-result-daily-rate').textContent = dailyRate.toFixed(3) + '%';
+
+            document.getElementById('apr-results').classList.add('show');
+
+            // Show warning if APR is high
+            const warningEl = document.getElementById('apr-warning');
+            if (apr > 100) {
+                warningEl.classList.add('show');
+                let warningText = `This APR (${apr.toFixed(2)}%) is significantly higher than typical loans. `;
+                if (apr > 300) {
+                    warningText += 'Consider personal loans, credit cards, or other alternatives.';
+                } else if (apr > 100) {
+                    warningText += 'Consider comparing with other lending options.';
+                }
+                document.getElementById('apr-warning-text').textContent = warningText;
+            } else {
+                warningEl.classList.remove('show');
+            }
+
+            // Store in global data
+            window.startReadyData.apr = {
+                apr: apr,
+                totalCost: totalCost,
+                dailyRate: dailyRate
+            };
+        }
+
+        function resetAPR() {
+            document.getElementById('apr-loan-amount').value = '';
+            document.getElementById('apr-fees').value = '';
+            document.getElementById('apr-interest-rate').value = '';
+            document.getElementById('apr-other-costs').value = '';
+            document.getElementById('apr-days').value = '';
+            document.getElementById('apr-results').classList.remove('show');
+            document.getElementById('apr-warning').classList.remove('show');
+            window.startReadyData.apr = null;
+        }
+
+        // ==================== MORTGAGE CALCULATOR ====================
+        function calculateMortgage() {
+            const homePrice = parseFloat(document.getElementById('mort-home-price').value) || 0;
+            const downPaymentPct = parseFloat(document.getElementById('mort-down-payment').value) || 0;
+            const loanTerm = parseInt(document.getElementById('mort-loan-term').value) || 30;
+            const interestRate = parseFloat(document.getElementById('mort-interest-rate').value) || 0;
+            const annualTax = parseFloat(document.getElementById('mort-annual-tax').value) || 0;
+            const annualInsurance = parseFloat(document.getElementById('mort-annual-insurance').value) || 0;
+
+            if (homePrice <= 0 || downPaymentPct < 0) {
+                alert('Please enter valid home price and down payment');
+                return;
+            }
+
+            const downPayment = homePrice * (downPaymentPct / 100);
+            const loanAmount = homePrice - downPayment;
+            const monthlyRate = interestRate / 100 / 12;
+            const numPayments = loanTerm * 12;
+
+            // Amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1]
+            let monthlyPI = 0;
+            if (monthlyRate > 0) {
+                const numerator = monthlyRate * Math.pow(1 + monthlyRate, numPayments);
+                const denominator = Math.pow(1 + monthlyRate, numPayments) - 1;
+                monthlyPI = loanAmount * (numerator / denominator);
+            } else {
+                monthlyPI = loanAmount / numPayments;
+            }
+
+            const monthlyTax = annualTax / 12;
+            const monthlyInsurance = annualInsurance / 12;
+            const monthlyTotal = monthlyPI + monthlyTax + monthlyInsurance;
+
+            const totalInterest = (monthlyPI * numPayments) - loanAmount;
+            const totalCost = homePrice + totalInterest + annualTax * loanTerm + annualInsurance * loanTerm;
+            const ltv = (loanAmount / homePrice) * 100;
+
+            // Display results
+            document.getElementById('mort-result-monthly-pi').textContent = '$' + monthlyPI.toFixed(2);
+            document.getElementById('mort-result-monthly-tax').textContent = '$' + monthlyTax.toFixed(2);
+            document.getElementById('mort-result-monthly-insurance').textContent = '$' + monthlyInsurance.toFixed(2);
+            document.getElementById('mort-result-monthly-total').textContent = '$' + monthlyTotal.toFixed(2);
+            document.getElementById('mort-result-total-interest').textContent = '$' + totalInterest.toFixed(2);
+            document.getElementById('mort-result-total-cost').textContent = '$' + totalCost.toFixed(2);
+            document.getElementById('mort-result-ltv').textContent = ltv.toFixed(2) + '%';
+
+            // Amortization schedule
+            buildAmortizationSchedule(loanAmount, monthlyRate, numPayments);
+
+            document.getElementById('mort-results').classList.add('show');
+
+            // Store in global data
+            window.startReadyData.mortgage = {
+                monthlyPI: monthlyPI,
+                monthlyTax: monthlyTax,
+                monthlyInsurance: monthlyInsurance,
+                monthlyTotal: monthlyTotal,
+                totalInterest: totalInterest,
+                totalCost: totalCost,
+                ltv: ltv
+            };
+        }
+
+        function buildAmortizationSchedule(principal, monthlyRate, numPayments) {
+            const tbody = document.getElementById('mort-amortization-body');
+            tbody.innerHTML = '';
+
+            let balance = principal;
+            const monthlyPayment = monthlyRate > 0
+                ? principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1)
+                : principal / numPayments;
+
+            const yearsToShow = [1, 5, 10, numPayments / 12];
+            const monthsToShow = yearsToShow.map(y => y * 12);
+
+            for (let month = 1; month <= numPayments; month++) {
+                const interestPayment = balance * monthlyRate;
+                const principalPayment = monthlyPayment - interestPayment;
+                balance -= principalPayment;
+
+                if (monthsToShow.includes(month)) {
+                    const year = Math.ceil(month / 12);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>Year ${year}</td>
+                        <td>$${principalPayment.toFixed(2)}</td>
+                        <td>$${interestPayment.toFixed(2)}</td>
+                        <td>$${Math.max(balance, 0).toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            }
+        }
+
+        function resetMortgage() {
+            document.getElementById('mort-home-price').value = '';
+            document.getElementById('mort-down-payment').value = '';
+            document.getElementById('mort-loan-term').value = '30';
+            document.getElementById('mort-interest-rate').value = '';
+            document.getElementById('mort-annual-tax').value = '';
+            document.getElementById('mort-annual-insurance').value = '';
+            document.getElementById('mort-results').classList.remove('show');
+            window.startReadyData.mortgage = null;
+        }
+
+        // ==================== RETIREMENT CALCULATOR ====================
+        function calculateRetirement() {
+            const currentAge = parseInt(document.getElementById('ret-current-age').value) || 0;
+            const retirementAge = parseInt(document.getElementById('ret-retirement-age').value) || 0;
+            const currentSavings = parseFloat(document.getElementById('ret-current-savings').value) || 0;
+            const annualIncome = parseFloat(document.getElementById('ret-annual-income').value) || 0;
+            const contributionRate = parseFloat(document.getElementById('ret-contribution-rate').value) || 0;
+            const annualReturn = parseFloat(document.getElementById('ret-annual-return').value) || 0;
+            const annualFee = parseFloat(document.getElementById('ret-annual-fee').value) || 0;
+
+            if (currentAge <= 0 || retirementAge <= currentAge || annualIncome <= 0) {
+                alert('Please enter valid ages and income');
+                return;
+            }
+
+            const yearsToRetirement = retirementAge - currentAge;
+            const monthlyContribution = (annualIncome * contributionRate / 100) / 12;
+            const monthlyReturn = (annualReturn - annualFee) / 100 / 12;
+
+            // Future Value with monthly contributions
+            let balance = currentSavings;
+            for (let month = 0; month < yearsToRetirement * 12; month++) {
+                balance = balance * (1 + monthlyReturn) + monthlyContribution;
+            }
+
+            const projectedSavings = Math.max(balance, 0);
+            const totalContributions = currentSavings + (monthlyContribution * yearsToRetirement * 12);
+            const totalGrowth = projectedSavings - totalContributions;
+
+            // 4% withdrawal rule
+            const annualWithdrawal = projectedSavings * 0.04;
+            const yearsOfIncome = annualWithdrawal > 0 ? projectedSavings / annualWithdrawal : 0;
+            const monthlyRetirementIncome = annualWithdrawal / 12;
+
+            // Display results
+            document.getElementById('ret-result-monthly-contrib').textContent = '$' + monthlyContribution.toFixed(2);
+            document.getElementById('ret-result-projected-savings').textContent = '$' + projectedSavings.toFixed(2);
+            document.getElementById('ret-result-total-contrib').textContent = '$' + totalContributions.toFixed(2);
+            document.getElementById('ret-result-total-growth').textContent = '$' + totalGrowth.toFixed(2);
+            document.getElementById('ret-result-years-income').textContent = yearsOfIncome.toFixed(1) + ' years';
+            document.getElementById('ret-result-monthly-income').textContent = '$' + monthlyRetirementIncome.toFixed(2);
+
+            // Projection table
+            buildProjectionTable(currentAge, retirementAge, currentSavings, monthlyContribution, monthlyReturn);
+
+            document.getElementById('ret-results').classList.add('show');
+
+            // Store in global data
+            window.startReadyData.retirement = {
+                monthlyContribution: monthlyContribution,
+                projectedSavings: projectedSavings,
+                totalContributions: totalContributions,
+                totalGrowth: totalGrowth,
+                yearsOfIncome: yearsOfIncome,
+                monthlyRetirementIncome: monthlyRetirementIncome
+            };
+        }
+
+        function buildProjectionTable(startAge, retirementAge, startBalance, monthlyContrib, monthlyReturn) {
+            const tbody = document.getElementById('ret-projection-body');
+            tbody.innerHTML = '';
+
+            let balance = startBalance;
+            const checkpoints = [5, 10, 20];
+
+            for (let year = 0; year <= retirementAge - startAge; year++) {
+                for (let month = 0; month < 12; month++) {
+                    balance = balance * (1 + monthlyReturn) + monthlyContrib;
+                }
+
+                if (checkpoints.includes(year) || year === retirementAge - startAge) {
+                    const row = document.createElement('tr');
+                    const age = startAge + year;
+                    row.innerHTML = `
+                        <td>${age}</td>
+                        <td>${year}</td>
+                        <td>$${balance.toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            }
+        }
+
+        function resetRetirement() {
+            document.getElementById('ret-current-age').value = '';
+            document.getElementById('ret-retirement-age').value = '';
+            document.getElementById('ret-current-savings').value = '';
+            document.getElementById('ret-annual-income').value = '';
+            document.getElementById('ret-contribution-rate').value = '';
+            document.getElementById('ret-annual-return').value = '';
+            document.getElementById('ret-annual-fee').value = '';
+            document.getElementById('ret-results').classList.remove('show');
+            window.startReadyData.retirement = null;
+        }
+
+        // ==================== BUDGET CALCULATOR ====================
+        const budgetData = {
+            needs: [],
+            wants: [],
+            savings: []
+        };
+
+        function updateBudgetTargets() {
+            const income = parseFloat(document.getElementById('budget-gross-income').value) || 0;
+            const taxRate = parseFloat(document.getElementById('budget-tax-rate').value) || 0;
+            const netIncome = income * (1 - taxRate / 100);
+
+            const needsTarget = netIncome * 0.5;
+            const wantsTarget = netIncome * 0.3;
+            const savingsTarget = netIncome * 0.2;
+
+            document.getElementById('budget-needs-target').textContent = `Target: $${needsTarget.toFixed(2)}/month`;
+            document.getElementById('budget-wants-target').textContent = `Target: $${wantsTarget.toFixed(2)}/month`;
+            document.getElementById('budget-savings-target').textContent = `Target: $${savingsTarget.toFixed(2)}/month`;
+
+            calculateBudget();
+        }
+
+        function addBudgetItem(category) {
+            const nameInput = document.getElementById(`budget-${category}-item-name`);
+            const amountInput = document.getElementById(`budget-${category}-item-amount`);
+
+            const name = nameInput.value.trim();
+            const amount = parseFloat(amountInput.value) || 0;
+
+            if (!name || amount <= 0) {
+                alert('Please enter both item name and amount');
+                return;
+            }
+
+            budgetData[category].push({ name, amount });
+
+            nameInput.value = '';
+            amountInput.value = '';
+
+            renderBudgetItems(category);
+            calculateBudget();
+        }
+
+        function deleteBudgetItem(category, index) {
+            budgetData[category].splice(index, 1);
+            renderBudgetItems(category);
+            calculateBudget();
+        }
+
+        function renderBudgetItems(category) {
+            const list = document.getElementById(`budget-${category}-list`);
+            list.innerHTML = '';
+
+            budgetData[category].forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'item-list-item';
+                li.innerHTML = `
+                    <span>${item.name}</span>
+                    <div>
+                        <span class="item-amount">$${item.amount.toFixed(2)}</span>
+                        <button class="item-delete-btn" onclick="deleteBudgetItem('${category}', ${index})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function calculateBudget() {
+            const income = parseFloat(document.getElementById('budget-gross-income').value) || 0;
+            const taxRate = parseFloat(document.getElementById('budget-tax-rate').value) || 0;
+            const netIncome = income * (1 - taxRate / 100);
+
+            const needsTotal = budgetData.needs.reduce((sum, item) => sum + item.amount, 0);
+            const wantsTotal = budgetData.wants.reduce((sum, item) => sum + item.amount, 0);
+            const savingsTotal = budgetData.savings.reduce((sum, item) => sum + item.amount, 0);
+
+            const needsTarget = netIncome * 0.5;
+            const wantsTarget = netIncome * 0.3;
+            const savingsTarget = netIncome * 0.2;
+
+            const remaining = netIncome - needsTotal - wantsTotal - savingsTotal;
+
+            // Display results
+            document.getElementById('budget-result-net-income').textContent = '$' + netIncome.toFixed(2);
+            document.getElementById('budget-result-needs-total').textContent = '$' + needsTotal.toFixed(2);
+            document.getElementById('budget-result-wants-total').textContent = '$' + wantsTotal.toFixed(2);
+            document.getElementById('budget-result-savings-total').textContent = '$' + savingsTotal.toFixed(2);
+            document.getElementById('budget-remaining').textContent = '$' + remaining.toFixed(2);
+
+            // Update bars
+            const needsPct = needsTarget > 0 ? (needsTotal / needsTarget * 100) : 0;
+            const wantsPct = wantsTarget > 0 ? (wantsTotal / wantsTarget * 100) : 0;
+            const savingsPct = savingsTarget > 0 ? (savingsTotal / savingsTarget * 100) : 0;
+
+            document.getElementById('budget-needs-bar').style.width = Math.min(needsPct, 100) + '%';
+            document.getElementById('budget-needs-bar').textContent = needsPct.toFixed(0) + '%';
+
+            document.getElementById('budget-wants-bar').style.width = Math.min(wantsPct, 100) + '%';
+            document.getElementById('budget-wants-bar').textContent = wantsPct.toFixed(0) + '%';
+
+            document.getElementById('budget-savings-bar').style.width = Math.min(savingsPct, 100) + '%';
+            document.getElementById('budget-savings-bar').textContent = savingsPct.toFixed(0) + '%';
+
+            document.getElementById('budget-results').classList.add('show');
+
+            // Store in global data
+            window.startReadyData.budget = {
+                netIncome: netIncome,
+                needsTotal: needsTotal,
+                wantsTotal: wantsTotal,
+                savingsTotal: savingsTotal,
+                needsTarget: needsTarget,
+                wantsTarget: wantsTarget,
+                savingsTarget: savingsTarget,
+                remaining: remaining
+            };
+        }
+
+        function resetBudget() {
+            document.getElementById('budget-gross-income').value = '';
+            document.getElementById('budget-tax-rate').value = '';
+            budgetData.needs = [];
+            budgetData.wants = [];
+            budgetData.savings = [];
+            renderBudgetItems('needs');
+            renderBudgetItems('wants');
+            renderBudgetItems('savings');
+            document.getElementById('budget-results').classList.remove('show');
+            document.getElementById('budget-needs-target').textContent = 'Target: $0/month';
+            document.getElementById('budget-wants-target').textContent = 'Target: $0/month';
+            document.getElementById('budget-savings-target').textContent = 'Target: $0/month';
+            window.startReadyData.budget = null;
+        }
+
+        // ==================== WEALTH TRACKER ====================
+        const wealthData = {
+            assets: [],
+            liabilities: []
+        };
+
+        function addWealthItem(type) {
+            const nameInput = document.getElementById(`wealth-${type}-name`);
+            const amountInput = document.getElementById(`wealth-${type}-amount`);
+
+            const name = nameInput.value.trim();
+            const amount = parseFloat(amountInput.value) || 0;
+
+            if (!name || amount < 0) {
+                alert('Please enter both item name and amount');
+                return;
+            }
+
+            wealthData[type + 's'].push({ name, amount });
+
+            nameInput.value = '';
+            amountInput.value = '';
+
+            renderWealthItems(type);
+            calculateWealth();
+        }
+
+        function deleteWealthItem(type, index) {
+            wealthData[type + 's'].splice(index, 1);
+            renderWealthItems(type);
+            calculateWealth();
+        }
+
+        function renderWealthItems(type) {
+            const list = document.getElementById(`wealth-${type}-list`);
+            list.innerHTML = '';
+
+            wealthData[type + 's'].forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'item-list-item';
+                li.innerHTML = `
+                    <span>${item.name}</span>
+                    <div>
+                        <span class="item-amount">$${item.amount.toFixed(2)}</span>
+                        <button class="item-delete-btn" onclick="deleteWealthItem('${type}', ${index})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function calculateWealth() {
+            const totalAssets = wealthData.assets.reduce((sum, item) => sum + item.amount, 0);
+            const totalLiabilities = wealthData.liabilities.reduce((sum, item) => sum + item.amount, 0);
+            const netWorth = totalAssets - totalLiabilities;
+            const debtRatio = totalAssets > 0 ? (totalLiabilities / totalAssets * 100) : 0;
+
+            document.getElementById('wealth-result-assets').textContent = '$' + totalAssets.toFixed(2);
+            document.getElementById('wealth-result-liabilities').textContent = '$' + totalLiabilities.toFixed(2);
+            document.getElementById('wealth-result-net-worth').textContent = '$' + netWorth.toFixed(2);
+            document.getElementById('wealth-result-debt-ratio').textContent = debtRatio.toFixed(1) + '%';
+
+            // Bar chart
+            const barContainer = document.getElementById('wealth-bar-container');
+            barContainer.innerHTML = '';
+
+            const total = totalAssets + totalLiabilities;
+            if (total > 0) {
+                const assetsPct = (totalAssets / total) * 100;
+                const liabilitiesPct = (totalLiabilities / total) * 100;
+
+                barContainer.innerHTML = `
+                    <div style="width: ${assetsPct}%; background-color: var(--gold); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-family: var(--mono);">
+                        Assets ${assetsPct.toFixed(0)}%
+                    </div>
+                    <div style="width: ${liabilitiesPct}%; background-color: #e5a08f; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-family: var(--mono);">
+                        Liab ${liabilitiesPct.toFixed(0)}%
+                    </div>
+                `;
+            }
+
+            document.getElementById('wealth-results').classList.add('show');
+
+            // Store in global data
+            window.startReadyData.wealth = {
+                totalAssets: totalAssets,
+                totalLiabilities: totalLiabilities,
+                netWorth: netWorth,
+                debtRatio: debtRatio
+            };
+        }
+
+        function resetWealth() {
+            wealthData.assets = [];
+            wealthData.liabilities = [];
+            document.getElementById('wealth-asset-name').value = '';
+            document.getElementById('wealth-asset-amount').value = '';
+            document.getElementById('wealth-liability-name').value = '';
+            document.getElementById('wealth-liability-amount').value = '';
+            renderWealthItems('asset');
+            renderWealthItems('liability');
+            document.getElementById('wealth-results').classList.remove('show');
+            window.startReadyData.wealth = null;
+        }
+
+        // ==================== FINANCIAL PLAN ====================
+        function updateFinancialPlan() {
+            const data = window.startReadyData;
+
+            // Update Health Score
+            let score = 0;
+            const metrics = [];
+
+            // Savings Rate
+            if (data.budget) {
+                const savingsRate = data.budget.netIncome > 0 ? (data.budget.savingsTotal / data.budget.netIncome * 100) : 0;
+                const savingsPts = savingsRate >= 20 ? 25 : savingsRate >= 10 ? 15 : 0;
+                score += savingsPts;
+                metrics.push({
+                    label: 'Savings Rate',
+                    value: savingsRate.toFixed(1) + '%',
+                    status: savingsRate >= 20 ? 'good' : savingsRate >= 10 ? 'warning' : 'danger',
+                    points: savingsPts
+                });
+            } else {
+                metrics.push({
+                    label: 'Savings Rate',
+                    value: 'Not calculated',
+                    status: 'danger',
+                    points: 0
+                });
+            }
+
+            // Housing Cost
+            if (data.mortgage && data.budget) {
+                const housingPct = data.budget.netIncome > 0 ? (data.mortgage.monthlyTotal / data.budget.netIncome * 100) : 0;
+                const housingPts = housingPct < 30 ? 25 : housingPct < 40 ? 15 : 0;
+                score += housingPts;
+                metrics.push({
+                    label: 'Housing Cost',
+                    value: housingPct.toFixed(1) + '% of income',
+                    status: housingPct < 30 ? 'good' : housingPct < 40 ? 'warning' : 'danger',
+                    points: housingPts
+                });
+            } else {
+                metrics.push({
+                    label: 'Housing Cost',
+                    value: 'Not calculated',
+                    status: 'danger',
+                    points: 0
+                });
+            }
+
+            // Debt APR
+            if (data.apr) {
+                const aprPts = data.apr.apr < 20 ? 25 : data.apr.apr < 50 ? 15 : 0;
+                score += aprPts;
+                metrics.push({
+                    label: 'Debt APR',
+                    value: data.apr.apr.toFixed(2) + '%',
+                    status: data.apr.apr < 20 ? 'good' : data.apr.apr < 50 ? 'warning' : 'danger',
+                    points: aprPts
+                });
+            } else {
+                metrics.push({
+                    label: 'Debt APR',
+                    value: 'Not calculated',
+                    status: 'danger',
+                    points: 0
+                });
+            }
+
+            // Retirement Track
+            if (data.retirement && data.budget) {
+                const monthlyNeeded = data.budget.netIncome * 0.5; // Conservative estimate
+                const monthlyOnTrack = data.retirement.monthlyRetirementIncome >= monthlyNeeded;
+                const retirePts = monthlyOnTrack ? 25 : data.retirement.monthlyRetirementIncome > monthlyNeeded * 0.5 ? 15 : 0;
+                score += retirePts;
+                metrics.push({
+                    label: 'Retirement Track',
+                    value: '$' + data.retirement.monthlyRetirementIncome.toFixed(2) + '/month',
+                    status: monthlyOnTrack ? 'good' : data.retirement.monthlyRetirementIncome > monthlyNeeded * 0.5 ? 'warning' : 'danger',
+                    points: retirePts
+                });
+            } else {
+                metrics.push({
+                    label: 'Retirement Track',
+                    value: 'Not calculated',
+                    status: 'danger',
+                    points: 0
+                });
+            }
+
+            document.getElementById('plan-health-score').textContent = score;
+
+            const metricsContainer = document.getElementById('plan-health-metrics');
+            metricsContainer.innerHTML = '';
+            metrics.forEach(metric => {
+                const div = document.createElement('div');
+                div.className = 'health-metric';
+                div.innerHTML = `
+                    <div>
+                        <div class="health-metric-label">${metric.label}</div>
+                        <div class="health-metric-value">${metric.value}</div>
+                    </div>
+                    <div class="health-indicator" style="background-color: ${metric.status === 'good' ? '#2d7d3f' : metric.status === 'warning' ? '#d97706' : '#dc2626'};"></div>
+                `;
+                metricsContainer.appendChild(div);
+            });
+
+            // Budget Summary
+            if (data.budget) {
+                const budgetHtml = `
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value">$${data.budget.netIncome.toFixed(2)}</p>
+                            <p class="result-label">Net Monthly Income</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${(data.budget.needsTotal + data.budget.wantsTotal + data.budget.savingsTotal).toFixed(2)}</p>
+                            <p class="result-label">Total Expenses</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">${(data.budget.savingsTotal / data.budget.netIncome * 100).toFixed(1)}%</p>
+                            <p class="result-label">Savings Rate</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('plan-budget-summary').innerHTML = budgetHtml;
+                document.getElementById('plan-budget-summary').classList.remove('not-calculated');
+            }
+
+            // APR Summary
+            if (data.apr) {
+                const aprHtml = `
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value">${data.apr.apr.toFixed(2)}%</p>
+                            <p class="result-label">Annual Percentage Rate</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${data.apr.totalCost.toFixed(2)}</p>
+                            <p class="result-label">Total Cost</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('plan-apr-summary').innerHTML = aprHtml;
+                document.getElementById('plan-apr-summary').classList.remove('not-calculated');
+            }
+
+            // Mortgage Summary
+            if (data.mortgage) {
+                const mortgageHtml = `
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value">$${data.mortgage.monthlyTotal.toFixed(2)}</p>
+                            <p class="result-label">Monthly Payment (P&I + Tax + Insurance)</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${data.mortgage.totalInterest.toFixed(2)}</p>
+                            <p class="result-label">Total Interest Over Life</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">${data.mortgage.ltv.toFixed(1)}%</p>
+                            <p class="result-label">Loan-to-Value Ratio</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('plan-mortgage-summary').innerHTML = mortgageHtml;
+                document.getElementById('plan-mortgage-summary').classList.remove('not-calculated');
+            }
+
+            // Retirement Summary
+            if (data.retirement) {
+                const retirementHtml = `
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value">$${data.retirement.projectedSavings.toFixed(2)}</p>
+                            <p class="result-label">Projected Retirement Savings</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${data.retirement.monthlyRetirementIncome.toFixed(2)}</p>
+                            <p class="result-label">Monthly Retirement Income (4% Rule)</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">${data.retirement.yearsOfIncome.toFixed(1)} years</p>
+                            <p class="result-label">Years of Income</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('plan-retirement-summary').innerHTML = retirementHtml;
+                document.getElementById('plan-retirement-summary').classList.remove('not-calculated');
+            }
+
+            // Wealth Summary
+            if (data.wealth) {
+                const wealthHtml = `
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <p class="result-value">$${data.wealth.totalAssets.toFixed(2)}</p>
+                            <p class="result-label">Total Assets</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${data.wealth.totalLiabilities.toFixed(2)}</p>
+                            <p class="result-label">Total Liabilities</p>
+                        </div>
+                        <div class="result-item">
+                            <p class="result-value">$${data.wealth.netWorth.toFixed(2)}</p>
+                            <p class="result-label">Net Worth</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('plan-wealth-summary').innerHTML = wealthHtml;
+                document.getElementById('plan-wealth-summary').classList.remove('not-calculated');
+            }
+        }
+
+        // Newsletter signup
+        function handleNewsletterSignup(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing! Check your email for confirmation.');
+            event.target.reset();
+            return false;
+        }
+    </script>
+
+</body>
+</html>

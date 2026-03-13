@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Post-Exit 90-Day Calendar | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}.tool-row.single{grid-template-columns:1fr}.tool-field label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}.tool-field input,.tool-field select{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box}.tool-field input:focus{outline:none;border-color:var(--gold)}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-btn-reset{display:inline-block;padding:.7rem 1.2rem;background:transparent;color:var(--mid);border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:.85rem;cursor:pointer;margin-top:.5rem;margin-left:.5rem}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.calendar-container { margin-top: 2rem; }
+		.week-block { border: 1px solid var(--rule); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; background: var(--paper); }
+		.week-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.75rem; }
+		.week-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+		.week-dates { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); }
+		.week-phase { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); background: rgba(200,164,90,0.1); padding: 0.35rem 0.75rem; border-radius: 4px; }
+		.phase-label { font-family: var(--mono); font-size: 0.7rem; color: var(--mid); text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.5px; }
+		.task-list { list-style: none; padding: 0; margin: 0; }
+		.task-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: flex-start; }
+		.task-checkbox { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: var(--gold); }
+		.task-label { flex-grow: 1; font-family: var(--mono); font-size: 0.85rem; color: var(--ink); line-height: 1.5; cursor: pointer; user-select: none; }
+		.task-item input:checked + .task-label { color: var(--mid); text-decoration: line-through; }
+		.category-tag { font-size: 0.7rem; padding: 0.2rem 0.4rem; border-radius: 3px; margin-left: 0.5rem; display: inline-block; }
+		.category-tag.financial { background: rgba(200,164,90,0.2); color: #a67c3b; }
+		.category-tag.personal { background: rgba(155,132,88,0.2); color: #7a6d62; }
+		.category-tag.professional { background: rgba(212,175,127,0.2); color: #8b6f47; }
+		.print-btn { margin-top: 1.5rem; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; }
+		.print-btn:hover { background: var(--gold2); }
+		@media print { .tool-field, .tool-btn, .tool-btn-reset, .print-btn { display: none; } }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Post-Exit 90-Day Calendar</h1>
+		<p>Week-by-week roadmap for your first three months after closing</p>
+		<div class="chapter-ref">Chapter 32-33</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Inputs -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Calendar Setup</h2>
+			</div>
+			<div class="tool-card-body">
+				<div class="tool-row">
+					<div class="tool-field">
+						<label for="closingDate">Closing Date</label>
+						<input type="date" id="closingDate">
+					</div>
+					<div class="tool-field">
+						<label for="significantOther">Significant Other's Name (Optional)</label>
+						<input type="text" id="significantOther" placeholder="e.g., Sarah">
+					</div>
+				</div>
+				<div class="tool-row single">
+					<div class="tool-field">
+						<label for="commitment">Transition Commitment (weeks)</label>
+						<input type="number" id="commitment" placeholder="4" value="4" min="1" max="12">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="generateBtn">Generate Calendar</button>
+			<button class="tool-btn-reset" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Calendar Results -->
+		<div class="tool-results" id="results">
+			<button class="print-btn" onclick="window.print()">Print Calendar</button>
+
+			<div class="calendar-container" id="calendarContainer"></div>
+
+			<button class="print-btn" onclick="window.print()">Print Calendar</button>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function addDays(date, days) {
+			const result = new Date(date);
+			result.setDate(result.getDate() + days);
+			return result;
+		}
+
+		function formatDate(date) {
+			return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+		}
+
+		function generateCalendar() {
+			const closingDate = document.getElementById('closingDate').value;
+			if (!closingDate) {
+				alert('Please select a closing date');
+				return;
+			}
+
+			const closing = new Date(closingDate);
+			const significantOther = document.getElementById('significantOther').value || 'your partner';
+
+			const weeks = [
+				{
+					week: '1-2',
+					phase: 'IMMEDIATE ACTIONS',
+					title: 'Week 1-2: Celebrate & Reset',
+					tasks: [
+						{ text: 'Celebrate closing with family & team', category: 'personal' },
+						{ text: 'Take a few days off to rest', category: 'personal' },
+						{ text: 'Meet with wealth advisor & set up accounts', category: 'financial' },
+						{ text: 'Review tax documents & filing deadlines', category: 'financial' },
+						{ text: 'Review insurance coverage (life, disability, liability)', category: 'financial' },
+						{ text: 'Notify important contacts of role transition', category: 'professional' }
+					]
+				},
+				{
+					week: '3-4',
+					phase: 'FINANCIAL HOUSEKEEPING',
+					title: 'Week 3-4: Set Up Foundations',
+					tasks: [
+						{ text: 'First meeting with financial advisor(s)', category: 'financial' },
+						{ text: 'Review & update estate plan with attorney', category: 'financial' },
+						{ text: 'Revise insurance strategy based on new wealth', category: 'financial' },
+						{ text: 'Set up cash management plan & emergency fund', category: 'financial' },
+						{ text: 'Review beneficiaries on all accounts', category: 'financial' },
+						{ text: 'Begin tax planning for current year', category: 'financial' }
+					]
+				},
+				{
+					week: '5-6',
+					phase: 'IDENTITY TRANSITION',
+					title: 'Week 5-6: Reconnect & Reset',
+					tasks: [
+						{ text: 'Schedule regular exercise/health routine', category: 'personal' },
+						{ text: 'Reconnect with friends & family (no shop talk)', category: 'personal' },
+						{ text: 'Start journaling or reflect on transition', category: 'personal' },
+						{ text: 'Begin exploring interests outside of work', category: 'personal' },
+						{ text: 'Check in with ' + significantOther + ' about next chapter', category: 'personal' }
+					]
+				},
+				{
+					week: '7-8',
+					phase: 'IDENTITY TRANSITION',
+					title: 'Week 7-8: Explore Identity',
+					tasks: [
+						{ text: 'Identify 3-5 new interests or activities to try', category: 'personal' },
+						{ text: 'Schedule meaningful time with family', category: 'personal' },
+						{ text: 'Begin mentoring/advising exploration (if interested)', category: 'professional' },
+						{ text: 'Research professional development opportunities', category: 'professional' },
+						{ text: 'Reflect on what "success" means now', category: 'personal' }
+					]
+				},
+				{
+					week: '9-10',
+					phase: 'EXPLORATION',
+					title: 'Week 9-10: Try Something New',
+					tasks: [
+						{ text: 'Try first new activity/hobby', category: 'personal' },
+						{ text: 'Take a trip or getaway', category: 'personal' },
+						{ text: 'Attend networking event or conference (if interested)', category: 'professional' },
+						{ text: 'Have first advisory/mentoring conversation', category: 'professional' },
+						{ text: 'Explore skill development opportunities', category: 'professional' }
+					]
+				},
+				{
+					week: '11-12',
+					phase: 'EXPLORATION',
+					title: 'Week 11-12: Build Momentum',
+					tasks: [
+						{ text: 'Deepen new interests or activities', category: 'personal' },
+						{ text: 'Plan next trips or adventures', category: 'personal' },
+						{ text: 'Begin deeper skill development or learning', category: 'professional' },
+						{ text: 'Formalize advisory/mentoring commitments', category: 'professional' },
+						{ text: 'Assess wellbeing & energy levels', category: 'personal' }
+					]
+				},
+				{
+					week: '13',
+					phase: 'REVIEW & PLAN',
+					title: 'Week 13: Assess & Plan',
+					tasks: [
+						{ text: 'Comprehensive wellbeing assessment', category: 'personal' },
+						{ text: 'Financial check-in with advisor', category: 'financial' },
+						{ text: 'Set 6-month goals across all life areas', category: 'personal' },
+						{ text: 'Reflect on biggest learnings from past 90 days', category: 'personal' },
+						{ text: 'Plan next chapter & long-term vision', category: 'personal' },
+						{ text: 'Celebrate progress', category: 'personal' }
+					]
+				}
+			];
+
+			const container = document.getElementById('calendarContainer');
+			container.innerHTML = '';
+
+			weeks.forEach(w => {
+				let startDate, endDate;
+
+				if (w.week === '1-2') {
+					startDate = closing;
+					endDate = addDays(closing, 13);
+				} else if (w.week === '3-4') {
+					startDate = addDays(closing, 14);
+					endDate = addDays(closing, 27);
+				} else if (w.week === '5-6') {
+					startDate = addDays(closing, 28);
+					endDate = addDays(closing, 41);
+				} else if (w.week === '7-8') {
+					startDate = addDays(closing, 42);
+					endDate = addDays(closing, 55);
+				} else if (w.week === '9-10') {
+					startDate = addDays(closing, 56);
+					endDate = addDays(closing, 69);
+				} else if (w.week === '11-12') {
+					startDate = addDays(closing, 70);
+					endDate = addDays(closing, 83);
+				} else {
+					startDate = addDays(closing, 84);
+					endDate = addDays(closing, 89);
+				}
+
+				const weekBlock = document.createElement('div');
+				weekBlock.className = 'week-block';
+				weekBlock.innerHTML = `
+					<div class="week-header">
+						<div>
+							<div class="week-title">${w.title}</div>
+							<div class="week-dates">${formatDate(startDate)} – ${formatDate(endDate)}</div>
+						</div>
+						<div class="week-phase">${w.phase}</div>
+					</div>
+					<ul class="task-list">
+						${w.tasks.map(t => `
+							<li class="task-item">
+								<input type="checkbox" class="task-checkbox" id="task-${Math.random()}">
+								<label class="task-label" for="task-${Math.random().toString().slice(2)}">
+									${t.text}
+									<span class="category-tag ${t.category}">${t.category}</span>
+								</label>
+							</li>
+						`).join('')}
+					</ul>
+				`;
+				container.appendChild(weekBlock);
+			});
+
+			document.getElementById('results').classList.add('visible');
+		}
+
+		document.getElementById('generateBtn').addEventListener('click', generateCalendar);
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('closingDate').value = '';
+			document.getElementById('significantOther').value = '';
+			document.getElementById('commitment').value = '4';
+			document.getElementById('results').classList.remove('visible');
+		});
+
+		// Set default closing date to today
+		const today = new Date().toISOString().split('T')[0];
+		document.getElementById('closingDate').value = today;
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

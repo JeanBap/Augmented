@@ -22,7 +22,14 @@
             <a href="/book/#sessions">Sessions & Model Building</a>
           </div>
         </div>
-        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <div class="nav-dropdown">
+          <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+          <div class="dropdown-menu">
+            <a href="/tools/start-ready.html">Start Ready Tools</a>
+            <a href="/tools/raise-ready.html">Raise Ready Tools</a>
+            <a href="/tools/exit-ready/">Exit Ready Tools</a>
+          </div>
+        </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
       </div>
       <div class="nav-right">

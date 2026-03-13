@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Letter to Your Company | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-field label{display:block;font-family:var(--mono);font-size:.8rem;color:var(--mid);margin-bottom:.35rem}.tool-field input,.tool-field textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.9rem;box-sizing:border-box}.tool-field textarea{min-height:100px}.tool-field input:focus,.tool-field textarea:focus{outline:none;border-color:var(--gold)}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.prompt-block { margin-bottom: 1.75rem; }
+		.prompt-title { font-family: var(--serif); font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; }
+		.prompt-subtitle { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.75rem; line-height: 1.5; }
+		.letter-preview { margin-top: 2rem; padding: 2rem; border: 2px solid var(--rule); border-radius: 8px; background: var(--paper); font-family: var(--serif); line-height: 1.9; color: var(--ink); font-size: 0.95rem; }
+		.letter-preview p { margin: 1rem 0; }
+		.wc-display { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.5rem; }
+		.message-box { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--gold); border-radius: 8px; background: rgba(200,164,90,0.08); text-align: center; }
+		.message-box p { font-family: var(--serif); font-size: 1rem; color: var(--ink); margin: 0 0 0.5rem 0; line-height: 1.6; }
+		.message-box .subtext { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+		.print-btn { padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; }
+		.print-btn:hover { background: var(--gold2); }
+		@media print { .tool-field, .tool-btn, .print-btn, .tool-card-header, .back-link, #site-nav, #site-footer { display: none; } }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Letter to Your Company</h1>
+		<p>Reflective writing exercise for closure and gratitude</p>
+		<div class="chapter-ref">Chapter 32</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Writing Prompts -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Write Your Letter</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem;">Answer these prompts honestly and reflectively. This letter is for you—there are no scores or metrics, just gratitude and closure.</p>
+
+				<!-- Company Name -->
+				<div class="prompt-block">
+					<div class="prompt-title">Dear [Company Name]</div>
+					<div class="tool-field">
+						<label for="companyName">Company Name</label>
+						<input type="text" id="companyName" placeholder="e.g., Acme Software Co.">
+					</div>
+				</div>
+
+				<!-- Section 1 -->
+				<div class="prompt-block">
+					<div class="prompt-title">1. When I started you...</div>
+					<div class="prompt-subtitle">Describe the moment you decided to start this company. What problem were you trying to solve? What were you feeling?</div>
+					<textarea id="started" placeholder="I remember the moment I decided to start you..."></textarea>
+					<div class="wc-display">Target: 3-5 sentences | <span id="startedWc">0</span> words</div>
+				</div>
+
+				<!-- Section 2 -->
+				<div class="prompt-block">
+					<div class="prompt-title">2. The hardest moments were...</div>
+					<div class="prompt-subtitle">What were the toughest challenges? What almost broke you? Be honest about the struggles.</div>
+					<textarea id="hardest" placeholder="The hardest moments were when..."></textarea>
+					<div class="wc-display">Target: 3-5 sentences | <span id="hardestWc">0</span> words</div>
+				</div>
+
+				<!-- Section 3 -->
+				<div class="prompt-block">
+					<div class="prompt-title">3. But the best parts were...</div>
+					<div class="prompt-subtitle">What gave you the most joy? What moments made it all worthwhile? What are you proudest of?</div>
+					<textarea id="best" placeholder="The best parts were..."></textarea>
+					<div class="wc-display">Target: 3-5 sentences | <span id="bestWc">0</span> words</div>
+				</div>
+
+				<!-- Section 4 -->
+				<div class="prompt-block">
+					<div class="prompt-title">4. What I hope for your future...</div>
+					<div class="prompt-subtitle">What do you want for the company going forward? Who do you want to own you? What do you hope happens next?</div>
+					<textarea id="future" placeholder="I hope that you will..."></textarea>
+					<div class="wc-display">Target: 2-4 sentences | <span id="futureWc">0</span> words</div>
+				</div>
+
+				<!-- Section 5 -->
+				<div class="prompt-block">
+					<div class="prompt-title">5. What this journey taught me...</div>
+					<div class="prompt-subtitle">How did building this company change you? What did you learn about yourself? About business? About people?</div>
+					<textarea id="learned" placeholder="This journey taught me..."></textarea>
+					<div class="wc-display">Target: 3-5 sentences | <span id="learnedWc">0</span> words</div>
+				</div>
+
+				<!-- Section 6 -->
+				<div class="prompt-block">
+					<div class="prompt-title">6. As I let go, I want to remember...</div>
+					<div class="prompt-subtitle">What do you want to carry with you? What memories, values, or lessons do you want to hold onto?</div>
+					<textarea id="letgo" placeholder="As I let go, I want to remember..."></textarea>
+					<div class="wc-display">Target: 2-4 sentences | <span id="letgoWc">0</span> words</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="generateBtn">Generate Letter</button>
+			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Clear</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<button class="print-btn" onclick="window.print()">Print Letter</button>
+
+			<!-- Letter Preview -->
+			<div class="letter-preview" id="letterPreview">
+				<p style="text-align: center; font-style: italic; color: var(--mid); font-family: var(--mono); font-size: 0.9rem; margin-bottom: 2rem;">Letter preview appears here after you complete the prompts.</p>
+			</div>
+
+			<!-- Word Count -->
+			<div style="margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05);">
+				<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid);">
+					Total words: <span id="totalWc" style="font-weight: bold; color: var(--ink);">0</span>
+				</div>
+			</div>
+
+			<!-- Message -->
+			<div class="message-box">
+				<p>This letter is for you.<br>There are no scores, no metrics, no optimization.</p>
+				<p style="font-style: italic; color: var(--gold);">Just gratitude and closure.</p>
+				<p class="subtext" style="margin-top: 1rem;">Consider keeping this letter. Read it again in a year. You may be surprised by what you feel.</p>
+			</div>
+
+			<div style="margin-top: 1.5rem; text-align: center;">
+				<button class="print-btn" onclick="window.print()">Print Letter</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		function countWords(text) {
+			return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+		}
+
+		function updateWordCount(id, displayId) {
+			const text = document.getElementById(id).value;
+			const wc = countWords(text);
+			document.getElementById(displayId).textContent = wc;
+			return wc;
+		}
+
+		['started', 'hardest', 'best', 'future', 'learned', 'letgo'].forEach(section => {
+			document.getElementById(section).addEventListener('input', () => {
+				updateWordCount(section, section + 'Wc');
+			});
+		});
+
+		document.getElementById('generateBtn').addEventListener('click', () => {
+			const company = document.getElementById('companyName').value || '[Company]';
+			const started = document.getElementById('started').value;
+			const hardest = document.getElementById('hardest').value;
+			const best = document.getElementById('best').value;
+			const future = document.getElementById('future').value;
+			const learned = document.getElementById('learned').value;
+			const letgo = document.getElementById('letgo').value;
+
+			// Check if at least some content is filled
+			if (!started && !hardest && !best && !future && !learned && !letgo) {
+				alert('Please write at least one section of your letter');
+				return;
+			}
+
+			// Generate letter
+			const letterHTML = `
+				<p><strong>Dear ${company},</strong></p>
+
+				${started ? `<p><strong>When I started you,</strong> ${started}</p>` : ''}
+
+				${hardest ? `<p><strong>The hardest moments were</strong> when ${hardest}</p>` : ''}
+
+				${best ? `<p><strong>But the best parts were</strong> ${best}</p>` : ''}
+
+				${future ? `<p><strong>What I hope for your future</strong> is ${future}</p>` : ''}
+
+				${learned ? `<p><strong>What this journey taught me</strong> is ${learned}</p>` : ''}
+
+				${letgo ? `<p><strong>As I let go,</strong> I want to remember ${letgo}</p>` : ''}
+
+				<p style="margin-top: 2rem;">With gratitude and respect,</p>
+				<p style="margin: 2rem 0 0 0; border-top: 1px solid var(--rule); padding-top: 1rem;"><em>The Founder</em></p>
+			`;
+
+			document.getElementById('letterPreview').innerHTML = letterHTML;
+
+			// Total word count
+			let totalWc = 0;
+			['started', 'hardest', 'best', 'future', 'learned', 'letgo'].forEach(section => {
+				totalWc += countWords(document.getElementById(section).value);
+			});
+
+			document.getElementById('totalWc').textContent = totalWc;
+
+			document.getElementById('results').classList.add('visible');
+		});
+
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			document.getElementById('companyName').value = '';
+			['started', 'hardest', 'best', 'future', 'learned', 'letgo'].forEach(id => {
+				document.getElementById(id).value = '';
+				document.getElementById(id + 'Wc').textContent = '0';
+			});
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

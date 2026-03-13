@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Absence Test Protocol | Exit Ready Tools</title>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/shared/style.css">
+	<style>
+		:root {
+			--ink: #08080d; --paper: #f2ede4; --gold: #c8a45a; --gold2: #e5c97e; --dim: #3a3830; --mid: #6e6a61; --rule: rgba(200,164,90,0.18);
+			--serif: 'Instrument Serif'; --mono: 'DM Mono'; --sans: 'Syne';
+		}
+		.tool-hero{text-align:center;padding:3rem 2rem 2rem}.tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}.tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem}.tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}.tool-container{max-width:800px;margin:0 auto;padding:0 2rem 3rem}.tool-card{border:1px solid var(--rule);border-radius:12px;background:var(--paper);overflow:hidden;margin-bottom:2rem}.tool-card-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--rule)}.tool-card-header h2{font-family:var(--serif);font-size:1.4rem}.tool-card-body{padding:1.5rem 2rem 2rem}.tool-btn{display:inline-block;padding:.7rem 1.5rem;background:var(--gold);color:var(--paper);border:none;border-radius:6px;font-family:var(--mono);font-size:.85rem;font-weight:500;cursor:pointer;margin-top:.5rem}.tool-btn:hover{background:var(--gold2)}.tool-results{margin-top:1.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:8px;background:rgba(200,164,90,.03);display:none}.tool-results.visible{display:block}.back-link{display:inline-block;font-family:var(--mono);font-size:.85rem;color:var(--gold);text-decoration:none;padding:1rem 2rem 0}.back-link:hover{color:var(--gold2)}
+		.phase-block { border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; background: var(--paper); }
+		.phase-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin-bottom: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.75rem; }
+		.checklist { list-style: none; padding: 0; margin: 0; }
+		.checklist-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: flex-start; }
+		.checklist-checkbox { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: var(--gold); }
+		.checklist-label { flex-grow: 1; font-family: var(--mono); font-size: 0.85rem; color: var(--ink); line-height: 1.5; cursor: pointer; user-select: none; }
+		.checklist-item input:checked + .checklist-label { color: var(--mid); text-decoration: line-through; }
+		.daily-tracking { margin-top: 1rem; padding: 1rem; background: rgba(200,164,90,0.05); border-radius: 6px; }
+		.daily-item { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: center; margin-bottom: 0.75rem; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 4px; }
+		.daily-label { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); }
+		.daily-score { display: flex; gap: 0.25rem; }
+		.daily-score button { width: 28px; height: 28px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--mid); cursor: pointer; font-family: var(--mono); font-size: 0.7rem; font-weight: bold; }
+		.daily-score button.active { background: var(--gold); color: var(--paper); border-color: var(--gold); }
+		.qa-section { margin-top: 1rem; }
+		.qa-item { margin-bottom: 1rem; }
+		.qa-label { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); margin-bottom: 0.5rem; display: block; }
+		.qa-input { width: 100%; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.85rem; box-sizing: border-box; min-height: 80px; }
+		.result-item { margin-bottom: 1.5rem; padding: 1rem; border-left: 4px solid var(--gold); background: rgba(200,164,90,0.05); border-radius: 4px; }
+		.result-item h4 { font-family: var(--serif); font-size: 0.95rem; margin: 0 0 0.5rem 0; color: var(--ink); }
+		.result-item p { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 0; line-height: 1.6; }
+		.score-badge { display: inline-block; padding: 0.4rem 0.8rem; background: var(--gold); color: var(--paper); border-radius: 4px; font-family: var(--serif); font-size: 0.95rem; font-weight: bold; margin-right: 0.5rem; }
+	</style>
+</head>
+<body data-page="tools">
+	<div id="site-nav"></div>
+
+	<a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+	<div class="tool-hero">
+		<h1>Absence Test Protocol</h1>
+		<p>Interactive framework to test your company's independence from you</p>
+		<div class="chapter-ref">Chapter 9</div>
+	</div>
+
+	<div class="tool-container">
+		<!-- Phase 1: Pre-Test Setup -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Phase 1: Pre-Test Setup (2 weeks before)</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem;">Complete these preparations before your absence test:</p>
+				<ul class="checklist">
+					<li class="checklist-item">
+						<input type="checkbox" class="checklist-checkbox" id="setup1">
+						<label class="checklist-label" for="setup1">Designate acting leaders for key roles</label>
+					</li>
+					<li class="checklist-item">
+						<input type="checkbox" class="checklist-checkbox" id="setup2">
+						<label class="checklist-label" for="setup2">Document critical processes and decision trees</label>
+					</li>
+					<li class="checklist-item">
+						<input type="checkbox" class="checklist-checkbox" id="setup3">
+						<label class="checklist-label" for="setup3">Set up real-time reporting dashboards for key metrics</label>
+					</li>
+					<li class="checklist-item">
+						<input type="checkbox" class="checklist-checkbox" id="setup4">
+						<label class="checklist-label" for="setup4">Brief leadership team on test parameters and authority</label>
+					</li>
+					<li class="checklist-item">
+						<input type="checkbox" class="checklist-checkbox" id="setup5">
+						<label class="checklist-label" for="setup5">Create emergency contact protocol for critical issues only</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Phase 2: During Absence -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Phase 2: During Absence (2 weeks)</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem;">Track daily performance during your absence. For each day, rate how well the business ran without you (1 = very poorly, 5 = excellently):</p>
+
+				<div class="daily-tracking">
+					<div id="dailyItems"></div>
+				</div>
+
+				<div style="margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05);">
+					<p style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin: 0; line-height: 1.6;">
+						<strong>Scoring Rubric:</strong> 5 = No issues, business ran smoothly | 4 = Minor issues handled well | 3 = Some issues, some needed attention | 2 = Multiple issues, required intervention | 1 = Critical issues, business affected
+					</p>
+				</div>
+
+				<div style="margin-top: 1rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 6px;">
+					<p style="font-family: var(--mono); font-size: 0.85rem; color: var(--ink); margin: 0 0 0.75rem 0;">Track three key metrics:</p>
+					<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 2;">
+						☐ Revenue maintained<br>
+						☐ Customer issues handled<br>
+						☐ Team decisions made without founder input
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Phase 3: Post-Test Review -->
+		<div class="tool-card">
+			<div class="tool-card-header">
+				<h2>Phase 3: Post-Test Review</h2>
+			</div>
+			<div class="tool-card-body">
+				<p style="font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem;">Answer these questions honestly after your absence:</p>
+
+				<div class="qa-section">
+					<div class="qa-item">
+						<label class="qa-label" for="whatBroke">What broke? What problems emerged that your team couldn't handle?</label>
+						<textarea class="qa-input" id="whatBroke" placeholder="List specific issues..."></textarea>
+					</div>
+
+					<div class="qa-item">
+						<label class="qa-label" for="whatWorked">What worked? What processes ran smoothly without you?</label>
+						<textarea class="qa-input" id="whatWorked" placeholder="Describe what went well..."></textarea>
+					</div>
+
+					<div class="qa-item">
+						<label class="qa-label" for="surprised">What surprised you? What unexpected strengths or weaknesses did you discover?</label>
+						<textarea class="qa-input" id="surprised" placeholder="Share your observations..."></textarea>
+					</div>
+
+					<div class="qa-item">
+						<label class="qa-label" for="buyerThink">What would a buyer think? How would a buyer view your company's independence?</label>
+						<textarea class="qa-input" id="buyerThink" placeholder="Consider a buyer's perspective..."></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Calculate Button -->
+		<div style="padding: 0 2rem;">
+			<button class="tool-btn" id="analyzeBtn">Analyze Results</button>
+			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
+		</div>
+
+		<!-- Results -->
+		<div class="tool-results" id="results">
+			<h3 style="font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1.5rem;">Absence Test Results</h3>
+
+			<div class="result-item">
+				<h4>Overall Independence Score</h4>
+				<div>
+					<span class="score-badge" id="independenceScore">0/100</span>
+					<p id="scoreInterpretation" style="margin-top: 0.5rem;">Your company demonstrated strong independence during your absence.</p>
+				</div>
+			</div>
+
+			<div class="result-item">
+				<h4>Areas of High Founder Dependence</h4>
+				<p id="dependenceAreas">Analysis will appear here after you complete the daily tracking and review questions.</p>
+			</div>
+
+			<div class="result-item">
+				<h4>Recommended Delegation Priorities</h4>
+				<p id="priorities">Complete the post-test review to see specific recommendations.</p>
+			</div>
+
+			<div class="result-item">
+				<h4>Buyer Impact Estimate</h4>
+				<p id="buyerImpact">Your independence score affects buyer confidence and valuation multiple.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+
+	<script>
+		// Generate 14 daily tracking items
+		const dailyContainer = document.getElementById('dailyItems');
+		for (let day = 1; day <= 14; day++) {
+			const item = document.createElement('div');
+			item.className = 'daily-item';
+			item.innerHTML = `
+				<div class="daily-label">Day ${day}</div>
+				<div class="daily-score">
+					${[1, 2, 3, 4, 5].map(score => `
+						<button class="score-btn" data-day="${day}" data-score="${score}">${score}</button>
+					`).join('')}
+				</div>
+				<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid);">
+					<span id="day${day}-score">—</span>
+				</div>
+			`;
+			dailyContainer.appendChild(item);
+		}
+
+		const dailyScores = {};
+
+		document.addEventListener('click', (e) => {
+			if (e.target.classList.contains('score-btn')) {
+				const day = e.target.dataset.day;
+				const score = parseInt(e.target.dataset.score);
+				dailyScores[day] = score;
+
+				// Update button states
+				document.querySelectorAll(`[data-day="${day}"]`).forEach(btn => {
+					btn.classList.toggle('active', parseInt(btn.dataset.score) === score);
+				});
+
+				// Update display
+				document.getElementById(`day${day}-score`).textContent = score;
+			}
+		});
+
+		document.getElementById('analyzeBtn').addEventListener('click', () => {
+			const whatBroke = document.getElementById('whatBroke').value;
+			const whatWorked = document.getElementById('whatWorked').value;
+			const surprised = document.getElementById('surprised').value;
+			const buyerThink = document.getElementById('buyerThink').value;
+
+			const dailyScoresArray = Object.values(dailyScores).map(Number);
+			const avgScore = dailyScoresArray.length > 0 ? (dailyScoresArray.reduce((a, b) => a + b, 0) / dailyScoresArray.length * 20) : 0;
+
+			// Calculate independence score (0-100)
+			let independenceScore = avgScore;
+
+			// Adjust based on written responses
+			if (whatBroke && whatBroke.length < 50) independenceScore += 15;
+			else if (!whatBroke) independenceScore -= 10;
+
+			if (whatWorked && whatWorked.length > 100) independenceScore += 10;
+			if (surprised && surprised.length > 100) independenceScore += 10;
+
+			independenceScore = Math.min(100, Math.max(0, independenceScore));
+
+			document.getElementById('independenceScore').textContent = Math.round(independenceScore);
+
+			// Interpretation
+			let interpretation = '';
+			if (independenceScore >= 80) {
+				interpretation = 'Excellent! Your business demonstrated strong independence. This is attractive to buyers.';
+			} else if (independenceScore >= 60) {
+				interpretation = 'Good. Your business has reasonable independence, but some founder dependence exists. Focus on delegation.';
+			} else if (independenceScore >= 40) {
+				interpretation = 'Moderate. Significant founder dependence was revealed. Prioritize building systems and delegation.';
+			} else {
+				interpretation = 'Concerning. High founder dependence is a red flag for buyers. Immediate action needed to build independence.';
+			}
+
+			document.getElementById('scoreInterpretation').textContent = interpretation;
+
+			// Dependence areas
+			const issues = [];
+			if (whatBroke) {
+				const lines = whatBroke.split('\n').filter(l => l.trim());
+				lines.forEach(line => issues.push(line.trim()));
+			}
+
+			if (issues.length > 0) {
+				document.getElementById('dependenceAreas').innerHTML = `
+					<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 1.8;">
+						${issues.slice(0, 5).map(issue => `• ${issue}`).join('<br>')}
+						${issues.length > 5 ? `<br>... and ${issues.length - 5} more.` : ''}
+					</div>
+				`;
+			}
+
+			// Priorities
+			const priorityList = [];
+			if (whatBroke && whatBroke.includes('decision')) priorityList.push('Formalize decision-making authority for leaders');
+			if (whatBroke && whatBroke.includes('customer')) priorityList.push('Build customer relationship redundancy');
+			if (whatBroke && whatBroke.includes('financial')) priorityList.push('Document financial controls and approval processes');
+			if (whatBroke && whatBroke.includes('technical')) priorityList.push('Reduce technical founder dependency');
+			if (priorityList.length === 0) {
+				priorityList.push('Continue building operational systems');
+				priorityList.push('Document and automate key processes');
+				priorityList.push('Develop leadership bench strength');
+			}
+
+			document.getElementById('priorities').innerHTML = `
+				<div style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); line-height: 1.8;">
+					${priorityList.slice(0, 4).map((p, i) => `${i + 1}. ${p}`).join('<br>')}
+				</div>
+			`;
+
+			// Buyer impact
+			let buyerMultiple = 4.0;
+			if (independenceScore >= 80) buyerMultiple = 5.5;
+			else if (independenceScore >= 60) buyerMultiple = 4.5;
+			else if (independenceScore < 40) buyerMultiple = 3.0;
+
+			document.getElementById('buyerImpact').textContent = `With an independence score of ${Math.round(independenceScore)}, a buyer would likely value your company at approximately ${buyerMultiple.toFixed(1)}x EBITDA (vs. 5x+ for fully independent businesses). Improving founder independence by just 20 points could add 0.5-1x multiple, worth significant value.`;
+
+			document.getElementById('results').classList.add('visible');
+		});
+
+		document.getElementById('resetBtn').addEventListener('click', () => {
+			Object.keys(dailyScores).forEach(key => delete dailyScores[key]);
+			document.querySelectorAll('.score-btn').forEach(btn => btn.classList.remove('active'));
+			document.querySelectorAll('[id^="day"][id$="-score"]').forEach(el => el.textContent = '—');
+			document.getElementById('whatBroke').value = '';
+			document.getElementById('whatWorked').value = '';
+			document.getElementById('surprised').value = '';
+			document.getElementById('buyerThink').value = '';
+			document.getElementById('results').classList.remove('visible');
+		});
+	</script>
+	<script src="/shared/components.js" defer></script>
+</body>
+</html>

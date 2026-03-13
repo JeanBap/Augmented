@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Should I Sell? Decision Framework | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 800px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.tool-field { margin-bottom: 1.25rem; }
+.tool-field label { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin-bottom: 0.35rem; }
+.tool-field input, .tool-field select, .tool-field textarea { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; box-sizing: border-box; }
+.tool-field input:focus, .tool-field select:focus { outline: none; border-color: var(--gold); }
+.slider-container { display: flex; align-items: center; gap: 1rem; }
+.slider-container input[type="range"] { flex: 1; height: 6px; }
+.slider-value { font-family: var(--serif); font-size: 1.2rem; color: var(--gold); min-width: 50px; text-align: right; }
+.test-section { margin-bottom: 2rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); }
+.test-section h3 { font-family: var(--serif); font-size: 1.1rem; margin-top: 0; }
+.test-number { display: inline-block; font-family: var(--mono); font-size: 0.75rem; color: var(--gold); background: rgba(200,164,90,0.15); padding: 0.25rem 0.5rem; border-radius: 4px; margin-right: 0.5rem; }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; margin-left: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+.recommendation { font-size: 1.1rem; font-family: var(--serif); color: var(--ink); margin: 1rem 0; padding: 1rem; border-left: 3px solid var(--gold); background: rgba(200,164,90,0.1); }
+.test-result { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0.75rem; background: var(--paper); border-radius: 6px; margin-top: 0.75rem; }
+.test-result-name { font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
+.test-result-score { font-family: var(--serif); font-size: 1.3rem; color: var(--gold); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Should I Sell?</h1>
+    <p>Evaluate five quantitative tests to determine if now is the right time to exit your business.</p>
+    <div class="chapter-ref">From Chapter 30 & Appendix F: Deciding When to Sell</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Five Tests for Selling</h2>
+      </div>
+      <div class="tool-card-body">
+
+        <div class="test-section">
+          <h3><span class="test-number">TEST 1</span>Personal Wealth Concentration</h3>
+          <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 1rem;">What percentage of your net worth is in this company?</p>
+          <div class="tool-field">
+            <label for="wealth-pct">Concentration (%)</label>
+            <div class="slider-container">
+              <input type="range" id="wealth-pct" min="0" max="100" value="50" />
+              <div class="slider-value" id="wealth-pct-val">50%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-section">
+          <h3><span class="test-number">TEST 2</span>Marginal Value of Money</h3>
+          <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 1rem;">At your current net worth, how much would proceeds change your life?</p>
+          <div class="tool-field">
+            <label for="liquid-nw">Liquid Net Worth ($)</label>
+            <input type="number" id="liquid-nw" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="impact-level">Life Impact of Sale Proceeds</label>
+            <select id="impact-level">
+              <option value="">-- Select --</option>
+              <option value="high">High (Would fundamentally change life)</option>
+              <option value="medium">Medium (Significant but not life-changing)</option>
+              <option value="low">Low (Nice but not essential)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="test-section">
+          <h3><span class="test-number">TEST 3</span>Growth vs Risk</h3>
+          <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 1rem;">Outlook for next 3 years of revenue growth</p>
+          <div class="tool-field">
+            <label for="cagr">3-Year Revenue CAGR Outlook (%)</label>
+            <input type="number" id="cagr" placeholder="0" />
+          </div>
+          <div class="tool-field">
+            <label for="confidence">Confidence in Growth Outlook (1-5)</label>
+            <div class="slider-container">
+              <input type="range" id="confidence" min="1" max="5" value="3" />
+              <div class="slider-value" id="confidence-val">3/5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-section">
+          <h3><span class="test-number">TEST 4</span>Market Timing</h3>
+          <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 1rem;">Compare current multiples to historical average</p>
+          <div class="tool-field">
+            <label for="current-multiple">Current EBITDA Multiple in Your Sector</label>
+            <input type="number" id="current-multiple" placeholder="0" step="0.1" />
+          </div>
+          <div class="tool-field">
+            <label for="historical-multiple">5-Year Average EBITDA Multiple</label>
+            <input type="number" id="historical-multiple" placeholder="0" step="0.1" />
+          </div>
+        </div>
+
+        <div class="test-section">
+          <h3><span class="test-number">TEST 5</span>Personal Readiness</h3>
+          <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 1rem;">Rate your current state (1-5 scale)</p>
+          <div class="tool-field">
+            <label for="energy">Energy Level & Enthusiasm</label>
+            <div class="slider-container">
+              <input type="range" id="energy" min="1" max="5" value="3" />
+              <div class="slider-value" id="energy-val">3/5</div>
+            </div>
+          </div>
+          <div class="tool-field">
+            <label for="passion">Passion for the Business</label>
+            <div class="slider-container">
+              <input type="range" id="passion" min="1" max="5" value="3" />
+              <div class="slider-value" id="passion-val">3/5</div>
+            </div>
+          </div>
+          <div class="tool-field">
+            <label for="relationships">Health of Key Relationships</label>
+            <div class="slider-container">
+              <input type="range" id="relationships" min="1" max="5" value="3" />
+              <div class="slider-value" id="relationships-val">3/5</div>
+            </div>
+          </div>
+          <div class="tool-field">
+            <label for="opportunities">Alternative Opportunities Available</label>
+            <div class="slider-container">
+              <input type="range" id="opportunities" min="1" max="5" value="3" />
+              <div class="slider-value" id="opportunities-val">3/5</div>
+            </div>
+          </div>
+          <div class="tool-field">
+            <label for="burnout">Burnout Risk (Higher = more at risk)</label>
+            <div class="slider-container">
+              <input type="range" id="burnout" min="1" max="5" value="3" />
+              <div class="slider-value" id="burnout-val">3/5</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calculateSellDecision()">Analyze Decision</button>
+        <button class="tool-btn-reset" onclick="resetSellDecision()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div id="recommendation"></div>
+      <div id="test-scores" style="margin-top: 1.5rem;"></div>
+      <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+function fmt(n) {
+  if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if(Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if(Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+document.getElementById('wealth-pct').addEventListener('input', function() {
+  document.getElementById('wealth-pct-val').textContent = this.value + '%';
+});
+document.getElementById('confidence').addEventListener('input', function() {
+  document.getElementById('confidence-val').textContent = this.value + '/5';
+});
+document.getElementById('energy').addEventListener('input', function() {
+  document.getElementById('energy-val').textContent = this.value + '/5';
+});
+document.getElementById('passion').addEventListener('input', function() {
+  document.getElementById('passion-val').textContent = this.value + '/5';
+});
+document.getElementById('relationships').addEventListener('input', function() {
+  document.getElementById('relationships-val').textContent = this.value + '/5';
+});
+document.getElementById('opportunities').addEventListener('input', function() {
+  document.getElementById('opportunities-val').textContent = this.value + '/5';
+});
+document.getElementById('burnout').addEventListener('input', function() {
+  document.getElementById('burnout-val').textContent = this.value + '/5';
+});
+
+function calculateSellDecision() {
+  const wealthPct = parseFloat(document.getElementById('wealth-pct').value) || 0;
+  const liquidNw = parseFloat(document.getElementById('liquid-nw').value) || 0;
+  const impactLevel = document.getElementById('impact-level').value;
+  const cagr = parseFloat(document.getElementById('cagr').value) || 0;
+  const confidence = parseFloat(document.getElementById('confidence').value) || 3;
+  const currentMult = parseFloat(document.getElementById('current-multiple').value) || 0;
+  const historicalMult = parseFloat(document.getElementById('historical-multiple').value) || 0;
+  const energy = parseFloat(document.getElementById('energy').value) || 3;
+  const passion = parseFloat(document.getElementById('passion').value) || 3;
+  const relationships = parseFloat(document.getElementById('relationships').value) || 3;
+  const opportunities = parseFloat(document.getElementById('opportunities').value) || 3;
+  const burnout = parseFloat(document.getElementById('burnout').value) || 3;
+
+  // Test 1: Personal Wealth Concentration
+  let test1Score = 0;
+  if(wealthPct > 80) test1Score = 5;
+  else if(wealthPct > 50) test1Score = 3;
+  else test1Score = 1;
+
+  // Test 2: Marginal Value of Money
+  let test2Score = 0;
+  if(impactLevel === 'high') test2Score = 5;
+  else if(impactLevel === 'medium') test2Score = 3;
+  else if(impactLevel === 'low') test2Score = 1;
+  else test2Score = 0;
+
+  // Test 3: Growth vs Risk (lower growth + lower confidence = sell)
+  let test3Score = 5 - ((cagr / 30) * 2 + (confidence / 5) * 3);
+  test3Score = Math.max(1, Math.min(5, test3Score));
+
+  // Test 4: Market Timing (above historical average = sell)
+  let test4Score = 1;
+  if(historicalMult > 0 && currentMult > historicalMult * 1.1) {
+    test4Score = 5;
+  } else if(historicalMult > 0 && currentMult > historicalMult * 0.9) {
+    test4Score = 3;
+  }
+
+  // Test 5: Personal Readiness (low energy, high burnout = sell)
+  const personalScore = (6 - energy + 6 - passion + relationships + opportunities + burnout) / 5;
+  let test5Score = Math.max(1, Math.min(5, personalScore));
+
+  const scores = [test1Score, test2Score, test3Score, test4Score, test5Score];
+  const avgScore = scores.reduce((a, b) => a + b) / scores.length;
+
+  // Determine recommendation
+  let recommendation = '';
+  if(avgScore >= 4) {
+    recommendation = '<strong>Strong Sell</strong> – The data indicates you should seriously pursue an exit now.';
+  } else if(avgScore >= 3) {
+    recommendation = '<strong>Lean Sell</strong> – The signals favor exiting, though holding could work if fundamentals improve.';
+  } else if(avgScore >= 2) {
+    recommendation = '<strong>Hold</strong> – Mixed signals. Selling now is reasonable but holding is also defensible.';
+  } else {
+    recommendation = '<strong>Strong Hold</strong> – The case for holding is stronger. Conditions may improve for a better exit later.';
+  }
+
+  const recColor = avgScore >= 4 ? '#c8a45a' : 'var(--mid)';
+  document.getElementById('recommendation').innerHTML = `
+    <div class="recommendation" style="border-left-color: ${recColor};">
+      ${recommendation}
+    </div>
+    <div style="font-family: var(--mono); font-size: 0.9rem; color: var(--mid); text-align: center;">
+      Overall Signal: <span style="font-family: var(--serif); font-size: 1.5rem; color: var(--gold);">${avgScore.toFixed(1)}/5.0</span>
+    </div>
+  `;
+
+  const testsHtml = `
+    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--paper); border-radius: 8px;">
+      <strong style="font-family: var(--serif);">Test Scores:</strong>
+      <div style="margin-top: 1rem;">
+        <div class="test-result">
+          <div class="test-result-name">TEST 1: Wealth Concentration</div>
+          <div class="test-result-score">${test1Score.toFixed(1)}/5</div>
+        </div>
+        <div class="test-result">
+          <div class="test-result-name">TEST 2: Marginal Value</div>
+          <div class="test-result-score">${test2Score.toFixed(1)}/5</div>
+        </div>
+        <div class="test-result">
+          <div class="test-result-name">TEST 3: Growth vs Risk</div>
+          <div class="test-result-score">${test3Score.toFixed(1)}/5</div>
+        </div>
+        <div class="test-result">
+          <div class="test-result-name">TEST 4: Market Timing</div>
+          <div class="test-result-score">${test4Score.toFixed(1)}/5</div>
+        </div>
+        <div class="test-result">
+          <div class="test-result-name">TEST 5: Personal Readiness</div>
+          <div class="test-result-score">${test5Score.toFixed(1)}/5</div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('test-scores').innerHTML = testsHtml;
+
+  const details = `<strong>Analysis:</strong><br />
+    Wealth concentration at ${wealthPct.toFixed(0)}% of net worth ${wealthPct > 80 ? '(high risk)' : wealthPct > 50 ? '(moderate)' : '(manageable)'}.<br />
+    Expected growth ${cagr > 0 ? 'of ' + cagr.toFixed(1) + '% CAGR' : 'is uncertain'}, confidence ${confidence}/5.<br />
+    Current valuation multiples ${currentMult > 0 ? (currentMult > historicalMult * 1.1 ? 'above historical average (favorable timing)' : 'near or below historical average') : 'not specified'}.<br />
+    Personal energy and burnout risk: ${burnout > 3 ? 'High' : 'Moderate to Low'}. Opportunities: ${opportunities >= 4 ? 'Strong' : 'Limited'}.`;
+  document.getElementById('r-details').innerHTML = details;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetSellDecision() {
+  document.getElementById('wealth-pct').value = '50';
+  document.getElementById('wealth-pct-val').textContent = '50%';
+  document.getElementById('liquid-nw').value = '';
+  document.getElementById('impact-level').value = '';
+  document.getElementById('cagr').value = '';
+  document.getElementById('confidence').value = '3';
+  document.getElementById('confidence-val').textContent = '3/5';
+  document.getElementById('current-multiple').value = '';
+  document.getElementById('historical-multiple').value = '';
+  document.getElementById('energy').value = '3';
+  document.getElementById('energy-val').textContent = '3/5';
+  document.getElementById('passion').value = '3';
+  document.getElementById('passion-val').textContent = '3/5';
+  document.getElementById('relationships').value = '3';
+  document.getElementById('relationships-val').textContent = '3/5';
+  document.getElementById('opportunities').value = '3';
+  document.getElementById('opportunities-val').textContent = '3/5';
+  document.getElementById('burnout').value = '3';
+  document.getElementById('burnout-val').textContent = '3/5';
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>

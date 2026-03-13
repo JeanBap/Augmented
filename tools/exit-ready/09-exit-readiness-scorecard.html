@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exit Readiness Scorecard | Exit Ready Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<style>
+:root {
+  --ink: #08080d;
+  --paper: #f2ede4;
+  --gold: #c8a45a;
+  --gold2: #e5c97e;
+  --dim: #3a3830;
+  --mid: #6e6a61;
+  --rule: rgba(200,164,90,0.18);
+  --serif: 'Instrument Serif';
+  --mono: 'DM Mono';
+  --sans: 'Syne';
+}
+body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
+.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+.tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
+.tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
+.tool-container { max-width: 900px; margin: 0 auto; padding: 0 2rem 3rem; }
+.tool-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 2rem; }
+.tool-card-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--rule); }
+.tool-card-header h2 { font-family: var(--serif); font-size: 1.4rem; margin: 0; }
+.tool-card-body { padding: 1.5rem 2rem 2rem; }
+.pillar-group { margin-bottom: 2rem; }
+.pillar-label { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--ink); }
+.pillar-select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 0.9rem; }
+.pillar-select:focus { outline: none; border-color: var(--gold); }
+.pillar-desc { font-size: 0.8rem; color: var(--mid); margin-top: 0.25rem; font-style: italic; }
+.tool-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold); color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; margin-right: 0.5rem; }
+.tool-btn:hover { background: var(--gold2); }
+.tool-btn-reset { display: inline-block; padding: 0.7rem 1.2rem; background: transparent; color: var(--mid); border: 1px solid var(--rule); border-radius: 6px; font-family: var(--mono); font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; }
+.tool-results { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: rgba(200,164,90,0.03); display: none; }
+.tool-results.visible { display: block; }
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.result-item { text-align: center; }
+.result-value { font-family: var(--serif); font-size: 2.2rem; color: var(--ink); }
+.result-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.pillar-results { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.pillar-result { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; }
+.pillar-result-name { font-family: var(--serif); font-size: 0.95rem; margin-bottom: 0.5rem; }
+.pillar-result-score { display: flex; justify-content: space-between; align-items: center; }
+.pillar-result-value { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
+.pillar-bar { flex-grow: 1; height: 8px; background: var(--rule); border-radius: 4px; margin: 0 0.75rem; overflow: hidden; }
+.pillar-bar-fill { height: 100%; background: var(--gold); border-radius: 4px; }
+.priority-list { font-size: 0.85rem; line-height: 1.7; }
+.priority-item { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+.priority-item:last-child { border-bottom: none; }
+.result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+@media(max-width: 900px) {
+  .pillar-results { grid-template-columns: 1fr; }
+}
+.back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
+.back-link:hover { color: var(--gold2); }
+</style>
+</head>
+<body data-page="tools">
+<div id="site-nav"></div>
+<main>
+  <a href="/tools/exit-ready/" class="back-link">← Back to Exit Ready Tools</a>
+
+  <div class="tool-hero">
+    <h1>Exit Readiness Scorecard</h1>
+    <p>Assess your company across seven key pillars of exit readiness. Identify gaps and estimated multiple impact.</p>
+    <div class="chapter-ref">From Chapter 3 & Appendix D: Exit Readiness Framework</div>
+  </div>
+
+  <div class="tool-container">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <h2>Seven Pillars of Readiness</h2>
+      </div>
+      <div class="tool-card-body">
+        <div class="pillar-group">
+          <label class="pillar-label">1. Financial Performance (1-5)</label>
+          <select id="pillar1" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Declining or volatile revenue; poor margins</option>
+            <option value="2">2 - Flat growth; inconsistent profitability</option>
+            <option value="3">3 - Steady growth 5-15%; predictable margins</option>
+            <option value="4">4 - Strong growth 15-30%; healthy margins</option>
+            <option value="5">5 - Exceptional growth >30%; strong margins</option>
+          </select>
+          <div class="pillar-desc">Revenue growth rate, profitability, and predictability of financial results</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">2. Customer Quality (1-5)</label>
+          <select id="pillar2" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Top 3 customers = >50% revenue; high churn</option>
+            <option value="2">2 - Top 3 customers = 30-50% revenue; churn >20%</option>
+            <option value="3">3 - Top client <25%; diverse base; churn 10-20%</option>
+            <option value="4">4 - Top client <15%; strong retention; diverse</option>
+            <option value="5">5 - Top client <10%; >90% retention; very diversified</option>
+          </select>
+          <div class="pillar-desc">Customer concentration, retention rates, and revenue diversification</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">3. Team & Operations (1-5)</label>
+          <select id="pillar3" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Business dependent on founder; no documented processes</option>
+            <option value="2">2 - Founder-heavy; minimal delegation; ad-hoc processes</option>
+            <option value="3">3 - Strong team; some key person risk; defined roles</option>
+            <option value="4">4 - Experienced management layer; low founder dependence</option>
+            <option value="5">5 - Scalable team; founder optional; strong operations</option>
+          </select>
+          <div class="pillar-desc">Founder dependence, management depth, operational maturity, and processes</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">4. Market Position (1-5)</label>
+          <select id="pillar4" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Commoditized; high competition; shrinking market</option>
+            <option value="2">2 - Competitive; weak differentiation; flat market</option>
+            <option value="3">3 - Clear positioning; defensible niche; growing market</option>
+            <option value="4">4 - Strong brand; competitive advantages; expanding TAM</option>
+            <option value="5">5 - Market leader; strong moat; large growth opportunity</option>
+          </select>
+          <div class="pillar-desc">Competitive moat, market size, growth potential, and differentiation</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">5. Legal & Compliance (1-5)</label>
+          <select id="pillar5" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Weak IP; compliance gaps; disputed contracts</option>
+            <option value="2">2 - Some IP; compliance issues; inconsistent contracts</option>
+            <option value="3">3 - Solid IP strategy; basic compliance; standard contracts</option>
+            <option value="4">4 - Strong IP portfolio; compliance program; clean legal</option>
+            <option value="5">5 - Excellent IP; excellent compliance; mature legal</option>
+          </select>
+          <div class="pillar-desc">IP protection, regulatory compliance, contract quality, and legal standing</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">6. Financial Infrastructure (1-5)</label>
+          <select id="pillar6" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - Manual accounting; no audits; poor records</option>
+            <option value="2">2 - Basic accounting; inconsistent records; no audits</option>
+            <option value="3">3 - Good records; annual reviews; integrated systems</option>
+            <option value="4">4 - Clean audit; strong systems; auditable records</option>
+            <option value="5">5 - Clean audit; excellent controls; auditable and transparent</option>
+          </select>
+          <div class="pillar-desc">Accounting quality, auditability, financial systems, and record-keeping</div>
+        </div>
+
+        <div class="pillar-group">
+          <label class="pillar-label">7. Growth Trajectory (1-5)</label>
+          <select id="pillar7" class="pillar-select">
+            <option value="">Select...</option>
+            <option value="1">1 - No visible opportunities; market headwinds</option>
+            <option value="2">2 - Limited expansion; mature market position</option>
+            <option value="3">3 - Clear growth path; pipeline visibility; new channels</option>
+            <option value="4">4 - Strong pipeline; multiple expansion levers; clear roadmap</option>
+            <option value="5">5 - Accelerating growth; large TAM; multiple expansion paths</option>
+          </select>
+          <div class="pillar-desc">Pipeline opportunities, expansion potential, and future growth visibility</div>
+        </div>
+
+        <button class="tool-btn" onclick="calculateReadiness()">Calculate Readiness</button>
+        <button class="tool-btn-reset" onclick="resetReadiness()">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-results" id="results">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="r-overallScore">0/100</div>
+          <div class="result-label">Overall Readiness Score</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="r-multipleImpact">0%</div>
+          <div class="result-label">Estimated Multiple Impact</div>
+        </div>
+      </div>
+
+      <div class="pillar-results" id="pillar-results-grid"></div>
+
+      <h3 style="font-family: var(--serif); margin-top: 1.5rem; margin-bottom: 0.75rem;">Priority Improvements</h3>
+      <div class="priority-list" id="priority-list"></div>
+
+      <div class="result-note" id="r-summary"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+<script src="/shared/components.js" defer></script>
+<script>
+const pillarNames = [
+  'Financial Performance',
+  'Customer Quality',
+  'Team & Operations',
+  'Market Position',
+  'Legal & Compliance',
+  'Financial Infrastructure',
+  'Growth Trajectory'
+];
+
+function calculateReadiness() {
+  const scores = [];
+  for (let i = 1; i <= 7; i++) {
+    const val = parseInt(document.getElementById(`pillar${i}`).value);
+    if (isNaN(val)) {
+      alert('Please rate all seven pillars');
+      return;
+    }
+    scores.push(val);
+  }
+
+  // Calculate overall score (0-100)
+  const average = scores.reduce((a, b) => a + b, 0) / 7;
+  const overallScore = Math.round(average * 20); // 5 -> 100, 1 -> 20
+
+  // Calculate multiple impact
+  // Base is 0%; each point below 5 reduces by ~2% per pillar
+  let multipleImpact = 0;
+  scores.forEach(score => {
+    const gap = 5 - score;
+    multipleImpact -= (gap * 2);
+  });
+  multipleImpact = Math.max(multipleImpact, -30); // Cap at -30%
+
+  // Display overall score
+  document.getElementById('r-overallScore').textContent = overallScore + '/100';
+  document.getElementById('r-multipleImpact').textContent = multipleImpact.toFixed(0) + '%';
+
+  // Build pillar results
+  let pillarGrid = '';
+  scores.forEach((score, idx) => {
+    const barWidth = (score / 5) * 100;
+    pillarGrid += `
+      <div class="pillar-result">
+        <div class="pillar-result-name">${pillarNames[idx]}</div>
+        <div class="pillar-result-score">
+          <div class="pillar-bar">
+            <div class="pillar-bar-fill" style="width: ${barWidth}%"></div>
+          </div>
+          <div class="pillar-result-value">${score}/5</div>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('pillar-results-grid').innerHTML = pillarGrid;
+
+  // Build priority list (lowest 3 pillars)
+  const indexed = scores.map((s, i) => ({ score: s, idx: i }));
+  const priorities = indexed.sort((a, b) => a.score - b.score).slice(0, 3);
+
+  let priorityHtml = '';
+  priorities.forEach(p => {
+    const pillarName = pillarNames[p.idx];
+    const improvement = 5 - p.score;
+    priorityHtml += `<div class="priority-item"><strong>${pillarName} (${p.score}/5):</strong> Need ${improvement} point${improvement > 1 ? 's' : ''} to improve</div>`;
+  });
+  document.getElementById('priority-list').innerHTML = priorityHtml;
+
+  // Build summary
+  let readinessLevel = 'Not Ready';
+  if (overallScore >= 80) readinessLevel = 'Excellent';
+  else if (overallScore >= 65) readinessLevel = 'Good';
+  else if (overallScore >= 50) readinessLevel = 'Moderate';
+
+  const summary = `
+    <strong>Readiness Assessment:</strong><br />
+    Your overall exit readiness score is <strong>${overallScore}/100 (${readinessLevel})</strong>.<br />
+    <br />
+    This score suggests your business is ${readinessLevel.toLowerCase()} for exit.
+    ${overallScore >= 80 ? 'You are well-positioned to attract strong buyer interest and command premium multiples.' :
+      overallScore >= 65 ? 'You are a credible exit candidate but should address gaps to improve valuations.' :
+      overallScore >= 50 ? 'You have foundational strengths but need meaningful improvements before pursuing an exit.' :
+      'You should focus on business building and exit readiness before approaching the market.'
+    }
+    <br />
+    <br />
+    <strong>Multiple Impact Estimate:</strong><br />
+    Estimated multiple adjustment: ${multipleImpact > 0 ? '+' : ''}${multipleImpact.toFixed(0)}%<br />
+    If your base multiple is 6x EBITDA, readiness impact = ${multipleImpact > 0 ? '+' : ''}${(6 * multipleImpact / 100).toFixed(2)}x<br />
+    Adjusted multiple range: ${(6 + (6 * multipleImpact / 100)).toFixed(1)}x<br />
+    <br />
+    <strong>Next Steps:</strong><br />
+    Focus on the three priority areas above. Each point improvement in those pillars can add 1-2% to your exit valuation.
+  `;
+  document.getElementById('r-summary').innerHTML = summary;
+  document.getElementById('results').classList.add('visible');
+}
+
+function resetReadiness() {
+  for (let i = 1; i <= 7; i++) {
+    document.getElementById(`pillar${i}`).value = '';
+  }
+  document.getElementById('results').classList.remove('visible');
+}
+</script>
+</body>
+</html>
