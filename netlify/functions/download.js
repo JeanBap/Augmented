@@ -5,6 +5,7 @@ var SITE_URL = 'https://www.raisereadybook.com';
 
 var FILES = {
   'book':                 { name: 'Raise_Ready_Book.pdf',          path: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf',          mime: 'application/pdf' },
+  'exit-book':            { name: 'Exit_Ready_Book.pdf',           path: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf',           mime: 'application/pdf' },
   'tpl-complete':         { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
   'tpl-complete-support': { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
 };

@@ -6,9 +6,15 @@ var SITE_URL = 'https://www.raisereadybook.com';
 var PRODUCTS = {
   'book': {
     name: 'Raise Ready Book',
-    description: '16 chapters of battle-tested fundraising knowledge. Financial modeling, unit economics, fundraising strategy, and exit planning.',
+    description: 'The operator-led guide to building a financial model that closes rounds. Fundraising dynamics, driver-based modeling, unit economics, and post-round operations.',
     price: 2999,
     file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf'
+  },
+  'exit-book': {
+    name: 'Exit Ready Book',
+    description: 'The systematic playbook for maximizing your exit. 24-month countdown covering exit value foundations, multiple amplification, operational independence, deal process, and tax structuring.',
+    price: 1999,
+    file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf'
   },
   'tpl-complete': {
     name: 'Complete Financial Model Template',

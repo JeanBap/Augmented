@@ -7,6 +7,7 @@ var ADMIN_EMAIL = 'papoutsis89@gmail.com';
 
 var PRODUCTS = {
   'book':                 { name: 'Raise Ready Book',                          file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf' },
+  'exit-book':            { name: 'Exit Ready Book',                           file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf' },
   'tpl-complete':         { name: 'Complete Financial Model Template',         file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' },
   'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' }
 };

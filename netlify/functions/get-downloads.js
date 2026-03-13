@@ -5,6 +5,7 @@ var SITE_URL = 'https://www.raisereadybook.com';
 
 var PRODUCTS = {
   'book':                 { name: 'Raise Ready Book' },
+  'exit-book':            { name: 'Exit Ready Book' },
   'tpl-complete':         { name: 'Complete Financial Model Template' },
   'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support' }
 };
