@@ -5,11 +5,16 @@ var SITE_URL = 'https://www.raisereadybook.com';
 var FROM_EMAIL = 'Raise Ready <onboarding@resend.dev>';
 var ADMIN_EMAIL = 'papoutsis89@gmail.com';
 
+var CALENDLY_URL = 'https://calendly.com/yannipapoutsi';
+
 var PRODUCTS = {
+  'start-book':           { name: 'Start Ready Book',                          file: '/products/a7e2f19d3b064c81/Start_Ready_Book.pdf' },
   'book':                 { name: 'Raise Ready Book',                          file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf' },
   'exit-book':            { name: 'Exit Ready Book',                           file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf' },
   'tpl-complete':         { name: 'Complete Financial Model Template',         file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' },
-  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' }
+  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', service: true },
+  'audit':                { name: 'Fundraise-Ready Audit',                     service: true },
+  'working-session':      { name: 'Working Session (60 min)',                  service: true }
 };
 
 function verifySignature(payload, sigHeader, secret) {
@@ -56,25 +61,45 @@ function sendEmail(to, subject, html) {
 }
 
 function buildCustomerEmail(productKeys, downloadLinks) {
-  var rows = productKeys.map(function(key, i) {
+  var fileKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].file; });
+  var serviceKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].service && !PRODUCTS[k].file; });
+
+  var rows = fileKeys.map(function(key) {
     var p = PRODUCTS[key];
-    if (!p) return '';
+    var link = downloadLinks[productKeys.indexOf(key)];
     return '<tr><td style="padding:12px 16px;border-bottom:1px solid #eee;font-family:sans-serif;font-size:14px;">'
       + p.name + '</td><td style="padding:12px 16px;border-bottom:1px solid #eee;text-align:right;">'
-      + '<a href="' + downloadLinks[i] + '" style="background:#c8a45a;color:#08080d;padding:8px 16px;'
+      + '<a href="' + link + '" style="background:#c8a45a;color:#08080d;padding:8px 16px;'
       + 'border-radius:6px;text-decoration:none;font-family:sans-serif;font-size:13px;font-weight:bold;">Download</a>'
       + '</td></tr>';
   }).join('');
+
+  var downloadSection = '';
+  if (fileKeys.length > 0) {
+    downloadSection = '<p style="font-size:15px;color:#333;">Your downloads are ready. Links expire in 72 hours.</p>'
+      + '<table style="width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;">'
+      + '<thead><tr><th style="padding:12px 16px;text-align:left;background:#f2ede4;font-size:13px;">Product</th>'
+      + '<th style="padding:12px 16px;text-align:right;background:#f2ede4;font-size:13px;">Link</th></tr></thead>'
+      + '<tbody>' + rows + '</tbody></table>';
+  }
+
+  var bookingSection = '';
+  if (serviceKeys.length > 0) {
+    var serviceNames = serviceKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
+    bookingSection = '<div style="margin-top:24px;padding:20px;background:#fff;border-radius:8px;border-left:4px solid #c8a45a;">'
+      + '<p style="font-size:15px;color:#333;margin:0 0 8px;">Your <strong>' + serviceNames + '</strong> is confirmed.</p>'
+      + '<p style="font-size:14px;color:#333;margin:0 0 16px;">Book your session at a time that works for you:</p>'
+      + '<a href="' + CALENDLY_URL + '" style="display:inline-block;background:#c8a45a;color:#08080d;padding:12px 24px;'
+      + 'border-radius:6px;text-decoration:none;font-family:sans-serif;font-size:14px;font-weight:bold;">Book via Calendly</a>'
+      + '</div>';
+  }
 
   return '<div style="max-width:560px;margin:0 auto;font-family:sans-serif;">'
     + '<div style="background:#08080d;padding:24px;text-align:center;">'
     + '<h1 style="color:#f2ede4;font-size:22px;margin:0;">Thank you for your purchase!</h1></div>'
     + '<div style="padding:24px;background:#f9f9f6;">'
-    + '<p style="font-size:15px;color:#333;">Your financial model templates are ready to download. Links expire in 72 hours.</p>'
-    + '<table style="width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;">'
-    + '<thead><tr><th style="padding:12px 16px;text-align:left;background:#f2ede4;font-size:13px;">Product</th>'
-    + '<th style="padding:12px 16px;text-align:right;background:#f2ede4;font-size:13px;">Link</th></tr></thead>'
-    + '<tbody>' + rows + '</tbody></table>'
+    + downloadSection
+    + bookingSection
     + '<p style="font-size:13px;color:#666;margin-top:20px;">Need help? Reply to this email or contact yanni@raisereadybook.com</p>'
     + '</div></div>';
 }
@@ -117,7 +142,9 @@ exports.handler = async function(event) {
 
   var productKeys = productString.split(',').filter(function(k) { return PRODUCTS[k]; });
   var expiresAt = Math.floor(Date.now() / 1000) + (72 * 3600); // 72 hours
-  var downloadLinks = productKeys.map(function(key) { return makeDownloadUrl(key, expiresAt); });
+  var downloadLinks = productKeys.map(function(key) {
+    return PRODUCTS[key].file ? makeDownloadUrl(key, expiresAt) : '';
+  });
 
   // Send customer email with download links
   var customerHtml = buildCustomerEmail(productKeys, downloadLinks);
