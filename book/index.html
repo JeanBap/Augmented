@@ -452,110 +452,170 @@
     </div>
   </section>
 
-  <!-- Sessions & Model Building -->
+  <!-- Services -->
   <style>
-  .sessions-grid {
+  .svc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
     max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 2rem;
+    margin: 2rem auto 0;
   }
-  .session-card {
+  .svc-card {
     border: 1px solid var(--rule);
     border-radius: 10px;
-    padding: 1.5rem;
     background: var(--paper);
-    transition: border-color 0.3s, transform 0.2s;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
   }
-  .session-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-2px);
+  .svc-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .svc-card-accent { height: 4px; background: var(--gold); }
+  .svc-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .svc-card-badge {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem; border-radius: 12px; display: inline-block; width: fit-content;
+    text-transform: uppercase; background: rgba(200,164,90,0.12); color: var(--gold); margin-bottom: 0.5rem;
   }
-  .session-card h3 {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    margin: 0 0 0.5rem;
+  .svc-card-name { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; line-height: 1.3; }
+  .svc-card-desc { font-size: 0.85rem; color: var(--dim); line-height: 1.55; flex: 1; margin-bottom: 1rem; }
+  .svc-card-features { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+  .svc-card-features li {
+    font-size: 0.8rem; color: var(--dim); padding: 0.2rem 0 0.2rem 1.2rem; position: relative; line-height: 1.5;
   }
-  .session-card p {
-    font-size: 0.9rem;
-    color: var(--dim);
-    flex: 1;
+  .svc-card-features li::before { content: "\2713"; position: absolute; left: 0; font-weight: bold; color: var(--gold); }
+  .svc-card-price-row {
+    display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 1rem;
+    padding-top: 0.75rem; border-top: 1px solid var(--rule);
   }
-  .session-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--rule);
+  .svc-card-price { font-family: var(--mono); font-size: 1.3rem; font-weight: 500; }
+  .svc-card-price-note { font-family: var(--mono); font-size: 0.65rem; color: var(--mid); }
+  .svc-card-actions { display: flex; gap: 0.5rem; margin-top: auto; }
+  .svc-btn-pay {
+    flex: 1; padding: 0.65rem; border: none; border-radius: 6px; cursor: pointer;
+    background: var(--gold); color: var(--ink); font-family: var(--mono); font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.04em; transition: background 0.2s; text-align: center;
   }
-  .session-badge {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--gold);
-    background: rgba(200,164,90,0.1);
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
+  .svc-btn-pay:hover { background: #e5c97e; }
+  .svc-btn-call {
+    flex: 1; padding: 0.65rem; border: 1px solid var(--rule); border-radius: 6px; cursor: pointer;
+    background: transparent; color: var(--ink); font-family: var(--mono); font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.04em; transition: border-color 0.2s, color 0.2s; text-align: center;
   }
-  .session-price {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .session-card .btn {
-    width: 100%;
-    text-align: center;
-    margin-top: 0.75rem;
+  .svc-btn-call:hover { border-color: var(--gold); color: var(--gold); }
+  .svc-popular {
+    font-family: var(--mono); font-size: 0.7rem; text-align: center; padding: 0.35rem;
+    border-radius: 4px; margin-bottom: 0.75rem; background: #e8f5e9; color: #2E7D32;
   }
   </style>
-  <section id="sessions" class="svc-section">
+  <section id="services" class="svc-section">
     <div class="svc-inner">
-      <h2 class="section-title">1-on-1 Sessions & Model Building</h2>
-      <p class="section-subtitle">Direct guidance on your financial model from someone who has built and raised on them</p>
-      <div class="sessions-grid">
-        <div class="session-card">
-          <h3>Fundraise-Ready Audit</h3>
-          <p>Asynchronous review of your financial model and pitch deck. Written report with actionable feedback. Optional follow-up call included.</p>
-          <p style="font-family:var(--mono);font-size:0.72rem;color:var(--mid);margin:0.5rem 0 0;">After purchase, <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" style="color:var(--gold);">book via Calendly</a>.</p>
-          <div class="session-meta">
-            <span class="session-badge">Async</span>
-            <span class="session-price">$499</span>
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">Fundraise preparation and financial modeling from someone who has raised 5 rounds and supported a 9-figure exit</p>
+      <div class="svc-grid">
+
+        <!-- Fundraising Readiness Audit -->
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">One-off</span>
+            <div class="svc-card-name">Fundraising Readiness Audit</div>
+            <p class="svc-card-desc">2-3 hour deep-dive reviewing your financial model, pitch deck, data room, and fundraise plan. Delivered as a scored report with specific fixes.</p>
+            <ul class="svc-card-features">
+              <li>Financial model stress-test</li>
+              <li>Pitch deck structure review</li>
+              <li>Data room gap analysis</li>
+              <li>Fundraise plan assessment</li>
+              <li>Scored report with prioritised fixes</li>
+            </ul>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$990</span>
+              <span class="svc-card-price-note">one-off</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('audit-990','pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('audit-990','call')">Book a Call</button>
+            </div>
           </div>
-          <button class="btn btn-secondary" style="width:100%;text-align:center;margin-top:0.75rem;" onclick="buyTemplate('audit')">Buy Now</button>
         </div>
-        <div class="session-card">
-          <h3>Working Session</h3>
-          <p>60-minute deep-dive. Build or refine your model with real-time expert guidance. Recording and notes provided afterward.</p>
-          <p style="font-family:var(--mono);font-size:0.72rem;color:var(--mid);margin:0.5rem 0 0;">After purchase, <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" style="color:var(--gold);">book via Calendly</a>.</p>
-          <div class="session-meta">
-            <span class="session-badge">60 min</span>
-            <span class="session-price">$250</span>
+
+        <!-- Fractional Fundraise Advisory -->
+        <div class="svc-card" style="border-color:var(--gold);">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <div class="svc-popular">Most Popular</div>
+            <span class="svc-card-badge">Retainer</span>
+            <div class="svc-card-name">Fractional Fundraise Advisory</div>
+            <p class="svc-card-desc">Ongoing advisory through an active fundraise. Investor targeting, pitch prep, term sheet review, model iteration, weekly calls.</p>
+            <ul class="svc-card-features">
+              <li>Investor targeting and outreach strategy</li>
+              <li>Pitch deck and narrative refinement</li>
+              <li>Term sheet review and negotiation support</li>
+              <li>Financial model iteration</li>
+              <li>Weekly strategy calls</li>
+            </ul>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$2,000</span>
+              <span class="svc-card-price-note">/month &middot; 3-6 month engagements</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('advisory-2000','pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('advisory-2000','call')">Book a Call</button>
+            </div>
           </div>
-          <button class="btn btn-secondary" style="width:100%;text-align:center;margin-top:0.75rem;" onclick="buyTemplate('working-session')">Buy Now</button>
         </div>
-        <div class="session-card">
-          <h3>Basic Model Build</h3>
-          <p>Complete financial model built for your business. Revenue drivers, COGS, headcount plan, P&amp;L, cash flow, and runway. Includes 8 hours of support.</p>
-          <div class="session-meta">
-            <span class="session-badge">Full build + support</span>
-            <span class="session-price">$4,000</span>
+
+        <!-- Model Build -->
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">One-off</span>
+            <div class="svc-card-name">Model Build</div>
+            <p class="svc-card-desc">Complete financial model built for your business. Revenue drivers, COGS, headcount plan, P&amp;L, cash flow, and runway. Unit economics, scenario analysis. Includes 8 hours of support.</p>
+            <ul class="svc-card-features">
+              <li>Revenue drivers and unit economics</li>
+              <li>COGS, headcount plan, and OpEx</li>
+              <li>P&amp;L, cash flow, and runway</li>
+              <li>Scenario analysis (base/up/down)</li>
+              <li>8 hours of walkthrough support</li>
+            </ul>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$5,000</span>
+              <span class="svc-card-price-note">one-off</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('model-build-5000','pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('model-build-5000','call')">Book a Call</button>
+            </div>
           </div>
-          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
         </div>
-        <div class="session-card">
-          <h3>Advanced Model Build</h3>
-          <p>Full P&amp;L, balance sheet, cash flow, unit economics, scenario analysis, cap table, and data room prep. Includes 8 hours of support.</p>
-          <div class="session-meta">
-            <span class="session-badge">Full build + support</span>
-            <span class="session-price">$8,000</span>
+
+        <!-- Investor Materials Package -->
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">Project</span>
+            <div class="svc-card-name">Investor Materials Package</div>
+            <p class="svc-card-desc">Pitch deck review + financial model + data room setup + investor list. Everything a founder needs before their first investor meeting.</p>
+            <ul class="svc-card-features">
+              <li>Pitch deck review and restructure</li>
+              <li>Full financial model build</li>
+              <li>Data room setup and population</li>
+              <li>Curated investor target list</li>
+              <li>Pre-meeting preparation brief</li>
+            </ul>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$8,000</span>
+              <span class="svc-card-price-note">project</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('investor-pkg-8000','pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('investor-pkg-8000','call')">Book a Call</button>
+            </div>
           </div>
-          <a href="https://calendly.com/yannipapoutsi" target="_blank" rel="noopener" class="btn btn-secondary">Book a Call</a>
         </div>
+
       </div>
     </div>
   </section>
@@ -572,6 +632,20 @@
     <div id="gate-error" style="display:none;font-family:var(--mono);font-size:0.75rem;color:#C62828;margin-bottom:0.5rem;"></div>
     <button id="gate-submit" onclick="submitEmailGate()" style="width:100%;padding:0.7rem;border:none;border-radius:6px;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:0.85rem;font-weight:500;cursor:pointer;">Continue to Checkout</button>
     <p style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin:0.75rem 0 0;text-align:center;">We'll email your download links here. No spam.</p>
+  </div>
+</div>
+
+<!-- Service lead capture modal -->
+<div id="svc-modal" style="display:none;position:fixed;inset:0;background:rgba(8,8,13,0.85);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:var(--paper);border-radius:12px;padding:2rem;max-width:420px;width:90%;position:relative;">
+    <button onclick="closeServiceModal()" style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;font-size:1.5rem;color:var(--mid);cursor:pointer;">&times;</button>
+    <h3 id="svc-modal-title" style="font-family:var(--serif);font-size:1.4rem;margin:0 0 0.25rem;">Get started</h3>
+    <p id="svc-modal-desc" style="font-family:var(--mono);font-size:0.78rem;color:var(--dim);margin:0 0 1.25rem;">Enter your details and we'll take you to the next step.</p>
+    <input id="svc-name" type="text" placeholder="Your name" style="width:100%;padding:0.7rem 0.9rem;border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:0.85rem;box-sizing:border-box;margin-bottom:0.75rem;background:#fff;">
+    <input id="svc-email" type="email" placeholder="you@company.com" style="width:100%;padding:0.7rem 0.9rem;border:1px solid var(--rule);border-radius:6px;font-family:var(--mono);font-size:0.85rem;box-sizing:border-box;margin-bottom:0.75rem;background:#fff;">
+    <div id="svc-error" style="display:none;font-family:var(--mono);font-size:0.75rem;color:#C62828;margin-bottom:0.5rem;"></div>
+    <button id="svc-submit" onclick="submitServiceModal()" style="width:100%;padding:0.7rem;border:none;border-radius:6px;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:0.85rem;font-weight:500;cursor:pointer;">Continue</button>
+    <p style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin:0.75rem 0 0;text-align:center;">No spam. We use your email to send confirmation and booking details.</p>
   </div>
 </div>
 
@@ -641,11 +715,81 @@ function submitEmailGate() {
 
 // Close on Escape key
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeEmailGate();
+  if (e.key === 'Escape') { closeEmailGate(); closeServiceModal(); }
 });
 // Close on backdrop click
 document.getElementById('email-gate').addEventListener('click', function(e) {
   if (e.target === this) closeEmailGate();
+});
+
+// Service modal
+var pendingService = null;
+var pendingAction = null;
+
+function openServiceModal(serviceId, action) {
+  pendingService = serviceId;
+  pendingAction = action;
+  document.getElementById('svc-name').value = '';
+  document.getElementById('svc-email').value = '';
+  document.getElementById('svc-error').style.display = 'none';
+  var submitBtn = document.getElementById('svc-submit');
+  submitBtn.disabled = false;
+  if (action === 'pay') {
+    document.getElementById('svc-modal-title').textContent = 'Continue to payment';
+    document.getElementById('svc-modal-desc').textContent = 'Enter your details to proceed to checkout.';
+    submitBtn.textContent = 'Continue to Checkout';
+  } else {
+    document.getElementById('svc-modal-title').textContent = 'Book a call';
+    document.getElementById('svc-modal-desc').textContent = 'Enter your details and we\u2019ll take you to Calendly.';
+    submitBtn.textContent = 'Continue to Calendly';
+  }
+  document.getElementById('svc-modal').style.display = 'flex';
+  document.getElementById('svc-name').focus();
+}
+
+function closeServiceModal() {
+  document.getElementById('svc-modal').style.display = 'none';
+  pendingService = null;
+  pendingAction = null;
+}
+
+function submitServiceModal() {
+  var name = document.getElementById('svc-name').value.trim();
+  var email = document.getElementById('svc-email').value.trim();
+  var errorEl = document.getElementById('svc-error');
+  if (!name) { errorEl.textContent = 'Please enter your name.'; errorEl.style.display = 'block'; return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errorEl.textContent = 'Please enter a valid email address.'; errorEl.style.display = 'block'; return; }
+  errorEl.style.display = 'none';
+
+  // Save lead
+  fetch('/.netlify/functions/email-gate', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name, tool: 'service-' + pendingService })
+  }).catch(function() {});
+
+  if (pendingAction === 'pay') {
+    var submitBtn = document.getElementById('svc-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+    fetch('/.netlify/functions/create-checkout', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: pendingService }], email: email })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.url) { window.location.href = data.url; }
+      else { alert('Checkout unavailable. Please try again or contact yanni@raisereadybook.com'); submitBtn.disabled = false; submitBtn.textContent = 'Continue to Checkout'; }
+    })
+    .catch(function() { alert('Connection error. Please try again.'); submitBtn.disabled = false; submitBtn.textContent = 'Continue to Checkout'; });
+  } else {
+    var calendlyUrl = 'https://calendly.com/yannipapoutsi?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
+    window.open(calendlyUrl, '_blank');
+    closeServiceModal();
+  }
+}
+
+document.getElementById('svc-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeServiceModal();
 });
 </script>
 </body>

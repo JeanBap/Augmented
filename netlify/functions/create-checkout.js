@@ -34,16 +34,28 @@ var PRODUCTS = {
     price: 29900,
     file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx'
   },
-  'audit': {
-    name: 'Fundraise-Ready Audit',
-    description: 'Asynchronous review of your financial model and pitch deck with written report and actionable feedback. Optional follow-up call included.',
-    price: 49900,
+  'audit-990': {
+    name: 'Fundraising Readiness Audit',
+    description: '2-3 hour deep-dive reviewing your financial model, pitch deck, data room, and fundraise plan. Scored report with specific fixes.',
+    price: 99000,
     service: true
   },
-  'working-session': {
-    name: 'Working Session (60 min)',
-    description: '60-minute deep-dive to build or refine your model with real-time expert guidance. Recording and notes provided afterward.',
-    price: 25000,
+  'advisory-2000': {
+    name: 'Fractional Fundraise Advisory (1 month)',
+    description: 'Ongoing advisory through an active fundraise. Investor targeting, pitch prep, term sheet review, model iteration, weekly calls.',
+    price: 200000,
+    service: true
+  },
+  'model-build-5000': {
+    name: 'Model Build',
+    description: 'Complete financial model: revenue drivers, COGS, headcount, P&L, cash flow, runway, unit economics, scenario analysis. Includes 8 hours of support.',
+    price: 500000,
+    service: true
+  },
+  'investor-pkg-8000': {
+    name: 'Investor Materials Package',
+    description: 'Pitch deck review + financial model + data room setup + investor list. Everything before your first investor meeting.',
+    price: 800000,
     service: true
   }
 };

@@ -13,8 +13,10 @@ var PRODUCTS = {
   'exit-book':            { name: 'Exit Ready Book',                           file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf' },
   'tpl-complete':         { name: 'Complete Financial Model Template',         file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' },
   'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', service: true },
-  'audit':                { name: 'Fundraise-Ready Audit',                     service: true },
-  'working-session':      { name: 'Working Session (60 min)',                  service: true }
+  'audit-990':            { name: 'Fundraising Readiness Audit',               service: true },
+  'advisory-2000':        { name: 'Fractional Fundraise Advisory (1 month)',   service: true },
+  'model-build-5000':     { name: 'Model Build',                              service: true },
+  'investor-pkg-8000':    { name: 'Investor Materials Package',                service: true }
 };
 
 function verifySignature(payload, sigHeader, secret) {
