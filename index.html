@@ -96,6 +96,19 @@
         <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">9-figure</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Exit to Indeed</div></div>
         <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">3</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Books in the series</div></div>
       </div>
+
+      <!-- Email Capture Form -->
+      <div style="margin-top:2.5rem;padding:2rem;background:rgba(200,164,90,0.05);border-radius:12px;">
+        <p style="font-family:var(--serif);font-size:1.1rem;text-align:center;margin:0 0 1rem;color:var(--ink);">Get the free 90-Minute Financial Model Audit checklist</p>
+        <form method="POST" data-netlify="true" name="homepage-newsletter" style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:0 auto;">
+          <input type="hidden" name="form-name" value="homepage-newsletter">
+          <div style="display:flex;gap:0.75rem;">
+            <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.8rem 1rem;border:1.5px solid var(--rule);border-radius:8px;font-family:var(--mono);font-size:0.9rem;background:var(--paper);color:var(--ink);transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--rule)'">
+            <button type="submit" style="padding:0.8rem 2rem;background:var(--gold);color:var(--ink);border:none;border-radius:8px;font-family:var(--serif);font-weight:700;font-size:0.95rem;cursor:pointer;transition:opacity 0.2s;white-space:nowrap;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Send</button>
+          </div>
+        </form>
+        <p style="text-align:center;font-family:var(--mono);font-size:0.8rem;color:var(--mid);margin:1rem 0 0;line-height:1.5;">Plus weekly insights on fundraising, modeling, and exit strategy. No spam.</p>
+      </div>
     </div>
   </section>
 

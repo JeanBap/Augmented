@@ -322,6 +322,113 @@
 }
 .waitlist-msg.success { color: var(--green); }
 .waitlist-msg.error { color: var(--red); }
+
+/* ── Financial Model Building Section ── */
+.model-section {
+  max-width: 920px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+.model-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  text-align: center;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+.model-section .section-desc {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--dim);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.model-card {
+  border: 1.5px solid var(--rule);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.model-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(200, 164, 90, 0.15);
+  transform: translateY(-2px);
+}
+.model-card .tier-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200, 164, 90, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+.model-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+.model-card .price {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0.5rem 0 1.5rem;
+}
+.model-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  flex: 1;
+}
+.model-card li {
+  font-size: 0.9rem;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.model-card li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+}
+.model-card .cta-link {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 0.15rem;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.model-card .cta-link:hover {
+  opacity: 0.7;
+}
+@media (max-width: 600px) {
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 <script
   defer
@@ -363,6 +470,64 @@
       <div>
         <h3>You get the solution</h3>
         <p>We build, test, and hand off a working automation. You only pay on delivery.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Financial Model Building Section ── -->
+  <div class="model-section">
+    <h2>Financial Model Building for Fundraise</h2>
+    <p class="section-desc">Custom financial models built to close rounds. Investor-ready, stress-tested, with assumption documentation.</p>
+
+    <div class="model-grid">
+      <!-- Seed Model -->
+      <div class="model-card">
+        <div class="tier-badge">Tier 1</div>
+        <h3>Seed Model</h3>
+        <div class="price">$2,500</div>
+        <ul>
+          <li>3-year projection model</li>
+          <li>Revenue drivers + unit economics</li>
+          <li>Three scenarios (base/up/down)</li>
+          <li>Assumption documentation</li>
+          <li>1 revision round</li>
+          <li>Delivery: 2 weeks</li>
+        </ul>
+        <a class="cta-link" onclick="document.getElementById('bounty-form').scrollIntoView({behavior:'smooth'})">Get Started →</a>
+      </div>
+
+      <!-- Series A Model -->
+      <div class="model-card">
+        <div class="tier-badge">Tier 2</div>
+        <h3>Series A Model</h3>
+        <div class="price">$5,000</div>
+        <ul>
+          <li>5-year projection model</li>
+          <li>Full P&L, cash flow, balance sheet</li>
+          <li>Cohort-based revenue forecasting</li>
+          <li>Sensitivity analysis</li>
+          <li>Cap table integration</li>
+          <li>2 revision rounds</li>
+          <li>Delivery: 3 weeks</li>
+        </ul>
+        <a class="cta-link" onclick="document.getElementById('bounty-form').scrollIntoView({behavior:'smooth'})">Get Started →</a>
+      </div>
+
+      <!-- Growth / Exit Model -->
+      <div class="model-card">
+        <div class="tier-badge">Tier 3</div>
+        <h3>Growth / Exit Model</h3>
+        <div class="price">$10,000</div>
+        <ul>
+          <li>Complete financial model + data room support</li>
+          <li>M&A-ready financials</li>
+          <li>EBITDA bridge and recasting</li>
+          <li>Working capital analysis</li>
+          <li>Board-ready reporting templates</li>
+          <li>3 revision rounds</li>
+          <li>Delivery: 4 weeks</li>
+        </ul>
+        <a class="cta-link" onclick="document.getElementById('bounty-form').scrollIntoView({behavior:'smooth'})">Get Started →</a>
       </div>
     </div>
   </div>
