@@ -348,7 +348,7 @@
 
       resultCount.textContent = `${results.length}`;
       searchResults.innerHTML = results.map(article => `
-        <a href="${article.url}" class="search-result-card">
+        <a href="/blog/${article.slug}.html" class="search-result-card">
           <div class="search-result-header">
             <h2 class="search-result-title">${escapeHtml(article.title)}</h2>
           </div>
