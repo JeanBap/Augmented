@@ -58,12 +58,14 @@
         <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
+            <a href="/tools/financial-model-pro.html" style="color:#c8a45a;font-weight:600;">5-Year Financial Model Pro</a>
             <a href="/tools/start-ready/">Start Ready Tools</a>
             <a href="/tools/raise-ready.html">Raise Ready Tools</a>
             <a href="/tools/exit-ready/">Exit Ready Tools</a>
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/tools/financial-model-pro.html" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Easy Financial Model</a>
       </div>
       <div class="nav-right">
         <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
@@ -165,11 +167,22 @@
   function initStickyBar() {
     if (localStorage.getItem('rr_sticky_dismissed')) return;
 
+    // Context-aware copy for the sticky bar
+    var path = window.location.pathname.toLowerCase();
+    var barLabel = 'Free: 90-Minute Financial Model Audit Checklist';
+    if (path.indexOf('/tools/') >= 0 && path.indexOf('financial-model') < 0) {
+      barLabel = 'Free: SaaS Metrics Cheat Sheet for Founders';
+    } else if (path.indexOf('financial-model') >= 0) {
+      barLabel = 'Like this tool? Get the complete Financial Model Template ($99)';
+    } else if (path.indexOf('/services/') >= 0) {
+      barLabel = 'Not sure which service? Book a free 15-min call';
+    }
+
     var bar = document.createElement('div');
     bar.id = 'rr-sticky-bar';
     bar.innerHTML =
       '<form id="rr-sticky-form" style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;justify-content:center;">' +
-        '<span style="font-family:var(--serif,Georgia,serif);font-size:0.9rem;color:#f2ede4;">Free: 90-Minute Financial Model Audit Checklist</span>' +
+        '<span style="font-family:var(--serif,Georgia,serif);font-size:0.9rem;color:#f2ede4;">' + barLabel + '</span>' +
         '<input type="email" id="rr-sticky-email" placeholder="your@email.com" required style="padding:0.5rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.8rem;background:#1a1a1f;color:#f2ede4;width:200px;">' +
         '<button type="submit" style="padding:0.5rem 1.2rem;background:#c8a45a;color:#08080d;border:none;border-radius:6px;font-family:monospace;font-size:0.8rem;font-weight:500;cursor:pointer;">Send</button>' +
       '</form>' +
@@ -281,11 +294,42 @@
     var article = document.querySelector('.blog-article');
     if (!article) return;
 
+    // Detect blog category for contextual CTAs
+    var categoryEl = document.querySelector('.blog-category, [data-category]');
+    var category = (categoryEl && (categoryEl.getAttribute('data-category') || categoryEl.textContent || '')).toLowerCase().trim();
+
+    // Category-aware tool/service cross-sell (injected before the lead magnet CTA)
+    var toolCTA = '';
+    if (category.indexOf('financial') >= 0 || category.indexOf('model') >= 0 || category.indexOf('unit-econ') >= 0) {
+      toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
+        '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Build your model in minutes</p>' +
+        '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Try the free 5-Year Financial Model Pro with 3 scenarios, hiring plan, and board report.</p>' +
+        '<a href="/tools/financial-model-pro.html" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">Launch the model &rarr;</a></div>';
+    } else if (category.indexOf('fundrais') >= 0) {
+      toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
+        '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Not sure if you are ready to raise?</p>' +
+        '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Get a 2-3 hour deep-dive audit of your model, deck, and data room. Scored report included.</p>' +
+        '<a href="/services/" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">View the Readiness Audit ($990) &rarr;</a></div>';
+    } else if (category.indexOf('exit') >= 0) {
+      toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
+        '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Planning your exit?</p>' +
+        '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">30 free exit planning tools covering valuation, deal structure, tax, and readiness.</p>' +
+        '<a href="/tools/exit-ready/" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">Explore Exit Ready Tools &rarr;</a></div>';
+    }
+
     // Find all h3 headings to insert the inline CTA roughly midway
     var headings = article.querySelectorAll('h3');
     if (headings.length >= 4) {
       var midIndex = Math.floor(headings.length / 2);
       var midHeading = headings[midIndex];
+
+      // Insert contextual tool CTA slightly before the lead magnet
+      if (toolCTA && headings.length >= 6) {
+        var earlyIndex = Math.floor(headings.length / 3);
+        var earlyDiv = document.createElement('div');
+        earlyDiv.innerHTML = toolCTA;
+        headings[earlyIndex].parentNode.insertBefore(earlyDiv.firstChild, headings[earlyIndex]);
+      }
 
       var inlineCTA = document.createElement('div');
       inlineCTA.style.cssText = 'border:1px solid #3a3830;border-radius:10px;padding:1.5rem;margin:2rem 0;background:rgba(200,164,90,0.04);';
