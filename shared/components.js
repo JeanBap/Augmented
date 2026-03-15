@@ -5,8 +5,8 @@
 
 // Meta Pixel - fires immediately (before DOMContentLoaded)
 (function() {
-  var PIXEL_ID = 'YOUR_PIXEL_ID_HERE'; // Replace with your actual Meta Pixel ID
-  if (PIXEL_ID === 'YOUR_PIXEL_ID_HERE') return; // Skip if not configured
+  var PIXEL_ID = '1298416075475311';
+  if (!PIXEL_ID) return;
   if (window.fbq) return;
   var n = window.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
   if (!window._fbq) window._fbq = n;
