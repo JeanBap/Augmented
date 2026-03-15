@@ -81,7 +81,7 @@
 .export-btn:hover { filter: brightness(1.1); }
 .export-features { text-align: left; margin: 1rem 0; padding: 0; list-style: none; }
 .export-features li { font-size: 0.82rem; color: var(--mid, #6b6561); padding: 0.3rem 0; }
-.export-features li::before { content: "\\2713\\0020"; color: var(--gold, #c8a45a); font-weight: 700; }
+.export-features li::before { content: "\2713\0020"; color: var(--gold, #c8a45a); font-weight: 700; }
 .export-error { color: #d32f2f; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
 #fm-app { min-height: 600px; }
 </style>
@@ -249,10 +249,10 @@ function loadScript(src) {
   });
 }
 async function ensureXLSX() {
-  if (typeof XLSX === 'undefined') await loadScript('https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js');
+  if (typeof XLSX === 'undefined') await loadScript('/tools/xlsx.full.min.js');
 }
 async function ensureJsPDF() {
-  if (typeof window.jspdf === 'undefined') await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js');
+  if (typeof window.jspdf === 'undefined') await loadScript('/tools/jspdf.umd.min.js');
 }
 
 const C = {
@@ -723,7 +723,7 @@ async function doExport(a, model, annual, hires, unitEcon, conModel, aggModel) {
     window.showExportGate();
     return;
   }
-  await ensureXLSX();
+  try { await ensureXLSX(); } catch(e) { alert('Failed to load export library. Please refresh and try again.'); return; }
   const wb = XLSX.utils.book_new();
   const aR = [["RAISE READY - 5 YEAR FINANCIAL MODEL (Enhanced)"], [""], ["REVENUE", "", "Base", "Conservative", "Aggressive"], ["Starting MRR ($K)", "", a.startMRR, a.startMRR, a.startMRR], ...["Y1", "Y2", "Y3", "Y4", "Y5"].map(y => [y + " MoM Growth", "", a[`mrrGrowth${y}`] + "%", (a[`mrrGrowth${y}`] * 0.7).toFixed(1) + "%", (a[`mrrGrowth${y}`] * 1.3).toFixed(1) + "%"]), ["Churn", "", a.churn + "%", (a.churn * 1.3).toFixed(1) + "%", (a.churn * 0.7).toFixed(1) + "%"], ["Expansion", "", a.expansion + "%"], ["Gross Margin", "", a.grossMargin + "%"], [""], ["UNIT ECONOMICS", "", "Value"], ["CAC", "", unitEcon.cac], ["LTV", "", unitEcon.ltv], ["LTV:CAC", "", unitEcon.ratio.toFixed(1) + "x"], ["Payback (months)", "", unitEcon.payback.toFixed(1)], ["NRR", "", unitEcon.nrr.toFixed(0) + "%"], [""], ["HIRING PLAN"], ["Role", "Start Month", "Base Salary ($K/mo)", "Burden %"], ...hires.map(h => [h.role, h.month, h.salary, h.burden + "%"]), [""], ["Built by Raise Ready | raisereadybook.com"]];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aR), "Assumptions");
@@ -751,7 +751,7 @@ async function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scena
     window.showExportGate();
     return;
   }
-  await ensureJsPDF();
+  try { await ensureJsPDF(); } catch(e) { alert('Failed to load PDF library. Please refresh and try again.'); return; }
   const {
     jsPDF
   } = window.jspdf;
