@@ -54,7 +54,7 @@
             <a href="/book/#templates">Financial Model Template</a>
           </div>
         </div>
-        <a href="/book/#services" class="nav-tab" data-page="services">Services</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
         <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
@@ -78,6 +78,7 @@
     <footer>
       <div class="footer-links">
         <a href="/book/">Books & Extras</a>
+        <a href="/services/">Services</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>

@@ -3,11 +3,11 @@ var https = require('https');
 var NOTIFY_TO = 'papoutsis89@gmail.com';
 var FROM = 'Raise Ready <onboarding@resend.dev>';
 
-function sendEmail(subject, html) {
+function sendRaw(to, subject, html) {
   if (!process.env.RESEND_API_KEY) return Promise.resolve();
   var data = JSON.stringify({
     from: FROM,
-    to: [NOTIFY_TO],
+    to: Array.isArray(to) ? to : [to],
     subject: subject,
     html: html
   });
@@ -26,10 +26,18 @@ function sendEmail(subject, html) {
       res.on('data', function(c) { chunks.push(c); });
       res.on('end', function() { resolve(); });
     });
-    req.on('error', function() { resolve(); }); // fail silently, don't block the form
+    req.on('error', function() { resolve(); });
     req.write(data);
     req.end();
   });
 }
 
-module.exports = { sendEmail: sendEmail };
+function sendEmail(subject, html) {
+  return sendRaw(NOTIFY_TO, subject, html);
+}
+
+function sendToSubscriber(email, subject, html) {
+  return sendRaw(email, subject, html);
+}
+
+module.exports = { sendEmail: sendEmail, sendToSubscriber: sendToSubscriber };
