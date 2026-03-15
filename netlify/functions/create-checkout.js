@@ -57,6 +57,12 @@ var PRODUCTS = {
     description: 'Pitch deck review + financial model + data room setup + investor list. Everything before your first investor meeting.',
     price: 800000,
     service: true
+  },
+  'fm-pro-export': {
+    name: 'Financial Model Pro Export',
+    description: 'Unlock Excel and PDF export for the 5-Year Financial Model Pro. One-time purchase, lifetime access.',
+    price: 2900,
+    digital: true
   }
 };
 
@@ -125,9 +131,9 @@ exports.handler = async function(event) {
     return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No items provided' }) };
   }
 
-  // Allow products with files or services
+  // Allow products with files, services, or digital unlocks
   var validItems = items.filter(function(item) {
-    return PRODUCTS[item.id] && (PRODUCTS[item.id].file || PRODUCTS[item.id].service);
+    return PRODUCTS[item.id] && (PRODUCTS[item.id].file || PRODUCTS[item.id].service || PRODUCTS[item.id].digital);
   });
   if (validItems.length === 0) {
     return { statusCode: 400, headers: headers, body: JSON.stringify({ error: 'No purchasable products' }) };
@@ -158,10 +164,16 @@ exports.handler = async function(event) {
   });
 
   var customerEmail = body.email;
+  // Digital products can specify custom success/cancel URLs
+  var successUrl = body.success_url || (SITE_URL + '/success/?session_id={CHECKOUT_SESSION_ID}');
+  var cancelUrl = body.cancel_url || (SITE_URL + '/book/#templates');
+  // Ensure success/cancel URLs are on our domain
+  if (successUrl.indexOf(SITE_URL) !== 0) successUrl = SITE_URL + '/success/?session_id={CHECKOUT_SESSION_ID}';
+  if (cancelUrl.indexOf(SITE_URL) !== 0) cancelUrl = SITE_URL + '/book/#templates';
   var sessionParams = Object.assign({
     'mode': 'payment',
-    'success_url': SITE_URL + '/success/?session_id={CHECKOUT_SESSION_ID}',
-    'cancel_url': SITE_URL + '/book/#templates',
+    'success_url': successUrl,
+    'cancel_url': cancelUrl,
     'metadata[products]': productIds,
     'payment_intent_data[metadata][products]': productIds
   }, lineItems);

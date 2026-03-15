@@ -16,7 +16,8 @@ var PRODUCTS = {
   'audit-990':            { name: 'Fundraising Readiness Audit',               service: true },
   'advisory-2000':        { name: 'Fractional Fundraise Advisory (1 month)',   service: true },
   'model-build-5000':     { name: 'Model Build',                              service: true },
-  'investor-pkg-8000':    { name: 'Investor Materials Package',                service: true }
+  'investor-pkg-8000':    { name: 'Investor Materials Package',                service: true },
+  'fm-pro-export':        { name: 'Financial Model Pro Export',                 digital: true }
 };
 
 function verifySignature(payload, sigHeader, secret) {
@@ -85,6 +86,18 @@ function buildCustomerEmail(productKeys, downloadLinks) {
       + '<tbody>' + rows + '</tbody></table>';
   }
 
+  var digitalKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].digital; });
+  var digitalSection = '';
+  if (digitalKeys.length > 0) {
+    var digitalNames = digitalKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
+    digitalSection = '<div style="margin-top:24px;padding:20px;background:#fff;border-radius:8px;border-left:4px solid #10B981;">'
+      + '<p style="font-size:15px;color:#333;margin:0 0 8px;">Your <strong>' + digitalNames + '</strong> is now unlocked.</p>'
+      + '<p style="font-size:14px;color:#333;margin:0 0 16px;">Return to the tool to start exporting:</p>'
+      + '<a href="' + SITE_URL + '/tools/financial-model-pro.html?purchased=true" style="display:inline-block;background:#10B981;color:#fff;padding:12px 24px;'
+      + 'border-radius:6px;text-decoration:none;font-family:sans-serif;font-size:14px;font-weight:bold;">Open Financial Model</a>'
+      + '</div>';
+  }
+
   var bookingSection = '';
   if (serviceKeys.length > 0) {
     var serviceNames = serviceKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
@@ -101,6 +114,7 @@ function buildCustomerEmail(productKeys, downloadLinks) {
     + '<h1 style="color:#f2ede4;font-size:22px;margin:0;">Thank you for your purchase!</h1></div>'
     + '<div style="padding:24px;background:#f9f9f6;">'
     + downloadSection
+    + digitalSection
     + bookingSection
     + '<p style="font-size:13px;color:#666;margin-top:20px;">Need help? Reply to this email or contact yanni@raisereadybook.com</p>'
     + '</div></div>';

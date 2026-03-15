@@ -156,13 +156,18 @@ async function handleExportPurchase() {
     var res = await fetch('/.netlify/functions/email-gate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'fm-pro-export' })
+      body: JSON.stringify({ email: email, tool: 'fm-pro-export' })
     });
     if (!res.ok) throw new Error('Network error');
     var checkout = await fetch('/.netlify/functions/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, product_id: 'fm-pro-export', success_url: window.location.origin + '/tools/financial-model-pro.html?purchased=true', cancel_url: window.location.href })
+      body: JSON.stringify({
+        items: [{ id: 'fm-pro-export' }],
+        email: email,
+        success_url: window.location.origin + '/tools/financial-model-pro.html?purchased=true',
+        cancel_url: window.location.href
+      })
     });
     if (!checkout.ok) throw new Error('Checkout error');
     var data = await checkout.json();
