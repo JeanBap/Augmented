@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Monthly and quarterly investor update templates with structured sections for metrics, wins, challenges, and asks. Includes a best practices guide based on what actually keeps investors engaged.">
+  <meta name="theme-color" content="#08080d">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/investor-update-templates">
+  <meta property="og:title" content="Investor Update Templates | Raise Ready">
+  <meta property="og:description" content="Monthly and quarterly investor update templates with structured sections for metrics, wins, challenges, and asks.">
+  <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/investor-update-templates">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:ital@0;1&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BXXBYNXWZ7');
+  </script>
+
+  <title>Investor Update Templates | Raise Ready</title>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+    }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      color: var(--ink);
+      background-color: var(--paper);
+    }
+
+    .breadcrumb {
+      font-size: 0.875rem;
+      padding: 2rem 2rem 1rem;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+
+    .breadcrumb a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .breadcrumb a:hover {
+      opacity: 0.7;
+    }
+
+    .back-link {
+      display: inline-block;
+      padding: 0.5rem 0 1rem 0;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--gold);
+      font-size: 0.9rem;
+      margin: 0 2rem;
+    }
+
+    .back-link:hover {
+      opacity: 0.7;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin: 0 0 1.5rem 0;
+      color: var(--ink);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin: 0;
+      color: var(--ink);
+      opacity: 0.9;
+    }
+
+    .whats-inside {
+      padding: 3rem 2rem;
+      background-color: rgba(200, 164, 90, 0.08);
+      margin: 3rem 2rem;
+      border: 1px solid rgba(200, 164, 90, 0.2);
+    }
+
+    .whats-inside h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.75rem;
+      margin: 0 0 2rem 0;
+      color: var(--ink);
+    }
+
+    .whats-inside-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .whats-inside-item {
+      padding: 1.5rem;
+      background-color: white;
+      border: 1px solid rgba(200, 164, 90, 0.1);
+    }
+
+    .whats-inside-item h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      margin: 0 0 0.75rem 0;
+      color: var(--gold);
+    }
+
+    .whats-inside-item p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+      color: var(--ink);
+      opacity: 0.8;
+    }
+
+    .email-gate-section {
+      padding: 3rem 2rem;
+      max-width: 600px;
+      margin: 3rem auto;
+    }
+
+    .email-gate-section h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.75rem;
+      margin: 0 0 1.5rem 0;
+      color: var(--ink);
+    }
+
+    .email-gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--ink);
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input {
+      padding: 1rem;
+      border: 2px solid var(--gold);
+      background-color: white;
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--ink);
+      box-shadow: inset 0 0 0 1px var(--ink);
+    }
+
+    .form-group input::placeholder {
+      color: var(--ink);
+      opacity: 0.5;
+    }
+
+    .submit-btn {
+      padding: 1rem;
+      background-color: var(--gold);
+      color: var(--ink);
+      border: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .form-message.success {
+      color: #2d7c3f;
+      display: block;
+    }
+
+    .form-message.error {
+      color: #c9302c;
+      display: block;
+    }
+
+    .download-section {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(200, 164, 90, 0.08);
+      border: 1px solid rgba(200, 164, 90, 0.2);
+      margin-top: 2rem;
+    }
+
+    .download-section.show {
+      display: block;
+    }
+
+    .download-link {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .download-link:hover {
+      background-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .content-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body data-page="tools">
+  <div id="site-nav"></div>
+
+  <nav class="breadcrumb">
+    <a href="/">Home</a> / <a href="/tools/">Tools</a> / <a href="/tools/raise-ready.html">Raise Ready</a> / Investor Update Templates
+  </nav>
+
+  <a href="/tools/raise-ready.html" class="back-link">← Back to Raise Ready Tools</a>
+
+  <div class="content-wrapper">
+    <section class="hero">
+      <h1>Investor Update Templates</h1>
+      <p>Monthly and quarterly investor update templates with structured sections for metrics, wins, challenges, and asks. Includes a best practices guide based on what actually keeps investors engaged.</p>
+    </section>
+
+    <section class="whats-inside">
+      <h2>What's Inside</h2>
+      <div class="whats-inside-grid">
+        <div class="whats-inside-item">
+          <h3>Monthly Template</h3>
+          <p>Metrics, wins, challenges, and asks sections for regular investor communication</p>
+        </div>
+        <div class="whats-inside-item">
+          <h3>Quarterly Deep-Dive</h3>
+          <p>Cohort performance, team updates, and strategic narrative for deeper insights</p>
+        </div>
+        <div class="whats-inside-item">
+          <h3>Best Practices Guide</h3>
+          <p>Evidence-based strategies that keep investors engaged and invested in your success</p>
+        </div>
+        <div class="whats-inside-item">
+          <h3>3 Ready-to-Use Sheets</h3>
+          <p>Fill-in templates you can customize for your company and cadence</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="email-gate-section">
+      <h2>Download Your Templates</h2>
+      <form class="email-gate-form" id="emailGateForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Founder" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Unlock Download</button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+
+      <div class="download-section" id="downloadSection">
+        <p style="margin: 0 0 1rem 0; opacity: 0.8;">Your download is ready</p>
+        <a href="/assets/investor-update-templates.xlsx" class="download-link" download>Download Templates</a>
+      </div>
+    </section>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+  <script src="/shared/cart.js" defer></script>
+
+  <script>
+    document.getElementById('emailGateForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      const downloadSection = document.getElementById('downloadSection');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+      formMessage.textContent = '';
+      formMessage.className = 'form-message';
+
+      try {
+        const response = await fetch('/.netlify/functions/email-gate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            name: name,
+            tool: 'investor-update-templates'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.ok) {
+          formMessage.textContent = 'Email verified! Preparing download...';
+          formMessage.className = 'form-message success';
+          downloadSection.classList.add('show');
+          document.getElementById('emailGateForm').style.display = 'none';
+
+          setTimeout(() => {
+            window.location.href = '/assets/investor-update-templates.xlsx';
+          }, 1500);
+        } else {
+          formMessage.textContent = data.message || 'Something went wrong. Please try again.';
+          formMessage.className = 'form-message error';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Unlock Download';
+        }
+      } catch (error) {
+        formMessage.textContent = 'Network error. Please check your connection and try again.';
+        formMessage.className = 'form-message error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Unlock Download';
+      }
+    });
+  </script>
+</body>
+</html>
