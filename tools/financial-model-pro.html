@@ -118,9 +118,7 @@
 <!-- CDN Dependencies -->
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"></script>
 <script crossorigin src="https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.js"></script>
-<script>if(typeof Recharts==='undefined'&&typeof _Recharts!=='undefined')window.Recharts=window._Recharts;</script>
 <script crossorigin src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 
@@ -180,137 +178,526 @@ async function handleExportPurchase() {
 }
 </script>
 
-<script type="text/babel">
-const { useState, useMemo, useCallback } = React;
-const { LineChart, Line, BarChart, Bar: RBar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, AreaChart, Area, ComposedChart } = Recharts;
-
-const C = { navy: "#1B2A4A", teal: "#2E8B8B", gold: "#FFD700", coral: "#E8655A", green: "#10B981", purple: "#7C5CFC", slate: "#94A3B8", border: "#E2E8F0" };
-
-function DI({ label, value, onChange, min, max, step, prefix = "", suffix = "", w = 56 }) {
-  const pct = ((value - min) / (max - min)) * 100;
-  return (<div style={{ marginBottom: 11 }}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 3 }}><span style={{ fontSize: 10, color: "#64748B" }}>{label}</span><div style={{ display: "flex", alignItems: "center", background: "#F1F5F9", borderRadius: 5, border: "1px solid " + C.border }}>{prefix && <span style={{ padding: "1px 0 1px 5px", fontSize: 10, color: C.navy, fontWeight: 600 }}>{prefix}</span>}<input type="number" value={value} min={min} max={max} step={step} onChange={e => { const v = parseFloat(e.target.value); if (!isNaN(v)) onChange(Math.min(max, Math.max(min, v))); }} style={{ width: w, border: "none", background: "transparent", padding: "2px", fontSize: 10, fontWeight: 700, color: C.navy, textAlign: "right", outline: "none" }} />{suffix && <span style={{ padding: "1px 4px 1px 1px", fontSize: 9, color: C.slate }}>{suffix}</span>}</div></div><div style={{ position: "relative", height: 12, display: "flex", alignItems: "center" }}><div style={{ position: "absolute", left: 0, right: 0, height: 3, background: "#E2E8F0", borderRadius: 2 }} /><div style={{ position: "absolute", left: 0, width: Math.min(100, Math.max(0, pct)) + "%", height: 3, background: C.teal, borderRadius: 2 }} /><input type="range" min={min} max={max} step={step} value={value} onChange={e => onChange(parseFloat(e.target.value))} style={{ position: "absolute", width: "100%", height: 12, opacity: 0, cursor: "pointer", zIndex: 2 }} /><div style={{ position: "absolute", left: `calc(${Math.min(100, Math.max(0, pct))}% - 5px)`, width: 10, height: 10, background: C.teal, borderRadius: "50%", border: "2px solid white", boxShadow: "0 1px 2px rgba(0,0,0,0.15)", pointerEvents: "none" }} /></div></div>);
-}
-
-function money(n, d = 0) { const a = Math.abs(n), s = n < 0 ? "-" : ""; return a >= 1e6 ? s + "$" + (a / 1e6).toFixed(1) + "M" : a >= 1e3 ? s + "$" + (a / 1e3).toFixed(d) + "K" : s + "$" + a.toFixed(d); }
-function Sec({ title, children }) { return <div style={{ marginBottom: 14 }}><div style={{ fontSize: 9, fontWeight: 700, color: C.navy, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6, paddingBottom: 3, borderBottom: "2px solid " + C.teal }}>{title}</div>{children}</div>; }
-function KPI({ label, value, sub, color = C.navy, bench }) { return (<div style={{ background: "white", padding: "8px 6px", borderRadius: 7, border: "1px solid " + C.border, textAlign: "center", flex: 1, minWidth: 72 }}><div style={{ fontSize: 7, color: C.slate, textTransform: "uppercase", letterSpacing: 0.5 }}>{label}</div><div style={{ fontSize: 16, fontWeight: 700, color, marginTop: 1 }}>{value}</div>{sub && <div style={{ fontSize: 7, color: C.slate }}>{sub}</div>}{bench && <div style={{ fontSize: 7, color: bench.ok ? C.green : C.coral, fontWeight: 600, marginTop: 1 }}>{bench.text}</div>}</div>); }
-
-const TABS = [{ id: "assumptions", label: "Assumptions" }, { id: "hiring", label: "Hiring Plan" }, { id: "unit", label: "Unit Econ" }, { id: "pnl", label: "Monthly P&L" }, { id: "cashflow", label: "Cash & BS" }, { id: "summary", label: "Board Report" }];
-const MO = []; for (let y = 1; y <= 5; y++) for (let m = 1; m <= 12; m++) MO.push(`Y${y}M${m}`);
-const SCENARIOS = { conservative: { growthMult: 0.7, churnMult: 1.3, label: "Conservative" }, base: { growthMult: 1, churnMult: 1, label: "Base" }, aggressive: { growthMult: 1.3, churnMult: 0.7, label: "Aggressive" } };
-
-const DEF_HIRES = [
-  { role: "CTO / Lead Engineer", month: 1, salary: 12, burden: 30 },
-  { role: "Full-Stack Dev", month: 3, salary: 8, burden: 30 },
-  { role: "Product Manager", month: 6, salary: 9, burden: 30 },
-  { role: "Marketing Lead", month: 4, salary: 7, burden: 30 },
-  { role: "Sales Rep", month: 9, salary: 6, burden: 30 },
-  { role: "Customer Success", month: 12, salary: 5, burden: 30 },
-  { role: "Designer", month: 15, salary: 7, burden: 30 },
-  { role: "DevOps / Infra", month: 18, salary: 9, burden: 30 },
-  { role: "Sales Rep #2", month: 24, salary: 6, burden: 30 },
-  { role: "Finance / Ops", month: 30, salary: 8, burden: 30 },
-];
-
-const DEF = {
-  startMRR: 10, mrrGrowthY1: 12, mrrGrowthY2: 10, mrrGrowthY3: 8, mrrGrowthY4: 6, mrrGrowthY5: 5,
-  churn: 4, expansion: 1.5, grossMargin: 72, marketingPct: 15, toolsBase: 3, rentBase: 2, legalBase: 1, otherBase: 2,
-  fundingM: 3, fundingAmt: 2000, fundingM2: 18, fundingAmt2: 5000,
-  dso: 30, dpo: 45, taxRate: 25, capexY1: 10, depreciation: 20, startCash: 50,
-  cacSpend: 8, newCust: 25, arpc: 200, wageInflation: 5,
+<script>
+var Recharts = window._Recharts || window.Recharts;
+const {
+  useState,
+  useMemo,
+  useCallback
+} = React;
+const {
+  LineChart,
+  Line,
+  BarChart,
+  Bar: RBar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  Legend,
+  AreaChart,
+  Area,
+  ComposedChart
+} = Recharts;
+const C = {
+  navy: "#1B2A4A",
+  teal: "#2E8B8B",
+  gold: "#FFD700",
+  coral: "#E8655A",
+  green: "#10B981",
+  purple: "#7C5CFC",
+  slate: "#94A3B8",
+  border: "#E2E8F0"
 };
-
+function DI({
+  label,
+  value,
+  onChange,
+  min,
+  max,
+  step,
+  prefix = "",
+  suffix = "",
+  w = 56
+}) {
+  const pct = (value - min) / (max - min) * 100;
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 11
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 3
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: "#64748B"
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      background: "#F1F5F9",
+      borderRadius: 5,
+      border: "1px solid " + C.border
+    }
+  }, prefix && /*#__PURE__*/React.createElement("span", {
+    style: {
+      padding: "1px 0 1px 5px",
+      fontSize: 10,
+      color: C.navy,
+      fontWeight: 600
+    }
+  }, prefix), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: value,
+    min: min,
+    max: max,
+    step: step,
+    onChange: e => {
+      const v = parseFloat(e.target.value);
+      if (!isNaN(v)) onChange(Math.min(max, Math.max(min, v)));
+    },
+    style: {
+      width: w,
+      border: "none",
+      background: "transparent",
+      padding: "2px",
+      fontSize: 10,
+      fontWeight: 700,
+      color: C.navy,
+      textAlign: "right",
+      outline: "none"
+    }
+  }), suffix && /*#__PURE__*/React.createElement("span", {
+    style: {
+      padding: "1px 4px 1px 1px",
+      fontSize: 9,
+      color: C.slate
+    }
+  }, suffix))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      height: 12,
+      display: "flex",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      height: 3,
+      background: "#E2E8F0",
+      borderRadius: 2
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      left: 0,
+      width: Math.min(100, Math.max(0, pct)) + "%",
+      height: 3,
+      background: C.teal,
+      borderRadius: 2
+    }
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "range",
+    min: min,
+    max: max,
+    step: step,
+    value: value,
+    onChange: e => onChange(parseFloat(e.target.value)),
+    style: {
+      position: "absolute",
+      width: "100%",
+      height: 12,
+      opacity: 0,
+      cursor: "pointer",
+      zIndex: 2
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      left: `calc(${Math.min(100, Math.max(0, pct))}% - 5px)`,
+      width: 10,
+      height: 10,
+      background: C.teal,
+      borderRadius: "50%",
+      border: "2px solid white",
+      boxShadow: "0 1px 2px rgba(0,0,0,0.15)",
+      pointerEvents: "none"
+    }
+  })));
+}
+function money(n, d = 0) {
+  const a = Math.abs(n),
+    s = n < 0 ? "-" : "";
+  return a >= 1e6 ? s + "$" + (a / 1e6).toFixed(1) + "M" : a >= 1e3 ? s + "$" + (a / 1e3).toFixed(d) + "K" : s + "$" + a.toFixed(d);
+}
+function Sec({
+  title,
+  children
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      textTransform: "uppercase",
+      letterSpacing: 1,
+      marginBottom: 6,
+      paddingBottom: 3,
+      borderBottom: "2px solid " + C.teal
+    }
+  }, title), children);
+}
+function KPI({
+  label,
+  value,
+  sub,
+  color = C.navy,
+  bench
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: "8px 6px",
+      borderRadius: 7,
+      border: "1px solid " + C.border,
+      textAlign: "center",
+      flex: 1,
+      minWidth: 72
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 7,
+      color: C.slate,
+      textTransform: "uppercase",
+      letterSpacing: 0.5
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 16,
+      fontWeight: 700,
+      color,
+      marginTop: 1
+    }
+  }, value), sub && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 7,
+      color: C.slate
+    }
+  }, sub), bench && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 7,
+      color: bench.ok ? C.green : C.coral,
+      fontWeight: 600,
+      marginTop: 1
+    }
+  }, bench.text));
+}
+const TABS = [{
+  id: "assumptions",
+  label: "Assumptions"
+}, {
+  id: "hiring",
+  label: "Hiring Plan"
+}, {
+  id: "unit",
+  label: "Unit Econ"
+}, {
+  id: "pnl",
+  label: "Monthly P&L"
+}, {
+  id: "cashflow",
+  label: "Cash & BS"
+}, {
+  id: "summary",
+  label: "Board Report"
+}];
+const MO = [];
+for (let y = 1; y <= 5; y++) for (let m = 1; m <= 12; m++) MO.push(`Y${y}M${m}`);
+const SCENARIOS = {
+  conservative: {
+    growthMult: 0.7,
+    churnMult: 1.3,
+    label: "Conservative"
+  },
+  base: {
+    growthMult: 1,
+    churnMult: 1,
+    label: "Base"
+  },
+  aggressive: {
+    growthMult: 1.3,
+    churnMult: 0.7,
+    label: "Aggressive"
+  }
+};
+const DEF_HIRES = [{
+  role: "CTO / Lead Engineer",
+  month: 1,
+  salary: 12,
+  burden: 30
+}, {
+  role: "Full-Stack Dev",
+  month: 3,
+  salary: 8,
+  burden: 30
+}, {
+  role: "Product Manager",
+  month: 6,
+  salary: 9,
+  burden: 30
+}, {
+  role: "Marketing Lead",
+  month: 4,
+  salary: 7,
+  burden: 30
+}, {
+  role: "Sales Rep",
+  month: 9,
+  salary: 6,
+  burden: 30
+}, {
+  role: "Customer Success",
+  month: 12,
+  salary: 5,
+  burden: 30
+}, {
+  role: "Designer",
+  month: 15,
+  salary: 7,
+  burden: 30
+}, {
+  role: "DevOps / Infra",
+  month: 18,
+  salary: 9,
+  burden: 30
+}, {
+  role: "Sales Rep #2",
+  month: 24,
+  salary: 6,
+  burden: 30
+}, {
+  role: "Finance / Ops",
+  month: 30,
+  salary: 8,
+  burden: 30
+}];
+const DEF = {
+  startMRR: 10,
+  mrrGrowthY1: 12,
+  mrrGrowthY2: 10,
+  mrrGrowthY3: 8,
+  mrrGrowthY4: 6,
+  mrrGrowthY5: 5,
+  churn: 4,
+  expansion: 1.5,
+  grossMargin: 72,
+  marketingPct: 15,
+  toolsBase: 3,
+  rentBase: 2,
+  legalBase: 1,
+  otherBase: 2,
+  fundingM: 3,
+  fundingAmt: 2000,
+  fundingM2: 18,
+  fundingAmt2: 5000,
+  dso: 30,
+  dpo: 45,
+  taxRate: 25,
+  capexY1: 10,
+  depreciation: 20,
+  startCash: 50,
+  cacSpend: 8,
+  newCust: 25,
+  arpc: 200,
+  wageInflation: 5
+};
 function runModel(a, hires, scenarioKey = "base") {
   const sc = SCENARIOS[scenarioKey];
   const months = [];
-  let mrr = a.startMRR * 1000, cashBal = a.startCash * 1000, ar = 0, ap = 0, ppe = 0, re = 0, eq = 0;
+  let mrr = a.startMRR * 1000,
+    cashBal = a.startCash * 1000,
+    ar = 0,
+    ap = 0,
+    ppe = 0,
+    re = 0,
+    eq = 0;
   for (let i = 0; i < 60; i++) {
     const yr = Math.floor(i / 12);
     const g = [a.mrrGrowthY1, a.mrrGrowthY2, a.mrrGrowthY3, a.mrrGrowthY4, a.mrrGrowthY5][yr] / 100 * sc.growthMult;
     const ch = a.churn / 100 * sc.churnMult;
-    const revenue = mrr, arr = mrr * 12;
-    const cogs = revenue * (1 - a.grossMargin / 100), grossProfit = revenue - cogs;
+    const revenue = mrr,
+      arr = mrr * 12;
+    const cogs = revenue * (1 - a.grossMargin / 100),
+      grossProfit = revenue - cogs;
     const activeHires = hires.filter(h => h.month <= i + 1);
     const inflationFactor = Math.pow(1 + a.wageInflation / 100, yr);
     const salaryExp = activeHires.reduce((s, h) => s + h.salary * 1000 * (1 + h.burden / 100) * inflationFactor, 0);
     const headcount = activeHires.length;
     const marketingExp = revenue * a.marketingPct / 100;
-    const toolsExp = a.toolsBase * 1000 * (1 + yr * 0.15), rentExp = a.rentBase * 1000 * (1 + yr * 0.1);
-    const legalExp = a.legalBase * 1000, otherExp = a.otherBase * 1000 * (1 + yr * 0.1);
+    const toolsExp = a.toolsBase * 1000 * (1 + yr * 0.15),
+      rentExp = a.rentBase * 1000 * (1 + yr * 0.1);
+    const legalExp = a.legalBase * 1000,
+      otherExp = a.otherBase * 1000 * (1 + yr * 0.1);
     const totalOpex = salaryExp + marketingExp + toolsExp + rentExp + legalExp + otherExp;
     const ebitda = grossProfit - totalOpex;
     const da = ppe * (a.depreciation / 100 / 12);
-    const ebt = ebitda - da, tax = ebt > 0 ? ebt * a.taxRate / 100 : 0, netIncome = ebt - tax;
+    const ebt = ebitda - da,
+      tax = ebt > 0 ? ebt * a.taxRate / 100 : 0,
+      netIncome = ebt - tax;
     let fundingIn = 0;
-    if (i + 1 === a.fundingM) { fundingIn = a.fundingAmt * 1000; eq += fundingIn; }
-    if (i + 1 === a.fundingM2) { fundingIn = a.fundingAmt2 * 1000; eq += fundingIn; }
-    const capex = (a.capexY1 * (1 + yr * 0.3)) * 1000 / 12; ppe += capex - da;
-    const newAR = revenue * (a.dso / 30), arChg = newAR - ar; ar = newAR;
-    const newAP = (cogs + totalOpex) * (a.dpo / 30), apChg = newAP - ap; ap = newAP;
-    const cfOps = netIncome + da - arChg + apChg, cfInv = -capex, cfFin = fundingIn;
-    cashBal += cfOps + cfInv + cfFin; re += netIncome;
-    months.push({ i, label: MO[i], yr: yr + 1, mo: (i % 12) + 1, revenue, arr, cogs, grossProfit, gpPct: revenue > 0 ? grossProfit / revenue : 0,
-      salaryExp, marketingExp, toolsExp, rentExp, legalExp, otherExp, totalOpex, ebitda, ebitdaPct: revenue > 0 ? ebitda / revenue : 0,
-      da, tax, netIncome, niPct: revenue > 0 ? netIncome / revenue : 0, cfOps, cfInv, cfFin, netCF: cfOps + cfInv + cfFin,
-      cashBal: Math.max(cashBal, 0), ar, ap, ppe: Math.max(ppe, 0), equity: eq, retainedEarnings: re,
-      totalAssets: Math.max(cashBal, 0) + ar + Math.max(ppe, 0), totalLiab: ap, totalEquity: eq + re, headcount, mrr, fundingIn });
+    if (i + 1 === a.fundingM) {
+      fundingIn = a.fundingAmt * 1000;
+      eq += fundingIn;
+    }
+    if (i + 1 === a.fundingM2) {
+      fundingIn = a.fundingAmt2 * 1000;
+      eq += fundingIn;
+    }
+    const capex = a.capexY1 * (1 + yr * 0.3) * 1000 / 12;
+    ppe += capex - da;
+    const newAR = revenue * (a.dso / 30),
+      arChg = newAR - ar;
+    ar = newAR;
+    const newAP = (cogs + totalOpex) * (a.dpo / 30),
+      apChg = newAP - ap;
+    ap = newAP;
+    const cfOps = netIncome + da - arChg + apChg,
+      cfInv = -capex,
+      cfFin = fundingIn;
+    cashBal += cfOps + cfInv + cfFin;
+    re += netIncome;
+    months.push({
+      i,
+      label: MO[i],
+      yr: yr + 1,
+      mo: i % 12 + 1,
+      revenue,
+      arr,
+      cogs,
+      grossProfit,
+      gpPct: revenue > 0 ? grossProfit / revenue : 0,
+      salaryExp,
+      marketingExp,
+      toolsExp,
+      rentExp,
+      legalExp,
+      otherExp,
+      totalOpex,
+      ebitda,
+      ebitdaPct: revenue > 0 ? ebitda / revenue : 0,
+      da,
+      tax,
+      netIncome,
+      niPct: revenue > 0 ? netIncome / revenue : 0,
+      cfOps,
+      cfInv,
+      cfFin,
+      netCF: cfOps + cfInv + cfFin,
+      cashBal: Math.max(cashBal, 0),
+      ar,
+      ap,
+      ppe: Math.max(ppe, 0),
+      equity: eq,
+      retainedEarnings: re,
+      totalAssets: Math.max(cashBal, 0) + ar + Math.max(ppe, 0),
+      totalLiab: ap,
+      totalEquity: eq + re,
+      headcount,
+      mrr,
+      fundingIn
+    });
     mrr = mrr - mrr * ch + mrr * (a.expansion / 100) + mrr * g;
   }
   return months;
 }
-
 function annualise(model) {
-  return [0,1,2,3,4].map(yr => {
-    const ms = model.filter(m => m.yr === yr + 1), sum = k => ms.reduce((s, m) => s + m[k], 0), last = ms[ms.length - 1];
-    return { year: yr + 1, revenue: sum("revenue"), cogs: sum("cogs"), grossProfit: sum("grossProfit"), totalOpex: sum("totalOpex"),
-      ebitda: sum("ebitda"), netIncome: sum("netIncome"), cfOps: sum("cfOps"), cfInv: sum("cfInv"), cfFin: sum("cfFin"),
-      endCash: last.cashBal, endARR: last.arr, headcount: last.headcount,
-      gpPct: sum("revenue") > 0 ? sum("grossProfit") / sum("revenue") : 0, ebitdaPct: sum("revenue") > 0 ? sum("ebitda") / sum("revenue") : 0,
-      niPct: sum("revenue") > 0 ? sum("netIncome") / sum("revenue") : 0 };
+  return [0, 1, 2, 3, 4].map(yr => {
+    const ms = model.filter(m => m.yr === yr + 1),
+      sum = k => ms.reduce((s, m) => s + m[k], 0),
+      last = ms[ms.length - 1];
+    return {
+      year: yr + 1,
+      revenue: sum("revenue"),
+      cogs: sum("cogs"),
+      grossProfit: sum("grossProfit"),
+      totalOpex: sum("totalOpex"),
+      ebitda: sum("ebitda"),
+      netIncome: sum("netIncome"),
+      cfOps: sum("cfOps"),
+      cfInv: sum("cfInv"),
+      cfFin: sum("cfFin"),
+      endCash: last.cashBal,
+      endARR: last.arr,
+      headcount: last.headcount,
+      gpPct: sum("revenue") > 0 ? sum("grossProfit") / sum("revenue") : 0,
+      ebitdaPct: sum("revenue") > 0 ? sum("ebitda") / sum("revenue") : 0,
+      niPct: sum("revenue") > 0 ? sum("netIncome") / sum("revenue") : 0
+    };
   });
 }
-
 function buildSensitivity(a, hires, rowKey, colKey, rowRange, colRange) {
   return rowRange.map(rv => colRange.map(cv => {
-    const tweaked = { ...a, [rowKey]: rv, [colKey]: cv };
+    const tweaked = {
+      ...a,
+      [rowKey]: rv,
+      [colKey]: cv
+    };
     const m = runModel(tweaked, hires, "base");
     const runout = m.findIndex(x => x.cashBal <= 0);
-    return { runway: runout > 0 ? runout : 60, ebitdaY3: annualise(m)[2]?.ebitda || 0 };
+    return {
+      runway: runout > 0 ? runout : 60,
+      ebitdaY3: annualise(m)[2]?.ebitda || 0
+    };
   }));
 }
-
 function doExport(a, model, annual, hires, unitEcon, conModel, aggModel) {
-  if (!window.isPurchased()) { window.showExportGate(); return; }
+  if (!window.isPurchased()) {
+    window.showExportGate();
+    return;
+  }
   const wb = XLSX.utils.book_new();
-  const aR = [["RAISE READY - 5 YEAR FINANCIAL MODEL (Enhanced)"], [""], ["REVENUE", "", "Base", "Conservative", "Aggressive"],
-    ["Starting MRR ($K)", "", a.startMRR, a.startMRR, a.startMRR],
-    ...["Y1","Y2","Y3","Y4","Y5"].map(y => [y + " MoM Growth", "", a[`mrrGrowth${y}`] + "%", (a[`mrrGrowth${y}`] * 0.7).toFixed(1) + "%", (a[`mrrGrowth${y}`] * 1.3).toFixed(1) + "%"]),
-    ["Churn", "", a.churn + "%", (a.churn * 1.3).toFixed(1) + "%", (a.churn * 0.7).toFixed(1) + "%"],
-    ["Expansion", "", a.expansion + "%"], ["Gross Margin", "", a.grossMargin + "%"], [""],
-    ["UNIT ECONOMICS", "", "Value"], ["CAC", "", unitEcon.cac], ["LTV", "", unitEcon.ltv], ["LTV:CAC", "", unitEcon.ratio.toFixed(1) + "x"],
-    ["Payback (months)", "", unitEcon.payback.toFixed(1)], ["NRR", "", unitEcon.nrr.toFixed(0) + "%"], [""],
-    ["HIRING PLAN"], ["Role", "Start Month", "Base Salary ($K/mo)", "Burden %"],
-    ...hires.map(h => [h.role, h.month, h.salary, h.burden + "%"]),
-    [""], ["Built by Raise Ready | raisereadybook.com"]];
+  const aR = [["RAISE READY - 5 YEAR FINANCIAL MODEL (Enhanced)"], [""], ["REVENUE", "", "Base", "Conservative", "Aggressive"], ["Starting MRR ($K)", "", a.startMRR, a.startMRR, a.startMRR], ...["Y1", "Y2", "Y3", "Y4", "Y5"].map(y => [y + " MoM Growth", "", a[`mrrGrowth${y}`] + "%", (a[`mrrGrowth${y}`] * 0.7).toFixed(1) + "%", (a[`mrrGrowth${y}`] * 1.3).toFixed(1) + "%"]), ["Churn", "", a.churn + "%", (a.churn * 1.3).toFixed(1) + "%", (a.churn * 0.7).toFixed(1) + "%"], ["Expansion", "", a.expansion + "%"], ["Gross Margin", "", a.grossMargin + "%"], [""], ["UNIT ECONOMICS", "", "Value"], ["CAC", "", unitEcon.cac], ["LTV", "", unitEcon.ltv], ["LTV:CAC", "", unitEcon.ratio.toFixed(1) + "x"], ["Payback (months)", "", unitEcon.payback.toFixed(1)], ["NRR", "", unitEcon.nrr.toFixed(0) + "%"], [""], ["HIRING PLAN"], ["Role", "Start Month", "Base Salary ($K/mo)", "Burden %"], ...hires.map(h => [h.role, h.month, h.salary, h.burden + "%"]), [""], ["Built by Raise Ready | raisereadybook.com"]];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aR), "Assumptions");
-  const pnlKeys = [["Revenue","revenue"],["COGS","cogs"],["Gross Profit","grossProfit"],["Salaries","salaryExp"],["Marketing","marketingExp"],["Tools","toolsExp"],["Rent","rentExp"],["Legal","legalExp"],["Other","otherExp"],["Total OpEx","totalOpex"],["EBITDA","ebitda"],["D&A","da"],["Tax","tax"],["Net Income","netIncome"],["Headcount","headcount"],["ARR","arr"],["Cash","cashBal"]];
-  const pH = ["", ...MO]; const pD = [pH]; pnlKeys.forEach(([l, k]) => { const r = [l]; model.forEach(m => r.push(Math.round(m[k]))); pD.push(r); });
+  const pnlKeys = [["Revenue", "revenue"], ["COGS", "cogs"], ["Gross Profit", "grossProfit"], ["Salaries", "salaryExp"], ["Marketing", "marketingExp"], ["Tools", "toolsExp"], ["Rent", "rentExp"], ["Legal", "legalExp"], ["Other", "otherExp"], ["Total OpEx", "totalOpex"], ["EBITDA", "ebitda"], ["D&A", "da"], ["Tax", "tax"], ["Net Income", "netIncome"], ["Headcount", "headcount"], ["ARR", "arr"], ["Cash", "cashBal"]];
+  const pH = ["", ...MO];
+  const pD = [pH];
+  pnlKeys.forEach(([l, k]) => {
+    const r = [l];
+    model.forEach(m => r.push(Math.round(m[k])));
+    pD.push(r);
+  });
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(pD), "Monthly P&L (Base)");
   const scH = ["", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5"];
-  const ba = annualise(model), ca = annualise(conModel), aa = annualise(aggModel);
-  const scR = [scH, ["BASE CASE"], ["Revenue", ...ba.map(y => Math.round(y.revenue))], ["EBITDA", ...ba.map(y => Math.round(y.ebitda))], ["Cash", ...ba.map(y => Math.round(y.endCash))], [""],
-    ["CONSERVATIVE"], ["Revenue", ...ca.map(y => Math.round(y.revenue))], ["EBITDA", ...ca.map(y => Math.round(y.ebitda))], ["Cash", ...ca.map(y => Math.round(y.endCash))], [""],
-    ["AGGRESSIVE"], ["Revenue", ...aa.map(y => Math.round(y.revenue))], ["EBITDA", ...aa.map(y => Math.round(y.ebitda))], ["Cash", ...aa.map(y => Math.round(y.endCash))]];
+  const ba = annualise(model),
+    ca = annualise(conModel),
+    aa = annualise(aggModel);
+  const scR = [scH, ["BASE CASE"], ["Revenue", ...ba.map(y => Math.round(y.revenue))], ["EBITDA", ...ba.map(y => Math.round(y.ebitda))], ["Cash", ...ba.map(y => Math.round(y.endCash))], [""], ["CONSERVATIVE"], ["Revenue", ...ca.map(y => Math.round(y.revenue))], ["EBITDA", ...ca.map(y => Math.round(y.ebitda))], ["Cash", ...ca.map(y => Math.round(y.endCash))], [""], ["AGGRESSIVE"], ["Revenue", ...aa.map(y => Math.round(y.revenue))], ["EBITDA", ...aa.map(y => Math.round(y.ebitda))], ["Cash", ...aa.map(y => Math.round(y.endCash))]];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(scR), "Scenario Comparison");
-  const hR = [["HIRING PLAN"], ["Role", "Start Month", "Salary ($K/mo)", "Burden %", "Fully Loaded ($K/mo)", "Annual Cost ($K)"],
-    ...hires.map(h => [h.role, h.month, h.salary, h.burden, Math.round(h.salary * (1 + h.burden / 100) * 10) / 10, Math.round(h.salary * (1 + h.burden / 100) * 12)])];
+  const hR = [["HIRING PLAN"], ["Role", "Start Month", "Salary ($K/mo)", "Burden %", "Fully Loaded ($K/mo)", "Annual Cost ($K)"], ...hires.map(h => [h.role, h.month, h.salary, h.burden, Math.round(h.salary * (1 + h.burden / 100) * 10) / 10, Math.round(h.salary * (1 + h.burden / 100) * 12)])];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(hR), "Hiring Plan");
   XLSX.writeFile(wb, "Raise_Ready_5Year_Model_Pro.xlsx");
 }
-
 function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario) {
-  if (!window.isPurchased()) { window.showExportGate(); return; }
-  const { jsPDF } = window.jspdf;
+  if (!window.isPurchased()) {
+    window.showExportGate();
+    return;
+  }
+  const {
+    jsPDF
+  } = window.jspdf;
   const doc = new jsPDF();
   doc.setFontSize(18);
   doc.text("Raise Ready - 5 Year Financial Model", 14, 20);
@@ -318,362 +705,1824 @@ function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario) {
   doc.text(`Scenario: ${SCENARIOS[scenario].label} | Generated: ${new Date().toLocaleDateString()}`, 14, 28);
   let y = 38;
   doc.setFontSize(12);
-  doc.text("Annual Summary", 14, y); y += 8;
+  doc.text("Annual Summary", 14, y);
+  y += 8;
   doc.setFontSize(9);
   const headers = ["", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5"];
-  const rows = [
-    ["Revenue", ...annual.map(a => money(a.revenue))],
-    ["EBITDA", ...annual.map(a => money(a.ebitda))],
-    ["Net Income", ...annual.map(a => money(a.netIncome))],
-    ["End Cash", ...annual.map(a => money(a.endCash))],
-    ["End ARR", ...annual.map(a => money(a.endARR))],
-    ["Team", ...annual.map(a => String(a.headcount))],
-  ];
+  const rows = [["Revenue", ...annual.map(a => money(a.revenue))], ["EBITDA", ...annual.map(a => money(a.ebitda))], ["Net Income", ...annual.map(a => money(a.netIncome))], ["End Cash", ...annual.map(a => money(a.endCash))], ["End ARR", ...annual.map(a => money(a.endARR))], ["Team", ...annual.map(a => String(a.headcount))]];
   headers.forEach((h, i) => doc.text(h, 14 + i * 30, y));
   y += 5;
-  rows.forEach(row => { row.forEach((cell, i) => doc.text(cell, 14 + i * 30, y)); y += 5; });
+  rows.forEach(row => {
+    row.forEach((cell, i) => doc.text(cell, 14 + i * 30, y));
+    y += 5;
+  });
   y += 8;
   doc.setFontSize(12);
-  doc.text("Unit Economics", 14, y); y += 8;
+  doc.text("Unit Economics", 14, y);
+  y += 8;
   doc.setFontSize(9);
-  [["CAC", money(unitEcon.cac)], ["LTV", money(unitEcon.ltv)], ["LTV:CAC", unitEcon.ratio.toFixed(1) + "x"],
-   ["Payback", unitEcon.payback.toFixed(0) + " months"], ["NRR", unitEcon.nrr.toFixed(0) + "%"]
-  ].forEach(([l, v]) => { doc.text(l + ": " + v, 14, y); y += 5; });
+  [["CAC", money(unitEcon.cac)], ["LTV", money(unitEcon.ltv)], ["LTV:CAC", unitEcon.ratio.toFixed(1) + "x"], ["Payback", unitEcon.payback.toFixed(0) + " months"], ["NRR", unitEcon.nrr.toFixed(0) + "%"]].forEach(([l, v]) => {
+    doc.text(l + ": " + v, 14, y);
+    y += 5;
+  });
   y += 8;
   doc.setFontSize(12);
-  doc.text("Key Metrics", 14, y); y += 8;
+  doc.text("Key Metrics", 14, y);
+  y += 8;
   doc.setFontSize(9);
   const breakeven = activeModel.findIndex(m => m.ebitda >= 0);
   const runout = activeModel.findIndex(m => m.cashBal <= 0);
-  doc.text("Breakeven: " + (breakeven >= 0 ? "Month " + (breakeven + 1) : "N/A"), 14, y); y += 5;
-  doc.text("Runway: " + (runout > 0 ? runout + " months" : "60+ months"), 14, y); y += 5;
-  doc.text("Y5 ARR: " + money(activeModel[59]?.arr || 0), 14, y); y += 5;
-  doc.text("Y5 Cash: " + money(activeModel[59]?.cashBal || 0), 14, y); y += 10;
+  doc.text("Breakeven: " + (breakeven >= 0 ? "Month " + (breakeven + 1) : "N/A"), 14, y);
+  y += 5;
+  doc.text("Runway: " + (runout > 0 ? runout + " months" : "60+ months"), 14, y);
+  y += 5;
+  doc.text("Y5 ARR: " + money(activeModel[59]?.arr || 0), 14, y);
+  y += 5;
+  doc.text("Y5 Cash: " + money(activeModel[59]?.cashBal || 0), 14, y);
+  y += 10;
   doc.setFontSize(8);
   doc.text("Built by Raise Ready | raisereadybook.com", 14, 285);
   doc.save("Raise_Ready_5Year_Model_Pro.pdf");
 }
-
 function FinancialModel() {
   const [tab, setTab] = useState("assumptions");
   const [scenario, setScenario] = useState("base");
-  const [a, setA] = useState(() => { try { return JSON.parse(window.localStorage?.getItem?.("rr_fm2") || "null") || DEF; } catch { return DEF; } });
-  const [hires, setHires] = useState(() => { try { return JSON.parse(window.localStorage?.getItem?.("rr_hires") || "null") || DEF_HIRES; } catch { return DEF_HIRES; } });
+  const [a, setA] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage?.getItem?.("rr_fm2") || "null") || DEF;
+    } catch {
+      return DEF;
+    }
+  });
+  const [hires, setHires] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage?.getItem?.("rr_hires") || "null") || DEF_HIRES;
+    } catch {
+      return DEF_HIRES;
+    }
+  });
   const [saved, setSaved] = useState(false);
-  const set = useCallback((k, v) => setA(p => ({ ...p, [k]: v })), []);
-  const setHire = useCallback((idx, field, val) => setHires(prev => prev.map((h, i) => i === idx ? { ...h, [field]: val } : h)), []);
-  const addHire = useCallback(() => setHires(p => [...p, { role: "New Role", month: p.length * 6 + 1, salary: 6, burden: 30 }]), []);
-  const rmHire = useCallback((idx) => setHires(p => p.filter((_, i) => i !== idx)), []);
-
+  const set = useCallback((k, v) => setA(p => ({
+    ...p,
+    [k]: v
+  })), []);
+  const setHire = useCallback((idx, field, val) => setHires(prev => prev.map((h, i) => i === idx ? {
+    ...h,
+    [field]: val
+  } : h)), []);
+  const addHire = useCallback(() => setHires(p => [...p, {
+    role: "New Role",
+    month: p.length * 6 + 1,
+    salary: 6,
+    burden: 30
+  }]), []);
+  const rmHire = useCallback(idx => setHires(p => p.filter((_, i) => i !== idx)), []);
   const saveLocal = useCallback(() => {
-    try { window.localStorage?.setItem?.("rr_fm2", JSON.stringify(a)); window.localStorage?.setItem?.("rr_hires", JSON.stringify(hires)); setSaved(true); setTimeout(() => setSaved(false), 2000); } catch {}
+    try {
+      window.localStorage?.setItem?.("rr_fm2", JSON.stringify(a));
+      window.localStorage?.setItem?.("rr_hires", JSON.stringify(hires));
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch {}
   }, [a, hires]);
-  const resetAll = useCallback(() => { setA(DEF); setHires(DEF_HIRES); try { window.localStorage?.removeItem?.("rr_fm2"); window.localStorage?.removeItem?.("rr_hires"); } catch {} }, []);
-
+  const resetAll = useCallback(() => {
+    setA(DEF);
+    setHires(DEF_HIRES);
+    try {
+      window.localStorage?.removeItem?.("rr_fm2");
+      window.localStorage?.removeItem?.("rr_hires");
+    } catch {}
+  }, []);
   const model = useMemo(() => runModel(a, hires, "base"), [a, hires]);
   const conModel = useMemo(() => runModel(a, hires, "conservative"), [a, hires]);
   const aggModel = useMemo(() => runModel(a, hires, "aggressive"), [a, hires]);
   const activeModel = scenario === "conservative" ? conModel : scenario === "aggressive" ? aggModel : model;
   const annual = useMemo(() => annualise(activeModel), [activeModel]);
-
   const unitEcon = useMemo(() => {
     const cac = a.newCust > 0 ? a.cacSpend * 1000 / a.newCust : 0;
-    const gm = a.grossMargin / 100, ch = a.churn / 100;
+    const gm = a.grossMargin / 100,
+      ch = a.churn / 100;
     const avgLife = ch > 0 ? 1 / ch : 999;
     const ltv = a.arpc * gm * avgLife;
     const ratio = cac > 0 ? ltv / cac : 0;
-    const payback = (a.arpc * gm) > 0 ? cac / (a.arpc * gm) : 0;
+    const payback = a.arpc * gm > 0 ? cac / (a.arpc * gm) : 0;
     const nrr = 100 - a.churn + a.expansion;
     const newArr = a.newCust * a.arpc * 12;
     const netBurn = annual[0] ? Math.abs(Math.min(0, annual[0].ebitda / 12)) : 0;
     const burnMult = newArr > 0 ? netBurn * 12 / newArr : 999;
     const magicNum = annual[0] && a.cacSpend > 0 ? (annual[0].revenue / 12 - a.startMRR * 1000) / (a.cacSpend * 1000) : 0;
-    return { cac, ltv, ratio, payback, avgLife, nrr, burnMult, magicNum, newArr };
+    return {
+      cac,
+      ltv,
+      ratio,
+      payback,
+      avgLife,
+      nrr,
+      burnMult,
+      magicNum,
+      newArr
+    };
   }, [a, annual]);
-
   const sensitivity = useMemo(() => {
     const growths = [4, 6, 8, 10, 12, 15, 18];
     const churns = [1, 2, 3, 4, 5, 6, 8];
-    return { growths, churns, matrix: buildSensitivity(a, hires, "mrrGrowthY1", "churn", growths, churns) };
+    return {
+      growths,
+      churns,
+      matrix: buildSensitivity(a, hires, "mrrGrowthY1", "churn", growths, churns)
+    };
   }, [a, hires]);
-
   const qData = useMemo(() => {
     const qs = [];
     for (let q = 0; q < 20; q++) {
-      const ms = activeModel.slice(q * 3, q * 3 + 3), sum = k => ms.reduce((s, m) => s + m[k], 0), last = ms[ms.length - 1];
-      qs.push({ name: `Y${Math.floor(q / 4) + 1}Q${(q % 4) + 1}`, revenue: Math.round(sum("revenue") / 1000), ebitda: Math.round(sum("ebitda") / 1000),
-        netIncome: Math.round(sum("netIncome") / 1000), cash: Math.round(last.cashBal / 1000), arr: Math.round(last.arr / 1000), opex: Math.round(sum("totalOpex") / 1000), grossProfit: Math.round(sum("grossProfit") / 1000) });
+      const ms = activeModel.slice(q * 3, q * 3 + 3),
+        sum = k => ms.reduce((s, m) => s + m[k], 0),
+        last = ms[ms.length - 1];
+      qs.push({
+        name: `Y${Math.floor(q / 4) + 1}Q${q % 4 + 1}`,
+        revenue: Math.round(sum("revenue") / 1000),
+        ebitda: Math.round(sum("ebitda") / 1000),
+        netIncome: Math.round(sum("netIncome") / 1000),
+        cash: Math.round(last.cashBal / 1000),
+        arr: Math.round(last.arr / 1000),
+        opex: Math.round(sum("totalOpex") / 1000),
+        grossProfit: Math.round(sum("grossProfit") / 1000)
+      });
     }
     return qs;
   }, [activeModel]);
-
   const scenarioChart = useMemo(() => {
     const out = [];
     for (let q = 0; q < 20; q++) {
-      const bMs = model.slice(q * 3, q * 3 + 3), cMs = conModel.slice(q * 3, q * 3 + 3), aMs = aggModel.slice(q * 3, q * 3 + 3);
+      const bMs = model.slice(q * 3, q * 3 + 3),
+        cMs = conModel.slice(q * 3, q * 3 + 3),
+        aMs = aggModel.slice(q * 3, q * 3 + 3);
       const sum = (arr, k) => arr.reduce((s, m) => s + m[k], 0);
-      out.push({ name: `Y${Math.floor(q / 4) + 1}Q${(q % 4) + 1}`, base: Math.round(sum(bMs, "revenue") / 1000), conservative: Math.round(sum(cMs, "revenue") / 1000), aggressive: Math.round(sum(aMs, "revenue") / 1000),
-        baseCash: Math.round(bMs[2].cashBal / 1000), conCash: Math.round(cMs[2].cashBal / 1000), aggCash: Math.round(aMs[2].cashBal / 1000) });
+      out.push({
+        name: `Y${Math.floor(q / 4) + 1}Q${q % 4 + 1}`,
+        base: Math.round(sum(bMs, "revenue") / 1000),
+        conservative: Math.round(sum(cMs, "revenue") / 1000),
+        aggressive: Math.round(sum(aMs, "revenue") / 1000),
+        baseCash: Math.round(bMs[2].cashBal / 1000),
+        conCash: Math.round(cMs[2].cashBal / 1000),
+        aggCash: Math.round(aMs[2].cashBal / 1000)
+      });
     }
     return out;
   }, [model, conModel, aggModel]);
-
   const runout = activeModel.findIndex(m => m.cashBal <= 0);
   const breakeven = activeModel.findIndex(m => m.ebitda >= 0);
   const totalPayroll = hires.reduce((s, h) => s + h.salary * (1 + h.burden / 100), 0);
   const purchased = window.isPurchased();
-
-  const ScenarioToggle = () => (<div style={{ display: "flex", gap: 4, marginBottom: 10 }}>
-    {Object.entries(SCENARIOS).map(([k, v]) => (<button key={k} onClick={() => setScenario(k)} style={{ flex: 1, padding: "5px 8px", fontSize: 10, fontWeight: 700, border: `1.5px solid ${scenario === k ? C.teal : C.border}`, background: scenario === k ? C.teal + "15" : "white", color: scenario === k ? C.teal : "#64748B", borderRadius: 5, cursor: "pointer" }}>{v.label}</button>))}
-  </div>);
-
-  return (
-    <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", background: "#F8FAFC", borderRadius: 14, overflow: "hidden", maxWidth: 1100, margin: "2rem auto" }}>
-      {/* HEADER */}
-      <div style={{ background: C.navy, padding: "12px 18px 0", color: "white" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, flexWrap: "wrap", gap: 6 }}>
-          <div><h2 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>5-Year Financial Model Pro</h2><p style={{ margin: "1px 0 0", fontSize: 9, opacity: 0.5 }}>3 scenarios, hiring plan, unit economics, sensitivity analysis, benchmarks</p></div>
-          <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-            <button onClick={() => doExport(a, model, annual, hires, unitEcon, conModel, aggModel)} style={{ background: C.green, color: "white", border: "none", padding: "5px 12px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{purchased ? "Export Excel" : "Export Excel ($29)"}</button>
-            <button onClick={() => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario)} style={{ background: C.purple, color: "white", border: "none", padding: "5px 12px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{purchased ? "Export PDF" : "Export PDF ($29)"}</button>
-            <button onClick={saveLocal} style={{ background: C.teal, color: "white", border: "none", padding: "5px 10px", borderRadius: 5, fontSize: 9, fontWeight: 600, cursor: "pointer" }}>{saved ? "\u2713 Saved" : "Save"}</button>
-            <button onClick={resetAll} style={{ background: "transparent", color: "rgba(255,255,255,0.3)", border: "1px solid rgba(255,255,255,0.15)", padding: "5px 10px", borderRadius: 5, fontSize: 9, cursor: "pointer" }}>Reset</button>
-          </div>
-        </div>
-        <div style={{ display: "flex", gap: 2, overflowX: "auto" }}>{TABS.map(t => (<button key={t.id} onClick={() => setTab(t.id)} style={{ background: tab === t.id ? "white" : "transparent", color: tab === t.id ? C.navy : "rgba(255,255,255,0.4)", border: "none", padding: "6px 12px", fontSize: 10, fontWeight: 600, borderRadius: "6px 6px 0 0", cursor: "pointer", whiteSpace: "nowrap" }}>{t.label}</button>))}</div>
-      </div>
-
-      {/* =============== TAB: ASSUMPTIONS =============== */}
-      {tab === "assumptions" && <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <div style={{ flex: "0 0 280px", padding: "12px 16px", background: "white", borderRight: "1px solid " + C.border, overflowY: "auto", maxHeight: 520 }}>
-          <ScenarioToggle />
-          <Sec title="Revenue">
-            <DI label="Starting MRR" value={a.startMRR} onChange={v => set("startMRR", v)} min={0} max={1000} step={1} prefix="$" suffix="K" />
-            {["Y1","Y2","Y3","Y4","Y5"].map(y => <DI key={y} label={y + " MoM Growth"} value={a[`mrrGrowth${y}`]} onChange={v => set(`mrrGrowth${y}`, v)} min={0} max={30} step={0.5} suffix="%" />)}
-            <DI label="Churn" value={a.churn} onChange={v => set("churn", v)} min={0} max={15} step={0.5} suffix="%" />
-            <DI label="Expansion" value={a.expansion} onChange={v => set("expansion", v)} min={0} max={10} step={0.5} suffix="%" />
-            <DI label="Gross Margin" value={a.grossMargin} onChange={v => set("grossMargin", v)} min={20} max={95} step={1} suffix="%" />
-          </Sec>
-          <Sec title="OpEx">
-            <DI label="Marketing (% Rev)" value={a.marketingPct} onChange={v => set("marketingPct", v)} min={0} max={40} step={1} suffix="%" />
-            <DI label="Tools" value={a.toolsBase} onChange={v => set("toolsBase", v)} min={0} max={30} step={1} prefix="$" suffix="K" />
-            <DI label="Rent" value={a.rentBase} onChange={v => set("rentBase", v)} min={0} max={20} step={0.5} prefix="$" suffix="K" />
-            <DI label="Legal" value={a.legalBase} onChange={v => set("legalBase", v)} min={0} max={10} step={0.5} prefix="$" suffix="K" />
-            <DI label="Other" value={a.otherBase} onChange={v => set("otherBase", v)} min={0} max={20} step={0.5} prefix="$" suffix="K" />
-          </Sec>
-          <Sec title="Funding & Other">
-            <DI label="Round 1 Month" value={a.fundingM} onChange={v => set("fundingM", v)} min={0} max={60} step={1} />
-            <DI label="Round 1" value={a.fundingAmt} onChange={v => set("fundingAmt", v)} min={0} max={50000} step={100} prefix="$" suffix="K" />
-            <DI label="Round 2 Month" value={a.fundingM2} onChange={v => set("fundingM2", v)} min={0} max={60} step={1} />
-            <DI label="Round 2" value={a.fundingAmt2} onChange={v => set("fundingAmt2", v)} min={0} max={100000} step={500} prefix="$" suffix="K" />
-            <DI label="Starting Cash" value={a.startCash} onChange={v => set("startCash", v)} min={0} max={10000} step={10} prefix="$" suffix="K" />
-            <DI label="Tax Rate" value={a.taxRate} onChange={v => set("taxRate", v)} min={0} max={40} step={1} suffix="%" />
-            <DI label="DSO" value={a.dso} onChange={v => set("dso", v)} min={0} max={90} step={5} suffix="d" />
-            <DI label="DPO" value={a.dpo} onChange={v => set("dpo", v)} min={0} max={90} step={5} suffix="d" />
-          </Sec>
-        </div>
-        <div style={{ flex: 1, padding: "12px 16px", minWidth: 370, overflowY: "auto", maxHeight: 520 }}>
-          <div style={{ display: "flex", gap: 5, marginBottom: 10, flexWrap: "wrap" }}>
-            <KPI label="Y5 ARR" value={money(activeModel[59]?.arr || 0)} color={C.teal} bench={{ ok: (activeModel[59]?.arr || 0) > 500000, text: "> $500K = strong" }} />
-            <KPI label="Y5 EBITDA" value={money(annual[4]?.ebitda || 0)} color={annual[4]?.ebitda >= 0 ? C.green : C.coral} bench={{ ok: (annual[4]?.ebitdaPct || 0) >= 0, text: annual[4]?.ebitdaPct >= 0 ? "Profitable" : "Negative" }} />
-            <KPI label="Cash Y5" value={money(activeModel[59]?.cashBal || 0)} color={C.green} />
-            <KPI label="Breakeven" value={breakeven >= 0 ? `M${breakeven + 1}` : "N/A"} color={breakeven >= 0 ? C.green : C.coral} />
-            <KPI label="Runway" value={runout > 0 ? `${runout}mo` : "60+"} color={runout > 0 && runout < 24 ? C.coral : C.green} bench={{ ok: runout <= 0 || runout >= 18, text: ">18mo = safe" }} />
-          </div>
-          <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border, marginBottom: 8 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: C.navy, marginBottom: 5 }}>Revenue by Scenario ($K quarterly)</div>
-            <ResponsiveContainer width="100%" height={140}><LineChart data={scenarioChart}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={7} tick={{ fill: C.slate }} interval={3} /><YAxis fontSize={7} tick={{ fill: C.slate }} /><Tooltip contentStyle={{ fontSize: 9, borderRadius: 6 }} /><Line dataKey="conservative" stroke={C.coral} strokeWidth={1.5} dot={false} strokeDasharray="4 4" name="Conservative" /><Line dataKey="base" stroke={C.teal} strokeWidth={2} dot={false} name="Base" /><Line dataKey="aggressive" stroke={C.green} strokeWidth={1.5} dot={false} strokeDasharray="4 4" name="Aggressive" /><Legend wrapperStyle={{ fontSize: 8 }} /></LineChart></ResponsiveContainer>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 8 }}>
-            <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: C.navy, marginBottom: 4 }}>Cash by Scenario ($K)</div>
-              <ResponsiveContainer width="100%" height={100}><LineChart data={scenarioChart}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={6} tick={{ fill: C.slate }} interval={3} /><YAxis fontSize={6} tick={{ fill: C.slate }} /><Tooltip contentStyle={{ fontSize: 8, borderRadius: 5 }} /><Line dataKey="conCash" stroke={C.coral} strokeWidth={1} dot={false} strokeDasharray="3 3" /><Line dataKey="baseCash" stroke={C.teal} strokeWidth={2} dot={false} /><Line dataKey="aggCash" stroke={C.green} strokeWidth={1} dot={false} strokeDasharray="3 3" /></LineChart></ResponsiveContainer>
-            </div>
-            <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: C.navy, marginBottom: 4 }}>EBITDA ($K) - {SCENARIOS[scenario].label}</div>
-              <ResponsiveContainer width="100%" height={100}><ComposedChart data={qData}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={6} tick={{ fill: C.slate }} interval={3} /><YAxis fontSize={6} tick={{ fill: C.slate }} /><Tooltip contentStyle={{ fontSize: 8, borderRadius: 5 }} /><RBar dataKey="revenue" fill={C.teal} opacity={0.15} /><Line dataKey="ebitda" stroke={C.coral} strokeWidth={2} dot={false} /></ComposedChart></ResponsiveContainer>
-            </div>
-          </div>
-          <div style={{ background: "white", padding: 8, borderRadius: 8, border: "1px solid " + C.border }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: C.navy, marginBottom: 4 }}>Annual Summary ({SCENARIOS[scenario].label})</div>
-            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 8 }}><thead><tr style={{ background: C.navy, color: "white" }}><th style={{ padding: "3px 5px", textAlign: "left" }}>Metric</th>{annual.map(y => <th key={y.year} style={{ padding: "3px 5px", textAlign: "right" }}>Y{y.year}</th>)}</tr></thead>
-              <tbody>{[{ l: "Revenue", k: "revenue" },{ l: "GP %", k: "gpPct", p: true },{ l: "EBITDA", k: "ebitda" },{ l: "EBITDA %", k: "ebitdaPct", p: true },{ l: "Net Income", k: "netIncome" },{ l: "End ARR", k: "endARR" },{ l: "End Cash", k: "endCash" },{ l: "Team", k: "headcount" }].map((r, ri) => (
-                <tr key={r.l} style={{ background: ri % 2 === 0 ? "#F8FAFC" : "white" }}><td style={{ padding: "2px 5px", fontWeight: r.l === "EBITDA" || r.l === "Net Income" ? 700 : 400, color: C.navy }}>{r.l}</td>
-                  {annual.map(y => <td key={y.year} style={{ padding: "2px 5px", textAlign: "right", color: !r.p && y[r.k] < 0 ? C.coral : C.navy }}>{r.p ? (y[r.k] * 100).toFixed(1) + "%" : r.k === "headcount" ? y[r.k] : money(y[r.k])}</td>)}</tr>
-              ))}</tbody></table>
-          </div>
-        </div>
-      </div>}
-
-      {/* =============== TAB: HIRING PLAN =============== */}
-      {tab === "hiring" && <div style={{ padding: "12px 16px", overflowY: "auto", maxHeight: 520 }}>
-        <div style={{ display: "flex", gap: 5, marginBottom: 10, flexWrap: "wrap" }}>
-          <KPI label="Team Size (M60)" value={activeModel[59]?.headcount || 0} />
-          <KPI label="Monthly Payroll" value={money(totalPayroll * 1000)} sub="fully loaded" />
-          <KPI label="Annual Payroll" value={money(totalPayroll * 12000)} />
-          <KPI label="Rev/Employee Y5" value={annual[4]?.headcount > 0 ? money(annual[4].revenue / annual[4].headcount) : "$0"} bench={{ ok: annual[4]?.headcount > 0 && annual[4].revenue / annual[4].headcount > 100000, text: "> $100K = good" }} />
-        </div>
-        <DI label="Annual Wage Inflation" value={a.wageInflation} onChange={v => set("wageInflation", v)} min={0} max={20} step={1} suffix="%" />
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 10 }}>
-            <thead><tr style={{ background: C.navy, color: "white" }}><th style={{ padding: "5px 8px", textAlign: "left" }}>Role</th><th style={{ padding: "5px", textAlign: "center", width: 60 }}>Start M</th><th style={{ padding: "5px", textAlign: "center", width: 70 }}>Salary $K/mo</th><th style={{ padding: "5px", textAlign: "center", width: 55 }}>Burden %</th><th style={{ padding: "5px", textAlign: "right", width: 80 }}>Loaded $K/mo</th><th style={{ padding: "5px", textAlign: "right", width: 80 }}>Annual $K</th><th style={{ width: 30 }}></th></tr></thead>
-            <tbody>{hires.map((h, i) => {
-              const loaded = h.salary * (1 + h.burden / 100);
-              return (<tr key={i} style={{ background: i % 2 === 0 ? "#F8FAFC" : "white", borderBottom: "1px solid " + C.border }}>
-                <td style={{ padding: "4px 8px" }}><input value={h.role} onChange={e => setHire(i, "role", e.target.value)} style={{ border: "none", background: "transparent", fontSize: 10, fontWeight: 600, color: C.navy, width: "100%", outline: "none" }} /></td>
-                <td style={{ textAlign: "center" }}><input type="number" value={h.month} onChange={e => setHire(i, "month", parseInt(e.target.value) || 1)} style={{ width: 40, border: "1px solid " + C.border, borderRadius: 3, textAlign: "center", fontSize: 10, color: "blue", fontWeight: 700 }} /></td>
-                <td style={{ textAlign: "center" }}><input type="number" value={h.salary} step={0.5} onChange={e => setHire(i, "salary", parseFloat(e.target.value) || 0)} style={{ width: 50, border: "1px solid " + C.border, borderRadius: 3, textAlign: "center", fontSize: 10, color: "blue", fontWeight: 700 }} /></td>
-                <td style={{ textAlign: "center" }}><input type="number" value={h.burden} onChange={e => setHire(i, "burden", parseInt(e.target.value) || 0)} style={{ width: 40, border: "1px solid " + C.border, borderRadius: 3, textAlign: "center", fontSize: 10, color: "blue", fontWeight: 700 }} /></td>
-                <td style={{ textAlign: "right", padding: "4px 8px", fontWeight: 600, color: C.navy }}>${loaded.toFixed(1)}K</td>
-                <td style={{ textAlign: "right", padding: "4px 8px", fontWeight: 600, color: C.navy }}>${(loaded * 12).toFixed(0)}K</td>
-                <td><button onClick={() => rmHire(i)} style={{ background: "none", border: "none", color: C.coral, cursor: "pointer", fontSize: 12 }}>x</button></td>
-              </tr>);
-            })}</tbody>
-          </table>
-        </div>
-        <button onClick={addHire} style={{ marginTop: 8, background: C.teal, color: "white", border: "none", padding: "6px 14px", borderRadius: 6, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>+ Add Role</button>
-        <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border, marginTop: 10 }}>
-          <div style={{ fontSize: 9, fontWeight: 700, color: C.navy, marginBottom: 4 }}>Headcount & Payroll Over Time</div>
-          <ResponsiveContainer width="100%" height={140}><ComposedChart data={activeModel.filter((_, i) => i % 3 === 0).map(m => ({ name: m.label, hc: m.headcount, payroll: Math.round(m.salaryExp / 1000) }))}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={7} tick={{ fill: C.slate }} interval={3} /><YAxis yAxisId="l" fontSize={7} tick={{ fill: C.slate }} /><YAxis yAxisId="r" orientation="right" fontSize={7} tick={{ fill: C.slate }} /><Tooltip contentStyle={{ fontSize: 9, borderRadius: 6 }} /><RBar yAxisId="r" dataKey="payroll" fill={C.coral} opacity={0.2} name="Payroll $K/mo" /><Line yAxisId="l" dataKey="hc" stroke={C.teal} strokeWidth={2} dot={false} name="Headcount" /><Legend wrapperStyle={{ fontSize: 8 }} /></ComposedChart></ResponsiveContainer>
-        </div>
-      </div>}
-
-      {/* =============== TAB: UNIT ECONOMICS =============== */}
-      {tab === "unit" && <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <div style={{ flex: "0 0 260px", padding: "12px 16px", background: "white", borderRight: "1px solid " + C.border, overflowY: "auto", maxHeight: 520 }}>
-          <Sec title="Acquisition">
-            <DI label="Monthly Acq Spend" value={a.cacSpend} onChange={v => set("cacSpend", v)} min={0} max={200} step={1} prefix="$" suffix="K" />
-            <DI label="New Customers/Mo" value={a.newCust} onChange={v => set("newCust", v)} min={1} max={500} step={1} />
-            <DI label="Avg Rev/Customer" value={a.arpc} onChange={v => set("arpc", v)} min={10} max={5000} step={10} prefix="$" suffix="/mo" />
-          </Sec>
-          <Sec title="Retention (from Assumptions)">
-            <DI label="Gross Margin" value={a.grossMargin} onChange={v => set("grossMargin", v)} min={20} max={95} step={1} suffix="%" />
-            <DI label="Churn" value={a.churn} onChange={v => set("churn", v)} min={0} max={15} step={0.5} suffix="%" />
-            <DI label="Expansion" value={a.expansion} onChange={v => set("expansion", v)} min={0} max={10} step={0.5} suffix="%" />
-          </Sec>
-        </div>
-        <div style={{ flex: 1, padding: "12px 16px", minWidth: 370, overflowY: "auto", maxHeight: 520 }}>
-          <div style={{ display: "flex", gap: 5, marginBottom: 10, flexWrap: "wrap" }}>
-            <KPI label="CAC" value={money(unitEcon.cac)} bench={{ ok: unitEcon.cac < 500, text: "< $500 = good" }} />
-            <KPI label="LTV" value={money(unitEcon.ltv)} bench={{ ok: unitEcon.ltv > unitEcon.cac * 3, text: "> 3x CAC = healthy" }} />
-            <KPI label="LTV:CAC" value={unitEcon.ratio.toFixed(1) + "x"} color={unitEcon.ratio >= 3 ? C.green : C.coral} bench={{ ok: unitEcon.ratio >= 3, text: "Benchmark: 3x+" }} />
-            <KPI label="Payback" value={unitEcon.payback.toFixed(0) + "mo"} color={unitEcon.payback <= 12 ? C.green : C.coral} bench={{ ok: unitEcon.payback <= 12, text: "< 12mo = good" }} />
-            <KPI label="NRR" value={unitEcon.nrr.toFixed(0) + "%"} color={unitEcon.nrr >= 100 ? C.green : C.coral} bench={{ ok: unitEcon.nrr >= 100, text: "> 100% = expanding" }} />
-            <KPI label="Magic #" value={unitEcon.magicNum.toFixed(2)} color={unitEcon.magicNum >= 0.75 ? C.green : C.coral} bench={{ ok: unitEcon.magicNum >= 0.75, text: "> 0.75 = efficient" }} />
-          </div>
-          <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border, marginBottom: 10 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: C.navy, marginBottom: 6 }}>Sensitivity: Runway (months) by Growth vs Churn</div>
-            <div style={{ overflowX: "auto" }}>
-              <table style={{ borderCollapse: "collapse", fontSize: 9, width: "100%" }}>
-                <thead><tr><th style={{ padding: 3, background: C.navy, color: "white", fontSize: 8 }}>Growth \ Churn</th>{sensitivity.churns.map(c => <th key={c} style={{ padding: 3, background: C.navy, color: "white", fontSize: 8, textAlign: "center" }}>{c}%</th>)}</tr></thead>
-                <tbody>{sensitivity.matrix.map((row, ri) => (
-                  <tr key={ri}><td style={{ padding: 3, fontWeight: 700, background: "#F1F5F9", color: C.navy }}>{sensitivity.growths[ri]}%</td>
-                    {row.map((cell, ci) => {
-                      const r = cell.runway;
-                      const bg = r >= 36 ? "#D1FAE5" : r >= 18 ? "#FEF3C7" : "#FEE2E2";
-                      const isActive = sensitivity.growths[ri] === a.mrrGrowthY1 && sensitivity.churns[ci] === a.churn;
-                      return <td key={ci} style={{ padding: 3, textAlign: "center", background: bg, fontWeight: isActive ? 800 : 400, border: isActive ? "2px solid " + C.navy : "1px solid white", color: C.navy }}>{r >= 60 ? "60+" : r}</td>;
-                    })}
-                  </tr>
-                ))}</tbody>
-              </table>
-            </div>
-            <div style={{ fontSize: 8, color: C.slate, marginTop: 4 }}>Green = 36+ months. Yellow = 18-36. Red = under 18. Bold = your current position.</div>
-          </div>
-          <div style={{ background: "white", padding: 10, borderRadius: 8, border: "1px solid " + C.border }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: C.navy, marginBottom: 6 }}>SaaS Benchmarks vs Your Model</div>
-            {[
-              { l: "Gross Margin", yours: a.grossMargin, bench: "70-80%", ok: a.grossMargin >= 60 },
-              { l: "Monthly Churn", yours: a.churn + "%", bench: "< 5%", ok: a.churn <= 5 },
-              { l: "NRR", yours: unitEcon.nrr.toFixed(0) + "%", bench: "> 100%", ok: unitEcon.nrr >= 100 },
-              { l: "LTV:CAC", yours: unitEcon.ratio.toFixed(1) + "x", bench: "> 3x", ok: unitEcon.ratio >= 3 },
-              { l: "CAC Payback", yours: unitEcon.payback.toFixed(0) + " mo", bench: "< 12 mo", ok: unitEcon.payback <= 12 },
-              { l: "Burn Multiple", yours: unitEcon.burnMult < 99 ? unitEcon.burnMult.toFixed(1) + "x" : "N/A", bench: "< 2x", ok: unitEcon.burnMult < 2 },
-              { l: "Magic Number", yours: unitEcon.magicNum.toFixed(2), bench: "> 0.75", ok: unitEcon.magicNum >= 0.75 },
-            ].map(b => (
-              <div key={b.l} style={{ display: "flex", alignItems: "center", padding: "4px 0", borderBottom: "1px solid #F1F5F9", fontSize: 10 }}>
-                <span style={{ flex: 1, color: "#64748B" }}>{b.l}</span>
-                <span style={{ width: 60, textAlign: "right", fontWeight: 700, color: b.ok ? C.green : C.coral }}>{b.yours}</span>
-                <span style={{ width: 60, textAlign: "right", color: C.slate, fontSize: 9 }}>{b.bench}</span>
-                <span style={{ width: 20, textAlign: "center", fontSize: 12 }}>{b.ok ? "\u2705" : "\u274C"}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>}
-
-      {/* =============== TAB: MONTHLY P&L =============== */}
-      {tab === "pnl" && <div style={{ overflowX: "auto", padding: 8, maxHeight: 500 }}>
-        <ScenarioToggle />
-        <table style={{ borderCollapse: "collapse", fontSize: 8, whiteSpace: "nowrap" }}>
-          <thead><tr style={{ background: C.navy, color: "white", position: "sticky", top: 0 }}><th style={{ padding: "3px 4px", textAlign: "left", position: "sticky", left: 0, background: C.navy, zIndex: 2, minWidth: 80 }}>Line Item</th>{activeModel.map(m => <th key={m.i} style={{ padding: "3px 2px", textAlign: "right", minWidth: 52, background: m.mo === 1 ? C.teal : C.navy }}>{m.label}</th>)}</tr></thead>
-          <tbody>{[{ l: "Revenue", k: "revenue", b: true },{ l: "COGS", k: "cogs" },{ l: "Gross Profit", k: "grossProfit", b: true },{ l: "GP %", k: "gpPct", p: true },{ l: "Salaries", k: "salaryExp" },{ l: "Marketing", k: "marketingExp" },{ l: "Tools", k: "toolsExp" },{ l: "Rent", k: "rentExp" },{ l: "Total OpEx", k: "totalOpex", b: true },{ l: "EBITDA", k: "ebitda", b: true, h: true },{ l: "EBITDA %", k: "ebitdaPct", p: true },{ l: "Net Income", k: "netIncome", b: true, h: true },{ l: "Headcount", k: "headcount" },{ l: "ARR", k: "arr" }].map((r, ri) => (
-            <tr key={r.l} style={{ background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white" }}><td style={{ padding: "2px 4px", fontWeight: r.b ? 700 : 400, color: C.navy, position: "sticky", left: 0, background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white", zIndex: 1, borderRight: "1px solid " + C.border }}>{r.l}</td>
-              {activeModel.map(m => <td key={m.i} style={{ padding: "2px 2px", textAlign: "right", fontWeight: r.b ? 600 : 400, color: r.p ? C.navy : m[r.k] < 0 ? C.coral : C.navy, borderLeft: m.mo === 1 ? "2px solid " + C.teal : "none" }}>{r.p ? (m[r.k] * 100).toFixed(0) + "%" : r.k === "headcount" ? m[r.k] : money(m[r.k])}</td>)}</tr>
-          ))}</tbody>
-        </table>
-      </div>}
-
-      {/* =============== TAB: CASH & BS =============== */}
-      {tab === "cashflow" && <div style={{ overflowX: "auto", padding: 8, maxHeight: 500 }}>
-        <ScenarioToggle />
-        <table style={{ borderCollapse: "collapse", fontSize: 8, whiteSpace: "nowrap" }}>
-          <thead><tr style={{ background: C.navy, color: "white", position: "sticky", top: 0 }}><th style={{ padding: "3px 4px", textAlign: "left", position: "sticky", left: 0, background: C.navy, zIndex: 2, minWidth: 100 }}>Line Item</th>{activeModel.map(m => <th key={m.i} style={{ padding: "3px 2px", textAlign: "right", minWidth: 52, background: m.mo === 1 ? C.teal : C.navy }}>{m.label}</th>)}</tr></thead>
-          <tbody>{[{ l: "CASH FLOW", s: true },{ l: "Operating CF", k: "cfOps" },{ l: "Investing CF", k: "cfInv" },{ l: "Financing CF", k: "cfFin" },{ l: "Net CF", k: "netCF", b: true },{ l: "Cash Balance", k: "cashBal", b: true, h: true },{ l: "" },{ l: "BALANCE SHEET", s: true },{ l: "Cash", k: "cashBal" },{ l: "Accts Receivable", k: "ar" },{ l: "PP&E", k: "ppe" },{ l: "Total Assets", k: "totalAssets", b: true },{ l: "Accts Payable", k: "ap" },{ l: "Total Equity", k: "totalEquity", b: true, h: true }].map((r, ri) => {
-            if (r.s) return <tr key={r.l}><td colSpan={61} style={{ padding: 4, background: C.navy, color: "white", fontWeight: 700, fontSize: 8, position: "sticky", left: 0 }}>{r.l}</td></tr>;
-            if (!r.k) return <tr key={ri} style={{ height: 4 }}><td></td></tr>;
-            return <tr key={r.l + ri} style={{ background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white" }}><td style={{ padding: "2px 4px", fontWeight: r.b ? 700 : 400, color: C.navy, position: "sticky", left: 0, background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white", zIndex: 1, borderRight: "1px solid " + C.border }}>{r.l}</td>{activeModel.map(m => <td key={m.i} style={{ padding: "2px 2px", textAlign: "right", fontWeight: r.b ? 600 : 400, color: m[r.k] < 0 ? C.coral : C.navy, borderLeft: m.mo === 1 ? "2px solid " + C.teal : "none" }}>{money(m[r.k])}</td>)}</tr>;
-          })}</tbody>
-        </table>
-      </div>}
-
-      {/* =============== TAB: BOARD REPORT =============== */}
-      {tab === "summary" && <div style={{ padding: "12px 16px", overflowY: "auto", maxHeight: 520 }}>
-        <ScenarioToggle />
-        <div style={{ display: "flex", gap: 5, marginBottom: 10, flexWrap: "wrap" }}>
-          <KPI label="Y1 Rev" value={money(annual[0]?.revenue)} /><KPI label="Y3 Rev" value={money(annual[2]?.revenue)} /><KPI label="Y5 Rev" value={money(annual[4]?.revenue)} color={C.teal} />
-          <KPI label="LTV:CAC" value={unitEcon.ratio.toFixed(1) + "x"} color={unitEcon.ratio >= 3 ? C.green : C.coral} /><KPI label="NRR" value={unitEcon.nrr.toFixed(0) + "%"} color={unitEcon.nrr >= 100 ? C.green : C.coral} /><KPI label="Team Y5" value={activeModel[59]?.headcount} />
-        </div>
-        <div style={{ background: "white", padding: 12, borderRadius: 8, border: "1px solid " + C.border, marginBottom: 10, fontSize: 10, lineHeight: 1.6, color: "#374151" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: C.navy, marginBottom: 5 }}>Executive Narrative ({SCENARIOS[scenario].label} Case)</div>
-          <p style={{ margin: "0 0 5px" }}>The company starts at {money(a.startMRR * 1000)} MRR and grows to {money(activeModel[59]?.arr || 0)} ARR by Year 5. NRR: {unitEcon.nrr.toFixed(0)}%. LTV:CAC: {unitEcon.ratio.toFixed(1)}x with {unitEcon.payback.toFixed(0)}-month payback.</p>
-          <p style={{ margin: "0 0 5px" }}>The team grows from {hires.filter(h => h.month <= 1).length} to {activeModel[59]?.headcount} people. Payroll scales from {money(activeModel[0]?.salaryExp || 0)}/mo to {money(activeModel[59]?.salaryExp || 0)}/mo including {a.wageInflation}% annual wage inflation.</p>
-          <p style={{ margin: "0 0 5px" }}>{breakeven >= 0 ? `EBITDA breakeven in Month ${breakeven + 1}.` : "Model does not reach EBITDA breakeven."} Funding: {money((a.fundingAmt + a.fundingAmt2) * 1000)} across two rounds. {runout > 0 && runout < 60 ? `Cash runs out M${runout}.` : `Cash positive to M60: ${money(activeModel[59]?.cashBal || 0)}.`}</p>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 10 }}>
-          <div style={{ background: "white", padding: 8, borderRadius: 8, border: "1px solid " + C.border }}>
-            <div style={{ fontSize: 8, fontWeight: 700, color: C.navy, marginBottom: 3 }}>Revenue 3 Scenarios ($K)</div>
-            <ResponsiveContainer width="100%" height={110}><LineChart data={scenarioChart}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={6} tick={{ fill: C.slate }} interval={3} /><YAxis fontSize={6} tick={{ fill: C.slate }} /><Line dataKey="conservative" stroke={C.coral} strokeWidth={1} dot={false} strokeDasharray="3 3" /><Line dataKey="base" stroke={C.teal} strokeWidth={2} dot={false} /><Line dataKey="aggressive" stroke={C.green} strokeWidth={1} dot={false} strokeDasharray="3 3" /></LineChart></ResponsiveContainer>
-          </div>
-          <div style={{ background: "white", padding: 8, borderRadius: 8, border: "1px solid " + C.border }}>
-            <div style={{ fontSize: 8, fontWeight: 700, color: C.navy, marginBottom: 3 }}>Cash 3 Scenarios ($K)</div>
-            <ResponsiveContainer width="100%" height={110}><LineChart data={scenarioChart}><CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" /><XAxis dataKey="name" fontSize={6} tick={{ fill: C.slate }} interval={3} /><YAxis fontSize={6} tick={{ fill: C.slate }} /><Line dataKey="conCash" stroke={C.coral} strokeWidth={1} dot={false} strokeDasharray="3 3" /><Line dataKey="baseCash" stroke={C.teal} strokeWidth={2} dot={false} /><Line dataKey="aggCash" stroke={C.green} strokeWidth={1} dot={false} strokeDasharray="3 3" /></LineChart></ResponsiveContainer>
-          </div>
-        </div>
-        <div style={{ padding: "8px 12px", borderRadius: 8, fontSize: 10, lineHeight: 1.5, background: runout > 0 && runout < 36 ? "#FEF2F2" : breakeven < 0 ? "#FFF7ED" : "#F0FDF4", border: `1px solid ${runout > 0 && runout < 36 ? "#FECACA" : breakeven < 0 ? "#FED7AA" : "#BBF7D0"}`, color: "#78716C" }}>
-          <strong style={{ color: C.navy }}>Risk Flags:</strong>
-          {runout > 0 && runout < 36 && <span style={{ color: C.coral }}> Cash out M{runout}.</span>}
-          {a.churn > 5 && <span> Churn {a.churn}% above benchmark.</span>}
-          {unitEcon.ratio < 3 && <span> LTV:CAC {unitEcon.ratio.toFixed(1)}x below 3x target.</span>}
-          {unitEcon.nrr < 100 && <span> NRR {unitEcon.nrr.toFixed(0)}% below 100%.</span>}
-          {unitEcon.payback > 18 && <span> CAC payback {unitEcon.payback.toFixed(0)}mo exceeds 18mo.</span>}
-          {runout <= 0 && unitEcon.ratio >= 3 && a.churn <= 5 && <span style={{ color: C.green }}> All metrics healthy.</span>}
-        </div>
-      </div>}
-
-      <div style={{ background: C.navy, padding: "8px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 5 }}>
-        <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 9 }}>Built by <strong style={{ color: "white" }}>Raise Ready</strong> | raisereadybook.com</span>
-        <div style={{ display: "flex", gap: 5 }}>
-          <button onClick={() => doExport(a, model, annual, hires, unitEcon, conModel, aggModel)} style={{ background: C.green, color: "white", border: "none", padding: "5px 14px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{purchased ? "Export Excel" : "Export Excel ($29)"}</button>
-          <button onClick={() => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario)} style={{ background: C.purple, color: "white", border: "none", padding: "5px 14px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{purchased ? "Export PDF" : "Export PDF ($29)"}</button>
-        </div>
-      </div>
-    </div>
-  );
+  const ScenarioToggle = () => /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 4,
+      marginBottom: 10
+    }
+  }, Object.entries(SCENARIOS).map(([k, v]) => /*#__PURE__*/React.createElement("button", {
+    key: k,
+    onClick: () => setScenario(k),
+    style: {
+      flex: 1,
+      padding: "5px 8px",
+      fontSize: 10,
+      fontWeight: 700,
+      border: `1.5px solid ${scenario === k ? C.teal : C.border}`,
+      background: scenario === k ? C.teal + "15" : "white",
+      color: scenario === k ? C.teal : "#64748B",
+      borderRadius: 5,
+      cursor: "pointer"
+    }
+  }, v.label)));
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "'DM Sans', system-ui, sans-serif",
+      background: "#F8FAFC",
+      borderRadius: 14,
+      overflow: "hidden",
+      maxWidth: 1100,
+      margin: "2rem auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: C.navy,
+      padding: "12px 18px 0",
+      color: "white"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 8,
+      flexWrap: "wrap",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
+    style: {
+      margin: 0,
+      fontSize: 16,
+      fontWeight: 700
+    }
+  }, "5-Year Financial Model Pro"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "1px 0 0",
+      fontSize: 9,
+      opacity: 0.5
+    }
+  }, "3 scenarios, hiring plan, unit economics, sensitivity analysis, benchmarks")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => doExport(a, model, annual, hires, unitEcon, conModel, aggModel),
+    style: {
+      background: C.green,
+      color: "white",
+      border: "none",
+      padding: "5px 12px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario),
+    style: {
+      background: C.purple,
+      color: "white",
+      border: "none",
+      padding: "5px 12px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, purchased ? "Export PDF" : "Export PDF ($29)"), /*#__PURE__*/React.createElement("button", {
+    onClick: saveLocal,
+    style: {
+      background: C.teal,
+      color: "white",
+      border: "none",
+      padding: "5px 10px",
+      borderRadius: 5,
+      fontSize: 9,
+      fontWeight: 600,
+      cursor: "pointer"
+    }
+  }, saved ? "\u2713 Saved" : "Save"), /*#__PURE__*/React.createElement("button", {
+    onClick: resetAll,
+    style: {
+      background: "transparent",
+      color: "rgba(255,255,255,0.3)",
+      border: "1px solid rgba(255,255,255,0.15)",
+      padding: "5px 10px",
+      borderRadius: 5,
+      fontSize: 9,
+      cursor: "pointer"
+    }
+  }, "Reset"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 2,
+      overflowX: "auto"
+    }
+  }, TABS.map(t => /*#__PURE__*/React.createElement("button", {
+    key: t.id,
+    onClick: () => setTab(t.id),
+    style: {
+      background: tab === t.id ? "white" : "transparent",
+      color: tab === t.id ? C.navy : "rgba(255,255,255,0.4)",
+      border: "none",
+      padding: "6px 12px",
+      fontSize: 10,
+      fontWeight: 600,
+      borderRadius: "6px 6px 0 0",
+      cursor: "pointer",
+      whiteSpace: "nowrap"
+    }
+  }, t.label)))), tab === "assumptions" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: "0 0 280px",
+      padding: "12px 16px",
+      background: "white",
+      borderRight: "1px solid " + C.border,
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement(ScenarioToggle, null), /*#__PURE__*/React.createElement(Sec, {
+    title: "Revenue"
+  }, /*#__PURE__*/React.createElement(DI, {
+    label: "Starting MRR",
+    value: a.startMRR,
+    onChange: v => set("startMRR", v),
+    min: 0,
+    max: 1000,
+    step: 1,
+    prefix: "$",
+    suffix: "K"
+  }), ["Y1", "Y2", "Y3", "Y4", "Y5"].map(y => /*#__PURE__*/React.createElement(DI, {
+    key: y,
+    label: y + " MoM Growth",
+    value: a[`mrrGrowth${y}`],
+    onChange: v => set(`mrrGrowth${y}`, v),
+    min: 0,
+    max: 30,
+    step: 0.5,
+    suffix: "%"
+  })), /*#__PURE__*/React.createElement(DI, {
+    label: "Churn",
+    value: a.churn,
+    onChange: v => set("churn", v),
+    min: 0,
+    max: 15,
+    step: 0.5,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Expansion",
+    value: a.expansion,
+    onChange: v => set("expansion", v),
+    min: 0,
+    max: 10,
+    step: 0.5,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Gross Margin",
+    value: a.grossMargin,
+    onChange: v => set("grossMargin", v),
+    min: 20,
+    max: 95,
+    step: 1,
+    suffix: "%"
+  })), /*#__PURE__*/React.createElement(Sec, {
+    title: "OpEx"
+  }, /*#__PURE__*/React.createElement(DI, {
+    label: "Marketing (% Rev)",
+    value: a.marketingPct,
+    onChange: v => set("marketingPct", v),
+    min: 0,
+    max: 40,
+    step: 1,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Tools",
+    value: a.toolsBase,
+    onChange: v => set("toolsBase", v),
+    min: 0,
+    max: 30,
+    step: 1,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Rent",
+    value: a.rentBase,
+    onChange: v => set("rentBase", v),
+    min: 0,
+    max: 20,
+    step: 0.5,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Legal",
+    value: a.legalBase,
+    onChange: v => set("legalBase", v),
+    min: 0,
+    max: 10,
+    step: 0.5,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Other",
+    value: a.otherBase,
+    onChange: v => set("otherBase", v),
+    min: 0,
+    max: 20,
+    step: 0.5,
+    prefix: "$",
+    suffix: "K"
+  })), /*#__PURE__*/React.createElement(Sec, {
+    title: "Funding & Other"
+  }, /*#__PURE__*/React.createElement(DI, {
+    label: "Round 1 Month",
+    value: a.fundingM,
+    onChange: v => set("fundingM", v),
+    min: 0,
+    max: 60,
+    step: 1
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Round 1",
+    value: a.fundingAmt,
+    onChange: v => set("fundingAmt", v),
+    min: 0,
+    max: 50000,
+    step: 100,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Round 2 Month",
+    value: a.fundingM2,
+    onChange: v => set("fundingM2", v),
+    min: 0,
+    max: 60,
+    step: 1
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Round 2",
+    value: a.fundingAmt2,
+    onChange: v => set("fundingAmt2", v),
+    min: 0,
+    max: 100000,
+    step: 500,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Starting Cash",
+    value: a.startCash,
+    onChange: v => set("startCash", v),
+    min: 0,
+    max: 10000,
+    step: 10,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Tax Rate",
+    value: a.taxRate,
+    onChange: v => set("taxRate", v),
+    min: 0,
+    max: 40,
+    step: 1,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "DSO",
+    value: a.dso,
+    onChange: v => set("dso", v),
+    min: 0,
+    max: 90,
+    step: 5,
+    suffix: "d"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "DPO",
+    value: a.dpo,
+    onChange: v => set("dpo", v),
+    min: 0,
+    max: 90,
+    step: 5,
+    suffix: "d"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      padding: "12px 16px",
+      minWidth: 370,
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      marginBottom: 10,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement(KPI, {
+    label: "Y5 ARR",
+    value: money(activeModel[59]?.arr || 0),
+    color: C.teal,
+    bench: {
+      ok: (activeModel[59]?.arr || 0) > 500000,
+      text: "> $500K = strong"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Y5 EBITDA",
+    value: money(annual[4]?.ebitda || 0),
+    color: annual[4]?.ebitda >= 0 ? C.green : C.coral,
+    bench: {
+      ok: (annual[4]?.ebitdaPct || 0) >= 0,
+      text: annual[4]?.ebitdaPct >= 0 ? "Profitable" : "Negative"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Cash Y5",
+    value: money(activeModel[59]?.cashBal || 0),
+    color: C.green
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Breakeven",
+    value: breakeven >= 0 ? `M${breakeven + 1}` : "N/A",
+    color: breakeven >= 0 ? C.green : C.coral
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Runway",
+    value: runout > 0 ? `${runout}mo` : "60+",
+    color: runout > 0 && runout < 24 ? C.coral : C.green,
+    bench: {
+      ok: runout <= 0 || runout >= 18,
+      text: ">18mo = safe"
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border,
+      marginBottom: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 5
+    }
+  }, "Revenue by Scenario ($K quarterly)"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 140
+  }, /*#__PURE__*/React.createElement(LineChart, {
+    data: scenarioChart
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 7,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    fontSize: 7,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    contentStyle: {
+      fontSize: 9,
+      borderRadius: 6
+    }
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "conservative",
+    stroke: C.coral,
+    strokeWidth: 1.5,
+    dot: false,
+    strokeDasharray: "4 4",
+    name: "Conservative"
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "base",
+    stroke: C.teal,
+    strokeWidth: 2,
+    dot: false,
+    name: "Base"
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "aggressive",
+    stroke: C.green,
+    strokeWidth: 1.5,
+    dot: false,
+    strokeDasharray: "4 4",
+    name: "Aggressive"
+  }), /*#__PURE__*/React.createElement(Legend, {
+    wrapperStyle: {
+      fontSize: 8
+    }
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: 8,
+      marginBottom: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 4
+    }
+  }, "Cash by Scenario ($K)"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 100
+  }, /*#__PURE__*/React.createElement(LineChart, {
+    data: scenarioChart
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    contentStyle: {
+      fontSize: 8,
+      borderRadius: 5
+    }
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "conCash",
+    stroke: C.coral,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "baseCash",
+    stroke: C.teal,
+    strokeWidth: 2,
+    dot: false
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "aggCash",
+    stroke: C.green,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 4
+    }
+  }, "EBITDA ($K) - ", SCENARIOS[scenario].label), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 100
+  }, /*#__PURE__*/React.createElement(ComposedChart, {
+    data: qData
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    contentStyle: {
+      fontSize: 8,
+      borderRadius: 5
+    }
+  }), /*#__PURE__*/React.createElement(RBar, {
+    dataKey: "revenue",
+    fill: C.teal,
+    opacity: 0.15
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "ebitda",
+    stroke: C.coral,
+    strokeWidth: 2,
+    dot: false
+  }))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 8,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 4
+    }
+  }, "Annual Summary (", SCENARIOS[scenario].label, ")"), /*#__PURE__*/React.createElement("table", {
+    style: {
+      width: "100%",
+      borderCollapse: "collapse",
+      fontSize: 8
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+    style: {
+      background: C.navy,
+      color: "white"
+    }
+  }, /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "3px 5px",
+      textAlign: "left"
+    }
+  }, "Metric"), annual.map(y => /*#__PURE__*/React.createElement("th", {
+    key: y.year,
+    style: {
+      padding: "3px 5px",
+      textAlign: "right"
+    }
+  }, "Y", y.year)))), /*#__PURE__*/React.createElement("tbody", null, [{
+    l: "Revenue",
+    k: "revenue"
+  }, {
+    l: "GP %",
+    k: "gpPct",
+    p: true
+  }, {
+    l: "EBITDA",
+    k: "ebitda"
+  }, {
+    l: "EBITDA %",
+    k: "ebitdaPct",
+    p: true
+  }, {
+    l: "Net Income",
+    k: "netIncome"
+  }, {
+    l: "End ARR",
+    k: "endARR"
+  }, {
+    l: "End Cash",
+    k: "endCash"
+  }, {
+    l: "Team",
+    k: "headcount"
+  }].map((r, ri) => /*#__PURE__*/React.createElement("tr", {
+    key: r.l,
+    style: {
+      background: ri % 2 === 0 ? "#F8FAFC" : "white"
+    }
+  }, /*#__PURE__*/React.createElement("td", {
+    style: {
+      padding: "2px 5px",
+      fontWeight: r.l === "EBITDA" || r.l === "Net Income" ? 700 : 400,
+      color: C.navy
+    }
+  }, r.l), annual.map(y => /*#__PURE__*/React.createElement("td", {
+    key: y.year,
+    style: {
+      padding: "2px 5px",
+      textAlign: "right",
+      color: !r.p && y[r.k] < 0 ? C.coral : C.navy
+    }
+  }, r.p ? (y[r.k] * 100).toFixed(1) + "%" : r.k === "headcount" ? y[r.k] : money(y[r.k])))))))))), tab === "hiring" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "12px 16px",
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      marginBottom: 10,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement(KPI, {
+    label: "Team Size (M60)",
+    value: activeModel[59]?.headcount || 0
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Monthly Payroll",
+    value: money(totalPayroll * 1000),
+    sub: "fully loaded"
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Annual Payroll",
+    value: money(totalPayroll * 12000)
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Rev/Employee Y5",
+    value: annual[4]?.headcount > 0 ? money(annual[4].revenue / annual[4].headcount) : "$0",
+    bench: {
+      ok: annual[4]?.headcount > 0 && annual[4].revenue / annual[4].headcount > 100000,
+      text: "> $100K = good"
+    }
+  })), /*#__PURE__*/React.createElement(DI, {
+    label: "Annual Wage Inflation",
+    value: a.wageInflation,
+    onChange: v => set("wageInflation", v),
+    min: 0,
+    max: 20,
+    step: 1,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowX: "auto"
+    }
+  }, /*#__PURE__*/React.createElement("table", {
+    style: {
+      width: "100%",
+      borderCollapse: "collapse",
+      fontSize: 10
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+    style: {
+      background: C.navy,
+      color: "white"
+    }
+  }, /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px 8px",
+      textAlign: "left"
+    }
+  }, "Role"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px",
+      textAlign: "center",
+      width: 60
+    }
+  }, "Start M"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px",
+      textAlign: "center",
+      width: 70
+    }
+  }, "Salary $K/mo"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px",
+      textAlign: "center",
+      width: 55
+    }
+  }, "Burden %"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px",
+      textAlign: "right",
+      width: 80
+    }
+  }, "Loaded $K/mo"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "5px",
+      textAlign: "right",
+      width: 80
+    }
+  }, "Annual $K"), /*#__PURE__*/React.createElement("th", {
+    style: {
+      width: 30
+    }
+  }))), /*#__PURE__*/React.createElement("tbody", null, hires.map((h, i) => {
+    const loaded = h.salary * (1 + h.burden / 100);
+    return /*#__PURE__*/React.createElement("tr", {
+      key: i,
+      style: {
+        background: i % 2 === 0 ? "#F8FAFC" : "white",
+        borderBottom: "1px solid " + C.border
+      }
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "4px 8px"
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      value: h.role,
+      onChange: e => setHire(i, "role", e.target.value),
+      style: {
+        border: "none",
+        background: "transparent",
+        fontSize: 10,
+        fontWeight: 600,
+        color: C.navy,
+        width: "100%",
+        outline: "none"
+      }
+    })), /*#__PURE__*/React.createElement("td", {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      value: h.month,
+      onChange: e => setHire(i, "month", parseInt(e.target.value) || 1),
+      style: {
+        width: 40,
+        border: "1px solid " + C.border,
+        borderRadius: 3,
+        textAlign: "center",
+        fontSize: 10,
+        color: "blue",
+        fontWeight: 700
+      }
+    })), /*#__PURE__*/React.createElement("td", {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      value: h.salary,
+      step: 0.5,
+      onChange: e => setHire(i, "salary", parseFloat(e.target.value) || 0),
+      style: {
+        width: 50,
+        border: "1px solid " + C.border,
+        borderRadius: 3,
+        textAlign: "center",
+        fontSize: 10,
+        color: "blue",
+        fontWeight: 700
+      }
+    })), /*#__PURE__*/React.createElement("td", {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      value: h.burden,
+      onChange: e => setHire(i, "burden", parseInt(e.target.value) || 0),
+      style: {
+        width: 40,
+        border: "1px solid " + C.border,
+        borderRadius: 3,
+        textAlign: "center",
+        fontSize: 10,
+        color: "blue",
+        fontWeight: 700
+      }
+    })), /*#__PURE__*/React.createElement("td", {
+      style: {
+        textAlign: "right",
+        padding: "4px 8px",
+        fontWeight: 600,
+        color: C.navy
+      }
+    }, "$", loaded.toFixed(1), "K"), /*#__PURE__*/React.createElement("td", {
+      style: {
+        textAlign: "right",
+        padding: "4px 8px",
+        fontWeight: 600,
+        color: C.navy
+      }
+    }, "$", (loaded * 12).toFixed(0), "K"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("button", {
+      onClick: () => rmHire(i),
+      style: {
+        background: "none",
+        border: "none",
+        color: C.coral,
+        cursor: "pointer",
+        fontSize: 12
+      }
+    }, "x")));
+  })))), /*#__PURE__*/React.createElement("button", {
+    onClick: addHire,
+    style: {
+      marginTop: 8,
+      background: C.teal,
+      color: "white",
+      border: "none",
+      padding: "6px 14px",
+      borderRadius: 6,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, "+ Add Role"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border,
+      marginTop: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 4
+    }
+  }, "Headcount & Payroll Over Time"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 140
+  }, /*#__PURE__*/React.createElement(ComposedChart, {
+    data: activeModel.filter((_, i) => i % 3 === 0).map(m => ({
+      name: m.label,
+      hc: m.headcount,
+      payroll: Math.round(m.salaryExp / 1000)
+    }))
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 7,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    yAxisId: "l",
+    fontSize: 7,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    yAxisId: "r",
+    orientation: "right",
+    fontSize: 7,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    contentStyle: {
+      fontSize: 9,
+      borderRadius: 6
+    }
+  }), /*#__PURE__*/React.createElement(RBar, {
+    yAxisId: "r",
+    dataKey: "payroll",
+    fill: C.coral,
+    opacity: 0.2,
+    name: "Payroll $K/mo"
+  }), /*#__PURE__*/React.createElement(Line, {
+    yAxisId: "l",
+    dataKey: "hc",
+    stroke: C.teal,
+    strokeWidth: 2,
+    dot: false,
+    name: "Headcount"
+  }), /*#__PURE__*/React.createElement(Legend, {
+    wrapperStyle: {
+      fontSize: 8
+    }
+  }))))), tab === "unit" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: "0 0 260px",
+      padding: "12px 16px",
+      background: "white",
+      borderRight: "1px solid " + C.border,
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement(Sec, {
+    title: "Acquisition"
+  }, /*#__PURE__*/React.createElement(DI, {
+    label: "Monthly Acq Spend",
+    value: a.cacSpend,
+    onChange: v => set("cacSpend", v),
+    min: 0,
+    max: 200,
+    step: 1,
+    prefix: "$",
+    suffix: "K"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "New Customers/Mo",
+    value: a.newCust,
+    onChange: v => set("newCust", v),
+    min: 1,
+    max: 500,
+    step: 1
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Avg Rev/Customer",
+    value: a.arpc,
+    onChange: v => set("arpc", v),
+    min: 10,
+    max: 5000,
+    step: 10,
+    prefix: "$",
+    suffix: "/mo"
+  })), /*#__PURE__*/React.createElement(Sec, {
+    title: "Retention (from Assumptions)"
+  }, /*#__PURE__*/React.createElement(DI, {
+    label: "Gross Margin",
+    value: a.grossMargin,
+    onChange: v => set("grossMargin", v),
+    min: 20,
+    max: 95,
+    step: 1,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Churn",
+    value: a.churn,
+    onChange: v => set("churn", v),
+    min: 0,
+    max: 15,
+    step: 0.5,
+    suffix: "%"
+  }), /*#__PURE__*/React.createElement(DI, {
+    label: "Expansion",
+    value: a.expansion,
+    onChange: v => set("expansion", v),
+    min: 0,
+    max: 10,
+    step: 0.5,
+    suffix: "%"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      padding: "12px 16px",
+      minWidth: 370,
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      marginBottom: 10,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement(KPI, {
+    label: "CAC",
+    value: money(unitEcon.cac),
+    bench: {
+      ok: unitEcon.cac < 500,
+      text: "< $500 = good"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "LTV",
+    value: money(unitEcon.ltv),
+    bench: {
+      ok: unitEcon.ltv > unitEcon.cac * 3,
+      text: "> 3x CAC = healthy"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "LTV:CAC",
+    value: unitEcon.ratio.toFixed(1) + "x",
+    color: unitEcon.ratio >= 3 ? C.green : C.coral,
+    bench: {
+      ok: unitEcon.ratio >= 3,
+      text: "Benchmark: 3x+"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Payback",
+    value: unitEcon.payback.toFixed(0) + "mo",
+    color: unitEcon.payback <= 12 ? C.green : C.coral,
+    bench: {
+      ok: unitEcon.payback <= 12,
+      text: "< 12mo = good"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "NRR",
+    value: unitEcon.nrr.toFixed(0) + "%",
+    color: unitEcon.nrr >= 100 ? C.green : C.coral,
+    bench: {
+      ok: unitEcon.nrr >= 100,
+      text: "> 100% = expanding"
+    }
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Magic #",
+    value: unitEcon.magicNum.toFixed(2),
+    color: unitEcon.magicNum >= 0.75 ? C.green : C.coral,
+    bench: {
+      ok: unitEcon.magicNum >= 0.75,
+      text: "> 0.75 = efficient"
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 6
+    }
+  }, "Sensitivity: Runway (months) by Growth vs Churn"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowX: "auto"
+    }
+  }, /*#__PURE__*/React.createElement("table", {
+    style: {
+      borderCollapse: "collapse",
+      fontSize: 9,
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: 3,
+      background: C.navy,
+      color: "white",
+      fontSize: 8
+    }
+  }, "Growth \\ Churn"), sensitivity.churns.map(c => /*#__PURE__*/React.createElement("th", {
+    key: c,
+    style: {
+      padding: 3,
+      background: C.navy,
+      color: "white",
+      fontSize: 8,
+      textAlign: "center"
+    }
+  }, c, "%")))), /*#__PURE__*/React.createElement("tbody", null, sensitivity.matrix.map((row, ri) => /*#__PURE__*/React.createElement("tr", {
+    key: ri
+  }, /*#__PURE__*/React.createElement("td", {
+    style: {
+      padding: 3,
+      fontWeight: 700,
+      background: "#F1F5F9",
+      color: C.navy
+    }
+  }, sensitivity.growths[ri], "%"), row.map((cell, ci) => {
+    const r = cell.runway;
+    const bg = r >= 36 ? "#D1FAE5" : r >= 18 ? "#FEF3C7" : "#FEE2E2";
+    const isActive = sensitivity.growths[ri] === a.mrrGrowthY1 && sensitivity.churns[ci] === a.churn;
+    return /*#__PURE__*/React.createElement("td", {
+      key: ci,
+      style: {
+        padding: 3,
+        textAlign: "center",
+        background: bg,
+        fontWeight: isActive ? 800 : 400,
+        border: isActive ? "2px solid " + C.navy : "1px solid white",
+        color: C.navy
+      }
+    }, r >= 60 ? "60+" : r);
+  })))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 8,
+      color: C.slate,
+      marginTop: 4
+    }
+  }, "Green = 36+ months. Yellow = 18-36. Red = under 18. Bold = your current position.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 10,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 6
+    }
+  }, "SaaS Benchmarks vs Your Model"), [{
+    l: "Gross Margin",
+    yours: a.grossMargin,
+    bench: "70-80%",
+    ok: a.grossMargin >= 60
+  }, {
+    l: "Monthly Churn",
+    yours: a.churn + "%",
+    bench: "< 5%",
+    ok: a.churn <= 5
+  }, {
+    l: "NRR",
+    yours: unitEcon.nrr.toFixed(0) + "%",
+    bench: "> 100%",
+    ok: unitEcon.nrr >= 100
+  }, {
+    l: "LTV:CAC",
+    yours: unitEcon.ratio.toFixed(1) + "x",
+    bench: "> 3x",
+    ok: unitEcon.ratio >= 3
+  }, {
+    l: "CAC Payback",
+    yours: unitEcon.payback.toFixed(0) + " mo",
+    bench: "< 12 mo",
+    ok: unitEcon.payback <= 12
+  }, {
+    l: "Burn Multiple",
+    yours: unitEcon.burnMult < 99 ? unitEcon.burnMult.toFixed(1) + "x" : "N/A",
+    bench: "< 2x",
+    ok: unitEcon.burnMult < 2
+  }, {
+    l: "Magic Number",
+    yours: unitEcon.magicNum.toFixed(2),
+    bench: "> 0.75",
+    ok: unitEcon.magicNum >= 0.75
+  }].map(b => /*#__PURE__*/React.createElement("div", {
+    key: b.l,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      padding: "4px 0",
+      borderBottom: "1px solid #F1F5F9",
+      fontSize: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      flex: 1,
+      color: "#64748B"
+    }
+  }, b.l), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 60,
+      textAlign: "right",
+      fontWeight: 700,
+      color: b.ok ? C.green : C.coral
+    }
+  }, b.yours), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 60,
+      textAlign: "right",
+      color: C.slate,
+      fontSize: 9
+    }
+  }, b.bench), /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 20,
+      textAlign: "center",
+      fontSize: 12
+    }
+  }, b.ok ? "\u2705" : "\u274C")))))), tab === "pnl" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowX: "auto",
+      padding: 8,
+      maxHeight: 500
+    }
+  }, /*#__PURE__*/React.createElement(ScenarioToggle, null), /*#__PURE__*/React.createElement("table", {
+    style: {
+      borderCollapse: "collapse",
+      fontSize: 8,
+      whiteSpace: "nowrap"
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+    style: {
+      background: C.navy,
+      color: "white",
+      position: "sticky",
+      top: 0
+    }
+  }, /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "3px 4px",
+      textAlign: "left",
+      position: "sticky",
+      left: 0,
+      background: C.navy,
+      zIndex: 2,
+      minWidth: 80
+    }
+  }, "Line Item"), activeModel.map(m => /*#__PURE__*/React.createElement("th", {
+    key: m.i,
+    style: {
+      padding: "3px 2px",
+      textAlign: "right",
+      minWidth: 52,
+      background: m.mo === 1 ? C.teal : C.navy
+    }
+  }, m.label)))), /*#__PURE__*/React.createElement("tbody", null, [{
+    l: "Revenue",
+    k: "revenue",
+    b: true
+  }, {
+    l: "COGS",
+    k: "cogs"
+  }, {
+    l: "Gross Profit",
+    k: "grossProfit",
+    b: true
+  }, {
+    l: "GP %",
+    k: "gpPct",
+    p: true
+  }, {
+    l: "Salaries",
+    k: "salaryExp"
+  }, {
+    l: "Marketing",
+    k: "marketingExp"
+  }, {
+    l: "Tools",
+    k: "toolsExp"
+  }, {
+    l: "Rent",
+    k: "rentExp"
+  }, {
+    l: "Total OpEx",
+    k: "totalOpex",
+    b: true
+  }, {
+    l: "EBITDA",
+    k: "ebitda",
+    b: true,
+    h: true
+  }, {
+    l: "EBITDA %",
+    k: "ebitdaPct",
+    p: true
+  }, {
+    l: "Net Income",
+    k: "netIncome",
+    b: true,
+    h: true
+  }, {
+    l: "Headcount",
+    k: "headcount"
+  }, {
+    l: "ARR",
+    k: "arr"
+  }].map((r, ri) => /*#__PURE__*/React.createElement("tr", {
+    key: r.l,
+    style: {
+      background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white"
+    }
+  }, /*#__PURE__*/React.createElement("td", {
+    style: {
+      padding: "2px 4px",
+      fontWeight: r.b ? 700 : 400,
+      color: C.navy,
+      position: "sticky",
+      left: 0,
+      background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white",
+      zIndex: 1,
+      borderRight: "1px solid " + C.border
+    }
+  }, r.l), activeModel.map(m => /*#__PURE__*/React.createElement("td", {
+    key: m.i,
+    style: {
+      padding: "2px 2px",
+      textAlign: "right",
+      fontWeight: r.b ? 600 : 400,
+      color: r.p ? C.navy : m[r.k] < 0 ? C.coral : C.navy,
+      borderLeft: m.mo === 1 ? "2px solid " + C.teal : "none"
+    }
+  }, r.p ? (m[r.k] * 100).toFixed(0) + "%" : r.k === "headcount" ? m[r.k] : money(m[r.k])))))))), tab === "cashflow" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowX: "auto",
+      padding: 8,
+      maxHeight: 500
+    }
+  }, /*#__PURE__*/React.createElement(ScenarioToggle, null), /*#__PURE__*/React.createElement("table", {
+    style: {
+      borderCollapse: "collapse",
+      fontSize: 8,
+      whiteSpace: "nowrap"
+    }
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+    style: {
+      background: C.navy,
+      color: "white",
+      position: "sticky",
+      top: 0
+    }
+  }, /*#__PURE__*/React.createElement("th", {
+    style: {
+      padding: "3px 4px",
+      textAlign: "left",
+      position: "sticky",
+      left: 0,
+      background: C.navy,
+      zIndex: 2,
+      minWidth: 100
+    }
+  }, "Line Item"), activeModel.map(m => /*#__PURE__*/React.createElement("th", {
+    key: m.i,
+    style: {
+      padding: "3px 2px",
+      textAlign: "right",
+      minWidth: 52,
+      background: m.mo === 1 ? C.teal : C.navy
+    }
+  }, m.label)))), /*#__PURE__*/React.createElement("tbody", null, [{
+    l: "CASH FLOW",
+    s: true
+  }, {
+    l: "Operating CF",
+    k: "cfOps"
+  }, {
+    l: "Investing CF",
+    k: "cfInv"
+  }, {
+    l: "Financing CF",
+    k: "cfFin"
+  }, {
+    l: "Net CF",
+    k: "netCF",
+    b: true
+  }, {
+    l: "Cash Balance",
+    k: "cashBal",
+    b: true,
+    h: true
+  }, {
+    l: ""
+  }, {
+    l: "BALANCE SHEET",
+    s: true
+  }, {
+    l: "Cash",
+    k: "cashBal"
+  }, {
+    l: "Accts Receivable",
+    k: "ar"
+  }, {
+    l: "PP&E",
+    k: "ppe"
+  }, {
+    l: "Total Assets",
+    k: "totalAssets",
+    b: true
+  }, {
+    l: "Accts Payable",
+    k: "ap"
+  }, {
+    l: "Total Equity",
+    k: "totalEquity",
+    b: true,
+    h: true
+  }].map((r, ri) => {
+    if (r.s) return /*#__PURE__*/React.createElement("tr", {
+      key: r.l
+    }, /*#__PURE__*/React.createElement("td", {
+      colSpan: 61,
+      style: {
+        padding: 4,
+        background: C.navy,
+        color: "white",
+        fontWeight: 700,
+        fontSize: 8,
+        position: "sticky",
+        left: 0
+      }
+    }, r.l));
+    if (!r.k) return /*#__PURE__*/React.createElement("tr", {
+      key: ri,
+      style: {
+        height: 4
+      }
+    }, /*#__PURE__*/React.createElement("td", null));
+    return /*#__PURE__*/React.createElement("tr", {
+      key: r.l + ri,
+      style: {
+        background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white"
+      }
+    }, /*#__PURE__*/React.createElement("td", {
+      style: {
+        padding: "2px 4px",
+        fontWeight: r.b ? 700 : 400,
+        color: C.navy,
+        position: "sticky",
+        left: 0,
+        background: r.h ? "#F0FDF4" : ri % 2 === 0 ? "#FAFAFA" : "white",
+        zIndex: 1,
+        borderRight: "1px solid " + C.border
+      }
+    }, r.l), activeModel.map(m => /*#__PURE__*/React.createElement("td", {
+      key: m.i,
+      style: {
+        padding: "2px 2px",
+        textAlign: "right",
+        fontWeight: r.b ? 600 : 400,
+        color: m[r.k] < 0 ? C.coral : C.navy,
+        borderLeft: m.mo === 1 ? "2px solid " + C.teal : "none"
+      }
+    }, money(m[r.k]))));
+  })))), tab === "summary" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "12px 16px",
+      overflowY: "auto",
+      maxHeight: 520
+    }
+  }, /*#__PURE__*/React.createElement(ScenarioToggle, null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5,
+      marginBottom: 10,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement(KPI, {
+    label: "Y1 Rev",
+    value: money(annual[0]?.revenue)
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Y3 Rev",
+    value: money(annual[2]?.revenue)
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Y5 Rev",
+    value: money(annual[4]?.revenue),
+    color: C.teal
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "LTV:CAC",
+    value: unitEcon.ratio.toFixed(1) + "x",
+    color: unitEcon.ratio >= 3 ? C.green : C.coral
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "NRR",
+    value: unitEcon.nrr.toFixed(0) + "%",
+    color: unitEcon.nrr >= 100 ? C.green : C.coral
+  }), /*#__PURE__*/React.createElement(KPI, {
+    label: "Team Y5",
+    value: activeModel[59]?.headcount
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 12,
+      borderRadius: 8,
+      border: "1px solid " + C.border,
+      marginBottom: 10,
+      fontSize: 10,
+      lineHeight: 1.6,
+      color: "#374151"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 5
+    }
+  }, "Executive Narrative (", SCENARIOS[scenario].label, " Case)"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "0 0 5px"
+    }
+  }, "The company starts at ", money(a.startMRR * 1000), " MRR and grows to ", money(activeModel[59]?.arr || 0), " ARR by Year 5. NRR: ", unitEcon.nrr.toFixed(0), "%. LTV:CAC: ", unitEcon.ratio.toFixed(1), "x with ", unitEcon.payback.toFixed(0), "-month payback."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "0 0 5px"
+    }
+  }, "The team grows from ", hires.filter(h => h.month <= 1).length, " to ", activeModel[59]?.headcount, " people. Payroll scales from ", money(activeModel[0]?.salaryExp || 0), "/mo to ", money(activeModel[59]?.salaryExp || 0), "/mo including ", a.wageInflation, "% annual wage inflation."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: "0 0 5px"
+    }
+  }, breakeven >= 0 ? `EBITDA breakeven in Month ${breakeven + 1}.` : "Model does not reach EBITDA breakeven.", " Funding: ", money((a.fundingAmt + a.fundingAmt2) * 1000), " across two rounds. ", runout > 0 && runout < 60 ? `Cash runs out M${runout}.` : `Cash positive to M60: ${money(activeModel[59]?.cashBal || 0)}.`)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: 8,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 8,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 8,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 3
+    }
+  }, "Revenue 3 Scenarios ($K)"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 110
+  }, /*#__PURE__*/React.createElement(LineChart, {
+    data: scenarioChart
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "conservative",
+    stroke: C.coral,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "base",
+    stroke: C.teal,
+    strokeWidth: 2,
+    dot: false
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "aggressive",
+    stroke: C.green,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      padding: 8,
+      borderRadius: 8,
+      border: "1px solid " + C.border
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 8,
+      fontWeight: 700,
+      color: C.navy,
+      marginBottom: 3
+    }
+  }, "Cash 3 Scenarios ($K)"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 110
+  }, /*#__PURE__*/React.createElement(LineChart, {
+    data: scenarioChart
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    strokeDasharray: "3 3",
+    stroke: "#E2E8F0"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    },
+    interval: 3
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    fontSize: 6,
+    tick: {
+      fill: C.slate
+    }
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "conCash",
+    stroke: C.coral,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "baseCash",
+    stroke: C.teal,
+    strokeWidth: 2,
+    dot: false
+  }), /*#__PURE__*/React.createElement(Line, {
+    dataKey: "aggCash",
+    stroke: C.green,
+    strokeWidth: 1,
+    dot: false,
+    strokeDasharray: "3 3"
+  }))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "8px 12px",
+      borderRadius: 8,
+      fontSize: 10,
+      lineHeight: 1.5,
+      background: runout > 0 && runout < 36 ? "#FEF2F2" : breakeven < 0 ? "#FFF7ED" : "#F0FDF4",
+      border: `1px solid ${runout > 0 && runout < 36 ? "#FECACA" : breakeven < 0 ? "#FED7AA" : "#BBF7D0"}`,
+      color: "#78716C"
+    }
+  }, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: C.navy
+    }
+  }, "Risk Flags:"), runout > 0 && runout < 36 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.coral
+    }
+  }, " Cash out M", runout, "."), a.churn > 5 && /*#__PURE__*/React.createElement("span", null, " Churn ", a.churn, "% above benchmark."), unitEcon.ratio < 3 && /*#__PURE__*/React.createElement("span", null, " LTV:CAC ", unitEcon.ratio.toFixed(1), "x below 3x target."), unitEcon.nrr < 100 && /*#__PURE__*/React.createElement("span", null, " NRR ", unitEcon.nrr.toFixed(0), "% below 100%."), unitEcon.payback > 18 && /*#__PURE__*/React.createElement("span", null, " CAC payback ", unitEcon.payback.toFixed(0), "mo exceeds 18mo."), runout <= 0 && unitEcon.ratio >= 3 && a.churn <= 5 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: C.green
+    }
+  }, " All metrics healthy."))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: C.navy,
+      padding: "8px 18px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      flexWrap: "wrap",
+      gap: 5
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "rgba(255,255,255,0.5)",
+      fontSize: 9
+    }
+  }, "Built by ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: "white"
+    }
+  }, "Raise Ready"), " | raisereadybook.com"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 5
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => doExport(a, model, annual, hires, unitEcon, conModel, aggModel),
+    style: {
+      background: C.green,
+      color: "white",
+      border: "none",
+      padding: "5px 14px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario),
+    style: {
+      background: C.purple,
+      color: "white",
+      border: "none",
+      padding: "5px 14px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, purchased ? "Export PDF" : "Export PDF ($29)"))));
 }
-
-ReactDOM.createRoot(document.getElementById('fm-app')).render(<FinancialModel />);
+ReactDOM.createRoot(document.getElementById('fm-app')).render(/*#__PURE__*/React.createElement(FinancialModel, null));
 </script>
-<script>if(typeof Babel!=='undefined')Babel.transformScriptTags();</script>
 </body>
 </html>
