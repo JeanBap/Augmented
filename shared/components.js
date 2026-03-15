@@ -1,7 +1,40 @@
 /**
- * components.js - Shared navigation and footer components
+ * components.js - Shared navigation, footer, and tracking components
  * Injects nav and footer into pages with #site-nav and #site-footer placeholders
  */
+
+// Meta Pixel - fires immediately (before DOMContentLoaded)
+(function() {
+  var PIXEL_ID = 'YOUR_PIXEL_ID_HERE'; // Replace with your actual Meta Pixel ID
+  if (PIXEL_ID === 'YOUR_PIXEL_ID_HERE') return; // Skip if not configured
+  if (window.fbq) return;
+  var n = window.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+  if (!window._fbq) window._fbq = n;
+  n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+  var t = document.createElement('script'); t.async = true;
+  t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(t, s);
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+  // ViewContent for product pages
+  var path = window.location.pathname.toLowerCase();
+  if (path.includes('/book/') || path.includes('/start-ready') || path.includes('/raise-ready') || path.includes('/exit-ready')) {
+    fbq('track', 'ViewContent', { content_name: document.title, content_type: 'product' });
+  }
+  // Lead tracking on form submissions
+  document.addEventListener('submit', function(e) {
+    if (e.target.querySelectorAll('input[type="email"]').length > 0) {
+      fbq('track', 'Lead', { content_name: 'Email Signup', content_category: 'lead_magnet' });
+    }
+  });
+  // Add noscript fallback
+  var ns = document.createElement('noscript');
+  var img = document.createElement('img');
+  img.height = 1; img.width = 1; img.style.display = 'none';
+  img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=PageView&noscript=1';
+  ns.appendChild(img);
+  document.body.appendChild(ns);
+})();
 
 (function() {
   'use strict';
@@ -19,9 +52,9 @@
             <a href="/book/#raise-ready">Raise Ready Book</a>
             <a href="/book/#exit-ready">Exit Ready Book</a>
             <a href="/book/#templates">Financial Model Template</a>
-            <a href="/book/#sessions">Sessions & Model Building</a>
           </div>
         </div>
+        <a href="/book/#services" class="nav-tab" data-page="services">Services</a>
         <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
