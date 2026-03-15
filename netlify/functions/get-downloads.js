@@ -1,14 +1,9 @@
 var crypto = require('crypto');
 var https = require('https');
+var config = require('./products');
 
-var SITE_URL = 'https://www.raisereadybook.com';
-
-var PRODUCTS = {
-  'book':                 { name: 'Raise Ready Book' },
-  'exit-book':            { name: 'Exit Ready Book' },
-  'tpl-complete':         { name: 'Complete Financial Model Template' },
-  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support' }
-};
+var PRODUCTS = config.PRODUCTS;
+var SITE_URL = config.SITE_URL;
 
 function stripeGet(path) {
   return new Promise(function(resolve, reject) {
@@ -24,6 +19,7 @@ function stripeGet(path) {
       });
     });
     req.on('error', reject);
+    req.setTimeout(10000, function() { req.destroy(new Error('Stripe timeout')); });
     req.end();
   });
 }
@@ -37,20 +33,20 @@ function makeDownloadUrl(productKey, expiresAt) {
 
 exports.handler = async function(event) {
   var headers = {
-    'Access-Control-Allow-Origin': 'https://www.raisereadybook.com',
+    'Access-Control-Allow-Origin': SITE_URL,
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Content-Type': 'application/json'
   };
   var origin = (event.headers['origin'] || '');
-  if (origin === 'https://www.raisereadybook.com' || origin === 'https://raisereadybook.com') {
+  if (origin === SITE_URL || origin === 'https://raisereadybook.com') {
     headers['Access-Control-Allow-Origin'] = origin;
   }
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: headers, body: '' };
   if (event.httpMethod !== 'GET') return { statusCode: 405, headers: headers, body: '{"error":"GET only"}' };
 
   var sessionId = (event.queryStringParameters || {}).session_id;
-  if (!sessionId || !sessionId.startsWith('cs_')) {
+  if (!sessionId || !/^cs_[a-zA-Z0-9_]{10,}$/.test(sessionId)) {
     return { statusCode: 400, headers: headers, body: '{"error":"Invalid session"}' };
   }
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -75,17 +71,26 @@ exports.handler = async function(event) {
 
     var productKeys = productString.split(',').filter(function(k) { return PRODUCTS[k]; });
     var expiresAt = Math.floor(Date.now() / 1000) + (72 * 3600);
-    var downloads = productKeys.map(function(key) {
-      return { id: key, name: PRODUCTS[key].name, url: makeDownloadUrl(key, expiresAt) };
-    });
+    var downloads = productKeys
+      .filter(function(key) { return PRODUCTS[key].file; })
+      .map(function(key) {
+        return { id: key, name: PRODUCTS[key].name, url: makeDownloadUrl(key, expiresAt) };
+      });
+
+    // Include digital products as access links (no download, just unlock)
+    var digital = productKeys
+      .filter(function(key) { return PRODUCTS[key].digital; })
+      .map(function(key) {
+        return { id: key, name: PRODUCTS[key].name, type: 'digital', url: SITE_URL + '/tools/financial-model-pro.html?purchased=true' };
+      });
 
     return {
       statusCode: 200,
       headers: headers,
-      body: JSON.stringify({ downloads: downloads })
+      body: JSON.stringify({ downloads: downloads.concat(digital) })
     };
   } catch (err) {
-    console.log('get-downloads error:', err.message);
+    console.error('get-downloads error:', err.message);
     return { statusCode: 500, headers: headers, body: '{"error":"Server error"}' };
   }
 };

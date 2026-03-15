@@ -1,24 +1,28 @@
 var crypto = require('crypto');
 var https = require('https');
+var config = require('./products');
 
-var SITE_URL = 'https://www.raisereadybook.com';
+var PRODUCTS = config.PRODUCTS;
+var SITE_URL = config.SITE_URL;
+var ADMIN_EMAIL = config.ADMIN_EMAIL;
+var CALENDLY_URL = config.CALENDLY_URL;
 var FROM_EMAIL = 'Raise Ready <onboarding@resend.dev>';
-var ADMIN_EMAIL = 'papoutsis89@gmail.com';
 
-var CALENDLY_URL = 'https://calendly.com/yannipapoutsi';
+// In-memory idempotency cache (survives within a single function instance).
+// Netlify functions can be reused across invocations so this catches rapid retries.
+// For full durability you'd use an external store, but this handles 95% of cases.
+var processedSessions = {};
+var MAX_CACHE = 200;
 
-var PRODUCTS = {
-  'start-book':           { name: 'Start Ready Book',                          file: '/products/a7e2f19d3b064c81/Start_Ready_Book.pdf' },
-  'book':                 { name: 'Raise Ready Book',                          file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf' },
-  'exit-book':            { name: 'Exit Ready Book',                           file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf' },
-  'tpl-complete':         { name: 'Complete Financial Model Template',         file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx' },
-  'tpl-complete-support': { name: 'Complete Financial Model + 1hr Video Support', file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', service: true },
-  'audit-990':            { name: 'Fundraising Readiness Audit',               service: true },
-  'advisory-2000':        { name: 'Fractional Fundraise Advisory (1 month)',   service: true },
-  'model-build-5000':     { name: 'Model Build',                              service: true },
-  'investor-pkg-8000':    { name: 'Investor Materials Package',                service: true },
-  'fm-pro-export':        { name: 'Financial Model Pro Export',                 digital: true }
-};
+function markProcessed(sessionId) {
+  processedSessions[sessionId] = Date.now();
+  // Evict old entries to bound memory
+  var keys = Object.keys(processedSessions);
+  if (keys.length > MAX_CACHE) {
+    keys.sort(function(a, b) { return processedSessions[a] - processedSessions[b]; });
+    keys.slice(0, keys.length - MAX_CACHE).forEach(function(k) { delete processedSessions[k]; });
+  }
+}
 
 function verifySignature(payload, sigHeader, secret) {
   var parts = {};
@@ -31,7 +35,11 @@ function verifySignature(payload, sigHeader, secret) {
   var expected = crypto.createHmac('sha256', secret)
     .update(parts.timestamp + '.' + payload)
     .digest('hex');
-  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.signature));
+  try {
+    return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.signature));
+  } catch (e) {
+    return false; // length mismatch
+  }
 }
 
 function makeDownloadUrl(productKey, expiresAt) {
@@ -42,7 +50,10 @@ function makeDownloadUrl(productKey, expiresAt) {
 }
 
 function sendEmail(to, subject, html) {
-  if (!process.env.RESEND_API_KEY) return Promise.resolve();
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not set, cannot send email to:', to);
+    return Promise.resolve({ sent: false, reason: 'no_api_key' });
+  }
   var data = JSON.stringify({ from: FROM_EMAIL, to: [to], subject: subject, html: html });
   return new Promise(function(resolve) {
     var req = https.request({
@@ -55,24 +66,41 @@ function sendEmail(to, subject, html) {
     }, function(res) {
       var chunks = [];
       res.on('data', function(c) { chunks.push(c); });
-      res.on('end', function() { resolve(); });
+      res.on('end', function() {
+        var body = Buffer.concat(chunks).toString();
+        if (res.statusCode >= 400) {
+          console.error('Resend API error (' + res.statusCode + '):', body);
+          resolve({ sent: false, reason: 'api_error', status: res.statusCode });
+        } else {
+          resolve({ sent: true });
+        }
+      });
     });
-    req.on('error', function() { resolve(); });
+    req.on('error', function(err) {
+      console.error('Email send error:', err.message);
+      resolve({ sent: false, reason: err.message });
+    });
+    req.setTimeout(10000, function() {
+      req.destroy();
+      resolve({ sent: false, reason: 'timeout' });
+    });
     req.write(data);
     req.end();
   });
 }
 
-function buildCustomerEmail(productKeys, downloadLinks) {
+function buildCustomerEmail(productKeys, downloadLinks, customerEmail) {
+  var esc = config.escapeHtml;
   var fileKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].file; });
   var serviceKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].service && !PRODUCTS[k].file; });
+  var digitalKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].digital; });
 
   var rows = fileKeys.map(function(key) {
     var p = PRODUCTS[key];
     var link = downloadLinks[productKeys.indexOf(key)];
     return '<tr><td style="padding:12px 16px;border-bottom:1px solid #eee;font-family:sans-serif;font-size:14px;">'
-      + p.name + '</td><td style="padding:12px 16px;border-bottom:1px solid #eee;text-align:right;">'
-      + '<a href="' + link + '" style="background:#c8a45a;color:#08080d;padding:8px 16px;'
+      + esc(p.name) + '</td><td style="padding:12px 16px;border-bottom:1px solid #eee;text-align:right;">'
+      + '<a href="' + esc(link) + '" style="background:#c8a45a;color:#08080d;padding:8px 16px;'
       + 'border-radius:6px;text-decoration:none;font-family:sans-serif;font-size:13px;font-weight:bold;">Download</a>'
       + '</td></tr>';
   }).join('');
@@ -86,10 +114,9 @@ function buildCustomerEmail(productKeys, downloadLinks) {
       + '<tbody>' + rows + '</tbody></table>';
   }
 
-  var digitalKeys = productKeys.filter(function(k) { return PRODUCTS[k] && PRODUCTS[k].digital; });
   var digitalSection = '';
   if (digitalKeys.length > 0) {
-    var digitalNames = digitalKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
+    var digitalNames = digitalKeys.map(function(k) { return esc(PRODUCTS[k].name); }).join(', ');
     digitalSection = '<div style="margin-top:24px;padding:20px;background:#fff;border-radius:8px;border-left:4px solid #10B981;">'
       + '<p style="font-size:15px;color:#333;margin:0 0 8px;">Your <strong>' + digitalNames + '</strong> is now unlocked.</p>'
       + '<p style="font-size:14px;color:#333;margin:0 0 16px;">Return to the tool to start exporting:</p>'
@@ -100,7 +127,7 @@ function buildCustomerEmail(productKeys, downloadLinks) {
 
   var bookingSection = '';
   if (serviceKeys.length > 0) {
-    var serviceNames = serviceKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
+    var serviceNames = serviceKeys.map(function(k) { return esc(PRODUCTS[k].name); }).join(', ');
     bookingSection = '<div style="margin-top:24px;padding:20px;background:#fff;border-radius:8px;border-left:4px solid #c8a45a;">'
       + '<p style="font-size:15px;color:#333;margin:0 0 8px;">Your <strong>' + serviceNames + '</strong> is confirmed.</p>'
       + '<p style="font-size:14px;color:#333;margin:0 0 16px;">Book your session at a time that works for you:</p>'
@@ -148,33 +175,53 @@ exports.handler = async function(event) {
   }
 
   var session = stripeEvent.data.object;
+
+  // Idempotency: skip if we already processed this session
+  if (processedSessions[session.id]) {
+    console.log('Skipping duplicate webhook for session:', session.id);
+    return { statusCode: 200, body: JSON.stringify({ received: true, duplicate: true }) };
+  }
+
   var customerEmail = session.customer_details && session.customer_details.email;
   var productString = session.metadata && session.metadata.products;
 
   if (!customerEmail || !productString) {
-    console.log('Missing customer email or products in session:', session.id);
+    console.error('Missing customer email or products in session:', session.id);
     return { statusCode: 200, body: JSON.stringify({ received: true, warning: 'missing data' }) };
   }
 
   var productKeys = productString.split(',').filter(function(k) { return PRODUCTS[k]; });
-  var expiresAt = Math.floor(Date.now() / 1000) + (72 * 3600); // 72 hours
+  if (productKeys.length === 0) {
+    console.error('No valid products in session:', session.id, 'raw:', productString);
+    return { statusCode: 200, body: JSON.stringify({ received: true, warning: 'no valid products' }) };
+  }
+
+  var expiresAt = Math.floor(Date.now() / 1000) + (72 * 3600);
   var downloadLinks = productKeys.map(function(key) {
     return PRODUCTS[key].file ? makeDownloadUrl(key, expiresAt) : '';
   });
 
-  // Send customer email with download links
-  var customerHtml = buildCustomerEmail(productKeys, downloadLinks);
-  await sendEmail(customerEmail, 'Your Raise Ready Download Links', customerHtml);
+  // Send customer email
+  var customerHtml = buildCustomerEmail(productKeys, downloadLinks, customerEmail);
+  var customerResult = await sendEmail(customerEmail, 'Your Raise Ready Purchase', customerHtml);
+  if (!customerResult.sent) {
+    console.error('Failed to send customer email for session:', session.id, 'reason:', customerResult.reason);
+  }
 
-  // Send admin notification
-  var productNames = productKeys.map(function(k) { return PRODUCTS[k].name; }).join(', ');
+  // Send admin notification (all values escaped)
+  var esc = config.escapeHtml;
+  var productNames = productKeys.map(function(k) { return esc(PRODUCTS[k].name); }).join(', ');
   var amount = session.amount_total ? ('$' + (session.amount_total / 100).toFixed(2)) : 'unknown';
   var adminHtml = '<h3>New Purchase!</h3>'
-    + '<p><strong>Customer:</strong> ' + customerEmail + '</p>'
+    + '<p><strong>Customer:</strong> ' + esc(customerEmail) + '</p>'
     + '<p><strong>Products:</strong> ' + productNames + '</p>'
-    + '<p><strong>Amount:</strong> ' + amount + '</p>'
-    + '<p><strong>Session:</strong> ' + session.id + '</p>';
-  await sendEmail(ADMIN_EMAIL, 'New sale: ' + productNames, adminHtml);
+    + '<p><strong>Amount:</strong> ' + esc(amount) + '</p>'
+    + '<p><strong>Session:</strong> ' + esc(session.id) + '</p>'
+    + '<p><strong>Customer email sent:</strong> ' + (customerResult.sent ? 'Yes' : 'FAILED - ' + esc(customerResult.reason)) + '</p>';
+  await sendEmail(ADMIN_EMAIL, 'New sale: ' + productKeys.map(function(k) { return PRODUCTS[k].name; }).join(', '), adminHtml);
+
+  // Mark processed after successful email send
+  markProcessed(session.id);
 
   return { statusCode: 200, body: JSON.stringify({ received: true }) };
 };

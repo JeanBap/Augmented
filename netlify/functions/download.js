@@ -1,14 +1,26 @@
 var crypto = require('crypto');
 var https = require('https');
+var config = require('./products');
 
-var SITE_URL = 'https://www.raisereadybook.com';
+var PRODUCTS = config.PRODUCTS;
+var SITE_URL = config.SITE_URL;
 
-var FILES = {
-  'book':                 { name: 'Raise_Ready_Book.pdf',          path: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf',          mime: 'application/pdf' },
-  'exit-book':            { name: 'Exit_Ready_Book.pdf',           path: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf',           mime: 'application/pdf' },
-  'tpl-complete':         { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
-  'tpl-complete-support': { name: 'Complete_Financial_Model.xlsx',  path: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
-};
+// Build FILES map from PRODUCTS (single source of truth)
+var FILES = {};
+Object.keys(PRODUCTS).forEach(function(key) {
+  var p = PRODUCTS[key];
+  if (p.file) {
+    var ext = p.file.split('.').pop().toLowerCase();
+    var mime = 'application/octet-stream';
+    if (ext === 'pdf') mime = 'application/pdf';
+    if (ext === 'xlsx') mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    FILES[key] = {
+      name: p.file.split('/').pop(),
+      path: p.file,
+      mime: p.mime || mime
+    };
+  }
+});
 
 exports.handler = async function(event) {
   if (event.httpMethod !== 'GET') {
@@ -33,7 +45,11 @@ exports.handler = async function(event) {
   var payload = productKey + ':' + expiresAt;
   var expected = crypto.createHmac('sha256', secret).update(payload).digest('hex');
 
-  if (!crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature))) {
+  try {
+    if (!crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature))) {
+      return { statusCode: 403, body: 'Invalid download link' };
+    }
+  } catch (e) {
     return { statusCode: 403, body: 'Invalid download link' };
   }
 
@@ -49,7 +65,6 @@ exports.handler = async function(event) {
     };
   }
 
-  // Fetch the file from the CDN and serve it
   var fileUrl = SITE_URL + FILES[productKey].path;
   var fileName = FILES[productKey].name;
 
@@ -58,7 +73,7 @@ exports.handler = async function(event) {
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': FILES[productKey].mime || 'application/octet-stream',
+        'Content-Type': FILES[productKey].mime,
         'Content-Disposition': 'attachment; filename="' + fileName + '"',
         'Cache-Control': 'no-store'
       },
@@ -66,21 +81,39 @@ exports.handler = async function(event) {
       isBase64Encoded: true
     };
   } catch (err) {
-    console.log('Download error:', err.message);
+    console.error('Download error for', productKey, ':', err.message);
     return { statusCode: 500, body: 'Download failed. Contact yanni@raisereadybook.com' };
   }
 };
 
-function fetchFile(url) {
+function fetchFile(url, depth) {
+  depth = depth || 0;
   return new Promise(function(resolve, reject) {
-    https.get(url, function(res) {
+    var req = https.get(url, { timeout: 15000 }, function(res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return fetchFile(res.headers.location).then(resolve).catch(reject);
+        if (depth >= 2) return reject(new Error('Too many redirects'));
+        // Only follow redirects to our own domain
+        var location = res.headers.location;
+        if (!config.isOurUrl(location)) {
+          return reject(new Error('Redirect to external domain blocked'));
+        }
+        return fetchFile(location, depth + 1).then(resolve).catch(reject);
       }
       if (res.statusCode !== 200) return reject(new Error('HTTP ' + res.statusCode));
       var chunks = [];
-      res.on('data', function(c) { chunks.push(c); });
+      var totalSize = 0;
+      res.on('data', function(c) {
+        totalSize += c.length;
+        if (totalSize > 50 * 1024 * 1024) { // 50MB limit
+          req.destroy();
+          reject(new Error('File too large'));
+          return;
+        }
+        chunks.push(c);
+      });
       res.on('end', function() { resolve(Buffer.concat(chunks)); });
-    }).on('error', reject);
+    });
+    req.on('error', reject);
+    req.on('timeout', function() { req.destroy(new Error('File download timeout')); });
   });
 }
