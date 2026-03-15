@@ -190,6 +190,22 @@
   }
   .book-card-actions .btn { width:100%; text-align:center; font-size:0.8rem; }
   .book-card-actions .btn-ghost { font-size:0.75rem; padding:0.5rem; }
+  .book-card-expand {
+    border-top:1px solid var(--rule);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .book-card-expand.open { max-height:3000px; }
+  .book-card-expand-inner {
+    padding:1rem 1.25rem 1.25rem;
+  }
+  .book-card-expand-inner .inline-toc { display:block; max-height:none; opacity:1; overflow:visible; padding:0; }
+  .book-card-expand-inner .inline-toc-list li { font-size:0.78rem; }
+  .book-card-expand-inner .inline-toc-appendix { font-size:0.72rem; }
+  .book-card-expand-inner .book-long-desc { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--rule); }
+  .book-card-expand-inner .desc-content p,
+  .book-card-expand-inner .desc-content li { font-size:0.8rem; }
   @media(max-width:820px){
     .books-grid { grid-template-columns:1fr; max-width:400px; }
   }
@@ -213,7 +229,57 @@
         <div class="book-card-price">$9.99 <span>one-time</span></div>
         <div class="book-card-actions">
           <button class="btn btn-primary" onclick="buyTemplate('start-book')">Buy Now</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('start-detail').scrollIntoView({behavior:'smooth'})">Details &darr;</button>
+          <button class="btn btn-ghost" onclick="toggleBookDetails('start-expand',this)">Details <span class="toc-arrow">&#9662;</span></button>
+        </div>
+      </div>
+      <div id="start-expand" class="book-card-expand">
+        <div class="book-card-expand-inner">
+          <div class="inline-toc">
+            <ol class="inline-toc-list" style="list-style:none;padding:0;">
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: The Foundation</li>
+              <li><strong>Your Financial Starting Position</strong></li>
+              <li><strong>How Money Actually Works</strong></li>
+              <li><strong>Budgeting Without the Spreadsheet Fantasy</strong></li>
+              <li><strong>The Emergency Fund</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Debt and Credit</li>
+              <li><strong>How Credit Works</strong></li>
+              <li><strong>Good Debt, Bad Debt, and the Debt That Kills Quietly</strong></li>
+              <li><strong>Student Loans</strong></li>
+              <li><strong>Getting Out of Debt</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Earning and Taxes</li>
+              <li><strong>Salary Negotiation</strong></li>
+              <li><strong>Income Diversification</strong></li>
+              <li><strong>How Taxes Actually Work</strong></li>
+              <li><strong>Tax-Advantaged Accounts</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Investing</li>
+              <li><strong>Why You Need to Invest</strong></li>
+              <li><strong>The Basics of the Stock Market</strong></li>
+              <li><strong>How to Actually Start Investing</strong></li>
+              <li><strong>Retirement Accounts in Practice</strong></li>
+              <li><strong>Real Estate as an Investment</strong></li>
+              <li><strong>What to Avoid</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part V: Big Decisions</li>
+              <li><strong>Buying Your First Home</strong></li>
+              <li><strong>Insurance You Actually Need</strong></li>
+              <li><strong>Relationships and Money</strong></li>
+              <li><strong>When to Get Professional Help</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VI: The Bridge to Founder Life</li>
+              <li><strong>The Personal Finance of Taking the Leap</strong></li>
+              <li><strong>From Personal Budget to Business Budget</strong></li>
+              <li><strong>The Three Numbers That Tell You If You Are Ready</strong></li>
+            </ol>
+            <p class="inline-toc-appendix">+ Appendix A: The Start Ready Checklist &middot; Appendix B: Tax-Advantaged Account Comparison &middot; Appendix C: The "Should I Take the Leap?" Scorecard &middot; Appendix D: Recommended Reading &middot; Appendix E: Glossary &middot; Appendix F: Monthly Financial Tracker &middot; Appendix G: The 25 Most Expensive Financial Mistakes</p>
+          </div>
+          <details class="book-long-desc">
+            <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
+            <div class="desc-content">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0 0 1rem;">Financial security is not the goal. It is the prerequisite.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Two people graduate on the same day, same salary: $55,000. One sets up a $400/month auto-transfer into an index fund and never thinks about it again. The other waits ten years. By age sixty, the gap between them is $640,000. Same contribution. Same returns. The only difference was when they started.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;"><em>Start Ready</em> is the prequel to <em>Raise Ready</em> and <em>Exit Ready</em>. Those books assume you have a financial foundation. This book builds it.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">This is not a book about frugality. It is a book about building a financial position so strong that you can take risks other people cannot afford to take. US-focused with UK and EU callout boxes throughout.</p>
+            <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Later is expensive. This book makes later unnecessary.</p>
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -231,7 +297,45 @@
         <div class="book-card-price">$29.99 <span>one-time</span></div>
         <div class="book-card-actions">
           <button class="btn btn-primary" onclick="buyTemplate('book')">Buy Now</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('raise-detail').scrollIntoView({behavior:'smooth'})">Details &darr;</button>
+          <button class="btn btn-ghost" onclick="toggleBookDetails('raise-expand',this)">Details <span class="toc-arrow">&#9662;</span></button>
+        </div>
+      </div>
+      <div id="raise-expand" class="book-card-expand">
+        <div class="book-card-expand-inner">
+          <div class="inline-toc">
+            <ol class="inline-toc-list" style="list-style:none;padding:0;">
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: Fundraising Dynamics</li>
+              <li><strong>What a Financial Model Actually Is</strong></li>
+              <li><strong>How Investors Think About Your Numbers</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Financial Modeling Infrastructure</li>
+              <li><strong>The Architecture of a Fundraising Model</strong></li>
+              <li><strong>Revenue Modeling: From Drivers to Dollars</strong></li>
+              <li><strong>Cost Structure: COGS &amp; Gross Margin</strong></li>
+              <li><strong>The Hiring Plan</strong></li>
+              <li><strong>Cash Flow and Runway</strong></li>
+              <li><strong>The Balance Sheet</strong></li>
+              <li><strong>Scenario Planning &amp; Sensitivity Analysis</strong></li>
+              <li><strong>The Assumptions Tab</strong></li>
+              <li><strong>Diligence-Proofing Your Model</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Unit Economics</li>
+              <li><strong>Unit Economics That Actually Matter</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Post-Round Operations</li>
+              <li><strong>Running the Fundraise</strong></li>
+              <li><strong>Defending Your Numbers</strong></li>
+              <li><strong>Post-Raise Operations</strong></li>
+              <li><strong>The Exit: What Changes When You Sell</strong></li>
+            </ol>
+            <p class="inline-toc-appendix">+ Appendix A: Chapter Exercises &middot; Appendix B: Recommended Reading</p>
+          </div>
+          <details class="book-long-desc">
+            <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
+            <div class="desc-content">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0 0 1rem;">Stop losing deals because you can't explain your numbers.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">In <em>Raise Ready</em>, Yanni Papoutsi&mdash;who scaled the financial infrastructure for Indeed Flex (formerly Syft) from seed to a 9-figure exit with a 55x revenue multiple&mdash;pulls back the curtain on how to build a model that survives the forensic scrutiny of top-tier VCs.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">This is not a theoretical accounting textbook. It is a pragmatic, operator-led guide to turning your finances into your strongest fundraising asset, divided into four critical pillars: Fundraising Dynamics, Financial Modeling Infrastructure, Unit Economics, and Post-Round Operations.</p>
+            <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Stop pitching hope. Start pitching mechanics.</p>
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -249,286 +353,71 @@
         <div class="book-card-price">$19.99 <span>one-time</span></div>
         <div class="book-card-actions">
           <button class="btn btn-primary" onclick="buyTemplate('exit-book')">Buy Now</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('exit-detail').scrollIntoView({behavior:'smooth'})">Details &darr;</button>
+          <button class="btn btn-ghost" onclick="toggleBookDetails('exit-expand',this)">Details <span class="toc-arrow">&#9662;</span></button>
+        </div>
+      </div>
+      <div id="exit-expand" class="book-card-expand">
+        <div class="book-card-expand-inner">
+          <div class="inline-toc">
+            <ol class="inline-toc-list" style="list-style:none;padding:0;">
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: The Foundations of Exit Value</li>
+              <li><strong>The Exit Is Not an Event</strong></li>
+              <li><strong>The Exit Landscape</strong></li>
+              <li><strong>What Makes a Company Worth Buying</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Valuation</li>
+              <li><strong>How Buyers Price Businesses</strong></li>
+              <li><strong>The Metrics That Move Multiples</strong></li>
+              <li><strong>Recasting Financials: The Art of the EBITDA Bridge</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Preparing the Business</li>
+              <li><strong>Building a Data Room That Closes Deals</strong></li>
+              <li><strong>De-Risking: Fixing Problems Before Buyers Find Them</strong></li>
+              <li><strong>Reducing Founder Dependence</strong></li>
+              <li><strong>The Two-Year Countdown</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Running the Process</li>
+              <li><strong>Strategic vs. Financial Buyers</strong></li>
+              <li><strong>The Second Bite: How PE Rollover Can Double Your Exit</strong></li>
+              <li><strong>Creating Competitive Tension</strong></li>
+              <li><strong>Building Your Exit Advisory Team</strong></li>
+              <li><strong>The Confidential Information Memorandum</strong></li>
+              <li><strong>Management Presentations and Buyer Meetings</strong></li>
+              <li><strong>Handling Unsolicited Offers</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part V: The Deal</li>
+              <li><strong>Asset Sale vs. Stock Sale</strong></li>
+              <li><strong>Earnouts, Escrows, and the Money You Might Never See</strong></li>
+              <li><strong>R&amp;W Insurance: Unlocking Cash at Close</strong></li>
+              <li><strong>Negotiating the LOI and Definitive Agreement</strong></li>
+              <li><strong>Due Diligence: Surviving the Interrogation</strong></li>
+              <li><strong>Telling Employees: When, How, and What to Expect</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VI: Tax: Keeping What You Earn</li>
+              <li><strong>QSBS: The Most Valuable Tax Provision Most Founders Miss</strong></li>
+              <li><strong>Installment Sales, ESOPs, and Opportunity Zones</strong></li>
+              <li><strong>Cross-Border Exits and International Tax Planning</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VII: Special Situations</li>
+              <li><strong>SaaS and Recurring Revenue Exits</strong></li>
+              <li><strong>Small Business Exits Under $10M</strong></li>
+              <li><strong>Acqui-Hires and Talent Deals</strong></li>
+              <li><strong>When the Best Exit Is Not Selling</strong></li>
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VIII: After the Wire Hits</li>
+              <li><strong>Post-Close Obligations and Traps</strong></li>
+              <li><strong>The Psychology of Letting Go</strong></li>
+              <li><strong>Managing Wealth After a Liquidity Event</strong></li>
+              <li><strong>The Serial Founder's Advantage</strong></li>
+            </ol>
+            <p class="inline-toc-appendix">+ Appendix A: Due Diligence Checklist &middot; Appendix B: Valuation Multiple Tables &middot; Appendix C: Sample LOI &amp; Key Terms &middot; Appendix D: Exit Readiness Scorecard &middot; Appendix E: The 25 Most Expensive Exit Mistakes &middot; Appendix F: The "Should I Sell?" Framework</p>
+          </div>
+          <details class="book-long-desc">
+            <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
+            <div class="desc-content">
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Most founders treat an exit like a single event. But the reality of the M&amp;A market is unforgiving: 70% of founders spend no time on exit planning, and as a result, they "sell blind."</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">In <em>Exit Ready</em>, Yanni Papoutsi&mdash;the strategy lead behind the 9-figure acquisition of Indeed Flex (formerly Syft)&mdash;delivers a systematic playbook for founders who want to maximize what they actually walk away with.</p>
+            <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Covers the 24-month countdown: from valuation mechanics and EBITDA bridges to tax planning (QSBS, installment sales) and post-close wealth management.</p>
+            <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Stop building to sell. Start being Exit Ready.</p>
+            </div>
+          </details>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Detailed Book Sections -->
-  <section id="start-detail" class="book-hero">
-    <div class="book-hero-grid">
-      <div class="book-hero-text">
-        <h2 class="book-title" style="font-size:1.8rem;">The Start Ready Book</h2>
-        <p class="book-subtitle">The financial playbook for building a life you can afford to risk.</p>
-
-        <div class="book-pricing">
-          <div class="price-main">$9.99</div>
-          <span style="font-family:var(--mono);font-size:0.78rem;color:var(--mid);margin-left:0.5rem;">one-time</span>
-        </div>
-
-        <div class="book-ctas">
-          <button class="btn btn-primary" onclick="buyTemplate('start-book')">Buy Now</button>
-        </div>
-
-        <p class="book-description-meta">150 pages. Instant PDF download after purchase.</p>
-
-        <div class="book-ctas" style="margin-top:0.75rem;">
-          <button class="btn btn-ghost toc-toggle" onclick="document.getElementById('start-toc').classList.toggle('open'); this.classList.toggle('active')">
-            Table of Contents <span class="toc-arrow">&#9662;</span>
-          </button>
-        </div>
-
-        <!-- Start Ready TOC -->
-        <div id="start-toc" class="inline-toc">
-          <ol class="inline-toc-list" style="list-style:none;padding:0;">
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: The Foundation</li>
-            <li><strong>Your Financial Starting Position</strong></li>
-            <li><strong>How Money Actually Works</strong></li>
-            <li><strong>Budgeting Without the Spreadsheet Fantasy</strong></li>
-            <li><strong>The Emergency Fund</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Debt and Credit</li>
-            <li><strong>How Credit Works</strong></li>
-            <li><strong>Good Debt, Bad Debt, and the Debt That Kills Quietly</strong></li>
-            <li><strong>Student Loans</strong></li>
-            <li><strong>Getting Out of Debt</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Earning and Taxes</li>
-            <li><strong>Salary Negotiation</strong></li>
-            <li><strong>Income Diversification</strong></li>
-            <li><strong>How Taxes Actually Work</strong></li>
-            <li><strong>Tax-Advantaged Accounts</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Investing</li>
-            <li><strong>Why You Need to Invest</strong></li>
-            <li><strong>The Basics of the Stock Market</strong></li>
-            <li><strong>How to Actually Start Investing</strong></li>
-            <li><strong>Retirement Accounts in Practice</strong></li>
-            <li><strong>Real Estate as an Investment</strong></li>
-            <li><strong>What to Avoid</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part V: Big Decisions</li>
-            <li><strong>Buying Your First Home</strong></li>
-            <li><strong>Insurance You Actually Need</strong></li>
-            <li><strong>Relationships and Money</strong></li>
-            <li><strong>When to Get Professional Help</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VI: The Bridge to Founder Life</li>
-            <li><strong>The Personal Finance of Taking the Leap</strong></li>
-            <li><strong>From Personal Budget to Business Budget</strong></li>
-            <li><strong>The Three Numbers That Tell You If You Are Ready</strong></li>
-          </ol>
-          <p class="inline-toc-appendix">+ Appendix A: The Start Ready Checklist &middot; Appendix B: Tax-Advantaged Account Comparison &middot; Appendix C: The "Should I Take the Leap?" Scorecard &middot; Appendix D: Recommended Reading &middot; Appendix E: Glossary &middot; Appendix F: Monthly Financial Tracker &middot; Appendix G: The 25 Most Expensive Financial Mistakes</p>
-        </div>
-
-        <!-- Start Ready Description (Expandable) -->
-        <details class="book-long-desc" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);">
-          <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
-          <div class="desc-content">
-          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0 0 1rem;">Financial security is not the goal. It is the prerequisite.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Two people graduate on the same day, same salary: $55,000. One sets up a $400/month auto-transfer into an index fund and never thinks about it again. The other waits ten years. By age sixty, the gap between them is $640,000. Same contribution. Same returns. The only difference was when they started.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;"><em>Start Ready</em> is the prequel to <em>Raise Ready</em> and <em>Exit Ready</em>. Those books assume you have a financial foundation. This book builds it. Everything here makes you better at managing money whether you start a company or not. But if you do take the entrepreneurial leap, every chapter maps directly to a concept you will need: personal cash flow becomes burn rate, your emergency fund becomes runway, your investment discipline becomes capital allocation.</p>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">What's inside?</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">25 chapters across six parts covering the systems that determine whether you build wealth or bleed it:</p>
-          <ul style="list-style:none;padding:0;margin:0 0 1rem;">
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part I: The Foundation.</strong> Your financial starting position, how money actually works, budgeting without spreadsheet fantasy, and the emergency fund.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part II: Debt and Credit.</strong> How credit works, good debt vs. bad debt, student loans, and the mechanics of getting out.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part III: Earning and Taxes.</strong> Salary negotiation, income diversification, how taxes actually work, and tax-advantaged accounts.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part IV: Investing.</strong> Why you need to invest, stock market basics, how to actually start, retirement accounts, real estate, and what to avoid.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part V: Big Decisions.</strong> Buying your first home, insurance you actually need, relationships and money, and when to get professional help.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part VI: The Bridge to Founder Life.</strong> The personal finance of taking the leap, from personal budget to business budget, and the three numbers that tell you if you are ready.</li>
-          </ul>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">Who should read this:</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">You should read this if you are between eighteen and thirty-five and have never had a structured approach to money. If you earn a salary but have no idea where it goes. If the word "investing" feels like something you need to know but do not. If you have debt and no plan to eliminate it. And if you suspect the financial world is designed to extract money from people who do not understand how it works.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">This is not a book about frugality. It is a book about building a financial position so strong that you can take risks other people cannot afford to take. US-focused with UK and EU callout boxes throughout.</p>
-          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Later is expensive. This book makes later unnecessary.</p>
-          </div>
-        </details>
-      </div>
-      <div class="book-hero-cover">
-        <img src="/start-cover.png" alt="Start Ready Book Cover">
-      </div>
-    </div>
-  </section>
-
-  <section id="raise-detail" class="book-hero" style="border-top:1px solid var(--rule);">
-    <div class="book-hero-grid">
-      <div class="book-hero-text">
-        <h2 class="book-title" style="font-size:1.8rem;">The fundraising playbook investors wish founders would actually read.</h2>
-        <p class="book-subtitle">15 years of experience distilled into 16 chapters covering financial modeling, unit economics, fundraising strategy, and exit planning.</p>
-
-        <div class="book-pricing">
-          <div class="price-main">$29.99</div>
-          <span style="font-family:var(--mono);font-size:0.78rem;color:var(--mid);margin-left:0.5rem;">one-time</span>
-        </div>
-
-        <div class="book-ctas">
-          <button class="btn btn-primary" onclick="buyTemplate('book')">Buy Now</button>
-          <button class="btn btn-ghost toc-toggle" onclick="document.getElementById('inline-toc').classList.toggle('open'); this.classList.toggle('active')">
-            Table of Contents <span class="toc-arrow">&#9662;</span>
-          </button>
-        </div>
-
-        <p class="book-description-meta">498 pages. Instant PDF download after purchase.</p>
-
-        <!-- Expandable TOC -->
-        <div id="inline-toc" class="inline-toc">
-          <ol class="inline-toc-list" style="list-style:none;padding:0;">
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: Fundraising Dynamics</li>
-            <li><strong>What a Financial Model Actually Is</strong></li>
-            <li><strong>How Investors Think About Your Numbers</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Financial Modeling Infrastructure</li>
-            <li><strong>The Architecture of a Fundraising Model</strong></li>
-            <li><strong>Revenue Modeling: From Drivers to Dollars</strong></li>
-            <li><strong>Cost Structure: COGS &amp; Gross Margin</strong></li>
-            <li><strong>The Hiring Plan</strong></li>
-            <li><strong>Cash Flow and Runway</strong></li>
-            <li><strong>The Balance Sheet</strong></li>
-            <li><strong>Scenario Planning &amp; Sensitivity Analysis</strong></li>
-            <li><strong>The Assumptions Tab</strong></li>
-            <li><strong>Diligence-Proofing Your Model</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Unit Economics</li>
-            <li><strong>Unit Economics That Actually Matter</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Post-Round Operations</li>
-            <li><strong>Running the Fundraise</strong></li>
-            <li><strong>Defending Your Numbers</strong></li>
-            <li><strong>Post-Raise Operations</strong></li>
-            <li><strong>The Exit: What Changes When You Sell</strong></li>
-          </ol>
-          <p class="inline-toc-appendix">+ Appendix A: Chapter Exercises &middot; Appendix B: Recommended Reading</p>
-        </div>
-
-        <!-- Raise Ready Description (Expandable) -->
-        <details class="book-long-desc" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);">
-          <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
-          <div class="desc-content">
-          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0 0 1rem;">Stop losing deals because you can't explain your numbers.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Most founders treat their financial model as a necessary evil&mdash;a spreadsheet they build once to satisfy a VC's checklist and then bury in a folder. But the reality of the 2024&ndash;2025 venture market is brutal: investors are no longer funding "straight-line" growth or unverified "hockey sticks." They are funding your understanding of your own business.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">In <em>Raise Ready</em>, Yanni Papoutsi&mdash;who scaled the financial infrastructure for Indeed Flex (formerly Syft) from seed to a 9-figure exit with a 55x revenue multiple&mdash;pulls back the curtain on how to build a model that survives the forensic scrutiny of top-tier VCs.</p>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">What's inside?</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">This is not a theoretical accounting textbook. It is a pragmatic, operator-led guide to turning your finances into your strongest fundraising asset. The book is divided into four critical pillars:</p>
-          <ul style="list-style:none;padding:0;margin:0 0 1rem;">
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part One: Fundraising Dynamics.</strong> Master the "93-second rule" for investor attention, decode why VC fund math forces rejections of "good" companies, and learn to run a competitive process that creates genuine leverage.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Two: Financial Modeling Infrastructure.</strong> Build a driver-based model from the ground up. Stop hard-coding "15% monthly growth" and start modeling leads, conversion, ACV, and retention as a coherent system.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Three: Rigorous Unit Economics.</strong> Learn to calculate LTV, CAC, and NRR correctly&mdash;avoiding the common traps that destroy founder credibility in seconds. Compare your metrics against the latest 2025 benchmarks for SaaS and marketplaces.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Four: Post-Round Operations.</strong> Transition from "fundraising mode" to "execution mode." Build automated dashboards and leading indicator systems that catch problems three months before they hit your revenue line.</li>
-          </ul>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">Why this book is different:</p>
-          <ul style="list-style:none;padding:0;margin:0 0 1rem;">
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Operator Credibility:</strong> Written by a strategy lead who has raised five rounds across seven VCs and defended valuations during high-stakes M&amp;A diligence.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Mathematical Rigor:</strong> Includes a forensic look at Cap Table modeling, dilutive stacking, and SAFE conversion logic that ensures you know exactly what you own at exit.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Actionable Tools:</strong> Every chapter includes hands-on exercises to build your model, along with templates for investor updates and data rooms.</li>
-          </ul>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">A financial model that closes rounds isn't the most sophisticated spreadsheet in the room; it's the most honest one. <em>Raise Ready</em> gives you the language, the math, and the operating discipline to walk into any partner meeting and defend every assumption with total conviction.</p>
-          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Stop pitching hope. Start pitching mechanics.</p>
-          </div>
-        </details>
-      </div>
-      <div class="book-hero-cover">
-        <img src="/book-cover.png" alt="Raise Ready Book Cover">
-      </div>
-    </div>
-  </section>
-
-  <section id="exit-detail" class="book-hero" style="border-top:1px solid var(--rule);">
-    <div class="book-hero-grid">
-      <div class="book-hero-text">
-        <h2 class="book-title" style="font-size:1.8rem;">The Exit Ready Book</h2>
-        <p class="book-subtitle">You've spent years building your company. Don't leave millions on the table when you leave it.</p>
-
-        <div class="book-pricing">
-          <div class="price-main">$19.99</div>
-          <span style="font-family:var(--mono);font-size:0.78rem;color:var(--mid);margin-left:0.5rem;">one-time</span>
-        </div>
-
-        <div class="book-ctas">
-          <button class="btn btn-primary" onclick="buyTemplate('exit-book')">Buy Now</button>
-        </div>
-
-        <p class="book-description-meta">299 pages. Instant PDF download after purchase.</p>
-
-        <div class="book-ctas" style="margin-top:0.75rem;">
-          <button class="btn btn-ghost toc-toggle" onclick="document.getElementById('exit-toc').classList.toggle('open'); this.classList.toggle('active')">
-            Table of Contents <span class="toc-arrow">&#9662;</span>
-          </button>
-        </div>
-
-        <!-- Exit Ready TOC -->
-        <div id="exit-toc" class="inline-toc">
-          <ol class="inline-toc-list" style="list-style:none;padding:0;">
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part I: The Foundations of Exit Value</li>
-            <li><strong>The Exit Is Not an Event</strong></li>
-            <li><strong>The Exit Landscape</strong></li>
-            <li><strong>What Makes a Company Worth Buying</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part II: Valuation</li>
-            <li><strong>How Buyers Price Businesses</strong></li>
-            <li><strong>The Metrics That Move Multiples</strong></li>
-            <li><strong>Recasting Financials: The Art of the EBITDA Bridge</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part III: Preparing the Business</li>
-            <li><strong>Building a Data Room That Closes Deals</strong></li>
-            <li><strong>De-Risking: Fixing Problems Before Buyers Find Them</strong></li>
-            <li><strong>Reducing Founder Dependence</strong></li>
-            <li><strong>The Two-Year Countdown</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part IV: Running the Process</li>
-            <li><strong>Strategic vs. Financial Buyers</strong></li>
-            <li><strong>The Second Bite: How PE Rollover Can Double Your Exit</strong></li>
-            <li><strong>Creating Competitive Tension</strong></li>
-            <li><strong>Building Your Exit Advisory Team</strong></li>
-            <li><strong>The Confidential Information Memorandum</strong></li>
-            <li><strong>Management Presentations and Buyer Meetings</strong></li>
-            <li><strong>Handling Unsolicited Offers</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part V: The Deal</li>
-            <li><strong>Asset Sale vs. Stock Sale</strong></li>
-            <li><strong>Earnouts, Escrows, and the Money You Might Never See</strong></li>
-            <li><strong>R&amp;W Insurance: Unlocking Cash at Close</strong></li>
-            <li><strong>Negotiating the LOI and Definitive Agreement</strong></li>
-            <li><strong>Due Diligence: Surviving the Interrogation</strong></li>
-            <li><strong>Telling Employees: When, How, and What to Expect</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VI: Tax: Keeping What You Earn</li>
-            <li><strong>QSBS: The Most Valuable Tax Provision Most Founders Miss</strong></li>
-            <li><strong>Installment Sales, ESOPs, and Opportunity Zones</strong></li>
-            <li><strong>Cross-Border Exits and International Tax Planning</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VII: Special Situations</li>
-            <li><strong>SaaS and Recurring Revenue Exits</strong></li>
-            <li><strong>Small Business Exits Under $10M</strong></li>
-            <li><strong>Acqui-Hires and Talent Deals</strong></li>
-            <li><strong>When the Best Exit Is Not Selling</strong></li>
-            <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">Part VIII: After the Wire Hits</li>
-            <li><strong>Post-Close Obligations and Traps</strong></li>
-            <li><strong>The Psychology of Letting Go</strong></li>
-            <li><strong>Managing Wealth After a Liquidity Event</strong></li>
-            <li><strong>The Serial Founder's Advantage</strong></li>
-          </ol>
-          <p class="inline-toc-appendix">+ Appendix A: Due Diligence Checklist &middot; Appendix B: Valuation Multiple Tables &middot; Appendix C: Sample LOI &amp; Key Terms &middot; Appendix D: Exit Readiness Scorecard &middot; Appendix E: The 25 Most Expensive Exit Mistakes &middot; Appendix F: The "Should I Sell?" Framework</p>
-        </div>
-
-        <!-- Exit Ready Description (Expandable) -->
-        <details class="book-long-desc" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);">
-          <summary class="desc-toggle">Read more about this book <span class="desc-arrow">&#9662;</span></summary>
-          <div class="desc-content">
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">Most founders treat an exit like a single event&mdash;a wire transfer and a bottle of champagne. But the reality of the M&amp;A market is unforgiving: 70% of founders spend no time on exit planning, and as a result, they "sell blind." They accept lower multiples, ignore predatory deal structures, and pay millions in avoidable taxes.</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">In <em>Exit Ready</em>, Yanni Papoutsi&mdash;the strategy lead behind the 9-figure acquisition of Indeed Flex (formerly Syft)&mdash;delivers a systematic playbook for founders who want to maximize what they actually walk away with. This isn't about the press release headline; it's about the cash that hits your personal bank account.</p>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">What's inside?</p>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;"><em>Exit Ready</em> is a chronological guide to the 24-month countdown to a life-changing liquidity event. It covers the levers most founders don't realize they can pull:</p>
-          <ul style="list-style:none;padding:0;margin:0 0 1rem;">
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part One: The Foundations of Exit Value.</strong> Learn why an exit is a multi-year process, not a transaction, and audit your business against the "Seven Pillars of Exit Readiness."</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Two: The Art of the Multiple.</strong> Understand the "Multiple Amplifier Effect." Discover how modest operational shifts&mdash;like reducing customer concentration or proving unit economics&mdash;can add 2&ndash;3 "turns" to your EBITDA.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Three: Operational Independence.</strong> How to pass the "two-week absence test." If the business can't run without you, you aren't selling a company; you're selling a job&mdash;and buyers price it accordingly.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Four: Running the Process.</strong> Navigate the tension between strategic acquirers and Private Equity. Master the "Second Bite" strategy, where a PE rollover can effectively double your total exit proceeds over five years.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Part Five: Tax &amp; Structuring.</strong> A deep dive into the million-dollar provisions most founders miss, including QSBS (Qualified Small Business Stock) and international tax planning.</li>
-          </ul>
-          <p style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);margin:1.25rem 0 0.5rem;">Why this book is different:</p>
-          <ul style="list-style:none;padding:0;margin:0 0 1rem;">
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">The Operator's Perspective:</strong> Written by a finance lead who has defended valuations during six-month forensic diligence processes and secured a 55x revenue multiple exit.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">Forensic Rigor:</strong> Includes a detailed "EBITDA Bridge" guide to recasting your financials, ensuring you capture every dollar of "add-back" value.</li>
-            <li style="font-size:0.85rem;color:var(--dim);padding:0.35rem 0 0.35rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;color:var(--gold);font-weight:bold;">&#10003;</span><strong style="color:var(--ink);">The Post-Close Reality:</strong> Beyond the math, the book addresses the psychological transition of letting go and the "90-Day Rule" for managing sudden wealth.</li>
-          </ul>
-          <p style="font-size:0.88rem;color:var(--dim);line-height:1.7;margin:0 0 0.75rem;">The difference between a "good" exit and an "extraordinary" one is rarely the product you built&mdash;it's the preparation you did before you ever sat across the table from a buyer. <em>Exit Ready</em> gives you the strategy, the math, and the mechanics to harvest the full value of your life's work.</p>
-          <p style="font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.7;margin:0;">Stop building to sell. Start being Exit Ready.</p>
-          </div>
-        </details>
-      </div>
-      <div class="book-hero-cover">
-        <img src="/exit-cover.png" alt="Exit Ready Book Cover">
-      </div>
-    </div>
-  </section>
 
   <!-- Credential Bar -->
   <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2rem;padding:1rem 2rem;border-radius:10px;border:1px solid var(--rule);max-width:900px;margin:2rem auto;">
@@ -633,6 +522,13 @@
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 <script>
+function toggleBookDetails(id, btn) {
+  var el = document.getElementById(id);
+  var isOpen = el.classList.toggle('open');
+  btn.querySelector('.toc-arrow').style.transform = isOpen ? 'rotate(180deg)' : '';
+  btn.querySelector('.toc-arrow').style.transition = 'transform 0.3s';
+}
+
 var pendingProductId = null;
 var pendingBtn = null;
 
