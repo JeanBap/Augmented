@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -13,232 +12,163 @@
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Tools | Raise Ready</title>
-<meta name="description" content="Free interactive tools for startup founders across all stages. Personal finance calculators, fundraising tools, and exit planning resources.">
+<title>60+ Free Tools for Founders | Raise Ready</title>
+<meta name="description" content="60+ free interactive calculators, simulators, and scorecards for personal finance, fundraising, financial modelling, valuation, exit planning, and more.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/">
-<meta property="og:title" content="Free Tools | Raise Ready">
-<meta property="og:description" content="Free interactive tools for startup founders across all stages.">
+<meta property="og:title" content="60+ Free Tools for Founders | Raise Ready">
+<meta property="og:description" content="Free interactive calculators, simulators, and scorecards for personal finance, fundraising, financial modelling, valuation, exit planning, and more.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Raise Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Tools | Raise Ready">
-<meta name="twitter:description" content="Free interactive tools for startup founders across all stages.">
+<meta name="twitter:title" content="60+ Free Tools for Founders | Raise Ready">
+<meta name="twitter:description" content="Free interactive calculators, simulators, and scorecards for personal finance, fundraising, financial modelling, valuation, exit planning, and more.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
 <link rel="stylesheet" href="/shared/style.css">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "60+ Free Tools for Founders",
+  "description": "Free interactive calculators, simulators, and scorecards for personal finance, fundraising, financial modelling, valuation, exit planning, and more.",
+  "url": "https://www.raisereadybook.com/tools/",
+  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
+  "publisher": {"@type": "Organization", "name": "Raise Ready"}
+}
+</script>
 <style>
-/* Tools Hub Page Styles */
-.tools-hero {
-  text-align: center;
-  padding: 4rem 2rem 2rem;
+/* Hero */
+.tools-hero { text-align: center; padding: 4rem 2rem 1.5rem; }
+.tools-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+.tools-hero p { color: var(--mid); max-width: 640px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+.tools-hero .tool-count { font-family: var(--mono); font-size: 0.85rem; color: var(--gold); margin-top: 0.75rem; }
+
+/* Filter System */
+.filter-section { max-width: 960px; margin: 0 auto 0.5rem; padding: 0 2rem; }
+.filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; margin-bottom: 0.6rem; }
+.filter-label {
+  font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--mid); width: 100%; text-align: center;
+  margin-bottom: 0.15rem;
+}
+.filter-btn {
+  padding: 0.4rem 0.9rem; border: 1px solid var(--rule); border-radius: 20px;
+  font-family: var(--mono); font-size: 0.78rem; background: transparent;
+  color: var(--mid); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--gold); color: var(--ink); }
+.filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* Result count */
+.result-count {
+  text-align: center; font-family: var(--mono); font-size: 0.78rem;
+  color: var(--mid); margin-bottom: 1.5rem;
 }
 
-.tools-hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  margin-bottom: 1rem;
+/* FM Pro Featured Card */
+.fm-pro-card {
+  max-width: 960px; margin: 0 auto 2rem; padding: 0 2rem;
+}
+.fm-pro-inner {
+  border: 2px solid var(--gold); border-radius: 12px; padding: 2rem;
+  background: linear-gradient(135deg, rgba(200,164,90,0.04), var(--paper));
+  display: flex; gap: 2rem; align-items: center;
+}
+.fm-pro-inner .fm-text { flex: 1; }
+.fm-pro-inner h2 { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 0.5rem; }
+.fm-pro-inner p { color: var(--mid); font-size: 0.92rem; line-height: 1.6; margin: 0 0 1rem; }
+.fm-pro-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.fm-badge {
+  font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.6rem;
+  border-radius: 4px; font-weight: 600;
+}
+.fm-badge.featured { background: var(--gold); color: var(--ink); }
+.fm-badge.interactive { background: rgba(39,174,96,0.12); color: #27ae60; }
+.fm-badge.tabs { background: rgba(200,164,90,0.1); color: var(--gold); }
+.fm-pro-link {
+  display: inline-block; padding: 0.7rem 1.5rem; background: var(--gold);
+  color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono);
+  font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.3s;
+}
+.fm-pro-link:hover { background: var(--gold2); }
+@media (max-width: 700px) {
+  .fm-pro-inner { flex-direction: column; text-align: center; }
+  .fm-pro-badges { justify-content: center; }
 }
 
-.tools-hero p {
-  color: var(--mid);
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  line-height: 1.7;
+/* Tool Cards Grid */
+.tools-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem; max-width: 960px; margin: 0 auto; padding: 0 2rem 3rem;
+}
+.tool-card {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;
+  background: var(--paper); transition: all 0.25s;
+}
+.tool-card:hover { border-color: var(--gold); box-shadow: 0 4px 14px rgba(200,164,90,0.1); }
+.tool-card.hidden { display: none; }
+
+.tool-card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.tag {
+  font-family: var(--mono); font-size: 0.65rem; padding: 0.15rem 0.5rem;
+  border-radius: 12px; white-space: nowrap;
+}
+.tag-book { border: 1px solid var(--rule); color: var(--mid); }
+.tag-book.start { border-color: rgba(39,174,96,0.3); color: #27ae60; }
+.tag-book.raise { border-color: rgba(200,164,90,0.4); color: var(--gold); }
+.tag-book.exit { border-color: rgba(192,57,43,0.3); color: #c0392b; }
+.tag-topic { background: rgba(200,164,90,0.08); color: var(--gold); }
+.tag-interactive { background: rgba(39,174,96,0.1); color: #27ae60; font-weight: 500; }
+
+.tool-card h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 0.4rem; line-height: 1.35; }
+.tool-card .desc { color: var(--mid); font-size: 0.88rem; line-height: 1.55; margin: 0; flex-grow: 1; }
+.tool-card .chapter { font-family: var(--mono); font-size: 0.7rem; color: var(--gold); margin-top: 0.75rem; }
+
+/* No results */
+.no-results {
+  text-align: center; padding: 3rem 2rem; font-family: var(--sans);
+  color: var(--mid); font-size: 1rem; display: none;
 }
 
-/* Section Cards Grid */
-.tools-sections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 3rem auto;
-  padding: 0 2rem;
-}
-
-@media (max-width: 768px) {
-  .tools-sections {
-    grid-template-columns: 1fr;
-  }
-}
-
-.section-card {
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 2rem;
-  border-top: 3px solid var(--gold);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-}
-
-.section-card:hover {
-  border-color: var(--gold);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-.section-card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.section-card h2 {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.section-card p {
-  color: var(--mid);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.tool-count-badge {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.section-card-link {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  background: var(--gold);
-  color: var(--paper);
-  border: none;
-  border-radius: 6px;
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s;
-  align-self: flex-start;
-}
-
-.section-card-link:hover {
-  background: var(--gold2);
-}
-
-/* Guides Section */
-.guides-section {
-  max-width: 900px;
-  margin: 4rem auto 3rem;
-  padding: 0 2rem;
-}
-
-.guides-section h2 {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.guides-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
+/* Guides & CTA */
+.guides-section { max-width: 960px; margin: 1rem auto 3rem; padding: 0 2rem; }
+.guides-section h2 { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; }
+.guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 .guide-card {
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
+  border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; transition: all 0.3s;
 }
+.guide-card:hover { border-color: var(--gold); }
+.guide-card h3 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.5rem; }
+.guide-card p { color: var(--mid); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+.guide-card a { font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; }
+.guide-card a:hover { color: var(--gold2); }
 
-.guide-card:hover {
-  border-color: var(--gold);
-}
-
-.guide-card h3 {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.guide-card p {
-  color: var(--mid);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.guide-card a {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--gold);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 0.3s;
-}
-
-.guide-card a:hover {
-  color: var(--gold2);
-}
-
-/* CTA Section */
 .tools-cta {
-  text-align: center;
-  padding: 3rem 2rem;
-  max-width: 600px;
-  margin: 3rem auto;
-  background: rgba(200, 164, 90, 0.03);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
+  text-align: center; padding: 2.5rem 2rem; max-width: 600px; margin: 0 auto 3rem;
+  background: rgba(200,164,90,0.03); border: 1px solid var(--rule); border-radius: 12px;
 }
-
-.tools-cta h2 {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.tools-cta p {
-  color: var(--mid);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-  font-size: 1rem;
-}
-
+.tools-cta h2 { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 0.75rem; }
+.tools-cta p { color: var(--mid); margin-bottom: 1.25rem; line-height: 1.7; }
 .cta-button {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: var(--gold);
-  color: var(--paper);
-  border: none;
-  border-radius: 6px;
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s;
+  display: inline-block; padding: 0.8rem 1.8rem; background: var(--gold);
+  color: var(--paper); border: none; border-radius: 6px; font-family: var(--mono);
+  font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.3s;
 }
+.cta-button:hover { background: var(--gold2); }
 
-.cta-button:hover {
-  background: var(--gold2);
+@media (max-width: 600px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .filter-btn { font-size: 0.72rem; padding: 0.35rem 0.7rem; }
 }
 </style>
-<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
 </head>
 <body data-page="tools">
 <div id="site-nav"></div>
@@ -247,78 +177,891 @@
 
   <section class="tools-hero">
     <h1>Free tools that replace guesswork with clarity.</h1>
-    <p>Calculators, simulators, and exercises for every stage of your journey.</p>
+    <p>Calculators, simulators, scorecards, and exercises for every stage of your financial journey.</p>
+    <div class="tool-count" id="tool-count">63 tools + Financial Model Pro</div>
   </section>
 
-  <!-- Tools Section Cards -->
-  <section class="tools-sections">
-    <!-- Financial Model Pro (Featured) -->
-    <div class="section-card" style="grid-column: 1 / -1; border-top-color: #FFD700; background: linear-gradient(135deg, rgba(200,164,90,0.04), var(--paper));">
-      <div class="section-card-icon">📊</div>
-      <h2>5-Year Financial Model Pro</h2>
-      <p>Interactive SaaS financial model with 3 scenarios, hiring plan, unit economics, sensitivity analysis, and board report. Free to use and save in browser. Export to Excel or PDF for $29.</p>
-      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;">
-        <span class="tool-count-badge" style="margin-bottom:0;">6 tabs &middot; free + pro</span>
-        <span style="font-family:var(--mono);font-size:0.7rem;background:var(--gold);color:var(--ink);padding:0.2rem 0.6rem;border-radius:4px;font-weight:600;">FEATURED</span>
+  <!-- FM Pro Featured -->
+  <div class="fm-pro-card">
+    <a href="/tools/financial-model-pro.html" style="text-decoration:none;color:inherit;">
+    <div class="fm-pro-inner">
+      <div class="fm-text">
+        <div class="fm-pro-badges">
+          <span class="fm-badge featured">FEATURED</span>
+          <span class="fm-badge interactive">Interactive</span>
+          <span class="fm-badge tabs">6 tabs</span>
+        </div>
+        <h2>5-Year Financial Model Pro</h2>
+        <p>3 scenarios, hiring plan, unit economics, sensitivity analysis, and board-ready report. Free to use in-browser. Export to Excel or PDF for $10.</p>
       </div>
-      <a href="/tools/financial-model-pro.html" class="section-card-link">Launch Financial Model →</a>
+      <span class="fm-pro-link">Launch Financial Model</span>
     </div>
+    </a>
+  </div>
 
-    <!-- Start Ready Tools -->
-    <div class="section-card">
-      <div class="section-card-icon">🏦</div>
-      <h2>Start Ready Tools</h2>
-      <p>Personal finance calculators for your first decade. Net worth, budgeting, debt payoff, retirement, mortgage, tax planning, and more.</p>
-      <div class="tool-count-badge">18 tools</div>
-      <a href="/tools/start-ready/" class="section-card-link">Explore Start Ready Tools →</a>
+  <!-- Filters -->
+  <section class="filter-section">
+    <div class="filter-label">Book</div>
+    <div class="filter-row" id="book-filters">
+      <button class="filter-btn active" data-book="all">All</button>
+      <button class="filter-btn" data-book="start-ready">Start Ready</button>
+      <button class="filter-btn" data-book="raise-ready">Raise Ready</button>
+      <button class="filter-btn" data-book="exit-ready">Exit Ready</button>
     </div>
-
-    <!-- Raise Ready Tools -->
-    <div class="section-card">
-      <div class="section-card-icon">📈</div>
-      <h2>Raise Ready Tools</h2>
-      <p>Startup fundraising calculators. Runway, unit economics, valuation, dilution, pitch deck scoring, and more.</p>
-      <div class="tool-count-badge">14 tools</div>
-      <a href="/tools/raise-ready.html" class="section-card-link">Explore Raise Ready Tools →</a>
-    </div>
-
-    <!-- Exit Ready Tools -->
-    <div class="section-card">
-      <div class="section-card-icon">🎯</div>
-      <h2>Exit Ready Tools</h2>
-      <p>Exit planning calculators, readiness assessments, deal simulators, and tax planning tools.</p>
-      <div class="tool-count-badge">30 tools</div>
-      <a href="/tools/exit-ready/" class="section-card-link">Explore Exit Ready Tools →</a>
+    <div class="filter-label">Topic</div>
+    <div class="filter-row" id="topic-filters">
+      <button class="filter-btn active" data-topic="all">All</button>
+      <button class="filter-btn" data-topic="personal-finance">Personal Finance</button>
+      <button class="filter-btn" data-topic="debt-credit">Debt &amp; Credit</button>
+      <button class="filter-btn" data-topic="tax">Tax Planning</button>
+      <button class="filter-btn" data-topic="investing">Investing</button>
+      <button class="filter-btn" data-topic="metrics">Metrics &amp; KPIs</button>
+      <button class="filter-btn" data-topic="financial-model">Financial Modelling</button>
+      <button class="filter-btn" data-topic="fundraising">Fundraising</button>
+      <button class="filter-btn" data-topic="cap-table">Cap Table</button>
+      <button class="filter-btn" data-topic="valuation">Valuation &amp; Exit</button>
+      <button class="filter-btn" data-topic="readiness">Readiness</button>
+      <button class="filter-btn" data-topic="deal-process">Deal Process</button>
+      <button class="filter-btn" data-topic="post-exit">Post-Exit</button>
     </div>
   </section>
+  <div class="result-count" id="result-count"></div>
 
-  <!-- Guides & Resources Section -->
+  <!-- Tool Cards -->
+  <div class="tools-grid" id="tools-grid">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- START READY (18 tools)                      -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <a class="tool-card" href="/tools/start-ready/01-net-worth-calculator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Net Worth Calculator</h3>
+      <p class="desc">Assets minus liabilities. Your financial starting position in one number.</p>
+      <div class="chapter">Chapter 1</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/02-budget-allocator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>50/30/20 Budget Allocator</h3>
+      <p class="desc">Auto-split your income into needs, wants, and goals.</p>
+      <div class="chapter">Chapter 3</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/03-emergency-fund-calculator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Emergency Fund Calculator</h3>
+      <p class="desc">How much you need and how long it will take to build.</p>
+      <div class="chapter">Chapter 4</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/09-credit-card-true-cost.html" data-book="start-ready" data-topic="debt-credit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Debt &amp; Credit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Credit Card True Cost Calculator</h3>
+      <p class="desc">What minimum payments really cost you over time.</p>
+      <div class="chapter">Chapter 6</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/12-student-loan-simulator.html" data-book="start-ready" data-topic="debt-credit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Debt &amp; Credit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Student Loan Simulator</h3>
+      <p class="desc">Compare standard, income-driven, and refinance repayment plans.</p>
+      <div class="chapter">Chapter 7</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/04-debt-payoff-simulator.html" data-book="start-ready" data-topic="debt-credit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Debt &amp; Credit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Debt Payoff Simulator</h3>
+      <p class="desc">Avalanche vs snowball strategy with multiple debts side by side.</p>
+      <div class="chapter">Chapter 8</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/07-salary-negotiation-calculator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Salary Negotiation Impact</h3>
+      <p class="desc">Lifetime earnings difference from one negotiation.</p>
+      <div class="chapter">Chapter 9</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/10-tax-bracket-visualiser.html" data-book="start-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Tax Bracket Visualiser</h3>
+      <p class="desc">See marginal vs effective rates on your income.</p>
+      <div class="chapter">Chapter 11</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/18-tax-account-optimizer.html" data-book="start-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Tax-Advantaged Account Optimizer</h3>
+      <p class="desc">The optimal order for 401(k), Roth, HSA, and more.</p>
+      <div class="chapter">Chapter 12</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/11-roth-vs-traditional.html" data-book="start-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Roth vs Traditional Comparison</h3>
+      <p class="desc">Which IRA wins based on your current and future tax rates.</p>
+      <div class="chapter">Chapter 12</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/05-compound-growth-visualiser.html" data-book="start-ready" data-topic="investing" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Investing</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Compound Growth Visualiser</h3>
+      <p class="desc">Watch contributions turn into wealth over time with interactive charts.</p>
+      <div class="chapter">Chapter 13</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/06-retirement-calculator.html" data-book="start-ready" data-topic="investing" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Investing</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Retirement Number Calculator</h3>
+      <p class="desc">Your target number and how much to save monthly to reach it.</p>
+      <div class="chapter">Chapter 16</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/08-buy-vs-rent-comparator.html" data-book="start-ready" data-topic="investing" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Investing</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Buy vs Rent Comparator</h3>
+      <p class="desc">The actual math behind the biggest housing decision.</p>
+      <div class="chapter">Chapter 17</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/17-mortgage-affordability.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Mortgage Affordability Calculator</h3>
+      <p class="desc">The bank's number vs the safe number vs stress-tested.</p>
+      <div class="chapter">Chapter 19</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/16-insurance-checklist.html" data-book="start-ready" data-topic="personal-finance">
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+      </div>
+      <h3>Insurance Needs Checklist</h3>
+      <p class="desc">What you need, what to skip, based on your situation.</p>
+      <div class="chapter">Chapter 20</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/13-personal-runway-calculator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Personal Runway Calculator</h3>
+      <p class="desc">How long your savings last at different burn rates.</p>
+      <div class="chapter">Chapter 23</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/14-leap-scorecard.html" data-book="start-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Should I Take the Leap? Scorecard</h3>
+      <p class="desc">10-criterion assessment of your financial readiness to start a company.</p>
+      <div class="chapter">Appendix C</div>
+    </a>
+
+    <a class="tool-card" href="/tools/start-ready/15-three-numbers-dashboard.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book start">Start Ready</span>
+        <span class="tag tag-topic">Personal Finance</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Three Numbers Dashboard</h3>
+      <p class="desc">Runway, flex, and net worth in one view.</p>
+      <div class="chapter">Chapter 25</div>
+    </a>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- RAISE READY (14 tools)                      -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <a class="tool-card" href="/tools/raise-ready.html#readiness" data-book="raise-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Funding Readiness Score</h3>
+      <p class="desc">10-factor assessment of whether you're ready to raise. Scored and graded with gap analysis.</p>
+      <div class="chapter">Chapter 1</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#runway" data-book="raise-ready" data-topic="metrics" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Metrics &amp; KPIs</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Runway &amp; Burn Calculator</h3>
+      <p class="desc">Cash, burn, revenue, growth rate with toggle scenarios: new hire, cut head, churn spike, close deal.</p>
+      <div class="chapter">Chapter 3</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#unit-econ" data-book="raise-ready" data-topic="metrics" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Metrics &amp; KPIs</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Unit Economics Calculator</h3>
+      <p class="desc">CAC, LTV, LTV:CAC ratio, and payback period from your real numbers.</p>
+      <div class="chapter">Chapter 4</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#revenue-model" data-book="raise-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Revenue Model Builder</h3>
+      <p class="desc">Starting MRR, growth, churn, and expansion to project ARR at M6/M12/M18.</p>
+      <div class="chapter">Chapter 5</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#headcount" data-book="raise-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Headcount &amp; Salary Planner</h3>
+      <p class="desc">Headcount by department with salaries and benefits burden. Monthly and annual loaded cost.</p>
+      <div class="chapter">Chapter 6</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#pnl" data-book="raise-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>P&amp;L Snapshot</h3>
+      <p class="desc">Revenue, COGS, salaries, and opex to get gross margin and net income in one view.</p>
+      <div class="chapter">Chapter 7</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#scenario" data-book="raise-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Three-Scenario Planner</h3>
+      <p class="desc">Base, bull, and bear cases for MRR, growth, and burn with cash projections.</p>
+      <div class="chapter">Chapter 8</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#sensitivity" data-book="raise-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Sensitivity Analysis</h3>
+      <p class="desc">Revenue vs burn matrix showing runway or net cash flow at each combination.</p>
+      <div class="chapter">Chapter 9</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#valuation" data-book="raise-ready" data-topic="fundraising" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Fundraising</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Valuation Estimator</h3>
+      <p class="desc">Stage-based multiples applied to your ARR, growth, and gross margin.</p>
+      <div class="chapter">Chapter 10</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#dilution" data-book="raise-ready" data-topic="cap-table" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Cap Table</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Dilution Simulator</h3>
+      <p class="desc">Pre-money, investment, option pool to see founder vs investor ownership.</p>
+      <div class="chapter">Chapter 11</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#safe" data-book="raise-ready" data-topic="cap-table" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Cap Table</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>SAFE vs Convertible Note</h3>
+      <p class="desc">Compare pre-SAFE, post-SAFE, and convertible notes with cap and discount terms.</p>
+      <div class="chapter">Chapter 12</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#multi-dilution" data-book="raise-ready" data-topic="cap-table" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Cap Table</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Multi-Round Dilution Tracker</h3>
+      <p class="desc">Cumulative dilution across Seed, Series A, and Series B rounds.</p>
+      <div class="chapter">Chapter 13</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#deck-score" data-book="raise-ready" data-topic="fundraising" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Fundraising</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Pitch Deck Scorecard</h3>
+      <p class="desc">Rate 10 elements of your deck and get an overall score with improvement notes.</p>
+      <div class="chapter">Chapter 14</div>
+    </a>
+
+    <a class="tool-card" href="/tools/raise-ready.html#exit-calc" data-book="raise-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book raise">Raise Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Exit Proceeds Estimator</h3>
+      <p class="desc">Exit valuation, ownership, and taxes to calculate your net take-home.</p>
+      <div class="chapter">Chapter 15</div>
+    </a>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- EXIT READY (30 tools)                       -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <!-- Valuation & Financial (8) -->
+    <a class="tool-card" href="/tools/exit-ready/01-business-valuation.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Business Valuation</h3>
+      <p class="desc">Revenue-based, EBITDA-based, DCF, and comparable company analysis.</p>
+      <div class="chapter">Chapter 2</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/02-ebitda-bridge-builder.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>EBITDA Bridge Builder</h3>
+      <p class="desc">Reported to adjusted EBITDA with add-backs, subtractions, and confidence weighting.</p>
+      <div class="chapter">Chapter 6</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/03-multiple-estimator.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Multiple Estimator</h3>
+      <p class="desc">Valuation at different multiples with industry benchmarks.</p>
+      <div class="chapter">Chapter 3</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/01-exit-proceeds-calculator.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Exit Proceeds Calculator</h3>
+      <p class="desc">Headline valuation to take-home after fees, taxes, and preferences.</p>
+      <div class="chapter">Chapter 2</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/03-earnout-calculator.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Earnout Calculator</h3>
+      <p class="desc">Model earnout scenarios and understand potential upside and downside.</p>
+      <div class="chapter">Chapter 4</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/04-cash-flow-projection.html" data-book="exit-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Cash Flow Projection</h3>
+      <p class="desc">5-year cash flow projection and business health analysis.</p>
+      <div class="chapter">Chapter 5</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/05-break-even-analysis.html" data-book="exit-ready" data-topic="financial-model" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Financial Modelling</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Break-Even Analysis</h3>
+      <p class="desc">Fixed costs, variable costs, and profit margins to find your break-even point.</p>
+      <div class="chapter">Chapter 6</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/06-competitive-positioning.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Competitive Positioning</h3>
+      <p class="desc">Map your company against competitors on the metrics buyers care about.</p>
+      <div class="chapter">Chapter 7</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/07-financial-health-scorecard.html" data-book="exit-ready" data-topic="metrics" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Metrics &amp; KPIs</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Financial Health Scorecard</h3>
+      <p class="desc">12 key financial metrics assessed and scored with improvement guidance.</p>
+      <div class="chapter">Chapter 5</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/08-customer-ltv-analysis.html" data-book="exit-ready" data-topic="metrics" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Metrics &amp; KPIs</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Customer LTV Analysis</h3>
+      <p class="desc">Lifetime value, payback period, and retention economics.</p>
+      <div class="chapter">Chapter 6</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/07-pe-rollover-simulator.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Valuation &amp; Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>PE Rollover Simulator</h3>
+      <p class="desc">Compare selling now vs rolling equity into a second bite of the apple.</p>
+      <div class="chapter">Chapter 7</div>
+    </a>
+
+    <!-- Readiness Assessments (5) -->
+    <a class="tool-card" href="/tools/exit-ready/09-founder-readiness.html" data-book="exit-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Founder Readiness Assessment</h3>
+      <p class="desc">Evaluate your personal readiness for an exit event across key dimensions.</p>
+      <div class="chapter">Chapter 1</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/10-business-readiness.html" data-book="exit-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Business Readiness Assessment</h3>
+      <p class="desc">7 dimensions buyers care about, scored and benchmarked.</p>
+      <div class="chapter">Chapter 8</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/11-buyer-perception-audit.html" data-book="exit-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Buyer Perception Audit</h3>
+      <p class="desc">See your business through a buyer's eyes and identify gaps.</p>
+      <div class="chapter">Chapter 10</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/12-deal-readiness-diagnostic.html" data-book="exit-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Deal Readiness Diagnostic</h3>
+      <p class="desc">Quick assessment of readiness for the M&amp;A process.</p>
+      <div class="chapter">Chapter 11</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/13-information-room-prep-checklist.html" data-book="exit-ready" data-topic="deal-process">
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+      </div>
+      <h3>Information Room Prep Checklist</h3>
+      <p class="desc">Complete due diligence document organization checklist.</p>
+      <div class="chapter">Chapter 12</div>
+    </a>
+
+    <!-- Deal Process (4) -->
+    <a class="tool-card" href="/tools/exit-ready/14-buyer-inquiry-response.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Buyer Inquiry Response</h3>
+      <p class="desc">Guided exercise for handling inbound buyer inquiries professionally.</p>
+      <div class="chapter">Chapter 13</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/15-cim-builder.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>CIM Builder</h3>
+      <p class="desc">Draft and refine your Confidential Information Memorandum section by section.</p>
+      <div class="chapter">Chapter 14</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/16-negotiation-scenario.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Negotiation Scenario Simulator</h3>
+      <p class="desc">Practice responses to common buyer pushback scenarios.</p>
+      <div class="chapter">Chapter 17</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/17-term-sheet-analyzer.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Term Sheet Analyzer</h3>
+      <p class="desc">Decode buyer term sheets and compare deal structures.</p>
+      <div class="chapter">Chapter 18</div>
+    </a>
+
+    <!-- Tax Planning (3) -->
+    <a class="tool-card" href="/tools/exit-ready/18-tax-optimization.html" data-book="exit-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Tax Optimization Scenario Planner</h3>
+      <p class="desc">Compare tax outcomes across different deal structures and timing.</p>
+      <div class="chapter">Chapter 19</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/19-capital-gains-strategy.html" data-book="exit-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Capital Gains Strategy Optimizer</h3>
+      <p class="desc">Analyze timing, deferral, and installment sale options for tax efficiency.</p>
+      <div class="chapter">Chapter 20</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/20-tax-impact-calculator.html" data-book="exit-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Tax Impact Calculator</h3>
+      <p class="desc">Federal, state, and self-employment tax on exit proceeds.</p>
+      <div class="chapter">Chapter 21</div>
+    </a>
+
+    <!-- Post-Exit (4) -->
+    <a class="tool-card" href="/tools/exit-ready/21-sustainable-spending.html" data-book="exit-ready" data-topic="post-exit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Post-Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Sustainable Spending Calculator</h3>
+      <p class="desc">Plan long-term spending from post-exit wealth with withdrawal strategies.</p>
+      <div class="chapter">Chapter 33</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/22-wealth-advisor-fee-impact.html" data-book="exit-ready" data-topic="post-exit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Post-Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Wealth Advisor Fee Impact</h3>
+      <p class="desc">Compare the cost of different advisor fee structures over time.</p>
+      <div class="chapter">Chapter 33</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/23-post-exit-90-day-calendar.html" data-book="exit-ready" data-topic="post-exit">
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Post-Exit</span>
+      </div>
+      <h3>Post-Exit 90-Day Calendar</h3>
+      <p class="desc">Week-by-week roadmap for your first three months after selling.</p>
+      <div class="chapter">Chapter 32-33</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/24-psychology-self-assessment.html" data-book="exit-ready" data-topic="post-exit" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Post-Exit</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Psychology Self-Assessment</h3>
+      <p class="desc">Evaluate readiness for identity transition and life after the exit.</p>
+      <div class="chapter">Chapter 32</div>
+    </a>
+
+    <!-- Exercises & Workshops (6) -->
+    <a class="tool-card" href="/tools/exit-ready/25-absence-test-protocol.html" data-book="exit-ready" data-topic="readiness" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Readiness</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Absence Test Protocol</h3>
+      <p class="desc">Interactive framework to test your company's independence from you.</p>
+      <div class="chapter">Chapter 9</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/26-cim-narrative-workshop.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>CIM Executive Summary Workshop</h3>
+      <p class="desc">Guided workshop to craft your company's investment narrative.</p>
+      <div class="chapter">Chapter 15</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/27-risk-register-builder.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Risk Register Builder</h3>
+      <p class="desc">Document and prioritize business risks for potential buyers.</p>
+      <div class="chapter">Chapter 8</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/28-presentation-scorecard.html" data-book="exit-ready" data-topic="deal-process" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Deal Process</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Presentation Dry Run Scorecard</h3>
+      <p class="desc">Score and feedback framework for management presentations.</p>
+      <div class="chapter">Chapter 16</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/29-purchase-price-allocation.html" data-book="exit-ready" data-topic="tax" data-interactive>
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Tax Planning</span>
+        <span class="tag tag-interactive">Interactive</span>
+      </div>
+      <h3>Purchase Price Allocation Prep</h3>
+      <p class="desc">Optimize tax allocation of deal proceeds across asset classes.</p>
+      <div class="chapter">Chapter 18, 21</div>
+    </a>
+
+    <a class="tool-card" href="/tools/exit-ready/30-letter-to-your-company.html" data-book="exit-ready" data-topic="post-exit">
+      <div class="tool-card-tags">
+        <span class="tag tag-book exit">Exit Ready</span>
+        <span class="tag tag-topic">Post-Exit</span>
+      </div>
+      <h3>Letter to Your Company</h3>
+      <p class="desc">Reflective writing exercise for closure and gratitude.</p>
+      <div class="chapter">Chapter 32</div>
+    </a>
+
+  </div>
+
+  <div class="no-results" id="no-results">No tools match your filters. Try a different combination.</div>
+
+  <!-- Guides & Resources -->
   <section class="guides-section">
-    <h2>Guides & Resources</h2>
+    <h2>Guides &amp; Resources</h2>
     <div class="guides-grid">
       <div class="guide-card">
-        <h3>101 VCs</h3>
-        <p>Everything you need to know about venture capital investors, how they think, and how to get their attention.</p>
-        <a href="/tools/101-vcs-angels-cold-outreach-2026.html">Read the guide →</a>
+        <h3>101 VCs &amp; Angels</h3>
+        <p>Everything you need to know about VC investors, how they think, and how to get their attention.</p>
+        <a href="/tools/101-vcs-angels-cold-outreach-2026.html">Read the guide</a>
       </div>
       <div class="guide-card">
-        <h3>Best Business Tools</h3>
-        <p>Our curated list of the top software, services, and resources that founders rely on to build and scale.</p>
-        <a href="/tools/best-business-tools-2026.html">Read the guide →</a>
+        <h3>Best Business Tools 2026</h3>
+        <p>Curated list of top software, services, and resources founders rely on to build and scale.</p>
+        <a href="/tools/best-business-tools-2026.html">Read the guide</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA -->
   <section class="tools-cta">
     <h2>Ready to go deeper?</h2>
-    <p>Get the complete playbook with detailed frameworks, case studies, and step-by-step guidance for each stage of your journey.</p>
-    <a href="/book/" class="cta-button">Explore the Books →</a>
+    <p>Get the complete playbook with frameworks, case studies, and guidance for each stage of your journey.</p>
+    <a href="/book/" class="cta-button">Explore the Books</a>
   </section>
 </main>
 <div id="site-footer"></div>
 
 <script src="/shared/components.js"></script>
-<script src="/shared/cart.js"></script>
+<script>
+(function() {
+  var cards = document.querySelectorAll('.tool-card');
+  var bookBtns = document.querySelectorAll('#book-filters .filter-btn');
+  var topicBtns = document.querySelectorAll('#topic-filters .filter-btn');
+  var countEl = document.getElementById('result-count');
+  var noResults = document.getElementById('no-results');
+  var grid = document.getElementById('tools-grid');
+
+  var activeBook = 'all';
+  var activeTopic = 'all';
+
+  function applyFilters() {
+    var visible = 0;
+    cards.forEach(function(card) {
+      var bookMatch = activeBook === 'all' || card.dataset.book === activeBook;
+      var topicMatch = activeTopic === 'all' || card.dataset.topic === activeTopic;
+      if (bookMatch && topicMatch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    countEl.textContent = visible + ' of ' + cards.length + ' tools';
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+    grid.style.display = visible === 0 ? 'none' : '';
+    updateHash();
+  }
+
+  function updateHash() {
+    var parts = [];
+    if (activeBook !== 'all') parts.push('book=' + activeBook);
+    if (activeTopic !== 'all') parts.push('topic=' + activeTopic);
+    history.replaceState(null, '', parts.length ? '#' + parts.join('&') : window.location.pathname);
+  }
+
+  function readHash() {
+    var hash = window.location.hash.slice(1);
+    if (!hash) return;
+    hash.split('&').forEach(function(pair) {
+      var kv = pair.split('=');
+      if (kv[0] === 'book') activeBook = kv[1];
+      if (kv[0] === 'topic') activeTopic = kv[1];
+    });
+    bookBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.book === activeBook); });
+    topicBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.topic === activeTopic); });
+  }
+
+  bookBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      bookBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeBook = btn.dataset.book;
+      applyFilters();
+    });
+  });
+
+  topicBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      topicBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeTopic = btn.dataset.topic;
+      applyFilters();
+    });
+  });
+
+  window.addEventListener('hashchange', function() { readHash(); applyFilters(); });
+
+  readHash();
+  applyFilters();
+})();
+</script>
 </body>
 </html>
