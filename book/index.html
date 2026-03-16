@@ -13,19 +13,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Books & Extras | Raise Ready</title>
-<meta name="description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
+<meta name="description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), Model Ready (financial modeling), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
 <link rel="canonical" href="https://www.raisereadybook.com/book/">
 <!-- OG Tags -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/book/">
 <meta property="og:title" content="Books & Extras | Raise Ready">
-<meta property="og:description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
+<meta property="og:description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), Model Ready (financial modeling), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Raise Ready">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Books & Extras | Raise Ready">
-<meta name="twitter:description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
+<meta name="twitter:description" content="The Ready series: Start Ready (personal finance), Raise Ready (fundraising), Model Ready (financial modeling), and Exit Ready (exit planning). From 5 rounds and a 9-figure exit.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,13 +55,12 @@
   },
   "offers": {
     "@type": "Offer",
-    "price": "29.99",
+    "price": "29",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
     "url": "https://www.raisereadybook.com/book/"
   },
-  "isbn": "978-0-000000-0-0",
-  "numberOfPages": "400",
+  "numberOfPages": "498",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -103,7 +102,7 @@
   <style>
   .books-grid {
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:1.5rem;
     max-width:1100px;
     margin:0 auto 3rem;
@@ -210,7 +209,7 @@
     .books-grid { grid-template-columns:1fr; max-width:400px; }
   }
   @media(min-width:821px) and (max-width:1024px){
-    .books-grid { grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .books-grid { grid-template-columns:repeat(4,1fr); gap:1rem; }
     .book-card-cover { padding:1rem; }
   }
   </style>
@@ -219,7 +218,7 @@
     <!-- Start Ready -->
     <div id="start-ready" class="book-card">
       <div class="book-card-cover">
-        <img src="/start-cover.png" alt="Start Ready Book Cover">
+        <img src="/covers/start-ready-cover.jpg" alt="Start Ready Book Cover">
       </div>
       <div class="book-card-body">
         <div class="book-card-badge">Personal Finance</div>
@@ -287,14 +286,14 @@
     <!-- Raise Ready -->
     <div id="raise-ready" class="book-card featured">
       <div class="book-card-cover">
-        <img src="/book-cover.png" alt="Raise Ready Book Cover">
+        <img src="/covers/raise-ready-cover.jpg" alt="Raise Ready Book Cover">
       </div>
       <div class="book-card-body">
         <div class="book-card-badge">Fundraising</div>
         <h2 class="book-card-title">Raise Ready</h2>
         <p class="book-card-subtitle">The fundraising playbook investors wish founders would actually read.</p>
         <p class="book-card-meta">498 pages &middot; PDF</p>
-        <div class="book-card-price">$29.99 <span>one-time</span></div>
+        <div class="book-card-price">$29 <span>one-time</span></div>
         <div class="book-card-actions">
           <button class="btn btn-primary" onclick="buyTemplate('book')">Buy Now</button>
           <button class="btn btn-ghost" onclick="toggleBookDetails('raise-expand',this)">Details <span class="toc-arrow">&#9662;</span></button>
@@ -340,10 +339,48 @@
       </div>
     </div>
 
+    <!-- Model Ready -->
+    <div id="model-ready" class="book-card">
+      <div class="book-card-cover">
+        <img src="/covers/model-ready-cover.jpg" alt="Model Ready Book Cover">
+      </div>
+      <div class="book-card-body">
+        <div class="book-card-badge">Financial Modeling</div>
+        <h2 class="book-card-title">Model Ready</h2>
+        <p class="book-card-subtitle">Build investor-grade financial models that withstand due diligence.</p>
+        <p class="book-card-meta">Coming soon &middot; PDF</p>
+        <div class="book-card-price">TBA</div>
+        <div class="book-card-actions">
+          <button class="btn btn-ghost" onclick="toggleBookDetails('model-expand',this)">Details <span class="toc-arrow">&#9662;</span></button>
+        </div>
+      </div>
+      <div id="model-expand" class="book-card-expand">
+        <div class="book-card-expand-inner">
+          <div class="inline-toc">
+            <ol class="inline-toc-list" style="list-style:none;padding:0;">
+              <li style="font-family:var(--mono);font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;padding:0.6rem 0 0.2rem;">The Complete Guide</li>
+              <li><strong>What a Financial Model Actually Is</strong></li>
+              <li><strong>How Investors Think About Your Numbers</strong></li>
+              <li><strong>The Architecture of a Fundraising Model</strong></li>
+              <li><strong>Revenue Modeling: From Drivers to Dollars</strong></li>
+              <li><strong>Cost Structure: COGS &amp; Gross Margin</strong></li>
+              <li><strong>The Hiring Plan</strong></li>
+              <li><strong>Cash Flow and Runway</strong></li>
+              <li><strong>The Balance Sheet</strong></li>
+              <li><strong>Unit Economics That Actually Matter</strong></li>
+              <li><strong>Scenario Planning &amp; Sensitivity Analysis</strong></li>
+              <li><strong>The Assumptions Tab</strong></li>
+              <li><strong>Diligence-Proofing Your Model</strong></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Exit Ready -->
     <div id="exit-ready" class="book-card">
       <div class="book-card-cover">
-        <img src="/exit-cover.png" alt="Exit Ready Book Cover">
+        <img src="/covers/exit-ready-cover.jpg" alt="Exit Ready Book Cover">
       </div>
       <div class="book-card-body">
         <div class="book-card-badge">Exit Planning</div>

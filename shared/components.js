@@ -50,6 +50,7 @@
           <div class="dropdown-menu">
             <a href="/book/#start-ready">Start Ready Book</a>
             <a href="/book/#raise-ready">Raise Ready Book</a>
+            <a href="/book/#model-ready">Model Ready Book</a>
             <a href="/book/#exit-ready">Exit Ready Book</a>
             <a href="/book/#templates">Financial Model Template</a>
           </div>
