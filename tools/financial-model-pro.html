@@ -303,7 +303,7 @@ function loadScript(src) {
   });
 }
 async function ensureXLSX() {
-  if (typeof XLSX === 'undefined') await loadScript('/tools/xlsx.full.min.js');
+  if (typeof XLSX === 'undefined') await loadScript('/tools/xlsx.full.min.js?v=2');
 }
 async function ensureJsPDF() {
   if (typeof window.jspdf === 'undefined') await loadScript('/tools/jspdf.umd.min.js');
