@@ -105,8 +105,8 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section">
 <div class="grid">
-<div><label>Offered Salary ($)</label><input type="number" id="base" value="55000"></div>
-<div><label>Negotiated Salary ($)</label><input type="number" id="neg" value="60000"></div>
+<div><label>Offered Salary ($)</label><input type="number" id="base" value="85000"></div>
+<div><label>Negotiated Salary ($)</label><input type="number" id="neg" value="95000"></div>
 <div><label>Annual Raise (%)</label><input type="number" id="raise" value="3" step="0.1"></div>
 <div><label>Career Length (years)</label><input type="number" id="years" value="30"></div>
 <div><label>Retirement Contribution (%)</label><input type="number" id="ret" value="10"></div>
@@ -161,4 +161,6 @@ function calc(){
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

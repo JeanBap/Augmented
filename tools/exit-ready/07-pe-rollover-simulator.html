@@ -115,23 +115,23 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="firstEV">Enterprise Value at First Sale ($)</label>
-            <input type="number" id="firstEV" placeholder="0" />
+            <input type="number" id="firstEV" placeholder="0" / value="10000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="founderOwnership">Founder Ownership (%)</label>
-            <input type="number" id="founderOwnership" placeholder="0" min="0" max="100" />
+            <input type="number" id="founderOwnership" placeholder="0" min="0" max="100" / value="75">
           </div>
           <div class="tool-field">
             <label for="cashOut">Cash Out Percentage (%)</label>
-            <input type="number" id="cashOut" placeholder="0" min="0" max="100" />
+            <input type="number" id="cashOut" placeholder="0" min="0" max="100" / value="70">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="rollover">Rollover Percentage (remaining ownership)</label>
-            <input type="number" id="rollover" placeholder="0" min="0" max="100" />
+            <input type="number" id="rollover" placeholder="0" min="0" max="100" / value="30">
           </div>
         </div>
       </div>
@@ -145,13 +145,13 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="secondMultiple">Second Sale Multiple (on original EV)</label>
-            <input type="number" id="secondMultiple" placeholder="1.5" step="0.1" />
+            <input type="number" id="secondMultiple" placeholder="1.5" step="0.1" / value="2.5">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="taxRate">Tax Rate on Second Exit (%)</label>
-            <input type="number" id="taxRate" placeholder="20" min="0" max="100" />
+            <input type="number" id="taxRate" placeholder="20" min="0" max="100" / value="25">
           </div>
         </div>
         <button class="tool-btn" onclick="calculateRollover()">Calculate</button>
@@ -361,5 +361,7 @@ function resetRollover() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateRollover(); });</script>
 </body>
 </html>

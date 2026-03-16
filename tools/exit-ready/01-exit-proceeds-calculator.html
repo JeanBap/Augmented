@@ -109,45 +109,45 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="headline">Headline Purchase Price ($)</label>
-            <input type="number" id="headline" placeholder="0" />
+            <input type="number" id="headline" placeholder="0" / value="5000000">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="ownership">Founder Ownership (%)</label>
-            <input type="number" id="ownership" placeholder="0" min="0" max="100" />
+            <input type="number" id="ownership" placeholder="0" min="0" max="100" / value="80">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="liquidation">Liquidation Preferences ($) [non-participating preferred]</label>
-            <input type="number" id="liquidation" placeholder="0" />
+            <input type="number" id="liquidation" placeholder="0" / value="0">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="escrow">Escrow/Holdback (%)</label>
-            <input type="number" id="escrow" placeholder="0" min="0" max="100" />
+            <input type="number" id="escrow" placeholder="0" min="0" max="100" / value="5">
           </div>
           <div class="tool-field">
             <label for="txFees">Transaction Fees (%)</label>
-            <input type="number" id="txFees" placeholder="0" min="0" max="100" />
+            <input type="number" id="txFees" placeholder="0" min="0" max="100" / value="50000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="fedCapGains">Federal Cap Gains Tax Rate (%)</label>
-            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" />
+            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" / value="20">
           </div>
           <div class="tool-field">
             <label for="stateTax">State Tax Rate (%)</label>
-            <input type="number" id="stateTax" placeholder="0" min="0" max="100" />
+            <input type="number" id="stateTax" placeholder="0" min="0" max="100" / value="5">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="advisorFees">Advisor Fees ($)</label>
-            <input type="number" id="advisorFees" placeholder="0" />
+            <input type="number" id="advisorFees" placeholder="0" / value="3">
           </div>
         </div>
         <button class="tool-btn" onclick="calculateProceeds()">Calculate</button>
@@ -302,5 +302,7 @@ function resetProceeds() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateProceeds(); });</script>
 </body>
 </html>

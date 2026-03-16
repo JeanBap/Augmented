@@ -254,5 +254,21 @@
 		});
 	</script>
 	<script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            document.getElementById('companyName').value = 'Acme Software';
+            var tas = document.querySelectorAll('textarea');
+            var samples = [
+                'I remember sitting in that tiny apartment, sketching out the first wireframes on a napkin. I wanted to solve a problem that frustrated me every day.',
+                'The night we almost ran out of money. The first customer who cancelled. The months I did not take a salary so the team could get paid.',
+                'Watching the team grow from 2 to 25. The first enterprise deal. The moment we realized we had built something people truly needed.',
+                'I hope you keep the culture we built. Take care of the people. Stay curious. Never stop listening to customers.',
+                'That building something bigger than yourself is the most rewarding and terrifying thing you can do. And it is worth every sleepless night.',
+                'The laughter in the office. The late-night debugging sessions. The team celebrations. The quiet pride of seeing our product in the wild.'
+            ];
+            tas.forEach(function(ta, i) { if(samples[i]) ta.value = samples[i]; });
+            var btn = document.getElementById('generateBtn');
+            if(btn) btn.click();
+         });</script>
 </body>
 </html>

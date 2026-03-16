@@ -278,5 +278,11 @@ function resetChecker() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            var cbs = document.querySelectorAll('input[type="checkbox"]');
+            cbs.forEach(function(cb, i) { if(i % 3 !== 2) cb.checked = true; });
+            checkCompletion();
+         });</script>
 </body>
 </html>

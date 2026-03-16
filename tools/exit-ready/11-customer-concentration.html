@@ -286,5 +286,16 @@ function resetConcentration() {
 // Initialize on load
 initializeCustomers();
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            var names = document.querySelectorAll('[id^="cust-name"]');
+            var revs = document.querySelectorAll('[id^="cust-revenue"]');
+            var data = [['Acme Corp',450000],['Beta Inc',380000],['Charlie Co',250000],['Delta Ltd',180000],['Echo LLC',120000]];
+            data.forEach(function(d, i) {
+                if(names[i]) names[i].value = d[0];
+                if(revs[i]) revs[i].value = d[1];
+            });
+            calculateConcentration();
+         });</script>
 </body>
 </html>

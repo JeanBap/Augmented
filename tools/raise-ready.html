@@ -2087,5 +2087,69 @@ function submitGate() {
 }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Prefill sample data for all 14 Raise Ready tools and auto-calculate
+  function setVal(id, v) { var el = document.getElementById(id); if (el) { el.value = v; } }
+  function setSel(id, v) { var el = document.getElementById(id); if (el) { el.value = v; } }
+
+  // 1. Funding Readiness
+  setSel('r-current','seed'); setSel('r-target','a');
+  setVal('r-arr',1200000); setVal('r-growth',12); setVal('r-margin',72); setVal('r-nrr',115); setVal('r-burn',1.5); setVal('r-payback',14); setVal('r-team',4); setVal('r-pmf',4);
+  if(typeof calcReadiness==='function') calcReadiness();
+
+  // 2. Runway & Burn
+  setVal('rw-cash',2000000); setVal('rw-burn',120000); setVal('rw-rev',80000); setVal('rw-growth',8);
+  if(typeof calcRunway==='function') calcRunway();
+
+  // 3. Unit Economics
+  setVal('ue-spend',50000); setVal('ue-customers',25); setVal('ue-arpc',500); setVal('ue-margin',75); setVal('ue-churn',3); setVal('ue-nrr',110);
+  if(typeof calcUnitEcon==='function') calcUnitEcon();
+
+  // 4. Revenue Model
+  setVal('rev-mrr',80000); setVal('rev-growth',10); setVal('rev-churn',3); setVal('rev-expansion',2);
+  if(typeof calcRevenueModel==='function') calcRevenueModel();
+
+  // 5. Headcount
+  setVal('hc-eng',8); setVal('hc-eng-sal',140000); setVal('hc-sales',4); setVal('hc-sales-sal',95000); setVal('hc-ops',3); setVal('hc-ops-sal',70000); setVal('hc-ga',2); setVal('hc-ga-sal',120000); setVal('hc-burden',25);
+  if(typeof calcHeadcount==='function') calcHeadcount();
+
+  // 6. P&L Snapshot
+  setVal('pl-rev',120000); setVal('pl-cogs',30000); setVal('pl-salaries',180000); setVal('pl-marketing',25000); setVal('pl-tools',8000); setVal('pl-rent',5000); setVal('pl-other',3000);
+  if(typeof calcPnL==='function') calcPnL();
+
+  // 7. Three-Scenario
+  setVal('sc-mrr',80000); setVal('sc-growth-base',8); setVal('sc-burn-base',120000); setVal('sc-bull-mult',1.5); setVal('sc-bear-mult',0.5); setVal('sc-cash',2000000); setVal('sc-months',12);
+  if(typeof calcScenario==='function') calcScenario();
+
+  // 8. Sensitivity
+  setVal('sens-rev',120000); setVal('sens-burn',150000); setVal('sens-cash',2000000); setSel('sens-metric','runway');
+  if(typeof calcSensitivity==='function') calcSensitivity();
+
+  // 9. Valuation
+  setSel('v-stage','seed'); setVal('v-arr',1200000); setVal('v-growth',150); setVal('v-margin',75);
+  if(typeof calcValuation==='function') calcValuation();
+
+  // 10. Dilution
+  setVal('d-ownership',100); setVal('d-premoney',8000000); setVal('d-investment',2000000); setVal('d-pool',10);
+  if(typeof calcDilution==='function') calcDilution();
+
+  // 11. SAFE vs Note
+  setSel('s-type','post-safe'); setVal('s-amount',500000); setVal('s-cap',8000000); setVal('s-discount',20); setVal('s-nextround',12000000); setVal('s-nextinv',3000000);
+  if(typeof calcSafe==='function') calcSafe();
+
+  // 12. Multi-Round Dilution
+  setVal('md-seed-pre',5000000); setVal('md-seed-inv',1500000); setVal('md-a-pre',20000000); setVal('md-a-inv',5000000); setVal('md-b-pre',60000000); setVal('md-b-inv',15000000); setVal('md-pool',10);
+  if(typeof calcMultiDilution==='function') calcMultiDilution();
+
+  // 13. Pitch Deck Scorecard
+  setVal('pd-problem',4); setVal('pd-solution',3); setVal('pd-market',4); setVal('pd-traction',3); setVal('pd-bizmodel',4); setVal('pd-team',5); setVal('pd-moat',3); setVal('pd-financials',4); setVal('pd-ask',4); setVal('pd-design',3);
+  if(typeof calcDeckScore==='function') calcDeckScore();
+
+  // 14. Exit Proceeds
+  setVal('e-valuation',50000000); setVal('e-raised',8500000); setVal('e-founder',35); setVal('e-options',10); setSel('e-pref','1'); setSel('e-participation','non');
+  if(typeof calcExit==='function') calcExit();
+});
+</script>
 </body>
 </html>

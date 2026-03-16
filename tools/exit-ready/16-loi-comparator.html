@@ -310,5 +310,28 @@ function resetLOIs() {
 // Initialize on load
 initializeLOIs();
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            if(typeof addLOI === 'function') {
+                addLOI();
+                setTimeout(function() {
+                    var inputs = document.querySelectorAll('input,select');
+                    inputs.forEach(function(inp) {
+                        if(inp.id.includes('loi-name')) inp.value = 'Strategic Buyer A';
+                        if(inp.id.includes('loi-ev') && !inp.id.includes('loi-ev-')) inp.value = '12000000';
+                        if(inp.id.match(/loi-ev-/)) inp.value = '12000000';
+                        if(inp.id.includes('loi-cash')) inp.value = '85';
+                        if(inp.id.includes('loi-earnout-') && !inp.id.includes('prob')) inp.value = '2000000';
+                        if(inp.id.includes('loi-earnout-prob')) inp.value = '60';
+                        if(inp.id.includes('loi-escrow')) inp.value = '10';
+                        if(inp.id.includes('loi-noncompete')) inp.value = '2';
+                        if(inp.id.includes('loi-transition')) inp.value = '6';
+                        if(inp.id.includes('loi-dd')) inp.value = '8';
+                        if(inp.id.includes('loi-certainty')) inp.value = '4';
+                    });
+                    compareLOIs();
+                }, 200);
+            }
+         });</script>
 </body>
 </html>

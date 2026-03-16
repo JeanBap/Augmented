@@ -272,5 +272,18 @@ function resetWC() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            document.getElementById('target-wc').value = 500000;
+            var months = document.querySelectorAll('input[type="number"]');
+            var vals = [480000,510000,495000,520000,505000,530000,515000,540000,525000,550000,535000,560000];
+            var idx = 0;
+            months.forEach(function(m) {
+                if(m.id !== 'target-wc' && idx < vals.length) { m.value = vals[idx++]; }
+            });
+            var sel = document.getElementById('close-month');
+            if(sel) sel.value = '5';
+            calculateWC();
+         });</script>
 </body>
 </html>

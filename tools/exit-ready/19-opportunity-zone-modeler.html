@@ -111,7 +111,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="capital-gain">Capital Gain Amount ($)</label>
-            <input type="number" id="capital-gain" placeholder="0" />
+            <input type="number" id="capital-gain" placeholder="0" / value="2000000">
           </div>
         </div>
         <div class="tool-row">
@@ -127,17 +127,17 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="annual-return">Expected Annual Return (%)</label>
-            <input type="number" id="annual-return" placeholder="8" step="0.5" />
+            <input type="number" id="annual-return" placeholder="8" step="0.5" / value="8">
           </div>
           <div class="tool-field">
             <label for="holding-period">Holding Period (years)</label>
-            <input type="number" id="holding-period" placeholder="10" min="1" max="20" />
+            <input type="number" id="holding-period" placeholder="10" min="1" max="20" / value="10">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="state-tax">State Tax Rate (%)</label>
-            <input type="number" id="state-tax" placeholder="0" min="0" max="15" />
+            <input type="number" id="state-tax" placeholder="0" min="0" max="15" / value="5">
           </div>
         </div>
         <button class="tool-btn" onclick="modelOZ()">Calculate</button>
@@ -338,5 +338,15 @@ function resetOZ() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            document.getElementById('capital-gain').value = 2000000;
+            document.getElementById('annual-return').value = 8;
+            document.getElementById('holding-period').value = 10;
+            document.getElementById('state-tax').value = 5;
+            var d1 = new Date(); document.getElementById('inv-date').value = d1.toISOString().split('T')[0];
+            var d2 = new Date(); d2.setMonth(d2.getMonth()-3); document.getElementById('original-gain-date').value = d2.toISOString().split('T')[0];
+            modelOZ();
+         });</script>
 </body>
 </html>

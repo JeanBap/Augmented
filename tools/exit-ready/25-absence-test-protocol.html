@@ -345,5 +345,20 @@
 		});
 	</script>
 	<script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            var cbs = document.querySelectorAll('.checklist-checkbox, input[type="checkbox"]');
+            cbs.forEach(function(cb) { cb.checked = true; cb.dispatchEvent(new Event('change')); });
+            var scoreBtns = document.querySelectorAll('.score-btn');
+            scoreBtns.forEach(function(btn) {
+                if(btn.dataset.score === '3' || btn.dataset.score === '4') btn.click();
+            });
+            document.getElementById('whatBroke').value = 'Two clients escalated issues that only I could resolve. AR collections slowed without my follow-up.';
+            document.getElementById('whatWorked').value = 'Daily operations ran smoothly. Team handled routine client requests well.';
+            document.getElementById('surprised').value = 'Marketing continued without issues. Team showed more initiative than expected.';
+            document.getElementById('buyerThink').value = 'Moderate founder dependence in client relationships and collections.';
+            var btn = document.getElementById('analyzeBtn');
+            if(btn) btn.click();
+         });</script>
 </body>
 </html>

@@ -105,8 +105,8 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section">
 <div class="grid">
-<div><label>Liquid Savings (checking + savings + brokerage) ($)</label><input type="number" id="sav" value="36000"></div>
-<div><label>Monthly Current Spending ($)</label><input type="number" id="cur" value="4200"></div>
+<div><label>Liquid Savings (checking + savings + brokerage) ($)</label><input type="number" id="sav" value="50000"></div>
+<div><label>Monthly Current Spending ($)</label><input type="number" id="cur" value="4500"></div>
 <div><label>Monthly Survival Spending (bare minimum) ($)</label><input type="number" id="surv" value="2800"></div>
 <div><label>Expected Monthly Income During Startup ($)</label><input type="number" id="inc" value="0"></div>
 </div>
@@ -151,4 +151,6 @@ function calc(){
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

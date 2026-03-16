@@ -479,5 +479,13 @@
 		});
 	</script>
 	<script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            var sliders = document.querySelectorAll('input[type="range"]');
+            var vals = [4, 3, 2, 4, 3, 4, 3, 4, 4, 3];
+            sliders.forEach(function(s, i) { if(vals[i]) { s.value = vals[i]; s.dispatchEvent(new Event('input')); }});
+            var btn = document.getElementById('calculateBtn');
+            if(btn) btn.click();
+         });</script>
 </body>
 </html>

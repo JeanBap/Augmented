@@ -211,4 +211,24 @@ function calc(){
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add sample debts
+  var debts = [
+    {name: 'Credit Card', balance: 6500, rate: 22, min: 130},
+    {name: 'Car Loan', balance: 12000, rate: 6.5, min: 250},
+    {name: 'Student Loan', balance: 25000, rate: 5.5, min: 280}
+  ];
+  debts.forEach(function(d) {
+    document.getElementById('dn').value = d.name;
+    document.getElementById('db').value = d.balance;
+    document.getElementById('dr').value = d.rate;
+    document.getElementById('dm').value = d.min;
+    addDebt();
+  });
+  document.getElementById('extra').value = 300;
+  calc();
+});
+</script>
 </body></html>

@@ -105,12 +105,12 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section">
 <div class="grid">
-<div><label>Annual Gross Income ($)</label><input type="number" id="income" value="75000"></div>
-<div><label>Total Available for Retirement Savings ($/yr)</label><input type="number" id="budget" value="15000"></div>
+<div><label>Annual Gross Income ($)</label><input type="number" id="income" value="95000"></div>
+<div><label>Total Available for Retirement Savings ($/yr)</label><input type="number" id="budget" value="20000"></div>
 <div><label>Employer 401(k) Match (%)</label><input type="number" id="match" value="50" step="1"></div>
 <div><label>Employer Match Cap (% of salary)</label><input type="number" id="cap" value="6" step="1"></div>
-<div><label>Access to HSA-Eligible Health Plan?</label><select id="hsa"><option value="1">Yes</option><option value="0" selected>No</option></select></div>
-<div><label>Current Marginal Tax Rate (%)</label><input type="number" id="tax" value="22"></div>
+<div><label>Access to HSA-Eligible Health Plan?</label><select id="hsa"><option value="1" selected>Yes</option><option value="0">No</option></select></div>
+<div><label>Current Marginal Tax Rate (%)</label><input type="number" id="tax" value="24"></div>
 </div>
 <button onclick="calc()">Optimize Allocation</button>
 </div><div id="res"></div></div>
@@ -169,4 +169,6 @@ function calc(){
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

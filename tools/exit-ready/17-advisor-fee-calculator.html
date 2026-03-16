@@ -110,7 +110,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="ev">Expected Enterprise Value ($)</label>
-            <input type="number" id="ev" placeholder="0" />
+            <input type="number" id="ev" placeholder="0" / value="8000000">
           </div>
         </div>
 
@@ -120,7 +120,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <select id="fee-structure" onchange="updateFeeStructure()">
               <option value="">-- Select --</option>
               <option value="lehman">Lehman Scale (standard)</option>
-              <option value="double-lehman">Double Lehman (2x)</option>
+              <option value="double-lehman" selected>Double Lehman (2x)</option>
               <option value="flat">Flat Percentage</option>
               <option value="custom">Custom Structure</option>
             </select>
@@ -137,18 +137,18 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="retainer">Monthly Retainer ($)</label>
-            <input type="number" id="retainer" placeholder="0" />
+            <input type="number" id="retainer" placeholder="0" / value="10000">
           </div>
           <div class="tool-field">
             <label for="retainer-months">Retainer Duration (months)</label>
-            <input type="number" id="retainer-months" placeholder="6" min="1" max="24" />
+            <input type="number" id="retainer-months" placeholder="6" min="1" max="24" / value="6">
           </div>
         </div>
 
         <div class="tool-row single">
           <div class="tool-field">
             <label for="minimum-fee">Minimum Success Fee ($)</label>
-            <input type="number" id="minimum-fee" placeholder="0" />
+            <input type="number" id="minimum-fee" placeholder="0" / value="150000">
           </div>
         </div>
 
@@ -156,7 +156,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
           <div class="tool-field">
             <label for="retainer-credit">Credit Retainer Against Success Fee?</label>
             <select id="retainer-credit">
-              <option value="yes">Yes (standard)</option>
+              <option value="yes" selected>Yes (standard)</option>
               <option value="no">No (separate)</option>
             </select>
           </div>
@@ -315,5 +315,7 @@ function resetFees() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateFees(); });</script>
 </body>
 </html>

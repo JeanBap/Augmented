@@ -264,5 +264,13 @@ function resetTimeline() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            var d = new Date(); d.setMonth(d.getMonth() + 8);
+            document.getElementById('close-date').value = d.toISOString().split('T')[0];
+            document.getElementById('process-type').value = 'auction';
+            document.getElementById('complexity').value = 'moderate';
+            generateTimeline();
+         });</script>
 </body>
 </html>

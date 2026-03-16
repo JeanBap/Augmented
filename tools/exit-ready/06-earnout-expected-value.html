@@ -112,7 +112,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="cashAtClose">Cash at Close ($)</label>
-            <input type="number" id="cashAtClose" placeholder="0" />
+            <input type="number" id="cashAtClose" placeholder="0" / value="4000000">
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="discountRate">Discount Rate for Time Value (% per year)</label>
-            <input type="number" id="discountRate" placeholder="10" value="10" />
+            <input type="number" id="discountRate" placeholder="10" value="12" />
           </div>
         </div>
         <button class="tool-btn" onclick="calculateEarnout()">Calculate</button>
@@ -310,5 +310,29 @@ window.addEventListener('load', () => {
   addEarnout();
 });
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { 
+            if(typeof addEarnout === 'function') {
+                addEarnout();
+                var rows = document.querySelectorAll('[id^="eo-desc"]');
+                var last = rows[rows.length-1];
+                if(last) {
+                    var id = last.id.replace('eo-desc-','');
+                    var d = document.getElementById('eo-desc-'+id); if(d) d.value='Revenue target Y1';
+                    var a = document.getElementById('eo-amount-'+id); if(a) a.value='1000000';
+                    var p = document.getElementById('eo-probability-'+id); if(p) p.value='70';
+                }
+                addEarnout();
+                rows = document.querySelectorAll('[id^="eo-desc"]');
+                last = rows[rows.length-1];
+                if(last) {
+                    var id2 = last.id.replace('eo-desc-','');
+                    var d2 = document.getElementById('eo-desc-'+id2); if(d2) d2.value='Revenue target Y2';
+                    var a2 = document.getElementById('eo-amount-'+id2); if(a2) a2.value='1500000';
+                    var p2 = document.getElementById('eo-probability-'+id2); if(p2) p2.value='45';
+                }
+            }
+            calculateEarnout();
+         });</script>
 </body>
 </html>

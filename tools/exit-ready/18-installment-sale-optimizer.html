@@ -109,34 +109,34 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="sale-price">Total Sale Price ($)</label>
-            <input type="number" id="sale-price" placeholder="0" />
+            <input type="number" id="sale-price" placeholder="0" / value="5000000">
           </div>
           <div class="tool-field">
             <label for="cost-basis">Cost Basis ($)</label>
-            <input type="number" id="cost-basis" placeholder="0" />
+            <input type="number" id="cost-basis" placeholder="0" / value="500000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="period">Installment Period (years)</label>
-            <input type="number" id="period" placeholder="5" min="2" max="10" />
+            <input type="number" id="period" placeholder="5" min="2" max="10" / value="5">
           </div>
           <div class="tool-field">
             <label for="filing-status">Filing Status</label>
             <select id="filing-status">
               <option value="single">Single</option>
-              <option value="mfj">Married Filing Jointly</option>
+              <option value="mfj" selected>Married Filing Jointly</option>
             </select>
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="other-income">Other Taxable Income ($)</label>
-            <input type="number" id="other-income" placeholder="0" />
+            <input type="number" id="other-income" placeholder="0" / value="200000">
           </div>
           <div class="tool-field">
             <label for="installments-per-year">Installments Per Year</label>
-            <input type="number" id="installments-per-year" placeholder="1" min="1" max="12" />
+            <input type="number" id="installments-per-year" placeholder="1" min="1" max="12" / value="1">
           </div>
         </div>
         <button class="tool-btn" onclick="optimizeInstallments()">Calculate</button>
@@ -323,5 +323,7 @@ function resetInstallments() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { optimizeInstallments(); });</script>
 </body>
 </html>

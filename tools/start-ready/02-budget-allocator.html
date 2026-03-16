@@ -105,7 +105,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section">
 <label>Monthly After-Tax Income ($)</label>
-<input type="number" id="income" placeholder="4000" value="4000">
+<input type="number" id="income" placeholder="4000" value="7500">
 <label>Adjust the split (must total 100%)</label>
 <div class="grid-3">
 <div><label>Needs %</label><input type="number" id="pn" value="50" min="0" max="100"></div>
@@ -140,4 +140,6 @@ function calc(){
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

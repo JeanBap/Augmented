@@ -113,7 +113,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
           <div class="tool-field">
             <label for="industry">Industry</label>
             <select id="industry">
-              <option value="saas">SaaS</option>
+              <option value="saas" selected>SaaS</option>
               <option value="services">Services</option>
               <option value="manufacturing">Manufacturing</option>
               <option value="ecommerce">E-commerce</option>
@@ -126,24 +126,24 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="revenue">Annual Revenue ($)</label>
-            <input type="number" id="revenue" placeholder="0" />
+            <input type="number" id="revenue" placeholder="0" / value="5000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="growth">Revenue Growth Rate (% YoY)</label>
-            <input type="number" id="growth" placeholder="0" />
+            <input type="number" id="growth" placeholder="0" / value="25">
           </div>
           <div class="tool-field">
             <label for="ebitdaMargin">EBITDA Margin (%)</label>
-            <input type="number" id="ebitdaMargin" placeholder="0" />
+            <input type="number" id="ebitdaMargin" placeholder="0" / value="20">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="revenueType">Revenue Type</label>
             <select id="revenueType">
-              <option value="recurring">Recurring/Subscription</option>
+              <option value="recurring" selected>Recurring/Subscription</option>
               <option value="transactional">Transactional</option>
               <option value="project">Project-based</option>
               <option value="mixed">Mixed</option>
@@ -153,7 +153,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="concentration">Top Client % of Revenue</label>
-            <input type="number" id="concentration" placeholder="0" min="0" max="100" />
+            <input type="number" id="concentration" placeholder="0" min="0" max="100" / value="15">
           </div>
         </div>
         <div class="tool-row">
@@ -161,7 +161,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <label for="founderDep">Founder Dependence</label>
             <select id="founderDep">
               <option value="low">Low</option>
-              <option value="medium">Medium</option>
+              <option value="medium" selected>Medium</option>
               <option value="high">High</option>
             </select>
           </div>
@@ -169,7 +169,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <label for="moat">IP/Moat Strength</label>
             <select id="moat">
               <option value="low">Low</option>
-              <option value="medium">Medium</option>
+              <option value="medium" selected>Medium</option>
               <option value="high">High</option>
             </select>
           </div>
@@ -388,5 +388,7 @@ function resetMultiple() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateMultiple(); });</script>
 </body>
 </html>

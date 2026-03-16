@@ -115,14 +115,14 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="purchasePrice">Purchase Price ($)</label>
-            <input type="number" id="purchasePrice" placeholder="0" />
+            <input type="number" id="purchasePrice" placeholder="0" / value="8000000">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="entityType">Entity Type</label>
             <select id="entityType">
-              <option value="c-corp">C-Corporation</option>
+              <option value="c-corp" selected>C-Corporation</option>
               <option value="s-corp">S-Corporation</option>
             </select>
           </div>
@@ -130,37 +130,37 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="assetBasis">Asset Basis ($)</label>
-            <input type="number" id="assetBasis" placeholder="0" />
+            <input type="number" id="assetBasis" placeholder="0" / value="2000000">
           </div>
           <div class="tool-field">
             <label for="stockBasis">Stock Basis ($)</label>
-            <input type="number" id="stockBasis" placeholder="0" />
+            <input type="number" id="stockBasis" placeholder="0" / value="500000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="goodwill">Goodwill/Intangibles ($)</label>
-            <input type="number" id="goodwill" placeholder="0" />
+            <input type="number" id="goodwill" placeholder="0" / value="4000000">
           </div>
           <div class="tool-field">
             <label for="tangible">Tangible Asset Value ($)</label>
-            <input type="number" id="tangible" placeholder="0" />
+            <input type="number" id="tangible" placeholder="0" / value="2000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="fedOrdinary">Federal Ordinary Income Tax Rate (%)</label>
-            <input type="number" id="fedOrdinary" placeholder="37" min="0" max="100" />
+            <input type="number" id="fedOrdinary" placeholder="37" min="0" max="100" / value="37">
           </div>
           <div class="tool-field">
             <label for="fedCapGains">Federal Capital Gains Rate (%)</label>
-            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" />
+            <input type="number" id="fedCapGains" placeholder="20" min="0" max="100" / value="20">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="stateTax">State Tax Rate (%)</label>
-            <input type="number" id="stateTax" placeholder="0" min="0" max="100" />
+            <input type="number" id="stateTax" placeholder="0" min="0" max="100" / value="5">
           </div>
         </div>
         <button class="tool-btn" onclick="calculateComparison()">Calculate</button>
@@ -345,5 +345,7 @@ function resetComparison() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateComparison(); });</script>
 </body>
 </html>

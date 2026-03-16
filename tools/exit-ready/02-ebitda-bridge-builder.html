@@ -116,7 +116,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="reportedEbitda">Reported EBITDA ($)</label>
-            <input type="number" id="reportedEbitda" placeholder="0" />
+            <input type="number" id="reportedEbitda" placeholder="0" / value="1200000">
           </div>
         </div>
       </div>
@@ -343,5 +343,7 @@ function resetBridge() {
 // Initialize on load
 window.addEventListener('load', initializeAdjustments);
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateBridge(); });</script>
 </body>
 </html>

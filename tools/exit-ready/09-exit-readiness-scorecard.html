@@ -121,7 +121,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="1">1 - Declining or volatile revenue; poor margins</option>
             <option value="2">2 - Flat growth; inconsistent profitability</option>
             <option value="3">3 - Steady growth 5-15%; predictable margins</option>
-            <option value="4">4 - Strong growth 15-30%; healthy margins</option>
+            <option value="4" selected>4 - Strong growth 15-30%; healthy margins</option>
             <option value="5">5 - Exceptional growth >30%; strong margins</option>
           </select>
           <div class="pillar-desc">Revenue growth rate, profitability, and predictability of financial results</div>
@@ -133,7 +133,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="">Select...</option>
             <option value="1">1 - Top 3 customers = >50% revenue; high churn</option>
             <option value="2">2 - Top 3 customers = 30-50% revenue; churn >20%</option>
-            <option value="3">3 - Top client <25%; diverse base; churn 10-20%</option>
+            <option value="3" selected>3 - Top client <25%; diverse base; churn 10-20%</option>
             <option value="4">4 - Top client <15%; strong retention; diverse</option>
             <option value="5">5 - Top client <10%; >90% retention; very diversified</option>
           </select>
@@ -147,7 +147,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="1">1 - Business dependent on founder; no documented processes</option>
             <option value="2">2 - Founder-heavy; minimal delegation; ad-hoc processes</option>
             <option value="3">3 - Strong team; some key person risk; defined roles</option>
-            <option value="4">4 - Experienced management layer; low founder dependence</option>
+            <option value="4" selected>4 - Experienced management layer; low founder dependence</option>
             <option value="5">5 - Scalable team; founder optional; strong operations</option>
           </select>
           <div class="pillar-desc">Founder dependence, management depth, operational maturity, and processes</div>
@@ -159,7 +159,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="">Select...</option>
             <option value="1">1 - Commoditized; high competition; shrinking market</option>
             <option value="2">2 - Competitive; weak differentiation; flat market</option>
-            <option value="3">3 - Clear positioning; defensible niche; growing market</option>
+            <option value="3" selected>3 - Clear positioning; defensible niche; growing market</option>
             <option value="4">4 - Strong brand; competitive advantages; expanding TAM</option>
             <option value="5">5 - Market leader; strong moat; large growth opportunity</option>
           </select>
@@ -173,7 +173,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="1">1 - Weak IP; compliance gaps; disputed contracts</option>
             <option value="2">2 - Some IP; compliance issues; inconsistent contracts</option>
             <option value="3">3 - Solid IP strategy; basic compliance; standard contracts</option>
-            <option value="4">4 - Strong IP portfolio; compliance program; clean legal</option>
+            <option value="4" selected>4 - Strong IP portfolio; compliance program; clean legal</option>
             <option value="5">5 - Excellent IP; excellent compliance; mature legal</option>
           </select>
           <div class="pillar-desc">IP protection, regulatory compliance, contract quality, and legal standing</div>
@@ -184,7 +184,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
           <select id="pillar6" class="pillar-select">
             <option value="">Select...</option>
             <option value="1">1 - Manual accounting; no audits; poor records</option>
-            <option value="2">2 - Basic accounting; inconsistent records; no audits</option>
+            <option value="2" selected>2 - Basic accounting; inconsistent records; no audits</option>
             <option value="3">3 - Good records; annual reviews; integrated systems</option>
             <option value="4">4 - Clean audit; strong systems; auditable records</option>
             <option value="5">5 - Clean audit; excellent controls; auditable and transparent</option>
@@ -198,7 +198,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             <option value="">Select...</option>
             <option value="1">1 - No visible opportunities; market headwinds</option>
             <option value="2">2 - Limited expansion; mature market position</option>
-            <option value="3">3 - Clear growth path; pipeline visibility; new channels</option>
+            <option value="3" selected>3 - Clear growth path; pipeline visibility; new channels</option>
             <option value="4">4 - Strong pipeline; multiple expansion levers; clear roadmap</option>
             <option value="5">5 - Accelerating growth; large TAM; multiple expansion paths</option>
           </select>
@@ -340,5 +340,7 @@ function resetReadiness() {
   document.getElementById('results').classList.remove('visible');
 }
 </script>
+
+<script>document.addEventListener('DOMContentLoaded', function() { calculateReadiness(); });</script>
 </body>
 </html>
