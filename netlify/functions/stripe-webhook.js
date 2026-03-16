@@ -148,12 +148,15 @@ function buildCustomerEmail(productKeys, downloadLinks, customerEmail) {
 }
 
 exports.handler = async function(event) {
+  console.log('Webhook received:', event.httpMethod, 'body length:', (event.body || '').length);
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method not allowed' };
   }
 
   var sigHeader = event.headers['stripe-signature'];
   if (!sigHeader || !process.env.STRIPE_WEBHOOK_SECRET) {
+    console.error('Webhook auth fail: sigHeader=' + !!sigHeader + ', secret=' + !!process.env.STRIPE_WEBHOOK_SECRET);
     return { statusCode: 400, body: 'Missing signature or webhook secret' };
   }
 
@@ -201,24 +204,26 @@ exports.handler = async function(event) {
     return PRODUCTS[key].file ? makeDownloadUrl(key, expiresAt) : '';
   });
 
-  // Send customer email
+  // Send both emails in parallel to stay within function timeout
   var customerHtml = buildCustomerEmail(productKeys, downloadLinks, customerEmail);
-  var customerResult = await sendEmail(customerEmail, 'Your Raise Ready Purchase', customerHtml);
-  if (!customerResult.sent) {
-    console.error('Failed to send customer email for session:', session.id, 'reason:', customerResult.reason);
-  }
-
-  // Send admin notification (all values escaped)
   var esc = config.escapeHtml;
   var productNames = productKeys.map(function(k) { return esc(PRODUCTS[k].name); }).join(', ');
   var amount = session.amount_total ? ('$' + (session.amount_total / 100).toFixed(2)) : 'unknown';
-  var adminHtml = '<h3>New Purchase!</h3>'
-    + '<p><strong>Customer:</strong> ' + esc(customerEmail) + '</p>'
-    + '<p><strong>Products:</strong> ' + productNames + '</p>'
-    + '<p><strong>Amount:</strong> ' + esc(amount) + '</p>'
-    + '<p><strong>Session:</strong> ' + esc(session.id) + '</p>'
-    + '<p><strong>Customer email sent:</strong> ' + (customerResult.sent ? 'Yes' : 'FAILED - ' + esc(customerResult.reason)) + '</p>';
-  await sendEmail(ADMIN_EMAIL, 'New sale: ' + productKeys.map(function(k) { return PRODUCTS[k].name; }).join(', '), adminHtml);
+
+  var results = await Promise.allSettled([
+    sendEmail(customerEmail, 'Your Raise Ready Purchase', customerHtml),
+    sendEmail(ADMIN_EMAIL, 'New sale: ' + productKeys.map(function(k) { return PRODUCTS[k].name; }).join(', '),
+      '<h3>New Purchase!</h3>'
+      + '<p><strong>Customer:</strong> ' + esc(customerEmail) + '</p>'
+      + '<p><strong>Products:</strong> ' + productNames + '</p>'
+      + '<p><strong>Amount:</strong> ' + esc(amount) + '</p>'
+      + '<p><strong>Session:</strong> ' + esc(session.id) + '</p>')
+  ]);
+
+  var customerResult = results[0].status === 'fulfilled' ? results[0].value : { sent: false, reason: 'promise_rejected' };
+  if (!customerResult.sent) {
+    console.error('Failed to send customer email for session:', session.id, 'reason:', customerResult.reason);
+  }
 
   // Mark processed after successful email send
   markProcessed(session.id);
