@@ -810,6 +810,7 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   // Section grouping for assumptions: Revenue(0), Costs(9-13), Funding(14-17), Working Capital(18-19), Tax/CapEx(20-22), Cash(23), Wage(24), Unit Econ(25-27)
   const aSections = {0:'REVENUE',6:'RETENTION',9:'OPERATING COSTS',14:'FUNDING',18:'WORKING CAPITAL',20:'TAX & DEPRECIATION',23:'STARTING POSITION',25:'UNIT ECONOMICS'};
   let aRow = 2;
+  const aRowMap = [];
   for(let i=0;i<aL.length;i++){
     if(aSections[i]) { sv(wA,0,aRow,aSections[i],null,sectionStyle); sv(wA,1,aRow,'',null,sectionStyle); aRow++; }
     const rowBg = i%2===0 ? WHITE : LIGHT_BG;
@@ -817,6 +818,7 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
     const inp = {font:font({color:{rgb:BLUE_INP}}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
     sv(wA,0,aRow,aL[i],null,lbl);
     sv(wA,1,aRow,aV[i],aFmt[i],inp);
+    aRowMap.push(aRow);
     aRow++;
   }
   aRow++;
@@ -824,6 +826,12 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   wA['!ref']='A1:B'+aRow; wA['!cols']=[{wch:30},{wch:16}];
   wA['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wA,'Assumptions');
+  // Assumption row references (aRowMap[i] = actual Excel row for assumption i)
+  // 0:startMRR 1:Y1g 2:Y2g 3:Y3g 4:Y4g 5:Y5g 6:churn 7:expansion 8:grossMargin
+  // 9:marketing 10:tools 11:rent 12:legal 13:other 14:fundM1 15:fundAmt1 16:fundM2 17:fundAmt2
+  // 18:dso 19:dpo 20:taxRate 21:capex 22:depreciation 23:startCash 24:wageInflation
+  // 25:cacSpend 26:newCust 27:arpc
+  const AR = aRowMap.map(function(r){return 'Assumptions!$B$'+r;});
   // ===== HIRING =====
   const wH = {};
   sv(wH,0,1,'HIRING PLAN',null,titleStyle);
@@ -868,38 +876,38 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
         return {font:font({bold:isTotal}),fill:{fgColor:{rgb:bg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
       }
       sf(ws,c,2,'INT(('+col+'1-1)/12)+1',null,cellS(2));
-      sf(ws,c,3,'CHOOSE('+col+'2,Assumptions!$B$3,Assumptions!$B$4,Assumptions!$B$5,Assumptions!$B$6,Assumptions!$B$7)/100'+gSuf,P,cellS(3));
-      sf(ws,c,4,'Assumptions!$B$8/100'+cSuf,P,cellS(4));
-      if(m===1) sf(ws,c,5,'Assumptions!$B$2*1000',N,cellS(5)); else sf(ws,c,5,p+'5*(1-'+p+'4+Assumptions!$B$9/100+'+p+'3)',N,cellS(5));
+      sf(ws,c,3,'CHOOSE('+col+'2,'+AR[1]+','+AR[2]+','+AR[3]+','+AR[4]+','+AR[5]+')/100'+gSuf,P,cellS(3));
+      sf(ws,c,4,AR[6]+'/100'+cSuf,P,cellS(4));
+      if(m===1) sf(ws,c,5,AR[0]+'*1000',N,cellS(5)); else sf(ws,c,5,p+'5*(1-'+p+'4+'+AR[7]+'/100+'+p+'3)',N,cellS(5));
       sf(ws,c,6,col+'5',N,cellS(6));
       sf(ws,c,7,col+'5*12',N,cellS(7));
-      sf(ws,c,8,col+'6*(1-Assumptions!$B$10/100)',N,cellS(8));
+      sf(ws,c,8,col+'6*(1-'+AR[8]+'/100)',N,cellS(8));
       sf(ws,c,9,col+'6-'+col+'8',N,cellS(9));
       if(hc>0) sf(ws,c,10,'COUNTIF('+hB+',"<="&'+col+'1)',NP,cellS(10)); else sv(ws,c,10,0,NP,cellS(10));
-      if(hc>0) sf(ws,c,11,'SUMPRODUCT(('+hB+'<='+col+'1)*'+hC+'*1000*(1+'+hD+'/100))*(1+Assumptions!$B$26/100)^('+col+'2-1)',N,cellS(11)); else sv(ws,c,11,0,N,cellS(11));
-      sf(ws,c,12,col+'6*Assumptions!$B$11/100',N,cellS(12));
-      sf(ws,c,13,'Assumptions!$B$12*1000*(1+('+col+'2-1)*0.15)',N,cellS(13));
-      sf(ws,c,14,'Assumptions!$B$13*1000*(1+('+col+'2-1)*0.1)',N,cellS(14));
-      sf(ws,c,15,'Assumptions!$B$14*1000',N,cellS(15));
-      sf(ws,c,16,'Assumptions!$B$15*1000*(1+('+col+'2-1)*0.1)',N,cellS(16));
+      if(hc>0) sf(ws,c,11,'SUMPRODUCT(('+hB+'<='+col+'1)*'+hC+'*1000*(1+'+hD+'/100))*(1+'+AR[24]+'/100)^('+col+'2-1)',N,cellS(11)); else sv(ws,c,11,0,N,cellS(11));
+      sf(ws,c,12,col+'6*'+AR[9]+'/100',N,cellS(12));
+      sf(ws,c,13,AR[10]+'*1000*(1+('+col+'2-1)*0.15)',N,cellS(13));
+      sf(ws,c,14,AR[11]+'*1000*(1+('+col+'2-1)*0.1)',N,cellS(14));
+      sf(ws,c,15,AR[12]+'*1000',N,cellS(15));
+      sf(ws,c,16,AR[13]+'*1000*(1+('+col+'2-1)*0.1)',N,cellS(16));
       sf(ws,c,17,'SUM('+col+'11:'+col+'16)',N,cellS(17));
       sf(ws,c,18,col+'9-'+col+'17',N,cellS(18));
-      if(m===1) sv(ws,c,19,0,N,cellS(19)); else sf(ws,c,19,p+'25*Assumptions!$B$24/100/12',N,cellS(19));
+      if(m===1) sv(ws,c,19,0,N,cellS(19)); else sf(ws,c,19,p+'25*'+AR[22]+'/100/12',N,cellS(19));
       sf(ws,c,20,col+'18-'+col+'19',N,cellS(20));
-      sf(ws,c,21,'MAX(0,'+col+'20*Assumptions!$B$22/100)',N,cellS(21));
+      sf(ws,c,21,'MAX(0,'+col+'20*'+AR[20]+'/100)',N,cellS(21));
       sf(ws,c,22,col+'20-'+col+'21',N,cellS(22));
-      sf(ws,c,23,'IF('+col+'1=Assumptions!$B$16,Assumptions!$B$17*1000,0)+IF('+col+'1=Assumptions!$B$18,Assumptions!$B$19*1000,0)',N,cellS(23));
-      sf(ws,c,24,'Assumptions!$B$23*(1+('+col+'2-1)*0.3)*1000/12',N,cellS(24));
+      sf(ws,c,23,'IF('+col+'1='+AR[14]+','+AR[15]+'*1000,0)+IF('+col+'1='+AR[16]+','+AR[17]+'*1000,0)',N,cellS(23));
+      sf(ws,c,24,AR[21]+'*(1+('+col+'2-1)*0.3)*1000/12',N,cellS(24));
       if(m===1) sf(ws,c,25,col+'24-'+col+'19',N,cellS(25)); else sf(ws,c,25,p+'25+'+col+'24-'+col+'19',N,cellS(25));
-      sf(ws,c,26,col+'6*Assumptions!$B$20/30',N,cellS(26));
+      sf(ws,c,26,col+'6*'+AR[18]+'/30',N,cellS(26));
       if(m===1) sf(ws,c,27,col+'26',N,cellS(27)); else sf(ws,c,27,col+'26-'+p+'26',N,cellS(27));
-      sf(ws,c,28,'('+col+'8+'+col+'17)*Assumptions!$B$21/30',N,cellS(28));
+      sf(ws,c,28,'('+col+'8+'+col+'17)*'+AR[19]+'/30',N,cellS(28));
       if(m===1) sf(ws,c,29,col+'28',N,cellS(29)); else sf(ws,c,29,col+'28-'+p+'28',N,cellS(29));
       sf(ws,c,30,col+'22+'+col+'19-'+col+'27+'+col+'29',N,cellS(30));
       sf(ws,c,31,'-'+col+'24',N,cellS(31));
       sf(ws,c,32,col+'23',N,cellS(32));
       sf(ws,c,33,col+'30+'+col+'31+'+col+'32',N,cellS(33));
-      if(m===1) sf(ws,c,34,'Assumptions!$B$25*1000+'+col+'33',N,cellS(34)); else sf(ws,c,34,p+'34+'+col+'33',N,cellS(34));
+      if(m===1) sf(ws,c,34,AR[23]+'*1000+'+col+'33',N,cellS(34)); else sf(ws,c,34,p+'34+'+col+'33',N,cellS(34));
       if(m===1) sf(ws,c,35,col+'23',N,cellS(35)); else sf(ws,c,35,p+'35+'+col+'23',N,cellS(35));
       if(m===1) sf(ws,c,36,col+'22',N,cellS(36)); else sf(ws,c,36,p+'36+'+col+'22',N,cellS(36));
       sf(ws,c,37,'MAX('+col+'34,0)+'+col+'26+MAX('+col+'25,0)',N,cellS(37));
@@ -958,12 +966,12 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   const ueMetrics = ['CAC ($)','Avg Customer Life (months)','LTV ($)','LTV:CAC','Payback (months)','NRR (%)'];
   const ueFmts = [N,'#,##0.0',N,'0.0"x"','0.0','0.0'];
   const ueFormulas = [
-    'IF(Assumptions!B28>0,Assumptions!B27*1000/Assumptions!B28,0)',
-    'IF(Assumptions!B8>0,1/(Assumptions!B8/100),999)',
-    'Assumptions!B29*(Assumptions!B10/100)*B4',
+    'IF(Assumptions!B'+aRowMap[26]+'>0,Assumptions!B'+aRowMap[25]+'*1000/Assumptions!B'+aRowMap[26]+',0)',
+    'IF(Assumptions!B'+aRowMap[6]+'>0,1/(Assumptions!B'+aRowMap[6]+'/100),999)',
+    'Assumptions!B'+aRowMap[27]+'*(Assumptions!B'+aRowMap[8]+'/100)*B4',
     'IF(B3>0,B5/B3,0)',
-    'IF(Assumptions!B29*Assumptions!B10/100>0,B3/(Assumptions!B29*Assumptions!B10/100),0)',
-    '100-Assumptions!B8+Assumptions!B9'
+    'IF(Assumptions!B'+aRowMap[27]+'*Assumptions!B'+aRowMap[8]+'/100>0,B3/(Assumptions!B'+aRowMap[27]+'*Assumptions!B'+aRowMap[8]+'/100),0)',
+    '100-Assumptions!B'+aRowMap[6]+'+Assumptions!B'+aRowMap[7]
   ];
   ueMetrics.forEach(function(m,i){
     const r = i+3;
