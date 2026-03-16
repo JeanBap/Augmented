@@ -240,6 +240,7 @@ async function handleExportPurchase() {
     return;
   }
   try {
+    localStorage.setItem('rr_fm_email', email);
     var res = await fetch('/.netlify/functions/email-gate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -975,6 +976,7 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   wU['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wU,'Unit Economics');
   XLSX.writeFile(wb,'Raise_Ready_5Year_Model_Pro.xlsx');
+  try { var u8 = new Uint8Array(XLSX.write(wb, {type:'array', bookType:'xlsx'})), s='', i=0; for(;i<u8.length;i+=8192) s+=String.fromCharCode.apply(null,u8.subarray(i,Math.min(i+8192,u8.length))); return btoa(s); } catch(e) { return null; }
 }
 async function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab) {
   if (!window.isPurchased()) { window.showExportGate('pdf'); return; }
@@ -1116,8 +1118,15 @@ function FinancialModel() {
         saveLocal();
         window.showPurchaseSuccess('save');
       } else {
-        await _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel);
+        var b64 = await _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel);
         window.showPurchaseSuccess('excel');
+        var em = ''; try { em = localStorage.getItem('rr_fm_email') || ''; } catch(e) {}
+        if (b64 && em) {
+          fetch('/.netlify/functions/send-export', {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({email:em,file:b64,fileName:'Raise_Ready_5Year_Model_Pro.xlsx',fileType:'excel'})
+          }).catch(function(){});
+        }
       }
     }, 500);
   }, []);
