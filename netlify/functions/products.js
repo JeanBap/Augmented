@@ -64,7 +64,7 @@ var PRODUCTS = {
   },
   'fm-pro-export': {
     name: 'Financial Model Pro Export',
-    description: 'Excel with live formulas, PDF with charts, and a personal account to save your simulations.',
+    description: 'Excel with live formulas and PDF with charts.',
     price: 2900,
     digital: true
   }
