@@ -64,7 +64,7 @@ var PRODUCTS = {
   },
   'fm-pro-export': {
     name: 'Financial Model Pro Export',
-    description: 'Unlock Excel and PDF export for the 5-Year Financial Model Pro.',
+    description: 'Excel with live formulas, PDF with charts, and a personal account to save your simulations.',
     price: 2900,
     digital: true
   }

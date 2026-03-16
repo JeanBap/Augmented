@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5-Year Financial Model Pro | Raise Ready</title>
-<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Export to Excel for $29.">
+<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Export to Excel with formulas or PDF with charts for $29.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/financial-model-pro.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/financial-model-pro.html">
@@ -94,14 +94,15 @@
   <div class="export-modal">
     <button class="export-close" onclick="closeExportGate()">&times;</button>
     <h3>Unlock Pro Export</h3>
-    <p>Export your complete 5-year model to Excel or PDF. Includes all scenarios, hiring plan, unit economics, and sensitivity analysis.</p>
+    <p>Get your complete 5-year model as a formula-driven Excel workbook and a PDF with charts. Plus a personal account to save your simulations.</p>
     <div style="background: #1B2A4A; color: white; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
       <div style="font-size: 1.5rem; font-weight: 700; color: #FFD700;">$29</div>
       <div style="font-size: 0.75rem; opacity: 0.6;">one-time, lifetime access</div>
     </div>
     <ul class="export-features">
-      <li>Excel export with 4 sheets (Assumptions, Monthly P&L, Scenarios, Hiring)</li>
-      <li>PDF board-ready summary report</li>
+      <li>Excel workbook with live formulas (6 sheets, 3 scenarios)</li>
+      <li>PDF export with charts from every tab</li>
+      <li>Personal account to save &amp; reload your models</li>
       <li>Unlimited exports, forever</li>
     </ul>
     <input id="export-email" class="export-input" type="email" placeholder="your@email.com" required>
@@ -109,6 +110,163 @@
     <div id="export-error" class="export-error"></div>
   </div>
 </div>
+
+<!-- Account Modal -->
+<div id="account-modal" class="export-overlay hidden">
+  <div class="export-modal" style="max-width: 380px;">
+    <button class="export-close" onclick="document.getElementById('account-modal').classList.add('hidden')">&times;</button>
+    <div id="account-auth-view">
+      <h3 id="account-title">Create Account</h3>
+      <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem;">Save your financial models to the cloud and access them from any device.</p>
+      <input id="account-email" class="export-input" type="email" placeholder="your@email.com">
+      <input id="account-password" class="export-input" type="password" placeholder="Password (8+ characters)" style="margin-top: 0.5rem;">
+      <button class="export-btn" id="account-submit-btn" onclick="handleAccountSubmit()" style="margin-top: 0.75rem;">Create Account</button>
+      <p style="font-size: 0.8rem; text-align: center; margin-top: 0.75rem; color: #888;">
+        <span id="account-toggle-text">Already have an account?</span>
+        <a href="#" onclick="toggleAccountMode(event)" style="color: #c8a45a;" id="account-toggle-link">Log in</a>
+      </p>
+      <div id="account-error" class="export-error"></div>
+    </div>
+    <div id="account-logged-view" style="display: none;">
+      <h3>Your Account</h3>
+      <p style="font-size: 0.85rem; color: #666;" id="account-user-email"></p>
+      <div id="saved-models-list" style="margin: 1rem 0; max-height: 200px; overflow-y: auto;"></div>
+      <input id="save-model-name" class="export-input" type="text" placeholder="Model name" value="My Model">
+      <button class="export-btn" onclick="handleSaveModel()" style="margin-top: 0.5rem;">Save Current Model</button>
+      <button class="export-btn" onclick="handleLogout()" style="margin-top: 0.5rem; background: transparent; border: 1px solid #ddd; color: #666;">Log Out</button>
+      <div id="save-status" style="font-size: 0.8rem; color: #10b981; text-align: center; margin-top: 0.5rem;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var _accountMode = 'signup';
+var _authToken = null;
+var _authUser = null;
+try { _authToken = localStorage.getItem('rr_auth_token'); _authUser = JSON.parse(localStorage.getItem('rr_auth_user') || 'null'); } catch(e) {}
+
+function showAccountModal() {
+  document.getElementById('account-modal').classList.remove('hidden');
+  if (_authToken) { showLoggedInView(); refreshModelList(); }
+  else { showAuthView(); }
+}
+window.showAccountModal = showAccountModal;
+
+function showAuthView() {
+  document.getElementById('account-auth-view').style.display = '';
+  document.getElementById('account-logged-view').style.display = 'none';
+}
+function showLoggedInView() {
+  document.getElementById('account-auth-view').style.display = 'none';
+  document.getElementById('account-logged-view').style.display = '';
+  document.getElementById('account-user-email').textContent = _authUser?.email || '';
+}
+
+function toggleAccountMode(e) {
+  e.preventDefault();
+  _accountMode = _accountMode === 'signup' ? 'login' : 'signup';
+  document.getElementById('account-title').textContent = _accountMode === 'signup' ? 'Create Account' : 'Log In';
+  document.getElementById('account-submit-btn').textContent = _accountMode === 'signup' ? 'Create Account' : 'Log In';
+  document.getElementById('account-toggle-text').textContent = _accountMode === 'signup' ? 'Already have an account?' : "Don't have an account?";
+  document.getElementById('account-toggle-link').textContent = _accountMode === 'signup' ? 'Log in' : 'Sign up';
+}
+
+async function handleAccountSubmit() {
+  var email = document.getElementById('account-email').value.trim();
+  var password = document.getElementById('account-password').value;
+  var errEl = document.getElementById('account-error');
+  errEl.textContent = '';
+  try {
+    var res = await fetch('/.netlify/functions/auth', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: _accountMode, email: email, password: password })
+    });
+    var data = await res.json();
+    if (!res.ok) { errEl.textContent = data.error || 'Something went wrong'; return; }
+    if (_accountMode === 'signup') {
+      errEl.style.color = '#10b981';
+      errEl.textContent = 'Account created! Check your email to confirm, then log in.';
+      _accountMode = 'login';
+      document.getElementById('account-title').textContent = 'Log In';
+      document.getElementById('account-submit-btn').textContent = 'Log In';
+      return;
+    }
+    _authToken = data.token;
+    _authUser = data.user;
+    try { localStorage.setItem('rr_auth_token', _authToken); localStorage.setItem('rr_auth_user', JSON.stringify(_authUser)); } catch(e) {}
+    showLoggedInView();
+    refreshModelList();
+  } catch(e) { errEl.textContent = 'Network error. Please try again.'; }
+}
+
+function handleLogout() {
+  _authToken = null; _authUser = null;
+  try { localStorage.removeItem('rr_auth_token'); localStorage.removeItem('rr_auth_user'); } catch(e) {}
+  showAuthView();
+}
+
+async function handleSaveModel() {
+  if (!_authToken) { showAuthView(); return; }
+  var statusEl = document.getElementById('save-status');
+  statusEl.textContent = 'Saving...';
+  try {
+    var name = document.getElementById('save-model-name').value.trim() || 'My Model';
+    var assumptions = window._fmGetAssumptions ? window._fmGetAssumptions() : null;
+    var hiresList = window._fmGetHires ? window._fmGetHires() : null;
+    if (!assumptions) { statusEl.textContent = 'No model data found.'; return; }
+    var res = await fetch('/.netlify/functions/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+      body: JSON.stringify({ action: 'save', name: name, assumptions: assumptions, hires: hiresList })
+    });
+    var data = await res.json();
+    if (!res.ok) { statusEl.style.color = '#e8655a'; statusEl.textContent = data.error || 'Save failed'; return; }
+    statusEl.style.color = '#10b981';
+    statusEl.textContent = 'Saved!';
+    refreshModelList();
+  } catch(e) { statusEl.textContent = 'Network error.'; }
+}
+
+async function refreshModelList() {
+  if (!_authToken) return;
+  var container = document.getElementById('saved-models-list');
+  try {
+    var res = await fetch('/.netlify/functions/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+      body: JSON.stringify({ action: 'list' })
+    });
+    var data = await res.json();
+    if (!data.models || data.models.length === 0) {
+      container.innerHTML = '<p style="font-size:0.8rem;color:#888;text-align:center;">No saved models yet.</p>';
+      return;
+    }
+    container.innerHTML = data.models.map(function(m) {
+      var d = new Date(m.updated_at).toLocaleDateString();
+      return '<div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0.5rem;border-bottom:1px solid #eee;font-size:0.8rem;cursor:pointer;" onclick="loadModel(\'' + m.id + '\')">' +
+        '<span style="font-weight:600;">' + (m.name||'Untitled').replace(/</g,'&lt;') + '</span>' +
+        '<span style="color:#888;">' + d + '</span></div>';
+    }).join('');
+  } catch(e) { container.innerHTML = '<p style="font-size:0.8rem;color:#e8655a;">Failed to load models.</p>'; }
+}
+
+async function loadModel(id) {
+  if (!_authToken) return;
+  try {
+    var res = await fetch('/.netlify/functions/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+      body: JSON.stringify({ action: 'load', id: id })
+    });
+    var data = await res.json();
+    if (data.ok && data.model) {
+      if (window._fmLoadModel) window._fmLoadModel(data.model.assumptions, data.model.hires);
+      document.getElementById('account-modal').classList.add('hidden');
+    }
+  } catch(e) { alert('Failed to load model.'); }
+}
+window.loadModel = loadModel;
+</script>
 
 <!-- Hero / Explainer Section -->
 <section style="background: linear-gradient(180deg, #1B2A4A 0%, #0f1a30 100%); color: #fff; padding: 3.5rem 1.5rem 2.5rem;">
@@ -138,11 +296,11 @@
         </div>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #cbd5e1;">
           <li style="padding: 0.3rem 0;">&#10003; Everything in Free</li>
-          <li style="padding: 0.3rem 0;">&#10003; Excel export (4 sheets)</li>
-          <li style="padding: 0.3rem 0;">&#10003; PDF board summary</li>
+          <li style="padding: 0.3rem 0;">&#10003; Excel with live formulas (6 sheets)</li>
+          <li style="padding: 0.3rem 0;">&#10003; PDF with charts from every tab</li>
+          <li style="padding: 0.3rem 0;">&#10003; Account to save your simulations</li>
           <li style="padding: 0.3rem 0;">&#10003; Unlimited exports, forever</li>
           <li style="padding: 0.3rem 0;">&#10003; One-time payment</li>
-          <li style="padding: 0.3rem 0; color: #64748b; font-size: 0.75rem; font-style: italic;">No subscription, no account needed</li>
         </ul>
       </div>
     </div>
@@ -253,6 +411,9 @@ async function ensureXLSX() {
 }
 async function ensureJsPDF() {
   if (typeof window.jspdf === 'undefined') await loadScript('/tools/jspdf.umd.min.js');
+}
+async function ensureH2C() {
+  if (typeof html2canvas === 'undefined') await loadScript('/tools/html2canvas.min.js');
 }
 
 const C = {
@@ -719,87 +880,154 @@ function buildSensitivity(a, hires, rowKey, colKey, rowRange, colRange) {
   }));
 }
 async function doExport(a, model, annual, hires, unitEcon, conModel, aggModel) {
-  if (!window.isPurchased()) {
-    window.showExportGate();
-    return;
-  }
+  if (!window.isPurchased()) { window.showExportGate(); return; }
   try { await ensureXLSX(); } catch(e) { alert('Failed to load export library. Please refresh and try again.'); return; }
   const wb = XLSX.utils.book_new();
-  const aR = [["RAISE READY - 5 YEAR FINANCIAL MODEL (Enhanced)"], [""], ["REVENUE", "", "Base", "Conservative", "Aggressive"], ["Starting MRR ($K)", "", a.startMRR, a.startMRR, a.startMRR], ...["Y1", "Y2", "Y3", "Y4", "Y5"].map(y => [y + " MoM Growth", "", a[`mrrGrowth${y}`] + "%", (a[`mrrGrowth${y}`] * 0.7).toFixed(1) + "%", (a[`mrrGrowth${y}`] * 1.3).toFixed(1) + "%"]), ["Churn", "", a.churn + "%", (a.churn * 1.3).toFixed(1) + "%", (a.churn * 0.7).toFixed(1) + "%"], ["Expansion", "", a.expansion + "%"], ["Gross Margin", "", a.grossMargin + "%"], [""], ["UNIT ECONOMICS", "", "Value"], ["CAC", "", unitEcon.cac], ["LTV", "", unitEcon.ltv], ["LTV:CAC", "", unitEcon.ratio.toFixed(1) + "x"], ["Payback (months)", "", unitEcon.payback.toFixed(1)], ["NRR", "", unitEcon.nrr.toFixed(0) + "%"], [""], ["HIRING PLAN"], ["Role", "Start Month", "Base Salary ($K/mo)", "Burden %"], ...hires.map(h => [h.role, h.month, h.salary, h.burden + "%"]), [""], ["Built by Raise Ready | raisereadybook.com"]];
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aR), "Assumptions");
-  const pnlKeys = [["Revenue", "revenue"], ["COGS", "cogs"], ["Gross Profit", "grossProfit"], ["Salaries", "salaryExp"], ["Marketing", "marketingExp"], ["Tools", "toolsExp"], ["Rent", "rentExp"], ["Legal", "legalExp"], ["Other", "otherExp"], ["Total OpEx", "totalOpex"], ["EBITDA", "ebitda"], ["D&A", "da"], ["Tax", "tax"], ["Net Income", "netIncome"], ["Headcount", "headcount"], ["ARR", "arr"], ["Cash", "cashBal"]];
-  const pH = ["", ...MO];
-  const pD = [pH];
-  pnlKeys.forEach(([l, k]) => {
-    const r = [l];
-    model.forEach(m => r.push(Math.round(m[k])));
-    pD.push(r);
+  const N = '#,##0', P = '0.00%';
+  const hc = hires.length, hlr = 2 + hc;
+  function CL(i) { let s='',n=i+1; while(n>0){n--;s=String.fromCharCode(65+n%26)+s;n=Math.floor(n/26);}return s; }
+  function sv(ws,c,r,v,z) { const ref=CL(c)+r; ws[ref]={t:typeof v==='string'?'s':'n',v:v}; if(z)ws[ref].z=z; }
+  function sf(ws,c,r,f,z) { const ref=CL(c)+r; ws[ref]={t:'n',f:f}; if(z)ws[ref].z=z; }
+  // ===== ASSUMPTIONS =====
+  const wA = {};
+  sv(wA,0,1,'RAISE READY - 5-YEAR FINANCIAL MODEL');
+  const aL=['Starting MRR ($K/mo)','Y1 MoM Growth (%)','Y2 MoM Growth (%)','Y3 MoM Growth (%)','Y4 MoM Growth (%)','Y5 MoM Growth (%)','Monthly Churn (%)','Expansion Rate (%)','Gross Margin (%)','Marketing (% of Rev)','Tools Base ($K/mo)','Rent Base ($K/mo)','Legal Base ($K/mo)','Other Base ($K/mo)','Funding Round 1 Month','Funding Round 1 ($K)','Funding Round 2 Month','Funding Round 2 ($K)','DSO (days)','DPO (days)','Tax Rate (%)','CapEx Y1 ($K/yr)','Depreciation (%/yr)','Starting Cash ($K)','Wage Inflation (%/yr)','CAC Spend ($K)','New Customers','ARPC ($)'];
+  const aV=[a.startMRR,a.mrrGrowthY1,a.mrrGrowthY2,a.mrrGrowthY3,a.mrrGrowthY4,a.mrrGrowthY5,a.churn,a.expansion,a.grossMargin,a.marketingPct,a.toolsBase,a.rentBase,a.legalBase,a.otherBase,a.fundingM,a.fundingAmt,a.fundingM2,a.fundingAmt2,a.dso,a.dpo,a.taxRate,a.capexY1,a.depreciation,a.startCash,a.wageInflation,a.cacSpend,a.newCust,a.arpc];
+  for(let i=0;i<aL.length;i++){sv(wA,0,i+2,aL[i]);sv(wA,1,i+2,aV[i]);}
+  sv(wA,0,31,'Built by Raise Ready | raisereadybook.com');
+  wA['!ref']='A1:B31'; wA['!cols']=[{wch:28},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,wA,'Assumptions');
+  // ===== HIRING =====
+  const wH = {};
+  sv(wH,0,1,'HIRING PLAN');
+  ['Role','Start Month','Salary ($K/mo)','Burden (%)','Fully Loaded ($K/mo)','Annual Cost ($K)'].forEach(function(h,i){sv(wH,i,2,h);});
+  hires.forEach(function(h,i){ const r=i+3; sv(wH,0,r,h.role); sv(wH,1,r,h.month); sv(wH,2,r,h.salary); sv(wH,3,r,h.burden); sf(wH,4,r,'C'+r+'*(1+D'+r+'/100)','#,##0.0'); sf(wH,5,r,'E'+r+'*12',N); });
+  wH['!ref']='A1:F'+(hlr<2?2:hlr); wH['!cols']=[{wch:22},{wch:12},{wch:14},{wch:10},{wch:18},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,wH,'Hiring');
+  const hB='Hiring!$B$3:$B$'+hlr, hC='Hiring!$C$3:$C$'+hlr, hD='Hiring!$D$3:$D$'+hlr;
+  // ===== MONTHLY MODEL SHEETS =====
+  [{name:'Base',gM:1,cM:1},{name:'Conservative',gM:0.7,cM:1.3},{name:'Aggressive',gM:1.3,cM:0.7}].forEach(function(sc){
+    const ws={};
+    ['Month','Year','Growth Rate','Churn Rate','MRR','Revenue','ARR','COGS','Gross Profit','Headcount','Salary Expense','Marketing','Tools','Rent','Legal','Other','Total OpEx','EBITDA','D&A','EBT','Tax','Net Income','Funding In','CapEx','PPE','AR','AR Change','AP','AP Change','CF Operations','CF Investing','CF Financing','Net Cash Flow','Cash Balance','Equity','Retained Earnings','Total Assets','Total Liabilities','Total Equity'].forEach(function(l,i){sv(ws,0,i+1,l);});
+    for(let m=1;m<=60;m++){
+      const c=m, col=CL(c), p=m>1?CL(c-1):null;
+      const gSuf=sc.gM!==1?'*'+sc.gM:'', cSuf=sc.cM!==1?'*'+sc.cM:'';
+      sv(ws,c,1,m);
+      sf(ws,c,2,'INT(('+col+'1-1)/12)+1');
+      sf(ws,c,3,'CHOOSE('+col+'2,Assumptions!$B$3,Assumptions!$B$4,Assumptions!$B$5,Assumptions!$B$6,Assumptions!$B$7)/100'+gSuf,P);
+      sf(ws,c,4,'Assumptions!$B$8/100'+cSuf,P);
+      if(m===1) sf(ws,c,5,'Assumptions!$B$2*1000',N); else sf(ws,c,5,p+'5*(1-'+p+'4+Assumptions!$B$9/100+'+p+'3)',N);
+      sf(ws,c,6,col+'5',N);
+      sf(ws,c,7,col+'5*12',N);
+      sf(ws,c,8,col+'6*(1-Assumptions!$B$10/100)',N);
+      sf(ws,c,9,col+'6-'+col+'8',N);
+      if(hc>0) sf(ws,c,10,'COUNTIF('+hB+',"<="&'+col+'1)'); else sv(ws,c,10,0);
+      if(hc>0) sf(ws,c,11,'SUMPRODUCT(('+hB+'<='+col+'1)*'+hC+'*1000*(1+'+hD+'/100))*(1+Assumptions!$B$26/100)^('+col+'2-1)',N); else sv(ws,c,11,0,N);
+      sf(ws,c,12,col+'6*Assumptions!$B$11/100',N);
+      sf(ws,c,13,'Assumptions!$B$12*1000*(1+('+col+'2-1)*0.15)',N);
+      sf(ws,c,14,'Assumptions!$B$13*1000*(1+('+col+'2-1)*0.1)',N);
+      sf(ws,c,15,'Assumptions!$B$14*1000',N);
+      sf(ws,c,16,'Assumptions!$B$15*1000*(1+('+col+'2-1)*0.1)',N);
+      sf(ws,c,17,'SUM('+col+'11:'+col+'16)',N);
+      sf(ws,c,18,col+'9-'+col+'17',N);
+      if(m===1) sv(ws,c,19,0,N); else sf(ws,c,19,p+'25*Assumptions!$B$24/100/12',N);
+      sf(ws,c,20,col+'18-'+col+'19',N);
+      sf(ws,c,21,'MAX(0,'+col+'20*Assumptions!$B$22/100)',N);
+      sf(ws,c,22,col+'20-'+col+'21',N);
+      sf(ws,c,23,'IF('+col+'1=Assumptions!$B$16,Assumptions!$B$17*1000,0)+IF('+col+'1=Assumptions!$B$18,Assumptions!$B$19*1000,0)',N);
+      sf(ws,c,24,'Assumptions!$B$23*(1+('+col+'2-1)*0.3)*1000/12',N);
+      if(m===1) sf(ws,c,25,col+'24-'+col+'19',N); else sf(ws,c,25,p+'25+'+col+'24-'+col+'19',N);
+      sf(ws,c,26,col+'6*Assumptions!$B$20/30',N);
+      if(m===1) sf(ws,c,27,col+'26',N); else sf(ws,c,27,col+'26-'+p+'26',N);
+      sf(ws,c,28,'('+col+'8+'+col+'17)*Assumptions!$B$21/30',N);
+      if(m===1) sf(ws,c,29,col+'28',N); else sf(ws,c,29,col+'28-'+p+'28',N);
+      sf(ws,c,30,col+'22+'+col+'19-'+col+'27+'+col+'29',N);
+      sf(ws,c,31,'-'+col+'24',N);
+      sf(ws,c,32,col+'23',N);
+      sf(ws,c,33,col+'30+'+col+'31+'+col+'32',N);
+      if(m===1) sf(ws,c,34,'Assumptions!$B$25*1000+'+col+'33',N); else sf(ws,c,34,p+'34+'+col+'33',N);
+      if(m===1) sf(ws,c,35,col+'23',N); else sf(ws,c,35,p+'35+'+col+'23',N);
+      if(m===1) sf(ws,c,36,col+'22',N); else sf(ws,c,36,p+'36+'+col+'22',N);
+      sf(ws,c,37,'MAX('+col+'34,0)+'+col+'26+MAX('+col+'25,0)',N);
+      sf(ws,c,38,col+'28',N);
+      sf(ws,c,39,col+'35+'+col+'36',N);
+    }
+    const cols=[{wch:18}]; for(let i=0;i<60;i++) cols.push({wch:13});
+    ws['!ref']='A1:'+CL(60)+'39'; ws['!cols']=cols;
+    XLSX.utils.book_append_sheet(wb,ws,sc.name);
   });
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(pD), "Monthly P&L (Base)");
-  const scH = ["", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5"];
-  const ba = annualise(model),
-    ca = annualise(conModel),
-    aa = annualise(aggModel);
-  const scR = [scH, ["BASE CASE"], ["Revenue", ...ba.map(y => Math.round(y.revenue))], ["EBITDA", ...ba.map(y => Math.round(y.ebitda))], ["Cash", ...ba.map(y => Math.round(y.endCash))], [""], ["CONSERVATIVE"], ["Revenue", ...ca.map(y => Math.round(y.revenue))], ["EBITDA", ...ca.map(y => Math.round(y.ebitda))], ["Cash", ...ca.map(y => Math.round(y.endCash))], [""], ["AGGRESSIVE"], ["Revenue", ...aa.map(y => Math.round(y.revenue))], ["EBITDA", ...aa.map(y => Math.round(y.ebitda))], ["Cash", ...aa.map(y => Math.round(y.endCash))]];
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(scR), "Scenario Comparison");
-  const hR = [["HIRING PLAN"], ["Role", "Start Month", "Salary ($K/mo)", "Burden %", "Fully Loaded ($K/mo)", "Annual Cost ($K)"], ...hires.map(h => [h.role, h.month, h.salary, h.burden, Math.round(h.salary * (1 + h.burden / 100) * 10) / 10, Math.round(h.salary * (1 + h.burden / 100) * 12)])];
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(hR), "Hiring Plan");
-  XLSX.writeFile(wb, "Raise_Ready_5Year_Model_Pro.xlsx");
+  // ===== ANNUAL SUMMARY =====
+  const wS={};
+  sv(wS,0,1,'ANNUAL SUMMARY');
+  for(let y=0;y<5;y++) sv(wS,y+1,1,'Year '+(y+1));
+  const yS=[1,13,25,37,49], yE=[12,24,36,48,60];
+  let sr=3;
+  ['Base','Conservative','Aggressive'].forEach(function(sh,si){
+    sv(wS,0,sr,['BASE CASE','CONSERVATIVE','AGGRESSIVE'][si]); sr++;
+    const revR=sr;
+    sv(wS,0,sr,'Revenue'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'6:'+CL(yE[y])+'6)',N); sr++;
+    const gpR=sr;
+    sv(wS,0,sr,'Gross Profit'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'9:'+CL(yE[y])+'9)',N); sr++;
+    const ebR=sr;
+    sv(wS,0,sr,'EBITDA'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'18:'+CL(yE[y])+'18)',N); sr++;
+    sv(wS,0,sr,'Net Income'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'22:'+CL(yE[y])+'22)',N); sr++;
+    sv(wS,0,sr,'End Cash'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'34',N); sr++;
+    sv(wS,0,sr,'End ARR'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'7',N); sr++;
+    sv(wS,0,sr,'Headcount'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'10'); sr++;
+    sv(wS,0,sr,'GP %'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+gpR+'/'+CL(y+1)+revR+',0)',P); sr++;
+    sv(wS,0,sr,'EBITDA %'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+ebR+'/'+CL(y+1)+revR+',0)',P); sr++;
+    sr++;
+  });
+  wS['!ref']='A1:F'+(sr-1); wS['!cols']=[{wch:18},{wch:14},{wch:14},{wch:14},{wch:14},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,wS,'Annual Summary');
+  // ===== UNIT ECONOMICS =====
+  const wU={};
+  sv(wU,0,1,'UNIT ECONOMICS');
+  sv(wU,0,3,'CAC ($)'); sf(wU,1,3,'IF(Assumptions!B28>0,Assumptions!B27*1000/Assumptions!B28,0)',N);
+  sv(wU,0,4,'Avg Customer Life (months)'); sf(wU,1,4,'IF(Assumptions!B8>0,1/(Assumptions!B8/100),999)','#,##0.0');
+  sv(wU,0,5,'LTV ($)'); sf(wU,1,5,'Assumptions!B29*(Assumptions!B10/100)*B4',N);
+  sv(wU,0,6,'LTV:CAC'); sf(wU,1,6,'IF(B3>0,B5/B3,0)','0.0"x"');
+  sv(wU,0,7,'Payback (months)'); sf(wU,1,7,'IF(Assumptions!B29*Assumptions!B10/100>0,B3/(Assumptions!B29*Assumptions!B10/100),0)','0.0');
+  sv(wU,0,8,'NRR (%)'); sf(wU,1,8,'100-Assumptions!B8+Assumptions!B9','0.0');
+  sv(wU,0,10,'Built by Raise Ready | raisereadybook.com');
+  wU['!ref']='A1:B10'; wU['!cols']=[{wch:28},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,wU,'Unit Economics');
+  XLSX.writeFile(wb,'Raise_Ready_5Year_Model_Pro.xlsx');
 }
-async function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario) {
-  if (!window.isPurchased()) {
-    window.showExportGate();
-    return;
+async function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab) {
+  if (!window.isPurchased()) { window.showExportGate(); return; }
+  try { await ensureJsPDF(); await ensureH2C(); } catch(e) { alert('Failed to load PDF libraries. Please refresh and try again.'); return; }
+  const tabIds = ['assumptions','hiring','unit','pnl','cashflow','summary'];
+  const tabNames = ['Assumptions','Hiring Plan','Unit Economics','Monthly P&L','Cash & Balance Sheet','Board Report'];
+  const container = document.getElementById('fm-app');
+  if (!container) { alert('Could not find model container.'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+  const pageW = doc.internal.pageSize.getWidth(), pageH = doc.internal.pageSize.getHeight();
+  const margin = 8;
+  function waitFrame() { return new Promise(function(r) { requestAnimationFrame(function() { requestAnimationFrame(r); }); }); }
+  for (let i = 0; i < tabIds.length; i++) {
+    setTab(tabIds[i]);
+    await waitFrame();
+    await new Promise(function(r) { setTimeout(r, 300); });
+    try {
+      const canvas = await html2canvas(container, { scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false });
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      if (i > 0) doc.addPage();
+      doc.setFontSize(10);
+      doc.setTextColor(100);
+      doc.text(tabNames[i] + ' | ' + SCENARIOS[scenario].label + ' | ' + new Date().toLocaleDateString(), margin, 6);
+      const imgW = pageW - margin * 2;
+      const imgH = (canvas.height / canvas.width) * imgW;
+      const fitH = Math.min(imgH, pageH - margin - 10);
+      doc.addImage(imgData, 'JPEG', margin, 10, imgW, fitH);
+      doc.setFontSize(7);
+      doc.setTextColor(150);
+      doc.text('Built by Raise Ready | raisereadybook.com', pageW - margin, pageH - 3, { align: 'right' });
+    } catch(e) { console.error('PDF capture error for tab ' + tabIds[i] + ':', e); }
   }
-  try { await ensureJsPDF(); } catch(e) { alert('Failed to load PDF library. Please refresh and try again.'); return; }
-  const {
-    jsPDF
-  } = window.jspdf;
-  const doc = new jsPDF();
-  doc.setFontSize(18);
-  doc.text("Raise Ready - 5 Year Financial Model", 14, 20);
-  doc.setFontSize(10);
-  doc.text(`Scenario: ${SCENARIOS[scenario].label} | Generated: ${new Date().toLocaleDateString()}`, 14, 28);
-  let y = 38;
-  doc.setFontSize(12);
-  doc.text("Annual Summary", 14, y);
-  y += 8;
-  doc.setFontSize(9);
-  const headers = ["", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5"];
-  const rows = [["Revenue", ...annual.map(a => money(a.revenue))], ["EBITDA", ...annual.map(a => money(a.ebitda))], ["Net Income", ...annual.map(a => money(a.netIncome))], ["End Cash", ...annual.map(a => money(a.endCash))], ["End ARR", ...annual.map(a => money(a.endARR))], ["Team", ...annual.map(a => String(a.headcount))]];
-  headers.forEach((h, i) => doc.text(h, 14 + i * 30, y));
-  y += 5;
-  rows.forEach(row => {
-    row.forEach((cell, i) => doc.text(cell, 14 + i * 30, y));
-    y += 5;
-  });
-  y += 8;
-  doc.setFontSize(12);
-  doc.text("Unit Economics", 14, y);
-  y += 8;
-  doc.setFontSize(9);
-  [["CAC", money(unitEcon.cac)], ["LTV", money(unitEcon.ltv)], ["LTV:CAC", unitEcon.ratio.toFixed(1) + "x"], ["Payback", unitEcon.payback.toFixed(0) + " months"], ["NRR", unitEcon.nrr.toFixed(0) + "%"]].forEach(([l, v]) => {
-    doc.text(l + ": " + v, 14, y);
-    y += 5;
-  });
-  y += 8;
-  doc.setFontSize(12);
-  doc.text("Key Metrics", 14, y);
-  y += 8;
-  doc.setFontSize(9);
-  const breakeven = activeModel.findIndex(m => m.ebitda >= 0);
-  const runout = activeModel.findIndex(m => m.cashBal <= 0);
-  doc.text("Breakeven: " + (breakeven >= 0 ? "Month " + (breakeven + 1) : "N/A"), 14, y);
-  y += 5;
-  doc.text("Runway: " + (runout > 0 ? runout + " months" : "60+ months"), 14, y);
-  y += 5;
-  doc.text("Y5 ARR: " + money(activeModel[59]?.arr || 0), 14, y);
-  y += 5;
-  doc.text("Y5 Cash: " + money(activeModel[59]?.cashBal || 0), 14, y);
-  y += 10;
-  doc.setFontSize(8);
-  doc.text("Built by Raise Ready | raisereadybook.com", 14, 285);
-  doc.save("Raise_Ready_5Year_Model_Pro.pdf");
+  setTab(currentTab);
+  doc.save('Raise_Ready_5Year_Model_Pro.pdf');
 }
 function FinancialModel() {
   const [tab, setTab] = useState("assumptions");
@@ -850,6 +1078,10 @@ function FinancialModel() {
       window.localStorage?.removeItem?.("rr_hires");
     } catch {}
   }, []);
+  // Expose getters/setters for account system
+  window._fmGetAssumptions = function() { return a; };
+  window._fmGetHires = function() { return hires; };
+  window._fmLoadModel = function(assumptions, hiresData) { if (assumptions) setA(assumptions); if (hiresData) setHires(hiresData); };
   const model = useMemo(() => runModel(a, hires, "base"), [a, hires]);
   const conModel = useMemo(() => runModel(a, hires, "conservative"), [a, hires]);
   const aggModel = useMemo(() => runModel(a, hires, "aggressive"), [a, hires]);
@@ -1007,7 +1239,7 @@ function FinancialModel() {
       cursor: "pointer"
     }
   }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario),
+    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
       background: C.purple,
       color: "white",
@@ -1041,7 +1273,19 @@ function FinancialModel() {
       fontSize: 9,
       cursor: "pointer"
     }
-  }, "Reset"))), /*#__PURE__*/React.createElement("div", {
+  }, "Reset"), purchased && /*#__PURE__*/React.createElement("button", {
+    onClick: () => window.showAccountModal(),
+    style: {
+      background: C.gold,
+      color: C.navy,
+      border: "none",
+      padding: "5px 10px",
+      borderRadius: 5,
+      fontSize: 9,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, "\u{1F464} Account"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 2,
@@ -2566,7 +2810,7 @@ function FinancialModel() {
       cursor: "pointer"
     }
   }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario),
+    onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
       background: C.purple,
       color: "white",
