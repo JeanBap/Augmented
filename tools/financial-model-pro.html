@@ -784,113 +784,195 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   const N = '$#,##0;($#,##0);"-"', P = '0.0%', NP = '#,##0';
   const hc = hires.length, hlr = 2 + hc;
   function CL(i) { let s='',n=i+1; while(n>0){n--;s=String.fromCharCode(65+n%26)+s;n=Math.floor(n/26);}return s; }
-  function sv(ws,c,r,v,z) { const ref=CL(c)+r; ws[ref]={t:typeof v==='string'?'s':'n',v:v}; if(z)ws[ref].z=z; }
-  function sf(ws,c,r,f,z) { const ref=CL(c)+r; ws[ref]={t:'n',f:f}; if(z)ws[ref].z=z; }
+  // Style definitions
+  const NAVY = '1B2A4A', MED_NAVY = '2C3E6B', LIGHT_BG = 'F8F9FA', WHITE = 'FFFFFF', BLUE_INP = '0000FF', BLACK = '000000', GOLD = 'C4980A', LIGHT_GREEN = 'E8F5E9', LIGHT_RED = 'FFF3F0', LIGHT_BLUE = 'EBF5FB', BORDER_CLR = 'BFC9D9';
+  const bdr = {style:'thin',color:{rgb:BORDER_CLR}};
+  const borders = {top:bdr,bottom:bdr,left:bdr,right:bdr};
+  const font = function(opts) { return Object.assign({name:'Arial',sz:10,color:{rgb:BLACK}},opts||{}); };
+  const titleStyle = {font:font({sz:13,bold:true,color:{rgb:WHITE}}),fill:{fgColor:{rgb:NAVY}},alignment:{horizontal:'left',vertical:'center'},border:borders};
+  const headerStyle = {font:font({sz:10,bold:true,color:{rgb:WHITE}}),fill:{fgColor:{rgb:MED_NAVY}},alignment:{horizontal:'center',vertical:'center'},border:borders};
+  const labelStyle = {font:font({bold:true}),fill:{fgColor:{rgb:LIGHT_BG}},border:borders,alignment:{vertical:'center'}};
+  const inputStyle = {font:font({color:{rgb:BLUE_INP}}),border:borders,alignment:{horizontal:'right',vertical:'center'}};
+  const formulaStyle = {font:font(),border:borders,alignment:{horizontal:'right',vertical:'center'}};
+  const sectionStyle = {font:font({sz:10,bold:true,color:{rgb:NAVY}}),fill:{fgColor:{rgb:'E8ECF4'}},border:borders,alignment:{vertical:'center'}};
+  const footerStyle = {font:font({sz:8,italic:true,color:{rgb:'888888'}}),alignment:{vertical:'center'}};
+  function sv(ws,c,r,v,z,s) { const ref=CL(c)+r; ws[ref]={t:typeof v==='string'?'s':'n',v:v}; if(z)ws[ref].z=z; if(s)ws[ref].s=s; }
+  function sf(ws,c,r,f,z,s) { const ref=CL(c)+r; ws[ref]={t:'n',f:f}; if(z)ws[ref].z=z; if(s)ws[ref].s=s||formulaStyle; }
   // ===== ASSUMPTIONS =====
   const wA = {};
-  sv(wA,0,1,'RAISE READY - 5-YEAR FINANCIAL MODEL');
+  sv(wA,0,1,'RAISE READY - 5-YEAR FINANCIAL MODEL',null,titleStyle);
+  sv(wA,1,1,'',null,titleStyle);
+  wA['!merges']=[{s:{r:0,c:0},e:{r:0,c:1}}];
   const aL=['Starting MRR ($K/mo)','Y1 MoM Growth (%)','Y2 MoM Growth (%)','Y3 MoM Growth (%)','Y4 MoM Growth (%)','Y5 MoM Growth (%)','Monthly Churn (%)','Expansion Rate (%)','Gross Margin (%)','Marketing (% of Rev)','Tools Base ($K/mo)','Rent Base ($K/mo)','Legal Base ($K/mo)','Other Base ($K/mo)','Funding Round 1 Month','Funding Round 1 ($K)','Funding Round 2 Month','Funding Round 2 ($K)','DSO (days)','DPO (days)','Tax Rate (%)','CapEx Y1 ($K/yr)','Depreciation (%/yr)','Starting Cash ($K)','Wage Inflation (%/yr)','CAC Spend ($K)','New Customers','ARPC ($)'];
   const aV=[a.startMRR,a.mrrGrowthY1,a.mrrGrowthY2,a.mrrGrowthY3,a.mrrGrowthY4,a.mrrGrowthY5,a.churn,a.expansion,a.grossMargin,a.marketingPct,a.toolsBase,a.rentBase,a.legalBase,a.otherBase,a.fundingM,a.fundingAmt,a.fundingM2,a.fundingAmt2,a.dso,a.dpo,a.taxRate,a.capexY1,a.depreciation,a.startCash,a.wageInflation,a.cacSpend,a.newCust,a.arpc];
-  // Format map: indices where values are percentages, plain numbers, or currency
   const aFmt=[N,P,P,P,P,P,P,P,P,P,N,N,N,N,NP,N,NP,N,NP,NP,P,N,P,N,P,N,NP,N];
-  for(let i=0;i<aL.length;i++){sv(wA,0,i+2,aL[i]);sv(wA,1,i+2,aV[i],aFmt[i]);}
-  sv(wA,0,31,'Built by Raise Ready | raisereadybook.com');
-  wA['!ref']='A1:B31'; wA['!cols']=[{wch:28},{wch:14}];
+  // Section grouping for assumptions: Revenue(0), Costs(9-13), Funding(14-17), Working Capital(18-19), Tax/CapEx(20-22), Cash(23), Wage(24), Unit Econ(25-27)
+  const aSections = {0:'REVENUE',6:'RETENTION',9:'OPERATING COSTS',14:'FUNDING',18:'WORKING CAPITAL',20:'TAX & DEPRECIATION',23:'STARTING POSITION',25:'UNIT ECONOMICS'};
+  let aRow = 2;
+  for(let i=0;i<aL.length;i++){
+    if(aSections[i]) { sv(wA,0,aRow,aSections[i],null,sectionStyle); sv(wA,1,aRow,'',null,sectionStyle); aRow++; }
+    const rowBg = i%2===0 ? WHITE : LIGHT_BG;
+    const lbl = {font:font(),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{vertical:'center'}};
+    const inp = {font:font({color:{rgb:BLUE_INP}}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
+    sv(wA,0,aRow,aL[i],null,lbl);
+    sv(wA,1,aRow,aV[i],aFmt[i],inp);
+    aRow++;
+  }
+  aRow++;
+  sv(wA,0,aRow,'Built by Raise Ready | raisereadybook.com',null,footerStyle);
+  wA['!ref']='A1:B'+aRow; wA['!cols']=[{wch:30},{wch:16}];
+  wA['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wA,'Assumptions');
   // ===== HIRING =====
   const wH = {};
-  sv(wH,0,1,'HIRING PLAN');
-  ['Role','Start Month','Salary ($K/mo)','Burden (%)','Fully Loaded ($K/mo)','Annual Cost ($K)'].forEach(function(h,i){sv(wH,i,2,h);});
-  hires.forEach(function(h,i){ const r=i+3; sv(wH,0,r,h.role); sv(wH,1,r,h.month,NP); sv(wH,2,r,h.salary,N); sv(wH,3,r,h.burden,P); sf(wH,4,r,'C'+r+'*(1+D'+r+'/100)',N); sf(wH,5,r,'E'+r+'*12',N); });
-  wH['!ref']='A1:F'+(hlr<2?2:hlr); wH['!cols']=[{wch:22},{wch:12},{wch:14},{wch:10},{wch:18},{wch:14}];
+  sv(wH,0,1,'HIRING PLAN',null,titleStyle);
+  for(let i=1;i<6;i++) sv(wH,i,1,'',null,titleStyle);
+  wH['!merges']=[{s:{r:0,c:0},e:{r:0,c:5}}];
+  ['Role','Start Month','Salary ($K/mo)','Burden (%)','Fully Loaded ($K/mo)','Annual Cost ($K)'].forEach(function(h,i){sv(wH,i,2,h,null,headerStyle);});
+  hires.forEach(function(h,i){
+    const r=i+3;
+    const rowBg = i%2===0 ? WHITE : LIGHT_BG;
+    const ds = {font:font(),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{vertical:'center'}};
+    const di = {font:font({color:{rgb:BLUE_INP}}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
+    const df = {font:font(),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
+    sv(wH,0,r,h.role,null,ds); sv(wH,1,r,h.month,NP,di); sv(wH,2,r,h.salary,N,di); sv(wH,3,r,h.burden,P,di);
+    sf(wH,4,r,'C'+r+'*(1+D'+r+'/100)',N,df); sf(wH,5,r,'E'+r+'*12',N,df);
+  });
+  wH['!ref']='A1:F'+(hlr<2?2:hlr); wH['!cols']=[{wch:24},{wch:14},{wch:16},{wch:12},{wch:20},{wch:16}];
+  wH['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wH,'Hiring');
   const hB='Hiring!$B$3:$B$'+hlr, hC='Hiring!$C$3:$C$'+hlr, hD='Hiring!$D$3:$D$'+hlr;
   // ===== MONTHLY MODEL SHEETS =====
+  const rowLabels = ['Month','Year','Growth Rate','Churn Rate','MRR','Revenue','ARR','COGS','Gross Profit','Headcount','Salary Expense','Marketing','Tools','Rent','Legal','Other','Total OpEx','EBITDA','D&A','EBT','Tax','Net Income','Funding In','CapEx','PPE','AR','AR Change','AP','AP Change','CF Operations','CF Investing','CF Financing','Net Cash Flow','Cash Balance','Equity','Retained Earnings','Total Assets','Total Liabilities','Total Equity'];
+  const totalRows = new Set([9,17,18,22,33,34,37,39]);
+  const sectionHeaderRows = {1:'TIMING',3:'REVENUE',8:'COST STRUCTURE',17:'PROFITABILITY',23:'CAPITAL',26:'WORKING CAPITAL',30:'CASH FLOW',35:'BALANCE SHEET'};
+  const sectionBgMap = {3:LIGHT_GREEN,4:LIGHT_GREEN,5:LIGHT_GREEN,6:LIGHT_GREEN,7:LIGHT_GREEN,8:LIGHT_RED,9:LIGHT_RED,10:LIGHT_RED,11:LIGHT_RED,12:LIGHT_RED,13:LIGHT_RED,14:LIGHT_RED,15:LIGHT_RED,16:LIGHT_RED,17:LIGHT_RED,30:LIGHT_BLUE,31:LIGHT_BLUE,32:LIGHT_BLUE,33:LIGHT_BLUE,34:LIGHT_BLUE};
   [{name:'Base',gM:1,cM:1},{name:'Conservative',gM:0.7,cM:1.3},{name:'Aggressive',gM:1.3,cM:0.7}].forEach(function(sc){
     const ws={};
-    ['Month','Year','Growth Rate','Churn Rate','MRR','Revenue','ARR','COGS','Gross Profit','Headcount','Salary Expense','Marketing','Tools','Rent','Legal','Other','Total OpEx','EBITDA','D&A','EBT','Tax','Net Income','Funding In','CapEx','PPE','AR','AR Change','AP','AP Change','CF Operations','CF Investing','CF Financing','Net Cash Flow','Cash Balance','Equity','Retained Earnings','Total Assets','Total Liabilities','Total Equity'].forEach(function(l,i){sv(ws,0,i+1,l);});
+    rowLabels.forEach(function(l,i){
+      const rn = i+1;
+      const isTotal = totalRows.has(rn);
+      const bg = sectionBgMap[rn] || LIGHT_BG;
+      const st = {font:font({bold:isTotal}),fill:{fgColor:{rgb:bg}},border:borders,alignment:{vertical:'center'}};
+      sv(ws,0,rn,l,null,st);
+    });
     for(let m=1;m<=60;m++){
       const c=m, col=CL(c), p=m>1?CL(c-1):null;
       const gSuf=sc.gM!==1?'*'+sc.gM:'', cSuf=sc.cM!==1?'*'+sc.cM:'';
-      sv(ws,c,1,m);
-      sf(ws,c,2,'INT(('+col+'1-1)/12)+1');
-      sf(ws,c,3,'CHOOSE('+col+'2,Assumptions!$B$3,Assumptions!$B$4,Assumptions!$B$5,Assumptions!$B$6,Assumptions!$B$7)/100'+gSuf,P);
-      sf(ws,c,4,'Assumptions!$B$8/100'+cSuf,P);
-      if(m===1) sf(ws,c,5,'Assumptions!$B$2*1000',N); else sf(ws,c,5,p+'5*(1-'+p+'4+Assumptions!$B$9/100+'+p+'3)',N);
-      sf(ws,c,6,col+'5',N);
-      sf(ws,c,7,col+'5*12',N);
-      sf(ws,c,8,col+'6*(1-Assumptions!$B$10/100)',N);
-      sf(ws,c,9,col+'6-'+col+'8',N);
-      if(hc>0) sf(ws,c,10,'COUNTIF('+hB+',"<="&'+col+'1)',NP); else sv(ws,c,10,0,NP);
-      if(hc>0) sf(ws,c,11,'SUMPRODUCT(('+hB+'<='+col+'1)*'+hC+'*1000*(1+'+hD+'/100))*(1+Assumptions!$B$26/100)^('+col+'2-1)',N); else sv(ws,c,11,0,N);
-      sf(ws,c,12,col+'6*Assumptions!$B$11/100',N);
-      sf(ws,c,13,'Assumptions!$B$12*1000*(1+('+col+'2-1)*0.15)',N);
-      sf(ws,c,14,'Assumptions!$B$13*1000*(1+('+col+'2-1)*0.1)',N);
-      sf(ws,c,15,'Assumptions!$B$14*1000',N);
-      sf(ws,c,16,'Assumptions!$B$15*1000*(1+('+col+'2-1)*0.1)',N);
-      sf(ws,c,17,'SUM('+col+'11:'+col+'16)',N);
-      sf(ws,c,18,col+'9-'+col+'17',N);
-      if(m===1) sv(ws,c,19,0,N); else sf(ws,c,19,p+'25*Assumptions!$B$24/100/12',N);
-      sf(ws,c,20,col+'18-'+col+'19',N);
-      sf(ws,c,21,'MAX(0,'+col+'20*Assumptions!$B$22/100)',N);
-      sf(ws,c,22,col+'20-'+col+'21',N);
-      sf(ws,c,23,'IF('+col+'1=Assumptions!$B$16,Assumptions!$B$17*1000,0)+IF('+col+'1=Assumptions!$B$18,Assumptions!$B$19*1000,0)',N);
-      sf(ws,c,24,'Assumptions!$B$23*(1+('+col+'2-1)*0.3)*1000/12',N);
-      if(m===1) sf(ws,c,25,col+'24-'+col+'19',N); else sf(ws,c,25,p+'25+'+col+'24-'+col+'19',N);
-      sf(ws,c,26,col+'6*Assumptions!$B$20/30',N);
-      if(m===1) sf(ws,c,27,col+'26',N); else sf(ws,c,27,col+'26-'+p+'26',N);
-      sf(ws,c,28,'('+col+'8+'+col+'17)*Assumptions!$B$21/30',N);
-      if(m===1) sf(ws,c,29,col+'28',N); else sf(ws,c,29,col+'28-'+p+'28',N);
-      sf(ws,c,30,col+'22+'+col+'19-'+col+'27+'+col+'29',N);
-      sf(ws,c,31,'-'+col+'24',N);
-      sf(ws,c,32,col+'23',N);
-      sf(ws,c,33,col+'30+'+col+'31+'+col+'32',N);
-      if(m===1) sf(ws,c,34,'Assumptions!$B$25*1000+'+col+'33',N); else sf(ws,c,34,p+'34+'+col+'33',N);
-      if(m===1) sf(ws,c,35,col+'23',N); else sf(ws,c,35,p+'35+'+col+'23',N);
-      if(m===1) sf(ws,c,36,col+'22',N); else sf(ws,c,36,p+'36+'+col+'22',N);
-      sf(ws,c,37,'MAX('+col+'34,0)+'+col+'26+MAX('+col+'25,0)',N);
-      sf(ws,c,38,col+'28',N);
-      sf(ws,c,39,col+'35+'+col+'36',N);
+      const mHdr = {font:font({bold:true,color:{rgb:WHITE},sz:9}),fill:{fgColor:{rgb:MED_NAVY}},border:borders,alignment:{horizontal:'center',vertical:'center'}};
+      sv(ws,c,1,m,null,mHdr);
+      function cellS(rn) {
+        const isTotal = totalRows.has(rn);
+        const bg = sectionBgMap[rn] || WHITE;
+        return {font:font({bold:isTotal}),fill:{fgColor:{rgb:bg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
+      }
+      sf(ws,c,2,'INT(('+col+'1-1)/12)+1',null,cellS(2));
+      sf(ws,c,3,'CHOOSE('+col+'2,Assumptions!$B$3,Assumptions!$B$4,Assumptions!$B$5,Assumptions!$B$6,Assumptions!$B$7)/100'+gSuf,P,cellS(3));
+      sf(ws,c,4,'Assumptions!$B$8/100'+cSuf,P,cellS(4));
+      if(m===1) sf(ws,c,5,'Assumptions!$B$2*1000',N,cellS(5)); else sf(ws,c,5,p+'5*(1-'+p+'4+Assumptions!$B$9/100+'+p+'3)',N,cellS(5));
+      sf(ws,c,6,col+'5',N,cellS(6));
+      sf(ws,c,7,col+'5*12',N,cellS(7));
+      sf(ws,c,8,col+'6*(1-Assumptions!$B$10/100)',N,cellS(8));
+      sf(ws,c,9,col+'6-'+col+'8',N,cellS(9));
+      if(hc>0) sf(ws,c,10,'COUNTIF('+hB+',"<="&'+col+'1)',NP,cellS(10)); else sv(ws,c,10,0,NP,cellS(10));
+      if(hc>0) sf(ws,c,11,'SUMPRODUCT(('+hB+'<='+col+'1)*'+hC+'*1000*(1+'+hD+'/100))*(1+Assumptions!$B$26/100)^('+col+'2-1)',N,cellS(11)); else sv(ws,c,11,0,N,cellS(11));
+      sf(ws,c,12,col+'6*Assumptions!$B$11/100',N,cellS(12));
+      sf(ws,c,13,'Assumptions!$B$12*1000*(1+('+col+'2-1)*0.15)',N,cellS(13));
+      sf(ws,c,14,'Assumptions!$B$13*1000*(1+('+col+'2-1)*0.1)',N,cellS(14));
+      sf(ws,c,15,'Assumptions!$B$14*1000',N,cellS(15));
+      sf(ws,c,16,'Assumptions!$B$15*1000*(1+('+col+'2-1)*0.1)',N,cellS(16));
+      sf(ws,c,17,'SUM('+col+'11:'+col+'16)',N,cellS(17));
+      sf(ws,c,18,col+'9-'+col+'17',N,cellS(18));
+      if(m===1) sv(ws,c,19,0,N,cellS(19)); else sf(ws,c,19,p+'25*Assumptions!$B$24/100/12',N,cellS(19));
+      sf(ws,c,20,col+'18-'+col+'19',N,cellS(20));
+      sf(ws,c,21,'MAX(0,'+col+'20*Assumptions!$B$22/100)',N,cellS(21));
+      sf(ws,c,22,col+'20-'+col+'21',N,cellS(22));
+      sf(ws,c,23,'IF('+col+'1=Assumptions!$B$16,Assumptions!$B$17*1000,0)+IF('+col+'1=Assumptions!$B$18,Assumptions!$B$19*1000,0)',N,cellS(23));
+      sf(ws,c,24,'Assumptions!$B$23*(1+('+col+'2-1)*0.3)*1000/12',N,cellS(24));
+      if(m===1) sf(ws,c,25,col+'24-'+col+'19',N,cellS(25)); else sf(ws,c,25,p+'25+'+col+'24-'+col+'19',N,cellS(25));
+      sf(ws,c,26,col+'6*Assumptions!$B$20/30',N,cellS(26));
+      if(m===1) sf(ws,c,27,col+'26',N,cellS(27)); else sf(ws,c,27,col+'26-'+p+'26',N,cellS(27));
+      sf(ws,c,28,'('+col+'8+'+col+'17)*Assumptions!$B$21/30',N,cellS(28));
+      if(m===1) sf(ws,c,29,col+'28',N,cellS(29)); else sf(ws,c,29,col+'28-'+p+'28',N,cellS(29));
+      sf(ws,c,30,col+'22+'+col+'19-'+col+'27+'+col+'29',N,cellS(30));
+      sf(ws,c,31,'-'+col+'24',N,cellS(31));
+      sf(ws,c,32,col+'23',N,cellS(32));
+      sf(ws,c,33,col+'30+'+col+'31+'+col+'32',N,cellS(33));
+      if(m===1) sf(ws,c,34,'Assumptions!$B$25*1000+'+col+'33',N,cellS(34)); else sf(ws,c,34,p+'34+'+col+'33',N,cellS(34));
+      if(m===1) sf(ws,c,35,col+'23',N,cellS(35)); else sf(ws,c,35,p+'35+'+col+'23',N,cellS(35));
+      if(m===1) sf(ws,c,36,col+'22',N,cellS(36)); else sf(ws,c,36,p+'36+'+col+'22',N,cellS(36));
+      sf(ws,c,37,'MAX('+col+'34,0)+'+col+'26+MAX('+col+'25,0)',N,cellS(37));
+      sf(ws,c,38,col+'28',N,cellS(38));
+      sf(ws,c,39,col+'35+'+col+'36',N,cellS(39));
     }
-    const cols=[{wch:18}]; for(let i=0;i<60;i++) cols.push({wch:13});
+    const cols=[{wch:20}]; for(let i=0;i<60;i++) cols.push({wch:13});
     ws['!ref']='A1:'+CL(60)+'39'; ws['!cols']=cols;
     XLSX.utils.book_append_sheet(wb,ws,sc.name);
   });
   // ===== ANNUAL SUMMARY =====
   const wS={};
-  sv(wS,0,1,'ANNUAL SUMMARY');
-  for(let y=0;y<5;y++) sv(wS,y+1,1,'Year '+(y+1));
+  sv(wS,0,1,'ANNUAL SUMMARY',null,titleStyle);
+  for(let y=0;y<5;y++) sv(wS,y+1,1,'Year '+(y+1),null,headerStyle);
+  wS['!merges']=[];
   const yS=[1,13,25,37,49], yE=[12,24,36,48,60];
   let sr=3;
   ['Base','Conservative','Aggressive'].forEach(function(sh,si){
-    sv(wS,0,sr,['BASE CASE','CONSERVATIVE','AGGRESSIVE'][si]); sr++;
+    const secHdr = {font:font({sz:10,bold:true,color:{rgb:WHITE}}),fill:{fgColor:{rgb:NAVY}},border:borders,alignment:{vertical:'center'}};
+    sv(wS,0,sr,['BASE CASE','CONSERVATIVE','AGGRESSIVE'][si],null,secHdr);
+    for(let y=0;y<5;y++) sv(wS,y+1,sr,'',null,secHdr);
+    sr++;
     const revR=sr;
-    sv(wS,0,sr,'Revenue'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'6:'+CL(yE[y])+'6)',N); sr++;
-    const gpR=sr;
-    sv(wS,0,sr,'Gross Profit'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'9:'+CL(yE[y])+'9)',N); sr++;
-    const ebR=sr;
-    sv(wS,0,sr,'EBITDA'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'18:'+CL(yE[y])+'18)',N); sr++;
-    sv(wS,0,sr,'Net Income'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'SUM('+sh+'!'+CL(yS[y])+'22:'+CL(yE[y])+'22)',N); sr++;
-    sv(wS,0,sr,'End Cash'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'34',N); sr++;
-    sv(wS,0,sr,'End ARR'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'7',N); sr++;
-    sv(wS,0,sr,'Headcount'); for(let y=0;y<5;y++) sf(wS,y+1,sr,sh+'!'+CL(yE[y])+'10',NP); sr++;
-    sv(wS,0,sr,'GP %'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+gpR+'/'+CL(y+1)+revR+',0)',P); sr++;
-    sv(wS,0,sr,'EBITDA %'); for(let y=0;y<5;y++) sf(wS,y+1,sr,'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+ebR+'/'+CL(y+1)+revR+',0)',P); sr++;
+    const metrics = ['Revenue','Gross Profit','EBITDA','Net Income','End Cash','End ARR','Headcount','GP %','EBITDA %'];
+    const metricFmts = [N,N,N,N,N,N,NP,P,P];
+    const metricFormulas = [
+      function(y){return 'SUM('+sh+'!'+CL(yS[y])+'6:'+CL(yE[y])+'6)';},
+      function(y){return 'SUM('+sh+'!'+CL(yS[y])+'9:'+CL(yE[y])+'9)';},
+      function(y){return 'SUM('+sh+'!'+CL(yS[y])+'18:'+CL(yE[y])+'18)';},
+      function(y){return 'SUM('+sh+'!'+CL(yS[y])+'22:'+CL(yE[y])+'22)';},
+      function(y){return sh+'!'+CL(yE[y])+'34';},
+      function(y){return sh+'!'+CL(yE[y])+'7';},
+      function(y){return sh+'!'+CL(yE[y])+'10';},
+      function(y){return 'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+(revR+1)+'/'+CL(y+1)+revR+',0)';},
+      function(y){return 'IF('+CL(y+1)+revR+'>0,'+CL(y+1)+(revR+2)+'/'+CL(y+1)+revR+',0)';}
+    ];
+    metrics.forEach(function(m,mi){
+      const isBold = mi===2||mi===3||mi===4;
+      const rowBg = mi%2===0 ? WHITE : LIGHT_BG;
+      const ls = {font:font({bold:isBold}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{vertical:'center'}};
+      const cs = {font:font({bold:isBold}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}};
+      sv(wS,0,sr,m,null,ls);
+      for(let y=0;y<5;y++) sf(wS,y+1,sr,metricFormulas[mi](y),metricFmts[mi],cs);
+      sr++;
+    });
     sr++;
   });
-  wS['!ref']='A1:F'+(sr-1); wS['!cols']=[{wch:18},{wch:14},{wch:14},{wch:14},{wch:14},{wch:14}];
+  wS['!ref']='A1:F'+(sr-1); wS['!cols']=[{wch:18},{wch:16},{wch:16},{wch:16},{wch:16},{wch:16}];
+  wS['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wS,'Annual Summary');
   // ===== UNIT ECONOMICS =====
   const wU={};
-  sv(wU,0,1,'UNIT ECONOMICS');
-  sv(wU,0,3,'CAC ($)'); sf(wU,1,3,'IF(Assumptions!B28>0,Assumptions!B27*1000/Assumptions!B28,0)',N);
-  sv(wU,0,4,'Avg Customer Life (months)'); sf(wU,1,4,'IF(Assumptions!B8>0,1/(Assumptions!B8/100),999)','#,##0.0');
-  sv(wU,0,5,'LTV ($)'); sf(wU,1,5,'Assumptions!B29*(Assumptions!B10/100)*B4',N);
-  sv(wU,0,6,'LTV:CAC'); sf(wU,1,6,'IF(B3>0,B5/B3,0)','0.0"x"');
-  sv(wU,0,7,'Payback (months)'); sf(wU,1,7,'IF(Assumptions!B29*Assumptions!B10/100>0,B3/(Assumptions!B29*Assumptions!B10/100),0)','0.0');
-  sv(wU,0,8,'NRR (%)'); sf(wU,1,8,'100-Assumptions!B8+Assumptions!B9','0.0');
-  sv(wU,0,10,'Built by Raise Ready | raisereadybook.com');
-  wU['!ref']='A1:B10'; wU['!cols']=[{wch:28},{wch:14}];
+  sv(wU,0,1,'UNIT ECONOMICS',null,titleStyle);
+  sv(wU,1,1,'',null,titleStyle);
+  wU['!merges']=[{s:{r:0,c:0},e:{r:0,c:1}}];
+  const ueMetrics = ['CAC ($)','Avg Customer Life (months)','LTV ($)','LTV:CAC','Payback (months)','NRR (%)'];
+  const ueFmts = [N,'#,##0.0',N,'0.0"x"','0.0','0.0'];
+  const ueFormulas = [
+    'IF(Assumptions!B28>0,Assumptions!B27*1000/Assumptions!B28,0)',
+    'IF(Assumptions!B8>0,1/(Assumptions!B8/100),999)',
+    'Assumptions!B29*(Assumptions!B10/100)*B4',
+    'IF(B3>0,B5/B3,0)',
+    'IF(Assumptions!B29*Assumptions!B10/100>0,B3/(Assumptions!B29*Assumptions!B10/100),0)',
+    '100-Assumptions!B8+Assumptions!B9'
+  ];
+  ueMetrics.forEach(function(m,i){
+    const r = i+3;
+    const rowBg = i%2===0 ? WHITE : LIGHT_BG;
+    sv(wU,0,r,m,null,{font:font({bold:true}),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{vertical:'center'}});
+    sf(wU,1,r,ueFormulas[i],ueFmts[i],{font:font(),fill:{fgColor:{rgb:rowBg}},border:borders,alignment:{horizontal:'right',vertical:'center'}});
+  });
+  sv(wU,0,10,'Built by Raise Ready | raisereadybook.com',null,footerStyle);
+  wU['!ref']='A1:B10'; wU['!cols']=[{wch:30},{wch:16}];
+  wU['!rows']=[{hpt:28}];
   XLSX.utils.book_append_sheet(wb,wU,'Unit Economics');
   XLSX.writeFile(wb,'Raise_Ready_5Year_Model_Pro.xlsx');
 }
