@@ -111,15 +111,30 @@
   </div>
 </div>
 
-<!-- Email Collection Modal (for purchased users before export) -->
-<div id="email-collect" class="export-overlay hidden">
-  <div class="export-modal">
-    <button class="export-close" onclick="closeEmailCollect()">&times;</button>
-    <h3>Enter your email</h3>
-    <p>We'll also email you a copy of the export for safekeeping.</p>
-    <input id="collect-email" class="export-input" type="email" placeholder="your@email.com" required>
-    <button class="export-btn" id="collect-submit">Download &amp; Email</button>
-    <div id="collect-error" class="export-error"></div>
+<!-- Post-Purchase Success Modal -->
+<div id="purchase-success" class="export-overlay hidden">
+  <div class="export-modal" style="max-width: 460px;">
+    <button class="export-close" onclick="document.getElementById('purchase-success').classList.add('hidden')">&times;</button>
+    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127881;</div>
+    <h3>You're all set!</h3>
+    <p id="success-msg" style="color: #333; margin-bottom: 1rem;">Your file is downloading now.</p>
+    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: left;">
+      <div style="font-size: 0.82rem; color: #166534; margin-bottom: 0.4rem;">&#10003; File downloading automatically</div>
+      <div style="font-size: 0.82rem; color: #166534; margin-bottom: 0.4rem;">&#10003; Purchase confirmation emailed to you</div>
+      <div style="font-size: 0.82rem; color: #166534;">&#10003; Unlimited exports unlocked forever</div>
+    </div>
+    <div id="success-redownload" style="margin-bottom: 1rem;">
+      <button class="export-btn" onclick="window._fmExcelExport && window._fmExcelExport()" style="margin-bottom: 0.5rem; background: #10B981;">&#128196; Download Excel</button>
+      <button class="export-btn" onclick="window._fmPdfExport && window._fmPdfExport()" style="background: #7C5CFC;">&#128196; Download PDF</button>
+    </div>
+    <div style="border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 0.5rem;">
+      <p style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Get fundraising tips &amp; model updates:</p>
+      <div style="display: flex; gap: 0.5rem;">
+        <input id="success-newsletter" class="export-input" type="email" placeholder="your@email.com" style="margin-bottom: 0; flex: 1;">
+        <button class="export-btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+      <div id="subscribe-msg" style="font-size: 0.75rem; color: #10B981; margin-top: 0.3rem; display: none;">Subscribed!</div>
+    </div>
   </div>
 </div>
 
@@ -176,56 +191,45 @@
 function isPurchased() {
   try { return localStorage.getItem('rr_fm_pro_purchased') === 'true'; } catch { return false; }
 }
-// Check URL for purchase success redirect
+// Check URL for purchase success redirect + auto-download
 (function checkPurchaseReturn() {
   var params = new URLSearchParams(window.location.search);
   if (params.get('purchased') === 'true') {
     try { localStorage.setItem('rr_fm_pro_purchased', 'true'); } catch(e) {}
     window.history.replaceState({}, '', window.location.pathname);
+    // Trigger auto-download after React renders
+    window._fmAutoExport = true;
   }
 })();
 
-function showExportGate() {
+function showExportGate(intent) {
+  try { localStorage.setItem('rr_fm_intent', intent || 'excel'); } catch(e) {}
   document.getElementById('export-gate').classList.remove('hidden');
 }
 function closeExportGate() {
   document.getElementById('export-gate').classList.add('hidden');
 }
-// Email collection for purchased users
-var _pendingExportCallback = null;
-function showEmailCollect(callback) {
-  _pendingExportCallback = callback;
-  document.getElementById('collect-email').value = '';
-  document.getElementById('collect-error').style.display = 'none';
-  document.getElementById('email-collect').classList.remove('hidden');
+function showPurchaseSuccess(type) {
+  var msgEl = document.getElementById('success-msg');
+  if (type === 'save') {
+    msgEl.textContent = 'Your model has been saved. You can now export and save anytime.';
+  } else if (type === 'pdf') {
+    msgEl.textContent = 'Your PDF is being generated. It will download automatically.';
+  } else {
+    msgEl.textContent = 'Your Excel file is downloading now.';
+  }
+  document.getElementById('purchase-success').classList.remove('hidden');
 }
-function closeEmailCollect() {
-  _pendingExportCallback = null;
-  document.getElementById('email-collect').classList.add('hidden');
+function subscribeNewsletter() {
+  var email = document.getElementById('success-newsletter').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+  fetch('/.netlify/functions/email-gate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tool: 'fm-pro-newsletter' })
+  }).catch(function() {});
+  document.getElementById('subscribe-msg').style.display = 'block';
 }
-document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('collect-submit');
-  if (btn) btn.addEventListener('click', async function() {
-    var email = document.getElementById('collect-email').value.trim();
-    var errEl = document.getElementById('collect-error');
-    errEl.style.display = 'none';
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errEl.textContent = 'Please enter a valid email.';
-      errEl.style.display = 'block';
-      return;
-    }
-    try {
-      fetch('/.netlify/functions/email-gate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, tool: 'fm-pro-export-download' })
-      }).catch(function() {});
-    } catch(e) {}
-    closeEmailCollect();
-    if (_pendingExportCallback) _pendingExportCallback();
-    _pendingExportCallback = null;
-  });
-});
 async function handleExportPurchase() {
   var email = document.getElementById('export-email').value.trim();
   var errEl = document.getElementById('export-error');
@@ -267,7 +271,8 @@ var Recharts = window._Recharts || window.Recharts;
 const {
   useState,
   useMemo,
-  useCallback
+  useCallback,
+  useEffect
 } = React;
 const {
   LineChart,
@@ -770,10 +775,8 @@ function buildSensitivity(a, hires, rowKey, colKey, rowRange, colRange) {
   }));
 }
 async function doExport(a, model, annual, hires, unitEcon, conModel, aggModel) {
-  if (!window.isPurchased()) { window.showExportGate(); return; }
-  return new Promise(function(resolve) {
-    window.showEmailCollect(async function() { await _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel); resolve(); });
-  });
+  if (!window.isPurchased()) { window.showExportGate('excel'); return; }
+  await _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel);
 }
 async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel) {
   try { await ensureXLSX(); } catch(e) { alert('Failed to load export library. Please refresh and try again.'); return; }
@@ -892,10 +895,8 @@ async function _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggMo
   XLSX.writeFile(wb,'Raise_Ready_5Year_Model_Pro.xlsx');
 }
 async function doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab) {
-  if (!window.isPurchased()) { window.showExportGate(); return; }
-  return new Promise(function(resolve) {
-    window.showEmailCollect(async function() { await _doPdfExportInner(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab); resolve(); });
-  });
+  if (!window.isPurchased()) { window.showExportGate('pdf'); return; }
+  await _doPdfExportInner(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab);
 }
 async function _doPdfExportInner(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, currentTab) {
   try { await ensureJsPDF(); await ensureH2C(); } catch(e) { alert('Failed to load PDF libraries. Please refresh and try again.'); return; }
@@ -1019,6 +1020,28 @@ function FinancialModel() {
       matrix: buildSensitivity(a, hires, "mrrGrowthY1", "churn", growths, churns)
     };
   }, [a, hires]);
+  // Auto-export after purchase return from Stripe
+  useEffect(() => {
+    if (!window._fmAutoExport) return;
+    window._fmAutoExport = false;
+    var intent = 'excel';
+    try { intent = localStorage.getItem('rr_fm_intent') || 'excel'; localStorage.removeItem('rr_fm_intent'); } catch(e) {}
+    setTimeout(async () => {
+      if (intent === 'pdf') {
+        await _doPdfExportInner(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab);
+        window.showPurchaseSuccess('pdf');
+      } else if (intent === 'save') {
+        saveLocal();
+        window.showPurchaseSuccess('save');
+      } else {
+        await _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel);
+        window.showPurchaseSuccess('excel');
+      }
+    }, 500);
+  }, []);
+  // Expose export functions for success modal buttons
+  window._fmExcelExport = () => _doExcelExport(a, model, annual, hires, unitEcon, conModel, aggModel);
+  window._fmPdfExport = () => _doPdfExportInner(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab);
   const qData = useMemo(() => {
     const qs = [];
     for (let q = 0; q < 20; q++) {
@@ -1149,7 +1172,7 @@ function FinancialModel() {
       cursor: "pointer"
     }
   }, purchased ? "Export PDF" : "Export PDF ($29)"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => purchased ? saveLocal() : window.showExportGate(),
+    onClick: () => purchased ? saveLocal() : window.showExportGate('save'),
     style: {
       background: C.teal,
       color: "white",
