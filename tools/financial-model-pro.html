@@ -102,6 +102,7 @@
     <ul class="export-features">
       <li>Excel workbook with live formulas (6 sheets, 3 scenarios)</li>
       <li>PDF export with charts from every tab</li>
+      <li>Save your model to browser</li>
       <li>Unlimited exports, forever</li>
     </ul>
     <input id="export-email" class="export-input" type="email" placeholder="your@email.com" required>
@@ -140,7 +141,7 @@
           <li style="padding: 0.3rem 0;">&#10003; Hiring plan builder</li>
           <li style="padding: 0.3rem 0;">&#10003; Unit economics & sensitivity</li>
           <li style="padding: 0.3rem 0;">&#10003; Board report with charts</li>
-          <li style="padding: 0.3rem 0;">&#10003; Save to browser (localStorage)</li>
+          <li style="padding: 0.3rem 0;">&#10003; Adjust all assumptions live</li>
         </ul>
       </div>
       <div style="background: rgba(200,164,90,0.08); border: 1px solid rgba(200,164,90,0.3); border-radius: 10px; padding: 1.5rem; text-align: left;">
@@ -152,6 +153,7 @@
           <li style="padding: 0.3rem 0;">&#10003; Everything in Free</li>
           <li style="padding: 0.3rem 0;">&#10003; Excel with live formulas (6 sheets)</li>
           <li style="padding: 0.3rem 0;">&#10003; PDF with charts from every tab</li>
+          <li style="padding: 0.3rem 0;">&#10003; Save your model to browser</li>
           <li style="padding: 0.3rem 0;">&#10003; Unlimited exports, forever</li>
           <li style="padding: 0.3rem 0;">&#10003; One-time payment</li>
         </ul>
@@ -1147,7 +1149,7 @@ function FinancialModel() {
       cursor: "pointer"
     }
   }, purchased ? "Export PDF" : "Export PDF ($29)"), /*#__PURE__*/React.createElement("button", {
-    onClick: saveLocal,
+    onClick: () => purchased ? saveLocal() : window.showExportGate(),
     style: {
       background: C.teal,
       color: "white",
@@ -1158,7 +1160,7 @@ function FinancialModel() {
       fontWeight: 600,
       cursor: "pointer"
     }
-  }, saved ? "\u2713 Saved" : "Save"), /*#__PURE__*/React.createElement("button", {
+  }, saved ? "\u2713 Saved" : purchased ? "Save" : "Save ($29)"), /*#__PURE__*/React.createElement("button", {
     onClick: resetAll,
     style: {
       background: "transparent",
@@ -2074,7 +2076,7 @@ function FinancialModel() {
       color: C.navy,
       marginBottom: 6
     }
-  }, "Sensitivity: Runway (months) by Growth vs Churn"), /*#__PURE__*/React.createElement("div", {
+  }, "Sensitivity: Y3 EBITDA ($K) by Growth vs Churn"), /*#__PURE__*/React.createElement("div", {
     style: {
       overflowX: "auto"
     }
@@ -2110,8 +2112,8 @@ function FinancialModel() {
       color: C.navy
     }
   }, sensitivity.growths[ri], "%"), row.map((cell, ci) => {
-    const r = cell.runway;
-    const bg = r >= 36 ? "#D1FAE5" : r >= 18 ? "#FEF3C7" : "#FEE2E2";
+    const e = Math.round(cell.ebitdaY3 / 1000);
+    const bg = e > 0 ? "#D1FAE5" : e > -500 ? "#FEF3C7" : "#FEE2E2";
     const isActive = sensitivity.growths[ri] === a.mrrGrowthY1 && sensitivity.churns[ci] === a.churn;
     return /*#__PURE__*/React.createElement("td", {
       key: ci,
@@ -2121,16 +2123,16 @@ function FinancialModel() {
         background: bg,
         fontWeight: isActive ? 800 : 400,
         border: isActive ? "2px solid " + C.navy : "1px solid white",
-        color: C.navy
+        color: e < 0 ? C.coral : C.navy
       }
-    }, r >= 60 ? "60+" : r);
+    }, e >= 0 ? "$" + e + "K" : "-$" + Math.abs(e) + "K");
   })))))), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 8,
       color: C.slate,
       marginTop: 4
     }
-  }, "Green = 36+ months. Yellow = 18-36. Red = under 18. Bold = your current position.")), /*#__PURE__*/React.createElement("div", {
+  }, "Green = profitable. Yellow = loss < $500K. Red = loss > $500K. Bold = your current position.")), /*#__PURE__*/React.createElement("div", {
     style: {
       background: "white",
       padding: 10,
