@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5-Year Financial Model Pro | Raise Ready</title>
-<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Export to Excel with formulas or PDF with charts for $29.">
+<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Export to Excel with formulas or PDF with charts for $10.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/financial-model-pro.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/financial-model-pro.html">
@@ -40,7 +40,7 @@
   "operatingSystem": "Web Browser",
   "offers": [
     {"@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Interactive model with browser save"},
-    {"@type": "Offer", "name": "Pro Export", "price": "29", "priceCurrency": "USD", "description": "Export to Excel and PDF"}
+    {"@type": "Offer", "name": "Pro Export", "price": "10", "priceCurrency": "USD", "description": "Export to Excel and PDF"}
   ],
   "author": {"@type": "Person", "name": "Yanni Papoutsi"},
   "publisher": {"@type": "Organization", "name": "Raise Ready"}
@@ -96,7 +96,7 @@
     <h3>Unlock Pro Export</h3>
     <p>Get your complete 5-year model as a formula-driven Excel workbook and a PDF with charts.</p>
     <div style="background: #1B2A4A; color: white; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-      <div style="font-size: 1.5rem; font-weight: 700; color: #FFD700;">$29</div>
+      <div style="font-size: 1.5rem; font-weight: 700; color: #FFD700;">$10</div>
       <div style="font-size: 0.75rem; opacity: 0.6;">one-time, lifetime access</div>
     </div>
     <ul class="export-features">
@@ -104,9 +104,10 @@
       <li>PDF export with charts from every tab</li>
       <li>Save your model to browser</li>
       <li>Unlimited exports, forever</li>
+      <li style="font-size:0.78rem;color:#94a3b8;margin-top:0.5rem;">Interactive charts are web-only. Excel = numbers + formulas. Want charts in your spreadsheet? <a href="/book/#templates" style="color:#c8a45a;">Get the Complete Model ($29)</a></li>
     </ul>
     <input id="export-email" class="export-input" type="email" placeholder="your@email.com" required>
-    <button class="export-btn" onclick="handleExportPurchase()">Get Pro Export - $29</button>
+    <button class="export-btn" onclick="handleExportPurchase()">Get Pro Export - $10</button>
     <div id="export-error" class="export-error"></div>
   </div>
 </div>
@@ -162,7 +163,7 @@
       <div style="background: rgba(200,164,90,0.08); border: 1px solid rgba(200,164,90,0.3); border-radius: 10px; padding: 1.5rem; text-align: left;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
           <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c8a45a;">Pro Export</span>
-          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.85rem; color: #FFD700; font-weight: 700;">$29</span>
+          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.85rem; color: #FFD700; font-weight: 700;">$10</span>
         </div>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #cbd5e1;">
           <li style="padding: 0.3rem 0;">&#10003; Everything in Free</li>
@@ -172,6 +173,7 @@
           <li style="padding: 0.3rem 0;">&#10003; Unlimited exports, forever</li>
           <li style="padding: 0.3rem 0;">&#10003; One-time payment</li>
         </ul>
+        <p style="font-size: 0.72rem; color: #64748b; margin: 0.75rem 0 0; line-height: 1.4;">Interactive charts are web-only. Excel export = numbers + formulas. Want charts in your spreadsheet? <a href="/book/#templates" style="color:#c8a45a;">Complete Model ($29)</a></p>
       </div>
     </div>
     <p style="font-size: 0.75rem; color: #475569; margin-top: 1.25rem;">Built by <strong style="color:#94a3b8;">Yanni Papoutsi</strong> &middot; 5 fundraising rounds, 9-figure exit to Indeed</p>
@@ -1249,40 +1251,55 @@ function FinancialModel() {
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => doExport(a, model, annual, hires, unitEcon, conModel, aggModel),
     style: {
-      background: C.green,
+      background: purchased ? C.green : "rgba(255,255,255,0.15)",
       color: "white",
       border: "none",
       padding: "5px 12px",
       borderRadius: 5,
       fontSize: 10,
       fontWeight: 700,
-      cursor: "pointer"
+      cursor: "pointer",
+      opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel ($10)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
-      background: C.purple,
+      background: purchased ? C.purple : "rgba(255,255,255,0.15)",
       color: "white",
       border: "none",
       padding: "5px 12px",
       borderRadius: 5,
       fontSize: 10,
       fontWeight: 700,
-      cursor: "pointer"
+      cursor: "pointer",
+      opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export PDF" : "Export PDF ($29)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF ($10)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => purchased ? saveLocal() : window.showExportGate('save'),
     style: {
-      background: C.teal,
+      background: purchased ? C.teal : "rgba(255,255,255,0.15)",
       color: "white",
       border: "none",
       padding: "5px 10px",
       borderRadius: 5,
       fontSize: 9,
       fontWeight: 600,
+      cursor: "pointer",
+      opacity: purchased ? 1 : 0.5
+    }
+  }, saved ? "\u2713 Saved" : purchased ? "Save" : "\uD83D\uDD12 Save ($10)"), !purchased && /*#__PURE__*/React.createElement("button", {
+    onClick: () => window.showExportGate('excel'),
+    style: {
+      background: "#FFD700",
+      color: "#1B2A4A",
+      border: "none",
+      padding: "5px 14px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
       cursor: "pointer"
     }
-  }, saved ? "\u2713 Saved" : purchased ? "Save" : "Save ($29)"), /*#__PURE__*/React.createElement("button", {
+  }, "Unlock All - $10"), /*#__PURE__*/React.createElement("button", {
     onClick: resetAll,
     style: {
       background: "transparent",
@@ -2802,20 +2819,34 @@ function FinancialModel() {
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => doExport(a, model, annual, hires, unitEcon, conModel, aggModel),
     style: {
-      background: C.green,
+      background: purchased ? C.green : "rgba(255,255,255,0.15)",
       color: "white",
       border: "none",
       padding: "5px 14px",
       borderRadius: 5,
       fontSize: 10,
       fontWeight: 700,
-      cursor: "pointer"
+      cursor: "pointer",
+      opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export Excel" : "Export Excel ($29)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel ($10)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
-      background: C.purple,
+      background: purchased ? C.purple : "rgba(255,255,255,0.15)",
       color: "white",
+      border: "none",
+      padding: "5px 14px",
+      borderRadius: 5,
+      fontSize: 10,
+      fontWeight: 700,
+      cursor: "pointer",
+      opacity: purchased ? 1 : 0.5
+    }
+  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF ($10)"), !purchased && /*#__PURE__*/React.createElement("button", {
+    onClick: () => window.showExportGate('excel'),
+    style: {
+      background: "#FFD700",
+      color: "#1B2A4A",
       border: "none",
       padding: "5px 14px",
       borderRadius: 5,
@@ -2823,7 +2854,7 @@ function FinancialModel() {
       fontWeight: 700,
       cursor: "pointer"
     }
-  }, purchased ? "Export PDF" : "Export PDF ($29)"))));
+  }, "Unlock All - $10")));
 }
 ReactDOM.createRoot(document.getElementById('fm-app')).render(/*#__PURE__*/React.createElement(FinancialModel, null));
 </script>

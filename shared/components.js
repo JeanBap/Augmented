@@ -173,7 +173,7 @@
     if (path.indexOf('/tools/') >= 0 && path.indexOf('financial-model') < 0) {
       barLabel = 'Free: SaaS Metrics Cheat Sheet for Founders';
     } else if (path.indexOf('financial-model') >= 0) {
-      barLabel = 'Like this tool? Get the complete Financial Model Template ($99)';
+      barLabel = 'Like this tool? Get the complete Financial Model Template ($29)';
     } else if (path.indexOf('/services/') >= 0) {
       barLabel = 'Not sure which service? Book a free 15-min call';
     }

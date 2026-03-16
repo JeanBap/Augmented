@@ -25,14 +25,14 @@ var PRODUCTS = {
   },
   'tpl-complete': {
     name: 'Complete Financial Model Template',
-    description: '11-sheet model with 66-month projections.',
-    price: 9900,
+    description: '15-sheet model: P&L, Cash Flow, Balance Sheet, KPI Dashboard with 17 charts, Sensitivity Analysis, Cohort Analysis, Monthly Dashboard, Scenarios, Cap Table, Fundraise Planner. 66-month projections, 7,200+ formulas.',
+    price: 2900,
     file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx',
     mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   },
   'tpl-complete-support': {
     name: 'Complete Financial Model + 1hr Video Support',
-    description: '11-sheet model plus a 1-hour video walkthrough session.',
+    description: '15-sheet model with 17 charts plus a 1-hour video walkthrough session.',
     price: 29900,
     file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx',
     mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -65,7 +65,7 @@ var PRODUCTS = {
   'fm-pro-export': {
     name: 'Financial Model Pro Export',
     description: 'Excel with live formulas and PDF with charts.',
-    price: 2900,
+    price: 1000,
     digital: true
   }
 };
