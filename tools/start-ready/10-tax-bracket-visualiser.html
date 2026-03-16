@@ -114,8 +114,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Visualise Brackets</button>
 </div>
 <div class="chart-wrap"><canvas id="chart"></canvas></div>
+<div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin:1.25rem 0;max-width:800px;"><canvas id="taxBreakdownChart" style="max-height:280px;"></canvas></div>
 <div id="res"></div></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
 const brackets={
@@ -123,7 +125,7 @@ const brackets={
   married:[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]]
 };
 const deductions={single:14600,married:29200};
-let myChart=null;
+let myChart=null;let taxBreakdownChartInstance=null;
 function calc(){
   const gross=parseFloat(document.getElementById('income').value)||0;
   const status=document.getElementById('status').value;
@@ -132,6 +134,7 @@ function calc(){
   const brk=brackets[status];
   let remaining=taxable,totalTax=0,prev=0;
   const labels=[],taxes=[],colors=['#3498db','#2ecc71','#e67e22','#e74c3c','#9b59b6','#1abc9c','#f39c12'];
+  const rateLabels=[],incomeBrackets=[],taxesByBracket=[];
   let rows='';
   for(let i=0;i<brk.length;i++){
     const [ceiling,rate]=brk[i];
@@ -142,6 +145,9 @@ function calc(){
     totalTax+=tax;remaining-=inBracket;
     labels.push((rate*100)+'%');
     taxes.push(Math.round(tax));
+    rateLabels.push((rate*100).toFixed(0)+'%');
+    incomeBrackets.push(Math.round(inBracket));
+    taxesByBracket.push(Math.round(tax));
     rows+=`<tr><td>${(rate*100).toFixed(0)}%</td><td>${fmt(prev)} - ${ceiling===Infinity?'above':fmt(ceiling)}</td><td>${fmt(inBracket)}</td><td>${fmt(tax)}</td></tr>`;
     prev=ceiling;
   }
@@ -153,6 +159,18 @@ function calc(){
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
       scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()}},x:{title:{display:true,text:'Bracket Rate'}}}}
   });
+
+  // Render tax breakdown stacked bar chart
+  if(taxBreakdownChartInstance)taxBreakdownChartInstance.destroy();
+  const ctx=document.getElementById('taxBreakdownChart');
+  if(ctx){
+    taxBreakdownChartInstance=new Chart(ctx,{type:'bar',
+      data:{labels:['Income by Bracket'],datasets:rateLabels.map((r,i)=>({label:r,data:[taxesByBracket[i]],backgroundColor:colors[i%colors.length]}))},
+      options:{indexAxis:'x',responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace",size:11}}}},
+        scales:{x:{stacked:true,grid:{color:'rgba(255,255,255,0.08)'},ticks:{color:'#94a3b8',callback:v=>'$'+v.toLocaleString()}},y:{stacked:true,grid:{color:'rgba(255,255,255,0.08)'},ticks:{color:'#94a3b8'}}}}
+    });
+  }
+
   document.getElementById('res').innerHTML=`
   <div class="grid-3" style="margin-top:16px">
     <div class="card blue"><div class="label">Marginal Rate</div><div class="value">${marginal}%</div><div class="sub">Rate on next dollar</div></div>

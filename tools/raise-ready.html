@@ -1030,6 +1030,7 @@
               <div class="result-label">Post-Money Valuation</div>
             </div>
           </div>
+          <div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin-top:1rem;"><canvas id="dilutionChart" style="max-height:280px;"></canvas></div>
           <div class="result-note" id="d-note"></div>
         </div>
       </div>
@@ -1845,6 +1846,34 @@ function calcDilution() {
 
   document.getElementById('d-note').textContent = note;
   document.getElementById('d-results').classList.add('visible');
+
+  // Render cap table chart
+  if(window._dilutionChart) window._dilutionChart.destroy();
+  const canvasEl = document.getElementById('dilutionChart');
+  if(canvasEl) {
+    const ctx = canvasEl.getContext('2d');
+    window._dilutionChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Founder', 'Investors', 'Option Pool'],
+        datasets: [{
+          data: [founderAfter, investorPct, pool],
+          backgroundColor: ['#c8a45a', '#7c5cfc', '#10b981'],
+          borderColor: '#1B2A4A',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            labels: { color: '#94a3b8', font: { family: "'DM Mono', monospace", size: 12 }, padding: 15 }
+          }
+        }
+      }
+    });
+  }
 }
 
 // Tool 11: SAFE Calculator
@@ -2057,5 +2086,6 @@ function submitGate() {
   });
 }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </body>
 </html>

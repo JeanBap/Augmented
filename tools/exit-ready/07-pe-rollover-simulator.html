@@ -235,12 +235,15 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         </div>
       </div>
 
+      <div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin-top:1rem;"><canvas id="rolloverChart" style="max-height:280px;"></canvas></div>
+
       <div class="result-note" id="r-summary"></div>
     </div>
   </div>
 </main>
 <div id="site-footer"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="/shared/components.js" defer></script>
 <script>
 function fmt(n) {
@@ -308,6 +311,44 @@ function calculateRollover() {
 
   document.getElementById('r-summary').innerHTML = summary;
   document.getElementById('results').classList.add('visible');
+
+  // Render comparison chart: Sell Now vs Rollover scenarios
+  if(window._rolloverChart) window._rolloverChart.destroy();
+  const ctx = document.getElementById('rolloverChart').getContext('2d');
+  const bullTotal = firstBite + rolloverEquityValue * 1.5 * (1 - taxRate);
+  const baseTotal = firstBite + rolloverEquityValue * 1.0 * (1 - taxRate);
+  const bearTotal = firstBite + rolloverEquityValue * 0.5 * (1 - taxRate);
+  const sellNowProceeds = firstEV * founderOwn;
+
+  window._rolloverChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Sell Now', 'Bull Case\n(1.5x)', 'Base Case\n(1.0x)', 'Bear Case\n(0.5x)'],
+      datasets: [{
+        label: 'Total Proceeds ($)',
+        data: [sellNowProceeds, bullTotal, baseTotal, bearTotal],
+        backgroundColor: ['#c8a45a', '#10b981', '#7c5cfc', '#ef4444'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', callback: v => '$' + (v/1000000).toFixed(0) + 'M' }
+        },
+        x: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', font: { family: "'DM Mono', monospace" } }
+        }
+      }
+    }
+  });
 }
 
 function resetRollover() {

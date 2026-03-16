@@ -116,8 +116,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Calculate</button>
 </div><div id="res"></div></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+let mortgageChart=null;
 function calc(){
   const income=parseFloat(document.getElementById('income').value)||0;
   const debt=parseFloat(document.getElementById('debt').value)||0;
@@ -156,7 +158,14 @@ function calc(){
   const safePrice=priceFromPayment(safeMaxPayment);
   const stressPrice=priceFromPayment(stressMaxPayment);
   const pmi=down/safePrice<0.2?'Yes (add 0.5-1.5% of loan/yr)':'No';
+  const loan=Math.max(0,safePrice-down);
+  const mp=loan>0?loan*rate*Math.pow(1+rate,term)/(Math.pow(1+rate,term)-1):0;
+  const taxes=safePrice*ptax/12;
+  const totalMonthly=mp+taxes+ins;
+  const pmiMo=down/safePrice<0.2?loan*0.01/12:0;
+  if(mortgageChart)mortgageChart.destroy();
   document.getElementById('res').innerHTML=`
+  <div style="position:relative;height:280px;margin-top:1rem;"><canvas id="mortgageChart" style="max-height:280px;"></canvas></div>
   <div class="grid-3" style="margin-top:20px">
     <div class="card red"><div class="label">Bank Says</div><div class="value">${fmt(bankPrice)}</div><div class="sub">43% DTI limit</div></div>
     <div class="card green"><div class="label">Safe Number</div><div class="value">${fmt(safePrice)}</div><div class="sub">28% housing ratio</div></div>
@@ -165,6 +174,12 @@ function calc(){
   <div class="result-box" style="margin-top:16px"><h3>Recommendation: Target ${fmt(stressPrice)} - ${fmt(safePrice)}</h3>
   <div>The bank will approve up to ${fmt(bankPrice)}. That number is designed to maximise the loan, not protect you. The safe number (${fmt(safePrice)}) keeps housing at 28% of gross income. The stress-tested number (${fmt(stressPrice)}) ensures you can still pay if your income drops 20%.</div>
   <div class="sub" style="margin-top:8px">Down payment: ${fmt(down)} (${(down/safePrice*100).toFixed(1)}% of safe price). PMI required: ${pmi}.</div></div>`;
+  setTimeout(()=>{mortgageChart=new Chart(document.getElementById('mortgageChart'),{type:'doughnut',
+    data:{labels:['Mortgage (Principal+Interest)','Property Tax','Insurance','PMI'],
+          datasets:[{data:[mp,taxes,ins,pmiMo],backgroundColor:['#10b981','#7c5cfc','#c8a45a','#ef4444']}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      tooltips:{callbacks:{label:function(ctx){return fmt(ctx.parsed)}}}}});},0);
 }
 </script>
 

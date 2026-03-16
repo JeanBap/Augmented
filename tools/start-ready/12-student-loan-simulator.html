@@ -114,8 +114,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Compare Repayment Plans</button>
 </div><div id="res"></div></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+let loanChart=null;
 function calc(){
   const bal=parseFloat(document.getElementById('bal').value)||0;
   const rate=(parseFloat(document.getElementById('rate').value)||5.5)/100;
@@ -144,7 +146,18 @@ function calc(){
     refiPay=bal*rmr*Math.pow(1+rmr,n)/(Math.pow(1+rmr,n)-1);
     refiTotal=refiPay*n;refiInterest=refiTotal-bal;
   }
+  const chartLabels=['Total Interest','Total Paid'];
+  const stdData=[stdInterest,stdTotal];
+  const idrData=[idrInterest,idrTotal];
+  const refiData=refiRate>0?[refiInterest,refiTotal]:null;
+  if(loanChart)loanChart.destroy();
+  const datasets=[
+    {label:'Standard (10yr)',data:stdData,backgroundColor:'#10b981',borderRadius:4},
+    {label:'Income-Driven',data:idrData,backgroundColor:'#7c5cfc',borderRadius:4}
+  ];
+  if(refiData)datasets.push({label:`Refinanced (${(refiRate*100).toFixed(1)}%)`,data:refiData,backgroundColor:'#c8a45a',borderRadius:4});
   document.getElementById('res').innerHTML=`
+  <div style="position:relative;height:280px;margin-top:1rem;"><canvas id="loanChart" style="max-height:280px;"></canvas></div>
   <table style="margin-top:20px"><thead><tr><th>Plan</th><th>Monthly Payment</th><th>Total Interest</th><th>Total Paid</th><th>Timeline</th></tr></thead><tbody>
   <tr><td>Standard (10-year)</td><td>${fmt(stdPay)}</td><td>${fmt(stdInterest)}</td><td>${fmt(stdTotal)}</td><td>120 months</td></tr>
   <tr><td>Income-Driven (est.)</td><td>Varies</td><td>${fmt(idrInterest)}</td><td>${fmt(idrTotal)}${idrForgiven>0?' + '+fmt(idrForgiven)+' forgiven':''}</td><td>${idrForgiven>0?'240 months (forgiveness)':idrMonths+' months'}</td></tr>
@@ -154,6 +167,12 @@ function calc(){
   ${refiRate>0?`<div>Refinancing saves <strong>${fmt(stdInterest-refiInterest)}</strong> vs standard plan over 10 years.</div>`:''}
   ${idrForgiven>0?`<div>IDR results in ${fmt(idrForgiven)} forgiven after 20 years (note: forgiven amount may be taxable as income).</div>`:`<div>At your income level, IDR payments would pay off the loan in ${idrMonths} months.</div>`}
   <div class="sub" style="margin-top:8px">If balance-to-income ratio is below 1.0 (${(bal/income).toFixed(2)} here), the standard plan is typically optimal. Above 1.0, explore IDR with forgiveness.</div></div>`;
+  setTimeout(()=>{loanChart=new Chart(document.getElementById('loanChart'),{type:'bar',
+    data:{labels:chartLabels,datasets},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      scales:{x:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}},
+              y:{ticks:{callback:v=>'$'+v.toLocaleString(),color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}}}}});},0);
 }
 </script>
 

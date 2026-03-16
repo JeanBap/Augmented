@@ -115,6 +115,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="chart-wrap"><canvas id="chart"></canvas></div>
 <div id="res"></div></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
 let myChart=null;
@@ -136,10 +137,11 @@ function calc(){
   if(myChart)myChart.destroy();
   myChart=new Chart(document.getElementById('chart'),{type:'bar',
     data:{labels,datasets:[
-      {label:'Contributions',data:contributed,backgroundColor:'#2980B9',stack:'s'},
-      {label:'Growth',data:totals.map((t,i)=>t-contributed[i]),backgroundColor:'#27ae60',stack:'s'}
-    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
-      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()},stacked:true},x:{ticks:{maxTicksLimit:10},stacked:true}}}
+      {label:'Contributions',data:contributed,backgroundColor:'#c8a45a',borderRadius:4,stack:'s'},
+      {label:'Growth',data:totals.map((t,i)=>t-contributed[i]),backgroundColor:'#10b981',borderRadius:4,stack:'s'}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      scales:{x:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)'}},y:{ticks:{callback:v=>'$'+v.toLocaleString(),color:'#94a3b8',font:{family:"'DM Mono', monospace"}},stacked:true,grid:{color:'rgba(255,255,255,0.08)'}}}},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}},filler:{propagate:true}},scales:{x:{stacked:true,ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}},y:{stacked:true,ticks:{callback:v=>'$'+v.toLocaleString(),color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}}}}
   });
   document.getElementById('res').innerHTML=`
   <div class="grid-3" style="margin-top:16px">

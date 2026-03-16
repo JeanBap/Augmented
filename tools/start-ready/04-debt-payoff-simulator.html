@@ -120,9 +120,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 </div>
 <div id="res"></div></div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
-let debts=[];
+let debts=[],debtChart=null;
 function addDebt(){
   const n=document.getElementById('dn').value||'Debt '+(debts.length+1);
   const b=parseFloat(document.getElementById('db').value)||0;
@@ -157,7 +158,29 @@ function calc(){
   const sb=simulate(debts,extra,'snowball');
   const totalDebt=debts.reduce((s,d)=>s+d.b,0);
   const diff=sb.totalInterest-av.totalInterest;
+  if(debtChart)debtChart.destroy();
+  debtChart=new Chart(document.createElement('canvas').parentElement||document.body,{type:'bar',
+    data:{labels:['Months to Payoff','Total Interest Paid'],datasets:[
+      {label:'Avalanche',data:[av.months,av.totalInterest],backgroundColor:'#10b981',borderRadius:4},
+      {label:'Snowball',data:[sb.months,sb.totalInterest],backgroundColor:'#7c5cfc',borderRadius:4}
+    ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      scales:{x:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}},
+              y:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{drawBorder:false}}}}});
+  const chartDiv=document.createElement('div');
+  chartDiv.style.cssText='position:relative;height:200px;margin-top:1rem;';
+  chartDiv.innerHTML='<canvas id="debtChart" style="max-height:200px;"></canvas>';
+  if(debtChart)debtChart.destroy();
+  debtChart=new Chart(document.getElementById('debtChart'),{type:'bar',
+    data:{labels:['Months to Payoff','Total Interest Paid'],datasets:[
+      {label:'Avalanche',data:[av.months,av.totalInterest],backgroundColor:'#10b981',borderRadius:4},
+      {label:'Snowball',data:[sb.months,sb.totalInterest],backgroundColor:'#7c5cfc',borderRadius:4}
+    ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      scales:{x:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}},
+              y:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{drawBorder:false}}}}});
   document.getElementById('res').innerHTML=`
+  <div style="position:relative;height:200px;margin-top:1rem;"><canvas id="debtChart" style="max-height:200px;"></canvas></div>
   <div class="grid" style="margin-top:20px">
     <div class="card green"><div class="label">Avalanche (Highest Rate First)</div>
       <div class="value">${av.months} months</div>
@@ -174,6 +197,14 @@ function calc(){
     <div>Avalanche is ${av.months<sb.months?av.months===sb.months?'the same speed':((sb.months-av.months)+' months faster'):(av.months-sb.months)+' months slower'}.</div>
     <div class="sub" style="margin-top:8px">${diff<200?'The difference is small. Pick the method you will stick with.':'The avalanche method saves meaningful money here. Use it if you have the discipline.'}</div>
   </div>`;
+  setTimeout(()=>{debtChart=new Chart(document.getElementById('debtChart'),{type:'bar',
+    data:{labels:['Months to Payoff','Total Interest Paid'],datasets:[
+      {label:'Avalanche',data:[av.months,av.totalInterest],backgroundColor:'#10b981',borderRadius:4},
+      {label:'Snowball',data:[sb.months,sb.totalInterest],backgroundColor:'#7c5cfc',borderRadius:4}
+    ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}}}},
+      scales:{x:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{color:'rgba(255,255,255,0.08)',drawBorder:false}},
+              y:{ticks:{color:'#94a3b8',font:{family:"'DM Mono', monospace"}},grid:{drawBorder:false}}}}});},0);
 }
 </script>
 

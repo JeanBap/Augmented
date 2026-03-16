@@ -195,12 +195,15 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         </div>
       </div>
 
+      <div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin-top:1rem;"><canvas id="multiplesChart" style="max-height:280px;"></canvas></div>
+
       <div class="result-note" id="r-factors"></div>
     </div>
   </div>
 </main>
 <div id="site-footer"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="/shared/components.js" defer></script>
 <script>
 function fmt(n) {
@@ -335,6 +338,42 @@ function calculateMultiple() {
   `;
   document.getElementById('r-factors').innerHTML = factorsHtml;
   document.getElementById('results').classList.add('visible');
+
+  // Render multiples valuation chart
+  if(window._multiplesChart) window._multiplesChart.destroy();
+  const ctx = document.getElementById('multiplesChart').getContext('2d');
+  const multiples = [4, 5, 6, 7, 8, 9, 10];
+  const values = multiples.map(m => ebitda * m);
+
+  window._multiplesChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: multiples.map(m => m + 'x'),
+      datasets: [{
+        label: 'Enterprise Value ($)',
+        data: values,
+        backgroundColor: values.map(v => v >= evLow && v <= evHigh ? '#10b981' : '#7c5cfc'),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', callback: v => '$' + (v/1000000).toFixed(0) + 'M' }
+        },
+        x: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', font: { family: "'DM Mono', monospace" } }
+        }
+      }
+    }
+  });
 }
 
 function resetMultiple() {
