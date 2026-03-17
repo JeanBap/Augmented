@@ -87,10 +87,10 @@ Yanni
 ---
 
 ## Email 5: Day 21
-**Subject:** What I learned from a 9-figure exit
+**Subject:** What I learned from $120M+ in rounds and exits
 **From:** Yanni Papoutsi <yanni@raisereadybook.com>
 
-I have been on both sides of the table. Built the models. Negotiated the terms. Structured exits. The biggest lesson from a 9-figure exit was not about the deal itself. It was about what happens after.
+I have been on both sides of the table. Built the models. Negotiated the terms. Structured exits. The biggest lesson from $120M+ across 6 rounds and exits was not about the deal itself. It was about what happens after.
 
 Founders who do not plan for post-exit end up making the most expensive mistakes of their lives in the first 14 months. The research shows 30-50% of exit proceeds are lost in that window. Not to bad investments, but to impulsive decisions made without a framework.
 
@@ -100,7 +100,7 @@ The three books I wrote cover the full arc:
 
 **Raise Ready** ($29.99) covers financial models, fundraising mechanics, and everything from pre-seed to Series B. 498 pages of frameworks tested across five rounds and seven VCs. [View book](https://www.raisereadybook.com/book/#raise-ready)
 
-**Exit Ready** ($19.99) covers valuations, deal structures, tax planning, and the psychology of selling. Everything I learned from being in the room when 9-figure decisions were made. [View book](https://www.raisereadybook.com/book/#exit-ready)
+**Exit Ready** ($19.99) covers valuations, deal structures, tax planning, and the psychology of selling. Everything I learned from being in the room when $120M+ decisions were made. [View book](https://www.raisereadybook.com/book/#exit-ready)
 
 Each stands on its own. Together they are the complete founder financial playbook.
 
