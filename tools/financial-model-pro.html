@@ -12,17 +12,17 @@
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5-Year Financial Model Pro | Raise Ready</title>
-<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Export to Excel with formulas or PDF with charts for $10.">
+<title>Financial Model Light | Raise Ready</title>
+<meta name="description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis. Upgrade to Financial Model Pro for full exports.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/financial-model-pro.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/financial-model-pro.html">
-<meta property="og:title" content="5-Year Financial Model Pro | Raise Ready">
+<meta property="og:title" content="Financial Model Light | Raise Ready">
 <meta property="og:description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Raise Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="5-Year Financial Model Pro | Raise Ready">
+<meta name="twitter:title" content="Financial Model Light | Raise Ready">
 <meta name="twitter:description" content="Free interactive 5-year financial model for SaaS startups. 3 scenarios, hiring plan, unit economics, sensitivity analysis.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +33,14 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "5-Year Financial Model Pro",
+  "name": "Financial Model Light",
   "description": "Free interactive 5-year financial model for SaaS startups with 3 scenarios, hiring plan, unit economics, and sensitivity analysis.",
   "url": "https://www.raisereadybook.com/tools/financial-model-pro.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
   "offers": [
     {"@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Interactive model with browser save"},
-    {"@type": "Offer", "name": "Pro Export", "price": "10", "priceCurrency": "USD", "description": "Export to Excel and PDF"}
+    {"@type": "Offer", "name": "Financial Model Pro", "price": "9.99", "priceCurrency": "USD", "description": "Full professional model with Excel, PDF, and pitch deck exports"}
   ],
   "author": {"@type": "Person", "name": "Yanni Papoutsi"},
   "publisher": {"@type": "Organization", "name": "Raise Ready"}
@@ -93,22 +93,21 @@
 <div id="export-gate" class="export-overlay hidden">
   <div class="export-modal">
     <button class="export-close" onclick="closeExportGate()">&times;</button>
-    <h3>Unlock Pro Export</h3>
-    <p>Get your complete 5-year model as a formula-driven Excel workbook and a PDF with charts.</p>
-    <div style="background: #1B2A4A; color: white; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-      <div style="font-size: 1.5rem; font-weight: 700; color: #FFD700;">$10</div>
-      <div style="font-size: 0.75rem; opacity: 0.6;">one-time, lifetime access</div>
+    <h3>Need Exports?</h3>
+    <p>Exports, saving, and advanced modelling are available in <strong>Financial Model Pro</strong>.</p>
+    <div style="background: #1B2A4A; color: white; padding: 1.25rem; border-radius: 10px; margin-bottom: 1rem; text-align: left;">
+      <div style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c8a45a; margin-bottom: 0.75rem;">What you get with Pro</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.82rem; color: #cbd5e1;">
+        <li style="padding: 0.25rem 0;">&#10003; Styled Excel export (7 worksheets, colour-coded)</li>
+        <li style="padding: 0.25rem 0;">&#10003; PDF reports with charts from every tab</li>
+        <li style="padding: 0.25rem 0;">&#10003; 10-slide pitch deck auto-generated</li>
+        <li style="padding: 0.25rem 0;">&#10003; 60-month P&L, hiring plan, cap table</li>
+        <li style="padding: 0.25rem 0;">&#10003; Investor readiness scorecard</li>
+        <li style="padding: 0.25rem 0;">&#10003; Unlimited saved models + version history</li>
+      </ul>
+      <div style="margin-top: 0.75rem; font-size: 0.78rem; color: #94a3b8;">From $9.99/mo or $99 lifetime</div>
     </div>
-    <ul class="export-features">
-      <li>Excel workbook with live formulas (6 sheets, 3 scenarios)</li>
-      <li>PDF export with charts from every tab</li>
-      <li>Save your model to browser</li>
-      <li>Unlimited exports, forever</li>
-      <li style="font-size:0.78rem;color:#94a3b8;margin-top:0.5rem;">Interactive charts are web-only. Excel = numbers + formulas. Want charts in your spreadsheet? <a href="/book/#templates" style="color:#c8a45a;">Get the Complete Model ($29)</a></li>
-    </ul>
-    <input id="export-email" class="export-input" type="email" placeholder="your@email.com" required>
-    <button class="export-btn" onclick="handleExportPurchase()">Get Pro Export - $10</button>
-    <div id="export-error" class="export-error"></div>
+    <a href="https://finance.raisereadybook.com" target="_blank" class="export-btn" style="display: block; text-align: center; text-decoration: none;">Launch Financial Model Pro &rarr;</a>
   </div>
 </div>
 
@@ -142,10 +141,10 @@
 <!-- Hero / Explainer Section -->
 <section style="background: linear-gradient(180deg, #1B2A4A 0%, #0f1a30 100%); color: #fff; padding: 3.5rem 1.5rem 2.5rem;">
   <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-    <div style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c8a45a; margin-bottom: 0.75rem;">Free Interactive Tool</div>
-    <h1 style="font-family: var(--serif, 'Instrument Serif', serif); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem;">5-Year Financial Model Pro</h1>
+    <div style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #10b981; margin-bottom: 0.75rem;">Free Interactive Tool</div>
+    <h1 style="font-family: var(--serif, 'Instrument Serif', serif); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem;">Financial Model Light</h1>
     <p style="font-size: 1rem; color: #94a3b8; max-width: 640px; margin: 0 auto 2rem; line-height: 1.6;">
-      Build a full SaaS financial model in minutes. Three scenarios, hiring plan, unit economics, sensitivity analysis, and a board-ready report. No signup required.
+      Build a SaaS financial model in minutes. Three scenarios, hiring plan, unit economics, sensitivity analysis, and a board-ready report. No signup required. Need exports and advanced modelling? <a href="https://finance.raisereadybook.com" style="color: #c8a45a;">Try Financial Model Pro</a>.
     </p>
     <!-- Free vs Pro comparison -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 640px; margin: 0 auto;">
@@ -162,18 +161,19 @@
       </div>
       <div style="background: rgba(200,164,90,0.08); border: 1px solid rgba(200,164,90,0.3); border-radius: 10px; padding: 1.5rem; text-align: left;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c8a45a;">Pro Export</span>
-          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.85rem; color: #FFD700; font-weight: 700;">$10</span>
+          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c8a45a;">Financial Model Pro</span>
+          <span style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.85rem; color: #FFD700; font-weight: 700;">from $9.99/mo</span>
         </div>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #cbd5e1;">
-          <li style="padding: 0.3rem 0;">&#10003; Everything in Free</li>
-          <li style="padding: 0.3rem 0;">&#10003; Excel with live formulas (6 sheets)</li>
-          <li style="padding: 0.3rem 0;">&#10003; PDF with charts from every tab</li>
-          <li style="padding: 0.3rem 0;">&#10003; Save your model to browser</li>
-          <li style="padding: 0.3rem 0;">&#10003; Unlimited exports, forever</li>
-          <li style="padding: 0.3rem 0;">&#10003; One-time payment</li>
+          <li style="padding: 0.3rem 0;">&#10003; Everything in Light, plus:</li>
+          <li style="padding: 0.3rem 0;">&#10003; 60-month P&L with 3 scenarios</li>
+          <li style="padding: 0.3rem 0;">&#10003; Hiring plan with burden & wage inflation</li>
+          <li style="padding: 0.3rem 0;">&#10003; Cap table, dilution & valuation estimator</li>
+          <li style="padding: 0.3rem 0;">&#10003; Investor readiness scorecard</li>
+          <li style="padding: 0.3rem 0;">&#10003; Styled Excel (7 sheets), PDF & pitch deck exports</li>
+          <li style="padding: 0.3rem 0;">&#10003; Unlimited saved models with version history</li>
         </ul>
-        <p style="font-size: 0.72rem; color: #64748b; margin: 0.75rem 0 0; line-height: 1.4;">Interactive charts are web-only. Excel export = numbers + formulas. Want charts in your spreadsheet? <a href="/book/#templates" style="color:#c8a45a;">Complete Model ($29)</a></p>
+        <a href="https://finance.raisereadybook.com" target="_blank" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1.25rem; background: #c8a45a; color: #1B2A4A; border-radius: 6px; font-family: var(--mono, 'DM Mono', monospace); font-size: 0.8rem; font-weight: 700; text-decoration: none;">Launch Financial Model Pro &rarr;</a>
       </div>
     </div>
     <p style="font-size: 0.75rem; color: #475569; margin-top: 1.25rem;">Built by <strong style="color:#94a3b8;">Yanni Papoutsi</strong> &middot; multiple funding rounds and exits</p>
@@ -1236,7 +1236,7 @@ function FinancialModel() {
       fontSize: 16,
       fontWeight: 700
     }
-  }, "5-Year Financial Model Pro"), /*#__PURE__*/React.createElement("p", {
+  }, "Financial Model Light"), /*#__PURE__*/React.createElement("p", {
     style: {
       margin: "1px 0 0",
       fontSize: 9,
