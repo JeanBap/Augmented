@@ -133,6 +133,52 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
 .fr-status.success { color: var(--green); }
 .fr-status.error { color: var(--red); }
 .fr-status.working { color: var(--gold); }
+
+/* Upload Panel */
+.up-panel { display: none; margin-bottom: 1.5rem; padding: 1.25rem; border: 1.5px solid var(--rule); border-radius: 8px; background: #fff; }
+.up-panel.visible { display: block; }
+.up-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
+.up-row:last-child { margin-bottom: 0; }
+.up-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); min-width: 70px; }
+.up-input {
+  flex: 1; padding: 0.5rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 6px;
+  font-family: var(--mono); font-size: 0.82rem; background: var(--paper); color: var(--ink); min-width: 200px;
+}
+.up-input:focus { outline: none; border-color: var(--gold); }
+.up-dropzone {
+  flex: 1; min-height: 100px; border: 2px dashed var(--rule); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  font-family: var(--mono); font-size: 0.82rem; color: var(--mid); cursor: pointer;
+  transition: all 0.2s; position: relative; padding: 1rem;
+}
+.up-dropzone:hover, .up-dropzone.dragover { border-color: var(--gold); background: rgba(200,164,90,0.06); }
+.up-dropzone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.up-file-list { list-style: none; margin-top: 0.5rem; font-family: var(--mono); font-size: 0.78rem; max-height: 160px; overflow-y: auto; }
+.up-file-list li {
+  padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.up-file-list .up-file-name { word-break: break-all; }
+.up-file-list .up-file-size { color: var(--mid); white-space: nowrap; margin-left: 0.5rem; }
+.up-file-list .up-file-status { margin-left: 0.5rem; font-weight: 500; }
+.up-file-list .up-file-status.ok { color: var(--green); }
+.up-file-list .up-file-status.fail { color: var(--red); }
+.up-file-list .up-file-status.pending { color: var(--mid); }
+.btn-up {
+  padding: 0.5rem 1.2rem; border: none; border-radius: 6px;
+  font-family: var(--sans); font-weight: 700; font-size: 0.85rem; cursor: pointer;
+  background: var(--gold); color: var(--ink); transition: all 0.2s;
+}
+.btn-up:hover { background: var(--gold2); }
+.btn-up:disabled { opacity: 0.4; cursor: not-allowed; }
+.up-status { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; }
+.up-status.success { color: var(--green); }
+.up-status.error { color: var(--red); }
+.up-status.working { color: var(--gold); }
+.up-progress { width: 100%; height: 4px; background: var(--rule); border-radius: 2px; margin-top: 0.5rem; overflow: hidden; display: none; }
+.up-progress-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.3s; width: 0%; }
 </style>
 <script
   defer
@@ -161,6 +207,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
     <div class="dash-header-right">
       <button class="fr-toggle" id="indexnow-btn" onclick="triggerIndexNow()">IndexNow</button>
       <button class="fr-toggle" id="fr-toggle" onclick="toggleFindReplace()">Find & Replace</button>
+      <button class="fr-toggle" id="up-toggle" onclick="toggleUpload()">Upload</button>
       <button class="btn-logout" onclick="doLogout()">Log out</button>
     </div>
   </div>
@@ -183,6 +230,28 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
     </div>
     <div id="fr-results" class="fr-results" style="display:none;"></div>
     <div id="fr-status" class="fr-status" style="display:none;"></div>
+  </div>
+
+  <!-- Upload Panel -->
+  <div id="up-panel" class="up-panel">
+    <div class="up-row">
+      <span class="up-label">Folder</span>
+      <input class="up-input" id="up-dest" type="text" placeholder="Destination folder, e.g. products/my-product/ or blog/">
+    </div>
+    <div class="up-row">
+      <span class="up-label">Files</span>
+      <div class="up-dropzone" id="up-dropzone">
+        <span id="up-dropzone-text">Drop files here or click to browse</span>
+        <input type="file" id="up-file-input" multiple>
+      </div>
+    </div>
+    <ul class="up-file-list" id="up-file-list"></ul>
+    <div class="up-progress" id="up-progress"><div class="up-progress-bar" id="up-progress-bar"></div></div>
+    <div id="up-status" class="up-status" style="display:none;"></div>
+    <div class="up-row" style="margin-top:0.75rem;">
+      <button class="btn-up" id="up-btn" onclick="doUpload()" disabled>Upload files</button>
+      <button class="btn-back" onclick="clearUpload()" style="margin-left:0.5rem;">Clear</button>
+    </div>
   </div>
 
   <!-- File browser -->
@@ -508,6 +577,178 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); li
   // Enter key triggers find in search input
   $frSearch.addEventListener('keydown', function(e) { if (e.key === 'Enter') doFind(); });
   $frReplace.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !$frReplaceBtn.disabled) doReplace(); });
+
+  // ---- Upload ----
+  var $upPanel = document.getElementById('up-panel');
+  var $upToggle = document.getElementById('up-toggle');
+  var $upDest = document.getElementById('up-dest');
+  var $upFileInput = document.getElementById('up-file-input');
+  var $upFileList = document.getElementById('up-file-list');
+  var $upBtn = document.getElementById('up-btn');
+  var $upStatus = document.getElementById('up-status');
+  var $upProgress = document.getElementById('up-progress');
+  var $upProgressBar = document.getElementById('up-progress-bar');
+  var $upDropzone = document.getElementById('up-dropzone');
+  var uploadQueue = [];
+
+  window.toggleUpload = function() {
+    $upPanel.classList.toggle('visible');
+    $upToggle.classList.toggle('active');
+    // Close find & replace if open
+    if ($upPanel.classList.contains('visible')) {
+      $frPanel.classList.remove('visible');
+      $frToggle.classList.remove('active');
+      $upDest.focus();
+    }
+  };
+
+  // Drag and drop
+  $upDropzone.addEventListener('dragover', function(e) { e.preventDefault(); $upDropzone.classList.add('dragover'); });
+  $upDropzone.addEventListener('dragleave', function() { $upDropzone.classList.remove('dragover'); });
+  $upDropzone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    $upDropzone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+  $upFileInput.addEventListener('change', function() { handleFiles($upFileInput.files); });
+
+  function handleFiles(fileList) {
+    for (var i = 0; i < fileList.length; i++) {
+      var f = fileList[i];
+      // Prevent duplicates
+      var already = uploadQueue.some(function(q) { return q.name === f.name && q.size === f.size; });
+      if (!already) uploadQueue.push(f);
+    }
+    renderUploadList();
+    $upBtn.disabled = uploadQueue.length === 0;
+    $upFileInput.value = '';
+  }
+
+  function renderUploadList() {
+    $upFileList.innerHTML = '';
+    uploadQueue.forEach(function(f, idx) {
+      var li = document.createElement('li');
+      var sizeKB = (f.size / 1024).toFixed(1);
+      var sizeStr = f.size > 1048576 ? (f.size / 1048576).toFixed(1) + ' MB' : sizeKB + ' KB';
+      li.innerHTML = '<span class="up-file-name">' + escHtml(f.name) + '</span>' +
+        '<span><span class="up-file-size">' + sizeStr + '</span>' +
+        '<span class="up-file-status pending" id="up-status-' + idx + '"></span>' +
+        ' <a href="#" onclick="removeUploadFile(' + idx + ');return false;" style="color:var(--red);text-decoration:none;margin-left:0.5rem;" title="Remove">x</a></span>';
+      $upFileList.appendChild(li);
+    });
+  }
+
+  function escHtml(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  window.removeUploadFile = function(idx) {
+    uploadQueue.splice(idx, 1);
+    renderUploadList();
+    $upBtn.disabled = uploadQueue.length === 0;
+  };
+
+  window.clearUpload = function() {
+    uploadQueue = [];
+    $upFileList.innerHTML = '';
+    $upBtn.disabled = true;
+    $upStatus.style.display = 'none';
+    $upProgress.style.display = 'none';
+    $upProgressBar.style.width = '0%';
+    $upDest.value = '';
+  };
+
+  function setUpStatus(msg, cls) {
+    $upStatus.style.display = msg ? 'block' : 'none';
+    $upStatus.textContent = msg;
+    $upStatus.className = 'up-status' + (cls ? ' ' + cls : '');
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        // result is "data:mime;base64,XXXXX" -- extract just the base64
+        var b64 = reader.result.split(',')[1];
+        resolve(b64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  window.doUpload = function() {
+    if (uploadQueue.length === 0) return;
+    var dest = $upDest.value.trim();
+    // Normalize: ensure trailing slash if non-empty
+    if (dest && !dest.endsWith('/')) dest += '/';
+    // Validate dest doesn't have path traversal
+    if (dest.includes('..') || dest.startsWith('/')) {
+      setUpStatus('Invalid destination folder. No ".." or leading "/" allowed.', 'error');
+      return;
+    }
+
+    $upBtn.disabled = true;
+    $upProgress.style.display = 'block';
+    $upProgressBar.style.width = '0%';
+    setUpStatus('Uploading ' + uploadQueue.length + ' file(s)...', 'working');
+
+    var total = uploadQueue.length;
+    var done = 0;
+    var ok = 0;
+    var fails = [];
+
+    function uploadNext(idx) {
+      if (idx >= total) {
+        // All done
+        $upProgressBar.style.width = '100%';
+        if (fails.length === 0) {
+          setUpStatus('All ' + ok + ' file(s) uploaded successfully.', 'success');
+        } else {
+          setUpStatus(ok + ' uploaded, ' + fails.length + ' failed: ' + fails.join(', '), 'error');
+        }
+        $upBtn.disabled = false;
+        // Refresh file list
+        loadFileList();
+        return;
+      }
+
+      var file = uploadQueue[idx];
+      var statusEl = document.getElementById('up-status-' + idx);
+      if (statusEl) { statusEl.textContent = ' uploading...'; statusEl.className = 'up-file-status pending'; }
+
+      readFileAsBase64(file).then(function(b64) {
+        var fullPath = dest + file.name;
+        return fetch('/.netlify/functions/admin-upload', {
+          method: 'POST',
+          headers: apiHeaders(),
+          body: JSON.stringify({ path: dest || '', content: b64, filename: file.name })
+        });
+      }).then(function(r) { return r.json(); })
+      .then(function(data) {
+        done++;
+        $upProgressBar.style.width = Math.round((done / total) * 100) + '%';
+        if (data.ok) {
+          ok++;
+          if (statusEl) { statusEl.textContent = ' done'; statusEl.className = 'up-file-status ok'; }
+        } else {
+          fails.push(file.name);
+          if (statusEl) { statusEl.textContent = ' ' + (data.error || 'failed'); statusEl.className = 'up-file-status fail'; }
+        }
+        uploadNext(idx + 1);
+      }).catch(function(err) {
+        done++;
+        fails.push(file.name);
+        $upProgressBar.style.width = Math.round((done / total) * 100) + '%';
+        if (statusEl) { statusEl.textContent = ' network error'; statusEl.className = 'up-file-status fail'; }
+        uploadNext(idx + 1);
+      });
+    }
+
+    uploadNext(0);
+  };
 
 })();
 </script>
