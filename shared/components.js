@@ -46,23 +46,30 @@
       <a href="/" class="logo">Raise Ready</a>
       <div class="nav-tabs">
         <div class="nav-dropdown">
-          <a href="/book/" class="nav-tab" data-page="book">Books & Extras</a>
+          <a href="/book/" class="nav-tab" data-page="book">Books</a>
           <div class="dropdown-menu">
-            <a href="/book/#start-ready">Start Ready Book</a>
-            <a href="/book/#raise-ready">Raise Ready Book</a>
-            <a href="/book/#model-ready">Model Ready Book</a>
-            <a href="/book/#exit-ready">Exit Ready Book</a>
-            <a href="/book/#templates">Financial Model Template</a>
+            <a href="/book/#start-ready">Start Ready</a>
+            <a href="/book/#raise-ready">Raise Ready</a>
+            <a href="/book/#model-ready">Model Ready</a>
+            <a href="/book/#exit-ready">Exit Ready</a>
           </div>
         </div>
-        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
         <div class="nav-dropdown">
           <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
           <div class="dropdown-menu">
-            <a href="/tools/financial-model-pro.html" style="color:#c8a45a;font-weight:600;">5-Year Financial Model Pro</a>
-            <a href="/tools/start-ready/">Start Ready Tools</a>
-            <a href="/tools/raise-ready.html">Raise Ready Tools</a>
-            <a href="/tools/exit-ready/">Exit Ready Tools</a>
+            <a href="/tools/start-ready/">Personal Finance (18 tools)</a>
+            <a href="/tools/raise-ready.html">Fundraising Tools</a>
+            <a href="/tools/exit-ready/">Exit Planning (30 tools)</a>
+            <a href="/tools/fundraising-readiness-scorecard.html">Investor Readiness Scorecard</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="/services/" class="nav-tab" data-page="services">Software</a>
+          <div class="dropdown-menu">
+            <a href="/tools/financial-model-pro.html" style="color:#c8a45a;font-weight:600;">Financial Model Pro</a>
+            <a href="https://app.raisereadybook.com" target="_blank">Personal Finance App</a>
+            <a href="https://finance.raisereadybook.com" target="_blank">Startup Finance App</a>
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
@@ -80,9 +87,10 @@
   const FOOTER_HTML = `
     <footer>
       <div class="footer-links">
-        <a href="/book/">Books & Extras</a>
-        <a href="/services/">Services</a>
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
         <a href="/tools/">Tools</a>
+        <a href="/services/">Software</a>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
