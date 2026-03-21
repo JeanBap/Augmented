@@ -464,74 +464,7 @@
     <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">14</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Free tools</div></div>
   </div>
 
-  <!-- Financial Model Templates Section (Stage-Colored) -->
-  <style>
-  .tpl-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; }
-  .tpl-card { border:1px solid var(--rule); border-radius:10px; overflow:hidden; background:var(--paper); display:flex; flex-direction:column; transition:border-color 0.3s; }
-  .tpl-card:hover { border-color:var(--gold); }
-  .tpl-accent { height:4px; }
-  .tpl-body { padding:1.25rem; flex:1; display:flex; flex-direction:column; }
-  .tpl-stage { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:12px; display:inline-block; width:fit-content; }
-  .tpl-name { font-family:var(--serif); font-size:1.15rem; margin:0.5rem 0; }
-  .tpl-price-row { display:flex; align-items:baseline; gap:0.5rem; }
-  .tpl-price { font-family:var(--mono); font-size:1.3rem; font-weight:500; }
-  .tpl-price-note { font-family:var(--mono); font-size:0.65rem; color:var(--mid); }
-  .tpl-features { list-style:none; margin:1rem 0; flex:1; padding:0; }
-  .tpl-features li { font-size:0.82rem; color:var(--dim); padding:0.25rem 0 0.25rem 1.2rem; position:relative; }
-  .tpl-features li::before { content:"\2713"; position:absolute; left:0; font-weight:bold; color:var(--gold); }
-  .tpl-popular { font-family:var(--mono); font-size:0.7rem; text-align:center; padding:0.35rem; border-radius:4px; margin-bottom:0.75rem; background:#e8f5e9; color:#2E7D32; }
-  .tpl-buy-btn {
-    display:block; width:100%; padding:0.65rem; margin-top:auto; border:none; border-radius:6px; cursor:pointer;
-    background:var(--gold); color:var(--ink); font-family:var(--mono); font-size:0.8rem; font-weight:500;
-    letter-spacing:0.05em; transition:background 0.2s;
-  }
-  .tpl-buy-btn:hover { background:#e5c97e; }
-  .tpl-buy-btn:disabled { opacity:0.6; cursor:wait; }
-  </style>
-  <section id="templates" class="products-sec">
-    <div class="products-inner">
-      <h2 class="section-title">Complete Financial Model</h2>
-      <p class="section-subtitle">The same model used in the book, refined through real fundraises from pre-seed to Series B</p>
-
-      <div class="tpl-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));max-width:700px;margin:2rem auto 0;">
-        <!-- Template Only -->
-        <div class="tpl-card">
-          <div class="tpl-accent" style="background:var(--gold);"></div>
-          <div class="tpl-body">
-            <span class="tpl-stage" style="background:#fff8e7;color:var(--gold);">Template</span>
-            <div class="tpl-name">Complete Financial Model</div>
-            <div class="tpl-price-row"><span class="tpl-price">$29</span><span class="tpl-price-note">one-time</span></div>
-            <ul class="tpl-features">
-              <li>15 sheets: P&amp;L, Cash Flow, Balance Sheet, KPI Dashboard, Sensitivity, Cohort Analysis, Monthly Dashboard, Scenarios &amp; more</li>
-              <li>17 built-in charts across dashboards</li>
-              <li>Cap table &amp; fundraise scenario planner</li>
-              <li>66-month projections, 7,200+ formulas</li>
-              <li>Yellow-cell inputs, everything else auto-calculates</li>
-              <li>Google Sheets compatible</li>
-            </ul>
-            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-complete')">Buy Now</button>
-          </div>
-        </div>
-        <!-- Template + Support -->
-        <div class="tpl-card" style="border-color:var(--gold);">
-          <div class="tpl-accent" style="background:var(--gold);"></div>
-          <div class="tpl-body">
-            <div class="tpl-popular">Recommended</div>
-            <span class="tpl-stage" style="background:#fff8e7;color:var(--gold);">Template + Support</span>
-            <div class="tpl-name">Complete Model + 1hr Video Session</div>
-            <div class="tpl-price-row"><span class="tpl-price">$299</span><span class="tpl-price-note">one-time</span></div>
-            <ul class="tpl-features">
-              <li>Everything in the template</li>
-              <li>1-hour video walkthrough to customize for your business</li>
-              <li>Screen-share model setup for your specific metrics</li>
-              <li>Recording &amp; notes provided afterward</li>
-            </ul>
-            <button class="tpl-buy-btn" onclick="buyTemplate('tpl-complete-support')">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Services CTA -->
   <section style="max-width:960px;margin:2rem auto 0;padding:2rem;text-align:center;border-top:1px solid var(--rule);">
