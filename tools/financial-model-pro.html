@@ -1261,7 +1261,7 @@ function FinancialModel() {
       cursor: "pointer",
       opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel ($10)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel (Pro)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
       background: purchased ? C.purple : "rgba(255,255,255,0.15)",
@@ -1274,7 +1274,7 @@ function FinancialModel() {
       cursor: "pointer",
       opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF ($10)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF (Pro)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => purchased ? saveLocal() : window.showExportGate('save'),
     style: {
       background: purchased ? C.teal : "rgba(255,255,255,0.15)",
@@ -1287,7 +1287,7 @@ function FinancialModel() {
       cursor: "pointer",
       opacity: purchased ? 1 : 0.5
     }
-  }, saved ? "\u2713 Saved" : purchased ? "Save" : "\uD83D\uDD12 Save ($10)"), !purchased && /*#__PURE__*/React.createElement("button", {
+  }, saved ? "\u2713 Saved" : purchased ? "Save" : "\uD83D\uDD12 Save (Pro)"), !purchased && /*#__PURE__*/React.createElement("button", {
     onClick: () => window.showExportGate('excel'),
     style: {
       background: "#FFD700",
@@ -1299,7 +1299,7 @@ function FinancialModel() {
       fontWeight: 700,
       cursor: "pointer"
     }
-  }, "Unlock All - $10"), /*#__PURE__*/React.createElement("button", {
+  }, "Get Financial Model Pro"), /*#__PURE__*/React.createElement("button", {
     onClick: resetAll,
     style: {
       background: "transparent",
@@ -2829,7 +2829,7 @@ function FinancialModel() {
       cursor: "pointer",
       opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel ($10)"), /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export Excel" : "\uD83D\uDD12 Excel (Pro)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => doPdfExport(a, model, annual, hires, unitEcon, activeModel, scenario, setTab, tab),
     style: {
       background: purchased ? C.purple : "rgba(255,255,255,0.15)",
@@ -2842,7 +2842,7 @@ function FinancialModel() {
       cursor: "pointer",
       opacity: purchased ? 1 : 0.5
     }
-  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF ($10)"), !purchased && /*#__PURE__*/React.createElement("button", {
+  }, purchased ? "Export PDF" : "\uD83D\uDD12 PDF (Pro)"), !purchased && /*#__PURE__*/React.createElement("button", {
     onClick: () => window.showExportGate('excel'),
     style: {
       background: "#FFD700",
@@ -2854,7 +2854,7 @@ function FinancialModel() {
       fontWeight: 700,
       cursor: "pointer"
     }
-  }, "Unlock All - $10"))));
+  }, "Get Financial Model Pro"))));
 }
 ReactDOM.createRoot(document.getElementById('fm-app')).render(/*#__PURE__*/React.createElement(FinancialModel, null));
 </script>
