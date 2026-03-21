@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="nav-dropdown">
-          <a href="/services/" class="nav-tab" data-page="services">Software</a>
+          <a href="/software/" class="nav-tab" data-page="software">Software</a>
           <div class="dropdown-menu">
             <a href="/tools/financial-model-pro.html" style="color:#c8a45a;font-weight:600;">Financial Model Pro</a>
             <a href="https://app.raisereadybook.com" target="_blank">Personal Finance App</a>
@@ -90,7 +90,7 @@
         <a href="/book/">Books</a>
         <a href="/templates/">Templates</a>
         <a href="/tools/">Tools</a>
-        <a href="/services/">Software</a>
+        <a href="/software/">Software</a>
         <a href="/blog/">Blog</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
