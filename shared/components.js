@@ -7,7 +7,7 @@
 (function() {
   var PIXEL_ID = '1298416075475311';
   if (!PIXEL_ID) return;
-  if (window.fbq) return;
+  if (window.fbq) return
   var n = window.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
   if (!window._fbq) window._fbq = n;
   n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
@@ -73,6 +73,9 @@
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+                <a href="/services/" class="nav-tab" data-page="services">Services</a>
+                        <a href="/about/" class="nav-tab" data-page="about">About</a>
+                                <a href="/contact/" class="nav-tab" data-page="contact">Contact</a>
         <a href="/tools/financial-model-pro.html" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Easy Financial Model</a>
       </div>
       <div class="nav-right">
