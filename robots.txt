@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin/
+Disallow: /netlify/
+Disallow: /products/
+Disallow: /success/
+
 Sitemap: https://www.raisereadybook.com/sitemap.xml
