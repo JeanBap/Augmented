@@ -368,6 +368,30 @@
     </div>
 
     <div class="svc-grid">
+      
+      <!-- Service 0: Model + Video Session (moved from books) -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <span class="svc-card-badge">One-off</span>
+          <h3 class="svc-card-name">Complete Model + 1hr Video Session</h3>
+          <p class="svc-card-desc">Get the complete financial model template plus a 1-hour video walkthrough to customize it for your business. Screen-share setup for your specific metrics, recording and notes provided.</p>
+          <ul class="svc-card-features">
+            <li>Complete 15-sheet financial model template</li>
+            <li>1-hour video walkthrough</li>
+            <li>Screen-share model setup for your metrics</li>
+            <li>Recording and notes provided afterward</li>
+          </ul>
+          <div class="svc-card-price-row">
+            <span class="svc-card-price">$299</span>
+          </div>
+          <div class="svc-card-actions">
+            <button class="svc-btn-pay" onclick="openServiceModal('model-session-299', 'pay')">Pay Now</button>
+            <button class="svc-btn-call" onclick="openServiceModal('model-session-299', 'call')">Book a Call</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Service 1: Fundraising Readiness Audit -->
       <div class="svc-card">
         <div class="svc-card-accent"></div>
@@ -467,7 +491,76 @@
       </div>
     </div>
 
-    <!-- Social Proof -->
+    
+    <!-- Model-Building Packages (moved from templates) -->
+    <section style="max-width:960px;margin:2rem auto;padding:0 2rem;">
+      <h2 style="font-family:var(--serif);font-size:1.6rem;text-align:center;margin-bottom:0.5rem;">Model-Building Packages</h2>
+      <p style="color:var(--mid);text-align:center;margin-bottom:2rem;">We build your financial model from scratch, customized to your stage:</p>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">Pre-Seed</span>
+            <h3 class="svc-card-name">Pre-Seed Modeling</h3>
+            <p class="svc-card-desc">We build your foundation model with your assumptions and walk you through every driver.</p>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$1,000</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('preseed-modeling-1000', 'pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('preseed-modeling-1000', 'call')">Book a Call</button>
+            </div>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">Seed</span>
+            <h3 class="svc-card-name">Seed Modeling</h3>
+            <p class="svc-card-desc">Full cohort-based model with channel economics and three fundraising scenarios.</p>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$2,000</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('seed-modeling-2000', 'pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('seed-modeling-2000', 'call')">Book a Call</button>
+            </div>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">Series A</span>
+            <h3 class="svc-card-name">Series A Modeling</h3>
+            <p class="svc-card-desc">Multi-product model with departmental headcount planning and unit economics analysis.</p>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$4,000</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('seriesa-modeling-4000', 'pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('seriesa-modeling-4000', 'call')">Book a Call</button>
+            </div>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card-accent"></div>
+          <div class="svc-card-body">
+            <span class="svc-card-badge">Series B</span>
+            <h3 class="svc-card-name">Series B Modeling</h3>
+            <p class="svc-card-desc">Enterprise-grade model with multi-geography, currency management, and balance sheet integration.</p>
+            <div class="svc-card-price-row">
+              <span class="svc-card-price">$8,000</span>
+            </div>
+            <div class="svc-card-actions">
+              <button class="svc-btn-pay" onclick="openServiceModal('seriesb-modeling-8000', 'pay')">Pay Now</button>
+              <button class="svc-btn-call" onclick="openServiceModal('seriesb-modeling-8000', 'call')">Book a Call</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Social Proof -->
     <section style="max-width:900px;margin:3rem auto;padding:0 2rem;">
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2.5rem;margin-bottom:2.5rem;padding:1.5rem;border:1px solid var(--rule);border-radius:10px;text-align:center;">
         <div><span style="font-family:var(--serif);font-size:1.5rem;display:block;">47+</span><span style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Founders advised</span></div>
@@ -500,8 +593,9 @@
 
   <!-- Service Lead Capture Modal -->
   <div id="svc-modal">
-    <div class="svc-modal-content">
-      <h2 class="svc-modal-title" id="svc-modal-title">Get Started</h2>
+    <div class="svc-modal-content" style="position:relative;">
+      <button onclick="closeServiceModal()" style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;font-size:1.5rem;color:var(--mid);cursor:pointer;">&times;</button>
+        <h2 class="svc-modal-title" id="svc-modal-title">Get Started</h2>
       <form id="svc-form" onsubmit="submitServiceModal(event)">
         <div class="svc-error" id="svc-error"></div>
 
@@ -527,6 +621,11 @@
     let currentAction = null;
 
     const serviceInfo = {
+      'model-session-299': { name: 'Complete Model + Video Session', price: 299, stripeProduct: 'model-session-299' },
+      'preseed-modeling-1000': { name: 'Pre-Seed Modeling', price: 1000, stripeProduct: 'preseed-modeling-1000' },
+      'seed-modeling-2000': { name: 'Seed Modeling', price: 2000, stripeProduct: 'seed-modeling-2000' },
+      'seriesa-modeling-4000': { name: 'Series A Modeling', price: 4000, stripeProduct: 'seriesa-modeling-4000' },
+      'seriesb-modeling-8000': { name: 'Series B Modeling', price: 8000, stripeProduct: 'seriesb-modeling-8000' },
       'audit-990': {
         name: 'Fundraising Readiness Audit',
         price: 990,
