@@ -24,10 +24,17 @@ var PRODUCTS = {
     mime: 'application/pdf'
   },
   'tpl-complete': {
-    name: 'Complete Financial Model Template',
-    description: '15-sheet model: P&L, Cash Flow, Balance Sheet, KPI Dashboard with 17 charts, Sensitivity Analysis, Cohort Analysis, Monthly Dashboard, Scenarios, Cap Table, Fundraise Planner. 66-month projections, 7,200+ formulas.',
-    price: 2900,
+    name: 'Complete Financial Model',
+    description: '15-sheet investor-ready model: Revenue, Headcount, P&L, Cash Flow, Balance Sheet, KPI Dashboard, Cap Table, Fundraise Scenarios, Sensitivity, Cohort Analysis, Monthly Dashboard, Scenarios, Data Room.',
+    price: 4900,
     file: '/products/c322d33ab84431e9/Complete_Financial_Model.xlsx',
+    mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  },
+  'tpl-personal-finance': {
+    name: 'Personal Finance Workbook',
+    description: '9-sheet workbook: Setup, Budget 50/30/20, Debt Payoff, Housing Rent vs Buy, Investment Projections, Retirement Planning, Wealth Dashboard, Financial Health Summary. 141 formulas.',
+    price: 4900,
+    file: '/products/pf001/Personal_Finance_Workbook.xlsx',
     mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   },
   'tpl-complete-support': {
