@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none">
+  <!-- Stacked funding bars -->
+  <g transform="translate(0,8)">
+    <!-- Series B bar -->
+    <rect x="0" y="4" width="120" height="22" rx="2" fill="#E74C3C"/>
+    <text x="12" y="18" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#fff">$50M</text>
+    <text x="82" y="18" font-family="system-ui,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Series B</text>
+    <!-- Triangle marker -->
+    <polygon points="60,0 54,4 66,4" fill="#E74C3C"/>
+
+    <!-- Series A bar -->
+    <rect x="12" y="28" width="108" height="22" rx="2" fill="#3D566E"/>
+    <text x="22" y="42" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#fff">$10M</text>
+    <text x="82" y="42" font-family="system-ui,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Series A</text>
+
+    <!-- Seed bar -->
+    <rect x="24" y="52" width="96" height="22" rx="2" fill="#8E9EAB"/>
+    <text x="34" y="66" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#fff">$2M</text>
+    <text x="82" y="66" font-family="system-ui,sans-serif" font-size="8" fill="rgba(255,255,255,0.8)">Seed</text>
+
+    <!-- Pre-Seed bar -->
+    <rect x="36" y="76" width="84" height="22" rx="2" fill="#C4CDD4"/>
+    <text x="46" y="90" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#333">$500K</text>
+    <text x="82" y="90" font-family="system-ui,sans-serif" font-size="8" fill="rgba(51,51,51,0.7)">Pre-Seed</text>
+  </g>
+
+  <!-- RAISE READY text -->
+  <text x="150" y="62" font-family="system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" letter-spacing="2">
+    <tspan fill="#F2EDE4">RAISE </tspan><tspan fill="#E74C3C">READY</tspan>
+  </text>
+
+  <!-- Divider line -->
+  <line x1="150" y1="72" x2="480" y2="72" stroke="#555" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="150" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="400" fill="#8E9EAB" letter-spacing="4">THE NUMBERS BEHIND EVERY RAISE</text>
+</svg>

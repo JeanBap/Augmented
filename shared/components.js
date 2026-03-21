@@ -43,7 +43,7 @@
     <a href="#main" class="skip-to-content">Skip to main content</a>
     <header>
     <nav>
-      <a href="/" class="logo">Raise Ready</a>
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
       <div class="nav-tabs">
         <div class="nav-dropdown">
           <a href="/book/" class="nav-tab" data-page="book">Books</a>
@@ -74,8 +74,6 @@
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
-        <a href="/about/" class="nav-tab" data-page="about">About</a>
-        <a href="/contact/" class="nav-tab" data-page="contact">Contact</a>
         <a href="https://finance.raisereadybook.com" target="_blank" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Financial Model Pro</a>
       </div>
       <div class="nav-right">
