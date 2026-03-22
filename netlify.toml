@@ -1,6 +1,13 @@
 [functions]
   directory = "netlify/functions"
 
+# Force raisereadybook.netlify.app -> raisereadybook.com
+[[redirects]]
+  from = "https://raisereadybook.netlify.app/*"
+  to = "https://www.raisereadybook.com/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
