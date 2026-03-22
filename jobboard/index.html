@@ -858,6 +858,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ─── State ─── */
   const state = {
+    allJobs: [],
     jobs: [],
     total: 0,
     page: 1,
@@ -896,35 +897,69 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     state.loading = true;
     renderSkeletons();
 
-    const params = new URLSearchParams();
-    const kw = state.keyword || (state.category ? CAT_KEYWORDS[state.category] : '');
-    if (kw)           params.set('keyword', kw);
-    if (state.remote) params.set('remote', state.remote);
-    if (state.type)   params.set('type', state.type);
-    params.set('page', state.page);
-    params.set('limit', state.limit);
-
     try {
-      const res = await fetch(`/.netlify/functions/get-board-jobs?${params}`);
+      const res = await fetch('/.netlify/functions/get-board-jobs?limit=200');
       if (!res.ok) throw new Error('fetch failed');
       const data = await res.json();
-      state.jobs       = data.jobs || [];
-      state.total      = data.total || 0;
-      state.page       = data.page || 1;
-      state.totalPages = data.totalPages || 1;
-      $('stat-total').textContent  = data.total || 0;
-      $('stat-remote').textContent = data.remoteCount || '—';
+      state.allJobs = data.jobs || [];
+      $('stat-total').textContent  = data.total || state.allJobs.length;
+      $('stat-remote').textContent = data.remoteCount || state.allJobs.filter(j => j.remote).length;
     } catch (e) {
-      state.jobs = DEMO_JOBS;
-      state.total = DEMO_JOBS.length;
-      state.totalPages = 1;
-      $('stat-total').textContent = state.total;
-      $('stat-remote').textContent = state.jobs.filter(j=>j.remote).length;
+      state.allJobs = DEMO_JOBS;
+      $('stat-total').textContent  = state.allJobs.length;
+      $('stat-remote').textContent = state.allJobs.filter(j => j.remote).length;
     } finally {
       state.loading = false;
-      renderJobs();
-      renderPagination();
+      applyFilters();
     }
+  }
+
+  /* ─── Client-side filter + paginate ─── */
+  function applyFilters() {
+    let jobs = state.allJobs;
+
+    // Search: title, company, description
+    if (state.keyword) {
+      const kw = state.keyword.toLowerCase();
+      jobs = jobs.filter(j =>
+        j.title.toLowerCase().includes(kw) ||
+        j.company.toLowerCase().includes(kw) ||
+        (j.description || '').toLowerCase().includes(kw)
+      );
+    }
+
+    // Category: map tab value to keywords and check title/description
+    if (state.category && CAT_KEYWORDS[state.category]) {
+      const terms = CAT_KEYWORDS[state.category].toLowerCase().split(' ');
+      jobs = jobs.filter(j =>
+        terms.some(term =>
+          j.title.toLowerCase().includes(term) ||
+          (j.description || '').toLowerCase().includes(term)
+        )
+      );
+    }
+
+    // Location: remote only or on-site only
+    if (state.remote === 'true') {
+      jobs = jobs.filter(j => j.remote === true);
+    } else if (state.remote === 'false') {
+      jobs = jobs.filter(j => j.remote === false);
+    }
+
+    // Type: full-time, part-time, contract, freelance
+    if (state.type) {
+      jobs = jobs.filter(j => (j.type || '').toLowerCase().includes(state.type));
+    }
+
+    // Paginate
+    state.total      = jobs.length;
+    state.totalPages = Math.max(1, Math.ceil(jobs.length / state.limit));
+    state.page       = Math.min(state.page, state.totalPages);
+    const offset     = (state.page - 1) * state.limit;
+    state.jobs       = jobs.slice(offset, offset + state.limit);
+
+    renderJobs();
+    renderPagination();
   }
 
   /* ─── Demo jobs (shown when API not yet available) ─── */
@@ -1012,11 +1047,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     pagination.innerHTML = html;
 
     pagination.querySelectorAll('[data-page]').forEach(btn => {
-      btn.addEventListener('click', () => { state.page = +btn.dataset.page; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
+      btn.addEventListener('click', () => { state.page = +btn.dataset.page; applyFilters(); window.scrollTo({top:0,behavior:'smooth'}); });
     });
     const prevBtn = $('prev-page'); const nextBtn = $('next-page');
-    if (prevBtn) prevBtn.addEventListener('click', () => { state.page--; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { state.page++; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { state.page--; applyFilters(); window.scrollTo({top:0,behavior:'smooth'}); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { state.page++; applyFilters(); window.scrollTo({top:0,behavior:'smooth'}); });
   }
 
   /* ─── Drawer ─── */
@@ -1191,11 +1226,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   let searchTimer;
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { state.keyword = searchInput.value.trim(); state.page = 1; fetchJobs(); }, 400);
+    searchTimer = setTimeout(() => { state.keyword = searchInput.value.trim(); state.page = 1; applyFilters(); }, 400);
   });
 
-  filterRemote.addEventListener('change', () => { state.remote = filterRemote.value; state.page = 1; fetchJobs(); });
-  filterType.addEventListener('change',   () => { state.type   = filterType.value;   state.page = 1; fetchJobs(); });
+  filterRemote.addEventListener('change', () => { state.remote = filterRemote.value; state.page = 1; applyFilters(); });
+  filterType.addEventListener('change',   () => { state.type   = filterType.value;   state.page = 1; applyFilters(); });
 
   catTabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -1203,7 +1238,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       tab.classList.add('active');
       state.category = tab.dataset.cat;
       state.page = 1;
-      fetchJobs();
+      applyFilters();
     });
   });
 
