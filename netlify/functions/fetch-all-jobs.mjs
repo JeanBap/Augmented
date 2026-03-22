@@ -315,20 +315,13 @@ async function fetchAshby() {
 /* ─── Source 11: Venture Capital Careers RSS ─── */
 async function fetchVCCareersRSS() {
   try {
-    const FEED_URLS = [
-      'https://venturecapitalcareers.com/rss/jobs/new.rss',
-      'https://venturecapitalcareers.com/blog/feed/',
-    ];
-    let xml = null;
-    for (const feedUrl of FEED_URLS) {
-      const res = await fetch(feedUrl, {
-        signal: AbortSignal.timeout(12000),
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
-      });
-      if (res.ok) { xml = await res.text(); break; }
-      console.log(`[fetch-all-jobs] VC Careers ${feedUrl} returned HTTP ${res.status}, trying next…`);
-    }
-    if (!xml) throw new Error('All VC Careers feed URLs failed');
+    const feedUrl = 'https://venturecapitalcareers.com/jobs/rss.xml';
+    const res = await fetch(feedUrl, {
+      signal: AbortSignal.timeout(12000),
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
+    });
+    if (!res.ok) throw new Error(`VC Careers feed returned HTTP ${res.status}`);
+    const xml = await res.text();
     return parseRssItems(xml).map((item, i) => {
       const postedDate = item.pubDate ? new Date(item.pubDate).toISOString().slice(0, 10) : null;
       const desc = item.description.replace(/<[^>]+>/g, '').trim();
@@ -356,7 +349,7 @@ async function fetchVCCareersRSS() {
 /* ─── Source 12: The Muse ─── */
 async function fetchTheMuse() {
   try {
-    const data = await fetchJson('https://www.themuse.com/api/public/jobs?page=0&descending=true');
+    const data = await fetchJson('https://www.themuse.com/api/public/jobs?category=Accounting+and+Finance&page=0');
     return (data.results || []).map(j => normalizeJob({
       id:          `muse_${j.id}`,
       title:       j.name,
