@@ -12,14 +12,14 @@ var PRODUCTS = {
   'book': {
     name: 'Raise Ready Book',
     description: 'The operator-led guide to building a financial model that closes rounds.',
-    price: 2999,
+    price: 999,
     file: '/products/8330624caf17f4c6/Raise_Ready_Book.pdf',
     mime: 'application/pdf'
   },
   'exit-book': {
     name: 'Exit Ready Book',
     description: 'The systematic playbook for maximizing your exit.',
-    price: 1999,
+    price: 999,
     file: '/products/f83d3651800e29cf/Exit_Ready_Book.pdf',
     mime: 'application/pdf'
   },
