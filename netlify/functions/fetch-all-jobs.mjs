@@ -281,38 +281,6 @@ async function fetchGreenhouse() {
   return allJobs;
 }
 
-/* ─── Source 9: Lever Postings ─── */
-const LEVER_COMPANIES = [];
-
-async function fetchLever() {
-  const allJobs = [];
-  await Promise.all(LEVER_COMPANIES.map(async company => {
-    try {
-      const url = `https://api.lever.co/v0/postings/${company}?mode=json`;
-      const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
-      if (!res.ok) return; // skip invalid/missing boards silently
-      const data = await res.json();
-      const postings = Array.isArray(data) ? data : (data.postings || []);
-      const jobs = postings.map(j => normalizeJob({
-        id:          `lever_${company}_${j.id}`,
-        title:       j.text || j.title || '',
-        company:     company.charAt(0).toUpperCase() + company.slice(1),
-        location:    j.categories?.location || j.workplaceType || 'Unknown',
-        remote:      /remote/i.test(j.categories?.location || j.workplaceType || ''),
-        type:        j.categories?.commitment?.toLowerCase() || 'full-time',
-        url:         j.hostedUrl || j.applyUrl || '',
-        description: (j.description || j.descriptionPlain || '').replace(/<[^>]+>/g, '').trim().slice(0, 2000),
-        posted_date: j.createdAt ? new Date(j.createdAt).toISOString().slice(0, 10) : null,
-        source:      'Lever',
-      }));
-      allJobs.push(...jobs);
-    } catch (e) {
-      console.error(`[fetch-all-jobs] Lever company ${company} failed:`, e.message);
-    }
-  }));
-  return allJobs;
-}
-
 /* ─── Source 10: Ashby Job Boards ─── */
 const ASHBY_BOARDS = ['greylock', 'firstround', 'kleinerperkins'];
 
@@ -347,12 +315,20 @@ async function fetchAshby() {
 /* ─── Source 11: Venture Capital Careers RSS ─── */
 async function fetchVCCareersRSS() {
   try {
-    const res = await fetch('https://venturecapitalcareers.com/rss/jobs/new.rss', {
-      signal: AbortSignal.timeout(12000),
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const xml = await res.text();
+    const FEED_URLS = [
+      'https://venturecapitalcareers.com/rss/jobs/new.rss',
+      'https://venturecapitalcareers.com/blog/feed/',
+    ];
+    let xml = null;
+    for (const feedUrl of FEED_URLS) {
+      const res = await fetch(feedUrl, {
+        signal: AbortSignal.timeout(12000),
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
+      });
+      if (res.ok) { xml = await res.text(); break; }
+      console.log(`[fetch-all-jobs] VC Careers ${feedUrl} returned HTTP ${res.status}, trying next…`);
+    }
+    if (!xml) throw new Error('All VC Careers feed URLs failed');
     return parseRssItems(xml).map((item, i) => {
       const postedDate = item.pubDate ? new Date(item.pubDate).toISOString().slice(0, 10) : null;
       const desc = item.description.replace(/<[^>]+>/g, '').trim();
@@ -380,7 +356,7 @@ async function fetchVCCareersRSS() {
 /* ─── Source 12: The Muse ─── */
 async function fetchTheMuse() {
   try {
-    const data = await fetchJson('https://www.themuse.com/api/public/v2/jobs?category=Finance&page=0&descending=true');
+    const data = await fetchJson('https://www.themuse.com/api/public/jobs?page=0&descending=true');
     return (data.results || []).map(j => normalizeJob({
       id:          `muse_${j.id}`,
       title:       j.name,
@@ -470,7 +446,6 @@ export default async (req, context) => {
     fetchAdzuna(),
     fetchReed(),
     fetchGreenhouse(),
-    fetchLever(),
     fetchAshby(),
     fetchVCCareersRSS(),
     fetchTheMuse(),
@@ -480,7 +455,7 @@ export default async (req, context) => {
 
   let allJobs = [];
   const sources = ['Remotive', 'Arbeitnow', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed',
-                   'Greenhouse', 'Lever', 'Ashby', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
+                   'Greenhouse', 'Ashby', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') {
       console.log(`[fetch-all-jobs] ${sources[i]}: ${r.value.length} jobs`);
