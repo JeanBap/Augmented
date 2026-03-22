@@ -1162,7 +1162,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       const res = await fetch('/.netlify/functions/get-board-jobs?limit=200');
       if (!res.ok) throw new Error('fetch failed');
       const data = await res.json();
-      state.allJobs = (data.jobs && data.jobs.length) ? data.jobs : DEMO_JOBS;
+      const apiJobs = (data.jobs && data.jobs.length) ? data.jobs.map(j => ({
+        ...j,
+        posted_date: j.posted_date || j.posted_at || null,
+      })) : null;
+      state.allJobs = apiJobs || DEMO_JOBS;
       $('stat-total').textContent  = data.total || state.allJobs.length;
       $('stat-remote').textContent = data.remoteCount || state.allJobs.filter(j => j.remote).length;
     } catch (e) {
@@ -1476,7 +1480,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   function formatSalary(job) {
-    if (!job.salary_min && !job.salary_max) return '';
+    if (!job.salary_min && !job.salary_max) {
+      return job.salary ? String(job.salary) : '';
+    }
     const cur = job.currency || 'USD';
     if (cur.includes('/')) {
       return `${job.salary_min}–${job.salary_max} ${cur}`;
