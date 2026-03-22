@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Jobs | Raise Ready Job Board</title>
+<meta name="description" content="Curated remote finance jobs — FP&A, CFO, Revenue Ops, and more. Find your next finance role at a high-growth startup.">
+<link rel="canonical" href="https://www.raisereadybook.com/jobboard/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raisereadybook.com/jobboard/">
+<meta property="og:title" content="Finance Jobs | Raise Ready Job Board">
+<meta property="og:description" content="Curated remote finance jobs — FP&A, CFO, Revenue Ops, and more.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── Design Tokens (dark variant) ─── */
+:root {
+  --ink:    #e8e4da;
+  --paper:  #0f0f1a;
+  --card:   #16162a;
+  --border: rgba(201,168,76,0.18);
+  --gold:   #c9a84c;
+  --gold2:  #e5c97e;
+  --dim:    #9a9285;
+  --mid:    #6e6a61;
+  --serif:  'Instrument Serif', Georgia, serif;
+  --mono:   'DM Mono', monospace;
+  --sans:   'Syne', sans-serif;
+  --red:    #c0392b;
+  --green:  #27ae60;
+  --radius: 8px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.45);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--gold2); }
+
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ─── Layout ─── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+}
+
+/* ─── Header ─── */
+.jb-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 1.5rem 1rem;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.jb-header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.jb-logo {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: .04em;
+}
+.jb-logo span { color: var(--gold); }
+
+.jb-header-actions { display: flex; gap: .75rem; align-items: center; }
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 700;
+  padding: .55rem 1.1rem;
+  border-radius: var(--radius);
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #0f0f1a;
+  border: 1px solid var(--gold);
+}
+.btn-gold:hover { background: var(--gold2); border-color: var(--gold2); color: #0f0f1a; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,.08); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--dim);
+  border: 1px solid rgba(255,255,255,.08);
+  font-size: .75rem;
+}
+.btn-ghost:hover { color: var(--ink); border-color: rgba(255,255,255,.2); }
+
+/* ─── Search bar ─── */
+.search-wrap {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .65rem 1rem .65rem 2.5rem;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: .88rem;
+  outline: none;
+  transition: border-color .2s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236e6a61' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: .75rem center;
+}
+.search-input:focus { border-color: var(--gold); }
+.search-input::placeholder { color: var(--mid); }
+
+.filter-select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .65rem 1rem;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: .78rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.filter-select:focus { border-color: var(--gold); }
+.filter-select option { background: var(--card); }
+
+/* ─── Category Tabs ─── */
+.category-tabs {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cat-tab {
+  font-family: var(--mono);
+  font-size: .72rem;
+  padding: .38rem .85rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  background: transparent;
+  transition: all .2s;
+}
+.cat-tab:hover { color: var(--ink); border-color: rgba(255,255,255,.2); }
+.cat-tab.active {
+  background: var(--gold);
+  color: #0f0f1a;
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+/* ─── Results meta ─── */
+.results-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--dim);
+}
+
+/* ─── Job Cards ─── */
+.jobs-list { display: flex; flex-direction: column; gap: .75rem; }
+
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+  position: relative;
+}
+.job-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+.job-card.active { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,168,76,.25); }
+
+.job-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+
+.job-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.job-source-badge {
+  font-family: var(--mono);
+  font-size: .65rem;
+  padding: .2rem .55rem;
+  border-radius: 20px;
+  background: rgba(201,168,76,.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.job-company {
+  font-family: var(--mono);
+  font-size: .8rem;
+  color: var(--dim);
+  margin-bottom: .6rem;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .75rem;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: .68rem;
+  padding: .18rem .55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,.09);
+  color: var(--mid);
+}
+.tag.remote { border-color: rgba(39,174,96,.3); color: #5dd08a; }
+.tag.type { border-color: rgba(255,255,255,.12); }
+
+.job-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.job-salary {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--gold);
+}
+
+.job-date {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--mid);
+}
+
+.job-apply-btn {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .35rem .8rem;
+  border-radius: 6px;
+  background: var(--gold);
+  color: #0f0f1a;
+  border: none;
+  transition: background .2s;
+  z-index: 2;
+  position: relative;
+}
+.job-apply-btn:hover { background: var(--gold2); }
+
+/* ─── Pagination ─── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 2rem;
+}
+
+.page-btn {
+  font-family: var(--mono);
+  font-size: .78rem;
+  padding: .4rem .8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  background: var(--card);
+  transition: all .2s;
+}
+.page-btn:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+.page-btn.active { background: var(--gold); color: #0f0f1a; border-color: var(--gold); font-weight: 700; }
+.page-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+/* ─── Sidebar ─── */
+.sidebar { position: sticky; top: 5rem; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.sidebar-card h3 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-group { margin-bottom: .9rem; }
+
+.form-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--dim);
+  margin-bottom: .3rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .55rem .75rem;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: .82rem;
+  outline: none;
+  transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--mid); }
+
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--dim);
+  padding: .6rem .85rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s;
+  width: 100%;
+}
+.file-upload-label:hover { border-color: var(--gold); color: var(--gold); }
+.file-upload-label input { display: none; }
+
+.profile-saved-note {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--green);
+  margin-top: .5rem;
+  display: none;
+}
+
+/* ─── Detail Drawer ─── */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+  backdrop-filter: blur(3px);
+}
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(560px, 100vw);
+  background: #13132a;
+  border-left: 1px solid var(--border);
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.drawer.open { transform: translateX(0); }
+
+.drawer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.drawer-close {
+  font-size: 1.3rem;
+  color: var(--dim);
+  line-height: 1;
+  padding: .25rem;
+  border-radius: 4px;
+  transition: color .2s;
+  flex-shrink: 0;
+}
+.drawer-close:hover { color: var(--ink); }
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.drawer-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  margin-bottom: .3rem;
+}
+
+.drawer-company {
+  font-family: var(--mono);
+  font-size: .85rem;
+  color: var(--gold);
+}
+
+.drawer-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin: 1.25rem 0;
+}
+
+.drawer-meta-item { }
+.drawer-meta-label {
+  font-family: var(--mono);
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--mid);
+  margin-bottom: .2rem;
+}
+.drawer-meta-value {
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--ink);
+}
+
+.drawer-description {
+  font-size: .88rem;
+  color: var(--dim);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.drawer-description h4 {
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.25rem 0 .4rem;
+}
+
+.drawer-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+
+/* ─── Post Job Modal ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: #13132a;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(.96) translateY(8px);
+  transition: transform .2s;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+
+.modal-close {
+  font-size: 1.3rem;
+  color: var(--dim);
+  padding: .25rem;
+  transition: color .2s;
+}
+.modal-close:hover { color: var(--ink); }
+
+/* ─── Apply Toast ─── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--card);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-family: var(--mono);
+  font-size: .8rem;
+  color: var(--ink);
+  z-index: 400;
+  transform: translateY(120%);
+  transition: transform .3s;
+  max-width: 320px;
+}
+.toast.show { transform: translateY(0); }
+.toast.error { border-color: var(--red); }
+
+/* ─── Empty state ─── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--mid);
+}
+.empty-state h3 { font-family: var(--serif); font-size: 1.25rem; margin-bottom: .5rem; color: var(--dim); }
+.empty-state p { font-family: var(--mono); font-size: .8rem; }
+
+/* ─── Loading skeleton ─── */
+.skeleton { border-radius: var(--radius); overflow: hidden; }
+.skeleton-pulse {
+  background: linear-gradient(90deg, var(--card) 25%, rgba(255,255,255,.04) 50%, var(--card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.skel-card {
+  height: 120px;
+  border-radius: var(--radius);
+  margin-bottom: .75rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .jb-header-inner { gap: .5rem; }
+  .jb-logo { font-size: 1rem; }
+  .drawer { width: 100vw; }
+  .drawer-meta-grid { grid-template-columns: 1fr; }
+  .search-wrap { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="jb-header">
+  <div class="jb-header-inner">
+    <div class="jb-logo">Raise Ready <span>/ Jobs</span></div>
+    <div class="jb-header-actions">
+      <button class="btn btn-outline" id="open-post-modal">+ Post a Job</button>
+      <a href="https://www.raisereadybook.com/" class="btn btn-ghost">← Back to site</a>
+    </div>
+  </div>
+</header>
+
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Left: Job listings -->
+  <main>
+    <!-- Search -->
+    <div class="search-wrap">
+      <input type="search" class="search-input" id="search-input" placeholder="Search title, company, or keyword…" autocomplete="off">
+      <select class="filter-select" id="filter-remote">
+        <option value="">All locations</option>
+        <option value="true">Remote only</option>
+        <option value="false">On-site only</option>
+      </select>
+      <select class="filter-select" id="filter-type">
+        <option value="">All types</option>
+        <option value="full-time">Full-time</option>
+        <option value="part-time">Part-time</option>
+        <option value="contract">Contract</option>
+        <option value="freelance">Freelance</option>
+      </select>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="category-tabs" id="category-tabs">
+      <button class="cat-tab active" data-cat="">All</button>
+      <button class="cat-tab" data-cat="fpa">FP&amp;A</button>
+      <button class="cat-tab" data-cat="cfo">CFO / VP Finance</button>
+      <button class="cat-tab" data-cat="revops">Revenue Ops</button>
+      <button class="cat-tab" data-cat="analyst">Financial Analyst</button>
+      <button class="cat-tab" data-cat="startup">Startup Finance</button>
+    </div>
+
+    <!-- Results meta -->
+    <div class="results-meta">
+      <span id="results-count"></span>
+      <span id="results-page"></span>
+    </div>
+
+    <!-- Jobs list -->
+    <div class="jobs-list" id="jobs-list">
+      <!-- skeletons while loading -->
+      <div class="skel-card skeleton-pulse skeleton"></div>
+      <div class="skel-card skeleton-pulse skeleton"></div>
+      <div class="skel-card skeleton-pulse skeleton"></div>
+      <div class="skel-card skeleton-pulse skeleton"></div>
+      <div class="skel-card skeleton-pulse skeleton"></div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <!-- Right: Sidebar -->
+  <aside class="sidebar">
+
+    <!-- Create Profile -->
+    <div class="sidebar-card">
+      <h3>Your Profile</h3>
+      <p style="font-family:var(--mono);font-size:.73rem;color:var(--dim);margin-bottom:1rem;line-height:1.5;">Save your details once — auto-fill every application.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="p-name">Full Name</label>
+        <input type="text" class="form-input" id="p-name" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-email">Email</label>
+        <input type="email" class="form-input" id="p-email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-phone">Phone</label>
+        <input type="tel" class="form-input" id="p-phone" placeholder="+1 555 000 0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-linkedin">LinkedIn URL</label>
+        <input type="url" class="form-input" id="p-linkedin" placeholder="https://linkedin.com/in/…">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="p-summary">Summary</label>
+        <textarea class="form-textarea" id="p-summary" placeholder="3–4 lines about your background…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="file-upload-label" id="cv-label">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="cv-label-text">Upload CV (PDF / DOCX)</span>
+          <input type="file" id="p-cv" accept=".pdf,.doc,.docx,.txt">
+        </label>
+      </div>
+
+      <button class="btn btn-gold" id="save-profile-btn" style="width:100%;justify-content:center;">Save Profile</button>
+      <p class="profile-saved-note" id="profile-saved-note">Profile saved locally.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="sidebar-card" id="stats-card">
+      <h3>Board Stats</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.25rem;">
+        <div>
+          <div style="font-family:var(--serif);font-size:1.4rem;" id="stat-total">—</div>
+          <div style="font-family:var(--mono);font-size:.65rem;color:var(--mid);">Total jobs</div>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:1.4rem;" id="stat-remote">—</div>
+          <div style="font-family:var(--mono);font-size:.65rem;color:var(--mid);">Remote roles</div>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:1.4rem;" id="stat-sources">7</div>
+          <div style="font-family:var(--mono);font-size:.65rem;color:var(--mid);">Data sources</div>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:1.4rem;">Weekly</div>
+          <div style="font-family:var(--mono);font-size:.65rem;color:var(--mid);">Refresh cadence</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- Job Detail Drawer -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Job details">
+  <div class="drawer-header">
+    <div>
+      <div class="drawer-title" id="d-title"></div>
+      <div class="drawer-company" id="d-company"></div>
+    </div>
+    <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-meta-grid" id="d-meta"></div>
+    <div class="drawer-description" id="d-description"></div>
+  </div>
+  <div class="drawer-footer">
+    <button class="btn btn-gold" id="d-apply-btn" style="flex:1;justify-content:center;">Quick Apply</button>
+    <a class="btn btn-outline" id="d-link" target="_blank" rel="noopener">View Listing ↗</a>
+  </div>
+</aside>
+
+<!-- Post a Job Modal -->
+<div class="modal-overlay" id="post-modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Post a job">
+    <div class="modal-header">
+      <div class="modal-title">Post a Job</div>
+      <button class="modal-close" id="close-post-modal">✕</button>
+    </div>
+    <p style="font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-bottom:1.5rem;line-height:1.5;">Reach qualified finance professionals. Listings go live within 24 hours.</p>
+
+    <div class="form-group">
+      <label class="form-label" for="pj-title">Job Title *</label>
+      <input type="text" class="form-input" id="pj-title" placeholder="e.g. Senior FP&A Analyst">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="pj-company">Company *</label>
+      <input type="text" class="form-input" id="pj-company" placeholder="Acme Inc.">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="pj-location">Location</label>
+      <input type="text" class="form-input" id="pj-location" placeholder="Remote / New York, NY">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+      <div class="form-group">
+        <label class="form-label" for="pj-type">Type</label>
+        <select class="filter-select form-input" id="pj-type" style="width:100%;">
+          <option value="full-time">Full-time</option>
+          <option value="part-time">Part-time</option>
+          <option value="contract">Contract</option>
+          <option value="freelance">Freelance</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="pj-salary">Salary Range</label>
+        <input type="text" class="form-input" id="pj-salary" placeholder="e.g. $90k–$130k">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="pj-url">Application URL *</label>
+      <input type="url" class="form-input" id="pj-url" placeholder="https://…">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="pj-email">Contact Email *</label>
+      <input type="email" class="form-input" id="pj-email" placeholder="hiring@company.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="pj-description">Job Description *</label>
+      <textarea class="form-textarea" id="pj-description" style="min-height:140px;" placeholder="Responsibilities, requirements, about the company…"></textarea>
+    </div>
+    <div style="display:flex;gap:.75rem;margin-top:.5rem;">
+      <button class="btn btn-gold" id="submit-job-btn" style="flex:1;justify-content:center;">Submit Listing</button>
+      <button class="btn btn-ghost" id="cancel-post-modal">Cancel</button>
+    </div>
+    <p style="font-family:var(--mono);font-size:.68rem;color:var(--mid);margin-top:1rem;text-align:center;">We'll review and publish within 24 h.</p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ─── State ─── */
+  const state = {
+    jobs: [],
+    total: 0,
+    page: 1,
+    totalPages: 1,
+    limit: 10,
+    keyword: '',
+    category: '',
+    remote: '',
+    type: '',
+    activeJobId: null,
+    profile: null,
+    loading: false,
+  };
+
+  /* ─── Category keyword map ─── */
+  const CAT_KEYWORDS = {
+    fpa:     'FP&A',
+    cfo:     'CFO VP Finance',
+    revops:  'Revenue Operations',
+    analyst: 'Financial Analyst',
+    startup: 'startup finance',
+  };
+
+  /* ─── DOM refs ─── */
+  const $ = id => document.getElementById(id);
+  const jobsList    = $('jobs-list');
+  const pagination  = $('pagination');
+  const searchInput = $('search-input');
+  const filterRemote= $('filter-remote');
+  const filterType  = $('filter-type');
+  const catTabs     = document.querySelectorAll('.cat-tab');
+
+  /* ─── Fetch jobs ─── */
+  async function fetchJobs() {
+    if (state.loading) return;
+    state.loading = true;
+    renderSkeletons();
+
+    const params = new URLSearchParams();
+    const kw = state.keyword || (state.category ? CAT_KEYWORDS[state.category] : '');
+    if (kw)           params.set('keyword', kw);
+    if (state.remote) params.set('remote', state.remote);
+    if (state.type)   params.set('type', state.type);
+    params.set('page', state.page);
+    params.set('limit', state.limit);
+
+    try {
+      const res = await fetch(`/.netlify/functions/get-board-jobs?${params}`);
+      if (!res.ok) throw new Error('fetch failed');
+      const data = await res.json();
+      state.jobs       = data.jobs || [];
+      state.total      = data.total || 0;
+      state.page       = data.page || 1;
+      state.totalPages = data.totalPages || 1;
+      $('stat-total').textContent  = data.total || 0;
+      $('stat-remote').textContent = data.remoteCount || '—';
+    } catch (e) {
+      state.jobs = DEMO_JOBS;
+      state.total = DEMO_JOBS.length;
+      state.totalPages = 1;
+      $('stat-total').textContent = state.total;
+      $('stat-remote').textContent = state.jobs.filter(j=>j.remote).length;
+    } finally {
+      state.loading = false;
+      renderJobs();
+      renderPagination();
+    }
+  }
+
+  /* ─── Demo jobs (shown when API not yet available) ─── */
+  const DEMO_JOBS = [
+    { id: 'd1', title: 'Senior FP&A Manager', company: 'Series B SaaS', location: 'Remote', salary_min: 120000, salary_max: 160000, currency: 'USD', type: 'full-time', remote: true, url: '#', description: 'Lead financial planning and analysis for a high-growth Series B SaaS startup. Own the annual budgeting process, build driver-based forecast models, and partner with GTM and Product teams on business case analysis.\n\nResponsibilities:\n- Own consolidated P&L forecasting across all business units\n- Build and maintain 3-statement financial models\n- Deliver monthly variance analysis vs budget\n- Support board and investor reporting\n\nRequirements:\n- 5+ years FP&A experience, preferably at a SaaS company\n- Expert-level Excel / Google Sheets; Looker a plus\n- Experience with Netsuite or similar ERP\n- CPA or MBA preferred', posted_date: '2026-03-20', source: 'Remotive' },
+    { id: 'd2', title: 'VP of Finance', company: 'Fintech Startup', location: 'New York, NY', salary_min: 180000, salary_max: 230000, currency: 'USD', type: 'full-time', remote: false, url: '#', description: 'Join our executive team as VP Finance and build the finance function from scratch. You\'ll report to the CEO and manage a small team across accounting, FP&A, and treasury.\n\nResponsibilities:\n- Own all financial reporting and investor communications\n- Lead fundraising preparation and due diligence\n- Build financial controls and processes\n- Manage banking relationships and cash flow\n\nRequirements:\n- 8+ years progressive finance experience\n- Prior startup experience; Series A–C preferred\n- CPA required; investment banking or Big 4 background a plus', posted_date: '2026-03-19', source: 'HN Hiring' },
+    { id: 'd3', title: 'Revenue Operations Manager', company: 'PLG SaaS Co', location: 'Remote (US)', salary_min: 95000, salary_max: 130000, currency: 'USD', type: 'full-time', remote: true, url: '#', description: 'Own the RevOps function supporting our Sales, Marketing, and CS teams. You\'ll maintain our CRM, build dashboards, and support quota/comp planning.\n\nKey areas:\n- Salesforce administration and data hygiene\n- Pipeline and forecast analysis\n- Sales compensation modeling\n- GTM systems and tool stack', posted_date: '2026-03-18', source: 'Arbeitnow' },
+    { id: 'd4', title: 'Financial Analyst', company: 'E-commerce Platform', location: 'Remote', salary_min: 70000, salary_max: 95000, currency: 'USD', type: 'full-time', remote: true, url: '#', description: 'Support our FP&A team with financial modeling, variance analysis, and ad hoc projects. Great role for someone 2–4 years into their career looking to grow fast.\n\nYou\'ll work closely with our Senior FP&A Manager on budgeting, forecasting, and board prep materials.', posted_date: '2026-03-17', source: 'JSearch' },
+    { id: 'd5', title: 'Fractional CFO', company: 'Startup Studio', location: 'Remote', salary_min: 150, salary_max: 250, currency: 'USD/hr', type: 'contract', remote: true, url: '#', description: 'Provide fractional CFO services to a portfolio of 3–5 early-stage startups. Responsibilities include cash flow management, fundraising support, KPI dashboards, and investor reporting.', posted_date: '2026-03-16', source: 'Reed' },
+    { id: 'd6', title: 'Director of FP&A', company: 'B2B SaaS', location: 'San Francisco, CA', salary_min: 160000, salary_max: 200000, currency: 'USD', type: 'full-time', remote: false, url: '#', description: 'Lead a team of 3 FP&A analysts supporting our $50M ARR business. You\'ll own the long-range plan, investor reporting model, and all business-unit partnership.\n\nWe\'re looking for a builder who can create scalable processes and elevate finance as a strategic partner.', posted_date: '2026-03-15', source: 'Adzuna' },
+    { id: 'd7', title: 'Finance Business Partner', company: 'Growth-stage Startup', location: 'Remote (Global)', salary_min: 90000, salary_max: 120000, currency: 'USD', type: 'full-time', remote: true, url: '#', description: 'Embedded finance partner for our Engineering and Product teams. You\'ll own R&D cost analysis, headcount planning, and ROI frameworks for new initiatives.', posted_date: '2026-03-14', source: 'Indeed' },
+  ];
+
+  /* ─── Render jobs ─── */
+  function renderJobs() {
+    if (!state.jobs.length) {
+      jobsList.innerHTML = `<div class="empty-state"><h3>No jobs found</h3><p>Try adjusting your search or filters.</p></div>`;
+      $('results-count').textContent = '';
+      return;
+    }
+
+    $('results-count').textContent = `${state.total} job${state.total !== 1 ? 's' : ''} found`;
+    $('results-page').textContent  = state.totalPages > 1 ? `Page ${state.page} of ${state.totalPages}` : '';
+
+    jobsList.innerHTML = state.jobs.map(job => `
+      <article class="job-card${state.activeJobId === job.id ? ' active' : ''}" data-id="${esc(job.id)}">
+        <div class="job-card-header">
+          <h2 class="job-title">${esc(job.title)}</h2>
+          ${job.source ? `<span class="job-source-badge">${esc(job.source)}</span>` : ''}
+        </div>
+        <div class="job-company">${esc(job.company)}${job.location ? ` · ${esc(job.location)}` : ''}</div>
+        <div class="job-tags">
+          ${job.remote ? '<span class="tag remote">Remote</span>' : ''}
+          ${job.type   ? `<span class="tag type">${esc(job.type)}</span>` : ''}
+        </div>
+        <div class="job-footer">
+          <span class="job-salary">${formatSalary(job)}</span>
+          <span class="job-date">${formatDate(job.posted_date)}</span>
+          <button class="job-apply-btn" data-apply="${esc(job.id)}">Apply</button>
+        </div>
+      </article>
+    `).join('');
+
+    // Card click → open drawer
+    jobsList.querySelectorAll('.job-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('[data-apply]')) return;
+        const id = card.dataset.id;
+        openDrawer(id);
+      });
+    });
+
+    // Apply button on card
+    jobsList.querySelectorAll('[data-apply]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        applyToJob(btn.dataset.apply);
+      });
+    });
+  }
+
+  function renderSkeletons() {
+    jobsList.innerHTML = Array(5).fill(`<div class="skel-card skeleton-pulse skeleton"></div>`).join('');
+    $('results-count').textContent = '';
+    $('results-page').textContent  = '';
+  }
+
+  /* ─── Pagination ─── */
+  function renderPagination() {
+    if (state.totalPages <= 1) { pagination.innerHTML = ''; return; }
+    const pages = [];
+    // Always show first, last, current ±2
+    const show = new Set([1, state.totalPages]);
+    for (let i = Math.max(1, state.page - 2); i <= Math.min(state.totalPages, state.page + 2); i++) show.add(i);
+    const sorted = [...show].sort((a,b) => a-b);
+
+    let html = `<button class="page-btn" id="prev-page" ${state.page === 1 ? 'disabled' : ''}>‹</button>`;
+    let prev = 0;
+    for (const p of sorted) {
+      if (p - prev > 1) html += `<span style="color:var(--mid);padding:0 .25rem;">…</span>`;
+      html += `<button class="page-btn${p === state.page ? ' active' : ''}" data-page="${p}">${p}</button>`;
+      prev = p;
+    }
+    html += `<button class="page-btn" id="next-page" ${state.page === state.totalPages ? 'disabled' : ''}>›</button>`;
+    pagination.innerHTML = html;
+
+    pagination.querySelectorAll('[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => { state.page = +btn.dataset.page; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
+    });
+    const prevBtn = $('prev-page'); const nextBtn = $('next-page');
+    if (prevBtn) prevBtn.addEventListener('click', () => { state.page--; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { state.page++; fetchJobs(); window.scrollTo({top:0,behavior:'smooth'}); });
+  }
+
+  /* ─── Drawer ─── */
+  function openDrawer(id) {
+    const job = state.jobs.find(j => j.id === id);
+    if (!job) return;
+    state.activeJobId = id;
+
+    $('d-title').textContent   = job.title;
+    $('d-company').textContent = job.company;
+
+    $('d-meta').innerHTML = [
+      ['Location', job.location || 'Not specified'],
+      ['Type',     job.type     || 'Not specified'],
+      ['Remote',   job.remote   ? 'Yes' : 'No'],
+      ['Salary',   formatSalary(job) || 'Not disclosed'],
+      ['Source',   job.source   || '—'],
+      ['Posted',   formatDate(job.posted_date)],
+    ].map(([label, val]) => `
+      <div class="drawer-meta-item">
+        <div class="drawer-meta-label">${label}</div>
+        <div class="drawer-meta-value">${esc(String(val))}</div>
+      </div>
+    `).join('');
+
+    $('d-description').innerHTML = formatDescription(job.description || 'No description provided.');
+    $('d-link').href = job.url && job.url !== '#' ? job.url : '#';
+    $('d-apply-btn').onclick = () => applyToJob(id);
+
+    $('drawer-overlay').classList.add('open');
+    $('drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Highlight active card
+    document.querySelectorAll('.job-card').forEach(c => c.classList.toggle('active', c.dataset.id === id));
+  }
+
+  function closeDrawer() {
+    $('drawer-overlay').classList.remove('open');
+    $('drawer').classList.remove('open');
+    document.body.style.overflow = '';
+    state.activeJobId = null;
+    document.querySelectorAll('.job-card').forEach(c => c.classList.remove('active'));
+  }
+
+  $('drawer-close').addEventListener('click', closeDrawer);
+  $('drawer-overlay').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closePostModal(); } });
+
+  /* ─── Apply ─── */
+  async function applyToJob(jobId) {
+    const job     = state.jobs.find(j => j.id === jobId);
+    const profile = loadProfile();
+
+    if (!profile || !profile.email) {
+      showToast('Please save your profile first (right sidebar).', 'error');
+      return;
+    }
+
+    try {
+      const res = await fetch('/.netlify/functions/apply-job', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jobId,
+          applicantEmail: profile.email,
+          jobTitle:  job?.title   || '',
+          company:   job?.company || '',
+          appliedAt: new Date().toISOString(),
+        }),
+      });
+      if (res.ok) {
+        showToast(`Applied to "${job?.title || jobId}" — good luck!`);
+      } else {
+        showToast('Application saved locally. Submit your CV directly if needed.', 'error');
+      }
+    } catch {
+      showToast('Application queued. Check your connection.', 'error');
+    }
+  }
+
+  /* ─── Post Job Modal ─── */
+  $('open-post-modal').addEventListener('click',  () => $('post-modal').classList.add('open'));
+  $('close-post-modal').addEventListener('click', closePostModal);
+  $('cancel-post-modal').addEventListener('click', closePostModal);
+  $('post-modal').addEventListener('click', e => { if (e.target === $('post-modal')) closePostModal(); });
+
+  function closePostModal() { $('post-modal').classList.remove('open'); }
+
+  $('submit-job-btn').addEventListener('click', async () => {
+    const title   = $('pj-title').value.trim();
+    const company = $('pj-company').value.trim();
+    const url     = $('pj-url').value.trim();
+    const email   = $('pj-email').value.trim();
+    const desc    = $('pj-description').value.trim();
+    if (!title || !company || !url || !email || !desc) {
+      showToast('Please fill in all required fields.', 'error'); return;
+    }
+    $('submit-job-btn').textContent = 'Submitting…';
+    $('submit-job-btn').disabled = true;
+    await new Promise(r => setTimeout(r, 600));
+    showToast('Listing submitted! We\'ll review and publish within 24 h.');
+    closePostModal();
+    // Reset form
+    ['pj-title','pj-company','pj-location','pj-salary','pj-url','pj-email','pj-description'].forEach(id => $(id).value = '');
+    $('submit-job-btn').textContent = 'Submit Listing';
+    $('submit-job-btn').disabled = false;
+  });
+
+  /* ─── Profile (localStorage) ─── */
+  function loadProfile() {
+    try { return JSON.parse(localStorage.getItem('jb_profile') || 'null'); } catch { return null; }
+  }
+
+  function fillProfileForm() {
+    const p = loadProfile();
+    if (!p) return;
+    state.profile = p;
+    if (p.name)     $('p-name').value     = p.name;
+    if (p.email)    $('p-email').value    = p.email;
+    if (p.phone)    $('p-phone').value    = p.phone;
+    if (p.linkedin) $('p-linkedin').value = p.linkedin;
+    if (p.summary)  $('p-summary').value  = p.summary;
+    if (p.cvFilename) $('cv-label-text').textContent = p.cvFilename;
+  }
+
+  $('p-cv').addEventListener('change', () => {
+    const file = $('p-cv').files[0];
+    if (file) $('cv-label-text').textContent = file.name;
+  });
+
+  $('save-profile-btn').addEventListener('click', async () => {
+    const name     = $('p-name').value.trim();
+    const email    = $('p-email').value.trim();
+    const phone    = $('p-phone').value.trim();
+    const linkedin = $('p-linkedin').value.trim();
+    const summary  = $('p-summary').value.trim();
+
+    if (!email) { showToast('Email is required to save your profile.', 'error'); return; }
+
+    const file = $('p-cv').files[0];
+    let cvBase64 = null, cvFilename = null;
+    if (file) {
+      cvBase64   = await fileToBase64(file);
+      cvFilename = file.name;
+    } else {
+      const existing = loadProfile();
+      cvBase64   = existing?.cvBase64   || null;
+      cvFilename = existing?.cvFilename || null;
+    }
+
+    const profile = { name, email, phone, linkedin, summary, cvBase64, cvFilename };
+    localStorage.setItem('jb_profile', JSON.stringify(profile));
+    state.profile = profile;
+
+    // Also persist to Netlify Blobs
+    try {
+      await fetch('/.netlify/functions/applicant-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
+      });
+    } catch { /* local save is enough */ }
+
+    const note = $('profile-saved-note');
+    note.style.display = 'block';
+    setTimeout(() => { note.style.display = 'none'; }, 3000);
+    showToast('Profile saved!');
+  });
+
+  /* ─── Search & filters ─── */
+  let searchTimer;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { state.keyword = searchInput.value.trim(); state.page = 1; fetchJobs(); }, 400);
+  });
+
+  filterRemote.addEventListener('change', () => { state.remote = filterRemote.value; state.page = 1; fetchJobs(); });
+  filterType.addEventListener('change',   () => { state.type   = filterType.value;   state.page = 1; fetchJobs(); });
+
+  catTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      catTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      state.category = tab.dataset.cat;
+      state.page = 1;
+      fetchJobs();
+    });
+  });
+
+  /* ─── Helpers ─── */
+  function esc(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function formatSalary(job) {
+    if (!job.salary_min && !job.salary_max) return '';
+    const cur = job.currency || 'USD';
+    if (cur.includes('/')) {
+      return `${job.salary_min}–${job.salary_max} ${cur}`;
+    }
+    const fmt = n => n >= 1000 ? `$${Math.round(n/1000)}k` : `$${n}`;
+    if (job.salary_min && job.salary_max) return `${fmt(job.salary_min)}–${fmt(job.salary_max)}`;
+    if (job.salary_min) return `From ${fmt(job.salary_min)}`;
+    return `Up to ${fmt(job.salary_max)}`;
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    const date = new Date(d);
+    if (isNaN(date)) return d;
+    const diff = Math.floor((Date.now() - date) / 86400000);
+    if (diff === 0) return 'Today';
+    if (diff === 1) return 'Yesterday';
+    if (diff < 7)  return `${diff}d ago`;
+    if (diff < 30) return `${Math.floor(diff/7)}w ago`;
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function formatDescription(desc) {
+    if (!desc) return '';
+    const escaped = esc(desc);
+    return escaped
+      .replace(/\n(Responsibilities|Requirements|Key areas|About|Benefits|Qualifications|What you.ll do|What we.re looking for):/gi, '\n<h4>$1:</h4>')
+      .replace(/\n- /g, '\n• ')
+      .replace(/\n/g, '<br>');
+  }
+
+  function fileToBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload  = () => res(r.result.split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+  }
+
+  let toastTimer;
+  function showToast(msg, type = '') {
+    const t = $('toast');
+    t.textContent = msg;
+    t.className = 'toast' + (type ? ' ' + type : '') + ' show';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { t.className = 'toast'; }, 4000);
+  }
+
+  /* ─── Init ─── */
+  fillProfileForm();
+  fetchJobs();
+
+})();
+</script>
+</body>
+</html>

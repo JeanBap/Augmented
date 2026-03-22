@@ -1,5 +1,6 @@
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 # Force raisereadybook.netlify.app -> raisereadybook.com
 [[redirects]]
