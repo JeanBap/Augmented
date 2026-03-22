@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 /* ─── Design Tokens (dark variant) ─── */
 :root {
@@ -1151,7 +1151,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       const res = await fetch('/.netlify/functions/get-board-jobs?limit=200');
       if (!res.ok) throw new Error('fetch failed');
       const data = await res.json();
-      state.allJobs = data.jobs || [];
+      state.allJobs = (data.jobs && data.jobs.length) ? data.jobs : DEMO_JOBS;
       $('stat-total').textContent  = data.total || state.allJobs.length;
       $('stat-remote').textContent = data.remoteCount || state.allJobs.filter(j => j.remote).length;
     } catch (e) {
