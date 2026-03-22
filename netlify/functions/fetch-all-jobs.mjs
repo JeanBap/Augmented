@@ -286,6 +286,204 @@ async function fetchReed() {
   }
 }
 
+/* ─── Helper: parse RSS XML ─── */
+function parseRssItems(xml) {
+  const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || [];
+  return items.map(item => {
+    const get = tag => {
+      const m = item.match(new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>|<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`));
+      return m ? (m[1] || m[2] || '').trim() : '';
+    };
+    return { title: get('title'), link: get('link'), description: get('description'), pubDate: get('pubDate'), author: get('author') || get('dc:creator') };
+  });
+}
+
+/* ─── Source 8: Greenhouse Job Boards ─── */
+const GREENHOUSE_BOARDS = [
+  'summitpartnerslp', 'valorequitypartners', 'generalatlantic', 'insightpartners',
+  'silverlaketechnology', 'hellmanfriedman', 'warburghealthcare', 'tpg',
+  'apolloglobalmanagement', 'baborpartners', 'permiraadvisers', 'carlaboratory',
+  'eqtgroup', 'aborpartners', 'newenterpriseassociates', 'andreessenhorowitz',
+  'sequoiacap', 'benchmarkcapital', 'lightspeedventurepartners', 'greylock',
+  'bessemerventurepartners', 'indexventures', 'founderfund', 'usv',
+  'acaborpartners', 'kaborpartners', 'thrivecapital', 'coatue',
+  'tigerababanagementllc', 'generalcatalyst',
+];
+
+async function fetchGreenhouse() {
+  const allJobs = [];
+  await Promise.all(GREENHOUSE_BOARDS.map(async board => {
+    try {
+      const url = `https://boards-api.greenhouse.io/v1/boards/${board}/jobs?content=true`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) return; // skip invalid/missing boards silently
+      const data = await res.json();
+      const jobs = (data.jobs || []).map(j => normalizeJob({
+        id:          `greenhouse_${board}_${j.id}`,
+        title:       j.title,
+        company:     board.replace(/([a-z])([A-Z])/g, '$1 $2'),
+        location:    j.location?.name || 'Unknown',
+        remote:      /remote/i.test(j.location?.name || ''),
+        type:        'full-time',
+        url:         j.absolute_url || '',
+        description: (j.content || '').replace(/<[^>]+>/g, '').trim().slice(0, 2000),
+        posted_date: j.updated_at ? j.updated_at.slice(0, 10) : null,
+        source:      'Greenhouse',
+      }));
+      allJobs.push(...jobs);
+    } catch (e) {
+      console.error(`[fetch-all-jobs] Greenhouse board ${board} failed:`, e.message);
+    }
+  }));
+  return allJobs;
+}
+
+/* ─── Source 9: Lever Postings ─── */
+const LEVER_COMPANIES = ['blackstone', 'kkr', 'carlylegroup', 'baincapital', 'bridgewaterassociates'];
+
+async function fetchLever() {
+  const allJobs = [];
+  await Promise.all(LEVER_COMPANIES.map(async company => {
+    try {
+      const url = `https://api.lever.co/v0/postings/${company}?mode=json`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) return; // skip invalid/missing boards silently
+      const data = await res.json();
+      const postings = Array.isArray(data) ? data : (data.postings || []);
+      const jobs = postings.map(j => normalizeJob({
+        id:          `lever_${company}_${j.id}`,
+        title:       j.text || j.title || '',
+        company:     company.charAt(0).toUpperCase() + company.slice(1),
+        location:    j.categories?.location || j.workplaceType || 'Unknown',
+        remote:      /remote/i.test(j.categories?.location || j.workplaceType || ''),
+        type:        j.categories?.commitment?.toLowerCase() || 'full-time',
+        url:         j.hostedUrl || j.applyUrl || '',
+        description: (j.description || j.descriptionPlain || '').replace(/<[^>]+>/g, '').trim().slice(0, 2000),
+        posted_date: j.createdAt ? new Date(j.createdAt).toISOString().slice(0, 10) : null,
+        source:      'Lever',
+      }));
+      allJobs.push(...jobs);
+    } catch (e) {
+      console.error(`[fetch-all-jobs] Lever company ${company} failed:`, e.message);
+    }
+  }));
+  return allJobs;
+}
+
+/* ─── Source 10: Venture Capital Careers RSS ─── */
+async function fetchVCCareersRSS() {
+  try {
+    const res = await fetch('https://venturecapitalcareers.com/rss/jobs/new.rss', {
+      signal: AbortSignal.timeout(12000),
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const xml = await res.text();
+    return parseRssItems(xml).map((item, i) => {
+      const postedDate = item.pubDate ? new Date(item.pubDate).toISOString().slice(0, 10) : null;
+      const desc = item.description.replace(/<[^>]+>/g, '').trim();
+      // Try to extract company from description or author
+      const company = item.author || 'Unknown';
+      return normalizeJob({
+        id:          `vccareers_${i}_${Date.now()}`,
+        title:       item.title,
+        company,
+        location:    /remote/i.test(desc) ? 'Remote' : 'Unknown',
+        remote:      /remote/i.test(desc),
+        type:        'full-time',
+        url:         item.link,
+        description: desc.slice(0, 2000),
+        posted_date: postedDate,
+        source:      'VC Careers',
+      });
+    }).filter(j => j.title);
+  } catch (e) {
+    console.error('[fetch-all-jobs] VC Careers RSS failed:', e.message);
+    return [];
+  }
+}
+
+/* ─── Source 11: The Muse ─── */
+async function fetchTheMuse() {
+  try {
+    const data = await fetchJson('https://www.themuse.com/api/public/jobs?category=Finance&page=0');
+    return (data.results || []).map(j => normalizeJob({
+      id:          `muse_${j.id}`,
+      title:       j.name,
+      company:     j.company?.name || '',
+      location:    j.locations?.[0]?.name || 'Unknown',
+      remote:      /remote/i.test(j.locations?.[0]?.name || ''),
+      type:        j.levels?.[0]?.name?.toLowerCase() || 'full-time',
+      url:         j.refs?.landing_page || '',
+      description: (j.contents || '').replace(/<[^>]+>/g, '').trim().slice(0, 2000),
+      posted_date: j.publication_date ? j.publication_date.slice(0, 10) : null,
+      source:      'The Muse',
+    }));
+  } catch (e) {
+    console.error('[fetch-all-jobs] The Muse failed:', e.message);
+    return [];
+  }
+}
+
+/* ─── Source 12: Himalayas ─── */
+async function fetchHimalayas() {
+  try {
+    const data = await fetchJson('https://himalayas.app/jobs/api?limit=50');
+    const financeRe = /financ|fp&a|fp\s*&\s*a|cfo|accountant|revenue|analyst|invest|private equity|venture/i;
+    return (data.jobs || [])
+      .filter(j => financeRe.test(j.title || '') || financeRe.test(j.description || ''))
+      .map(j => normalizeJob({
+        id:          `himalayas_${j.id || j.slug}`,
+        title:       j.title,
+        company:     j.companyName || j.company?.name || '',
+        location:    j.locationRestrictions?.join(', ') || 'Remote',
+        remote:      true,
+        type:        j.jobType?.toLowerCase() || 'full-time',
+        url:         j.applicationLink || j.url || '',
+        description: (j.description || '').replace(/<[^>]+>/g, '').trim().slice(0, 2000),
+        posted_date: j.createdAt ? new Date(j.createdAt).toISOString().slice(0, 10) : null,
+        source:      'Himalayas',
+      }));
+  } catch (e) {
+    console.error('[fetch-all-jobs] Himalayas failed:', e.message);
+    return [];
+  }
+}
+
+/* ─── Source 13: Jobicy RSS ─── */
+async function fetchJobicyRSS() {
+  try {
+    const res = await fetch('https://jobicy.com/jobs-rss-feed', {
+      signal: AbortSignal.timeout(12000),
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const xml = await res.text();
+    const financeRe = /financ|fp&a|fp\s*&\s*a|cfo|accountant|revenue|analyst|invest|private equity|venture/i;
+    return parseRssItems(xml)
+      .filter(item => financeRe.test(item.title || '') || financeRe.test(item.description || ''))
+      .map((item, i) => {
+        const desc = item.description.replace(/<[^>]+>/g, '').trim();
+        const postedDate = item.pubDate ? new Date(item.pubDate).toISOString().slice(0, 10) : null;
+        return normalizeJob({
+          id:          `jobicy_${i}_${Date.now()}`,
+          title:       item.title,
+          company:     item.author || 'Unknown',
+          location:    /remote/i.test(desc) ? 'Remote' : 'Unknown',
+          remote:      /remote/i.test(desc),
+          type:        'full-time',
+          url:         item.link,
+          description: desc.slice(0, 2000),
+          posted_date: postedDate,
+          source:      'Jobicy',
+        });
+      }).filter(j => j.title);
+  } catch (e) {
+    console.error('[fetch-all-jobs] Jobicy RSS failed:', e.message);
+    return [];
+  }
+}
+
 /* ─── Main handler ─── */
 export default async (req, context) => {
   console.log('[fetch-all-jobs] Starting weekly job fetch…');
@@ -298,10 +496,17 @@ export default async (req, context) => {
     fetchJSearch(),
     fetchAdzuna(),
     fetchReed(),
+    fetchGreenhouse(),
+    fetchLever(),
+    fetchVCCareersRSS(),
+    fetchTheMuse(),
+    fetchHimalayas(),
+    fetchJobicyRSS(),
   ]);
 
   let allJobs = [];
-  const sources = ['Remotive', 'Arbeitnow', 'Indeed', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed'];
+  const sources = ['Remotive', 'Arbeitnow', 'Indeed', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed',
+                   'Greenhouse', 'Lever', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') {
       console.log(`[fetch-all-jobs] ${sources[i]}: ${r.value.length} jobs`);
