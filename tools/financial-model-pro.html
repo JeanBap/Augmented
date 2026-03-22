@@ -182,6 +182,16 @@
 
 <div id="fm-app"></div>
 
+<!-- Pitch Deck Builder Section -->
+<section style="background: linear-gradient(180deg, #0f1a30 0%, #1B2A4A 100%); color: #fff; padding: 2.5rem 1.5rem 1.5rem; margin-top: 0;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+    <div style="font-family: var(--mono, 'DM Mono', monospace); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #2E8B8B; margin-bottom: 0.75rem;">Built on your financial model</div>
+    <h2 style="font-family: var(--serif, 'Instrument Serif', serif); font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem;">Pitch Deck Builder</h2>
+    <p style="font-size: 0.95rem; color: #94a3b8; max-width: 580px; margin: 0 auto; line-height: 1.6;">Answer the questions below to build an investor-ready pitch deck. Your financial model data is pulled in automatically. Export a clean HTML deck you can present or share.</p>
+  </div>
+</section>
+<div id="pitch-deck-app"></div>
+
 <div id="site-footer"></div>
 <script src="/shared/components.js"></script>
 
@@ -2857,6 +2867,633 @@ function FinancialModel() {
   }, "Get Financial Model Builder"))));
 }
 ReactDOM.createRoot(document.getElementById('fm-app')).render(/*#__PURE__*/React.createElement(FinancialModel, null));
+
+// ============================================================
+// PITCH DECK BUILDER
+// ============================================================
+
+const PITCH_DEF = {
+  companyName:"", tagline:"", mission:"", foundingDate:"",
+  problem:"", problemWho:"", problemSize:"",
+  solution:"", solutionHow:"", differentiators:"",
+  tam:"", sam:"", som:"", marketTrends:"", marketGrowth:"",
+  revenueStreams:"", pricing:"", unitEconomicsNotes:"",
+  traction:"", milestones:"", tractionGrowth:"", notableCustomers:"",
+  competitors:"", competitiveAdvantages:"", moat:"",
+  founders:"", keyHires:"", advisors:"", teamExperience:"",
+  askAmount:"", useOfFunds:"", timeline:"", terms:"",
+  vision:""
+};
+
+const PD_SECTIONS = [
+  { id:"company", label:"Company", icon:"🏢", fields:[
+    { key:"companyName", label:"Company name", ph:"e.g. Acme AI" },
+    { key:"tagline", label:"Tagline (one liner)", ph:"One powerful sentence describing what you do" },
+    { key:"mission", label:"Mission statement", ph:"Why does this company exist?" },
+    { key:"foundingDate", label:"Founded", ph:"e.g. January 2023" }
+  ]},
+  { id:"problem", label:"Problem", icon:"🔴", fields:[
+    { key:"problem", label:"What problem are you solving?", ph:"Describe the pain point clearly and compellingly", big:true },
+    { key:"problemWho", label:"Who has this problem?", ph:"Your ideal customer profile" },
+    { key:"problemSize", label:"How large is the problem?", ph:"e.g. $50B in wasted spend annually, affects 500K businesses" }
+  ]},
+  { id:"solution", label:"Solution", icon:"💡", fields:[
+    { key:"solution", label:"Your product / service", ph:"Describe your solution in 2-3 sentences", big:true },
+    { key:"solutionHow", label:"How it works", ph:"The mechanism, technology, or key approach" },
+    { key:"differentiators", label:"Key differentiators", ph:"What makes this 10x better than alternatives?" }
+  ]},
+  { id:"market", label:"Market", icon:"📈", fields:[
+    { key:"tam", label:"TAM (Total Addressable Market)", ph:"e.g. $120B global market" },
+    { key:"sam", label:"SAM (Serviceable Addressable Market)", ph:"e.g. $15B SMB segment in North America" },
+    { key:"som", label:"SOM (Serviceable Obtainable Market)", ph:"e.g. $500M realistic 5-year target" },
+    { key:"marketTrends", label:"Key market tailwinds / trends", ph:"What trends make this opportunity inevitable?" },
+    { key:"marketGrowth", label:"Market growth rate", ph:"e.g. 25% CAGR driven by AI adoption" }
+  ]},
+  { id:"bizmodel", label:"Business Model", icon:"💰", fields:[
+    { key:"revenueStreams", label:"Revenue streams", ph:"e.g. SaaS subscriptions (80%), professional services (20%)" },
+    { key:"pricing", label:"Pricing model", ph:"e.g. $299/mo per seat, volume discounts at 10+ seats" },
+    { key:"unitEconomicsNotes", label:"Unit economics highlights", ph:"Key metrics — CAC, LTV, payback, NRR" }
+  ]},
+  { id:"traction", label:"Traction", icon:"🚀", fields:[
+    { key:"traction", label:"Current metrics", ph:"e.g. $45K MRR, 120 paying customers, 15% MoM growth" },
+    { key:"milestones", label:"Key milestones achieved", ph:"Product shipped, key hires, partnerships, awards", big:true },
+    { key:"tractionGrowth", label:"Growth rate", ph:"e.g. 3x revenue YoY, 40% MoM user growth" },
+    { key:"notableCustomers", label:"Notable customers / logos", ph:"Any recognisable brands or marquee wins?" }
+  ]},
+  { id:"competition", label:"Competition", icon:"⚔️", fields:[
+    { key:"competitors", label:"Key competitors", ph:"e.g. Salesforce, HubSpot, legacy ERPs, spreadsheets" },
+    { key:"competitiveAdvantages", label:"Your advantages", ph:"Where do you clearly outperform alternatives?" },
+    { key:"moat", label:"Your moat / defensibility", ph:"e.g. Proprietary data, network effects, switching costs" }
+  ]},
+  { id:"team", label:"Team", icon:"👥", fields:[
+    { key:"founders", label:"Founders", ph:"Name, role, and most relevant background (one per line)", big:true },
+    { key:"keyHires", label:"Key hires", ph:"Other critical team members and their expertise" },
+    { key:"advisors", label:"Advisors / existing investors", ph:"Notable names who believe in you" },
+    { key:"teamExperience", label:"Why this team wins", ph:"What makes you uniquely qualified to solve this?" }
+  ]},
+  { id:"ask", label:"The Ask", icon:"🤝", fields:[
+    { key:"askAmount", label:"Amount raising", ph:"e.g. $3M Seed round" },
+    { key:"useOfFunds", label:"Use of funds", ph:"e.g. 60% product/eng, 30% sales & marketing, 10% ops" },
+    { key:"timeline", label:"Timeline & key milestones", ph:"What will you achieve with this capital in 18-24 months?", big:true },
+    { key:"terms", label:"Terms (optional)", ph:"e.g. SAFEs at $12M cap, SAFE + pro-rata rights" }
+  ]},
+  { id:"vision", label:"Vision", icon:"🌍", fields:[
+    { key:"vision", label:"Where will the company be in 3-5 years?", ph:"Paint the bold picture — market position, revenue, impact", big:true }
+  ]}
+];
+
+function buildPitchHTML(p, fm) {
+  const co = p.companyName || "Your Company";
+  const yr = new Date().getFullYear();
+
+  // Pull financial highlights from model assumptions
+  let finRows = "";
+  if (fm) {
+    const startMRR = fm.startMRR || 10;
+    const y1g = fm.mrrGrowthY1 || 12;
+    const gm = fm.grossMargin || 72;
+    const churn = fm.churn || 4;
+    const cacSpend = fm.cacSpend || 8;
+    const newCust = fm.newCust || 25;
+    const arpc = fm.arpc || 200;
+    const fund1 = fm.fundingAmt || 2000;
+    const fund2 = fm.fundingAmt2 || 5000;
+    const ltv = arpc * (gm/100) * (churn > 0 ? 1/(churn/100) : 99);
+    const cac = newCust > 0 ? cacSpend * 1000 / newCust : 0;
+    const ratioStr = cac > 0 ? (ltv/cac).toFixed(1) + "x" : "N/A";
+    const nrr = (100 - churn + (fm.expansion || 1.5)).toFixed(0) + "%";
+    finRows = `
+      <div class="fin-grid">
+        <div class="fin-card"><div class="fin-label">Starting MRR</div><div class="fin-value">$${startMRR}K</div></div>
+        <div class="fin-card"><div class="fin-label">Y1 MRR Growth</div><div class="fin-value">${y1g}%/mo</div></div>
+        <div class="fin-card"><div class="fin-label">Gross Margin</div><div class="fin-value">${gm}%</div></div>
+        <div class="fin-card"><div class="fin-label">Monthly Churn</div><div class="fin-value">${churn}%</div></div>
+        <div class="fin-card"><div class="fin-label">LTV:CAC</div><div class="fin-value">${ratioStr}</div></div>
+        <div class="fin-card"><div class="fin-label">NRR</div><div class="fin-value">${nrr}</div></div>
+      </div>
+      <p class="fin-note">Modelled capital: $${fund1}K (Seed) + $${fund2}K (Series A). Full 5-year model with 3 scenarios available on request.</p>`;
+  } else {
+    finRows = `<p class="slide-body">Complete your financial model above to auto-populate key metrics here.</p>`;
+  }
+
+  function esc(s) { return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function nl(s) { return esc(s).replace(/\n/g,"<br>"); }
+  function bullets(s) {
+    if (!s) return "";
+    const lines = s.split("\n").map(l=>l.trim()).filter(Boolean);
+    if (lines.length < 2) return `<p class="slide-body">${nl(s)}</p>`;
+    return `<ul class="slide-bullets">${lines.map(l=>`<li>${esc(l)}</li>`).join("")}</ul>`;
+  }
+  function tag(t) { return `<div class="slide-tag">${t}</div>`; }
+  function h1(t) { return `<h1 class="slide-title">${esc(t)}</h1>`; }
+  function body(s) { return s ? `<p class="slide-body">${nl(s)}</p>` : ""; }
+  function two(l,r) { return `<div class="two-col"><div>${l}</div><div>${r}</div></div>`; }
+
+  const slides = [
+    // 1 Title
+    `<section class="slide s-dark">
+      <div class="title-slide">
+        <div class="ts-company">${esc(co)}</div>
+        <div class="ts-tagline">${esc(p.tagline || "Your compelling one-liner goes here")}</div>
+        <div class="ts-divider"></div>
+        ${p.mission ? `<div class="ts-mission">${esc(p.mission)}</div>` : ""}
+        <div class="ts-meta">${p.foundingDate ? `Founded ${esc(p.foundingDate)} &nbsp;·&nbsp; ` : ""}Confidential &nbsp;·&nbsp; ${yr}</div>
+      </div>
+    </section>`,
+
+    // 2 Problem
+    `<section class="slide s-light">
+      ${tag("The Problem")}
+      ${h1(p.problem ? (p.problem.length > 100 ? p.problem.substring(0,100) + "…" : p.problem) : "What problem are you solving?")}
+      ${two(
+        `<div class="card"><h3>Who Has This Problem</h3>${body(p.problemWho)}</div>`,
+        `<div class="card accent"><h3>Scale of the Problem</h3>${body(p.problemSize)}</div>`
+      )}
+    </section>`,
+
+    // 3 Solution
+    `<section class="slide s-teal">
+      ${tag("The Solution")}
+      ${h1(p.solution ? (p.solution.length > 90 ? p.solution.substring(0,90) + "…" : p.solution) : "Your solution")}
+      ${two(
+        `<div><h3 class="ch3">How It Works</h3>${body(p.solutionHow)}</div>`,
+        `<div><h3 class="ch3">Key Differentiators</h3>${bullets(p.differentiators)}</div>`
+      )}
+    </section>`,
+
+    // 4 Market Size
+    `<section class="slide s-light">
+      ${tag("Market Opportunity")}
+      ${h1("A Large & Growing Market")}
+      <div class="market-row">
+        <div class="mc tam"><div class="mc-lbl">TAM</div><div class="mc-val">${esc(p.tam||"—")}</div></div>
+        <div class="mc sam"><div class="mc-lbl">SAM</div><div class="mc-val">${esc(p.sam||"—")}</div></div>
+        <div class="mc som"><div class="mc-lbl">SOM</div><div class="mc-val">${esc(p.som||"—")}</div></div>
+      </div>
+      ${(p.marketTrends||p.marketGrowth) ? `<div class="market-trends"><strong>Tailwinds:</strong> ${esc(p.marketTrends||"")}${p.marketGrowth ? ` &nbsp;·&nbsp; <strong>Growth:</strong> ${esc(p.marketGrowth)}` : ""}</div>` : ""}
+    </section>`,
+
+    // 5 Product
+    `<section class="slide s-navy">
+      ${tag("Product")}
+      ${h1("Built for " + esc(p.problemWho || "your customers"))}
+      <div class="product-grid">
+        <div class="pg-card"><div class="pg-icon">⚡</div><div class="pg-lbl">Core Product</div><div class="pg-body">${nl(p.solution||"—")}</div></div>
+        <div class="pg-card"><div class="pg-icon">🔑</div><div class="pg-lbl">Key Differentiator</div><div class="pg-body">${nl(p.differentiators||"—")}</div></div>
+        <div class="pg-card"><div class="pg-icon">🛡️</div><div class="pg-lbl">Defensibility</div><div class="pg-body">${nl(p.moat||"—")}</div></div>
+      </div>
+    </section>`,
+
+    // 6 Business Model
+    `<section class="slide s-light">
+      ${tag("Business Model")}
+      ${h1("How We Make Money")}
+      ${two(
+        `<div class="card"><h3>Revenue Streams</h3>${body(p.revenueStreams)}<h3 style="margin-top:1.2rem">Pricing</h3>${body(p.pricing)}</div>`,
+        `<div class="card accent"><h3>Unit Economics</h3>${body(p.unitEconomicsNotes)}</div>`
+      )}
+    </section>`,
+
+    // 7 Traction
+    `<section class="slide s-teal">
+      ${tag("Traction")}
+      ${h1("Proof It's Working")}
+      <div class="traction-hero">${esc(p.traction||"Key metrics go here")}</div>
+      ${two(
+        `<div><h3 class="ch3">Milestones</h3>${bullets(p.milestones)}</div>`,
+        `<div>
+          ${p.tractionGrowth ? `<div class="stat-box"><span class="sb-lbl">Growth Rate</span><span class="sb-val">${esc(p.tractionGrowth)}</span></div>` : ""}
+          ${p.notableCustomers ? `<div class="stat-box" style="margin-top:1rem"><span class="sb-lbl">Customers</span><span class="sb-val">${esc(p.notableCustomers)}</span></div>` : ""}
+        </div>`
+      )}
+    </section>`,
+
+    // 8 Competition
+    `<section class="slide s-light">
+      ${tag("Competitive Landscape")}
+      ${h1("Why We Win")}
+      ${two(
+        `<div class="card"><h3>Key Competitors</h3>${bullets(p.competitors)}</div>`,
+        `<div>
+          <div class="card accent" style="margin-bottom:1rem"><h3>Our Advantages</h3>${bullets(p.competitiveAdvantages)}</div>
+          <div class="card" style="border-left:3px solid #FFD700"><h3>Our Moat</h3>${body(p.moat)}</div>
+        </div>`
+      )}
+    </section>`,
+
+    // 9 Team
+    `<section class="slide s-navy">
+      ${tag("Team")}
+      ${h1("The People Who Will Win")}
+      <div class="team-grid">
+        ${p.founders ? `<div class="tc"><div class="tc-icon">👤</div><div class="tc-role">Founders</div><div class="tc-bio">${nl(p.founders)}</div></div>` : ""}
+        ${p.keyHires ? `<div class="tc"><div class="tc-icon">⭐</div><div class="tc-role">Key Team</div><div class="tc-bio">${nl(p.keyHires)}</div></div>` : ""}
+        ${p.advisors ? `<div class="tc"><div class="tc-icon">🤝</div><div class="tc-role">Advisors</div><div class="tc-bio">${nl(p.advisors)}</div></div>` : ""}
+      </div>
+      ${p.teamExperience ? `<div class="team-why">"${esc(p.teamExperience)}"</div>` : ""}
+    </section>`,
+
+    // 10 Financials
+    `<section class="slide s-light">
+      ${tag("Financials")}
+      ${h1("5-Year Financial Model")}
+      ${finRows}
+    </section>`,
+
+    // 11 The Ask
+    `<section class="slide s-gold">
+      ${tag("Investment Opportunity")}
+      ${h1("Join Us")}
+      <div class="ask-amount">${esc(p.askAmount||"Raising TBD")}</div>
+      ${two(
+        `<div class="card card-glass"><h3>Use of Funds</h3>${body(p.useOfFunds)}${p.terms ? `<h3 style="margin-top:1rem">Terms</h3>${body(p.terms)}` : ""}</div>`,
+        `<div class="card card-glass"><h3>Milestones (18-24 mo)</h3>${bullets(p.timeline)}</div>`
+      )}
+    </section>`,
+
+    // 12 Vision
+    `<section class="slide s-dark">
+      ${tag("Vision")}
+      ${h1("The Future We're Building")}
+      <div class="vision-text">${nl(p.vision||"Where will the company be in 3-5 years?")}</div>
+      <div class="vision-footer">
+        <div class="vf-co">${esc(co)}</div>
+        <div class="vf-sub">Confidential · ${yr}</div>
+      </div>
+    </section>`
+  ];
+
+  const totalSlides = slides.length;
+
+  const css = `
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#0a0a0f;font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;height:100vh}
+    .deck{width:100vw;height:100vh;display:flex;flex-direction:column;position:relative}
+    .slides{flex:1;position:relative;overflow:hidden}
+    .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:3.5rem 5rem;opacity:0;transition:opacity .3s ease;pointer-events:none}
+    .slide.active{opacity:1;pointer-events:all}
+    .s-dark{background:linear-gradient(135deg,#0d1929 0%,#1B2A4A 100%);color:#fff}
+    .s-light{background:#f8fafc;color:#1B2A4A}
+    .s-teal{background:linear-gradient(135deg,#1a4040 0%,#2E8B8B 100%);color:#fff}
+    .s-navy{background:#1B2A4A;color:#fff}
+    .s-gold{background:linear-gradient(135deg,#7a4a00 0%,#c8a45a 100%);color:#fff}
+    .slide-tag{display:inline-block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;padding:.3rem .8rem;border-radius:20px;margin-bottom:1rem;background:rgba(255,255,255,.12);color:rgba(255,255,255,.8)}
+    .s-light .slide-tag{background:rgba(27,42,74,.08);color:#2E8B8B}
+    .slide-title{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;max-width:850px}
+    .slide-body{font-size:1rem;line-height:1.7;opacity:.85;max-width:680px}
+    .slide-bullets{font-size:.95rem;line-height:1.8;padding-left:1.4rem;opacity:.85}
+    .slide-bullets li{margin-bottom:.3rem}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:.5rem}
+    .card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:1.25rem 1.5rem}
+    .s-light .card{background:#fff;border-color:#e2e8f0}
+    .card.accent{border-color:rgba(200,164,90,.4);background:rgba(200,164,90,.06)}
+    .s-light .card.accent{background:#fffbf0;border-color:#c8a45a}
+    .card.card-glass{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+    .card h3{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;opacity:.6}
+    .ch3{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem;opacity:.7}
+    .title-slide{text-align:center;max-width:750px;margin:0 auto}
+    .ts-company{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem}
+    .ts-tagline{font-size:clamp(1rem,2.5vw,1.5rem);opacity:.75;line-height:1.5;margin-bottom:1.5rem}
+    .ts-divider{width:60px;height:3px;background:#c8a45a;margin:0 auto 1.5rem}
+    .ts-mission{font-size:1rem;opacity:.6;line-height:1.6;margin-bottom:1rem}
+    .ts-meta{font-size:.8rem;opacity:.4;letter-spacing:.05em}
+    .market-row{display:flex;gap:1.5rem;margin:1rem 0 1.5rem;align-items:flex-end}
+    .mc{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem}
+    .mc.tam{width:200px;height:200px;background:rgba(27,42,74,.15);border:2px solid rgba(27,42,74,.3)}
+    .mc.sam{width:155px;height:155px;background:rgba(46,139,139,.15);border:2px solid rgba(46,139,139,.4)}
+    .mc.som{width:115px;height:115px;background:rgba(200,164,90,.2);border:2px solid #c8a45a}
+    .s-light .mc.tam{background:rgba(27,42,74,.08);border-color:#1B2A4A}
+    .mc-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;opacity:.6;margin-bottom:.25rem}
+    .mc-val{font-size:.9rem;font-weight:700;line-height:1.2}
+    .market-trends{font-size:.85rem;opacity:.7;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border-radius:8px;max-width:700px}
+    .s-light .market-trends{background:rgba(0,0,0,.04)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1rem}
+    .pg-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1.25rem;text-align:center}
+    .pg-icon{font-size:1.75rem;margin-bottom:.5rem}
+    .pg-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#c8a45a;margin-bottom:.5rem}
+    .pg-body{font-size:.85rem;line-height:1.6;opacity:.8}
+    .traction-hero{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:700;padding:1rem 1.5rem;background:rgba(255,255,255,.12);border-radius:10px;margin-bottom:1.25rem;line-height:1.5}
+    .stat-box{background:rgba(255,255,255,.1);border-radius:8px;padding:.75rem 1rem;display:flex;flex-direction:column;gap:.25rem}
+    .sb-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+    .sb-val{font-size:1rem;font-weight:700}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.25rem}
+    .tc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1.25rem}
+    .tc-icon{font-size:1.5rem;margin-bottom:.5rem}
+    .tc-role{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#c8a45a;margin-bottom:.5rem}
+    .tc-bio{font-size:.85rem;line-height:1.6;opacity:.8}
+    .team-why{font-style:italic;font-size:1rem;opacity:.7;padding:1rem;border-left:3px solid #c8a45a;max-width:650px}
+    .fin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1rem 0}
+    .fin-card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;text-align:center}
+    .fin-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-bottom:.4rem}
+    .fin-value{font-size:1.3rem;font-weight:700;color:#1B2A4A}
+    .fin-note{font-size:.8rem;color:#94a3b8;margin-top:.75rem}
+    .ask-amount{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;text-align:center;margin-bottom:1.5rem;color:#FFD700;text-shadow:0 2px 20px rgba(255,215,0,.3)}
+    .vision-text{font-size:clamp(1rem,2.5vw,1.5rem);line-height:1.7;opacity:.85;max-width:750px;margin-bottom:2rem;text-align:center;margin:0 auto 2rem}
+    .vision-footer{text-align:center;margin-top:2rem}
+    .vf-co{font-size:1.1rem;font-weight:700;opacity:.9}
+    .vf-sub{font-size:.8rem;opacity:.4;margin-top:.25rem}
+    .nav{background:#0a0a0f;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:.75rem 1rem;flex-shrink:0}
+    .nav-btn{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+    .nav-btn:hover{background:rgba(255,255,255,.12);color:#fff}
+    .nav-btn:disabled{opacity:.2;cursor:not-allowed}
+    .nav-count{color:rgba(255,255,255,.4);font-size:.85rem;min-width:60px;text-align:center}
+    .nav-dots{display:flex;gap:.4rem}
+    .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s}
+    .dot.active{background:#c8a45a;width:18px;border-radius:3px}
+    @media(max-width:700px){.slide{padding:2rem 1.75rem}.two-col,.product-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}.mc.tam{width:150px;height:150px}.mc.sam{width:120px;height:120px}.mc.som{width:90px;height:90px}}
+  `;
+
+  const js = `
+    let cur=0;
+    const total=${totalSlides};
+    const all=document.querySelectorAll('.slide');
+    const count=document.getElementById('nc');
+    const dots=document.querySelectorAll('.dot');
+    function show(n){
+      all[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur=Math.max(0,Math.min(total-1,n));
+      all[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      count.textContent=(cur+1)+' / '+total;
+      document.getElementById('np').disabled=cur===0;
+      document.getElementById('nn').disabled=cur===total-1;
+    }
+    function prev(){show(cur-1);}
+    function next(){show(cur+1);}
+    document.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')next();
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp')prev();
+    });
+    show(0);
+  `;
+
+  const dotsHtml = slides.map((_,i)=>`<div class="dot${i===0?" active":""}" onclick="show(${i})"></div>`).join("");
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(co)} — Investor Pitch Deck ${yr}</title>
+<style>${css}</style>
+</head>
+<body>
+<div class="deck">
+  <div class="slides">${slides.join("\n")}</div>
+  <div class="nav">
+    <button class="nav-btn" id="np" onclick="prev()" title="Previous (←)">&#8592;</button>
+    <div class="nav-dots">${dotsHtml}</div>
+    <span class="nav-count" id="nc">1 / ${totalSlides}</span>
+    <button class="nav-btn" id="nn" onclick="next()" title="Next (→)">&#8594;</button>
+  </div>
+</div>
+<script>${js}<\/script>
+</body>
+</html>`;
+}
+
+function PitchDeckBuilder() {
+  const [pitch, setPitch] = useState(function() {
+    try { return JSON.parse(window.localStorage?.getItem?.("rr_fm_pitch") || "null") || PITCH_DEF; } catch { return PITCH_DEF; }
+  });
+  const [activeSection, setActiveSection] = useState("company");
+  const [pdSaved, setPdSaved] = useState(false);
+  const [exporting, setExporting] = useState(false);
+
+  const setField = useCallback(function(k, v) { setPitch(function(p) { return Object.assign({}, p, {[k]: v}); }); }, []);
+
+  // Auto-save to localStorage on pitch change
+  useEffect(function() {
+    try { window.localStorage?.setItem?.("rr_fm_pitch", JSON.stringify(pitch)); } catch {}
+  }, [pitch]);
+
+  const savePitch = useCallback(function() {
+    try {
+      window.localStorage?.setItem?.("rr_fm_pitch", JSON.stringify(pitch));
+      setPdSaved(true);
+      setTimeout(function() { setPdSaved(false); }, 2000);
+    } catch {}
+  }, [pitch]);
+
+  const exportDeck = useCallback(function() {
+    setExporting(true);
+    setTimeout(function() {
+      try {
+        var fm = null;
+        try { fm = JSON.parse(window.localStorage?.getItem?.("rr_fm2") || "null"); } catch {}
+        var html = buildPitchHTML(pitch, fm);
+        var blob = new Blob([html], { type: "text/html" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = (pitch.companyName ? pitch.companyName.replace(/\s+/g,"_") : "pitch_deck") + "_investor_deck.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch(e) { alert("Export failed: " + e.message); }
+      setExporting(false);
+    }, 50);
+  }, [pitch]);
+
+  const resetPitch = useCallback(function() {
+    if (!window.confirm("Clear all pitch deck answers?")) return;
+    setPitch(PITCH_DEF);
+    try { window.localStorage?.removeItem?.("rr_fm_pitch"); } catch {}
+  }, []);
+
+  // Calculate completion percentage
+  const filled = Object.values(pitch).filter(function(v) { return v && v.trim(); }).length;
+  const total = Object.keys(PITCH_DEF).length;
+  const pct = Math.round(filled / total * 100);
+
+  const currentSection = PD_SECTIONS.find(function(s) { return s.id === activeSection; });
+
+  const inputStyle = {
+    width: "100%", padding: "8px 10px", border: "1px solid " + C.border,
+    borderRadius: 6, fontFamily: "'DM Mono', monospace", fontSize: 11,
+    color: C.navy, background: "#fff", outline: "none", boxSizing: "border-box",
+    transition: "border-color .15s"
+  };
+  const labelStyle = { fontSize: 10, color: "#64748B", marginBottom: 4, display: "block", fontWeight: 600 };
+
+  return React.createElement("div", {
+    style: {
+      fontFamily: "'DM Sans', system-ui, sans-serif",
+      background: "#F8FAFC",
+      borderRadius: 14,
+      overflow: "hidden",
+      maxWidth: 1100,
+      margin: "0 auto 2rem"
+    }
+  },
+    // Header bar
+    React.createElement("div", {
+      style: { background: C.navy, padding: "12px 18px", color: "white", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }
+    },
+      React.createElement("div", null,
+        React.createElement("h2", { style: { margin: 0, fontSize: 15, fontWeight: 700 } }, "Pitch Deck Builder"),
+        React.createElement("p", { style: { margin: "2px 0 0", fontSize: 9, opacity: 0.5 } }, "Answer the questions · Export a VC-ready pitch deck")
+      ),
+      React.createElement("div", { style: { display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" } },
+        React.createElement("div", { style: { fontSize: 9, color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 } },
+          React.createElement("div", { style: { width: 80, height: 4, background: "rgba(255,255,255,0.15)", borderRadius: 2, overflow: "hidden" } },
+            React.createElement("div", { style: { width: pct + "%", height: "100%", background: pct === 100 ? C.green : C.teal, borderRadius: 2, transition: "width .3s" } })
+          ),
+          pct + "% complete"
+        ),
+        React.createElement("button", {
+          onClick: savePitch,
+          style: { background: C.teal, color: "white", border: "none", padding: "5px 12px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }
+        }, pdSaved ? "✓ Saved" : "Save"),
+        React.createElement("button", {
+          onClick: exportDeck,
+          disabled: exporting,
+          style: { background: exporting ? "rgba(255,255,255,0.2)" : C.gold, color: exporting ? "white" : C.navy, border: "none", padding: "5px 14px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: exporting ? "not-allowed" : "pointer" }
+        }, exporting ? "Generating…" : "⬇ Export Pitch Deck"),
+        React.createElement("button", {
+          onClick: resetPitch,
+          style: { background: "transparent", color: "rgba(255,255,255,0.3)", border: "1px solid rgba(255,255,255,0.15)", padding: "5px 10px", borderRadius: 5, fontSize: 9, cursor: "pointer" }
+        }, "Reset")
+      )
+    ),
+
+    // Section nav tabs
+    React.createElement("div", {
+      style: { background: "#1e3358", display: "flex", overflowX: "auto", borderBottom: "1px solid rgba(255,255,255,0.08)" }
+    },
+      PD_SECTIONS.map(function(s) {
+        return React.createElement("button", {
+          key: s.id,
+          onClick: function() { setActiveSection(s.id); },
+          style: {
+            background: activeSection === s.id ? "white" : "transparent",
+            color: activeSection === s.id ? C.navy : "rgba(255,255,255,0.45)",
+            border: "none",
+            padding: "7px 13px",
+            fontSize: 10,
+            fontWeight: 600,
+            borderRadius: "6px 6px 0 0",
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
+            gap: 4
+          }
+        },
+          React.createElement("span", null, s.icon),
+          React.createElement("span", null, s.label)
+        );
+      })
+    ),
+
+    // Section content
+    React.createElement("div", {
+      style: { padding: "20px 24px 24px" }
+    },
+      // Section heading
+      React.createElement("div", {
+        style: { marginBottom: 16 }
+      },
+        React.createElement("div", {
+          style: { fontSize: 11, fontWeight: 700, color: C.teal, textTransform: "uppercase", letterSpacing: 1, marginBottom: 2 }
+        }, "Slide: " + currentSection.label),
+        React.createElement("div", {
+          style: { fontSize: 10, color: C.slate }
+        }, "Fill in the details — these will populate your pitch deck slides.")
+      ),
+
+      // Fields grid
+      React.createElement("div", {
+        style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "14px 20px" }
+      },
+        currentSection.fields.map(function(f) {
+          return React.createElement("div", {
+            key: f.key,
+            style: f.big ? { gridColumn: "1 / -1" } : {}
+          },
+            React.createElement("label", { style: labelStyle }, f.label),
+            f.big
+              ? React.createElement("textarea", {
+                  value: pitch[f.key],
+                  onChange: function(e) { setField(f.key, e.target.value); },
+                  placeholder: f.ph,
+                  rows: 4,
+                  style: Object.assign({}, inputStyle, { resize: "vertical", lineHeight: 1.6 })
+                })
+              : React.createElement("input", {
+                  type: "text",
+                  value: pitch[f.key],
+                  onChange: function(e) { setField(f.key, e.target.value); },
+                  placeholder: f.ph,
+                  style: inputStyle
+                })
+          );
+        })
+      ),
+
+      // Navigation row
+      React.createElement("div", {
+        style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 20, paddingTop: 16, borderTop: "1px solid " + C.border }
+      },
+        React.createElement("button", {
+          onClick: function() {
+            var idx = PD_SECTIONS.findIndex(function(s) { return s.id === activeSection; });
+            if (idx > 0) setActiveSection(PD_SECTIONS[idx - 1].id);
+          },
+          disabled: PD_SECTIONS[0].id === activeSection,
+          style: { background: "white", color: C.navy, border: "1px solid " + C.border, padding: "6px 16px", borderRadius: 6, fontSize: 10, fontWeight: 600, cursor: "pointer", opacity: PD_SECTIONS[0].id === activeSection ? 0.4 : 1 }
+        }, "← Previous"),
+
+        // Section dots
+        React.createElement("div", { style: { display: "flex", gap: 5 } },
+          PD_SECTIONS.map(function(s) {
+            var sectionFilled = s.fields.every(function(f) { return pitch[f.key] && pitch[f.key].trim(); });
+            return React.createElement("div", {
+              key: s.id,
+              onClick: function() { setActiveSection(s.id); },
+              title: s.label,
+              style: {
+                width: activeSection === s.id ? 18 : 7,
+                height: 7,
+                borderRadius: 4,
+                background: activeSection === s.id ? C.teal : sectionFilled ? C.green : C.border,
+                cursor: "pointer",
+                transition: "all .2s"
+              }
+            });
+          })
+        ),
+
+        React.createElement("button", {
+          onClick: function() {
+            var idx = PD_SECTIONS.findIndex(function(s) { return s.id === activeSection; });
+            if (idx < PD_SECTIONS.length - 1) setActiveSection(PD_SECTIONS[idx + 1].id);
+            else exportDeck();
+          },
+          style: {
+            background: PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? C.gold : C.teal,
+            color: PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? C.navy : "white",
+            border: "none", padding: "6px 16px", borderRadius: 6, fontSize: 10, fontWeight: 700, cursor: "pointer"
+          }
+        }, PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? "⬇ Export Pitch Deck" : "Next →")
+      )
+    ),
+
+    // Footer hint
+    React.createElement("div", {
+      style: { background: "#f0fdf4", borderTop: "1px solid #bbf7d0", padding: "10px 24px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }
+    },
+      React.createElement("span", { style: { fontSize: 10, color: "#166534", fontWeight: 600 } }, "✓ Auto-saved to your browser"),
+      React.createElement("span", { style: { fontSize: 10, color: "#94a3b8" } }, "·"),
+      React.createElement("span", { style: { fontSize: 10, color: "#166534" } }, "✓ Financial model data pulled automatically"),
+      React.createElement("span", { style: { fontSize: 10, color: "#94a3b8" } }, "·"),
+      React.createElement("span", { style: { fontSize: 10, color: "#166534" } }, "✓ Export generates a 12-slide HTML deck (open in any browser or print to PDF)")
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('pitch-deck-app')).render(/*#__PURE__*/React.createElement(PitchDeckBuilder, null));
 </script>
 </body>
 </html>
