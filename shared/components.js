@@ -67,14 +67,14 @@
         <div class="nav-dropdown">
           <a href="/software/" class="nav-tab" data-page="software">Software</a>
           <div class="dropdown-menu">
-            <a href="https://finance.raisereadybook.com" target="_blank" style="color:#c8a45a;font-weight:600;">Financial Model Pro</a>
+            <a href="https://finance.raisereadybook.com" target="_blank" style="color:#c8a45a;font-weight:600;">Financial Model Builder</a>
             <a href="/tools/financial-model-pro.html">Financial Model Light</a>
             <a href="https://app.raisereadybook.com" target="_blank">Personal Finance App</a>
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
-        <a href="https://finance.raisereadybook.com" target="_blank" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Financial Model Pro</a>
+        <a href="https://finance.raisereadybook.com" target="_blank" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Financial Model Builder</a>
       </div>
       <div class="nav-right">
         <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
@@ -313,7 +313,7 @@
     if (category.indexOf('financial') >= 0 || category.indexOf('model') >= 0 || category.indexOf('unit-econ') >= 0) {
       toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
         '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Build your model in minutes</p>' +
-        '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Try the free 5-Year Financial Model Pro with 3 scenarios, hiring plan, and board report.</p>' +
+        '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Try the free 5-Year Financial Model Builder with 3 scenarios, hiring plan, and board report.</p>' +
         '<a href="/tools/financial-model-pro.html" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">Launch the model &rarr;</a></div>';
     } else if (category.indexOf('fundrais') >= 0) {
       toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +

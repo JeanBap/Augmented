@@ -70,7 +70,7 @@ var PRODUCTS = {
     service: true
   },
   'fm-pro-export': {
-    name: 'Financial Model Pro Export',
+    name: 'Financial Model Builder Export',
     description: 'Excel with live formulas and PDF with charts.',
     price: 1000,
     digital: true

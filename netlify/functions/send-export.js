@@ -52,7 +52,7 @@ exports.handler = async function(event) {
     '<div style="background:#08080d;padding:24px;text-align:center;">' +
     '<h1 style="color:#f2ede4;font-size:22px;margin:0;">Your Financial Model</h1></div>' +
     '<div style="padding:24px;background:#f9f9f6;">' +
-    '<p style="font-size:15px;color:#333;">Your 5-Year Financial Model Pro is attached to this email.</p>' +
+    '<p style="font-size:15px;color:#333;">Your 5-Year Financial Model Builder is attached to this email.</p>' +
     '<p style="font-size:14px;color:#555;">You can also return to the tool anytime to make changes and re-export:</p>' +
     '<p style="margin:16px 0;"><a href="' + SITE_URL + '/tools/financial-model-pro.html?purchased=true" ' +
     'style="display:inline-block;background:#10B981;color:#fff;padding:12px 24px;border-radius:6px;' +
@@ -63,7 +63,7 @@ exports.handler = async function(event) {
   var data = JSON.stringify({
     from: FROM,
     to: [email],
-    subject: 'Your 5-Year Financial Model Pro',
+    subject: 'Your 5-Year Financial Model Builder',
     html: emailHtml,
     attachments: [{
       filename: fileName,
