@@ -308,6 +308,7 @@ const GREENHOUSE_BOARDS = [
   'bessemerventurepartners', 'indexventures', 'founderfund', 'usv',
   'acaborpartners', 'kaborpartners', 'thrivecapital', 'coatue',
   'tigerababanagementllc', 'generalcatalyst',
+  'batteryventures', 'advent',
 ];
 
 async function fetchGreenhouse() {
@@ -370,10 +371,41 @@ async function fetchLever() {
   return allJobs;
 }
 
-/* ─── Source 10: Venture Capital Careers RSS ─── */
+/* ─── Source 10: Ashby Job Boards ─── */
+const ASHBY_BOARDS = ['greylock', 'firstround', 'kleinerperkins'];
+
+async function fetchAshby() {
+  const allJobs = [];
+  await Promise.all(ASHBY_BOARDS.map(async slug => {
+    try {
+      const url = `https://api.ashbyhq.com/posting-api/job-board/${slug}`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) return;
+      const data = await res.json();
+      const jobs = (data.jobs || []).map(j => normalizeJob({
+        id:          `ashby_${slug}_${j.id}`,
+        title:       j.title,
+        company:     slug.charAt(0).toUpperCase() + slug.slice(1),
+        location:    j.location || 'Unknown',
+        remote:      /remote/i.test(j.location || ''),
+        type:        'full-time',
+        url:         j.jobUrl || '',
+        description: '',
+        posted_date: j.publishedAt ? j.publishedAt.slice(0, 10) : null,
+        source:      'Ashby',
+      }));
+      allJobs.push(...jobs);
+    } catch (e) {
+      console.error(`[fetch-all-jobs] Ashby board ${slug} failed:`, e.message);
+    }
+  }));
+  return allJobs;
+}
+
+/* ─── Source 11: Venture Capital Careers RSS ─── */
 async function fetchVCCareersRSS() {
   try {
-    const res = await fetch('https://venturecapitalcareers.com/rss/jobs/new.rss', {
+    const res = await fetch('https://venturecapitalcareers.com/feed/', {
       signal: AbortSignal.timeout(12000),
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
     });
@@ -403,10 +435,10 @@ async function fetchVCCareersRSS() {
   }
 }
 
-/* ─── Source 11: The Muse ─── */
+/* ─── Source 12: The Muse ─── */
 async function fetchTheMuse() {
   try {
-    const data = await fetchJson('https://www.themuse.com/api/public/jobs?category=Finance&page=0');
+    const data = await fetchJson('https://www.themuse.com/api/public/jobs?category=Finance&page=0&descending=true');
     return (data.results || []).map(j => normalizeJob({
       id:          `muse_${j.id}`,
       title:       j.name,
@@ -425,7 +457,7 @@ async function fetchTheMuse() {
   }
 }
 
-/* ─── Source 12: Himalayas ─── */
+/* ─── Source 13: Himalayas ─── */
 async function fetchHimalayas() {
   try {
     const data = await fetchJson('https://himalayas.app/jobs/api?limit=50');
@@ -450,7 +482,7 @@ async function fetchHimalayas() {
   }
 }
 
-/* ─── Source 13: Jobicy RSS ─── */
+/* ─── Source 14: Jobicy RSS ─── */
 async function fetchJobicyRSS() {
   try {
     const res = await fetch('https://jobicy.com/jobs-rss-feed', {
@@ -498,6 +530,7 @@ export default async (req, context) => {
     fetchReed(),
     fetchGreenhouse(),
     fetchLever(),
+    fetchAshby(),
     fetchVCCareersRSS(),
     fetchTheMuse(),
     fetchHimalayas(),
@@ -506,7 +539,7 @@ export default async (req, context) => {
 
   let allJobs = [];
   const sources = ['Remotive', 'Arbeitnow', 'Indeed', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed',
-                   'Greenhouse', 'Lever', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
+                   'Greenhouse', 'Lever', 'Ashby', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') {
       console.log(`[fetch-all-jobs] ${sources[i]}: ${r.value.length} jobs`);
