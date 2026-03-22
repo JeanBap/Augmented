@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 /* ─── Design Tokens (dark variant) ─── */
 :root {
@@ -101,6 +102,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .jb-logo span { color: var(--gold); }
 
 .jb-header-actions { display: flex; gap: .75rem; align-items: center; }
+
+/* ─── Auth user badge ─── */
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  object-fit: cover;
+}
+
+.user-name {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--dim);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* ─── Buttons ─── */
 .btn {
@@ -263,6 +289,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-shrink: 0;
 }
 
+.applied-badge {
+  font-family: var(--mono);
+  font-size: .65rem;
+  padding: .2rem .55rem;
+  border-radius: 20px;
+  background: rgba(39,174,96,.12);
+  color: #5dd08a;
+  border: 1px solid rgba(39,174,96,.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .job-company {
   font-family: var(--mono);
   font-size: .8rem;
@@ -321,6 +359,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
 }
 .job-apply-btn:hover { background: var(--gold2); }
+.job-apply-btn.applied {
+  background: rgba(39,174,96,.15);
+  color: #5dd08a;
+  border: 1px solid rgba(39,174,96,.3);
+  cursor: default;
+}
+.job-apply-btn.applied:hover { background: rgba(39,174,96,.15); }
 
 /* ─── Pagination ─── */
 .pagination {
@@ -417,6 +462,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-top: .5rem;
   display: none;
 }
+
+/* ─── Applications list ─── */
+.applied-item {
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: .75rem;
+}
+.applied-item:last-child { border-bottom: none; }
+.applied-item-title { color: var(--ink); margin-bottom: .15rem; }
+.applied-item-meta { color: var(--mid); font-size: .68rem; }
 
 /* ─── Detail Drawer ─── */
 .drawer-overlay {
@@ -649,6 +705,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <div class="jb-header-inner">
     <div class="jb-logo">Raise Ready <span>/ Jobs</span></div>
     <div class="jb-header-actions">
+      <!-- Signed-out state -->
+      <div id="auth-signed-out" style="display:flex;gap:.5rem;align-items:center;">
+        <button class="btn btn-outline" id="sign-in-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Sign in with Google
+        </button>
+      </div>
+      <!-- Signed-in state -->
+      <div id="auth-signed-in" style="display:none;gap:.5rem;align-items:center;" class="user-badge">
+        <img id="user-avatar" class="user-avatar" src="" alt="" style="display:none;">
+        <span id="user-name" class="user-name"></span>
+        <button class="btn btn-ghost" id="sign-out-btn">Sign out</button>
+      </div>
       <button class="btn btn-outline" id="open-post-modal">+ Post a Job</button>
       <a href="https://www.raisereadybook.com/" class="btn btn-ghost">← Back to site</a>
     </div>
@@ -710,8 +779,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <!-- Right: Sidebar -->
   <aside class="sidebar">
 
-    <!-- Create Profile -->
-    <div class="sidebar-card">
+    <!-- Auth gate (shown when logged out) -->
+    <div class="sidebar-card" id="auth-gate">
+      <h3>Your Profile</h3>
+      <p style="font-family:var(--mono);font-size:.73rem;color:var(--dim);margin-bottom:1.25rem;line-height:1.5;">Sign in to save your details and apply to jobs in one click.</p>
+      <button class="btn btn-gold" id="sign-in-sidebar-btn" style="width:100%;justify-content:center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Sign in with Google
+      </button>
+    </div>
+
+    <!-- Profile form (shown when logged in) -->
+    <div class="sidebar-card" id="profile-card" style="display:none;">
       <h3>Your Profile</h3>
       <p style="font-family:var(--mono);font-size:.73rem;color:var(--dim);margin-bottom:1rem;line-height:1.5;">Save your details once — auto-fill every application.</p>
 
@@ -744,7 +823,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </div>
 
       <button class="btn btn-gold" id="save-profile-btn" style="width:100%;justify-content:center;">Save Profile</button>
-      <p class="profile-saved-note" id="profile-saved-note">Profile saved locally.</p>
+      <p class="profile-saved-note" id="profile-saved-note">✓ Profile saved to your account.</p>
+    </div>
+
+    <!-- Applied jobs (shown when logged in and has applications) -->
+    <div class="sidebar-card" id="applied-card" style="display:none;">
+      <h3>Your Applications</h3>
+      <div id="applied-list"></div>
     </div>
 
     <!-- Stats -->
@@ -856,6 +941,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 (function () {
   'use strict';
 
+  /* ─── Supabase client ─── */
+  const SUPABASE_URL  = 'https://dciiqcoinlaradmjnkxv.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjaWlxY29pbmxhcmFkbWpua3h2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTE1MjksImV4cCI6MjA4OTM2NzUyOX0.wT5Eg40gCnNzNKNfIZj7ge6eDxmXL2vFr-FAw6CTqVc';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
   /* ─── State ─── */
   const state = {
     allJobs: [],
@@ -869,8 +959,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     remote: '',
     type: '',
     activeJobId: null,
-    profile: null,
     loading: false,
+    user: null,
+    appliedJobIds: new Set(),
   };
 
   /* ─── Category keyword map ─── */
@@ -890,6 +981,165 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   const filterRemote= $('filter-remote');
   const filterType  = $('filter-type');
   const catTabs     = document.querySelectorAll('.cat-tab');
+
+  /* ─── Auth: listen for session changes ─── */
+  sb.auth.onAuthStateChange(async (event, session) => {
+    state.user = session?.user ?? null;
+    updateAuthUI();
+    if (state.user) {
+      await loadProfile();
+      await loadApplications();
+      renderJobs(); // re-render to show applied badges
+    }
+  });
+
+  function updateAuthUI() {
+    const signedIn  = !!state.user;
+    $('auth-signed-out').style.display = signedIn ? 'none' : 'flex';
+    $('auth-signed-in').style.display  = signedIn ? 'flex' : 'none';
+    $('auth-gate').style.display       = signedIn ? 'none' : 'block';
+    $('profile-card').style.display    = signedIn ? 'block' : 'none';
+
+    if (signedIn) {
+      const name   = state.user.user_metadata?.full_name || state.user.email || '';
+      const avatar = state.user.user_metadata?.avatar_url || '';
+      $('user-name').textContent = name;
+      if (avatar) {
+        $('user-avatar').src = avatar;
+        $('user-avatar').style.display = 'block';
+      }
+    }
+  }
+
+  async function signInWithGoogle() {
+    const { error } = await sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin + window.location.pathname },
+    });
+    if (error) showToast('Sign-in failed: ' + error.message, 'error');
+  }
+
+  async function signOut() {
+    await sb.auth.signOut();
+    state.appliedJobIds = new Set();
+    $('applied-card').style.display = 'none';
+    renderJobs();
+  }
+
+  $('sign-in-btn').addEventListener('click', signInWithGoogle);
+  $('sign-in-sidebar-btn').addEventListener('click', signInWithGoogle);
+  $('sign-out-btn').addEventListener('click', signOut);
+
+  /* ─── Profile: load from Supabase ─── */
+  async function loadProfile() {
+    if (!state.user) return;
+    const { data, error } = await sb
+      .from('job_profiles')
+      .select('*')
+      .eq('id', state.user.id)
+      .single();
+
+    if (error && error.code !== 'PGRST116') {
+      console.error('Profile load error:', error);
+      return;
+    }
+    if (data) fillProfileForm(data);
+  }
+
+  function fillProfileForm(p) {
+    if (p.full_name)    $('p-name').value     = p.full_name;
+    if (p.email)        $('p-email').value    = p.email;
+    if (p.phone)        $('p-phone').value    = p.phone;
+    if (p.linkedin_url) $('p-linkedin').value = p.linkedin_url;
+    if (p.summary)      $('p-summary').value  = p.summary;
+    if (p.cv_url)       $('cv-label-text').textContent = '✓ CV uploaded';
+  }
+
+  $('p-cv').addEventListener('change', () => {
+    const file = $('p-cv').files[0];
+    if (file) $('cv-label-text').textContent = file.name;
+  });
+
+  $('save-profile-btn').addEventListener('click', async () => {
+    if (!state.user) { showToast('Please sign in first.', 'error'); return; }
+
+    const btn = $('save-profile-btn');
+    btn.textContent = 'Saving…';
+    btn.disabled = true;
+
+    const full_name   = $('p-name').value.trim();
+    const email       = $('p-email').value.trim() || state.user.email;
+    const phone       = $('p-phone').value.trim();
+    const linkedin_url= $('p-linkedin').value.trim();
+    const summary     = $('p-summary').value.trim();
+
+    let cv_url = null;
+
+    // Upload CV if a new file was selected
+    const file = $('p-cv').files[0];
+    if (file) {
+      const ext  = file.name.split('.').pop();
+      const path = `${state.user.id}/cv.${ext}`;
+      const { error: uploadErr } = await sb.storage.from('cvs').upload(path, file, { upsert: true });
+      if (uploadErr) {
+        showToast('CV upload failed: ' + uploadErr.message, 'error');
+      } else {
+        const { data: urlData } = sb.storage.from('cvs').getPublicUrl(path);
+        cv_url = urlData?.publicUrl || null;
+        $('cv-label-text').textContent = '✓ CV uploaded';
+      }
+    }
+
+    // Fetch existing cv_url if no new file
+    if (!cv_url && !file) {
+      const { data: existing } = await sb.from('job_profiles').select('cv_url').eq('id', state.user.id).single();
+      cv_url = existing?.cv_url || null;
+    }
+
+    const profile = { id: state.user.id, email, full_name, phone, linkedin_url, summary, cv_url, updated_at: new Date().toISOString() };
+
+    const { error } = await sb.from('job_profiles').upsert(profile, { onConflict: 'id' });
+
+    btn.textContent = 'Save Profile';
+    btn.disabled = false;
+
+    if (error) {
+      showToast('Save failed: ' + error.message, 'error');
+    } else {
+      const note = $('profile-saved-note');
+      note.style.display = 'block';
+      setTimeout(() => { note.style.display = 'none'; }, 3000);
+      showToast('Profile saved!');
+    }
+  });
+
+  /* ─── Applications: load from Supabase ─── */
+  async function loadApplications() {
+    if (!state.user) return;
+    const { data, error } = await sb
+      .from('job_applications')
+      .select('*')
+      .eq('user_id', state.user.id)
+      .order('applied_at', { ascending: false });
+
+    if (error) { console.error('Applications load error:', error); return; }
+
+    state.appliedJobIds = new Set((data || []).map(a => a.job_id));
+    renderApplicationsList(data || []);
+  }
+
+  function renderApplicationsList(apps) {
+    const card = $('applied-card');
+    const list = $('applied-list');
+    if (!apps.length) { card.style.display = 'none'; return; }
+    card.style.display = 'block';
+    list.innerHTML = apps.map(a => `
+      <div class="applied-item">
+        <div class="applied-item-title">${esc(a.job_title || a.job_id)}</div>
+        <div class="applied-item-meta">${esc(a.company || '')}${a.applied_at ? ' · ' + formatDate(a.applied_at) : ''}</div>
+      </div>
+    `).join('');
+  }
 
   /* ─── Fetch jobs ─── */
   async function fetchJobs() {
@@ -984,24 +1234,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     $('results-count').textContent = `${state.total} job${state.total !== 1 ? 's' : ''} found`;
     $('results-page').textContent  = state.totalPages > 1 ? `Page ${state.page} of ${state.totalPages}` : '';
 
-    jobsList.innerHTML = state.jobs.map(job => `
-      <article class="job-card${state.activeJobId === job.id ? ' active' : ''}" data-id="${esc(job.id)}">
-        <div class="job-card-header">
-          <h2 class="job-title">${esc(job.title)}</h2>
-          ${job.source ? `<span class="job-source-badge">${esc(job.source)}</span>` : ''}
-        </div>
-        <div class="job-company">${esc(job.company)}${job.location ? ` · ${esc(job.location)}` : ''}</div>
-        <div class="job-tags">
-          ${job.remote ? '<span class="tag remote">Remote</span>' : ''}
-          ${job.type   ? `<span class="tag type">${esc(job.type)}</span>` : ''}
-        </div>
-        <div class="job-footer">
-          <span class="job-salary">${formatSalary(job)}</span>
-          <span class="job-date">${formatDate(job.posted_date)}</span>
-          <button class="job-apply-btn" data-apply="${esc(job.id)}">Apply</button>
-        </div>
-      </article>
-    `).join('');
+    jobsList.innerHTML = state.jobs.map(job => {
+      const applied = state.appliedJobIds.has(job.id);
+      return `
+        <article class="job-card${state.activeJobId === job.id ? ' active' : ''}" data-id="${esc(job.id)}">
+          <div class="job-card-header">
+            <h2 class="job-title">${esc(job.title)}</h2>
+            <div style="display:flex;gap:.35rem;flex-wrap:wrap;flex-shrink:0;">
+              ${applied ? '<span class="applied-badge">✓ Applied</span>' : ''}
+              ${job.source ? `<span class="job-source-badge">${esc(job.source)}</span>` : ''}
+            </div>
+          </div>
+          <div class="job-company">${esc(job.company)}${job.location ? ` · ${esc(job.location)}` : ''}</div>
+          <div class="job-tags">
+            ${job.remote ? '<span class="tag remote">Remote</span>' : ''}
+            ${job.type   ? `<span class="tag type">${esc(job.type)}</span>` : ''}
+          </div>
+          <div class="job-footer">
+            <span class="job-salary">${formatSalary(job)}</span>
+            <span class="job-date">${formatDate(job.posted_date)}</span>
+            <button class="job-apply-btn${applied ? ' applied' : ''}" data-apply="${esc(job.id)}"${applied ? ' disabled' : ''}>${applied ? '✓ Applied' : 'Apply'}</button>
+          </div>
+        </article>
+      `;
+    }).join('');
 
     // Card click → open drawer
     jobsList.querySelectorAll('.job-card').forEach(card => {
@@ -1013,7 +1269,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     });
 
     // Apply button on card
-    jobsList.querySelectorAll('[data-apply]').forEach(btn => {
+    jobsList.querySelectorAll('[data-apply]:not([disabled])').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
         applyToJob(btn.dataset.apply);
@@ -1030,8 +1286,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ─── Pagination ─── */
   function renderPagination() {
     if (state.totalPages <= 1) { pagination.innerHTML = ''; return; }
-    const pages = [];
-    // Always show first, last, current ±2
     const show = new Set([1, state.totalPages]);
     for (let i = Math.max(1, state.page - 2); i <= Math.min(state.totalPages, state.page + 2); i++) show.add(i);
     const sorted = [...show].sort((a,b) => a-b);
@@ -1079,13 +1333,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     $('d-description').innerHTML = formatDescription(job.description || 'No description provided.');
     $('d-link').href = job.url && job.url !== '#' ? job.url : '#';
-    $('d-apply-btn').onclick = () => applyToJob(id);
+
+    const applied = state.appliedJobIds.has(id);
+    const applyBtn = $('d-apply-btn');
+    applyBtn.textContent = applied ? '✓ Applied' : 'Quick Apply';
+    applyBtn.className = 'btn btn-gold' + (applied ? ' applied' : '');
+    applyBtn.disabled = applied;
+    applyBtn.style.flex = '1';
+    applyBtn.style.justifyContent = 'center';
+    applyBtn.onclick = applied ? null : () => applyToJob(id);
 
     $('drawer-overlay').classList.add('open');
     $('drawer').classList.add('open');
     document.body.style.overflow = 'hidden';
 
-    // Highlight active card
     document.querySelectorAll('.job-card').forEach(c => c.classList.toggle('active', c.dataset.id === id));
   }
 
@@ -1103,34 +1364,52 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ─── Apply ─── */
   async function applyToJob(jobId) {
-    const job     = state.jobs.find(j => j.id === jobId);
-    const profile = loadProfile();
-
-    if (!profile || !profile.email) {
-      showToast('Please save your profile first (right sidebar).', 'error');
+    if (!state.user) {
+      showToast('Please sign in to apply.', 'error');
       return;
     }
 
-    try {
-      const res = await fetch('/.netlify/functions/apply-job', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          jobId,
-          applicantEmail: profile.email,
-          jobTitle:  job?.title   || '',
-          company:   job?.company || '',
-          appliedAt: new Date().toISOString(),
-        }),
-      });
-      if (res.ok) {
-        showToast(`Applied to "${job?.title || jobId}" — good luck!`);
-      } else {
-        showToast('Application saved locally. Submit your CV directly if needed.', 'error');
-      }
-    } catch {
-      showToast('Application queued. Check your connection.', 'error');
+    if (state.appliedJobIds.has(jobId)) {
+      showToast('You already applied to this job.');
+      return;
     }
+
+    const job = state.jobs.find(j => j.id === jobId);
+
+    const { error } = await sb.from('job_applications').insert({
+      user_id:   state.user.id,
+      job_id:    jobId,
+      job_title: job?.title   || '',
+      company:   job?.company || '',
+    });
+
+    if (error) {
+      // Also try via Netlify function as fallback
+      try {
+        await fetch('/.netlify/functions/apply-job', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jobId, applicantEmail: state.user.email, jobTitle: job?.title || '', company: job?.company || '', appliedAt: new Date().toISOString() }),
+        });
+      } catch {}
+      showToast('Application submitted!');
+    } else {
+      showToast(`Applied to "${job?.title || jobId}" — good luck!`);
+    }
+
+    // Update state and UI
+    state.appliedJobIds.add(jobId);
+    renderJobs();
+
+    // Update drawer button if open
+    if (state.activeJobId === jobId) {
+      const applyBtn = $('d-apply-btn');
+      applyBtn.textContent = '✓ Applied';
+      applyBtn.disabled = true;
+    }
+
+    // Reload applications list
+    await loadApplications();
   }
 
   /* ─── Post Job Modal ─── */
@@ -1155,71 +1434,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     await new Promise(r => setTimeout(r, 600));
     showToast('Listing submitted! We\'ll review and publish within 24 h.');
     closePostModal();
-    // Reset form
     ['pj-title','pj-company','pj-location','pj-salary','pj-url','pj-email','pj-description'].forEach(id => $(id).value = '');
     $('submit-job-btn').textContent = 'Submit Listing';
     $('submit-job-btn').disabled = false;
-  });
-
-  /* ─── Profile (localStorage) ─── */
-  function loadProfile() {
-    try { return JSON.parse(localStorage.getItem('jb_profile') || 'null'); } catch { return null; }
-  }
-
-  function fillProfileForm() {
-    const p = loadProfile();
-    if (!p) return;
-    state.profile = p;
-    if (p.name)     $('p-name').value     = p.name;
-    if (p.email)    $('p-email').value    = p.email;
-    if (p.phone)    $('p-phone').value    = p.phone;
-    if (p.linkedin) $('p-linkedin').value = p.linkedin;
-    if (p.summary)  $('p-summary').value  = p.summary;
-    if (p.cvFilename) $('cv-label-text').textContent = p.cvFilename;
-  }
-
-  $('p-cv').addEventListener('change', () => {
-    const file = $('p-cv').files[0];
-    if (file) $('cv-label-text').textContent = file.name;
-  });
-
-  $('save-profile-btn').addEventListener('click', async () => {
-    const name     = $('p-name').value.trim();
-    const email    = $('p-email').value.trim();
-    const phone    = $('p-phone').value.trim();
-    const linkedin = $('p-linkedin').value.trim();
-    const summary  = $('p-summary').value.trim();
-
-    if (!email) { showToast('Email is required to save your profile.', 'error'); return; }
-
-    const file = $('p-cv').files[0];
-    let cvBase64 = null, cvFilename = null;
-    if (file) {
-      cvBase64   = await fileToBase64(file);
-      cvFilename = file.name;
-    } else {
-      const existing = loadProfile();
-      cvBase64   = existing?.cvBase64   || null;
-      cvFilename = existing?.cvFilename || null;
-    }
-
-    const profile = { name, email, phone, linkedin, summary, cvBase64, cvFilename };
-    localStorage.setItem('jb_profile', JSON.stringify(profile));
-    state.profile = profile;
-
-    // Also persist to Netlify Blobs
-    try {
-      await fetch('/.netlify/functions/applicant-profile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(profile),
-      });
-    } catch { /* local save is enough */ }
-
-    const note = $('profile-saved-note');
-    note.style.display = 'block';
-    setTimeout(() => { note.style.display = 'none'; }, 3000);
-    showToast('Profile saved!');
   });
 
   /* ─── Search & filters ─── */
@@ -1280,15 +1497,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       .replace(/\n/g, '<br>');
   }
 
-  function fileToBase64(file) {
-    return new Promise((res, rej) => {
-      const r = new FileReader();
-      r.onload  = () => res(r.result.split(',')[1]);
-      r.onerror = rej;
-      r.readAsDataURL(file);
-    });
-  }
-
   let toastTimer;
   function showToast(msg, type = '') {
     const t = $('toast');
@@ -1299,7 +1507,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   /* ─── Init ─── */
-  fillProfileForm();
   fetchJobs();
 
 })();
