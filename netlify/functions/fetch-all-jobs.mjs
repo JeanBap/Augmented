@@ -314,14 +314,22 @@ export default async (req, context) => {
   const deduped = dedup(allJobs.filter(j => j.title && j.company));
   console.log(`[fetch-all-jobs] Total after dedup: ${deduped.length}`);
 
-  const store = getStore('job-board');
-  await store.setJSON('all-jobs', {
-    jobs:        deduped,
-    fetchedAt:   new Date().toISOString(),
-    totalCount:  deduped.length,
-  });
+  try {
+    const store = getStore('job-board');
+    await store.setJSON('all-jobs', {
+      jobs:        deduped,
+      fetchedAt:   new Date().toISOString(),
+      totalCount:  deduped.length,
+    });
+    console.log('[fetch-all-jobs] Stored to Netlify Blobs successfully.');
+  } catch (e) {
+    console.error('[fetch-all-jobs] Failed to write to Netlify Blobs:', e.message);
+    return new Response(JSON.stringify({ ok: false, error: e.message, count: deduped.length }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
-  console.log('[fetch-all-jobs] Stored to Netlify Blobs successfully.');
   return new Response(JSON.stringify({ ok: true, count: deduped.length }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
