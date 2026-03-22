@@ -86,108 +86,49 @@ async function fetchArbeitnow() {
   }
 }
 
-/* ─── Source 3: Indeed RSS (XML) ─── */
-async function fetchIndeedRSS() {
-  try {
-    const res = await fetch('https://www.indeed.com/rss?q=FP%26A&l=remote&limit=25', {
-      signal: AbortSignal.timeout(12000),
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const xml = await res.text();
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || [];
-    return items.map((item, i) => {
-      const get = tag => { const m = item.match(new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>|<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`)); return m ? (m[1] || m[2] || '').trim() : ''; };
-      const title   = get('title');
-      const link    = get('link');
-      const desc    = get('description');
-      const pubDate = get('pubDate');
-      const company = get('source') || get('author') || 'Unknown';
-      const postedDate = pubDate ? new Date(pubDate).toISOString().slice(0, 10) : null;
-      return normalizeJob({
-        id:          `indeed_${i}_${Date.now()}`,
-        title,
-        company,
-        location:    'Remote',
-        remote:      true,
-        type:        'full-time',
-        url:         link,
-        description: desc.replace(/<[^>]+>/g, '').trim(),
-        posted_date: postedDate,
-        source:      'Indeed',
-      });
-    }).filter(j => j.title);
-  } catch (e) {
-    console.error('[fetch-all-jobs] Indeed RSS failed:', e.message);
-    return [];
-  }
-}
-
 /* ─── Source 4: HN Who's Hiring ─── */
 async function fetchHNHiring() {
   try {
-    // Get top stories to find the latest "Ask HN: Who is Hiring?" post
-    const topStories = await fetchJson('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&limitToFirst=200&orderBy="$key"');
-    // Also check new stories
-    const newStories = await fetchJson('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty');
-    // Limit to first 30 to avoid sequential-fetch timeout
-    const allIds = [...new Set([...(Array.isArray(topStories) ? topStories.slice(0,30) : []), ...(Array.isArray(newStories) ? newStories.slice(0,30) : [])])];
+    // Step 1: Find the latest "Ask HN: Who is Hiring?" thread via Algolia
+    const searchData = await fetchJson(
+      'https://hn.algolia.com/api/v1/search_by_date?query=%22who%20is%20hiring%22&tags=ask_hn&hitsPerPage=1'
+    );
+    const hit = (searchData.hits || [])[0];
+    if (!hit) return [];
+    const threadId = hit.objectID;
 
-    let hiringPostId = null;
-    for (const id of allIds) {
-      try {
-        const item = await fetchJson(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-        if (item && item.type === 'story' && /ask hn.*who.?s hiring/i.test(item.title || '')) {
-          hiringPostId = id;
-          break;
-        }
-      } catch { continue; }
-    }
+    // Step 2: Fetch all comments via Algolia items endpoint
+    const thread = await fetchJson(`https://hn.algolia.com/api/v1/items/${threadId}`);
+    const children = thread.children || [];
 
-    if (!hiringPostId) {
-      // Fallback: search recent Ask HN posts by known pattern (limit to 20)
-      const askStories = await fetchJson('https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty');
-      for (const id of (askStories || []).slice(0, 20)) {
-        try {
-          const item = await fetchJson(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-          if (item && /who.?s hiring/i.test(item.title || '')) {
-            hiringPostId = id;
-            break;
-          }
-        } catch { continue; }
-      }
-    }
-
-    if (!hiringPostId) return [];
-
-    const post = await fetchJson(`https://hacker-news.firebaseio.com/v0/item/${hiringPostId}.json`);
-    const kids  = (post.kids || []).slice(0, 100);
-    const financeRe = /financ|fp&a|fp\s*&\s*a|cfo|accountant|revenue ops|analyst|controller/i;
+    const financeRe = /financ|financial|accounting|accountant|analyst|investment|banking|treasury|controller|cfo|audit|tax|payroll|bookkeeper|\bpe\b|\bvc\b|venture|equity|fund|capital|portfolio/i;
     const jobs = [];
 
-    await Promise.all(kids.map(async kid => {
+    for (const child of children) {
       try {
-        const comment = await fetchJson(`https://hacker-news.firebaseio.com/v0/item/${kid}.json`);
-        const text = (comment.text || '').replace(/<[^>]+>/g, ' ');
-        if (!financeRe.test(text)) return;
-        // Try to extract title from first line
-        const lines = text.split(/\n|\|/).map(l => l.trim()).filter(Boolean);
-        const title   = lines[0] || 'Finance Role';
-        const company = lines[1] || 'HN Company';
+        const text = (child.text || '').replace(/<[^>]+>/g, ' ').trim();
+        if (!text || !financeRe.test(text)) continue;
+
+        // Parse "Company | Location | Role" from first line
+        const firstLine = text.split(/\n/)[0].trim();
+        const parts = firstLine.split('|').map(p => p.trim()).filter(Boolean);
+        const company = parts[0] || child.author || 'HN Company';
+        const title   = parts[2] || parts[1] || 'Finance Role';
+
         jobs.push(normalizeJob({
-          id:          `hn_${kid}`,
+          id:          `hn_${child.id}`,
           title:       title.slice(0, 120),
           company:     company.slice(0, 80),
           location:    /remote/i.test(text) ? 'Remote' : 'Unknown',
           remote:      /remote/i.test(text),
           type:        /contract|freelance/i.test(text) ? 'contract' : 'full-time',
-          url:         `https://news.ycombinator.com/item?id=${kid}`,
+          url:         `https://news.ycombinator.com/item?id=${child.id}`,
           description: text.slice(0, 2000),
-          posted_date: post.time ? new Date(post.time * 1000).toISOString().slice(0, 10) : null,
+          posted_date: hit.created_at ? hit.created_at.slice(0, 10) : null,
           source:      'HN Hiring',
         }));
       } catch { /* skip bad comments */ }
-    }));
+    }
 
     return jobs;
   } catch (e) {
@@ -309,6 +250,7 @@ const GREENHOUSE_BOARDS = [
   'acaborpartners', 'kaborpartners', 'thrivecapital', 'coatue',
   'tigerababanagementllc', 'generalcatalyst',
   'batteryventures', 'advent',
+  'stage', 'bridgewater89',
 ];
 
 async function fetchGreenhouse() {
@@ -340,7 +282,7 @@ async function fetchGreenhouse() {
 }
 
 /* ─── Source 9: Lever Postings ─── */
-const LEVER_COMPANIES = ['blackstone', 'kkr', 'carlylegroup', 'baincapital', 'bridgewaterassociates'];
+const LEVER_COMPANIES = [];
 
 async function fetchLever() {
   const allJobs = [];
@@ -405,7 +347,7 @@ async function fetchAshby() {
 /* ─── Source 11: Venture Capital Careers RSS ─── */
 async function fetchVCCareersRSS() {
   try {
-    const res = await fetch('https://venturecapitalcareers.com/feed/', {
+    const res = await fetch('https://venturecapitalcareers.com/rss/jobs/new.rss', {
       signal: AbortSignal.timeout(12000),
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
     });
@@ -438,7 +380,7 @@ async function fetchVCCareersRSS() {
 /* ─── Source 12: The Muse ─── */
 async function fetchTheMuse() {
   try {
-    const data = await fetchJson('https://www.themuse.com/api/public/jobs?category=Finance&page=0&descending=true');
+    const data = await fetchJson('https://www.themuse.com/api/public/v2/jobs?category=Finance&page=0&descending=true');
     return (data.results || []).map(j => normalizeJob({
       id:          `muse_${j.id}`,
       title:       j.name,
@@ -485,13 +427,13 @@ async function fetchHimalayas() {
 /* ─── Source 14: Jobicy RSS ─── */
 async function fetchJobicyRSS() {
   try {
-    const res = await fetch('https://jobicy.com/jobs-rss-feed', {
+    const res = await fetch('https://jobicy.com/?feed=job_feed&job_categories=accounting-finance', {
       signal: AbortSignal.timeout(12000),
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; JobBoardBot/1.0)' },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const xml = await res.text();
-    const financeRe = /financ|fp&a|fp\s*&\s*a|cfo|accountant|revenue|analyst|invest|private equity|venture/i;
+    const financeRe = /financ|financial|accounting|accountant|analyst|investment|banking|treasury|controller|cfo|audit|tax|payroll|bookkeeper|\bpe\b|\bvc\b|venture|equity|fund|capital|portfolio/i;
     return parseRssItems(xml)
       .filter(item => financeRe.test(item.title || '') || financeRe.test(item.description || ''))
       .map((item, i) => {
@@ -523,7 +465,6 @@ export default async (req, context) => {
   const results = await Promise.allSettled([
     fetchRemotive(),
     fetchArbeitnow(),
-    fetchIndeedRSS(),
     fetchHNHiring(),
     fetchJSearch(),
     fetchAdzuna(),
@@ -538,7 +479,7 @@ export default async (req, context) => {
   ]);
 
   let allJobs = [];
-  const sources = ['Remotive', 'Arbeitnow', 'Indeed', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed',
+  const sources = ['Remotive', 'Arbeitnow', 'HN Hiring', 'JSearch', 'Adzuna', 'Reed',
                    'Greenhouse', 'Lever', 'Ashby', 'VC Careers', 'The Muse', 'Himalayas', 'Jobicy'];
   results.forEach((r, i) => {
     if (r.status === 'fulfilled') {
