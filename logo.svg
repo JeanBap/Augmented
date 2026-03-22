@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 110" fill="none">
   <!-- Stacked funding bars -->
-  <g transform="translate(0,8)">
+  <g transform="translate(0,4)">
     <!-- Series B bar -->
     <rect x="0" y="4" width="120" height="22" rx="2" fill="#E74C3C"/>
     <text x="12" y="18" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#fff">$50M</text>
     <text x="82" y="18" font-family="system-ui,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Series B</text>
-    <!-- Triangle marker -->
     <polygon points="60,0 54,4 66,4" fill="#E74C3C"/>
 
     <!-- Series A bar -->
@@ -25,13 +24,13 @@
   </g>
 
   <!-- RAISE READY text -->
-  <text x="150" y="62" font-family="system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" letter-spacing="2">
-    <tspan fill="#F2EDE4">RAISE </tspan><tspan fill="#E74C3C">READY</tspan>
+  <text x="155" y="55" font-family="system-ui,-apple-system,sans-serif" font-size="48" font-weight="800" letter-spacing="3">
+    <tspan fill="currentColor" class="logo-raise">RAISE</tspan><tspan dx="12" fill="#E74C3C">READY</tspan>
   </text>
 
   <!-- Divider line -->
-  <line x1="150" y1="72" x2="480" y2="72" stroke="#555" stroke-width="1"/>
+  <line x1="155" y1="66" x2="670" y2="66" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
 
   <!-- Subtitle -->
-  <text x="150" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="400" fill="#8E9EAB" letter-spacing="4">THE NUMBERS BEHIND EVERY RAISE</text>
+  <text x="155" y="85" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="400" fill="#8E9EAB" letter-spacing="5">THE NUMBERS BEHIND EVERY RAISE</text>
 </svg>
