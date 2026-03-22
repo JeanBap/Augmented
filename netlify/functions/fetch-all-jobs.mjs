@@ -130,7 +130,8 @@ async function fetchHNHiring() {
     const topStories = await fetchJson('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&limitToFirst=200&orderBy="$key"');
     // Also check new stories
     const newStories = await fetchJson('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty');
-    const allIds = [...new Set([...(Array.isArray(topStories) ? topStories.slice(0,200) : []), ...(Array.isArray(newStories) ? newStories.slice(0,200) : [])])];
+    // Limit to first 30 to avoid sequential-fetch timeout
+    const allIds = [...new Set([...(Array.isArray(topStories) ? topStories.slice(0,30) : []), ...(Array.isArray(newStories) ? newStories.slice(0,30) : [])])];
 
     let hiringPostId = null;
     for (const id of allIds) {
@@ -144,9 +145,9 @@ async function fetchHNHiring() {
     }
 
     if (!hiringPostId) {
-      // Fallback: search recent Ask HN posts by known pattern
+      // Fallback: search recent Ask HN posts by known pattern (limit to 20)
       const askStories = await fetchJson('https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty');
-      for (const id of (askStories || []).slice(0, 100)) {
+      for (const id of (askStories || []).slice(0, 20)) {
         try {
           const item = await fetchJson(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
           if (item && /who.?s hiring/i.test(item.title || '')) {

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
 <style>
 /* ─── Design Tokens (dark variant) ─── */
 :root {
@@ -944,7 +944,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ─── Supabase client ─── */
   const SUPABASE_URL  = 'https://dciiqcoinlaradmjnkxv.supabase.co';
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjaWlxY29pbmxhcmFkbWpua3h2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTE1MjksImV4cCI6MjA4OTM2NzUyOX0.wT5Eg40gCnNzNKNfIZj7ge6eDxmXL2vFr-FAw6CTqVc';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+  let sb = null;
+  try {
+    if (window.supabase) {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    }
+  } catch (e) {
+    console.warn('[jobboard] Supabase failed to initialize:', e.message);
+  }
 
   /* ─── State ─── */
   const state = {
@@ -983,15 +990,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   const catTabs     = document.querySelectorAll('.cat-tab');
 
   /* ─── Auth: listen for session changes ─── */
-  sb.auth.onAuthStateChange(async (event, session) => {
-    state.user = session?.user ?? null;
-    updateAuthUI();
-    if (state.user) {
-      await loadProfile();
-      await loadApplications();
-      renderJobs(); // re-render to show applied badges
-    }
-  });
+  if (sb) {
+    sb.auth.onAuthStateChange(async (event, session) => {
+      state.user = session?.user ?? null;
+      updateAuthUI();
+      if (state.user) {
+        await loadProfile();
+        await loadApplications();
+        renderJobs(); // re-render to show applied badges
+      }
+    });
+  }
 
   function updateAuthUI() {
     const signedIn  = !!state.user;
@@ -1012,6 +1021,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   async function signInWithGoogle() {
+    if (!sb) { showToast('Authentication unavailable — please try again later.', 'error'); return; }
     const { error } = await sb.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: window.location.origin + window.location.pathname },
@@ -1020,6 +1030,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   async function signOut() {
+    if (!sb) return;
     await sb.auth.signOut();
     state.appliedJobIds = new Set();
     $('applied-card').style.display = 'none';
