@@ -3272,6 +3272,8 @@ function PitchDeckBuilder() {
       window.localStorage?.setItem?.("rr_fm_pitch", JSON.stringify(pitch));
       setPdSaved(true);
       setTimeout(function() { setPdSaved(false); }, 2000);
+      // Show message that permanent save requires sign up
+      alert("Your pitch deck is saved to your browser. Sign up at finance.raisereadybook.com to save permanently.");
     } catch {}
   }, [pitch]);
 
@@ -3282,16 +3284,22 @@ function PitchDeckBuilder() {
         var fm = null;
         try { fm = JSON.parse(window.localStorage?.getItem?.("rr_fm2") || "null"); } catch {}
         var html = buildPitchHTML(pitch, fm);
-        var blob = new Blob([html], { type: "text/html" });
+        // Add watermark and disable copy for preview
+        var previewHtml = html.replace(
+          "</head>",
+          "<style>\nbody { user-select: none; -webkit-user-select: none; -moz-user-select: none; }\n" +
+          ".preview-watermark { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 9999; }\n" +
+          ".preview-watermark::before { content: 'PREVIEW - Sign up at finance.raisereadybook.com to export'; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); font-size: 48px; font-weight: bold; color: rgba(200, 164, 90, 0.15); text-align: center; white-space: nowrap; z-index: 10000; pointer-events: none; font-family: Arial, sans-serif; }\n" +
+          "</style>\n</head>"
+        );
+        previewHtml = previewHtml.replace(
+          "<body>",
+          "<body>\n<div class='preview-watermark'></div>"
+        );
+        var blob = new Blob([previewHtml], { type: "text/html" });
         var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = (pitch.companyName ? pitch.companyName.replace(/\s+/g,"_") : "pitch_deck") + "_investor_deck.html";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } catch(e) { alert("Export failed: " + e.message); }
+        window.open(url, "_blank");
+      } catch(e) { alert("Preview failed: " + e.message); }
       setExporting(false);
     }, 50);
   }, [pitch]);
@@ -3343,14 +3351,14 @@ function PitchDeckBuilder() {
           pct + "% complete"
         ),
         React.createElement("button", {
-          onClick: savePitch,
-          style: { background: C.teal, color: "white", border: "none", padding: "5px 12px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "pointer" }
-        }, pdSaved ? "✓ Saved" : "Save"),
+          disabled: true,
+          style: { background: "rgba(255,255,255,0.2)", color: "white", border: "none", padding: "5px 12px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: "not-allowed", opacity: 0.6 }
+        }, "Sign up to save"),
         React.createElement("button", {
           onClick: exportDeck,
           disabled: exporting,
           style: { background: exporting ? "rgba(255,255,255,0.2)" : C.gold, color: exporting ? "white" : C.navy, border: "none", padding: "5px 14px", borderRadius: 5, fontSize: 10, fontWeight: 700, cursor: exporting ? "not-allowed" : "pointer" }
-        }, exporting ? "Generating…" : "⬇ Export Pitch Deck"),
+        }, exporting ? "Generating…" : "👁 Preview Pitch Deck"),
         React.createElement("button", {
           onClick: resetPitch,
           style: { background: "transparent", color: "rgba(255,255,255,0.3)", border: "1px solid rgba(255,255,255,0.15)", padding: "5px 10px", borderRadius: 5, fontSize: 9, cursor: "pointer" }
@@ -3391,6 +3399,22 @@ function PitchDeckBuilder() {
     React.createElement("div", {
       style: { padding: "20px 24px 24px" }
     },
+      // CTA Banner
+      React.createElement("div", {
+        style: { background: "linear-gradient(135deg, #c8a45a 0%, #d4b570 100%)", color: C.navy, padding: "12px 16px", borderRadius: 8, marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }
+      },
+        React.createElement("div", null,
+          React.createElement("div", { style: { fontSize: 11, fontWeight: 700, marginBottom: 2 } }, "Want to export, save, and customize your pitch deck?"),
+          React.createElement("div", { style: { fontSize: 9, opacity: 0.8 } }, "Upgrade to Financial Model Builder for full access.")
+        ),
+        React.createElement("a", {
+          href: "https://finance.raisereadybook.com",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: { background: C.navy, color: C.gold, border: "none", padding: "6px 14px", borderRadius: 4, fontSize: 9, fontWeight: 700, cursor: "pointer", textDecoration: "none", whiteSpace: "nowrap" }
+        }, "Sign up now")
+      ),
+
       // Section heading
       React.createElement("div", {
         style: { marginBottom: 16 }
@@ -3476,7 +3500,7 @@ function PitchDeckBuilder() {
             color: PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? C.navy : "white",
             border: "none", padding: "6px 16px", borderRadius: 6, fontSize: 10, fontWeight: 700, cursor: "pointer"
           }
-        }, PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? "⬇ Export Pitch Deck" : "Next →")
+        }, PD_SECTIONS[PD_SECTIONS.length - 1].id === activeSection ? "👁 Preview Pitch Deck" : "Next →")
       )
     ),
 
