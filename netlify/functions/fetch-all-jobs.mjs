@@ -21,6 +21,27 @@ function normalizeJob(raw) {
   };
 }
 
+/* ─── Finance-relevance filter ─── */
+const FINANCE_TITLE_RE = /financ|fp&a|fp\s*&\s*a|cfo|controller|treasury|treasurer|accounting|accountant|bookkeep|payroll|revenue\s*ops|rev\s*ops|tax\s|audit|budget|forecast|investor\s*relat|capital\s*market|fund\s*admin|financial\s*plan|financial\s*analyst|financial\s*model|cost\s*account|management\s*account|commercial\s*financ|business\s*partner.*financ|financ.*business\s*partner/i;
+
+/* Exclude internal VC / PE fund roles (investment team, not finance ops) */
+const VC_INTERNAL_RE = /\b(venture\s*(?:associate|fellow|partner|analyst|principal|scout|intern)|investment\s*(?:associate|analyst|principal|partner|director|intern)|portfolio\s*(?:associate|analyst|director)|founding\s*(?:partner|member)|general\s*partner|managing\s*director|entrepreneur\s*in\s*residence|founder\s*in\s*residence|eir\b|partner(?:ship)?\s*(?:associate|track)|(?:associate|senior|junior)\s*(?:at|,)\s*(?:venture|capital|equity|fund)|deal\s*(?:team|sourcing|flow)|growth\s*equity\s*(?:associate|analyst)|private\s*equity\s*(?:associate|analyst|principal))/i;
+
+/* Non-finance VC board roles to drop */
+const NON_FINANCE_RE = /\b(software\s*engineer|frontend|backend|fullstack|full-stack|devops|sre\b|data\s*engineer|machine\s*learn|ml\s*engineer|product\s*design|ux\s*design|ui\s*design|graphic\s*design|brand\s*design|content\s*writ|copywriter|marketing\s*manager|social\s*media|community\s*manager|recruiter|talent\s*acquisition|people\s*ops|hr\s*(?:manager|partner|generalist)|legal\s*counsel|general\s*counsel|sales\s*(?:rep|executive|manager|director|engineer)|account\s*executive|customer\s*success|solutions?\s*engineer|security\s*engineer|infrastructure|platform\s*engineer|ios\s*developer|android\s*developer|mobile\s*engineer|qa\s*engineer|test\s*engineer|site\s*reliability|cloud\s*engineer|go-to-market|gtm\s*lead|business\s*development\s*(?:rep|manager|praktikum)|bdr\b|sdr\b|customer\s*support|office\s*manager|executive\s*assistant|communications?\s*manager|pr\s*manager|event\s*manager|operations?\s*(?:manager|lead|coordinator)(?!.*financ))/i;
+
+function isFinanceRelevant(job) {
+  const t = job.title || '';
+  const d = job.description || '';
+  /* Must match a finance keyword in title or description */
+  if (!FINANCE_TITLE_RE.test(t) && !FINANCE_TITLE_RE.test(d)) return false;
+  /* Drop obvious internal VC investment roles */
+  if (VC_INTERNAL_RE.test(t)) return false;
+  /* Drop clearly non-finance roles that slip through via broad description match */
+  if (NON_FINANCE_RE.test(t)) return false;
+  return true;
+}
+
 function dedup(jobs) {
   const seen = new Map();
   for (const job of jobs) {
@@ -273,7 +294,7 @@ async function fetchGreenhouse() {
         posted_date: j.updated_at ? j.updated_at.slice(0, 10) : null,
         source:      'Greenhouse',
       }));
-      allJobs.push(...jobs);
+      allJobs.push(...jobs.filter(isFinanceRelevant));
     } catch (e) {
       console.error(`[fetch-all-jobs] Greenhouse board ${board} failed:`, e.message);
     }
@@ -304,7 +325,7 @@ async function fetchAshby() {
         posted_date: j.publishedAt ? j.publishedAt.slice(0, 10) : null,
         source:      'Ashby',
       }));
-      allJobs.push(...jobs);
+      allJobs.push(...jobs.filter(isFinanceRelevant));
     } catch (e) {
       console.error(`[fetch-all-jobs] Ashby board ${slug} failed:`, e.message);
     }
@@ -339,7 +360,7 @@ async function fetchVCCareersRSS() {
         posted_date: postedDate,
         source:      'VC Careers',
       });
-    }).filter(j => j.title);
+    }).filter(j => j.title && isFinanceRelevant(j));
   } catch (e) {
     console.error('[fetch-all-jobs] VC Careers RSS failed:', e.message);
     return [];
@@ -461,23 +482,27 @@ export default async (req, context) => {
   const deduped = dedup(allJobs.filter(j => j.title && j.company));
   console.log(`[fetch-all-jobs] Total after dedup: ${deduped.length}`);
 
+  /* Final pass: ensure every job is finance-relevant */
+  const filtered = deduped.filter(isFinanceRelevant);
+  console.log(`[fetch-all-jobs] After finance relevance filter: ${filtered.length} (removed ${deduped.length - filtered.length})`);
+
   try {
     const store = getStore('job-board');
     await store.setJSON('all-jobs', {
-      jobs:        deduped,
+      jobs:        filtered,
       fetchedAt:   new Date().toISOString(),
-      totalCount:  deduped.length,
+      totalCount:  filtered.length,
     });
     console.log('[fetch-all-jobs] Stored to Netlify Blobs successfully.');
   } catch (e) {
     console.error('[fetch-all-jobs] Failed to write to Netlify Blobs:', e.message);
-    return new Response(JSON.stringify({ ok: false, error: e.message, count: deduped.length }), {
+    return new Response(JSON.stringify({ ok: false, error: e.message, count: filtered.length }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  return new Response(JSON.stringify({ ok: true, count: deduped.length }), {
+  return new Response(JSON.stringify({ ok: true, count: filtered.length }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });
