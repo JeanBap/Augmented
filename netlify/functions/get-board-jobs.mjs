@@ -22,7 +22,7 @@ export default async (req, context) => {
   const typeQ    = (params.get('type')     || '').trim().toLowerCase();
   const locationQ= (params.get('location') || '').trim().toLowerCase();
   const page     = Math.max(1, parseInt(params.get('page')  || '1', 10));
-  const limit    = Math.min(50, Math.max(1, parseInt(params.get('limit') || '10', 10)));
+  const limit    = Math.min(500, Math.max(1, parseInt(params.get('limit') || '10', 10)));
 
   try {
     const store = getStore('job-board');
