@@ -81,6 +81,147 @@
   data-domain="raisereadybook.com"
   src="https://datafa.st/js/script.js">
 </script>
+<style>
+.sheet-accordion {
+  margin: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+
+.accordion-toggle:hover {
+  color: var(--primary);
+}
+
+.accordion-toggle::before {
+  content: '+';
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.accordion-toggle.expanded::before {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.accordion-content.expanded {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.sheets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .sheets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sheet-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sheet-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sheet-header {
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.sheet-header.color-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.sheet-header.color-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.sheet-header.color-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.sheet-header.color-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.sheet-header.color-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.sheet-header.color-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+.sheet-header.color-7 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+.sheet-header.color-8 { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+.sheet-header.color-9 { background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%); }
+.sheet-header.color-10 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+.sheet-header.color-11 { background: linear-gradient(135deg, #f8b195 0%, #f67676 100%); }
+.sheet-header.color-12 { background: linear-gradient(135deg, #4158d0 0%, #c850c0 100%); }
+.sheet-header.color-13 { background: linear-gradient(135deg, #0093e9 0%, #80d0c4 100%); }
+.sheet-header.color-14 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+.sheet-header.color-15 { background: linear-gradient(135deg, #f1d5ff 0%, #d2bfff 100%); }
+.sheet-header.color-16 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+.sheet-header.color-17 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+
+.sheet-preview {
+  padding: 1rem;
+  text-align: center;
+}
+
+.sheet-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sheet-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--text);
+}
+
+.sheet-description {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--mid);
+  margin: 0;
+  text-align: left;
+}
+</style>
 </head>
 <body data-page="templates">
 <div id="site-nav"></div>
@@ -120,6 +261,239 @@
           <li>Monthly dashboard + scenario comparison</li>
           <li>Data room checklist for investor due diligence</li>
         </ul>
+
+        <!-- Sheet Details Accordion -->
+        <div class="sheet-accordion">
+          <button class="accordion-toggle" data-accordion="financial-model">View all 15 sheets</button>
+          <div class="accordion-content" id="financial-model">
+            <div class="sheets-grid">
+              <div class="sheet-card">
+                <div class="sheet-header color-1">Assumptions Hub</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" stroke="#667eea"></circle>
+                      <path d="M12 7v5l3 2" stroke="#667eea"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Assumptions Hub</h4>
+                  <p class="sheet-description">Central input sheet where every driver lives. Set revenue growth rates, churn, pricing, marketing spend, and hiring triggers. Colour-coded cells separate editable inputs from formula-driven outputs, so you never accidentally overwrite a calculation.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-2">Revenue Model</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#f5576c"></rect>
+                      <path d="M3 9h18M9 3v18" stroke="#f5576c"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Revenue Model</h4>
+                  <p class="sheet-description">Driver-based revenue projections for Marketplace and SaaS business models. Month-by-month MRR build-up from new customers, expansion, contraction, and churn. Answers: what does my revenue trajectory look like over 60 months?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-3">Headcount Plan</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="9" cy="7" r="4" stroke="#00f2fe"></circle>
+                      <path d="M5 12c-2.2 0-4 1.8-4 4v2h16v-2c0-2.2-1.8-4-4-4H5z" stroke="#00f2fe"></path>
+                      <circle cx="19" cy="8" r="3" stroke="#00f2fe"></circle>
+                      <path d="M17 13c-1.7 0-3 1.3-3 3v2h8v-2c0-1.7-1.3-3-3-3z" stroke="#00f2fe"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Headcount Plan</h4>
+                  <p class="sheet-description">Department-level hiring timeline with salaries, burden rates, and start months. See exactly when each role joins, what they cost fully loaded, and how headcount scales across Engineering, Sales, Marketing, Operations, and Leadership.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-4">P&L Statement</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="5" x2="12" y2="19" stroke="#38f9d7"></line>
+                      <polyline points="19 12 12 19 5 12" stroke="#38f9d7"></polyline>
+                      <polyline points="19 6 12 13 5 6" stroke="#38f9d7"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">P&L Statement</h4>
+                  <p class="sheet-description">Full 60-month profit and loss with revenue, COGS, gross margin, operating expenses by category, EBITDA, and net income. Answers: when do we break even, and what does the path to profitability look like?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-5">Cash Flow</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1v22M17 5H9.5a4.5 4.5 0 0 0 0 9H12m0 0a4.5 4.5 0 0 1 0 9H6" stroke="#fee140"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Cash Flow</h4>
+                  <p class="sheet-description">Monthly cash inflows and outflows including operating cash flow, capex, and funding events. Shows your runway in months and flags when cash balance hits critical levels. Answers: how long can we survive before the next raise?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-6">Balance Sheet</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4" stroke="#30cfd0"></path>
+                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="#330867"></path>
+                      <line x1="9" y1="9" x2="15" y2="9" stroke="#30cfd0"></line>
+                      <line x1="9" y1="15" x2="15" y2="15" stroke="#30cfd0"></line>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Balance Sheet</h4>
+                  <p class="sheet-description">Assets, liabilities, and equity on a monthly basis. Tracks cash, accounts receivable, deferred revenue, and how each fundraising round affects the balance sheet.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-7">KPI Dashboard</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="2" x2="12" y2="22" stroke="#a8edea"></line>
+                      <path d="M17 5H9c-1 0-2 1-2 2v10c0 1 1 2 2 2h8c1 0 2-1 2-2V7c0-1-1-2-2-2Z" stroke="#a8edea"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">KPI Dashboard</h4>
+                  <p class="sheet-description">17 key metrics tracked monthly and annually: ARR, MRR growth, burn rate, gross margin, LTV, CAC, LTV:CAC ratio, payback period, NRR, and more. Visual indicators show whether each metric is on track vs. benchmarks.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-8">Cap Table</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#ff6a88"></rect>
+                      <circle cx="12" cy="12" r="5" stroke="#ff6a88"></circle>
+                      <path d="M12 7v10M7 12h10" stroke="#ff6a88"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Cap Table</h4>
+                  <p class="sheet-description">Fully diluted ownership across Founders, Seed, Series A, Series B, and ESOP. See how each round dilutes existing shareholders and what your stake looks like after multiple raises.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-9">Fundraise Planner</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" stroke="#662d8c"></path>
+                      <path d="M12 12v-4M10 14h4" stroke="#662d8c"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Fundraise Planner</h4>
+                  <p class="sheet-description">Three fundraising scenarios (Floor, Target, Stretch) with pre-money valuation, dilution impact, and use-of-funds breakdown. Answers: how much should we raise, and what do we give up?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-10">Sensitivity Analysis</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#8ec5fc"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Sensitivity Analysis</h4>
+                  <p class="sheet-description">Two-variable sensitivity tables showing how changes in growth rate and churn affect ARR, cash balance, and breakeven timing. Stress-test your financial model before investors do.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-11">Cohort Retention</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <g stroke="#f8b195">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <line x1="9" y1="9" x2="9" y2="15"></line>
+                        <line x1="15" y1="9" x2="15" y2="15"></line>
+                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                      </g>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Cohort Retention</h4>
+                  <p class="sheet-description">Customer cohort analysis showing retention curves by signup month. Tracks how revenue from each cohort evolves over time, revealing whether customers stick and expand.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-12">Scenario Comparison</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="3" y1="6" x2="21" y2="6" stroke="#c850c0"></line>
+                      <line x1="3" y1="12" x2="21" y2="12" stroke="#c850c0"></line>
+                      <line x1="3" y1="18" x2="21" y2="18" stroke="#c850c0"></line>
+                      <line x1="9" y1="3" x2="9" y2="21" stroke="#c850c0"></line>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Scenario Comparison</h4>
+                  <p class="sheet-description">Side-by-side comparison of Base, Bull, and Bear scenarios across all key metrics. One page that shows the range of outcomes so you can present a balanced view to investors.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-13">Monthly Dashboard</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="7" height="7" stroke="#80d0c4"></rect>
+                      <rect x="14" y="3" width="7" height="7" stroke="#0093e9"></rect>
+                      <rect x="3" y="14" width="7" height="7" stroke="#80d0c4"></rect>
+                      <rect x="14" y="14" width="7" height="7" stroke="#0093e9"></rect>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Monthly Dashboard</h4>
+                  <p class="sheet-description">Executive summary with sparkline charts, RAG status indicators, and month-over-month deltas for the metrics that matter most. Designed to be screenshot-ready for board updates.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-14">Data Room Checklist</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 11l3 3L22 4" stroke="#c2e9fb"></path>
+                      <path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#a1c4fd"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Data Room Checklist</h4>
+                  <p class="sheet-description">Complete investor due diligence checklist with status tracking. Covers financials, legal, IP, team, customers, and operations. Know exactly what documents investors will ask for.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-15">Instructions</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#d2bfff"></path>
+                      <polyline points="14 2 14 8 20 8" stroke="#f1d5ff"></polyline>
+                      <line x1="12" y1="13" x2="12" y2="19" stroke="#d2bfff"></line>
+                      <line x1="9" y1="16" x2="15" y2="16" stroke="#d2bfff"></line>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Instructions</h4>
+                  <p class="sheet-description">Step-by-step guide to customising the financial model for your business. Walks through each sheet, explains the formulas, and provides tips for presenting to investors.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button class="template-btn btn-add-to-cart" data-product-id="tpl-complete" data-product-name="Complete Financial Model" data-product-price="49">Buy Now - $49</button>
       </div>
 
@@ -140,6 +514,144 @@
           <li>Financial health summary with status checks</li>
           <li>141 formulas, zero hardcoded values</li>
         </ul>
+
+        <!-- Sheet Details Accordion -->
+        <div class="sheet-accordion">
+          <button class="accordion-toggle" data-accordion="personal-finance">View all 9 sheets</button>
+          <div class="accordion-content" id="personal-finance">
+            <div class="sheets-grid">
+              <div class="sheet-card">
+                <div class="sheet-header color-1">Master Setup</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" stroke="#667eea"></circle>
+                      <path d="M12 6v6l4 2" stroke="#667eea"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Master Setup</h4>
+                  <p class="sheet-description">Enter your income sources, assets, debts, and monthly expenses in one place. Every other sheet pulls from this single source of truth, so you only enter data once. Build a solid foundation for your personal financial tracking.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-2">50/30/20 Budget</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" stroke="#f5576c"></path>
+                      <path d="M21 3v5h-5" stroke="#f5576c"></path>
+                      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" stroke="#f5576c"></path>
+                      <path d="M3 21v-5h5" stroke="#f5576c"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">50/30/20 Budget</h4>
+                  <p class="sheet-description">Automatic budget allocation based on the 50/30/20 rule. Compares your target split (needs, wants, savings) against actual spending with visual variance tracking. Answers: am I spending within healthy limits?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-3">Debt Payoff</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#00f2fe"></path>
+                      <path d="M12 6v6l4 2" stroke="#00f2fe"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Debt Payoff</h4>
+                  <p class="sheet-description">Side-by-side Avalanche vs. Snowball debt elimination strategies. Shows total interest paid, months to debt-free, and the optimal payoff order. Answers: which debts should I tackle first to become debt-free faster?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-4">Rent vs. Buy</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#38f9d7"></path>
+                      <polyline points="9 22 9 12 15 12 15 22" stroke="#38f9d7"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Rent vs. Buy</h4>
+                  <p class="sheet-description">Housing analysis using PMT calculations, opportunity cost of down payment, maintenance estimates, and tax implications. Answers: is buying a home financially better than renting in my situation?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-5">Investment Projections</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#fee140"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Investment Projections</h4>
+                  <p class="sheet-description">Compound growth projections from 5 to 30 years with adjustable return rates, monthly contributions, and inflation adjustment. Answers: how much will my investment portfolio be worth at retirement?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-6">Retirement Planning</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="9" stroke="#30cfd0"></circle>
+                      <polyline points="12 7 12 12 16 16" stroke="#330867"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Retirement Planning</h4>
+                  <p class="sheet-description">25x rule calculator with target retirement age, expected expenses, Social Security estimates, and gap analysis. Answers: am I on track to retire when I want to?</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-7">Net Worth Dashboard</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#a8edea"></rect>
+                      <line x1="9" y1="9" x2="9" y2="15" stroke="#fed6e3"></line>
+                      <line x1="15" y1="9" x2="15" y2="15" stroke="#fed6e3"></line>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Net Worth Dashboard</h4>
+                  <p class="sheet-description">Consolidated view of all assets minus liabilities with asset allocation breakdown. Tracks net worth over time and shows progress toward financial independence.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-8">Financial Health Score</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#ff6a88"></path>
+                      <path d="M12 11v4M10 13h4" stroke="#ff6a88"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Financial Health Score</h4>
+                  <p class="sheet-description">Automated scoring across 8 financial health dimensions: emergency fund, debt-to-income, savings rate, insurance coverage, and more. RAG status for each metric with actionable next steps.</p>
+                </div>
+              </div>
+
+              <div class="sheet-card">
+                <div class="sheet-header color-9">Goal Tracker</div>
+                <div class="sheet-preview">
+                  <div class="sheet-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" stroke="#662d8c"></circle>
+                      <path d="M12 6v6l4 2" stroke="#662d8c"></path>
+                      <path d="M9 12h6M12 9v6" stroke="#662d8c"></path>
+                    </svg>
+                  </div>
+                  <h4 class="sheet-name">Goal Tracker</h4>
+                  <p class="sheet-description">Track up to 5 financial goals with target amounts, deadlines, and monthly contribution plans. Visual progress bars show how close you are to each goal and motivate ongoing progress.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button class="template-btn btn-add-to-cart" data-product-id="tpl-personal-finance" data-product-name="Personal Finance Workbook" data-product-price="49">Buy Now - $49</button>
       </div>
     </div>
@@ -158,5 +670,23 @@
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 <script src="/shared/cart.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggles = document.querySelectorAll('.accordion-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const accordionId = this.dataset.accordion;
+      const content = document.getElementById(accordionId);
+
+      if (content) {
+        this.classList.toggle('expanded');
+        content.classList.toggle('expanded');
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
