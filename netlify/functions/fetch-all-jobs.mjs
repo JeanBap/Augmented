@@ -30,15 +30,25 @@ const VC_INTERNAL_RE = /\b(venture\s*(?:associate|fellow|partner|analyst|princip
 /* Non-finance VC board roles to drop */
 const NON_FINANCE_RE = /\b(software\s*engineer|frontend|backend|fullstack|full-stack|devops|sre\b|data\s*engineer|machine\s*learn|ml\s*engineer|product\s*design|ux\s*design|ui\s*design|graphic\s*design|brand\s*design|content\s*writ|copywriter|marketing\s*manager|social\s*media|community\s*manager|recruiter|talent\s*acquisition|people\s*ops|hr\s*(?:manager|partner|generalist)|legal\s*counsel|general\s*counsel|sales\s*(?:rep|executive|manager|director|engineer)|account\s*executive|customer\s*success|solutions?\s*engineer|security\s*engineer|infrastructure|platform\s*engineer|ios\s*developer|android\s*developer|mobile\s*engineer|qa\s*engineer|test\s*engineer|site\s*reliability|cloud\s*engineer|go-to-market|gtm\s*lead|business\s*development\s*(?:rep|manager|praktikum)|bdr\b|sdr\b|customer\s*support|office\s*manager|executive\s*assistant|communications?\s*manager|pr\s*manager|event\s*manager|operations?\s*(?:manager|lead|coordinator)(?!.*financ))/i;
 
+const VC_PROGRAM_RE = /\b(graduate\s*program|future\s*leader|management\s*associate|talent\s*(?:program|graduate)|leadership\s*(?:program|graduate)|founding\s*go-to-market|gtm\s*lead|business\s*development\s*praktikum|leaves?\s*(?:&|and)\s*accommodat)/i;
+const VC_SOURCES = /vc\s*careers|greenhouse|ashby/i;
+
 function isFinanceRelevant(job) {
   const t = job.title || '';
   const d = job.description || '';
-  /* Must match a finance keyword in title or description */
-  if (!FINANCE_TITLE_RE.test(t) && !FINANCE_TITLE_RE.test(d)) return false;
+  const s = job.source || '';
+  /* For VC-sourced jobs, require finance keyword in the TITLE */
+  if (VC_SOURCES.test(s)) {
+    if (!FINANCE_TITLE_RE.test(t)) return false;
+  } else {
+    if (!FINANCE_TITLE_RE.test(t) && !FINANCE_TITLE_RE.test(d)) return false;
+  }
   /* Drop obvious internal VC investment roles */
   if (VC_INTERNAL_RE.test(t)) return false;
   /* Drop clearly non-finance roles that slip through via broad description match */
   if (NON_FINANCE_RE.test(t)) return false;
+  /* Drop generic VC programs that aren't finance-specific */
+  if (VC_PROGRAM_RE.test(t)) return false;
   return true;
 }
 
