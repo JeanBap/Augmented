@@ -1197,6 +1197,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     `).join('');
   }
 
+  /* ─── Client-side finance relevance filter (mirrors server-side) ─── */
+  const FINANCE_RE = /financ|fp&a|fp\s*&\s*a|cfo|controller|treasury|treasurer|accounting|accountant|bookkeep|payroll|revenue\s*ops|rev\s*ops|tax\s|audit|budget|forecast|investor\s*relat|capital\s*market|fund\s*admin|financial\s*plan|financial\s*analyst|financial\s*model|cost\s*account|management\s*account|commercial\s*financ|business\s*partner.*financ|financ.*business\s*partner/i;
+  const VC_INTERNAL_RE = /\b(venture\s*(?:associate|fellow|partner|analyst|principal|scout|intern)|investment\s*(?:associate|analyst|principal|partner|director|intern)|portfolio\s*(?:associate|analyst|director)|founding\s*(?:partner|member)|general\s*partner|managing\s*director|entrepreneur\s*in\s*residence|founder\s*in\s*residence|eir\b|deal\s*(?:team|sourcing|flow)|growth\s*equity\s*(?:associate|analyst)|private\s*equity\s*(?:associate|analyst|principal))/i;
+  const NON_FINANCE_RE = /\b(software\s*engineer|frontend|backend|fullstack|full-stack|devops|sre\b|data\s*engineer|machine\s*learn|ml\s*engineer|product\s*design|ux\s*design|ui\s*design|graphic\s*design|brand\s*design|content\s*writ|copywriter|marketing\s*manager|social\s*media|community\s*manager|recruiter|talent\s*acquisition|people\s*ops|hr\s*(?:manager|partner|generalist)|legal\s*counsel|general\s*counsel|sales\s*(?:rep|executive|manager|director|engineer)|account\s*executive|customer\s*success|solutions?\s*engineer|security\s*engineer|infrastructure|platform\s*engineer|ios\s*developer|android\s*developer|mobile\s*engineer|qa\s*engineer|test\s*engineer|cloud\s*engineer|go-to-market|gtm\s*lead|business\s*development\s*(?:rep|manager|praktikum)|bdr\b|sdr\b|customer\s*support|office\s*manager|executive\s*assistant|communications?\s*manager|pr\s*manager|event\s*manager|operations?\s*(?:manager|lead|coordinator)(?!.*financ))/i;
+  function isFinanceRelevant(j) {
+    const t = j.title || '', d = j.description || '';
+    if (!FINANCE_RE.test(t) && !FINANCE_RE.test(d)) return false;
+    if (VC_INTERNAL_RE.test(t)) return false;
+    if (NON_FINANCE_RE.test(t)) return false;
+    return true;
+  }
+
   /* ─── Fetch jobs ─── */
   async function fetchJobs() {
     if (state.loading) return;
@@ -1211,11 +1223,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         ...j,
         posted_date: j.posted_date || j.posted_at || null,
       })) : null;
-      state.allJobs = apiJobs || DEMO_JOBS;
-      $('stat-total').textContent  = data.total || state.allJobs.length;
-      $('stat-remote').textContent = data.remoteCount || state.allJobs.filter(j => j.remote).length;
+      state.allJobs = (apiJobs || DEMO_JOBS).filter(isFinanceRelevant);
+      $('stat-total').textContent  = state.allJobs.length;
+      $('stat-remote').textContent = state.allJobs.filter(j => j.remote).length;
     } catch (e) {
-      state.allJobs = DEMO_JOBS;
+      state.allJobs = DEMO_JOBS.filter(isFinanceRelevant);
       $('stat-total').textContent  = state.allJobs.length;
       $('stat-remote').textContent = state.allJobs.filter(j => j.remote).length;
     } finally {
