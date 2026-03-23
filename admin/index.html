@@ -1,754 +1,1133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin | Raise Ready</title>
 <meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<title>Admin | Raise Ready</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #08080d;
-  --paper: #f2ede4;
-  --gold: #c8a45a;
-  --gold2: #e5c97e;
-  --dim: #3a3830;
-  --mid: #6e6a61;
-  --rule: rgba(200,164,90,0.18);
-  --mono: 'DM Mono', monospace;
-  --sans: 'Syne', sans-serif;
-  --green: #27ae60;
-  --red: #c0392b;
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#08080d;--paper:#f2ede4;--gold:#c8a45a;--gold2:#e5c97e;
+  --dim:#3a3830;--mid:#6e6a61;--rule:rgba(200,164,90,0.18);
+  --green:#27ae60;--red:#c0392b;--radius:8px;
+  --mono:'DM Mono',monospace;--sans:'Syne',sans-serif;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+html,body{height:100%;font-family:var(--sans);background:var(--paper);color:var(--ink)}
 
 /* Login */
-.login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-.login-box { max-width: 360px; width: 100%; padding: 2rem; text-align: center; }
-.login-box h1 { font-size: 1.5rem; margin-bottom: 1rem; }
-.login-box input {
-  width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--rule);
-  border-radius: 6px; font-family: var(--mono); font-size: 0.9rem;
-  background: var(--paper); color: var(--ink); margin-bottom: 0.75rem;
-}
-.login-box button {
-  width: 100%; padding: 0.75rem; border: none; border-radius: 6px;
-  background: var(--ink); color: var(--paper); font-family: var(--sans);
-  font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: opacity 0.2s;
-}
-.login-box button:hover { opacity: 0.85; }
-.login-error { color: var(--red); font-size: 0.85rem; margin-top: 0.5rem; display: none; }
+.login-wrap{display:flex;align-items:center;justify-content:center;height:100vh}
+.login-box{background:#fff;padding:2.5rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,0.08);width:100%;max-width:380px;border:1px solid var(--rule);text-align:center}
+.login-box h1{font-size:1.5rem;margin-bottom:0.25rem}
+.login-box .sub{color:var(--mid);font-size:0.85rem;margin-bottom:1.5rem}
+.login-box input{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--rule);border-radius:var(--radius);font-family:var(--mono);font-size:0.9rem;background:var(--paper);color:var(--ink);margin-bottom:0.75rem}
+.login-box input:focus{outline:none;border-color:var(--gold)}
+.login-box button{width:100%;padding:0.75rem;border:none;border-radius:var(--radius);background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:700;font-size:0.95rem;cursor:pointer}
+.login-box button:hover{opacity:0.85}
+.login-err{color:var(--red);font-size:0.85rem;margin-top:0.5rem;display:none}
 
-/* Dashboard */
-.dashboard { display: none; max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
-.dash-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 0; border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem;
-}
-.dash-header h1 { font-size: 1.3rem; }
-.btn-logout {
-  padding: 0.4rem 1rem; border: 1.5px solid var(--ink); border-radius: 6px;
-  background: transparent; color: var(--ink); font-family: var(--mono);
-  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
-}
-.btn-logout:hover { background: var(--ink); color: var(--paper); }
-.dash-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-.dash-nav button {
-  padding: 0.4rem 0.8rem; border: 1px solid var(--rule); border-radius: 6px;
-  background: transparent; font-family: var(--mono); font-size: 0.75rem;
-  color: var(--mid); cursor: pointer; transition: all 0.2s;
-}
-.dash-nav button.active, .dash-nav button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+/* Dashboard Layout */
+.dash{display:none;height:100vh;flex-direction:row}
+.sidebar{width:220px;background:var(--ink);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0}
+.sidebar-hdr{padding:1.25rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0.75rem}
+.sidebar-hdr h2{color:var(--paper);font-size:1.1rem}
+.sidebar-hdr small{color:var(--gold2);font-size:0.75rem}
+.sidebar-nav{flex:1;display:flex;flex-direction:column;gap:0.25rem;padding:0 0.75rem}
+.tab-btn{display:flex;align-items:center;gap:0.65rem;padding:0.6rem 0.85rem;background:none;border:none;color:rgba(242,237,228,0.6);cursor:pointer;border-radius:var(--radius);font-family:var(--sans);font-size:0.88rem;text-align:left;transition:all 0.15s;white-space:nowrap}
+.tab-btn:hover{background:rgba(255,255,255,0.08);color:var(--paper)}
+.tab-btn.active{background:var(--gold);color:var(--ink);font-weight:600}
+.tab-icon{font-size:1.05rem;width:1.4rem;text-align:center;flex-shrink:0}
+.sidebar-foot{padding:1rem;border-top:1px solid rgba(255,255,255,0.08);margin-top:auto}
+.btn-logout{width:100%;padding:0.55rem;background:rgba(192,57,43,0.15);color:#ff6b6b;border:1px solid rgba(192,57,43,0.25);border-radius:var(--radius);cursor:pointer;font-family:var(--sans);font-size:0.85rem}
+.btn-logout:hover{background:rgba(192,57,43,0.25)}
 
-/* File list */
-.file-list { list-style: none; }
-.file-list li {
-  padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule);
-  font-family: var(--mono); font-size: 0.82rem; cursor: pointer; transition: background 0.2s;
-}
-.file-list li:hover { background: rgba(200,164,90,0.08); }
+/* Main Content */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.topbar{padding:1.25rem 2rem;background:#fff;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;gap:1rem}
+.topbar h1{font-size:1.4rem;white-space:nowrap}
+.topbar-actions{display:flex;gap:0.75rem;flex-wrap:wrap}
+.content{flex:1;overflow-y:auto;padding:1.75rem 2rem}
 
-/* Editor */
-.editor-panel { display: none; }
-.editor-bar {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;
-}
-.editor-bar h2 { font-family: var(--mono); font-size: 0.85rem; color: var(--mid); word-break: break-all; }
-.editor-actions { display: flex; gap: 0.5rem; }
-.editor-actions button {
-  padding: 0.5rem 1.2rem; border: none; border-radius: 6px;
-  font-family: var(--sans); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: opacity 0.2s;
-}
-.btn-save { background: var(--gold); color: var(--ink); }
-.btn-save:hover { background: var(--gold2); }
-.btn-back { background: transparent; color: var(--mid); border: 1px solid var(--rule) !important; }
-.btn-back:hover { color: var(--ink); }
-#editor-textarea {
-  width: 100%; min-height: 70vh; padding: 1rem; border: 1.5px solid var(--rule);
-  border-radius: 8px; font-family: var(--mono); font-size: 0.82rem; line-height: 1.7;
-  background: #fff; color: var(--ink); resize: vertical; tab-size: 2;
-}
-.save-status { font-family: var(--mono); font-size: 0.8rem; color: var(--green); margin-left: 0.5rem; display: none; }
-.save-status.error { color: var(--red); }
+/* Shared Components */
+.card{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.25rem}
+.card h2{font-size:1.1rem;margin-bottom:1rem}
+.card h3{font-size:1rem;margin-bottom:0.75rem;color:var(--gold)}
+.btn{padding:0.55rem 1.1rem;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--sans);font-weight:600;font-size:0.85rem;transition:all 0.15s;display:inline-flex;align-items:center;gap:0.4rem}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:var(--gold2)}
+.btn-dark{background:var(--ink);color:var(--paper)}.btn-dark:hover{opacity:0.85}
+.btn-ghost{background:transparent;color:var(--mid);border:1px solid var(--rule)}.btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{opacity:0.9}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{opacity:0.9}
+.form-row{margin-bottom:1rem}
+.form-row label{display:block;font-weight:600;margin-bottom:0.35rem;color:var(--dim);font-size:0.85rem}
+.form-row input,.form-row textarea,.form-row select{width:100%;padding:0.6rem 0.75rem;border:1.5px solid var(--rule);border-radius:var(--radius);font-family:var(--sans);font-size:0.9rem;color:var(--ink);transition:border 0.15s}
+.form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,164,90,0.08)}
+.form-row textarea{font-family:var(--mono);resize:vertical;min-height:100px;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.check-row{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem}
+.check-row input[type=checkbox]{width:16px;height:16px;cursor:pointer}
+.check-row label{margin:0;font-weight:400;font-size:0.88rem;color:var(--dim)}
+.loading-msg{text-align:center;padding:3rem;color:var(--mid);font-family:var(--mono);font-size:0.85rem}
+.spin{display:inline-block;width:18px;height:18px;border:2.5px solid var(--rule);border-radius:50%;border-top-color:var(--gold);animation:spin .7s linear infinite;vertical-align:middle;margin-right:0.5rem}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* Loading */
-.loading { text-align: center; padding: 3rem; font-family: var(--mono); font-size: 0.85rem; color: var(--mid); }
+/* Product cards */
+.prod-card{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem}
+.prod-card h3{font-size:0.95rem;color:var(--ink);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+.prod-id{font-family:var(--mono);font-size:0.75rem;color:var(--mid);font-weight:400}
 
-/* Find & Replace */
-.dash-header-right { display: flex; gap: 0.5rem; align-items: center; }
-.fr-toggle {
-  padding: 0.4rem 1rem; border: 1.5px solid var(--gold); border-radius: 6px;
-  background: transparent; color: var(--gold); font-family: var(--mono);
-  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
-}
-.fr-toggle:hover, .fr-toggle.active { background: var(--gold); color: var(--ink); }
-.fr-panel { display: none; margin-bottom: 1.5rem; padding: 1.25rem; border: 1.5px solid var(--rule); border-radius: 8px; background: #fff; }
-.fr-panel.visible { display: block; }
-.fr-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
-.fr-row:last-child { margin-bottom: 0; }
-.fr-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); min-width: 60px; }
-.fr-input {
-  flex: 1; padding: 0.5rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 6px;
-  font-family: var(--mono); font-size: 0.82rem; background: var(--paper); color: var(--ink); min-width: 200px;
-}
-.fr-input:focus { outline: none; border-color: var(--gold); }
-.fr-btns { display: flex; gap: 0.5rem; }
-.btn-fr {
-  padding: 0.5rem 1rem; border: none; border-radius: 6px;
-  font-family: var(--sans); font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
-}
-.btn-fr-find { background: var(--ink); color: var(--paper); }
-.btn-fr-find:hover { opacity: 0.85; }
-.btn-fr-replace { background: var(--gold); color: var(--ink); }
-.btn-fr-replace:hover { background: var(--gold2); }
-.btn-fr:disabled { opacity: 0.4; cursor: not-allowed; }
-.fr-results { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; color: var(--mid); }
-.fr-results ul { list-style: none; margin-top: 0.5rem; max-height: 200px; overflow-y: auto; }
-.fr-results li { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; }
-.fr-results .match-count { color: var(--gold); font-weight: 500; }
-.fr-status { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; }
-.fr-status.success { color: var(--green); }
-.fr-status.error { color: var(--red); }
-.fr-status.working { color: var(--gold); }
+/* Link items */
+.link-group{margin-bottom:1.5rem}
+.link-item{display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;background:#fafaf8;border:1px solid var(--rule);border-radius:var(--radius);margin-bottom:0.5rem;flex-wrap:wrap}
+.link-url{font-family:var(--mono);font-size:0.8rem;color:var(--mid);word-break:break-all;flex:1;min-width:200px}
+.link-files{font-size:0.75rem;color:var(--dim)}
+.link-edit-wrap{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap}
+.link-edit-wrap input{padding:0.4rem 0.6rem;border:1.5px solid var(--rule);border-radius:var(--radius);font-family:var(--mono);font-size:0.8rem;width:300px;max-width:100%}
 
-/* Upload Panel */
-.up-panel { display: none; margin-bottom: 1.5rem; padding: 1.25rem; border: 1.5px solid var(--rule); border-radius: 8px; background: #fff; }
-.up-panel.visible { display: block; }
-.up-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
-.up-row:last-child { margin-bottom: 0; }
-.up-label { font-family: var(--mono); font-size: 0.75rem; color: var(--mid); min-width: 70px; }
-.up-input {
-  flex: 1; padding: 0.5rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 6px;
-  font-family: var(--mono); font-size: 0.82rem; background: var(--paper); color: var(--ink); min-width: 200px;
+/* File browser */
+.folder-nav{display:flex;gap:0.4rem;margin-bottom:1rem;flex-wrap:wrap}
+.folder-btn{padding:0.35rem 0.7rem;border:1px solid var(--rule);border-radius:var(--radius);background:transparent;font-family:var(--mono);font-size:0.75rem;color:var(--mid);cursor:pointer;transition:all 0.15s}
+.folder-btn:hover,.folder-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.flist{list-style:none}
+.flist li{padding:0.45rem 0.7rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:0.82rem;cursor:pointer;transition:background 0.15s}
+.flist li:hover{background:rgba(200,164,90,0.06)}
+
+/* Code editor */
+.editor-bar{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:var(--ink);color:var(--paper);border-radius:var(--radius) var(--radius) 0 0;flex-wrap:wrap;gap:0.5rem}
+.editor-path{font-family:var(--mono);font-size:0.82rem}
+.editor-hint{font-size:0.75rem;color:var(--gold2)}
+#editor-textarea{width:100%;min-height:65vh;padding:1rem;border:1.5px solid var(--rule);border-top:none;border-radius:0 0 var(--radius) var(--radius);font-family:var(--mono);font-size:0.82rem;line-height:1.7;background:#fff;color:var(--ink);resize:vertical;tab-size:2}
+
+/* SEO cards */
+.seo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;margin-bottom:1.5rem}
+.seo-card{padding:0.85rem;background:#fff;border:1px solid var(--rule);border-radius:var(--radius);cursor:pointer;transition:all 0.15s}
+.seo-card:hover{border-color:var(--gold);background:#fafaf8}
+.seo-name{font-weight:600;font-size:0.9rem;margin-bottom:0.25rem}
+.seo-path{font-family:var(--mono);font-size:0.72rem;color:var(--mid)}
+
+/* Upload */
+.drop-zone{border:2px dashed var(--rule);border-radius:var(--radius);padding:2rem;text-align:center;cursor:pointer;transition:all 0.15s;margin-bottom:1rem;position:relative}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--gold);background:rgba(200,164,90,0.04)}
+.drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.up-file-list{list-style:none;margin:0.5rem 0;font-family:var(--mono);font-size:0.78rem;max-height:200px;overflow-y:auto}
+.up-file-list li{padding:0.35rem 0.5rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}
+.up-progress{width:100%;height:4px;background:var(--rule);border-radius:2px;margin-top:0.5rem;overflow:hidden;display:none}
+.up-bar{height:100%;background:var(--gold);border-radius:2px;transition:width 0.3s;width:0%}
+.up-status{font-family:var(--mono);font-size:0.8rem;margin-top:0.5rem}
+.up-status.ok{color:var(--green)}.up-status.err{color:var(--red)}.up-status.work{color:var(--gold)}
+
+/* Search results */
+.sr-item{padding:0.75rem;background:#fafaf8;border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:0.5rem}
+.sr-path{font-family:var(--mono);font-size:0.8rem;color:var(--mid)}
+.sr-count{font-size:0.8rem;color:var(--dim);margin-top:0.15rem}
+
+/* Toast */
+.toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:0.5rem;pointer-events:none}
+.toast{background:#fff;padding:0.85rem 1.25rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,0.12);min-width:280px;font-size:0.9rem;animation:slideIn .3s ease;pointer-events:auto;border-left:4px solid var(--gold)}
+.toast.ok{border-left-color:var(--green)}.toast.err{border-left-color:var(--red)}
+@keyframes slideIn{from{transform:translateX(300px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{width:60px}.tab-btn span:last-child{display:none}.sidebar-hdr h2,.sidebar-hdr small,.sidebar-foot{display:none}
+  .content{padding:1rem}.grid-2,.grid-3{grid-template-columns:1fr}.topbar{padding:1rem}
 }
-.up-input:focus { outline: none; border-color: var(--gold); }
-.up-dropzone {
-  flex: 1; min-height: 100px; border: 2px dashed var(--rule); border-radius: 8px;
-  display: flex; align-items: center; justify-content: center; flex-direction: column;
-  font-family: var(--mono); font-size: 0.82rem; color: var(--mid); cursor: pointer;
-  transition: all 0.2s; position: relative; padding: 1rem;
-}
-.up-dropzone:hover, .up-dropzone.dragover { border-color: var(--gold); background: rgba(200,164,90,0.06); }
-.up-dropzone input[type="file"] {
-  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-}
-.up-file-list { list-style: none; margin-top: 0.5rem; font-family: var(--mono); font-size: 0.78rem; max-height: 160px; overflow-y: auto; }
-.up-file-list li {
-  padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--rule);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.up-file-list .up-file-name { word-break: break-all; }
-.up-file-list .up-file-size { color: var(--mid); white-space: nowrap; margin-left: 0.5rem; }
-.up-file-list .up-file-status { margin-left: 0.5rem; font-weight: 500; }
-.up-file-list .up-file-status.ok { color: var(--green); }
-.up-file-list .up-file-status.fail { color: var(--red); }
-.up-file-list .up-file-status.pending { color: var(--mid); }
-.btn-up {
-  padding: 0.5rem 1.2rem; border: none; border-radius: 6px;
-  font-family: var(--sans); font-weight: 700; font-size: 0.85rem; cursor: pointer;
-  background: var(--gold); color: var(--ink); transition: all 0.2s;
-}
-.btn-up:hover { background: var(--gold2); }
-.btn-up:disabled { opacity: 0.4; cursor: not-allowed; }
-.up-status { margin-top: 0.75rem; font-family: var(--mono); font-size: 0.8rem; }
-.up-status.success { color: var(--green); }
-.up-status.error { color: var(--red); }
-.up-status.working { color: var(--gold); }
-.up-progress { width: 100%; height: 4px; background: var(--rule); border-radius: 2px; margin-top: 0.5rem; overflow: hidden; display: none; }
-.up-progress-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.3s; width: 0%; }
 </style>
-<script
-  defer
-  data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"
-  data-domain="raisereadybook.com"
-  src="https://datafa.st/js/script.js">
-</script>
+<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
 </head>
 <body>
 
-<!-- Login Screen -->
-<div id="login-screen" class="login-screen">
+<!-- Login -->
+<div id="login-screen" class="login-wrap">
   <div class="login-box">
     <h1>Admin</h1>
-    <p style="font-size:0.85rem;color:var(--mid);margin-bottom:1.5rem;">Raise Ready site editor</p>
-    <input type="password" id="password-input" placeholder="Password" autocomplete="current-password">
-    <button id="login-btn" onclick="doLogin()">Sign in</button>
-    <div id="login-error" class="login-error">Wrong password</div>
+    <p class="sub">Raise Ready site management</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="current-password">
+    <button id="login-btn">Sign in</button>
+    <div id="login-err" class="login-err">Wrong password</div>
   </div>
 </div>
 
 <!-- Dashboard -->
-<div id="dashboard" class="dashboard">
-  <div class="dash-header">
-    <h1>Site Editor</h1>
-    <div class="dash-header-right">
-      <button class="fr-toggle" id="indexnow-btn" onclick="triggerIndexNow()">IndexNow</button>
-      <button class="fr-toggle" id="fr-toggle" onclick="toggleFindReplace()">Find & Replace</button>
-      <button class="fr-toggle" id="up-toggle" onclick="toggleUpload()">Upload</button>
-      <button class="btn-logout" onclick="doLogout()">Log out</button>
+<div id="dashboard" class="dash">
+  <div class="sidebar">
+    <div class="sidebar-hdr">
+      <h2>Raise Ready</h2>
+      <small id="sidebar-url">Admin Panel</small>
+    </div>
+    <div class="sidebar-nav" id="tabs-nav"></div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="logout-btn">Log out</button>
     </div>
   </div>
-
-  <!-- Find & Replace Panel -->
-  <div id="fr-panel" class="fr-panel">
-    <div class="fr-row">
-      <span class="fr-label">Find</span>
-      <input class="fr-input" id="fr-search" type="text" placeholder="Text to find across all pages...">
+  <div class="main">
+    <div class="topbar">
+      <h1 id="page-title">Dashboard</h1>
+      <div class="topbar-actions" id="topbar-actions"></div>
     </div>
-    <div class="fr-row">
-      <span class="fr-label">Replace</span>
-      <input class="fr-input" id="fr-replace" type="text" placeholder="Replace with...">
-    </div>
-    <div class="fr-row">
-      <div class="fr-btns">
-        <button class="btn-fr btn-fr-find" id="fr-find-btn" onclick="doFind()">Preview matches</button>
-        <button class="btn-fr btn-fr-replace" id="fr-replace-btn" onclick="doReplace()" disabled>Replace all</button>
-      </div>
-    </div>
-    <div id="fr-results" class="fr-results" style="display:none;"></div>
-    <div id="fr-status" class="fr-status" style="display:none;"></div>
-  </div>
-
-  <!-- Upload Panel -->
-  <div id="up-panel" class="up-panel">
-    <div class="up-row">
-      <span class="up-label">Folder</span>
-      <input class="up-input" id="up-dest" type="text" placeholder="Destination folder, e.g. products/my-product/ or blog/">
-    </div>
-    <div class="up-row">
-      <span class="up-label">Files</span>
-      <div class="up-dropzone" id="up-dropzone">
-        <span id="up-dropzone-text">Drop files here or click to browse</span>
-        <input type="file" id="up-file-input" multiple>
-      </div>
-    </div>
-    <ul class="up-file-list" id="up-file-list"></ul>
-    <div class="up-progress" id="up-progress"><div class="up-progress-bar" id="up-progress-bar"></div></div>
-    <div id="up-status" class="up-status" style="display:none;"></div>
-    <div class="up-row" style="margin-top:0.75rem;">
-      <button class="btn-up" id="up-btn" onclick="doUpload()" disabled>Upload files</button>
-      <button class="btn-back" onclick="clearUpload()" style="margin-left:0.5rem;">Clear</button>
-    </div>
-  </div>
-
-  <!-- File browser -->
-  <div id="file-browser">
-    <div class="dash-nav" id="folder-nav"></div>
-    <div id="file-loading" class="loading">Loading files...</div>
-    <ul class="file-list" id="file-list"></ul>
-  </div>
-
-  <!-- Editor -->
-  <div id="editor-panel" class="editor-panel">
-    <div class="editor-bar">
-      <h2 id="editor-filename"></h2>
-      <div class="editor-actions">
-        <button class="btn-back" onclick="closeEditor()">Back</button>
-        <button class="btn-save" onclick="saveFile()">Save</button>
-        <span class="save-status" id="save-status"></span>
-      </div>
-    </div>
-    <textarea id="editor-textarea" spellcheck="false"></textarea>
+    <div class="content" id="content"></div>
   </div>
 </div>
 
+<div class="toast-wrap" id="toast-wrap"></div>
+
 <script>
 (function() {
-  'use strict';
+'use strict';
 
-  var adminPassword = '';
-  var allFiles = [];
-  var currentFile = null; // { path, content, sha }
-  var folders = ['All', 'blog', 'book', 'services', 'tools', 'templates', 'shared', 'about', 'careers', 'contact'];
+// ============================================================
+// STATE & CONFIG
+// ============================================================
+var pw = '';
+var allFiles = [];
+var fileCache = {};   // { path: { content, sha } }
+var productsRaw = ''; // full products.js content
+var productsSha = '';
+var currentTab = 'products';
+var currentEditPath = null;
+var linkScanCache = null;
+var uploadQueue = [];
 
-  var $login = document.getElementById('login-screen');
-  var $dash = document.getElementById('dashboard');
-  var $error = document.getElementById('login-error');
-  var $pwInput = document.getElementById('password-input');
-  var $fileList = document.getElementById('file-list');
-  var $fileLoading = document.getElementById('file-loading');
-  var $fileBrowser = document.getElementById('file-browser');
-  var $editorPanel = document.getElementById('editor-panel');
-  var $editorFilename = document.getElementById('editor-filename');
-  var $textarea = document.getElementById('editor-textarea');
-  var $saveStatus = document.getElementById('save-status');
-  var $folderNav = document.getElementById('folder-nav');
+var PRODUCTS_PATH = 'netlify/functions/products.js';
+var COMPONENTS_PATH = 'shared/components.js';
 
-  $pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+var TABS = [
+  { id: 'products',   icon: '\uD83D\uDCB0', label: 'Products & Pricing' },
+  { id: 'links',      icon: '\uD83D\uDD17', label: 'Links Manager' },
+  { id: 'pages',      icon: '\uD83D\uDCC4', label: 'Pages' },
+  { id: 'navigation', icon: '\uD83E\uDDED', label: 'Nav & Footer' },
+  { id: 'files',      icon: '\uD83D\uDCC1', label: 'Files & Upload' },
+  { id: 'search',     icon: '\uD83D\uDD0D', label: 'Find & Replace' },
+  { id: 'seo',        icon: '\uD83C\uDF10', label: 'SEO & Meta' },
+  { id: 'settings',   icon: '\u2699\uFE0F', label: 'Settings' }
+];
 
-  // Ctrl+S save shortcut in editor
-  document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.key === 's' && currentFile) {
-      e.preventDefault();
-      saveFile();
-    }
+var FOLDERS = ['All','blog','book','services','tools','templates','shared','about','careers','contact','netlify'];
+
+var $login = document.getElementById('login-screen');
+var $dash = document.getElementById('dashboard');
+var $err = document.getElementById('login-err');
+var $pw = document.getElementById('pw-input');
+var $tabsNav = document.getElementById('tabs-nav');
+var $title = document.getElementById('page-title');
+var $actions = document.getElementById('topbar-actions');
+var $content = document.getElementById('content');
+
+// ============================================================
+// HELPERS
+// ============================================================
+function headers() {
+  return { 'Content-Type': 'application/json', 'X-Admin-Password': pw };
+}
+
+function api(endpoint, opts) {
+  opts = opts || {};
+  opts.headers = headers();
+  return fetch('/.netlify/functions/' + endpoint, opts).then(function(r) {
+    if (r.status === 401) throw new Error('Unauthorized');
+    return r.json();
   });
+}
 
-  window.doLogin = function() {
-    adminPassword = $pwInput.value.trim();
-    if (!adminPassword) return;
-    $error.style.display = 'none';
-    loadFileList();
-  };
+function esc(s) {
+  var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML;
+}
 
-  window.doLogout = function() {
-    adminPassword = '';
-    allFiles = [];
-    currentFile = null;
-    $login.style.display = 'flex';
-    $dash.style.display = 'none';
-    $pwInput.value = '';
-  };
+function toast(msg, type) {
+  var t = document.createElement('div');
+  t.className = 'toast ' + (type || '');
+  t.textContent = msg;
+  document.getElementById('toast-wrap').appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; setTimeout(function() { t.remove(); }, 300); }, 4000);
+}
 
-  function apiHeaders() {
-    return { 'Content-Type': 'application/json', 'X-Admin-Password': adminPassword };
+// ============================================================
+// LOGIN
+// ============================================================
+$pw.addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+document.getElementById('login-btn').addEventListener('click', doLogin);
+document.getElementById('logout-btn').addEventListener('click', function() {
+  pw = ''; allFiles = []; fileCache = {}; linkScanCache = null;
+  $login.style.display = 'flex'; $dash.style.display = 'none'; $pw.value = '';
+});
+
+function doLogin() {
+  pw = $pw.value.trim();
+  if (!pw) return;
+  $err.style.display = 'none';
+  api('admin-list').then(function(data) {
+    allFiles = data.files || [];
+    $login.style.display = 'none';
+    $dash.style.display = 'flex';
+    buildTabs();
+    switchTab('products');
+  }).catch(function() {
+    $err.style.display = 'block';
+  });
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function buildTabs() {
+  $tabsNav.innerHTML = '';
+  TABS.forEach(function(tab) {
+    var btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.dataset.id = tab.id;
+    btn.innerHTML = '<span class="tab-icon">' + tab.icon + '</span><span>' + tab.label + '</span>';
+    btn.addEventListener('click', function() { switchTab(tab.id); });
+    $tabsNav.appendChild(btn);
+  });
+}
+
+function switchTab(id) {
+  currentTab = id;
+  currentEditPath = null;
+  $tabsNav.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.id === id);
+  });
+  var tab = TABS.filter(function(t) { return t.id === id; })[0];
+  $title.textContent = tab.label;
+  $actions.innerHTML = '';
+  $content.innerHTML = '<div class="loading-msg"><span class="spin"></span> Loading...</div>';
+
+  switch(id) {
+    case 'products':   renderProducts(); break;
+    case 'links':      renderLinks(); break;
+    case 'pages':      renderPages(); break;
+    case 'navigation': renderNav(); break;
+    case 'files':      renderFiles(); break;
+    case 'search':     renderSearch(); break;
+    case 'seo':        renderSeo(); break;
+    case 'settings':   renderSettings(); break;
+  }
+}
+
+// ============================================================
+// TAB 1: PRODUCTS & PRICING
+// ============================================================
+function renderProducts() {
+  fetchFile(PRODUCTS_PATH, function(data) {
+    productsRaw = data.content;
+    productsSha = data.sha;
+    var products = parseProducts(data.content);
+    var config = parseSiteConfig(data.content);
+
+    $actions.innerHTML = '<button class="btn btn-gold" id="save-products-btn">Save All Changes</button>';
+
+    var html = '<div class="card"><h2>Site Configuration</h2><div class="grid-3">' +
+      '<div class="form-row"><label>Site URL</label><input id="cfg-url" value="' + esc(config.SITE_URL) + '"></div>' +
+      '<div class="form-row"><label>Admin Email</label><input id="cfg-email" value="' + esc(config.ADMIN_EMAIL) + '"></div>' +
+      '<div class="form-row"><label>Calendly URL</label><input id="cfg-calendly" value="' + esc(config.CALENDLY_URL) + '"></div>' +
+      '</div></div>';
+
+    products.forEach(function(p) {
+      html += '<div class="prod-card" data-key="' + esc(p.key) + '">' +
+        '<h3>' + esc(p.name) + ' <span class="prod-id">' + esc(p.key) + '</span></h3>' +
+        '<div class="grid-2">' +
+          '<div class="form-row"><label>Name</label><input class="p-name" value="' + esc(p.name) + '"></div>' +
+          '<div class="form-row"><label>Price ($)</label><input type="number" step="0.01" class="p-price" value="' + (p.price / 100).toFixed(2) + '"></div>' +
+        '</div>' +
+        '<div class="form-row"><label>Description</label><input class="p-desc" value="' + esc(p.description) + '"></div>' +
+        '<div class="grid-2">' +
+          '<div class="form-row"><label>File Path</label><input class="p-file" value="' + esc(p.file) + '"></div>' +
+          '<div class="form-row"><label>MIME Type</label><input class="p-mime" value="' + esc(p.mime) + '"></div>' +
+        '</div>' +
+        '<div style="display:flex;gap:1.5rem">' +
+          '<div class="check-row"><input type="checkbox" class="p-service"' + (p.service ? ' checked' : '') + '><label>Service</label></div>' +
+          '<div class="check-row"><input type="checkbox" class="p-digital"' + (p.digital ? ' checked' : '') + '><label>Digital</label></div>' +
+        '</div></div>';
+    });
+
+    $content.innerHTML = html;
+    document.getElementById('save-products-btn').addEventListener('click', saveProducts);
+    document.getElementById('sidebar-url').textContent = config.SITE_URL || 'Admin Panel';
+  });
+}
+
+function parseProducts(src) {
+  var products = [];
+  // Match each product entry
+  var re = /'([^']+)':\s*\{([^}]+)\}/g;
+  var outerMatch = src.match(/var PRODUCTS\s*=\s*\{([\s\S]*?)\n\};/);
+  if (!outerMatch) return products;
+  var block = outerMatch[1];
+  var m;
+  while ((m = re.exec(block)) !== null) {
+    var key = m[1];
+    var body = m[2];
+    products.push({
+      key: key,
+      name: extractStr(body, 'name'),
+      description: extractStr(body, 'description'),
+      price: extractNum(body, 'price'),
+      file: extractStr(body, 'file'),
+      mime: extractStr(body, 'mime'),
+      service: body.indexOf('service: true') !== -1,
+      digital: body.indexOf('digital: true') !== -1
+    });
+  }
+  return products;
+}
+
+function extractStr(body, field) {
+  var m = body.match(new RegExp(field + ":\\s*'([^']*)'"));
+  return m ? m[1] : '';
+}
+function extractNum(body, field) {
+  var m = body.match(new RegExp(field + ':\\s*(\\d+)'));
+  return m ? parseInt(m[1], 10) : 0;
+}
+
+function parseSiteConfig(src) {
+  var url = (src.match(/var SITE_URL\s*=\s*'([^']*)'/) || [])[1] || '';
+  var email = (src.match(/ADMIN_EMAIL[^']*'([^']*)'/) || [])[1] || '';
+  var cal = (src.match(/var CALENDLY_URL\s*=\s*'([^']*)'/) || [])[1] || '';
+  return { SITE_URL: url, ADMIN_EMAIL: email, CALENDLY_URL: cal };
+}
+
+function saveProducts() {
+  // Reconstruct products.js preserving utility functions
+  var cards = document.querySelectorAll('.prod-card');
+  var lines = [];
+  lines.push('// Single source of truth for all product definitions.');
+  lines.push('// Used by: create-checkout, stripe-webhook, download, get-downloads.');
+  lines.push('');
+  lines.push('var PRODUCTS = {');
+
+  var cardArr = Array.prototype.slice.call(cards);
+  cardArr.forEach(function(card, idx) {
+    var key = card.dataset.key;
+    var name = card.querySelector('.p-name').value;
+    var desc = card.querySelector('.p-desc').value;
+    var price = Math.round(parseFloat(card.querySelector('.p-price').value || 0) * 100);
+    var file = card.querySelector('.p-file').value;
+    var mime = card.querySelector('.p-mime').value;
+    var service = card.querySelector('.p-service').checked;
+    var digital = card.querySelector('.p-digital').checked;
+
+    lines.push("  '" + key + "': {");
+    lines.push("    name: '" + name.replace(/'/g, "\\'") + "',");
+    lines.push("    description: '" + desc.replace(/'/g, "\\'") + "',");
+    lines.push("    price: " + price + ",");
+    if (file) lines.push("    file: '" + file + "',");
+    if (mime) lines.push("    mime: '" + mime + "',");
+    if (service) lines.push("    service: true,");
+    if (digital) lines.push("    digital: true,");
+    lines.push("  }" + (idx < cardArr.length - 1 ? "," : ""));
+  });
+  lines.push('};');
+  lines.push('');
+
+  var siteUrl = document.getElementById('cfg-url').value;
+  var adminEmail = document.getElementById('cfg-email').value;
+  var calendlyUrl = document.getElementById('cfg-calendly').value;
+  lines.push("var SITE_URL = '" + siteUrl + "';");
+  lines.push("var ADMIN_EMAIL = process.env.ADMIN_EMAIL || '" + adminEmail + "';");
+  lines.push("var CALENDLY_URL = '" + calendlyUrl + "';");
+
+  // Preserve utility functions from original source
+  var utilStart = productsRaw.indexOf('\n// HTML-escape');
+  if (utilStart === -1) utilStart = productsRaw.indexOf('\nfunction escapeHtml');
+  if (utilStart === -1) utilStart = productsRaw.indexOf('\n// Validate email');
+  if (utilStart !== -1) {
+    lines.push('');
+    lines.push(productsRaw.substring(utilStart + 1));
+  } else {
+    // Fallback: append module.exports
+    lines.push('');
+    lines.push('module.exports = {');
+    lines.push('  PRODUCTS: PRODUCTS,');
+    lines.push('  SITE_URL: SITE_URL,');
+    lines.push('  ADMIN_EMAIL: ADMIN_EMAIL,');
+    lines.push('  CALENDLY_URL: CALENDLY_URL');
+    lines.push('};');
+    lines.push('');
   }
 
-  window.triggerIndexNow = function() {
-    var btn = document.getElementById('indexnow-btn');
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-    // Collect all HTML pages from the sitemap URLs
-    var urls = [
-      '/', '/book/', '/services/', '/templates/', '/about/', '/contact/', '/blog/', '/careers/', '/search/'
-    ];
-    // Add all blog articles from the file list if loaded
-    allFiles.forEach(function(f) {
-      if (f.startsWith('blog/') && f.endsWith('.html') && f !== 'blog/index.html') {
-        urls.push('/' + f);
+  var newContent = lines.join('\n');
+  api('admin-api', {
+    method: 'POST',
+    body: JSON.stringify({ path: PRODUCTS_PATH, content: newContent, sha: productsSha, message: 'Admin: update products & config' })
+  }).then(function(data) {
+    if (data.ok) {
+      productsSha = data.sha;
+      productsRaw = newContent;
+      fileCache[PRODUCTS_PATH] = { content: newContent, sha: data.sha };
+      toast('Products & config saved!', 'ok');
+    } else {
+      toast('Error: ' + (data.error || 'Unknown'), 'err');
+    }
+  }).catch(function(e) { toast('Save failed: ' + e.message, 'err'); });
+}
+
+// ============================================================
+// TAB 2: LINKS MANAGER
+// ============================================================
+function renderLinks() {
+  if (linkScanCache) { displayLinks(linkScanCache); return; }
+
+  $content.innerHTML = '<div class="loading-msg"><span class="spin"></span> Scanning links across site pages (this may take a moment)...</div>';
+
+  // Only scan key pages, not all 120+ blog files
+  var keyFiles = allFiles.filter(function(f) {
+    if (f.startsWith('blog/') && f !== 'blog/index.html') return false; // skip individual blog articles
+    return f.endsWith('.html') || f === COMPONENTS_PATH || f === PRODUCTS_PATH;
+  });
+
+  var links = { amazon: [], calendly: [], social: [], apps: [], other: [] };
+  var pending = keyFiles.length;
+  var done = 0;
+
+  function finish() {
+    linkScanCache = links;
+    displayLinks(links);
+  }
+
+  if (keyFiles.length === 0) { finish(); return; }
+
+  keyFiles.forEach(function(f) {
+    fetchFile(f, function(data) {
+      scanFileForLinks(data.content, f, links);
+      done++;
+      if (done >= pending) finish();
+    }, function() { done++; if (done >= pending) finish(); });
+  });
+}
+
+function scanFileForLinks(content, filePath, links) {
+  var patterns = [
+    { cat: 'amazon',   re: /https?:\/\/(www\.)?amazon\.com[^\s"'`<>)]+/g },
+    { cat: 'calendly', re: /https?:\/\/(www\.)?calendly\.com[^\s"'`<>)]+/g },
+    { cat: 'social',   re: /https?:\/\/(www\.)?(twitter|x|linkedin|github)\.com[^\s"'`<>)]+/g },
+    { cat: 'apps',     re: /https?:\/\/(finance|app)\.raisereadybook\.com[^\s"'`<>)"]*/g }
+  ];
+
+  patterns.forEach(function(p) {
+    var matches = content.match(p.re) || [];
+    matches.forEach(function(url) {
+      var existing = links[p.cat].filter(function(l) { return l.url === url; })[0];
+      if (existing) { if (existing.files.indexOf(filePath) === -1) existing.files.push(filePath); }
+      else links[p.cat].push({ url: url, files: [filePath] });
+    });
+  });
+}
+
+function displayLinks(links) {
+  $actions.innerHTML = '';
+  var html = '';
+  var groups = [
+    { key: 'amazon', title: 'Amazon Links' },
+    { key: 'calendly', title: 'Calendly Links' },
+    { key: 'social', title: 'Social & External' },
+    { key: 'apps', title: 'App Subdomains' }
+  ];
+
+  groups.forEach(function(g) {
+    var items = links[g.key];
+    if (!items || items.length === 0) return;
+    html += '<div class="card"><h3>' + g.title + ' (' + items.length + ')</h3>';
+    items.forEach(function(link, idx) {
+      var id = g.key + '-' + idx;
+      html += '<div class="link-item">' +
+        '<div style="flex:1;min-width:0"><div class="link-url">' + esc(link.url) + '</div>' +
+        '<div class="link-files">Found in: ' + link.files.map(esc).join(', ') + '</div></div>' +
+        '<div class="link-edit-wrap">' +
+        '<input id="new-' + id + '" placeholder="New URL..." value="' + esc(link.url) + '">' +
+        '<button class="btn btn-ghost" onclick="replaceLink(\'' + esc(link.url).replace(/'/g, "\\'") + '\',\'' + id + '\')">Replace</button>' +
+        '</div></div>';
+    });
+    html += '</div>';
+  });
+
+  if (!html) html = '<div class="card"><p style="color:var(--mid)">No external links found in key site pages.</p></div>';
+  $content.innerHTML = html;
+}
+
+window.replaceLink = function(oldUrl, id) {
+  var input = document.getElementById('new-' + id);
+  if (!input) return;
+  var newUrl = input.value.trim();
+  if (!newUrl || newUrl === oldUrl) { toast('Enter a different URL', 'err'); return; }
+  if (!confirm('Replace:\n' + oldUrl + '\n\nWith:\n' + newUrl + '\n\nacross all files?')) return;
+
+  api('admin-replace', {
+    method: 'POST',
+    body: JSON.stringify({ action: 'replace', search: oldUrl, replace: newUrl })
+  }).then(function(data) {
+    if (data.error) { toast('Error: ' + data.error, 'err'); return; }
+    toast('Replaced in ' + data.changed.length + ' file(s)', 'ok');
+    linkScanCache = null; // invalidate cache
+    fileCache = {}; // clear file cache
+  }).catch(function(e) { toast('Replace failed: ' + e.message, 'err'); });
+};
+
+// ============================================================
+// TAB 3: PAGES (Code Editor)
+// ============================================================
+function renderPages() {
+  var currentFolder = 'All';
+
+  function render() {
+    var filtered = currentFolder === 'All' ? allFiles : allFiles.filter(function(f) {
+      return f.startsWith(currentFolder + '/');
+    });
+
+    var nav = '<div class="folder-nav">';
+    FOLDERS.forEach(function(f) {
+      nav += '<button class="folder-btn' + (f === currentFolder ? ' active' : '') + '" data-folder="' + f + '">' + f + '</button>';
+    });
+    nav += '</div>';
+
+    var list = '<ul class="flist">';
+    filtered.forEach(function(path) {
+      list += '<li data-path="' + esc(path) + '">' + esc(path) + '</li>';
+    });
+    if (filtered.length === 0) list += '<li style="color:var(--mid);cursor:default">No files in this folder</li>';
+    list += '</ul>';
+
+    $actions.innerHTML = '';
+    $content.innerHTML = nav + list;
+
+    $content.querySelectorAll('.folder-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentFolder = btn.dataset.folder;
+        render();
+      });
+    });
+
+    $content.querySelectorAll('.flist li[data-path]').forEach(function(li) {
+      li.addEventListener('click', function() { openEditor(li.dataset.path); });
+    });
+  }
+
+  render();
+}
+
+function openEditor(path) {
+  currentEditPath = path;
+  $content.innerHTML = '<div class="loading-msg"><span class="spin"></span> Loading ' + esc(path) + '...</div>';
+
+  fetchFile(path, function(data) {
+    $actions.innerHTML =
+      '<button class="btn btn-ghost" id="editor-back">Back</button>' +
+      '<button class="btn btn-ghost" id="editor-preview">Preview</button>' +
+      '<button class="btn btn-gold" id="editor-save">Save</button>';
+
+    $content.innerHTML =
+      '<div class="editor-bar"><span class="editor-path">' + esc(path) + '</span><span class="editor-hint">Ctrl+S to save</span></div>' +
+      '<textarea id="editor-textarea" spellcheck="false"></textarea>';
+
+    var $ta = document.getElementById('editor-textarea');
+    $ta.value = data.content;
+
+    document.getElementById('editor-back').addEventListener('click', function() { switchTab('pages'); });
+    document.getElementById('editor-preview').addEventListener('click', function() {
+      var url = '/' + path;
+      window.open(url, '_blank');
+    });
+    document.getElementById('editor-save').addEventListener('click', function() { saveEditor(path); });
+
+    $ta.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        saveEditor(path);
+      }
+      // Tab key inserts spaces
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        var start = $ta.selectionStart;
+        $ta.value = $ta.value.substring(0, start) + '  ' + $ta.value.substring($ta.selectionEnd);
+        $ta.selectionStart = $ta.selectionEnd = start + 2;
       }
     });
-    fetch('/.netlify/functions/indexnow', {
-      method: 'POST',
-      headers: apiHeaders(),
-      body: JSON.stringify({ urls: urls })
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var ok = (data.results || []).filter(function(r) { return r.ok; }).length;
-      btn.textContent = 'Sent ' + data.submitted + ' URLs to ' + ok + '/' + (data.results || []).length + ' engines';
-      setTimeout(function() { btn.textContent = 'IndexNow'; btn.disabled = false; }, 4000);
-    })
-    .catch(function() {
-      btn.textContent = 'Error';
-      setTimeout(function() { btn.textContent = 'IndexNow'; btn.disabled = false; }, 3000);
-    });
-  };
-
-  function loadFileList() {
-    $fileLoading.style.display = 'block';
-    $fileList.innerHTML = '';
-
-    fetch('/.netlify/functions/admin-list', { headers: apiHeaders() })
-      .then(function(r) {
-        if (r.status === 401) { $error.style.display = 'block'; throw new Error('auth'); }
-        return r.json();
-      })
-      .then(function(data) {
-        allFiles = data.files;
-        $login.style.display = 'none';
-        $dash.style.display = 'block';
-        $fileLoading.style.display = 'none';
-        buildFolderNav();
-        renderFiles('All');
-      })
-      .catch(function(err) {
-        if (err.message !== 'auth') { $fileLoading.textContent = 'Error loading files'; }
-      });
-  }
-
-  function buildFolderNav() {
-    $folderNav.innerHTML = '';
-    folders.forEach(function(f) {
-      var btn = document.createElement('button');
-      btn.textContent = f;
-      if (f === 'All') btn.classList.add('active');
-      btn.addEventListener('click', function() {
-        $folderNav.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        renderFiles(f);
-      });
-      $folderNav.appendChild(btn);
-    });
-  }
-
-  function renderFiles(folder) {
-    $fileList.innerHTML = '';
-    var filtered = folder === 'All' ? allFiles : allFiles.filter(function(f) { return f.startsWith(folder + '/'); });
-    filtered.forEach(function(path) {
-      var li = document.createElement('li');
-      li.textContent = path;
-      li.addEventListener('click', function() { openFile(path); });
-      $fileList.appendChild(li);
-    });
-    if (filtered.length === 0) {
-      $fileList.innerHTML = '<li style="color:var(--mid);cursor:default;">No HTML files in this folder</li>';
-    }
-  }
-
-  function openFile(path) {
-    $fileBrowser.style.display = 'none';
-    $editorPanel.style.display = 'block';
-    $editorFilename.textContent = path;
-    $textarea.value = 'Loading...';
-    $textarea.disabled = true;
-    $saveStatus.style.display = 'none';
-
-    fetch('/.netlify/functions/admin-api?path=' + encodeURIComponent(path), { headers: apiHeaders() })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.error) { $textarea.value = 'Error: ' + data.error; return; }
-        currentFile = { path: data.path, content: data.content, sha: data.sha };
-        $textarea.value = data.content;
-        $textarea.disabled = false;
-      })
-      .catch(function() { $textarea.value = 'Error loading file'; });
-  }
-
-  window.closeEditor = function() {
-    currentFile = null;
-    $editorPanel.style.display = 'none';
-    $fileBrowser.style.display = 'block';
-  };
-
-  window.saveFile = function() {
-    if (!currentFile) return;
-    $saveStatus.style.display = 'inline';
-    $saveStatus.textContent = 'Saving...';
-    $saveStatus.classList.remove('error');
-
-    var payload = {
-      path: currentFile.path,
-      content: $textarea.value,
-      sha: currentFile.sha,
-      message: 'Admin edit: ' + currentFile.path
-    };
-
-    fetch('/.netlify/functions/admin-api', {
-      method: 'POST',
-      headers: apiHeaders(),
-      body: JSON.stringify(payload)
-    })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.ok) {
-          currentFile.sha = data.sha;
-          currentFile.content = $textarea.value;
-          $saveStatus.textContent = 'Saved!';
-          setTimeout(function() { $saveStatus.style.display = 'none'; }, 2000);
-        } else {
-          $saveStatus.textContent = 'Error: ' + (data.error || JSON.stringify(data));
-          $saveStatus.classList.add('error');
-        }
-      })
-      .catch(function(err) {
-        $saveStatus.textContent = 'Network error';
-        $saveStatus.classList.add('error');
-      });
-  };
-
-  // ---- Find & Replace ----
-  var $frPanel = document.getElementById('fr-panel');
-  var $frToggle = document.getElementById('fr-toggle');
-  var $frSearch = document.getElementById('fr-search');
-  var $frReplace = document.getElementById('fr-replace');
-  var $frResults = document.getElementById('fr-results');
-  var $frStatus = document.getElementById('fr-status');
-  var $frFindBtn = document.getElementById('fr-find-btn');
-  var $frReplaceBtn = document.getElementById('fr-replace-btn');
-  var lastMatches = null;
-
-  window.toggleFindReplace = function() {
-    $frPanel.classList.toggle('visible');
-    $frToggle.classList.toggle('active');
-    if ($frPanel.classList.contains('visible')) $frSearch.focus();
-  };
-
-  function setFrStatus(msg, cls) {
-    $frStatus.style.display = msg ? 'block' : 'none';
-    $frStatus.textContent = msg;
-    $frStatus.className = 'fr-status' + (cls ? ' ' + cls : '');
-  }
-
-  window.doFind = function() {
-    var search = $frSearch.value;
-    if (!search || search.length < 2) { setFrStatus('Enter at least 2 characters to search.', 'error'); return; }
-    $frFindBtn.disabled = true;
-    $frReplaceBtn.disabled = true;
-    $frResults.style.display = 'none';
-    setFrStatus('Searching across all pages...', 'working');
-
-    fetch('/.netlify/functions/admin-replace', {
-      method: 'POST',
-      headers: apiHeaders(),
-      body: JSON.stringify({ action: 'search', search: search })
-    })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        $frFindBtn.disabled = false;
-        if (data.error) { setFrStatus('Error: ' + data.error, 'error'); return; }
-        lastMatches = data.matches;
-        if (data.matches.length === 0) {
-          setFrStatus('No matches found.', '');
-          $frResults.style.display = 'none';
-          $frReplaceBtn.disabled = true;
-          return;
-        }
-        setFrStatus('Found ' + data.total + ' occurrence' + (data.total === 1 ? '' : 's') + ' in ' + data.matches.length + ' file' + (data.matches.length === 1 ? '' : 's') + '.', 'success');
-        var html = '<ul>';
-        data.matches.forEach(function(m) {
-          html += '<li><span>' + m.path + '</span><span class="match-count">' + m.count + ' match' + (m.count === 1 ? '' : 'es') + '</span></li>';
-        });
-        html += '</ul>';
-        $frResults.innerHTML = html;
-        $frResults.style.display = 'block';
-        $frReplaceBtn.disabled = false;
-      })
-      .catch(function() {
-        $frFindBtn.disabled = false;
-        setFrStatus('Network error. Try again.', 'error');
-      });
-  };
-
-  window.doReplace = function() {
-    var search = $frSearch.value;
-    var replace = $frReplace.value;
-    if (!search || search.length < 2) { setFrStatus('Enter at least 2 characters to search.', 'error'); return; }
-    if (search === replace) { setFrStatus('Search and replace strings are identical.', 'error'); return; }
-
-    var fileCount = lastMatches ? lastMatches.length : '?';
-    if (!confirm('Replace "' + search + '" with "' + replace + '" across ' + fileCount + ' file(s)?\n\nThis will create a single commit with all changes.')) return;
-
-    $frFindBtn.disabled = true;
-    $frReplaceBtn.disabled = true;
-    setFrStatus('Replacing across all files... This may take a moment.', 'working');
-
-    fetch('/.netlify/functions/admin-replace', {
-      method: 'POST',
-      headers: apiHeaders(),
-      body: JSON.stringify({ action: 'replace', search: search, replace: replace })
-    })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        $frFindBtn.disabled = false;
-        if (data.error) { setFrStatus('Error: ' + data.error, 'error'); return; }
-        if (data.changed.length === 0) {
-          setFrStatus('No matches found to replace.', '');
-          return;
-        }
-        setFrStatus('Replaced in ' + data.changed.length + ' file' + (data.changed.length === 1 ? '' : 's') + '. Commit: ' + (data.commitSha ? data.commitSha.substring(0, 7) : ''), 'success');
-        var html = '<ul>';
-        data.changed.forEach(function(p) { html += '<li><span>' + p + '</span><span class="match-count">updated</span></li>'; });
-        html += '</ul>';
-        $frResults.innerHTML = html;
-        $frResults.style.display = 'block';
-        $frReplaceBtn.disabled = true;
-        lastMatches = null;
-      })
-      .catch(function() {
-        $frFindBtn.disabled = false;
-        setFrStatus('Network error. Try again.', 'error');
-      });
-  };
-
-  // Enter key triggers find in search input
-  $frSearch.addEventListener('keydown', function(e) { if (e.key === 'Enter') doFind(); });
-  $frReplace.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !$frReplaceBtn.disabled) doReplace(); });
-
-  // ---- Upload ----
-  var $upPanel = document.getElementById('up-panel');
-  var $upToggle = document.getElementById('up-toggle');
-  var $upDest = document.getElementById('up-dest');
-  var $upFileInput = document.getElementById('up-file-input');
-  var $upFileList = document.getElementById('up-file-list');
-  var $upBtn = document.getElementById('up-btn');
-  var $upStatus = document.getElementById('up-status');
-  var $upProgress = document.getElementById('up-progress');
-  var $upProgressBar = document.getElementById('up-progress-bar');
-  var $upDropzone = document.getElementById('up-dropzone');
-  var uploadQueue = [];
-
-  window.toggleUpload = function() {
-    $upPanel.classList.toggle('visible');
-    $upToggle.classList.toggle('active');
-    // Close find & replace if open
-    if ($upPanel.classList.contains('visible')) {
-      $frPanel.classList.remove('visible');
-      $frToggle.classList.remove('active');
-      $upDest.focus();
-    }
-  };
-
-  // Drag and drop
-  $upDropzone.addEventListener('dragover', function(e) { e.preventDefault(); $upDropzone.classList.add('dragover'); });
-  $upDropzone.addEventListener('dragleave', function() { $upDropzone.classList.remove('dragover'); });
-  $upDropzone.addEventListener('drop', function(e) {
-    e.preventDefault();
-    $upDropzone.classList.remove('dragover');
-    handleFiles(e.dataTransfer.files);
   });
-  $upFileInput.addEventListener('change', function() { handleFiles($upFileInput.files); });
+}
 
-  function handleFiles(fileList) {
-    for (var i = 0; i < fileList.length; i++) {
-      var f = fileList[i];
-      // Prevent duplicates
-      var already = uploadQueue.some(function(q) { return q.name === f.name && q.size === f.size; });
-      if (!already) uploadQueue.push(f);
+function saveEditor(path) {
+  var $ta = document.getElementById('editor-textarea');
+  if (!$ta) return;
+  var cached = fileCache[path];
+  if (!cached) { toast('File not loaded', 'err'); return; }
+
+  api('admin-api', {
+    method: 'POST',
+    body: JSON.stringify({ path: path, content: $ta.value, sha: cached.sha, message: 'Admin edit: ' + path })
+  }).then(function(data) {
+    if (data.ok) {
+      cached.sha = data.sha;
+      cached.content = $ta.value;
+      toast('Saved ' + path, 'ok');
+    } else {
+      toast('Error: ' + (data.error || JSON.stringify(data)), 'err');
     }
-    renderUploadList();
-    $upBtn.disabled = uploadQueue.length === 0;
-    $upFileInput.value = '';
-  }
+  }).catch(function(e) { toast('Save failed: ' + e.message, 'err'); });
+}
 
-  function renderUploadList() {
-    $upFileList.innerHTML = '';
-    uploadQueue.forEach(function(f, idx) {
-      var li = document.createElement('li');
-      var sizeKB = (f.size / 1024).toFixed(1);
-      var sizeStr = f.size > 1048576 ? (f.size / 1048576).toFixed(1) + ' MB' : sizeKB + ' KB';
-      li.innerHTML = '<span class="up-file-name">' + escHtml(f.name) + '</span>' +
-        '<span><span class="up-file-size">' + sizeStr + '</span>' +
-        '<span class="up-file-status pending" id="up-status-' + idx + '"></span>' +
-        ' <a href="#" onclick="removeUploadFile(' + idx + ');return false;" style="color:var(--red);text-decoration:none;margin-left:0.5rem;" title="Remove">x</a></span>';
-      $upFileList.appendChild(li);
+// Global Ctrl+S handler
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's' && currentEditPath) {
+    e.preventDefault();
+    saveEditor(currentEditPath);
+  }
+});
+
+// ============================================================
+// TAB 4: NAVIGATION & FOOTER
+// ============================================================
+function renderNav() {
+  fetchFile(COMPONENTS_PATH, function(data) {
+    $actions.innerHTML = '<button class="btn btn-gold" id="save-nav-btn">Save Navigation</button>';
+
+    $content.innerHTML =
+      '<div class="card"><h2>Navigation & Footer</h2>' +
+      '<p style="color:var(--mid);font-size:0.85rem;margin-bottom:1rem">Edit the shared components.js file that contains NAV_HTML and FOOTER_HTML. Changes apply site-wide.</p>' +
+      '<div class="editor-bar"><span class="editor-path">' + esc(COMPONENTS_PATH) + '</span><span class="editor-hint">Ctrl+S to save</span></div>' +
+      '<textarea id="editor-textarea" spellcheck="false"></textarea></div>';
+
+    var $ta = document.getElementById('editor-textarea');
+    $ta.value = data.content;
+    currentEditPath = COMPONENTS_PATH;
+
+    document.getElementById('save-nav-btn').addEventListener('click', function() {
+      saveEditor(COMPONENTS_PATH);
     });
+  });
+}
+
+// ============================================================
+// TAB 5: FILES & UPLOAD
+// ============================================================
+function renderFiles() {
+  uploadQueue = [];
+
+  var html = '<div class="card"><h2>Upload Files</h2>' +
+    '<div class="form-row"><label>Destination Folder</label><input id="up-dest" placeholder="e.g. products/my-product/ or blog/" value=""></div>' +
+    '<div class="drop-zone" id="drop-zone"><span style="font-size:2rem">&#x1F4E4;</span><br>Drop files here or click to browse' +
+    '<input type="file" id="up-file-input" multiple></div>' +
+    '<ul class="up-file-list" id="up-file-list"></ul>' +
+    '<div class="up-progress" id="up-progress"><div class="up-bar" id="up-bar"></div></div>' +
+    '<div class="up-status" id="up-status"></div>' +
+    '<div style="margin-top:0.75rem;display:flex;gap:0.5rem">' +
+    '<button class="btn btn-gold" id="up-btn" disabled>Upload</button>' +
+    '<button class="btn btn-ghost" id="up-clear">Clear</button></div></div>';
+
+  html += '<div class="card"><h2>All Site Files (' + allFiles.length + ')</h2>';
+  html += '<div class="folder-nav" id="file-folder-nav"></div>';
+  html += '<ul class="flist" id="all-file-list"></ul></div>';
+
+  $actions.innerHTML = '';
+  $content.innerHTML = html;
+
+  // Upload handlers
+  var $drop = document.getElementById('drop-zone');
+  var $fileInput = document.getElementById('up-file-input');
+  $drop.addEventListener('dragover', function(e) { e.preventDefault(); $drop.classList.add('dragover'); });
+  $drop.addEventListener('dragleave', function() { $drop.classList.remove('dragover'); });
+  $drop.addEventListener('drop', function(e) { e.preventDefault(); $drop.classList.remove('dragover'); addFiles(e.dataTransfer.files); });
+  $fileInput.addEventListener('change', function() { addFiles($fileInput.files); $fileInput.value = ''; });
+  document.getElementById('up-btn').addEventListener('click', doUpload);
+  document.getElementById('up-clear').addEventListener('click', function() {
+    uploadQueue = []; renderUploadList();
+    document.getElementById('up-status').textContent = '';
+    document.getElementById('up-progress').style.display = 'none';
+    document.getElementById('up-btn').disabled = true;
+  });
+
+  // File browser
+  renderFileBrowser('All');
+}
+
+function addFiles(fileList) {
+  for (var i = 0; i < fileList.length; i++) {
+    var f = fileList[i];
+    var dupe = uploadQueue.some(function(q) { return q.name === f.name && q.size === f.size; });
+    if (!dupe) uploadQueue.push(f);
   }
+  renderUploadList();
+  document.getElementById('up-btn').disabled = uploadQueue.length === 0;
+}
 
-  function escHtml(s) {
-    var d = document.createElement('div');
-    d.textContent = s;
-    return d.innerHTML;
-  }
-
-  window.removeUploadFile = function(idx) {
-    uploadQueue.splice(idx, 1);
-    renderUploadList();
-    $upBtn.disabled = uploadQueue.length === 0;
-  };
-
-  window.clearUpload = function() {
-    uploadQueue = [];
-    $upFileList.innerHTML = '';
-    $upBtn.disabled = true;
-    $upStatus.style.display = 'none';
-    $upProgress.style.display = 'none';
-    $upProgressBar.style.width = '0%';
-    $upDest.value = '';
-  };
-
-  function setUpStatus(msg, cls) {
-    $upStatus.style.display = msg ? 'block' : 'none';
-    $upStatus.textContent = msg;
-    $upStatus.className = 'up-status' + (cls ? ' ' + cls : '');
-  }
-
-  function readFileAsBase64(file) {
-    return new Promise(function(resolve, reject) {
-      var reader = new FileReader();
-      reader.onload = function() {
-        // result is "data:mime;base64,XXXXX" -- extract just the base64
-        var b64 = reader.result.split(',')[1];
-        resolve(b64);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+function renderUploadList() {
+  var $list = document.getElementById('up-file-list');
+  $list.innerHTML = '';
+  uploadQueue.forEach(function(f, idx) {
+    var size = f.size > 1048576 ? (f.size / 1048576).toFixed(1) + ' MB' : (f.size / 1024).toFixed(1) + ' KB';
+    var li = document.createElement('li');
+    li.innerHTML = '<span>' + esc(f.name) + '</span><span style="display:flex;gap:0.5rem;align-items:center">' +
+      '<span style="color:var(--mid)">' + size + '</span>' +
+      '<span class="up-item-status" id="up-st-' + idx + '"></span>' +
+      '<a href="#" style="color:var(--red);text-decoration:none" data-idx="' + idx + '">x</a></span>';
+    li.querySelector('a').addEventListener('click', function(e) {
+      e.preventDefault();
+      uploadQueue.splice(idx, 1);
+      renderUploadList();
+      document.getElementById('up-btn').disabled = uploadQueue.length === 0;
     });
+    $list.appendChild(li);
+  });
+}
+
+function doUpload() {
+  if (uploadQueue.length === 0) return;
+  var dest = document.getElementById('up-dest').value.trim();
+  if (dest && !dest.endsWith('/')) dest += '/';
+  if (dest.indexOf('..') !== -1 || dest.startsWith('/')) {
+    toast('Invalid destination path', 'err'); return;
   }
 
-  window.doUpload = function() {
-    if (uploadQueue.length === 0) return;
-    var dest = $upDest.value.trim();
-    // Normalize: ensure trailing slash if non-empty
-    if (dest && !dest.endsWith('/')) dest += '/';
-    // Validate dest doesn't have path traversal
-    if (dest.includes('..') || dest.startsWith('/')) {
-      setUpStatus('Invalid destination folder. No ".." or leading "/" allowed.', 'error');
+  var $btn = document.getElementById('up-btn');
+  var $progress = document.getElementById('up-progress');
+  var $bar = document.getElementById('up-bar');
+  var $status = document.getElementById('up-status');
+  $btn.disabled = true;
+  $progress.style.display = 'block';
+  $bar.style.width = '0%';
+  $status.textContent = 'Uploading...';
+  $status.className = 'up-status work';
+
+  var total = uploadQueue.length;
+  var done = 0; var ok = 0; var fails = [];
+
+  function next(idx) {
+    if (idx >= total) {
+      $bar.style.width = '100%';
+      if (fails.length === 0) {
+        $status.textContent = 'All ' + ok + ' file(s) uploaded!';
+        $status.className = 'up-status ok';
+      } else {
+        $status.textContent = ok + ' uploaded, ' + fails.length + ' failed';
+        $status.className = 'up-status err';
+      }
+      $btn.disabled = false;
+      // Refresh file list
+      api('admin-list').then(function(data) { allFiles = data.files || []; });
       return;
     }
 
-    $upBtn.disabled = true;
-    $upProgress.style.display = 'block';
-    $upProgressBar.style.width = '0%';
-    setUpStatus('Uploading ' + uploadQueue.length + ' file(s)...', 'working');
+    var file = uploadQueue[idx];
+    var stEl = document.getElementById('up-st-' + idx);
+    if (stEl) stEl.textContent = 'uploading...';
 
-    var total = uploadQueue.length;
-    var done = 0;
-    var ok = 0;
-    var fails = [];
-
-    function uploadNext(idx) {
-      if (idx >= total) {
-        // All done
-        $upProgressBar.style.width = '100%';
-        if (fails.length === 0) {
-          setUpStatus('All ' + ok + ' file(s) uploaded successfully.', 'success');
-        } else {
-          setUpStatus(ok + ' uploaded, ' + fails.length + ' failed: ' + fails.join(', '), 'error');
-        }
-        $upBtn.disabled = false;
-        // Refresh file list
-        loadFileList();
-        return;
-      }
-
-      var file = uploadQueue[idx];
-      var statusEl = document.getElementById('up-status-' + idx);
-      if (statusEl) { statusEl.textContent = ' uploading...'; statusEl.className = 'up-file-status pending'; }
-
-      readFileAsBase64(file).then(function(b64) {
-        var fullPath = dest + file.name;
-        return fetch('/.netlify/functions/admin-upload', {
-          method: 'POST',
-          headers: apiHeaders(),
-          body: JSON.stringify({ path: dest || '', content: b64, filename: file.name })
-        });
-      }).then(function(r) { return r.json(); })
-      .then(function(data) {
-        done++;
-        $upProgressBar.style.width = Math.round((done / total) * 100) + '%';
-        if (data.ok) {
-          ok++;
-          if (statusEl) { statusEl.textContent = ' done'; statusEl.className = 'up-file-status ok'; }
-        } else {
-          fails.push(file.name);
-          if (statusEl) { statusEl.textContent = ' ' + (data.error || 'failed'); statusEl.className = 'up-file-status fail'; }
-        }
-        uploadNext(idx + 1);
-      }).catch(function(err) {
-        done++;
-        fails.push(file.name);
-        $upProgressBar.style.width = Math.round((done / total) * 100) + '%';
-        if (statusEl) { statusEl.textContent = ' network error'; statusEl.className = 'up-file-status fail'; }
-        uploadNext(idx + 1);
+    readFileBase64(file).then(function(b64) {
+      return api('admin-upload', {
+        method: 'POST',
+        body: JSON.stringify({ path: dest, content: b64, filename: file.name })
       });
+    }).then(function(data) {
+      done++;
+      $bar.style.width = Math.round((done / total) * 100) + '%';
+      if (data.ok) {
+        ok++;
+        if (stEl) { stEl.textContent = 'done'; stEl.style.color = 'var(--green)'; }
+      } else {
+        fails.push(file.name);
+        if (stEl) { stEl.textContent = data.error || 'failed'; stEl.style.color = 'var(--red)'; }
+      }
+      next(idx + 1);
+    }).catch(function() {
+      done++; fails.push(file.name);
+      $bar.style.width = Math.round((done / total) * 100) + '%';
+      if (stEl) { stEl.textContent = 'error'; stEl.style.color = 'var(--red)'; }
+      next(idx + 1);
+    });
+  }
+  next(0);
+}
+
+function readFileBase64(file) {
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload = function() { resolve(reader.result.split(',')[1]); };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderFileBrowser(folder) {
+  var $nav = document.getElementById('file-folder-nav');
+  var $list = document.getElementById('all-file-list');
+  if (!$nav || !$list) return;
+
+  $nav.innerHTML = '';
+  FOLDERS.forEach(function(f) {
+    var btn = document.createElement('button');
+    btn.className = 'folder-btn' + (f === folder ? ' active' : '');
+    btn.textContent = f;
+    btn.addEventListener('click', function() { renderFileBrowser(f); });
+    $nav.appendChild(btn);
+  });
+
+  var filtered = folder === 'All' ? allFiles : allFiles.filter(function(f) { return f.startsWith(folder + '/'); });
+  $list.innerHTML = '';
+  filtered.forEach(function(path) {
+    var li = document.createElement('li');
+    li.textContent = path;
+    li.addEventListener('click', function() {
+      switchTab('pages');
+      setTimeout(function() { openEditor(path); }, 100);
+    });
+    $list.appendChild(li);
+  });
+  if (filtered.length === 0) $list.innerHTML = '<li style="color:var(--mid)">No files</li>';
+}
+
+// ============================================================
+// TAB 6: FIND & REPLACE
+// ============================================================
+function renderSearch() {
+  $content.innerHTML = '<div class="card"><h2>Find & Replace</h2>' +
+    '<p style="color:var(--mid);font-size:0.85rem;margin-bottom:1rem">Search and replace text across all editable files in the repository.</p>' +
+    '<div class="form-row"><label>Find</label><input id="fr-search" placeholder="Text to find across all pages..."></div>' +
+    '<div class="form-row"><label>Replace with</label><input id="fr-replace" placeholder="Replacement text..."></div>' +
+    '<div style="display:flex;gap:0.75rem;margin-top:0.5rem">' +
+    '<button class="btn btn-dark" id="fr-find-btn">Preview Matches</button>' +
+    '<button class="btn btn-gold" id="fr-replace-btn" disabled>Replace All</button></div></div>' +
+    '<div id="fr-results"></div>';
+
+  var lastMatches = null;
+  var $search = document.getElementById('fr-search');
+  var $replace = document.getElementById('fr-replace');
+  var $results = document.getElementById('fr-results');
+  var $findBtn = document.getElementById('fr-find-btn');
+  var $replBtn = document.getElementById('fr-replace-btn');
+
+  $search.addEventListener('keydown', function(e) { if (e.key === 'Enter') doFR('search'); });
+  $replace.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !$replBtn.disabled) doFR('replace'); });
+  $findBtn.addEventListener('click', function() { doFR('search'); });
+  $replBtn.addEventListener('click', function() { doFR('replace'); });
+
+  function doFR(action) {
+    var search = $search.value;
+    if (!search || search.length < 2) { toast('Enter at least 2 characters', 'err'); return; }
+
+    if (action === 'replace') {
+      var replace = $replace.value;
+      if (search === replace) { toast('Search and replace are identical', 'err'); return; }
+      var count = lastMatches ? lastMatches.length : '?';
+      if (!confirm('Replace "' + search + '" with "' + replace + '" across ' + count + ' file(s)?')) return;
     }
 
-    uploadNext(0);
-  };
+    $findBtn.disabled = true;
+    $replBtn.disabled = true;
+    $results.innerHTML = '<div class="loading-msg"><span class="spin"></span> ' + (action === 'search' ? 'Searching' : 'Replacing') + '...</div>';
+
+    var body = action === 'search'
+      ? { action: 'search', search: search }
+      : { action: 'replace', search: search, replace: $replace.value };
+
+    api('admin-replace', { method: 'POST', body: JSON.stringify(body) })
+    .then(function(data) {
+      $findBtn.disabled = false;
+      if (data.error) { toast('Error: ' + data.error, 'err'); $results.innerHTML = ''; return; }
+
+      if (action === 'search') {
+        lastMatches = data.matches;
+        if (data.matches.length === 0) {
+          $results.innerHTML = '<div class="card"><p style="color:var(--mid)">No matches found.</p></div>';
+          $replBtn.disabled = true;
+          return;
+        }
+        var html = '<div class="card"><p style="margin-bottom:0.75rem"><strong>' + data.total + '</strong> occurrence(s) in <strong>' + data.matches.length + '</strong> file(s)</p>';
+        data.matches.forEach(function(m) {
+          html += '<div class="sr-item"><div class="sr-path">' + esc(m.path) + '</div><div class="sr-count">' + m.count + ' match(es)</div></div>';
+        });
+        html += '</div>';
+        $results.innerHTML = html;
+        $replBtn.disabled = false;
+      } else {
+        lastMatches = null;
+        $replBtn.disabled = true;
+        fileCache = {}; // clear cache
+        linkScanCache = null;
+        if (data.changed.length === 0) {
+          $results.innerHTML = '<div class="card"><p style="color:var(--mid)">No matches found to replace.</p></div>';
+        } else {
+          var html = '<div class="card"><p style="margin-bottom:0.75rem">Replaced in <strong>' + data.changed.length + '</strong> file(s). Commit: <code>' + (data.commitSha || '').substring(0, 7) + '</code></p>';
+          data.changed.forEach(function(p) {
+            html += '<div class="sr-item"><div class="sr-path">' + esc(p) + '</div><div class="sr-count">updated</div></div>';
+          });
+          html += '</div>';
+          $results.innerHTML = html;
+          toast('Replaced in ' + data.changed.length + ' file(s)', 'ok');
+        }
+      }
+    }).catch(function(e) {
+      $findBtn.disabled = false;
+      toast('Error: ' + e.message, 'err');
+      $results.innerHTML = '';
+    });
+  }
+}
+
+// ============================================================
+// TAB 7: SEO & META
+// ============================================================
+function renderSeo() {
+  var pages = [
+    { path: 'index.html', name: 'Home' },
+    { path: 'book/index.html', name: 'Books & Extras' },
+    { path: 'services/index.html', name: 'Services' },
+    { path: 'templates/index.html', name: 'Templates' },
+    { path: 'tools/index.html', name: 'Tools' },
+    { path: 'about/index.html', name: 'About' },
+    { path: 'contact/index.html', name: 'Contact' },
+    { path: 'blog/index.html', name: 'Blog' },
+    { path: 'careers/index.html', name: 'Careers' },
+    { path: 'search/index.html', name: 'Search' }
+  ];
+
+  var html = '<div class="seo-grid">';
+  pages.forEach(function(p) {
+    html += '<div class="seo-card" data-path="' + p.path + '">' +
+      '<div class="seo-name">' + esc(p.name) + '</div>' +
+      '<div class="seo-path">' + esc(p.path) + '</div></div>';
+  });
+  html += '</div>';
+  $actions.innerHTML = '';
+  $content.innerHTML = html;
+
+  $content.querySelectorAll('.seo-card').forEach(function(card) {
+    card.addEventListener('click', function() { openSeoEditor(card.dataset.path); });
+  });
+}
+
+function openSeoEditor(path) {
+  $content.innerHTML = '<div class="loading-msg"><span class="spin"></span> Loading ' + esc(path) + '...</div>';
+
+  fetchFile(path, function(data) {
+    var c = data.content;
+    var title = (c.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+    var desc = (c.match(/<meta\s+name="description"\s+content="([^"]*)"/) || [])[1] || '';
+    var ogTitle = (c.match(/<meta\s+property="og:title"\s+content="([^"]*)"/) || [])[1] || '';
+    var ogDesc = (c.match(/<meta\s+property="og:description"\s+content="([^"]*)"/) || [])[1] || '';
+    var ogImage = (c.match(/<meta\s+property="og:image"\s+content="([^"]*)"/) || [])[1] || '';
+    var canonical = (c.match(/<link\s+rel="canonical"\s+href="([^"]*)"/) || [])[1] || '';
+
+    $actions.innerHTML =
+      '<button class="btn btn-ghost" id="seo-back">Back</button>' +
+      '<button class="btn btn-gold" id="seo-save">Save SEO</button>';
+
+    $content.innerHTML = '<div class="card"><h2>SEO for ' + esc(path) + '</h2>' +
+      '<div class="form-row"><label>Page Title</label><input id="seo-title" value="' + esc(title) + '"></div>' +
+      '<div class="form-row"><label>Meta Description</label><textarea id="seo-desc" style="min-height:60px;font-family:var(--sans)">' + esc(desc) + '</textarea></div>' +
+      '<div class="form-row"><label>Canonical URL</label><input id="seo-canonical" value="' + esc(canonical) + '"></div>' +
+      '<div class="grid-2">' +
+        '<div class="form-row"><label>OG Title</label><input id="seo-og-title" value="' + esc(ogTitle) + '"></div>' +
+        '<div class="form-row"><label>OG Image URL</label><input id="seo-og-image" value="' + esc(ogImage) + '"></div>' +
+      '</div>' +
+      '<div class="form-row"><label>OG Description</label><textarea id="seo-og-desc" style="min-height:60px;font-family:var(--sans)">' + esc(ogDesc) + '</textarea></div>' +
+      '</div>';
+
+    document.getElementById('seo-back').addEventListener('click', function() { renderSeo(); });
+    document.getElementById('seo-save').addEventListener('click', function() {
+      var newContent = data.content;
+      var newTitle = document.getElementById('seo-title').value;
+      var newDesc = document.getElementById('seo-desc').value;
+      var newOgTitle = document.getElementById('seo-og-title').value;
+      var newOgDesc = document.getElementById('seo-og-desc').value;
+      var newOgImage = document.getElementById('seo-og-image').value;
+      var newCanonical = document.getElementById('seo-canonical').value;
+
+      newContent = newContent.replace(/<title>[^<]*<\/title>/, '<title>' + newTitle + '</title>');
+      newContent = newContent.replace(/<meta\s+name="description"\s+content="[^"]*"/, '<meta name="description" content="' + newDesc + '"');
+      if (newOgTitle) newContent = newContent.replace(/<meta\s+property="og:title"\s+content="[^"]*"/, '<meta property="og:title" content="' + newOgTitle + '"');
+      if (newOgDesc) newContent = newContent.replace(/<meta\s+property="og:description"\s+content="[^"]*"/, '<meta property="og:description" content="' + newOgDesc + '"');
+      if (newOgImage) newContent = newContent.replace(/<meta\s+property="og:image"\s+content="[^"]*"/, '<meta property="og:image" content="' + newOgImage + '"');
+      if (newCanonical) newContent = newContent.replace(/<link\s+rel="canonical"\s+href="[^"]*"/, '<link rel="canonical" href="' + newCanonical + '"');
+
+      api('admin-api', {
+        method: 'POST',
+        body: JSON.stringify({ path: path, content: newContent, sha: data.sha, message: 'Admin SEO update: ' + path })
+      }).then(function(resp) {
+        if (resp.ok) {
+          data.sha = resp.sha;
+          data.content = newContent;
+          toast('SEO saved for ' + path, 'ok');
+        } else {
+          toast('Error: ' + (resp.error || 'Unknown'), 'err');
+        }
+      }).catch(function(e) { toast('Save failed: ' + e.message, 'err'); });
+    });
+  });
+}
+
+// ============================================================
+// TAB 8: SETTINGS
+// ============================================================
+function renderSettings() {
+  fetchFile(PRODUCTS_PATH, function(data) {
+    var config = parseSiteConfig(data.content);
+
+    $actions.innerHTML = '<button class="btn btn-gold" id="indexnow-btn">Ping IndexNow</button>';
+
+    $content.innerHTML = '<div class="card"><h2>Site Configuration</h2>' +
+      '<p style="color:var(--mid);font-size:0.85rem;margin-bottom:1rem">These values come from products.js. Edit them in the Products & Pricing tab.</p>' +
+      '<div class="grid-3">' +
+        '<div class="form-row"><label>Site URL</label><input readonly value="' + esc(config.SITE_URL) + '"></div>' +
+        '<div class="form-row"><label>Admin Email</label><input readonly value="' + esc(config.ADMIN_EMAIL) + '"></div>' +
+        '<div class="form-row"><label>Calendly URL</label><input readonly value="' + esc(config.CALENDLY_URL) + '"></div>' +
+      '</div></div>' +
+
+      '<div class="card"><h2>Quick Links</h2>' +
+      '<div class="grid-3">' +
+        '<a href="https://github.com/JeanBap/Augmented" target="_blank" class="btn btn-dark" style="text-decoration:none;justify-content:center;padding:1rem">GitHub Repo</a>' +
+        '<a href="https://app.netlify.com/" target="_blank" class="btn btn-dark" style="text-decoration:none;justify-content:center;padding:1rem">Netlify Dashboard</a>' +
+        '<a href="https://dashboard.stripe.com/" target="_blank" class="btn btn-dark" style="text-decoration:none;justify-content:center;padding:1rem">Stripe Dashboard</a>' +
+      '</div></div>' +
+
+      '<div class="card"><h2>IndexNow</h2>' +
+      '<p style="color:var(--mid);font-size:0.85rem;margin-bottom:1rem">Ping search engines to re-crawl your pages. Covers all main pages and blog articles.</p>' +
+      '<div id="indexnow-status"></div></div>';
+
+    document.getElementById('indexnow-btn').addEventListener('click', function() {
+      var btn = document.getElementById('indexnow-btn');
+      btn.disabled = true; btn.textContent = 'Submitting...';
+
+      var urls = ['/', '/book/', '/services/', '/templates/', '/about/', '/contact/', '/blog/', '/careers/', '/search/'];
+      allFiles.forEach(function(f) {
+        if (f.startsWith('blog/') && f.endsWith('.html') && f !== 'blog/index.html') urls.push('/' + f);
+      });
+
+      api('indexnow', { method: 'POST', body: JSON.stringify({ urls: urls }) })
+      .then(function(data) {
+        var ok = (data.results || []).filter(function(r) { return r.ok; }).length;
+        document.getElementById('indexnow-status').innerHTML =
+          '<p style="color:var(--green)">Submitted ' + data.submitted + ' URLs to ' + ok + '/' + (data.results || []).length + ' search engines.</p>';
+        btn.textContent = 'Ping IndexNow'; btn.disabled = false;
+        toast('IndexNow: ' + data.submitted + ' URLs submitted', 'ok');
+      }).catch(function() {
+        btn.textContent = 'Ping IndexNow'; btn.disabled = false;
+        toast('IndexNow failed', 'err');
+      });
+    });
+  });
+}
+
+// ============================================================
+// SHARED: Fetch file with caching
+// ============================================================
+function fetchFile(path, onSuccess, onError) {
+  if (fileCache[path]) {
+    onSuccess(fileCache[path]);
+    return;
+  }
+  api('admin-api?path=' + encodeURIComponent(path))
+    .then(function(data) {
+      if (data.error) { toast('Error loading ' + path + ': ' + data.error, 'err'); if (onError) onError(); return; }
+      fileCache[path] = { content: data.content, sha: data.sha, path: data.path };
+      onSuccess(fileCache[path]);
+    })
+    .catch(function(e) {
+      toast('Failed to load ' + path, 'err');
+      if (onError) onError();
+    });
+}
 
 })();
 </script>
