@@ -602,6 +602,7 @@
         <h2 class="svc-modal-title" id="svc-modal-title">Get Started</h2>
       <form id="svc-form" onsubmit="submitServiceModal(event)">
         <div class="svc-error" id="svc-error"></div>
+        <p id="svc-call-note" style="display:none;font-family:var(--mono);font-size:0.75rem;color:var(--gold);margin-bottom:1rem;line-height:1.5;">30-minute strategy call. The $50 fee is fully deducted from any service you purchase.</p>
 
         <div class="svc-form-group">
           <label for="svc-name">Your Name</label>
@@ -662,8 +663,10 @@
 
       if (action === 'pay') {
         title.textContent = 'Purchase ' + serviceName;
+        document.getElementById('svc-call-note').style.display = 'none';
       } else {
-        title.textContent = 'Book a Call for ' + serviceName;
+        title.textContent = 'Book a Call: $50';
+        document.getElementById('svc-call-note').style.display = 'block';
       }
 
       // Reset form
@@ -712,13 +715,16 @@
       // Handle action
       if (currentAction === 'pay') {
         // Create Stripe checkout
+        var submitBtn = document.getElementById('svc-submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
         fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            serviceId: currentService,
+            items: [{ id: currentService }],
             email: email,
-            name: name
+            cancel_url: 'https://www.raisereadybook.com/services/'
           })
         })
         .then(function(res) { return res.json(); })
@@ -728,18 +734,50 @@
           } else {
             errorDiv.textContent = 'Error creating checkout. Please try again.';
             errorDiv.classList.add('show');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Continue';
           }
         })
         .catch(function(err) {
           console.error('Checkout error:', err);
           errorDiv.textContent = 'Error creating checkout. Please try again.';
           errorDiv.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Continue';
         });
       } else {
-        // Open Calendly with pre-filled info
-        const calendlyUrl = 'https://calendly.com/yannipapoutsi?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
-        window.open(calendlyUrl, '_blank');
-        closeServiceModal();
+        // Book a Call: $50 consultation fee via Stripe, then redirect to Calendly
+        var submitBtn = document.getElementById('svc-submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+        fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [{ id: 'consultation-50' }],
+            email: email,
+            success_url: 'https://calendly.com/yannipapoutsi?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email),
+            cancel_url: 'https://www.raisereadybook.com/services/'
+          })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            errorDiv.textContent = 'Error creating checkout. Please try again.';
+            errorDiv.classList.add('show');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Continue';
+          }
+        })
+        .catch(function(err) {
+          console.error('Checkout error:', err);
+          errorDiv.textContent = 'Error creating checkout. Please try again.';
+          errorDiv.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Continue';
+        });
       }
     }
 

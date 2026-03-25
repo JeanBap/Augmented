@@ -69,6 +69,48 @@ var PRODUCTS = {
     price: 800000,
     service: true
   },
+  'model-session-299': {
+    name: 'Complete Model + 1hr Video Session',
+    description: 'Complete financial model template plus a 1-hour video walkthrough.',
+    price: 29900,
+    service: true
+  },
+  'preseed-modeling-1000': {
+    name: 'Pre-Seed Modeling',
+    description: 'Foundation model built with your assumptions.',
+    price: 100000,
+    service: true
+  },
+  'seed-modeling-2000': {
+    name: 'Seed Modeling',
+    description: 'Full cohort-based model with channel economics and scenarios.',
+    price: 200000,
+    service: true
+  },
+  'seriesa-modeling-4000': {
+    name: 'Series A Modeling',
+    description: 'Multi-product model with departmental headcount planning.',
+    price: 400000,
+    service: true
+  },
+  'seriesb-modeling-8000': {
+    name: 'Series B Modeling',
+    description: 'Enterprise-grade model with multi-geography and balance sheet.',
+    price: 800000,
+    service: true
+  },
+  'consultation-50': {
+    name: '30-Minute Strategy Call',
+    description: '30-minute call to discuss your needs. Fee is deducted from any service you purchase.',
+    price: 5000,
+    service: true
+  },
+  'job-posting-99': {
+    name: 'Job Board Listing (3 months)',
+    description: 'Featured job listing on the Raise Ready finance job board for 3 months.',
+    price: 9900,
+    service: true
+  },
   'fm-pro-export': {
     name: 'Financial Model Builder Export',
     description: 'Excel with live formulas and PDF with charts.',
@@ -100,11 +142,12 @@ function isValidEmail(email) {
     && email.length <= 254;
 }
 
-// Validate URL is on our domain (safe against substring attacks)
+// Validate URL is on our domain or an allowed external domain (safe against substring attacks)
+var ALLOWED_REDIRECT_HOSTS = ['www.raisereadybook.com', 'raisereadybook.com', 'calendly.com'];
 function isOurUrl(url) {
   try {
     var parsed = new URL(url);
-    return parsed.hostname === 'www.raisereadybook.com' || parsed.hostname === 'raisereadybook.com';
+    return ALLOWED_REDIRECT_HOSTS.indexOf(parsed.hostname) !== -1;
   } catch (e) {
     return false;
   }

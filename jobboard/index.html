@@ -930,7 +930,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="modal-title">Post a Job</div>
       <button class="modal-close" id="close-post-modal">✕</button>
     </div>
-    <p style="font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-bottom:1.5rem;line-height:1.5;">Reach qualified finance professionals. Listings go live within 24 hours.</p>
+    <p style="font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-bottom:1rem;line-height:1.5;">Reach qualified finance professionals. Listings go live within 24 hours.</p>
+    <p style="font-family:var(--mono);font-size:.75rem;color:var(--gold);margin-bottom:1.5rem;line-height:1.5;">$99 for a 3-month featured listing. You'll be taken to payment after submitting.</p>
 
     <div class="form-group">
       <label class="form-label" for="pj-title">Job Title *</label>
@@ -1503,21 +1504,80 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   $('submit-job-btn').addEventListener('click', async () => {
     const title   = $('pj-title').value.trim();
     const company = $('pj-company').value.trim();
+    const location = $('pj-location').value.trim();
+    const type    = $('pj-type').value;
+    const salary  = $('pj-salary').value.trim();
     const url     = $('pj-url').value.trim();
     const email   = $('pj-email').value.trim();
     const desc    = $('pj-description').value.trim();
     if (!title || !company || !url || !email || !desc) {
       showToast('Please fill in all required fields.', 'error'); return;
     }
-    $('submit-job-btn').textContent = 'Submitting…';
+    $('submit-job-btn').textContent = 'Processing…';
     $('submit-job-btn').disabled = true;
-    await new Promise(r => setTimeout(r, 600));
-    showToast('Listing submitted! We\'ll review and publish within 24 h.');
-    closePostModal();
-    ['pj-title','pj-company','pj-location','pj-salary','pj-url','pj-email','pj-description'].forEach(id => $(id).value = '');
-    $('submit-job-btn').textContent = 'Submit Listing';
-    $('submit-job-btn').disabled = false;
+
+    // Store form data in sessionStorage so we can submit after payment
+    const jobData = { title, company, location, type, salary, url, email, description: desc };
+    try { sessionStorage.setItem('pending_job_posting', JSON.stringify(jobData)); } catch(e) {}
+
+    // Create $99 Stripe checkout
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: [{ id: 'job-posting-99' }],
+          email: email,
+          success_url: 'https://www.raisereadybook.com/jobboard/?post_success=1',
+          cancel_url: 'https://www.raisereadybook.com/jobboard/?post_cancelled=1'
+        })
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        showToast('Error creating payment. Please try again.', 'error');
+        $('submit-job-btn').textContent = 'Submit Listing';
+        $('submit-job-btn').disabled = false;
+      }
+    } catch (err) {
+      console.error('Checkout error:', err);
+      showToast('Error creating payment. Please try again.', 'error');
+      $('submit-job-btn').textContent = 'Submit Listing';
+      $('submit-job-btn').disabled = false;
+    }
   });
+
+  // Handle return from Stripe payment success
+  if (new URLSearchParams(window.location.search).get('post_success') === '1') {
+    (async () => {
+      try {
+        const raw = sessionStorage.getItem('pending_job_posting');
+        if (!raw) { showToast('Payment received! Listing will be published within 24h.'); return; }
+        const jobData = JSON.parse(raw);
+        sessionStorage.removeItem('pending_job_posting');
+        const res = await fetch('/.netlify/functions/post-job', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jobData)
+        });
+        const result = await res.json();
+        if (result.ok) {
+          showToast('Payment received and listing submitted! We\'ll review and publish within 24h.');
+        } else {
+          showToast('Payment received! Listing will be published within 24h.');
+        }
+      } catch (e) {
+        showToast('Payment received! Listing will be published within 24h.');
+      }
+      // Clean up URL
+      window.history.replaceState({}, '', '/jobboard/');
+    })();
+  }
+  if (new URLSearchParams(window.location.search).get('post_cancelled') === '1') {
+    showToast('Payment cancelled. Your listing was not submitted.', 'error');
+    window.history.replaceState({}, '', '/jobboard/');
+  }
 
   /* ─── Search & filters ─── */
   let searchTimer;
