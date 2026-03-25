@@ -82,6 +82,8 @@
     <button class="blog-filter" data-cat="Exit Planning">Exit Planning</button>
     <button class="blog-filter" data-cat="Founder Stories">Founder Stories</button>
     <button class="blog-filter" data-cat="Tool Guides">Tool Guides</button>
+    <button class="blog-filter" data-cat="Deep Dives">Deep Dives</button>
+    <button class="blog-filter" data-cat="long-reads" style="border-color:var(--gold);color:var(--gold);">Long Reads</button>
   </div>
 
 
@@ -126,7 +128,7 @@ const blogList = document.getElementById('blog-list');
 const filters = document.querySelectorAll('.blog-filter');
 
 function renderBlogCards(category) {
-  const articles = category === 'all' ? BLOG_ARTICLES : BLOG_ARTICLES.filter(a => a.category === category);
+  const articles = category === 'all' ? BLOG_ARTICLES : category === 'long-reads' ? BLOG_ARTICLES.filter(a => a.readTime >= 45) : BLOG_ARTICLES.filter(a => a.category === category);
   blogList.innerHTML = articles.map(a => `
     <a href="/blog/${a.slug}.html" class="blog-card" data-cat="${a.category}" style="text-decoration:none">
       <span class="blog-num">${a.num}</span>

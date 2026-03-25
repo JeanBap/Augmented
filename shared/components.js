@@ -75,7 +75,7 @@
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
         <a href="/jobboard/" class="nav-tab" data-page="jobboard">Jobs</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
-        <a href="https://finance.raisereadybook.com" target="_blank" class="nav-tab nav-tab-cta" data-page="fm-pro" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Financial Model Builder</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
         <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
