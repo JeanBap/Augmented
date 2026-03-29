@@ -281,32 +281,105 @@ function calculateProceeds() {
   // Render exit proceeds waterfall chart
   if(window._proceedsChart) window._proceedsChart.destroy();
   const ctx = document.getElementById('proceedsChart').getContext('2d');
+
+  // Waterfall data structure: build cumulative positions for each bar
+  // Format: [starting value, change, cumulative total]
+  const steps = [
+    { label: 'Headline\nPrice', value: headline, change: 0, color: '#c8a45a', isStart: true },
+    { label: 'Less:\nLiquidation', value: liquidation, change: -liquidation, color: '#c0392b', isSubtotal: false },
+    { label: 'Less:\nEscrow', value: escrowAmount, change: -escrowAmount, color: '#c0392b', isSubtotal: false },
+    { label: 'Gross to\nFounder', value: grossProceeds, change: 0, color: '#1B2A4A', isSubtotal: true },
+    { label: 'Less:\nTx Fees', value: grossProceeds * txFees, change: -(grossProceeds * txFees), color: '#c0392b', isSubtotal: false },
+    { label: 'Less:\nAdvisor', value: advisorFees, change: -advisorFees, color: '#c0392b', isSubtotal: false },
+    { label: 'After\nFees', value: afterFees, change: 0, color: '#1B2A4A', isSubtotal: true },
+    { label: 'Less:\nFed Tax', value: taxes * fedCapGains / (fedCapGains + stateTax), change: -(taxes * fedCapGains / (fedCapGains + stateTax)), color: '#c0392b', isSubtotal: false },
+    { label: 'Less:\nState Tax', value: taxes * stateTax / (fedCapGains + stateTax), change: -(taxes * stateTax / (fedCapGains + stateTax)), color: '#c0392b', isSubtotal: false },
+    { label: 'Take-Home\nProceeds', value: Math.max(takeHome, 0), change: 0, color: '#27ae60', isFinal: true }
+  ];
+
+  // Build cumulative array for stacked bar effect
+  let cumulative = 0;
+  const baseData = [];
+  const barData = [];
+  const colors = [];
+  const labels = [];
+
+  for (let i = 0; i < steps.length; i++) {
+    const step = steps[i];
+    labels.push(step.label);
+
+    if (step.isStart || step.isSubtotal || step.isFinal) {
+      // Full bar from 0
+      baseData.push(0);
+      barData.push(step.value);
+      cumulative = step.value;
+    } else {
+      // Floating bar: position at cumulative height, draw the change
+      baseData.push(cumulative + step.change);
+      barData.push(step.change);
+      cumulative += step.change;
+    }
+    colors.push(step.color);
+  }
+
   window._proceedsChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Headline', 'Gross\nProceeds', 'Less\nEscrow', 'Less\nFees', 'Less\nTaxes', 'Take-Home'],
+      labels: labels,
       datasets: [{
-        label: 'Proceeds ($)',
-        data: [headline, grossProceeds, -escrowAmount, -(grossProceeds * txFees + advisorFees), -taxes, takeHome],
-        backgroundColor: ['#c8a45a', '#10b981', '#ef4444', '#ef4444', '#ef4444', '#7c5cfc'],
-        borderRadius: 4,
-        borderSkipped: false
+        label: 'Proceeds Walk ($)',
+        data: barData,
+        backgroundColor: colors,
+        borderRadius: [6, 6, 6, 6],
+        borderSkipped: false,
+        borderWidth: 0
       }]
     },
     options: {
+      indexAxis: undefined,
       responsive: true,
       maintainAspectRatio: true,
+      animation: { duration: 800 },
       plugins: {
-        legend: { display: false }
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(8,8,13,0.95)',
+          titleFont: { family: "'DM Mono', monospace", size: 12 },
+          bodyFont: { family: "'DM Mono', monospace", size: 11 },
+          padding: 10,
+          cornerRadius: 6,
+          titleColor: '#c8a45a',
+          bodyColor: '#ffffff',
+          borderColor: '#c8a45a',
+          borderWidth: 1,
+          callbacks: {
+            label: function(context) {
+              const value = context.raw;
+              const sign = value >= 0 ? '+' : '';
+              return sign + '$' + Math.round(value).toLocaleString('en-US');
+            }
+          }
+        }
       },
       scales: {
         y: {
-          grid: { color: 'rgba(255,255,255,0.08)' },
-          ticks: { color: '#94a3b8', callback: v => '$' + (v/1000000).toFixed(0) + 'M' }
+          stacked: false,
+          grid: { color: 'rgba(200,164,90,0.08)', drawBorder: false },
+          ticks: {
+            color: '#6e6a61',
+            font: { family: "'DM Mono', monospace", size: 11 },
+            callback: function(v) {
+              if (v === 0) return '$0';
+              return '$' + (v / 1000000).toFixed(1) + 'M';
+            }
+          }
         },
         x: {
-          grid: { color: 'rgba(255,255,255,0.08)' },
-          ticks: { color: '#94a3b8', font: { family: "'DM Mono', monospace" } }
+          grid: { color: 'rgba(200,164,90,0.08)', drawBorder: false },
+          ticks: {
+            color: '#6e6a61',
+            font: { family: "'DM Mono', monospace", size: 10 }
+          }
         }
       }
     }

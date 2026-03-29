@@ -321,38 +321,143 @@ function calculateBridge() {
   // Render EBITDA bridge waterfall chart
   if(window._bridgeChart) window._bridgeChart.destroy();
   const ctx = document.getElementById('bridgeChart').getContext('2d');
+
+  // Build waterfall data structure
+  // Each bar shows: [value, stack position]
+  // For waterfall: each segment floats on top of the cumulative previous value
+  let runningTotal = 0;
+  const waterfallData = [];
+  const baselineData = [];
+  const barLabels = ['Reported EBITDA'];
+
+  // Starting bar (Reported EBITDA)
+  waterfallData.push(reported);
+  baselineData.push(0);
+  runningTotal = reported;
+
+  // Collect adjustments in order
+  const adjustmentsList = [];
+  document.querySelectorAll('.adjustment-row').forEach(row => {
+    const amount = parseFloat(row.querySelector('.adj-amount').value) || 0;
+    const type = row.querySelector('.adj-type').value;
+    if (amount > 0) {
+      adjustmentsList.push({ amount, type });
+    }
+  });
+
+  // Add each adjustment as a floating bar
+  adjustmentsList.forEach((adj, idx) => {
+    barLabels.push(adj.type === 'add-back' ? `+${fmt(adj.amount)}` : `-${fmt(adj.amount)}`);
+    if (adj.type === 'add-back') {
+      waterfallData.push(adj.amount);
+      baselineData.push(runningTotal);
+      runningTotal += adj.amount;
+    } else {
+      waterfallData.push(adj.amount);
+      baselineData.push(runningTotal - adj.amount);
+      runningTotal -= adj.amount;
+    }
+  });
+
+  // Final bar (Adjusted EBITDA)
+  barLabels.push('Adjusted EBITDA');
+  waterfallData.push(adjustedEbitda);
+  baselineData.push(0);
+
+  // Create color array: first bar navy, add-backs green, subtractions red, last bar gold
+  const colors = [];
+  colors.push('url(#gradientNavy)'); // Reported EBITDA
+  adjustmentsList.forEach(adj => {
+    colors.push(adj.type === 'add-back' ? 'url(#gradientGreen)' : 'url(#gradientRed)');
+  });
+  colors.push('url(#gradientGold)'); // Adjusted EBITDA
+
+  // Create SVG with gradient defs (Chart.js will render this)
+  const svgNS = 'http://www.w3.org/2000/svg';
+
   window._bridgeChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Reported', 'Add-backs', 'Subtractions', 'Adjusted'],
-      datasets: [{
-        label: 'EBITDA ($)',
-        data: [reported, addbacks, -subtractions, adjustedEbitda],
-        backgroundColor: ['#c8a45a', '#10b981', '#ef4444', '#7c5cfc'],
-        borderRadius: 4,
-        borderSkipped: false
-      }]
+      labels: barLabels,
+      datasets: [
+        {
+          // Invisible baseline dataset to position bars
+          label: 'Base',
+          data: baselineData,
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          borderWidth: 0,
+          barThickness: 40
+        },
+        {
+          // Visible waterfall segments
+          label: 'Bridge',
+          data: waterfallData,
+          backgroundColor: [
+            '#1B2A4A',  // Reported EBITDA - dark navy
+            ...adjustmentsList.map(adj => adj.type === 'add-back' ? '#27ae60' : '#c0392b'),
+            '#c8a45a'   // Adjusted EBITDA - gold
+          ],
+          borderRadius: 6,
+          borderSkipped: false,
+          borderWidth: 0,
+          barThickness: 40
+        }
+      ]
     },
     options: {
+      indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: true,
-      indexAxis: 'y',
+      animation: {
+        duration: 800
+      },
       plugins: {
         legend: { display: false },
-        filler: { propagate: true }
+        tooltip: {
+          backgroundColor: 'rgba(8,8,13,0.95)',
+          borderColor: 'rgba(200,164,90,0.15)',
+          borderWidth: 1,
+          padding: 10,
+          titleFont: { family: "'DM Mono', monospace", size: 12 },
+          bodyFont: { family: "'DM Mono', monospace", size: 11 },
+          displayColors: false,
+          callbacks: {
+            title: (context) => context[0].label || '',
+            label: (context) => {
+              if (context.datasetIndex === 1) {
+                return fmt(context.parsed.x);
+              }
+              return '';
+            }
+          }
+        }
       },
       scales: {
         x: {
-          stacked: false,
-          grid: { color: 'rgba(255,255,255,0.08)' },
-          ticks: { color: '#94a3b8', callback: v => '$' + (v/1000000).toFixed(0) + 'M' }
+          stacked: true,
+          grid: {
+            color: 'rgba(200,164,90,0.08)',
+            drawBorder: false
+          },
+          ticks: {
+            color: 'rgba(200,164,90,0.6)',
+            font: { family: "'DM Mono', monospace", size: 10 },
+            callback: v => '$' + (v/1000000).toFixed(1) + 'M'
+          }
         },
         y: {
-          grid: { color: 'rgba(255,255,255,0.08)' },
-          ticks: { color: '#94a3b8', font: { family: "'DM Mono', monospace" } }
+          stacked: true,
+          grid: {
+            color: 'rgba(200,164,90,0.08)',
+            drawBorder: false
+          },
+          ticks: {
+            color: 'rgba(200,164,90,0.7)',
+            font: { family: "'DM Mono', monospace", size: 10 }
+          }
         }
-      },
-      backgroundColor: '#1B2A4A'
+      }
     }
   });
 }

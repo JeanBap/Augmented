@@ -153,6 +153,32 @@
 }
 .cta-button:hover { background: var(--gold2); }
 
+/* Search Input */
+.search-container {
+  max-width: 960px; margin: 0 auto 1.2rem; padding: 0 2rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  background: transparent; border: 1px solid var(--rule);
+  border-radius: 6px; padding: 0.6rem 1rem;
+  transition: border-color 0.2s;
+}
+.search-container:focus-within { border-color: var(--gold); }
+.search-container svg {
+  width: 16px; height: 16px; color: var(--mid); flex-shrink: 0;
+}
+.search-container input {
+  flex: 1; border: none; background: transparent; font-family: var(--mono);
+  font-size: 0.9rem; color: var(--ink); outline: none;
+}
+.search-container input::placeholder { color: var(--mid); }
+.search-container .search-clear {
+  width: 20px; height: 20px; display: flex; align-items: center;
+  justify-content: center; cursor: pointer; color: var(--mid);
+  font-size: 0.9rem; border: none; background: none; padding: 0;
+  transition: color 0.2s; visibility: hidden;
+}
+.search-container.has-text .search-clear { visibility: visible; }
+.search-container .search-clear:hover { color: var(--ink); }
+
 @media (max-width: 600px) {
   .tools-grid { grid-template-columns: 1fr; }
   .filter-btn { font-size: 0.72rem; padding: 0.35rem 0.7rem; }
@@ -172,6 +198,15 @@
 
   <!-- Filters -->
   <section class="filter-section">
+    <!-- Search Input -->
+    <div class="search-container" id="search-container">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search tools...">
+      <button class="search-clear" id="search-clear" type="button">×</button>
+    </div>
     <div class="filter-label">Book</div>
     <div class="filter-row" id="book-filters">
       <button class="filter-btn active" data-book="all">All</button>
@@ -206,6 +241,7 @@
     <!-- ═══════════════════════════════════════════ -->
 
     <a class="tool-card" href="/tools/start-ready/01-net-worth-calculator.html" data-book="start-ready" data-topic="personal-finance" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Net Worth Calculator</h3>
       <p class="desc">Assets minus liabilities. Your financial starting position in one number.</p>
     </a>
@@ -256,6 +292,7 @@
     </a>
 
     <a class="tool-card" href="/tools/start-ready/05-compound-growth-visualiser.html" data-book="start-ready" data-topic="investing" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Compound Growth Visualiser</h3>
       <p class="desc">Watch contributions turn into wealth over time with interactive charts.</p>
     </a>
@@ -300,6 +337,7 @@
     <!-- ═══════════════════════════════════════════ -->
 
     <a class="tool-card" href="/tools/raise-ready.html#readiness" data-book="raise-ready" data-topic="readiness" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Funding Readiness Score</h3>
       <p class="desc">10-factor assessment of whether you're ready to raise. Scored and graded with gap analysis.</p>
     </a>
@@ -310,6 +348,7 @@
     </a>
 
     <a class="tool-card" href="/tools/raise-ready.html#unit-econ" data-book="raise-ready" data-topic="metrics" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Unit Economics Calculator</h3>
       <p class="desc">CAC, LTV, LTV:CAC ratio, and payback period from your real numbers.</p>
     </a>
@@ -365,6 +404,7 @@
     </a>
 
     <a class="tool-card" href="/tools/raise-ready.html#exit-calc" data-book="raise-ready" data-topic="valuation" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Exit Proceeds Estimator</h3>
       <p class="desc">Exit valuation, ownership, and taxes to calculate your net take-home.</p>
     </a>
@@ -374,11 +414,13 @@
     <!-- ═══════════════════════════════════════════ -->
 
     <a class="tool-card" href="/tools/exit-ready/01-exit-proceeds-calculator.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <span class="fm-badge featured">Most Popular</span>
       <h3>Exit Proceeds Calculator</h3>
       <p class="desc">Model net proceeds accounting for ownership %, preferences, and taxes.</p>
     </a>
 
     <a class="tool-card" href="/tools/exit-ready/02-ebitda-bridge-builder.html" data-book="exit-ready" data-topic="valuation" data-interactive>
+      <span class="fm-badge interactive">New</span>
       <h3>EBITDA Bridge Builder</h3>
       <p class="desc">Add-backs and adjustments to calculate normalised earnings.</p>
     </a>
@@ -525,7 +567,14 @@
 
   </div>
 
-  <div class="no-results" id="no-results">No tools match your filters. Try a different combination.</div>
+  <div class="no-results" id="no-results">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.3;margin-bottom:1rem;">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <div style="font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:0.5rem;">No tools match your filters</div>
+    <p style="color:var(--mid);font-size:0.85rem;margin-bottom:1rem;">Try a different combination or clear your search.</p>
+    <button onclick="clearAllFilters()" style="font-family:var(--mono);font-size:0.8rem;padding:0.5rem 1.2rem;border:1px solid var(--rule);border-radius:6px;background:transparent;color:var(--gold);cursor:pointer;">Clear filters</button>
+  </div>
 
   
 
@@ -547,16 +596,26 @@
   var countEl = document.getElementById('result-count');
   var noResults = document.getElementById('no-results');
   var grid = document.getElementById('tools-grid');
+  var searchInput = document.getElementById('search-input');
+  var searchContainer = document.getElementById('search-container');
+  var searchClear = document.getElementById('search-clear');
 
   var activeBook = 'all';
   var activeTopic = 'all';
+  var searchText = '';
 
   function applyFilters() {
     var visible = 0;
     cards.forEach(function(card) {
       var bookMatch = activeBook === 'all' || card.dataset.book === activeBook;
       var topicMatch = activeTopic === 'all' || card.dataset.topic === activeTopic;
-      if (bookMatch && topicMatch) {
+      var h3 = card.querySelector('h3');
+      var desc = card.querySelector('.desc');
+      var title = h3 ? h3.textContent.toLowerCase() : '';
+      var description = desc ? desc.textContent.toLowerCase() : '';
+      var searchLower = searchText.toLowerCase();
+      var searchMatch = !searchText || title.includes(searchLower) || description.includes(searchLower);
+      if (bookMatch && topicMatch && searchMatch) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -573,6 +632,7 @@
     var parts = [];
     if (activeBook !== 'all') parts.push('book=' + activeBook);
     if (activeTopic !== 'all') parts.push('topic=' + activeTopic);
+    if (searchText) parts.push('search=' + encodeURIComponent(searchText));
     history.replaceState(null, '', parts.length ? '#' + parts.join('&') : window.location.pathname);
   }
 
@@ -583,9 +643,12 @@
       var kv = pair.split('=');
       if (kv[0] === 'book') activeBook = kv[1];
       if (kv[0] === 'topic') activeTopic = kv[1];
+      if (kv[0] === 'search') searchText = decodeURIComponent(kv[1]);
     });
     bookBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.book === activeBook); });
     topicBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.topic === activeTopic); });
+    searchInput.value = searchText;
+    if (searchText) searchContainer.classList.add('has-text');
   }
 
   bookBtns.forEach(function(btn) {
@@ -606,11 +669,41 @@
     });
   });
 
+  searchInput.addEventListener('keyup', function(e) {
+    searchText = e.target.value;
+    if (searchText) {
+      searchContainer.classList.add('has-text');
+    } else {
+      searchContainer.classList.remove('has-text');
+    }
+    applyFilters();
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchText = '';
+    searchInput.value = '';
+    searchContainer.classList.remove('has-text');
+    applyFilters();
+  });
+
   window.addEventListener('hashchange', function() { readHash(); applyFilters(); });
 
   readHash();
   applyFilters();
 })();
+
+function clearAllFilters() {
+  var searchInput = document.getElementById('search-input');
+  var searchContainer = document.getElementById('search-container');
+  var bookBtns = document.querySelectorAll('#book-filters .filter-btn');
+  var topicBtns = document.querySelectorAll('#topic-filters .filter-btn');
+  searchInput.value = '';
+  searchContainer.classList.remove('has-text');
+  bookBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.book === 'all'); });
+  topicBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.topic === 'all'); });
+  window.location.hash = '';
+  window.dispatchEvent(new Event('hashchange'));
+}
 </script>
 </body>
 </html>
