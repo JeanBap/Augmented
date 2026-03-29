@@ -615,6 +615,148 @@
             </div>
           </div>
           <div class="result-note" id="ue-note"></div>
+
+          <!-- LTV vs CAC Visualisation -->
+          <div id="ue-viz" style="margin-top:1.5rem;">
+
+            <!-- Stats Row -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border-radius:10px;overflow:hidden;border:1px solid var(--rule);margin-bottom:1rem;">
+              <div id="ue-viz-stat-ratio" style="padding:0.85rem 1rem;background:rgba(200,164,90,0.04);">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">LTV:CAC Ratio</div>
+                <div id="ue-viz-ratio" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);">--</div>
+                <div id="ue-viz-ratio-sub" style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">--</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Break-even</div>
+                <div id="ue-viz-breakeven" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--gold);">--</div>
+                <div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">Payback period</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Net Customer Value</div>
+                <div id="ue-viz-net" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:#27ae60;">--</div>
+                <div id="ue-viz-net-sub" style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">At month 36</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Reactivation Cost</div>
+                <div id="ue-viz-react" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--red);">--</div>
+                <div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">Cumulative</div>
+              </div>
+            </div>
+
+            <!-- Contract Recovery Banner -->
+            <div id="ue-viz-banner" style="display:flex;align-items:center;gap:8px;padding:0.6rem 1rem;border-radius:8px;margin-bottom:1rem;font-family:var(--mono);font-size:0.78rem;background:rgba(39,174,96,0.06);border:1px solid rgba(39,174,96,0.18);color:#27ae60;">
+              <span id="ue-viz-banner-icon">&#10003;</span>
+              <span id="ue-viz-banner-text">--</span>
+            </div>
+
+            <!-- Chart -->
+            <div style="background:rgba(200,164,90,0.02);border-radius:12px;border:1px solid var(--rule);padding:1.25rem 1rem 0.75rem;">
+              <canvas id="ue-ltv-cac-chart" style="max-height:380px;"></canvas>
+              <div style="display:flex;gap:16px;justify-content:center;margin-top:10px;flex-wrap:wrap;font-family:var(--mono);font-size:0.65rem;color:var(--mid);">
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#27ae60;margin-right:4px;"></span>LTV</span>
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c0392b;margin-right:4px;"></span>CAC (incl. reactivation)</span>
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:4px;"></span>Break-even</span>
+                <span><span style="display:inline-block;width:10px;height:8px;border-radius:2px;background:rgba(39,174,96,0.18);margin-right:4px;"></span>Profit zone</span>
+                <span><span style="display:inline-block;width:10px;height:8px;border-radius:2px;background:rgba(192,57,43,0.12);margin-right:4px;"></span>Loss zone</span>
+              </div>
+            </div>
+
+            <!-- Sliders -->
+            <div style="border:1px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;margin-top:1rem;">
+              <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;">Model Parameters</div>
+              <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">LTV Ceiling</span>
+                    <span id="ue-sl-ltv-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$480</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Max revenue per customer</div>
+                  <input type="range" id="ue-sl-ltv" min="200" max="1000" step="20" value="480" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Initial CAC</span>
+                    <span id="ue-sl-cac-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$120</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Day-zero acquisition cost</div>
+                  <input type="range" id="ue-sl-cac" min="40" max="300" step="10" value="120" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Monthly CAC Growth</span>
+                    <span id="ue-sl-cacgr-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$2.8</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Reactivation spend per month</div>
+                  <input type="range" id="ue-sl-cacgr" min="0" max="8" step="0.2" value="2.8" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+              </div>
+              <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">LTV Growth Rate</span>
+                    <span id="ue-sl-rate-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">0.12</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Speed of revenue accumulation</div>
+                  <input type="range" id="ue-sl-rate" min="0.03" max="0.3" step="0.01" value="0.12" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Contract Length</span>
+                    <span id="ue-sl-contract-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">12</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Typical contract cycle (months)</div>
+                  <input type="range" id="ue-sl-contract" min="3" max="36" step="1" value="12" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+              </div>
+            </div>
+
+            <!-- Insight Cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1rem;">
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;">&#9678;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">LTV:CAC Ratio</span>
+                </div>
+                <p id="ue-viz-insight-ratio" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;">&#9639;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">Payback Period</span>
+                </div>
+                <p id="ue-viz-insight-payback" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:#27ae60;font-family:var(--mono);font-size:0.85rem;">&#8599;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">LTV Plateau &amp; Churn</span>
+                </div>
+                <p id="ue-viz-insight-churn" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--red);font-family:var(--mono);font-size:0.85rem;">&#8635;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">Reactivation Investment</span>
+                </div>
+                <p id="ue-viz-insight-reactivation" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+            </div>
+
+            <!-- Contribution Margin Summary -->
+            <div style="background:rgba(39,174,96,0.04);border-radius:10px;border:1px solid rgba(39,174,96,0.12);padding:0.9rem 1.25rem;display:flex;justify-content:space-between;align-items:center;margin-top:1rem;">
+              <div>
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--mid);margin-bottom:3px;">Contribution Margin at Month 36</div>
+                <div style="font-size:0.72rem;color:var(--mid);line-height:1.5;">The green zone between LTV and CAC represents cumulative profit per customer. The red zone before break-even shows the investment recovery period.</div>
+              </div>
+              <div style="text-align:right;min-width:100px;">
+                <div id="ue-viz-margin-val" style="font-family:var(--serif);font-size:1.6rem;font-weight:700;color:#27ae60;">--</div>
+                <div style="font-family:var(--mono);font-size:0.6rem;color:var(--mid);">net per customer</div>
+              </div>
+            </div>
+
+          </div>
+          <!-- End LTV vs CAC Visualisation -->
+
         </div>
       </div>
     </div>
@@ -1573,7 +1715,251 @@ function calcUnitEcon() {
 
   document.getElementById('ue-note').innerHTML = notes.join('<br>');
   document.getElementById('ue-results').classList.add('visible');
+  updateLtvCacViz();
 }
+
+// LTV vs CAC Visualisation (Chart.js)
+var _ltvCacChart = null;
+
+function generateLtvCacData(ltvMax, cacStart, cacGrowth, growthRate) {
+  var MONTHS = 36;
+  var data = { months: [], ltv: [], cac: [], netValue: [] };
+  var breakEvenMonth = null;
+  for (var m = 0; m <= MONTHS; m++) {
+    var ltv = ltvMax * (1 - Math.exp(-growthRate * m));
+    var cac = cacStart + cacGrowth * m;
+    data.months.push(m);
+    data.ltv.push(Math.round(ltv));
+    data.cac.push(Math.round(cac));
+    data.netValue.push(Math.round(ltv - cac));
+    if (!breakEvenMonth && ltv >= cac && m > 0) breakEvenMonth = m;
+  }
+  var plateauMonth = MONTHS;
+  for (var i = 1; i < data.ltv.length; i++) {
+    if (data.ltv[i] - data.ltv[i - 1] < 2) { plateauMonth = i; break; }
+  }
+  return { data: data, breakEvenMonth: breakEvenMonth, plateauMonth: plateauMonth };
+}
+
+function updateLtvCacViz() {
+  var MONTHS = 36;
+  var ltvMax = parseFloat(document.getElementById('ue-sl-ltv').value) || 480;
+  var cacStart = parseFloat(document.getElementById('ue-sl-cac').value) || 120;
+  var cacGrowth = parseFloat(document.getElementById('ue-sl-cacgr').value) || 2.8;
+  var growthRate = parseFloat(document.getElementById('ue-sl-rate').value) || 0.12;
+  var contractLength = parseInt(document.getElementById('ue-sl-contract').value) || 12;
+
+  // Update slider value labels
+  document.getElementById('ue-sl-ltv-val').textContent = '$' + ltvMax;
+  document.getElementById('ue-sl-cac-val').textContent = '$' + cacStart;
+  document.getElementById('ue-sl-cacgr-val').textContent = '$' + cacGrowth;
+  document.getElementById('ue-sl-rate-val').textContent = growthRate;
+  document.getElementById('ue-sl-contract-val').textContent = contractLength;
+
+  var result = generateLtvCacData(ltvMax, cacStart, cacGrowth, growthRate);
+  var d = result.data;
+  var breakEvenMonth = result.breakEvenMonth;
+  var plateauMonth = result.plateauMonth;
+
+  var finalLTV = d.ltv[MONTHS];
+  var finalCAC = d.cac[MONTHS];
+  var netValue = finalLTV - finalCAC;
+  var reactivationCost = Math.round(cacGrowth * MONTHS);
+  var ltvCacRatio = finalCAC > 0 ? (finalLTV / finalCAC).toFixed(1) : '--';
+  var ratioNum = parseFloat(ltvCacRatio);
+
+  var ltvAtContract = d.ltv[Math.min(contractLength, MONTHS)] || 0;
+  var cacAtContract = d.cac[Math.min(contractLength, MONTHS)] || 0;
+  var recoveredInContract = ltvAtContract >= cacAtContract;
+
+  // Update stats
+  var ratioColor = ratioNum >= 3 ? '#27ae60' : ratioNum >= 1 ? '#c8a45a' : '#c0392b';
+  var ratioSub = ratioNum >= 3 ? 'Healthy (>3x)' : ratioNum >= 1 ? 'Marginal' : 'Unprofitable';
+  document.getElementById('ue-viz-ratio').textContent = ltvCacRatio + 'x';
+  document.getElementById('ue-viz-ratio').style.color = ratioColor;
+  document.getElementById('ue-viz-ratio-sub').textContent = ratioSub;
+  document.getElementById('ue-viz-breakeven').textContent = breakEvenMonth ? 'Month ' + breakEvenMonth : 'N/A';
+  document.getElementById('ue-viz-net').textContent = '$' + netValue;
+  document.getElementById('ue-viz-net').style.color = netValue >= 0 ? '#27ae60' : '#c0392b';
+  document.getElementById('ue-viz-react').textContent = '$' + reactivationCost;
+
+  // Banner
+  var banner = document.getElementById('ue-viz-banner');
+  var bannerIcon = document.getElementById('ue-viz-banner-icon');
+  var bannerText = document.getElementById('ue-viz-banner-text');
+  if (recoveredInContract) {
+    banner.style.background = 'rgba(39,174,96,0.06)';
+    banner.style.borderColor = 'rgba(39,174,96,0.18)';
+    banner.style.color = '#27ae60';
+    bannerIcon.innerHTML = '&#10003;';
+    bannerText.textContent = 'CAC is recovered within the ' + contractLength + '-month contract cycle (LTV $' + ltvAtContract + ' vs CAC $' + cacAtContract + ' at month ' + contractLength + ')';
+  } else {
+    banner.style.background = 'rgba(192,57,43,0.06)';
+    banner.style.borderColor = 'rgba(192,57,43,0.18)';
+    banner.style.color = '#c0392b';
+    bannerIcon.innerHTML = '&#9888;';
+    bannerText.textContent = 'CAC is NOT recovered within the ' + contractLength + '-month contract cycle (LTV $' + ltvAtContract + ' vs CAC $' + cacAtContract + ' at month ' + contractLength + ')';
+  }
+
+  // Insight cards
+  var insightRatio = document.getElementById('ue-viz-insight-ratio');
+  if (ratioNum >= 3) insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio exceeds the 3x benchmark \u2014 strong unit economics indicating sustainable growth.';
+  else if (ratioNum >= 1) insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio is above 1x but below the 3x benchmark \u2014 customers are profitable but margins are thin.';
+  else insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio is below 1x \u2014 each customer costs more to acquire than they generate. Unsustainable.';
+
+  var insightPayback = document.getElementById('ue-viz-insight-payback');
+  if (breakEvenMonth) {
+    insightPayback.textContent = 'CAC is recovered by month ' + breakEvenMonth + '. ' + (breakEvenMonth <= contractLength ? 'This falls within the ' + contractLength + '-month contract cycle, meaning you recover costs inside one contract.' : 'This exceeds the ' + contractLength + '-month contract, meaning you need retention beyond one cycle to break even.');
+  } else {
+    insightPayback.textContent = 'LTV never overtakes CAC in this scenario \u2014 the business model does not recover acquisition costs.';
+  }
+
+  document.getElementById('ue-viz-insight-churn').textContent = 'Revenue per customer flattens around month ' + plateauMonth + ', signalling full cohort churn. Total lifetime value reaches $' + finalLTV + '. After this point, no incremental revenue is generated from the cohort.';
+  document.getElementById('ue-viz-insight-reactivation').textContent = 'CAC grows from $' + cacStart + ' to $' + finalCAC + ' over ' + MONTHS + ' months. The $' + reactivationCost + ' cumulative difference reflects ongoing reactivation spend \u2014 you don\'t just acquire once, you invest to re-engage churned users.';
+
+  // Contribution margin
+  document.getElementById('ue-viz-margin-val').textContent = '$' + netValue;
+  document.getElementById('ue-viz-margin-val').style.color = netValue >= 0 ? '#27ae60' : '#c0392b';
+
+  // Chart
+  var canvasEl = document.getElementById('ue-ltv-cac-chart');
+  if (!canvasEl) return;
+  if (_ltvCacChart) _ltvCacChart.destroy();
+
+  // Build profit/loss fill arrays
+  var profitFill = [], lossFill = [];
+  for (var i = 0; i <= MONTHS; i++) {
+    profitFill.push(d.ltv[i] > d.cac[i] ? d.ltv[i] : d.cac[i]);
+    lossFill.push(d.cac[i] > d.ltv[i] ? d.cac[i] : d.ltv[i]);
+  }
+
+  // Break-even annotation
+  var annotations = {};
+  if (breakEvenMonth) {
+    annotations.breakEven = {
+      type: 'line', xMin: breakEvenMonth, xMax: breakEvenMonth,
+      borderColor: '#c8a45a', borderWidth: 1.5, borderDash: [6, 4],
+      label: { display: true, content: 'PAYBACK: ' + breakEvenMonth + 'mo', position: 'start', backgroundColor: 'transparent', color: '#c8a45a', font: { family: "'DM Mono', monospace", size: 9 } }
+    };
+    annotations.breakEvenDot = {
+      type: 'point', xValue: breakEvenMonth, yValue: d.ltv[breakEvenMonth],
+      radius: 6, backgroundColor: '#c8a45a', borderColor: '#f2ede4', borderWidth: 2
+    };
+  }
+  annotations.contract = {
+    type: 'line', xMin: Math.min(contractLength, MONTHS), xMax: Math.min(contractLength, MONTHS),
+    borderColor: 'rgba(147,130,255,0.6)', borderWidth: 1.5, borderDash: [4, 6],
+    label: { display: true, content: 'CONTRACT: ' + contractLength + 'mo', position: 'start', backgroundColor: 'transparent', color: 'rgba(147,130,255,0.8)', font: { family: "'DM Mono', monospace", size: 9 } }
+  };
+
+  var ctx = canvasEl.getContext('2d');
+  _ltvCacChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: d.months,
+      datasets: [
+        {
+          label: 'Profit Zone',
+          data: profitFill,
+          fill: '+1',
+          backgroundColor: 'rgba(39,174,96,0.1)',
+          borderWidth: 0,
+          pointRadius: 0,
+          order: 4
+        },
+        {
+          label: 'Loss Zone',
+          data: d.cac.map(function(c, i) { return d.cac[i] > d.ltv[i] ? d.cac[i] : d.ltv[i]; }),
+          fill: false,
+          borderWidth: 0,
+          pointRadius: 0,
+          order: 5
+        },
+        {
+          label: 'LTV',
+          data: d.ltv,
+          borderColor: '#27ae60',
+          backgroundColor: 'rgba(39,174,96,0.08)',
+          fill: 'origin',
+          borderWidth: 2.5,
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: '#27ae60',
+          tension: 0.3,
+          order: 1
+        },
+        {
+          label: 'CAC',
+          data: d.cac,
+          borderColor: '#c0392b',
+          backgroundColor: 'rgba(192,57,43,0.06)',
+          fill: 'origin',
+          borderWidth: 2.5,
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: '#c0392b',
+          tension: 0,
+          order: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      interaction: { intersect: false, mode: 'index' },
+      scales: {
+        x: {
+          title: { display: true, text: 'Months', color: 'var(--mid)', font: { family: "'DM Mono', monospace", size: 10 } },
+          ticks: { color: '#6e6a61', font: { family: "'DM Mono', monospace", size: 10 } },
+          grid: { color: 'rgba(200,164,90,0.08)' }
+        },
+        y: {
+          ticks: {
+            color: '#6e6a61',
+            font: { family: "'DM Mono', monospace", size: 10 },
+            callback: function(v) { return '$' + v; }
+          },
+          grid: { color: 'rgba(200,164,90,0.08)' }
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(8,8,13,0.95)',
+          titleFont: { family: "'DM Mono', monospace", size: 10 },
+          bodyFont: { family: "'DM Mono', monospace", size: 12 },
+          borderColor: 'rgba(200,164,90,0.15)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            title: function(items) { return 'Month ' + items[0].label; },
+            label: function(ctx) {
+              if (ctx.datasetIndex === 0 || ctx.datasetIndex === 1) return null;
+              return ctx.dataset.label + ': $' + ctx.parsed.y;
+            },
+            afterBody: function(items) {
+              var ltvVal = 0, cacVal = 0;
+              items.forEach(function(item) {
+                if (item.datasetIndex === 2) ltvVal = item.parsed.y;
+                if (item.datasetIndex === 3) cacVal = item.parsed.y;
+              });
+              var net = ltvVal - cacVal;
+              var ratio = cacVal > 0 ? (ltvVal / cacVal).toFixed(1) : '--';
+              return ['Net: $' + net, 'LTV:CAC: ' + ratio + 'x'];
+            }
+          }
+        },
+        annotation: { annotations: annotations }
+      }
+    }
+  });
+}
+
+// Wire up sliders
+['ue-sl-ltv','ue-sl-cac','ue-sl-cacgr','ue-sl-rate','ue-sl-contract'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateLtvCacViz);
+});
 
 // Tool 4: Revenue Model Builder
 function calcRevenueModel() {
@@ -2081,6 +2467,7 @@ function submitGate() {
 }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Prefill sample data for all 14 Raise Ready tools and auto-calculate
