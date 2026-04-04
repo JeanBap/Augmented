@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Multi-Round Dilution Tracker - Seed to Series B Founder Ownership | Raise Ready</title>
+  <meta name="description" content="Track cumulative founder dilution across Seed, Series A, and Series B rounds. See how option pools compound ownership erosion. Free dilution tracker.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/12-multi-round-dilution-tracker.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Multi-Round Dilution Tracker | Raise Ready">
+  <meta property="og:description" content="Free tool to track cumulative founder dilution across multiple funding rounds.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/12-multi-round-dilution-tracker.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Multi-Round Dilution Tracker", "item": "https://www.raisereadybook.com/tools/raise-ready/12-multi-round-dilution-tracker.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Multi-Round Dilution Tracker",
+    "description": "Free tool to track cumulative founder dilution across multiple funding rounds",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/12-multi-round-dilution-tracker.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much equity do founders have after Series B?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Typical founder ownership after Series B is 25-40%. This varies by company size, number of SAFEs converted, option pool expansion, and founder selling. Successful founders with 15-30% ownership at Series B often exit profitably as their company scales."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do option pools affect dilution?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Option pools dilute founder ownership because they're typically issued before investors convert, shrinking founder ownership before the dilution from new capital kicks in. A 10% option pool at each round compounds ownership loss."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is 10% option pool standard?",
+        "acceptedAnswer": {"@type": "Answer", "text": "10% option pool at each round is common, but it varies. Early stage startups sometimes allocate 15-20% for Seed. Later stage companies (Series B+) often shrink to 8-10%. Negotiate the pool size aggressively—smaller is better for founders."}
+      },
+      {
+        "@type": "Question",
+        "name": "How can founders minimize cumulative dilution?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Minimize dilution by: (1) raising less capital per round, (2) growing revenue to justify higher valuations, (3) negotiating lower option pools, (4) avoiding excessive SAFEs before priced rounds, (5) securing co-founder who commits for the long term."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is anti-dilution protection?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Anti-dilution protection allows investors to buy more shares at preferential prices if future rounds happen at lower valuations. Broad-based weighted average is the founder-friendly version. Full ratchet is harsh on founders. Negotiate this carefully during Series A."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-row.single {
+      grid-template-columns: 1fr;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+
+    .tool-card-desc {
+      color: var(--mid);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0.75rem 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Multi-Round Dilution Tracker
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Multi-Round Dilution Tracker</h1>
+      <p>Track cumulative founder dilution across Seed, Series A, and Series B. See how option pools compound ownership erosion and what you actually own at exit.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Most founders don't realize how fast their ownership shrinks across multiple funding rounds. You start with 100%, but after Seed, Series A, and Series B, you might own only 20-30%. Option pools add hidden dilution at each round, compounding your ownership loss.</p>
+      <p>This tracker models founder dilution across three critical rounds. Model conservative and aggressive scenarios. See where your ownership stands after each round. Plan ahead to minimize dilution: lower option pools, higher valuations, and strategic SAFE timing all matter. Know your cap table before you walk into a board room.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Track Dilution Across Rounds</h2>
+
+        <p class="tool-card-desc"><strong>Seed Round</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Seed Pre-Money ($)</label>
+            <input type="number" id="md-seed-pre" placeholder="e.g. 5000000" value="5000000">
+          </div>
+          <div class="tool-field">
+            <label>Seed Investment ($)</label>
+            <input type="number" id="md-seed-inv" placeholder="e.g. 1500000" value="1500000">
+          </div>
+        </div>
+
+        <p class="tool-card-desc"><strong>Series A</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Series A Pre-Money ($)</label>
+            <input type="number" id="md-a-pre" placeholder="e.g. 20000000" value="20000000">
+          </div>
+          <div class="tool-field">
+            <label>Series A Investment ($)</label>
+            <input type="number" id="md-a-inv" placeholder="e.g. 5000000" value="5000000">
+          </div>
+        </div>
+
+        <p class="tool-card-desc"><strong>Series B</strong></p>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label>Series B Pre-Money ($)</label>
+            <input type="number" id="md-b-pre" placeholder="e.g. 80000000" value="60000000">
+          </div>
+          <div class="tool-field">
+            <label>Series B Investment ($)</label>
+            <input type="number" id="md-b-inv" placeholder="e.g. 15000000" value="15000000">
+          </div>
+        </div>
+
+        <div class="tool-row single">
+          <div class="tool-field">
+            <label>Option Pool (% at each round)</label>
+            <input type="number" id="md-pool" placeholder="e.g. 10" step="0.1" value="10">
+          </div>
+        </div>
+
+        <button onclick="calcMultiDilution()">Track Dilution</button>
+        <button style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('multi-dilution')">Reset</button>
+
+        <div class="tool-results" id="md-results">
+          <div id="md-table-wrap"></div>
+          <div class="result-note" id="md-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Cumulative Dilution</h2>
+      <p>Dilution isn't linear. Each round dilutes your ownership by the percentage new investors and option pools take. You keep the rest. So 25% dilution in Seed means you retain 75%. Then Series A dilutes your remaining 75%, not the original 100%.</p>
+
+      <h2>How Dilution Compounds Across Rounds</h2>
+      <p>Example: Start at 100%. Seed is $5M pre-money with $1.5M investment (23% dilution). You retain 77%. Series A is $20M pre-money with $5M investment (20% dilution). You retain 80% of your 77%, which is 61.6%. Series B is $60M pre-money with $15M investment (20% dilution). You retain 80% of your 61.6%, which is 49.3%.</p>
+      <p>By Series B you own roughly 49% instead of the 100% you started with. But this doesn't account for option pools, which dilute you further at each round. A 10% option pool at each round stacks, reducing founder ownership to 25-30% by Series B.</p>
+
+      <h2>The Role of Option Pools</h2>
+      <p>An option pool is equity reserved for employee stock options. VCs usually require a pool at each round, typically 10-15% for Seed and 8-10% for Series A/B. The pool is often created before new investors convert, diluting existing shareholders (founders) first.</p>
+
+      <h3>Option Pool Impact</h3>
+      <p>A 10% pool at each round sounds small, but it compounds. After three rounds, a 10% pool at each stage dilutes founders by roughly 27% cumulatively. This is in addition to dilution from new capital. Negotiate aggressively for smaller pools—8% or less if possible.</p>
+
+      <h2>Cumulative Dilution Benchmarks</h2>
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">After Seed</div>
+          <div class="target">70-80%</div>
+          <div class="note">Typical founder ownership</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">After Series A</div>
+          <div class="target">45-60%</div>
+          <div class="note">Typical founder ownership</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">After Series B</div>
+          <div class="target">25-40%</div>
+          <div class="note">Typical founder ownership</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Successful Exits</div>
+          <div class="target">15-30%</div>
+          <div class="note">Founders still exit well</div>
+        </div>
+      </div>
+
+      <h2>Strategies to Minimize Cumulative Dilution</h2>
+
+      <h3>1. Raise Less Capital Per Round</h3>
+      <p>The biggest lever is capital efficiency. If you can grow with less money per round, you need less new investor ownership. This means smaller dilution at each stage and significantly higher founder ownership by Series B.</p>
+
+      <h3>2. Grow Revenue to Justify Higher Valuations</h3>
+      <p>Revenue growth justifies higher valuations. Higher valuations mean lower dilution percentages for the same capital. A company raising at 2x valuation only needs half the ownership stake for the same dollars.</p>
+
+      <h3>3. Negotiate Lower Option Pools</h3>
+      <p>Push back on 10% pools. 8% is reasonable at Seed, 7% at Series A. Many VCs start high knowing founders will negotiate. Every percentage point you reduce saves compound dilution across future rounds.</p>
+
+      <h3>4. Avoid Excessive SAFEs Before Priced Rounds</h3>
+      <p>Multiple SAFEs stack and convert all at once at your next priced round. If you issue four SAFEs before Series A, they all dilute you together at the Series A conversion. Consolidate SAFEs where possible.</p>
+
+      <h3>5. Secure Committed Co-Founders Early</h3>
+      <p>Dilution hits harder when you lose equity to replacements or new hires later. Secure co-founders with strong equity packages early. Replacing someone later costs more ownership than building with them from the start.</p>
+
+      <h2>What Ownership Do Founders Actually Need?</h2>
+      <p>You don't need majority ownership to have a successful exit. Founders with 15-30% ownership at Series B often exit very profitably, especially if the company scales. The key is that the pie grows: even 20% of a $1B company is worth $200M.</p>
+      <p>Focus on building a valuable company, not protecting ownership percentage. Dilution is the cost of growth. But knowing where your ownership stands helps you make smarter capital and hiring decisions.</p>
+
+      <h2>How to Use This Tracker</h2>
+      <h3>Step 1: Enter Your Round Economics</h3>
+      <p>For each round, enter the pre-money valuation and investment amount. These are the headline terms you negotiate with investors.</p>
+
+      <h3>Step 2: Model Your Option Pool</h3>
+      <p>Enter the option pool percentage. This typically stays constant (10%) or shrinks slightly as you grow (10%, 9%, 8% across rounds).</p>
+
+      <h3>Step 3: See Cumulative Dilution</h3>
+      <p>The tracker shows dilution in each round and your remaining founder ownership after each. Compare scenarios: what if you raise less at Seed? What if Series A valuation is higher? What if you negotiate a 8% pool instead of 10%?</p>
+
+      <h3>Step 4: Plan Accordingly</h3>
+      <p>Use the numbers to guide capital strategy. If your projected Series B ownership is below 20%, consider raising less at Seed or improving growth to justify higher valuations at Series A.</p>
+
+      <h2>Example: Typical Seed to Series B Path</h2>
+      <p><strong>Start:</strong> 100% founder ownership</p>
+      <p><strong>Seed Round:</strong> $5M pre-money, $1.5M raised (23% to investors, 10% option pool). Founders drop to 67%.</p>
+      <p><strong>Series A:</strong> $20M pre-money, $5M raised (20% to investors, 10% option pool). Founders drop to ~48%.</p>
+      <p><strong>Series B:</strong> $60M pre-money, $15M raised (20% to investors, 10% option pool). Founders land at ~27%.</p>
+      <p>This is a realistic path: founders own 27% of their Series B company, down from 100% at the start, but the company is worth $75M post-Series B vs $5M at Seed. The pie grew 15x, so even at 27% ownership, founders made a great deal.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How much equity do founders have after Series B?</button>
+        <div class="faq-a">Typical founder ownership after Series B is 25-40%, depending on how many SAFEs converted, option pool size, and founders selling shares to investors along the way. This varies widely by company. Some founders own 50%+ after Series B (usually founders who grew capital-efficiently). Others own 15-20% (usually founders who raised larger rounds or diluted significantly). The important thing: founders with even 15-30% ownership often exit profitably if the company scales.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do option pools affect dilution?</button>
+        <div class="faq-a">Option pools dilute founder ownership because they're typically allocated as new shares (increasing the company's total shares outstanding) before new investors convert. This shrinks founder ownership as a percentage of the whole. A 10% option pool at Seed dilutes founders by 10% right there. Then option pools at Series A and B compound the effect. Total cumulative dilution from three 10% option pools is roughly 27% (not 30%, because each pool is applied to the shrinking founder ownership from the previous round).</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">Is 10% option pool standard?</button>
+        <div class="faq-a">10% is common, especially at Seed and Series A. Some Seed rounds use 12-15% to attract better early employees. Series B rounds sometimes shrink to 8-10%. Negotiate aggressively. VCs often ask for 15% knowing founders will push back to 10% or 8%. Smaller pools are better for founders—every point counts across multiple rounds.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How can founders minimize cumulative dilution?</button>
+        <div class="faq-a">Five strategies: (1) Raise less capital per round—capital efficiency is your biggest lever. (2) Grow revenue aggressively—higher revenue justifies higher valuations and lower dilution percentages. (3) Negotiate lower option pools—push for 8% or less. (4) Consolidate SAFEs before priced rounds—fewer instruments means less dilution stacking. (5) Keep committed co-founders—replacing people later costs more ownership than building together from the start.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is anti-dilution protection?</button>
+        <div class="faq-a">Anti-dilution protection allows investors to buy more shares at preferential prices if a future round happens at a lower valuation. There are two types: broad-based weighted average (founder-friendly—protects investors but not excessively) and full ratchet (harsh on founders—investors get lots of free shares if valuation drops). Most Series A/B rounds include broad-based anti-dilution. Avoid full ratchet at all costs—it can wipe out founder ownership if a down round happens.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/10-dilution-simulator.html" class="related-card">
+          <h3>Dilution Simulator</h3>
+          <p>Model founder dilution across multiple SAFEs and priced rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/11-safe-vs-convertible-note.html" class="related-card">
+          <h3>SAFE vs Convertible Note</h3>
+          <p>Compare dilution between SAFE types and convertible notes.</p>
+        </a>
+        <a href="/tools/raise-ready/14-exit-proceeds-estimator.html" class="related-card">
+          <h3>Exit Proceeds Estimator</h3>
+          <p>Calculate what your equity is worth at different exit values.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    // Tool 12: Multi-Round Dilution
+    function calcMultiDilution() {
+      const rounds = [
+        { name: 'Seed', pre: parseFloat(document.getElementById('md-seed-pre').value) || 0, inv: parseFloat(document.getElementById('md-seed-inv').value) || 0 },
+        { name: 'Series A', pre: parseFloat(document.getElementById('md-a-pre').value) || 0, inv: parseFloat(document.getElementById('md-a-inv').value) || 0 },
+        { name: 'Series B', pre: parseFloat(document.getElementById('md-b-pre').value) || 0, inv: parseFloat(document.getElementById('md-b-inv').value) || 0 }
+      ];
+      const poolPct = (parseFloat(document.getElementById('md-pool').value) || 10) / 100;
+
+      let founderOwnership = 100;
+      let html = '<table class="result-table"><thead><tr><th>Round</th><th class="text-right">Pre-Money</th><th class="text-right">Raised</th><th class="text-right">Dilution</th><th class="text-right">Founder %</th></tr></thead><tbody>';
+      html += '<tr><td>Start</td><td></td><td></td><td></td><td class="text-right" style="font-weight:600">100.0%</td></tr>';
+
+      rounds.forEach(r => {
+        if (r.inv <= 0 || r.pre <= 0) return;
+        const post = r.pre + r.inv;
+        const investorPct = (r.inv / post) * 100;
+        const poolDilution = poolPct * 100;
+        const keepRatio = (100 - investorPct - poolDilution) / 100;
+        founderOwnership = founderOwnership * keepRatio;
+        const dilutionThisRound = 100 - (keepRatio * 100);
+        html += '<tr><td>' + r.name + '</td><td class="text-right">' + fmt(r.pre) + '</td><td class="text-right">' + fmt(r.inv) + '</td><td class="text-right" style="color:#e74c3c">-' + dilutionThisRound.toFixed(1) + '%</td><td class="text-right" style="font-weight:600">' + founderOwnership.toFixed(1) + '%</td></tr>';
+      });
+      html += '</tbody></table>';
+      document.getElementById('md-table-wrap').innerHTML = html;
+
+      document.getElementById('md-note').textContent = 'After all modeled rounds, founder ownership lands at ' + founderOwnership.toFixed(1) + '%. The ' + (poolPct*100).toFixed(0) + '% option pool at each round compounds dilution. Most successful founders retain 15-30% through Series B.';
+      document.getElementById('md-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    function resetTool(toolId) {
+      if (toolId === 'multi-dilution') {
+        document.getElementById('md-seed-pre').value = '5000000';
+        document.getElementById('md-seed-inv').value = '1500000';
+        document.getElementById('md-a-pre').value = '20000000';
+        document.getElementById('md-a-inv').value = '5000000';
+        document.getElementById('md-b-pre').value = '60000000';
+        document.getElementById('md-b-inv').value = '15000000';
+        document.getElementById('md-pool').value = '10';
+        document.getElementById('md-results').classList.remove('visible');
+      }
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcMultiDilution();
+    });
+  </script>
+</body>
+</html>

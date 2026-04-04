@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Unit Economics Calculator - Free LTV, CAC & Payback Tool | Raise Ready</title>
+  <meta name="description" content="Calculate LTV, CAC, LTV:CAC ratio, and payback period for your startup. Free unit economics calculator with benchmarks and investor-grade analysis.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/03-unit-economics-calculator.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Unit Economics Calculator | Raise Ready">
+  <meta property="og:description" content="Free startup unit economics calculator. Calculate LTV, CAC, payback period, and LTV:CAC ratio with industry benchmarks.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/03-unit-economics-calculator.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- Chart.js for LTV vs CAC visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Unit Economics Calculator", "item": "https://www.raisereadybook.com/tools/raise-ready/03-unit-economics-calculator.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Unit Economics Calculator",
+    "description": "Free startup unit economics assessment tool for LTV, CAC, and payback period",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/03-unit-economics-calculator.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a good LTV:CAC ratio?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A healthy LTV:CAC ratio is 3:1 or above. This means for every dollar spent acquiring a customer, they generate three dollars in lifetime value. Ratios between 1-3x are common at early stages but need improvement for Series A. Below 1x indicates unsustainable unit economics."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate customer acquisition cost?",
+        "acceptedAnswer": {"@type": "Answer", "text": "CAC is calculated by dividing total acquisition spend by the number of new customers acquired in a period. For example, if you spend $50,000 on marketing and acquire 25 customers, your CAC is $2,000. Include all sales and marketing costs in the acquisition spend."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is net revenue retention?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Net revenue retention (NRR) measures revenue from existing customers, including churn, expansion, and upsells. An NRR of 110% means you're generating 110% of the prior period's revenue from the same cohort—you're growing even without adding new customers. This is a key signal of healthy unit economics."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors evaluate unit economics?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors focus on LTV:CAC ratio, CAC payback period, and gross margin. A 3x+ LTV:CAC ratio shows sustainable growth. CAC payback under 12 months signals efficient capital deployment. Combined with high gross margins (60%+), these metrics indicate a scalable business model."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good CAC payback period?",
+        "acceptedAnswer": {"@type": "Answer", "text": "CAC payback periods under 12 months are considered excellent. 12-18 months is acceptable for Seed-stage but tight for Series A. Over 18 months is a red flag for investors—it signals you're not efficiently turning customer spend into profit."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+      --red: #c0392b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .tool-btn-reset {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      margin-top: 0.5rem;
+    }
+
+    .tool-btn-reset:hover {
+      background: rgba(200, 164, 90, 0.1);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    table.result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    td.text-right {
+      text-align: right;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Unit Economics Calculator
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Unit Economics Calculator</h1>
+      <p>Calculate CAC, LTV, LTV:CAC ratio, and payback period. The numbers that determine whether your business model works at scale.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Unit economics are the foundation of a scalable SaaS business. Investors don't care about vanity metrics—they care about whether every customer you acquire generates more profit than you spent to get them. This calculation reveals the truth about your business model.</p>
+      <p>The Unit Economics Calculator evaluates your startup's core metrics: customer acquisition cost (CAC), lifetime value (LTV), the LTV:CAC ratio, and payback period. With an interactive LTV vs CAC visualization, you can model how your unit economics evolve and understand exactly when (or if) you break even on customer acquisition.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Calculate Your Unit Economics</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Total Acquisition Spend ($/mo)</label>
+            <input type="number" id="ue-spend" placeholder="e.g. 50000" value="50000">
+          </div>
+          <div class="tool-field">
+            <label>New Customers Acquired (per month)</label>
+            <input type="number" id="ue-customers" placeholder="e.g. 25" value="25">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Avg Revenue Per Customer ($/mo)</label>
+            <input type="number" id="ue-arpc" placeholder="e.g. 500" step="0.01" value="500">
+          </div>
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="ue-margin" placeholder="e.g. 75" step="0.1" value="75">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Monthly Churn Rate (%)</label>
+            <input type="number" id="ue-churn" placeholder="e.g. 3" step="0.1" value="3">
+          </div>
+          <div class="tool-field">
+            <label>Net Revenue Retention (%)</label>
+            <input type="number" id="ue-nrr" placeholder="e.g. 110" step="0.1" value="110">
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
+        <button class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
+
+        <div class="tool-results" id="ue-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="ue-cac">--</div>
+              <div class="result-label">CAC</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-ltv">--</div>
+              <div class="result-label">LTV</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-ratio">--</div>
+              <div class="result-label">LTV:CAC</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="ue-payback">--</div>
+              <div class="result-label">Payback (months)</div>
+            </div>
+          </div>
+          <div class="result-note" id="ue-note"></div>
+
+          <!-- LTV vs CAC Visualisation -->
+          <div id="ue-viz" style="margin-top:1.5rem;">
+
+            <!-- Stats Row -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border-radius:10px;overflow:hidden;border:1px solid var(--rule);margin-bottom:1rem;">
+              <div id="ue-viz-stat-ratio" style="padding:0.85rem 1rem;background:rgba(200,164,90,0.04);">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">LTV:CAC Ratio</div>
+                <div id="ue-viz-ratio" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);">--</div>
+                <div id="ue-viz-ratio-sub" style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">--</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Break-even</div>
+                <div id="ue-viz-breakeven" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--gold);">--</div>
+                <div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">Payback period</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Net Customer Value</div>
+                <div id="ue-viz-net" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:#27ae60;">--</div>
+                <div id="ue-viz-net-sub" style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">At month 36</div>
+              </div>
+              <div style="padding:0.85rem 1rem;">
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:4px;">Reactivation Cost</div>
+                <div id="ue-viz-react" style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--red);">--</div>
+                <div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);margin-top:2px;">Cumulative</div>
+              </div>
+            </div>
+
+            <!-- Contract Recovery Banner -->
+            <div id="ue-viz-banner" style="display:flex;align-items:center;gap:8px;padding:0.6rem 1rem;border-radius:8px;margin-bottom:1rem;font-family:var(--mono);font-size:0.78rem;background:rgba(39,174,96,0.06);border:1px solid rgba(39,174,96,0.18);color:#27ae60;">
+              <span id="ue-viz-banner-icon">&#10003;</span>
+              <span id="ue-viz-banner-text">--</span>
+            </div>
+
+            <!-- Chart -->
+            <div style="background:rgba(200,164,90,0.02);border-radius:12px;border:1px solid var(--rule);padding:1.25rem 1rem 0.75rem;">
+              <canvas id="ue-ltv-cac-chart" style="max-height:380px;"></canvas>
+              <div style="display:flex;gap:16px;justify-content:center;margin-top:10px;flex-wrap:wrap;font-family:var(--mono);font-size:0.65rem;color:var(--mid);">
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#27ae60;margin-right:4px;"></span>LTV</span>
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c0392b;margin-right:4px;"></span>CAC (incl. reactivation)</span>
+                <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:4px;"></span>Break-even</span>
+                <span><span style="display:inline-block;width:10px;height:8px;border-radius:2px;background:rgba(39,174,96,0.18);margin-right:4px;"></span>Profit zone</span>
+                <span><span style="display:inline-block;width:10px;height:8px;border-radius:2px;background:rgba(192,57,43,0.12);margin-right:4px;"></span>Loss zone</span>
+              </div>
+            </div>
+
+            <!-- Sliders -->
+            <div style="border:1px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;margin-top:1rem;">
+              <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;">Model Parameters</div>
+              <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">LTV Ceiling</span>
+                    <span id="ue-sl-ltv-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$480</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Max revenue per customer</div>
+                  <input type="range" id="ue-sl-ltv" min="200" max="1000" step="20" value="480" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Initial CAC</span>
+                    <span id="ue-sl-cac-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$120</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Day-zero acquisition cost</div>
+                  <input type="range" id="ue-sl-cac" min="40" max="300" step="10" value="120" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Monthly CAC Growth</span>
+                    <span id="ue-sl-cacgr-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">$2.8</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Reactivation spend per month</div>
+                  <input type="range" id="ue-sl-cacgr" min="0" max="8" step="0.2" value="2.8" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+              </div>
+              <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">LTV Growth Rate</span>
+                    <span id="ue-sl-rate-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">0.12</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Speed of revenue accumulation</div>
+                  <input type="range" id="ue-sl-rate" min="0.03" max="0.3" step="0.01" value="0.12" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+                <div style="flex:1;min-width:140px;">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;">
+                    <span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;color:var(--mid);">Contract Length</span>
+                    <span id="ue-sl-contract-val" style="font-family:var(--mono);font-size:0.8rem;font-weight:600;color:var(--ink);">12</span>
+                  </div>
+                  <div style="font-size:0.6rem;color:var(--mid);margin-bottom:4px;">Typical contract cycle (months)</div>
+                  <input type="range" id="ue-sl-contract" min="3" max="36" step="1" value="12" style="width:100%;accent-color:var(--gold);height:3px;cursor:pointer;">
+                </div>
+              </div>
+            </div>
+
+            <!-- Insight Cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1rem;">
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;">&#9678;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">LTV:CAC Ratio</span>
+                </div>
+                <p id="ue-viz-insight-ratio" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--gold);font-family:var(--mono);font-size:0.85rem;">&#9639;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">Payback Period</span>
+                </div>
+                <p id="ue-viz-insight-payback" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:#27ae60;font-family:var(--mono);font-size:0.85rem;">&#8599;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">LTV Plateau & Churn</span>
+                </div>
+                <p id="ue-viz-insight-churn" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+              <div style="border:1px solid var(--rule);border-radius:10px;padding:0.9rem 1rem;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                  <span style="color:var(--red);font-family:var(--mono);font-size:0.85rem;">&#8635;</span>
+                  <span style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--ink);">Reactivation Investment</span>
+                </div>
+                <p id="ue-viz-insight-reactivation" style="color:var(--mid);font-size:0.72rem;line-height:1.55;margin:0;">--</p>
+              </div>
+            </div>
+
+            <!-- Contribution Margin Summary -->
+            <div style="background:rgba(39,174,96,0.04);border-radius:10px;border:1px solid rgba(39,174,96,0.12);padding:0.9rem 1.25rem;display:flex;justify-content:space-between;align-items:center;margin-top:1rem;">
+              <div>
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--mid);margin-bottom:3px;">Contribution Margin at Month 36</div>
+                <div style="font-size:0.72rem;color:var(--mid);line-height:1.5;">The green zone between LTV and CAC represents cumulative profit per customer. The red zone before break-even shows the investment recovery period.</div>
+              </div>
+              <div style="text-align:right;min-width:100px;">
+                <div id="ue-viz-margin-val" style="font-family:var(--serif);font-size:1.6rem;font-weight:700;color:#27ae60;">--</div>
+                <div style="font-family:var(--mono);font-size:0.6rem;color:var(--mid);">net per customer</div>
+              </div>
+            </div>
+
+          </div>
+          <!-- End LTV vs CAC Visualisation -->
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Unit Economics</h2>
+      <p>Unit economics measure the profitability of a single customer relationship. Three metrics drive everything: Customer Acquisition Cost (CAC), Lifetime Value (LTV), and the LTV:CAC ratio. If you can't make money on individual customers, you can't scale profitably—no matter how fast you grow.</p>
+
+      <h2>LTV:CAC Ratio Benchmarks</h2>
+      <p>Your LTV:CAC ratio tells investors whether your business model works at scale. Here's what investors expect:</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Below 1x</div>
+          <div class="target">Unsustainable</div>
+          <div class="note">Losing money on every customer</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">1-3x</div>
+          <div class="target">Early Stage</div>
+          <div class="note">Common but needs improvement for Series A</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">3-5x</div>
+          <div class="target">Healthy</div>
+          <div class="note">Investor benchmark range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">5x+</div>
+          <div class="target">Strong</div>
+          <div class="note">Consider investing more in growth</div>
+        </div>
+      </div>
+
+      <h2>How to Calculate CAC Payback Period</h2>
+      <p>CAC payback tells you how long it takes to recover the cost of acquiring a customer. It's calculated by dividing your CAC by your monthly gross profit per customer (ARPC × Gross Margin). A payback of 12 months means you break even on acquisition costs by month 12—any revenue after that is profit.</p>
+
+      <h3>Why Payback Matters</h3>
+      <ul>
+        <li><strong>Under 12 months:</strong> Excellent. You recover acquisition costs quickly and build cash quickly.</li>
+        <li><strong>12-18 months:</strong> Acceptable for Seed, tight for Series A. You need strong retention to survive.</li>
+        <li><strong>Over 18 months:</strong> Red flag. You're burning cash for too long before customers become profitable.</li>
+      </ul>
+
+      <h2>Net Revenue Retention and LTV</h2>
+      <p>Net Revenue Retention (NRR) is the revenue from existing customers, including churn, expansion, and upsells. An NRR of 110% means you're generating 110% of the prior period's revenue from the same cohort—you're growing even without adding new customers. High NRR (120%+) dramatically increases LTV and signals a sticky product.</p>
+
+      <h2>Common Unit Economics Mistakes</h2>
+      <h3>Forgetting to Account for Churn</h3>
+      <p>Many founders calculate LTV as ARPC / Churn without accounting for gross margin. Your LTV should be (ARPC × Gross Margin) / Monthly Churn. Not including gross margin overstates LTV and masks operational inefficiency.</p>
+
+      <h3>Using Blended CAC Instead of Channel-Specific CAC</h3>
+      <p>A blended CAC can hide that one acquisition channel is wildly unprofitable. Calculate CAC by channel (organic, paid search, partnerships, etc.) and focus spend on the most profitable channels.</p>
+
+      <h3>Ignoring Expansion Revenue</h3>
+      <p>If your NRR is above 100%, existing customers are generating revenue growth beyond initial acquisition. This expansion revenue is "free" growth—it dramatically improves LTV and should be highlighted to investors.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a good LTV:CAC ratio?</button>
+        <div class="faq-a">A healthy LTV:CAC ratio is 3:1 or above. This means for every dollar spent acquiring a customer, they generate three dollars in lifetime value. Ratios between 1-3x are common at early stages but need improvement for Series A. Below 1x indicates unsustainable unit economics—you're losing money on every customer.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I calculate customer acquisition cost?</button>
+        <div class="faq-a">CAC is calculated by dividing total acquisition spend by the number of new customers acquired in a period. For example, if you spend $50,000 on marketing and acquire 25 customers, your CAC is $2,000 per customer. Include all sales and marketing costs in the acquisition spend—salaries, tools, advertising, events, etc.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is net revenue retention?</button>
+        <div class="faq-a">Net Revenue Retention (NRR) measures revenue from existing customers, including churn losses, expansion revenue, and upsells. An NRR of 110% means you're generating 110% of the prior period's revenue from the same cohort—you're growing even without adding new customers. NRR above 100% is a key signal of product-market fit and is highly valued by investors.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate unit economics?</button>
+        <div class="faq-a">Investors focus on three metrics: LTV:CAC ratio (3x+ is healthy), CAC payback period (under 12 months is excellent), and gross margin (60%+ for SaaS). Combined, these show whether your business model is scalable. A company with weak unit economics can't raise because growth burns cash without building sustainable profit.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a good CAC payback period?</button>
+        <div class="faq-a">CAC payback periods under 12 months are considered excellent. 12-18 months is acceptable for Seed-stage startups but tight for Series A. Over 18 months is a red flag for investors—it signals you're not efficiently turning customer spend into profit.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/01-funding-readiness-score.html" class="related-card">
+          <h3>Funding Readiness Score</h3>
+          <p>Score your startup across 10 metrics investors evaluate.</p>
+        </a>
+        <a href="/tools/raise-ready/04-revenue-model-builder.html" class="related-card">
+          <h3>Revenue Model Builder</h3>
+          <p>Project your MRR and ARR growth over 18 months with expansion and churn.</p>
+        </a>
+        <a href="/tools/raise-ready/02-runway-burn-calculator.html" class="related-card">
+          <h3>Runway & Burn Calculator</h3>
+          <p>Calculate your months of runway with scenario modeling.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    function calcUnitEcon() {
+      const spend = parseFloat(document.getElementById('ue-spend').value) || 0;
+      const customers = parseFloat(document.getElementById('ue-customers').value) || 1;
+      const arpc = parseFloat(document.getElementById('ue-arpc').value) || 0;
+      const margin = (parseFloat(document.getElementById('ue-margin').value) || 75) / 100;
+      const churn = (parseFloat(document.getElementById('ue-churn').value) || 5) / 100;
+      const nrr = (parseFloat(document.getElementById('ue-nrr').value) || 100) / 100;
+
+      const cac = spend / customers;
+      const avgLifeMonths = churn > 0 ? (1 / churn) : 120;
+      const effectiveARPC = arpc * nrr;
+      const ltv = effectiveARPC * margin * avgLifeMonths;
+      const ratio = ltv / cac;
+      const payback = cac / (arpc * margin);
+
+      document.getElementById('ue-cac').textContent = fmt(cac);
+      document.getElementById('ue-ltv').textContent = fmt(ltv);
+      document.getElementById('ue-ratio').textContent = ratio.toFixed(1) + 'x';
+      document.getElementById('ue-payback').textContent = payback.toFixed(1);
+
+      let notes = [];
+      if (ratio < 1) notes.push('LTV:CAC below 1x means you lose money on every customer. This is not sustainable.');
+      else if (ratio < 3) notes.push('LTV:CAC between 1-3x is common at early stages but needs improvement for Series A.');
+      else if (ratio < 5) notes.push('LTV:CAC of 3-5x is the benchmark range most investors look for.');
+      else notes.push('LTV:CAC above 5x is strong. Consider whether you are underinvesting in growth.');
+
+      if (payback > 18) notes.push('CAC payback over 18 months is a red flag for most investors.');
+      else if (payback > 12) notes.push('CAC payback of 12-18 months is acceptable for Seed but tight for Series A.');
+      else notes.push('CAC payback under 12 months signals strong unit economics.');
+
+      document.getElementById('ue-note').innerHTML = notes.join('<br>');
+      document.getElementById('ue-results').classList.add('visible');
+      updateLtvCacViz();
+    }
+
+    // LTV vs CAC Visualisation (Chart.js)
+    var _ltvCacChart = null;
+
+    function generateLtvCacData(ltvMax, cacStart, cacGrowth, growthRate) {
+      var MONTHS = 36;
+      var data = { months: [], ltv: [], cac: [], netValue: [] };
+      var breakEvenMonth = null;
+      for (var m = 0; m <= MONTHS; m++) {
+        var ltv = ltvMax * (1 - Math.exp(-growthRate * m));
+        var cac = cacStart + cacGrowth * m;
+        data.months.push(m);
+        data.ltv.push(Math.round(ltv));
+        data.cac.push(Math.round(cac));
+        data.netValue.push(Math.round(ltv - cac));
+        if (!breakEvenMonth && ltv >= cac && m > 0) breakEvenMonth = m;
+      }
+      var plateauMonth = MONTHS;
+      for (var i = 1; i < data.ltv.length; i++) {
+        if (data.ltv[i] - data.ltv[i - 1] < 2) { plateauMonth = i; break; }
+      }
+      return { data: data, breakEvenMonth: breakEvenMonth, plateauMonth: plateauMonth };
+    }
+
+    function updateLtvCacViz() {
+      var MONTHS = 36;
+      var ltvMax = parseFloat(document.getElementById('ue-sl-ltv').value) || 480;
+      var cacStart = parseFloat(document.getElementById('ue-sl-cac').value) || 120;
+      var cacGrowth = parseFloat(document.getElementById('ue-sl-cacgr').value) || 2.8;
+      var growthRate = parseFloat(document.getElementById('ue-sl-rate').value) || 0.12;
+      var contractLength = parseInt(document.getElementById('ue-sl-contract').value) || 12;
+
+      // Update slider value labels
+      document.getElementById('ue-sl-ltv-val').textContent = '$' + ltvMax;
+      document.getElementById('ue-sl-cac-val').textContent = '$' + cacStart;
+      document.getElementById('ue-sl-cacgr-val').textContent = '$' + cacGrowth;
+      document.getElementById('ue-sl-rate-val').textContent = growthRate;
+      document.getElementById('ue-sl-contract-val').textContent = contractLength;
+
+      var result = generateLtvCacData(ltvMax, cacStart, cacGrowth, growthRate);
+      var d = result.data;
+      var breakEvenMonth = result.breakEvenMonth;
+      var plateauMonth = result.plateauMonth;
+
+      var finalLTV = d.ltv[MONTHS];
+      var finalCAC = d.cac[MONTHS];
+      var netValue = finalLTV - finalCAC;
+      var reactivationCost = Math.round(cacGrowth * MONTHS);
+      var ltvCacRatio = finalCAC > 0 ? (finalLTV / finalCAC).toFixed(1) : '--';
+      var ratioNum = parseFloat(ltvCacRatio);
+
+      var ltvAtContract = d.ltv[Math.min(contractLength, MONTHS)] || 0;
+      var cacAtContract = d.cac[Math.min(contractLength, MONTHS)] || 0;
+      var recoveredInContract = ltvAtContract >= cacAtContract;
+
+      // Update stats
+      var ratioColor = ratioNum >= 3 ? '#27ae60' : ratioNum >= 1 ? '#c8a45a' : '#c0392b';
+      var ratioSub = ratioNum >= 3 ? 'Healthy (>3x)' : ratioNum >= 1 ? 'Marginal' : 'Unprofitable';
+      document.getElementById('ue-viz-ratio').textContent = ltvCacRatio + 'x';
+      document.getElementById('ue-viz-ratio').style.color = ratioColor;
+      document.getElementById('ue-viz-ratio-sub').textContent = ratioSub;
+      document.getElementById('ue-viz-breakeven').textContent = breakEvenMonth ? 'Month ' + breakEvenMonth : 'N/A';
+      document.getElementById('ue-viz-net').textContent = '$' + netValue;
+      document.getElementById('ue-viz-net').style.color = netValue >= 0 ? '#27ae60' : '#c0392b';
+      document.getElementById('ue-viz-react').textContent = '$' + reactivationCost;
+
+      // Banner
+      var banner = document.getElementById('ue-viz-banner');
+      var bannerIcon = document.getElementById('ue-viz-banner-icon');
+      var bannerText = document.getElementById('ue-viz-banner-text');
+      if (recoveredInContract) {
+        banner.style.background = 'rgba(39,174,96,0.06)';
+        banner.style.borderColor = 'rgba(39,174,96,0.18)';
+        banner.style.color = '#27ae60';
+        bannerIcon.innerHTML = '&#10003;';
+        bannerText.textContent = 'CAC is recovered within the ' + contractLength + '-month contract cycle (LTV $' + ltvAtContract + ' vs CAC $' + cacAtContract + ' at month ' + contractLength + ')';
+      } else {
+        banner.style.background = 'rgba(192,57,43,0.06)';
+        banner.style.borderColor = 'rgba(192,57,43,0.18)';
+        banner.style.color = '#c0392b';
+        bannerIcon.innerHTML = '&#9888;';
+        bannerText.textContent = 'CAC is NOT recovered within the ' + contractLength + '-month contract cycle (LTV $' + ltvAtContract + ' vs CAC $' + cacAtContract + ' at month ' + contractLength + ')';
+      }
+
+      // Insight cards
+      var insightRatio = document.getElementById('ue-viz-insight-ratio');
+      if (ratioNum >= 3) insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio exceeds the 3x benchmark — strong unit economics indicating sustainable growth.';
+      else if (ratioNum >= 1) insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio is above 1x but below the 3x benchmark — customers are profitable but margins are thin.';
+      else insightRatio.textContent = 'At ' + ltvCacRatio + 'x, the ratio is below 1x — each customer costs more to acquire than they generate. Unsustainable.';
+
+      var insightPayback = document.getElementById('ue-viz-insight-payback');
+      if (breakEvenMonth) {
+        insightPayback.textContent = 'CAC is recovered by month ' + breakEvenMonth + '. ' + (breakEvenMonth <= contractLength ? 'This falls within the ' + contractLength + '-month contract cycle, meaning you recover costs inside one contract.' : 'This exceeds the ' + contractLength + '-month contract, meaning you need retention beyond one cycle to break even.');
+      } else {
+        insightPayback.textContent = 'LTV never overtakes CAC in this scenario — the business model does not recover acquisition costs.';
+      }
+
+      document.getElementById('ue-viz-insight-churn').textContent = 'Revenue per customer flattens around month ' + plateauMonth + ', signalling full cohort churn. Total lifetime value reaches $' + finalLTV + '. After this point, no incremental revenue is generated from the cohort.';
+      document.getElementById('ue-viz-insight-reactivation').textContent = 'CAC grows from $' + cacStart + ' to $' + finalCAC + ' over ' + MONTHS + ' months. The $' + reactivationCost + ' cumulative difference reflects ongoing reactivation spend — you don\'t just acquire once, you invest to re-engage churned users.';
+
+      // Contribution margin
+      document.getElementById('ue-viz-margin-val').textContent = '$' + netValue;
+      document.getElementById('ue-viz-margin-val').style.color = netValue >= 0 ? '#27ae60' : '#c0392b';
+
+      // Chart
+      var canvasEl = document.getElementById('ue-ltv-cac-chart');
+      if (!canvasEl) return;
+      if (_ltvCacChart) _ltvCacChart.destroy();
+
+      // Build profit/loss fill arrays
+      var profitFill = [], lossFill = [];
+      for (var i = 0; i <= MONTHS; i++) {
+        profitFill.push(d.ltv[i] > d.cac[i] ? d.ltv[i] : d.cac[i]);
+        lossFill.push(d.cac[i] > d.ltv[i] ? d.cac[i] : d.ltv[i]);
+      }
+
+      // Break-even annotation
+      var annotations = {};
+      if (breakEvenMonth) {
+        annotations.breakEven = {
+          type: 'line', xMin: breakEvenMonth, xMax: breakEvenMonth,
+          borderColor: '#c8a45a', borderWidth: 1.5, borderDash: [6, 4],
+          label: { display: true, content: 'PAYBACK: ' + breakEvenMonth + 'mo', position: 'start', backgroundColor: 'transparent', color: '#c8a45a', font: { family: "'DM Mono', monospace", size: 9 } }
+        };
+        annotations.breakEvenDot = {
+          type: 'point', xValue: breakEvenMonth, yValue: d.ltv[breakEvenMonth],
+          radius: 6, backgroundColor: '#c8a45a', borderColor: '#f2ede4', borderWidth: 2
+        };
+      }
+      annotations.contract = {
+        type: 'line', xMin: Math.min(contractLength, MONTHS), xMax: Math.min(contractLength, MONTHS),
+        borderColor: 'rgba(147,130,255,0.6)', borderWidth: 1.5, borderDash: [4, 6],
+        label: { display: true, content: 'CONTRACT: ' + contractLength + 'mo', position: 'start', backgroundColor: 'transparent', color: 'rgba(147,130,255,0.8)', font: { family: "'DM Mono', monospace", size: 9 } }
+      };
+
+      var ctx = canvasEl.getContext('2d');
+      _ltvCacChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: d.months,
+          datasets: [
+            {
+              label: 'Profit Zone',
+              data: profitFill,
+              fill: '+1',
+              backgroundColor: 'rgba(39,174,96,0.1)',
+              borderWidth: 0,
+              pointRadius: 0,
+              order: 4
+            },
+            {
+              label: 'Loss Zone',
+              data: d.cac.map(function(c, i) { return d.cac[i] > d.ltv[i] ? d.cac[i] : d.ltv[i]; }),
+              fill: false,
+              borderWidth: 0,
+              pointRadius: 0,
+              order: 5
+            },
+            {
+              label: 'LTV',
+              data: d.ltv,
+              borderColor: '#27ae60',
+              backgroundColor: 'rgba(39,174,96,0.08)',
+              fill: 'origin',
+              borderWidth: 2.5,
+              pointRadius: 0,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#27ae60',
+              tension: 0.3,
+              order: 1
+            },
+            {
+              label: 'CAC',
+              data: d.cac,
+              borderColor: '#c0392b',
+              backgroundColor: 'rgba(192,57,43,0.06)',
+              fill: 'origin',
+              borderWidth: 2.5,
+              pointRadius: 0,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#c0392b',
+              tension: 0,
+              order: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          interaction: { intersect: false, mode: 'index' },
+          scales: {
+            x: {
+              title: { display: true, text: 'Months', color: 'var(--mid)', font: { family: "'DM Mono', monospace", size: 10 } },
+              ticks: { color: '#6e6a61', font: { family: "'DM Mono', monospace", size: 10 } },
+              grid: { color: 'rgba(200,164,90,0.08)' }
+            },
+            y: {
+              ticks: {
+                color: '#6e6a61',
+                font: { family: "'DM Mono', monospace", size: 10 },
+                callback: function(v) { return '$' + v; }
+              },
+              grid: { color: 'rgba(200,164,90,0.08)' }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(8,8,13,0.95)',
+              titleFont: { family: "'DM Mono', monospace", size: 10 },
+              bodyFont: { family: "'DM Mono', monospace", size: 12 },
+              borderColor: 'rgba(200,164,90,0.15)',
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                title: function(items) { return 'Month ' + items[0].label; },
+                label: function(ctx) {
+                  if (ctx.datasetIndex === 0 || ctx.datasetIndex === 1) return null;
+                  return ctx.dataset.label + ': $' + ctx.parsed.y;
+                },
+                afterBody: function(items) {
+                  var ltvVal = 0, cacVal = 0;
+                  items.forEach(function(item) {
+                    if (item.datasetIndex === 2) ltvVal = item.parsed.y;
+                    if (item.datasetIndex === 3) cacVal = item.parsed.y;
+                  });
+                  var net = ltvVal - cacVal;
+                  var ratio = cacVal > 0 ? (ltvVal / cacVal).toFixed(1) : '--';
+                  return ['Net: $' + net, 'LTV:CAC: ' + ratio + 'x'];
+                }
+              }
+            },
+            annotation: { annotations: annotations }
+          }
+        }
+      });
+    }
+
+    // Slider event listeners
+    document.getElementById('ue-sl-ltv').addEventListener('input', updateLtvCacViz);
+    document.getElementById('ue-sl-cac').addEventListener('input', updateLtvCacViz);
+    document.getElementById('ue-sl-cacgr').addEventListener('input', updateLtvCacViz);
+    document.getElementById('ue-sl-rate').addEventListener('input', updateLtvCacViz);
+    document.getElementById('ue-sl-contract').addEventListener('input', updateLtvCacViz);
+
+    function resetTool(toolId) {
+      const tool = document.getElementById(toolId);
+      if (!tool) return;
+      const inputs = tool.querySelectorAll('input[type="number"], input[type="text"], select');
+      inputs.forEach(input => {
+        if (input.hasAttribute('value')) {
+          input.value = input.getAttribute('value');
+        } else {
+          input.value = '';
+        }
+      });
+      tool.querySelectorAll('.tool-results').forEach(r => r.classList.remove('visible'));
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcUnitEcon();
+    });
+  </script>
+</body>
+</html>

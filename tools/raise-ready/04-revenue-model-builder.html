@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Revenue Model Builder - Free MRR & ARR Projection Tool | Raise Ready</title>
+  <meta name="description" content="Project your MRR and ARR over 18 months with growth, churn, and expansion inputs. Free revenue model builder for startup founders and investors.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/04-revenue-model-builder.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Revenue Model Builder | Raise Ready">
+  <meta property="og:description" content="Free startup revenue projection tool. Build an 18-month MRR and ARR model with growth, churn, and expansion rates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/04-revenue-model-builder.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Revenue Model Builder", "item": "https://www.raisereadybook.com/tools/raise-ready/04-revenue-model-builder.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Revenue Model Builder",
+    "description": "Free startup revenue projection tool for MRR and ARR modeling",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/04-revenue-model-builder.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I build a revenue model for my startup?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A revenue model projects your MRR (monthly recurring revenue) forward by applying growth, churn, and expansion rates each month. Start with your current MRR, define your monthly growth rate (new customer revenue), monthly churn rate (lost revenue), and expansion rate (upsells from existing customers). Apply these rates month-to-month to forecast 12-18 months of revenue."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good MRR growth rate?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Growth rates vary by stage: Pre-Seed founders should demonstrate 15-20% MoM growth, Seed-stage startups 10-15% MoM, Series A companies 7-10% MoM, and Series B companies 5-7% MoM. Higher growth at early stages proves the product is gaining traction. At scale, growth naturally slows but consistency matters to investors."}
+      },
+      {
+        "@type": "Question",
+        "name": "How does churn affect revenue projections?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Churn compounds over time. A 5% monthly churn rate means you lose 5% of your customer base every month. Even with new customer acquisition, high churn forces you to constantly replace customers just to stay flat. Typical SaaS churn targets: Pre-Seed/Seed below 5%, Series A below 3%, Series B below 2%."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is expansion revenue?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Expansion revenue (upsells, add-ons, cross-sells) grows your ARR from existing customers without new customer acquisition. For example, if a customer pays $1000/month and you upsell them $100 worth of add-ons, that's $100 monthly expansion revenue. Expansion rates of 2-5% monthly indicate a strong product with good customer satisfaction."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors evaluate revenue models?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors look at: (1) Growth rate—are you accelerating or decelerating? (2) Churn—is it stable and under control? (3) Expansion—is your existing customer base growing in value? (4) Magic number—is your growth rate sustainable given your CAC? A model showing stable growth, low churn, and positive expansion signals a healthy, scalable business."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .tool-btn-reset {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      margin-top: 0.5rem;
+    }
+
+    .tool-btn-reset:hover {
+      background: rgba(200, 164, 90, 0.1);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    table.result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    td.text-right {
+      text-align: right;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Revenue Model Builder
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Revenue Model Builder</h1>
+      <p>Project your monthly revenue over 18 months using starting MRR, growth rate, and churn. See how compounding works for and against you.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Investors don't ask "how much revenue do you have today?" They ask "what will your revenue be in 18 months?" A revenue model answers that question. It shows how growth, churn, and expansion compound into sustainable revenue trajectory.</p>
+      <p>The Revenue Model Builder projects your MRR forward 18 months by applying your growth rate (new customer revenue), churn rate (lost revenue), and expansion rate (upsells from existing customers) each month. See exactly when you hit key milestones—$100K MRR, $1M ARR, and beyond. This is the model every investor will ask to see.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Project Your Revenue</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Starting MRR ($)</label>
+            <input type="number" id="rev-mrr" placeholder="e.g. 80000" value="80000">
+          </div>
+          <div class="tool-field">
+            <label>MoM New Revenue Growth (%)</label>
+            <input type="number" id="rev-growth" placeholder="e.g. 10" step="0.1" value="10">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Monthly Churn Rate (%)</label>
+            <input type="number" id="rev-churn" placeholder="e.g. 3" step="0.1" value="3">
+          </div>
+          <div class="tool-field">
+            <label>Avg Expansion Rate (% of existing MRR/mo)</label>
+            <input type="number" id="rev-expansion" placeholder="e.g. 2" step="0.1" value="2">
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
+        <button class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
+
+        <div class="tool-results" id="rev-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="rev-m6">--</div>
+              <div class="result-label">MRR at Month 6</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-m12">--</div>
+              <div class="result-label">MRR at Month 12</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-m18">--</div>
+              <div class="result-label">MRR at Month 18</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="rev-arr18">--</div>
+              <div class="result-label">ARR at Month 18</div>
+            </div>
+          </div>
+          <div id="rev-table-wrap"></div>
+          <div class="result-note" id="rev-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>How to Read Your Revenue Projection</h2>
+      <p>Your 18-month revenue model shows three components each month: (1) New revenue—revenue from newly acquired customers, (2) Churn—revenue lost from customer cancellations, and (3) Expansion—revenue from upsells and add-ons to existing customers. The net result is your month-to-month MRR. Your ARR at month 18 is your projected annual revenue.</p>
+
+      <h2>MRR Growth Rate Benchmarks by Stage</h2>
+      <p>Growth expectations change as you scale. Earlier-stage startups with smaller bases can sustain higher growth rates. Here are investor expectations:</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">15-20% MoM</div>
+          <div class="note">Prove rapid growth</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">10-15% MoM</div>
+          <div class="note">Sustain momentum</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A</div>
+          <div class="target">7-10% MoM</div>
+          <div class="note">Scale efficiently</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B</div>
+          <div class="target">5-7% MoM</div>
+          <div class="note">Maintain at scale</div>
+        </div>
+      </div>
+
+      <h2>Understanding Churn's Impact</h2>
+      <p>Churn compounds in your model and becomes the silent killer of revenue growth. A 5% monthly churn rate means you lose 5% of your customer base every single month. Even with 10% new revenue growth, if churn is 7%, your net growth is only 3% monthly—which means your business is barely growing despite acquiring new customers.</p>
+
+      <h3>The Math of Churn</h3>
+      <ul>
+        <li><strong>Low churn (1-2% MoM):</strong> Typical for enterprise SaaS. Customers are sticky and well-integrated.</li>
+        <li><strong>Moderate churn (3-5% MoM):</strong> Common for mid-market SaaS. You need strong new customer growth to outpace churn.</li>
+        <li><strong>High churn (5%+ MoM):</strong> A problem. Your product or GTM strategy needs work before scaling.</li>
+      </ul>
+
+      <h2>Expansion Revenue and Upsells</h2>
+      <p>Expansion revenue is the highest-margin growth because you don't need to pay CAC again. An expansion rate of 2% monthly means you're generating 2% of your current MRR as additional revenue from existing customers. This compiles to roughly 26% annual expansion—a huge growth driver.</p>
+
+      <h3>Why Expansion Matters to Investors</h3>
+      <ul>
+        <li><strong>Proof of product-market fit:</strong> Customers are so happy they're buying more from you.</li>
+        <li><strong>Lower CAC dependency:</strong> You're not entirely dependent on new customer acquisition.</li>
+        <li><strong>Higher NRR:</strong> Expansion revenue pushes your Net Revenue Retention above 100%, signaling a land-and-expand business model.</li>
+      </ul>
+
+      <h2>Common Revenue Modeling Mistakes</h2>
+      <h3>Forgetting About Churn</h3>
+      <p>Many founders build models assuming every customer you acquire stays forever. In reality, even a 3% churn rate compounds into significant revenue loss. Always model churn. If you don't know your churn rate yet, use industry benchmarks and adjust as you collect data.</p>
+
+      <h3>Overestimating Growth Rate</h3>
+      <p>Founders often assume they'll maintain their current growth rate forever. In reality, growth rates decline as your base grows. A startup with $10K MRR growing 15% monthly will hit $40K MRR in 9 months. But maintaining 15% growth at $100K MRR is much harder. Build multiple scenarios with declining growth rates.</p>
+
+      <h3>Ignoring Seasonality</h3>
+      <p>Many businesses have seasonal patterns—higher growth in Q1, dips in August, spikes before holidays. A linear month-to-month model misses these patterns. If you have seasonal data, model it. If not, flag it as a risk in your narrative to investors.</p>
+
+      <h3>Undervaluing Expansion</h3>
+      <p>Many B2B SaaS companies focus only on new customer acquisition and ignore expansion. But expansion revenue has higher margins and lower risk. If you're not measuring and modeling expansion, you're leaving money on the table and missing a key growth lever.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I build a revenue model for my startup?</button>
+        <div class="faq-a">A revenue model projects your MRR (monthly recurring revenue) forward by applying growth, churn, and expansion rates each month. Start with your current MRR, define your monthly growth rate (new customer revenue), monthly churn rate (lost revenue), and expansion rate (upsells from existing customers). Apply these rates month-to-month to forecast 12-18 months of revenue. This model becomes the foundation of your financial projections shown to investors.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a good MRR growth rate?</button>
+        <div class="faq-a">Growth rates vary by stage: Pre-Seed founders should demonstrate 15-20% MoM growth to prove traction, Seed-stage startups 10-15% MoM to sustain momentum, Series A companies 7-10% MoM to show efficient scaling, and Series B companies 5-7% MoM to maintain growth at larger scale. Higher growth at early stages proves product-market fit. At scale, consistent single-digit growth still impresses investors.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How does churn affect revenue projections?</button>
+        <div class="faq-a">Churn compounds monthly and is your primary headwind to growth. A 5% monthly churn rate means you lose 5% of your customer base every month. Even with 10% new revenue growth, if churn is 7%, your net growth is only 3% monthly—your business barely grows. Keep churn low and model it accurately. Enterprise SaaS targets 1-2% churn. SaaS generally targets 3-5%. Above 5% is a serious problem.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is expansion revenue?</button>
+        <div class="faq-a">Expansion revenue comes from upsells, add-ons, and cross-sells to existing customers. For example, a $1,000/month customer buying $100 of add-ons generates $100 monthly expansion revenue. Expansion rates of 2-5% monthly indicate a strong product with good customer satisfaction. Expansion revenue is the highest-margin growth because you don't pay CAC again and don't depend on new customer acquisition.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate revenue models?</button>
+        <div class="faq-a">Investors focus on four things: (1) Growth rate—are you accelerating or decelerating? (2) Churn—is it low and stable? (3) Expansion—is your existing customer base growing in value? (4) Realistic assumptions—do your numbers align with industry benchmarks? A model showing stable, healthy growth with low churn and positive expansion signals a business with durable, scalable unit economics.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/03-unit-economics-calculator.html" class="related-card">
+          <h3>Unit Economics Calculator</h3>
+          <p>Calculate CAC, LTV, and payback period to validate your acquisition strategy.</p>
+        </a>
+        <a href="/tools/raise-ready/05-headcount-salary-planner.html" class="related-card">
+          <h3>Headcount & Salary Planner</h3>
+          <p>Model your team build and total loaded cost.</p>
+        </a>
+        <a href="/tools/raise-ready/06-pnl-snapshot.html" class="related-card">
+          <h3>P&L Snapshot</h3>
+          <p>Build a monthly P&L summary from revenue and cost inputs.</p>
+        </a>
+        <a href="/tools/raise-ready/07-three-scenario-planner.html" class="related-card">
+          <h3>Three-Scenario Planner</h3>
+          <p>Model base, bull, and bear cases side-by-side.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutski
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    function calcRevenueModel() {
+      let mrr = parseFloat(document.getElementById('rev-mrr').value) || 0;
+      const growthPct = (parseFloat(document.getElementById('rev-growth').value) || 0) / 100;
+      const churnPct = (parseFloat(document.getElementById('rev-churn').value) || 0) / 100;
+      const expansionPct = (parseFloat(document.getElementById('rev-expansion').value) || 0) / 100;
+
+      if (mrr <= 0) { alert('Please enter a starting MRR greater than 0.'); return; }
+
+      let rows = [];
+      let current = mrr;
+      for (let m = 1; m <= 18; m++) {
+        const newRev = current * growthPct;
+        const churnRev = current * churnPct;
+        const expansion = current * expansionPct;
+        current = current + newRev - churnRev + expansion;
+        rows.push({ month: m, mrr: current, newRev, churnRev, expansion });
+      }
+
+      document.getElementById('rev-m6').textContent = fmt(rows[5].mrr);
+      document.getElementById('rev-m12').textContent = fmt(rows[11].mrr);
+      document.getElementById('rev-m18').textContent = fmt(rows[17].mrr);
+      document.getElementById('rev-arr18').textContent = fmt(rows[17].mrr * 12);
+
+      let html = '<table class="result-table"><thead><tr><th>Month</th><th class="text-right">MRR</th><th class="text-right">New</th><th class="text-right">Churn</th><th class="text-right">Expansion</th></tr></thead><tbody>';
+      rows.forEach(r => {
+        html += '<tr><td>' + r.month + '</td><td class="text-right">' + fmt(r.mrr) + '</td><td class="text-right">' + fmt(r.newRev) + '</td><td class="text-right" style="color:#e74c3c">-' + fmt(r.churnRev) + '</td><td class="text-right" style="color:#2ecc71">+' + fmt(r.expansion) + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      document.getElementById('rev-table-wrap').innerHTML = html;
+
+      const netGrowth = ((rows[17].mrr / mrr) - 1) * 100;
+      document.getElementById('rev-note').textContent = 'Net revenue growth over 18 months: ' + netGrowth.toFixed(0) + '%. Your MRR grows from ' + fmt(mrr) + ' to ' + fmt(rows[17].mrr) + ', reaching ' + fmt(rows[17].mrr * 12) + ' ARR.';
+
+      document.getElementById('rev-results').classList.add('visible');
+    }
+
+    function resetTool(toolId) {
+      const tool = document.getElementById(toolId);
+      if (!tool) return;
+      const inputs = tool.querySelectorAll('input[type="number"], input[type="text"], select');
+      inputs.forEach(input => {
+        if (input.hasAttribute('value')) {
+          input.value = input.getAttribute('value');
+        } else {
+          input.value = '';
+        }
+      });
+      tool.querySelectorAll('.tool-results').forEach(r => r.classList.remove('visible'));
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcRevenueModel();
+    });
+  </script>
+</body>
+</html>

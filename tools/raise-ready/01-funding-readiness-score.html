@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Funding Readiness Score - Free Startup Fundraising Assessment | Raise Ready</title>
+  <meta name="description" content="Score your startup across 10 investor metrics in 5 minutes. Free funding readiness calculator with benchmarks by stage from pre-seed to Series B+.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/01-funding-readiness-score.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Funding Readiness Score | Raise Ready">
+  <meta property="og:description" content="Free startup funding readiness calculator. Score across 10 metrics investors evaluate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/01-funding-readiness-score.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Funding Readiness Score", "item": "https://www.raisereadybook.com/tools/raise-ready/01-funding-readiness-score.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Funding Readiness Score Calculator",
+    "description": "Free startup funding readiness assessment tool",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/01-funding-readiness-score.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a funding readiness score?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A funding readiness score evaluates your startup across 10 key metrics that professional investors assess when evaluating funding opportunities."}
+      },
+      {
+        "@type": "Question",
+        "name": "What ARR do I need for Series A?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Most Series A-stage startups have ARR between $500K-$2M with 12%+ monthly growth rates."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good burn multiple?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Burn multiples below 3x are considered healthy. Lower burn multiples (1.5-2x) indicate efficient unit economics."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors evaluate startups?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors evaluate startups across metrics including ARR, growth rate, gross margin, unit economics, team strength, and product-market fit signals."}
+      },
+      {
+        "@type": "Question",
+        "name": "When should I start fundraising?",
+        "acceptedAnswer": {"@type": "Answer", "text": "You should have 12-18 months of runway before starting a fundraise. Most rounds take 3-6 months to close."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-bar {
+      width: 100%;
+      height: 20px;
+      background: rgba(200, 164, 90, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .result-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Funding Readiness Score
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Funding Readiness Score</h1>
+      <p>Score your startup across 10 investor metrics in 5 minutes. Know whether you are truly fundable at the round you want.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Fundraising can feel like guessing what investors want. You're not sure if your metrics are competitive, if your team strength is enough, or if you should even be raising right now. This uncertainty leads founders to miss opportunities or waste months pursuing capital when they should be building.</p>
+      <p>The Funding Readiness Score cuts through the confusion. It evaluates your startup across 10 key metrics that professional investors assess: ARR, growth rate, unit economics, team strength, and product-market fit signals. Get a score from 0-100, understand where you stand relative to benchmarks for your stage, and see exactly which gaps need attention before your next round.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Evaluate Your Metrics</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Current Stage</label>
+            <select id="r-current">
+              <option value="pre-seed">Pre-Seed</option>
+              <option value="seed" selected>Seed</option>
+              <option value="series-a">Series A</option>
+              <option value="series-b">Series B+</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Target Round</label>
+            <select id="r-target">
+              <option value="seed">Seed</option>
+              <option value="series-a" selected>Series A</option>
+              <option value="series-b">Series B</option>
+              <option value="series-c">Series C+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Annual Recurring Revenue ($)</label>
+            <input type="number" id="r-arr" placeholder="e.g. 1200000" value="1200000">
+          </div>
+          <div class="tool-field">
+            <label>MoM Growth Rate (%)</label>
+            <input type="number" id="r-growth" placeholder="e.g. 15" step="0.1" value="12">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="r-margin" placeholder="e.g. 70" step="0.1" value="72">
+          </div>
+          <div class="tool-field">
+            <label>Net Revenue Retention (%)</label>
+            <input type="number" id="r-nrr" placeholder="e.g. 110" step="0.1" value="115">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Burn Multiple (Net Burn / Net New ARR)</label>
+            <input type="number" id="r-burn" placeholder="e.g. 2.5" step="0.1" value="1.5">
+          </div>
+          <div class="tool-field">
+            <label>CAC Payback (months)</label>
+            <input type="number" id="r-payback" placeholder="e.g. 12" step="0.1" value="14">
+          </div>
+        </div>
+
+        <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 1rem 0 0.5rem;">Team & Product (self-assess 1-5)</p>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Team Strength (1-5)</label>
+            <input type="number" id="r-team" placeholder="3" min="1" max="5" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Product-Market Fit (1-5)</label>
+            <input type="number" id="r-pmf" placeholder="3" min="1" max="5" value="4">
+          </div>
+        </div>
+
+        <button onclick="calcReadiness()">Score My Readiness</button>
+
+        <div class="tool-results" id="r-results">
+          <div class="result-bar"><div class="result-bar-fill" id="r-bar"></div></div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="r-score">--</div>
+              <div class="result-label">Overall Score</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="r-verdict">--</div>
+              <div class="result-label">Verdict</div>
+            </div>
+          </div>
+          <div class="result-note" id="r-gaps"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>How to Read Your Results</h2>
+      <p>Your readiness score is calculated from 10 weighted metrics. A score of 75+ means "Ready"—you have the fundamentals investors want. 50-74 is "Close"—you're on track but need to close specific gaps. Below 50 is "Not Yet"—focus on building, not fundraising. The detailed gap analysis below your score shows exactly which metrics need attention.</p>
+
+      <h2>Funding Readiness Benchmarks by Stage</h2>
+      <p>These benchmarks reflect what professional investors typically expect at each funding stage. Your target round determines which benchmarks apply to your evaluation.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">$0-$200K</div>
+          <div class="note">ARR range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">10%+ MoM</div>
+          <div class="note">Growth target</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">$200K-$2M</div>
+          <div class="note">ARR range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">12%+ MoM</div>
+          <div class="note">Growth target</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A</div>
+          <div class="target">$500K-$2M</div>
+          <div class="note">Typical ARR</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B</div>
+          <div class="target">$10M+ ARR</div>
+          <div class="note">Entry point</div>
+        </div>
+      </div>
+
+      <h2>Common Mistakes When Scoring Your Readiness</h2>
+      <h3>Using Vanity Metrics Instead of Revenue</h3>
+      <p>Many founders report user count or usage metrics instead of ARR. Investors care about revenue. If you don't have ARR yet, report zero and focus on hitting milestones that lead to revenue.</p>
+
+      <h3>Overstating Team Strength</h3>
+      <p>Be honest about your team ratings. If you're missing a co-founder with domain expertise or financial/operational skills, that's a real gap. Investors will discover this during due diligence anyway—better to know now and address it.</p>
+
+      <h3>Not Separating Team Members from Advisors</h3>
+      <p>Your team strength score should reflect people working full-time on the business. Advisors and board members don't count toward team strength for fundraising readiness. Quality over headcount.</p>
+
+      <h3>Ignoring Unit Economics</h3>
+      <p>Burn multiple and CAC payback aren't nice-to-haves for later. Investors evaluate these from day one. If your payback period is 24+ months or your burn multiple exceeds 3x, you're signaling operational inefficiency that needs fixing before fundraising.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a funding readiness score?</button>
+        <div class="faq-a">A funding readiness score evaluates your startup across 10 key metrics that professional investors assess: ARR, growth rate, gross margin, net revenue retention, burn multiple, CAC payback, team strength, and product-market fit signals. You get a single 0-100 score that tells you if you're ready to fundraise, close to ready, or should focus on building first.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What ARR do I need for Series A?</button>
+        <div class="faq-a">Most Series A investors expect ARR between $500K-$2M with 12%+ monthly growth. This isn't a hard floor—some startups raise Series A below $500K if they have exceptional growth or product-market fit signals. But $500K+ ARR and double-digit growth is the consensus benchmark.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a good burn multiple?</button>
+        <div class="faq-a">Burn multiple measures how much you burn to acquire net new ARR. A burn multiple of 1-1.5x is excellent. 2-3x is acceptable. Above 3x signals inefficiency. Lower burn multiples suggest you're spending capital wisely to drive growth, which investors reward.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate startups?</button>
+        <div class="faq-a">Professional investors evaluate startups across traction (ARR and growth), unit economics (CAC payback, LTV:CAC ratio, burn multiple), team strength and experience, product-market fit signals (NRR above 100%, retention metrics), market size, competitive positioning, and fundraising momentum. This calculator focuses on the quantitative metrics; qualitative factors like team and market come through the team strength and PMF ratings.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">When should I start fundraising?</button>
+        <div class="faq-a">Start fundraising when you have 12-18 months of runway and a readiness score of 50+. Most rounds take 3-6 months to close, so you want enough buffer to weather the fundraise timeline. If you have less than 6 months of runway, focus on extending your runway first—you'll be in a weaker negotiating position in that scenario.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/02-runway-burn-calculator.html" class="related-card">
+          <h3>Runway & Burn Calculator</h3>
+          <p>Calculate months of runway and your zero-cash date with scenario modeling.</p>
+        </a>
+        <a href="/tools/raise-ready/03-unit-economics-calculator.html" class="related-card">
+          <h3>Unit Economics Calculator</h3>
+          <p>Calculate CAC, LTV, payback period, and LTV:CAC ratio for your business.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/13-pitch-deck-scorecard.html" class="related-card">
+          <h3>Pitch Deck Scorecard</h3>
+          <p>Evaluate your pitch deck against 15 investor expectations.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    function calcReadiness() {
+      const target = document.getElementById('r-target').value;
+      const arr = parseFloat(document.getElementById('r-arr').value) || 0;
+      const growth = parseFloat(document.getElementById('r-growth').value) || 0;
+      const margin = parseFloat(document.getElementById('r-margin').value) || 0;
+      const nrr = parseFloat(document.getElementById('r-nrr').value) || 0;
+      const burn = parseFloat(document.getElementById('r-burn').value) || 99;
+      const payback = parseFloat(document.getElementById('r-payback').value) || 99;
+      const team = Math.min(5, Math.max(1, parseFloat(document.getElementById('r-team').value) || 3));
+      const pmf = Math.min(5, Math.max(1, parseFloat(document.getElementById('r-pmf').value) || 3));
+
+      const benchmarks = {
+        'seed':     { arr: [0, 200000],     growth: 10, margin: 50, nrr: 90,  burn: 5,   payback: 24 },
+        'series-a': { arr: [500000, 2000000], growth: 12, margin: 60, nrr: 100, burn: 3,   payback: 18 },
+        'series-b': { arr: [2000000, 10000000], growth: 8, margin: 65, nrr: 110, burn: 2, payback: 15 },
+        'series-c': { arr: [10000000, 50000000], growth: 5, margin: 70, nrr: 115, burn: 1.5, payback: 12 }
+      };
+
+      const b = benchmarks[target] || benchmarks['series-a'];
+      let score = 0;
+      let gaps = [];
+
+      if (arr >= b.arr[1]) score += 25;
+      else if (arr >= b.arr[0]) score += 15;
+      else { score += Math.max(0, 10 * (arr / Math.max(b.arr[0], 1))); gaps.push('ARR is below the typical ' + fmt(b.arr[0]) + '-' + fmt(b.arr[1]) + ' range for ' + target.replace('-', ' ')); }
+
+      if (growth >= b.growth) score += 15;
+      else { score += 15 * (growth / b.growth); gaps.push('Growth of ' + growth + '% MoM is below the ' + b.growth + '% benchmark'); }
+
+      if (margin >= b.margin) score += 15;
+      else { score += 15 * (margin / b.margin); gaps.push('Gross margin of ' + margin + '% is below the ' + b.margin + '% floor'); }
+
+      if (nrr >= b.nrr) score += 10;
+      else { score += 10 * (nrr / b.nrr); gaps.push('NRR of ' + nrr + '% is below ' + b.nrr + '%'); }
+
+      if (burn <= b.burn) score += 10;
+      else if (burn < b.burn * 2) score += 5;
+      else { gaps.push('Burn multiple of ' + burn + 'x is too high (target below ' + b.burn + 'x)'); }
+
+      if (payback <= b.payback) score += 10;
+      else if (payback < b.payback * 1.5) score += 5;
+      else { gaps.push('CAC payback of ' + payback + ' months exceeds the ' + b.payback + ' month target'); }
+
+      score += (team / 5) * 7.5;
+      score += (pmf / 5) * 7.5;
+      if (team < 3) gaps.push('Team strength rated below benchmark');
+      if (pmf < 3) gaps.push('Product-market fit signals are weak');
+
+      score = Math.min(100, Math.round(score));
+
+      let verdict, barColor;
+      if (score >= 75) { verdict = 'Ready'; barColor = '#2ecc71'; }
+      else if (score >= 50) { verdict = 'Close'; barColor = '#f39c12'; }
+      else { verdict = 'Not Yet'; barColor = '#e74c3c'; }
+
+      document.getElementById('r-score').textContent = score + '/100';
+      document.getElementById('r-verdict').textContent = verdict;
+      document.getElementById('r-bar').style.width = score + '%';
+      document.getElementById('r-bar').style.background = barColor;
+
+      let gapHTML = gaps.length > 0
+        ? '<strong>Priority gaps to close:</strong><br>' + gaps.map(g => '&bull; ' + g).join('<br>')
+        : 'All key metrics meet or exceed benchmarks for this stage.';
+      document.getElementById('r-gaps').innerHTML = gapHTML;
+      document.getElementById('r-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcReadiness();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Startup Valuation Estimator - Free Pre-Money Valuation Calculator | Raise Ready</title>
+  <meta name="description" content="Estimate your startup valuation by stage. ARR multiples adjusted for growth rate and gross margin from pre-seed to Series B. Free valuation calculator.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/09-valuation-estimator.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Startup Valuation Estimator | Raise Ready">
+  <meta property="og:description" content="Free startup valuation calculator. Estimate pre-money valuation by stage with adjusted ARR multiples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/09-valuation-estimator.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Valuation Estimator", "item": "https://www.raisereadybook.com/tools/raise-ready/09-valuation-estimator.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Startup Valuation Estimator",
+    "description": "Free startup valuation calculator with ARR multiples adjusted for growth rate and gross margin",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/09-valuation-estimator.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you value a startup with no revenue?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Pre-revenue startups are valued on stage, team strength, market opportunity, and product-market fit signals rather than ARR multiples. Pre-seed investors typically invest $50K-$500K at valuations of $1M-$10M based on the team and vision, not financial metrics."}
+      },
+      {
+        "@type": "Question",
+        "name": "What ARR multiple should I expect?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Revenue multiples vary by stage: Pre-Seed uses 10-40x ARR, Seed uses 15-60x, Series A uses 10-40x, and Series B uses 8-30x. Growth rate and gross margin adjust these baseline multiples significantly."}
+      },
+      {
+        "@type": "Question",
+        "name": "How does growth rate affect valuation?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Growth rate is a primary valuation driver. Startups growing >300% YoY command a 1.3x multiple increase. Startups growing 100-200% get 1.15x. Growth below 50% triggers a 0.6x discount. Investors pay premium multiples for high-growth businesses."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a pre-money vs post-money valuation?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Pre-money valuation is what your company is worth before new investment. Post-money = pre-money + investment amount. If you raise $2M at a $8M pre-money valuation, the post-money is $10M. Investors own (investment / post-money) of the company."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors determine startup valuations?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors use ARR multiples as a baseline, then adjust for growth rate, gross margin, market size, competition, team quality, and product-market fit. Market benchmarks, comparable rounds, and investor supply/demand also influence final valuations."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .back-link {
+      display: inline-block;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+    .seo-intro p {
+      margin-bottom: 1rem;
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+      margin-bottom: 0.5rem;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .tool-btn-reset {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .tool-btn-reset:hover {
+      background: rgba(200, 164, 90, 0.1);
+    }
+
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 600px) {
+      .tool-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .tool-field {
+      margin-bottom: 0;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 600px) {
+      .result-grid { grid-template-columns: 1fr; }
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--dim);
+      font-weight: 700;
+    }
+    .seo-content p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 600px) {
+      .benchmark-grid { grid-template-columns: 1fr; }
+    }
+
+    .benchmark-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .benchmark-card .note {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(200, 164, 90, 0.04);
+      border: none;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.08);
+    }
+
+    .faq-a {
+      display: none;
+      padding: 1rem;
+      background: var(--paper);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+
+    .related-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .related-card:hover {
+      background: rgba(200, 164, 90, 0.08);
+    }
+    .related-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .related-card p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .upsell-card {
+      background: rgba(200, 164, 90, 0.06);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .upsell-card p {
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .upsell-grid { grid-template-columns: 1fr; }
+    }
+
+    .upsell-link {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .upsell-link:hover {
+      background: #ebe5d8;
+    }
+
+    .upsell-icon {
+      font-size: 1.5rem;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .upsell-name {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .tool-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .tool-footer a:hover {
+      color: var(--gold2);
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Valuation Estimator
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Startup Valuation Estimator</h1>
+      <p>Estimate your startup's pre-money valuation by stage. See how growth rate and gross margin adjust your ARR multiple.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Figuring out what your startup is worth feels impossible. You see other founders talking about their valuations, but you don't know if you're in the same ballpark or being shortchanged. Without a framework, valuation negotiations feel like guessing—you end up either leaving money on the table or asking for something unrealistic that kills the deal.</p>
+      <p>This valuation estimator gives you a grounded starting point. It uses ARR multiples adjusted for your growth rate and gross margin, the two metrics investors use to justify paying different multiples at different stages. You'll get a low, midpoint, and high range that reflects realistic market benchmarks from 2024-2026. This isn't your final valuation—investors will negotiate based on your specific situation, market conditions, and competitive dynamics—but it's a defensible anchor for your conversations.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Estimate Your Valuation</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Funding Stage</label>
+            <select id="v-stage">
+              <option value="pre-seed">Pre-Seed</option>
+              <option value="seed" selected>Seed</option>
+              <option value="series-a">Series A</option>
+              <option value="series-b">Series B</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Annual Recurring Revenue ($)</label>
+            <input type="number" id="v-arr" placeholder="e.g. 1200000" value="1200000">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>YoY Growth Rate (%)</label>
+            <input type="number" id="v-growth" placeholder="e.g. 150" step="1" value="150">
+          </div>
+          <div class="tool-field">
+            <label>Gross Margin (%)</label>
+            <input type="number" id="v-margin" placeholder="e.g. 75" step="0.1" value="75">
+          </div>
+        </div>
+
+        <button class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
+        <button class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
+
+        <div class="tool-results" id="v-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="v-low">--</div>
+              <div class="result-label">Low Range</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="v-mid">--</div>
+              <div class="result-label">Midpoint</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="v-high">--</div>
+              <div class="result-label">High Range</div>
+            </div>
+          </div>
+          <div class="result-note" id="v-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Your Valuation Range</h2>
+      <p>Your estimated range reflects three scenarios: the low end assumes conservative market conditions and standard terms; the midpoint assumes you negotiate effectively and hit your growth targets; the high end assumes exceptional fundamentals, strong demand from VCs, and market tailwinds. The ranges widen at earlier stages because early startups have more valuation uncertainty.</p>
+
+      <h2>ARR Multiples by Funding Stage</h2>
+      <p>Investors pay different revenue multiples at different stages because early startups are riskier and have lower cash flow visibility. More mature companies with proven unit economics and profitability paths justify higher multiples. Here's what the market is paying in 2024-2026:</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">10x - 40x ARR</div>
+          <div class="note">Team &amp; vision driven</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">15x - 60x ARR</div>
+          <div class="note">Growth trajectory matters</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A</div>
+          <div class="target">10x - 40x ARR</div>
+          <div class="note">Growth + retention weighted</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B</div>
+          <div class="target">8x - 30x ARR</div>
+          <div class="note">Profitability path matters</div>
+        </div>
+      </div>
+
+      <h2>How Growth Rate Adjusts Your Multiple</h2>
+      <p>Growth rate is the most important valuation lever after ARR itself. Founders with exceptional growth (200%+ YoY) qualify for a 1.15-1.3x premium on the baseline multiple. Founders with weak growth (below 50% YoY) get a significant discount. This reflects investor behavior: they'll pay premium multiples to own a piece of a fast-growing business, but conservative multiples for slow growers.</p>
+
+      <h3>Growth Rate Adjustments</h3>
+      <ul style="color: var(--dim); font-size: 0.95rem; line-height: 1.6;">
+        <li><strong>300%+ YoY:</strong> 1.3x multiplier (exceptional, rare)</li>
+        <li><strong>200-300% YoY:</strong> 1.15x multiplier (excellent growth signal)</li>
+        <li><strong>100-200% YoY:</strong> 1.0x multiplier (baseline, expected for early stage)</li>
+        <li><strong>50-100% YoY:</strong> 0.8x multiplier (good but not exceptional)</li>
+        <li><strong>Below 50% YoY:</strong> 0.6x multiplier (slow growth, lower valuation)</li>
+      </ul>
+
+      <h2>How Gross Margin Adjusts Your Multiple</h2>
+      <p>Gross margin signals unit economics efficiency and long-term profitability potential. Startups with 70%+ gross margins get a 1.1x multiple premium because they signal better path to profitability. Startups with weak margins (below 50%) get a 0.85x discount because they'll burn more cash to scale and have higher path-to-profitability risk.</p>
+
+      <h2>Common Valuation Mistakes</h2>
+
+      <h3>Anchoring Too High Early</h3>
+      <p>Founders often start negotiations with a "target" valuation that's disconnected from market benchmarks. Asking for a 100x multiple when 20x is the market rate doesn't work—it signals misunderstanding of the market. Better to start with realistic benchmarks and negotiate up with fundamentals.</p>
+
+      <h3>Confusing Valuation with Ownership</h3>
+      <p>A $10M valuation doesn't matter if the investor is taking 40% of the company. The real metric is ownership percentage and fully-diluted equity. Focus negotiations on the latter, not the valuation headline.</p>
+
+      <h3>Ignoring Dilution in Your Valuation Estimate</h3>
+      <p>If you're raising at a $10M pre-money valuation and you currently own 80%, expect your ownership to dilute further. Your valuation estimate should inform negotiation, but it shouldn't drive your equity strategy—that's a separate calculation.</p>
+
+      <h3>Using Revenue Instead of ARR</h3>
+      <p>Investors value recurring revenue, not one-time revenue. If you have $1M in ARR but $5M in one-time license sales, use the $1M figure. This is a critical distinction that affects your valuation by 3-5x or more.</p>
+
+      <h3>Comparing Yourself to Non-Comparable Startups</h3>
+      <p>Your SaaS business at 25% MoM growth shouldn't be valued like your marketplace peer at 5% growth. Compare on the same dimensions: stage, growth rate, and gross margin. Your investors will.</p>
+
+      <h2>When to Use This Estimate</h2>
+      <p>Use this estimate as a starting point for conversations with investors, advisors, or co-founders. It gives you a range grounded in real market data. But your final valuation will depend on negotiating power (how competitive the round is), stage-specific factors, and market sentiment at the time of your raise. In hot markets, you might command 1.5-2x these multiples. In slow markets, expect 0.7-0.9x discounts.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do you value a startup with no revenue?</button>
+        <div class="faq-a">Pre-revenue startups are valued on team, market opportunity, and product-market fit signals, not ARR multiples. Pre-seed investors typically invest $50K-$500K at valuations of $1M-$10M based entirely on the team's ability to execute and the market size. This calculator won't work for pre-revenue startups—focus instead on comparable rounds and what similar-stage companies have raised.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What ARR multiple should I expect?</button>
+        <div class="faq-a">Revenue multiples vary by stage: Pre-Seed ranges 10-40x ARR, Seed ranges 15-60x, Series A ranges 10-40x, Series B ranges 8-30x. Your growth rate and gross margin adjust these baselines significantly—high-growth, high-margin startups get premium multiples; slow-growth, low-margin startups get discounts. Use this calculator to adjust for your specific metrics.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How does growth rate affect valuation?</button>
+        <div class="faq-a">Growth rate is a primary valuation driver. Startups growing 300%+ YoY get a 1.3x multiple premium. Startups at 100-200% growth get baseline multiples. Startups below 50% growth get a 0.6x discount. This reflects investor willingness to pay premium prices for high-growth businesses. A 150% growth rate might be worth 2x what 50% growth is worth, all else equal.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a pre-money vs post-money valuation?</button>
+        <div class="faq-a">Pre-money valuation is what your company is worth before new investment. Post-money valuation = pre-money + investment amount. Example: if you raise $2M at a $8M pre-money valuation, the post-money is $10M and the investor owns 20% ($2M/$10M). This calculator gives you pre-money estimates, which is what you negotiate directly with investors.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors determine startup valuations?</button>
+        <div class="faq-a">Investors start with ARR multiples as a baseline, then adjust for growth rate, gross margin, market size, competitive positioning, team quality, and product-market fit signals. They also look at comparable rounds (what did similar companies raise at what valuation?) and current market sentiment. In competitive markets, valuations go up; in cold markets, they compress.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>Related Raise Ready Tools</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/10-dilution-simulator.html" class="related-card">
+          <h3>Dilution Simulator</h3>
+          <p>See how each funding round dilutes founder ownership with cap table modeling.</p>
+        </a>
+        <a href="/tools/raise-ready/01-funding-readiness-score.html" class="related-card">
+          <h3>Funding Readiness Score</h3>
+          <p>Evaluate your startup across 10 metrics investors assess.</p>
+        </a>
+        <a href="/tools/raise-ready/11-safe-vs-convertible-note.html" class="related-card">
+          <h3>SAFE vs Convertible Note</h3>
+          <p>Compare SAFEs and convertible notes side-by-side.</p>
+        </a>
+        <a href="/tools/raise-ready/14-exit-proceeds-estimator.html" class="related-card">
+          <h3>Exit Proceeds Estimator</h3>
+          <p>Model your equity payouts at exit given preferences and participation.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    function resetTool(toolId) {
+      var inputs = document.querySelectorAll('#' + toolId + ' input, #' + toolId + ' select');
+      inputs.forEach(function(el) {
+        if (el.type === 'number' || el.type === 'text') el.value = '';
+        if (el.tagName === 'SELECT') el.value = el.querySelector('option').value;
+      });
+      var results = document.getElementById(toolId.replace('', '') + '-results');
+      if (results) results.classList.remove('visible');
+    }
+
+    // Tool 9: Valuation
+    function calcValuation() {
+      const stage = document.getElementById('v-stage').value;
+      const arr = parseFloat(document.getElementById('v-arr').value) || 0;
+      const growth = parseFloat(document.getElementById('v-growth').value) || 0;
+      const margin = parseFloat(document.getElementById('v-margin').value) || 50;
+
+      const multiples = {
+        'pre-seed': { low: 10, mid: 20, high: 40, note: 'Pre-seed valuations are primarily team and vision driven. Revenue multiples matter less.' },
+        'seed':     { low: 15, mid: 30, high: 60, note: 'Seed valuations blend ARR multiples with growth trajectory and market size.' },
+        'series-a': { low: 10, mid: 20, high: 40, note: 'Series A multiples depend heavily on growth rate, retention, and capital efficiency.' },
+        'series-b': { low: 8, mid: 15, high: 30, note: 'Series B multiples compress. Investors weigh profitability path alongside growth.' }
+      };
+
+      const m = multiples[stage];
+      let growthAdj = 1;
+      if (growth > 300) growthAdj = 1.3;
+      else if (growth > 200) growthAdj = 1.15;
+      else if (growth > 100) growthAdj = 1;
+      else if (growth > 50) growthAdj = 0.8;
+      else growthAdj = 0.6;
+
+      let marginAdj = margin >= 70 ? 1.1 : margin >= 50 ? 1 : 0.85;
+
+      const base = Math.max(arr, stage === 'pre-seed' ? 500000 : 0);
+      const low = base * m.low * growthAdj * marginAdj / 10;
+      const mid = base * m.mid * growthAdj * marginAdj / 10;
+      const high = base * m.high * growthAdj * marginAdj / 10;
+
+      document.getElementById('v-low').textContent = fmt(low);
+      document.getElementById('v-mid').textContent = fmt(mid);
+      document.getElementById('v-high').textContent = fmt(high);
+      document.getElementById('v-note').textContent = m.note + ' These ranges are directional estimates based on 2024-2026 market data, not precise valuations.';
+      document.getElementById('v-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcValuation();
+    });
+  </script>
+</body>
+</html>

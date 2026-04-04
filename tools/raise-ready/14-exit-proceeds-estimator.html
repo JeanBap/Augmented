@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exit Proceeds Estimator - Free Startup Exit Payout Calculator | Raise Ready</title>
+  <meta name="description" content="Model your startup exit. See what founders, investors, and option holders take home after preferences, participation, and escrow. Free exit calculator.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/14-exit-proceeds-estimator.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Exit Proceeds Estimator | Raise Ready">
+  <meta property="og:description" content="Free startup exit calculator. Model exit outcomes and founder payout after preferences and participation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/14-exit-proceeds-estimator.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Exit Proceeds Estimator", "item": "https://www.raisereadybook.com/tools/raise-ready/14-exit-proceeds-estimator.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Exit Proceeds Estimator Calculator",
+    "description": "Free startup exit proceeds calculator to model founder and investor payouts",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/14-exit-proceeds-estimator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How are startup exit proceeds distributed?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Exit proceeds are distributed based on share class and liquidation preferences. Preferred shareholders (investors) get paid first according to their liquidation preference (1x, 1.5x, or 2x the amount they invested). Then common shareholders (founders and employees) receive remaining proceeds based on their ownership percentage. The type of preferred stock (participating vs. non-participating) determines if investors get their preference AND a pro-rata share."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a liquidation preference?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A liquidation preference specifies the minimum amount preferred shareholders must receive in an exit before common shareholders see anything. A 1x preference means investors get their investment back first. A 2x preference means they get 2x their investment before anyone else gets paid. This is how investors de-risk their bet."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is participating preferred stock?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Participating preferred stock allows investors to receive their liquidation preference AND also participate in the remaining proceeds as if they were common shareholders. This is a double-dip scenario. Participating capped preferred stock caps this benefit at 3x total returns. Full participating has no cap."}
+      },
+      {
+        "@type": "Question",
+        "name": "How much do founders make in an exit?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Founder payout depends on exit valuation, founder ownership percentage, and investor liquidation preferences. At a $50M exit where you own 35% and investors have 1x standard preferences, you'd make roughly 65-75% of proceeds (minus taxes and escrow). At a $20M exit, you might make 40-50%. The lower the exit valuation, the more investor preferences impact your take-home."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between 1x and 2x liquidation preference?",
+        "acceptedAnswer": {"@type": "Answer", "text": "1x liquidation preference means investors get their investment back first. A 2x preference means they get double their investment before common shareholders get anything. In a $50M exit after raising $10M, 1x means investors take the first $10M; 2x means they take the first $20M. The higher the preference multiple, the worse it is for founders in outcomes below 3x investor returns."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-bar {
+      width: 100%;
+      height: 20px;
+      background: rgba(200, 164, 90, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .result-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+
+    @media(max-width: 600px) {
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Exit Proceeds Estimator
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Exit Proceeds Estimator</h1>
+      <p>Model your startup exit outcome. See what founders, investors, and option holders actually take home after preferences, participation, and escrow.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>When you raise venture capital, the math of an exit gets complex. Your investors have liquidation preferences, participation rights, and anti-dilution protections. Your employees have option pools. There's escrow and holdbacks. The headline exit number tells you nothing about what you actually make.</p>
+      <p>The Exit Proceeds Estimator models your startup exit scenario realistically. You input your exit valuation, total capital raised, founder ownership, investor preferences, and participation terms. You get a clear breakdown of founder take-home, investor returns, and investor multiple. This helps you understand the real financial outcome of potential exits—not just the headline numbers.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Model Your Exit</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Exit Valuation ($)</label>
+            <input type="number" id="e-valuation" placeholder="e.g. 50000000" value="50000000">
+          </div>
+          <div class="tool-field">
+            <label>Total Raised ($)</label>
+            <input type="number" id="e-raised" placeholder="e.g. 8000000" value="8500000">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Founder Ownership (%)</label>
+            <input type="number" id="e-founder" placeholder="e.g. 35" step="0.1" value="35">
+          </div>
+          <div class="tool-field">
+            <label>Option Pool (%)</label>
+            <input type="number" id="e-options" placeholder="e.g. 10" step="0.1" value="10">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Liquidation Preference</label>
+            <select id="e-pref">
+              <option value="1">1x (standard)</option>
+              <option value="1.5">1.5x</option>
+              <option value="2">2x</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Participation</label>
+            <select id="e-participation">
+              <option value="none" selected>Non-participating</option>
+              <option value="capped">Participating (capped 3x)</option>
+              <option value="full">Full participating</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="calcExit()">Estimate Proceeds</button>
+
+        <div class="tool-results" id="e-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="e-fpay">--</div>
+              <div class="result-label">Founder Take-Home</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="e-ipay">--</div>
+              <div class="result-label">Investor Returns</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="e-multiple">--</div>
+              <div class="result-label">Investor Multiple</div>
+            </div>
+          </div>
+          <div class="result-note" id="e-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>How to Read Your Exit Results</h2>
+      <p>Your exit outcome depends on three variables: exit valuation, your ownership percentage, and your investors' preferences and participation rights. A 1x standard preference is founder-friendly. A 2x participating preference is investor-friendly and can dramatically reduce your take-home below the headline percentage.</p>
+
+      <h2>Exit Proceeds Benchmarks by Stage</h2>
+      <p>These benchmarks show typical founder take-home percentages by exit size and funding stage. Use these to understand if your exit scenario is founder-friendly or investor-friendly.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Seed Exit</div>
+          <div class="target">$5-20M</div>
+          <div class="note">Founder take-home: 40-60%</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A Exit</div>
+          <div class="target">$20-100M</div>
+          <div class="note">Founder take-home: 25-45%</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B+ Exit</div>
+          <div class="target">$100M+</div>
+          <div class="note">Founder take-home: 15-35%</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Investor Multiple</div>
+          <div class="target">3-5x Seed</div>
+          <div class="note">Good seed exit outcome</div>
+        </div>
+      </div>
+
+      <h2>Understanding Liquidation Preferences</h2>
+      <h3>1x Standard (Founder-Friendly)</h3>
+      <p>Investors get their investment back first, then everyone shares remaining proceeds pro-rata. This is the most founder-friendly structure. If you raise $10M and exit at $50M, investors get $10M, and the remaining $40M is split based on ownership.</p>
+
+      <h3>2x Preference (Investor-Friendly)</h3>
+      <p>Investors get double their investment before anyone else. If they invested $10M, they get $20M before common shareholders see a dollar. In a $20M exit, this eliminates founder upside entirely. Always negotiate the lowest multiple possible.</p>
+
+      <h3>Participating vs. Non-Participating</h3>
+      <p>With non-participating preferred, investors choose the better of: (a) their liquidation preference, or (b) pro-rata ownership. With participating preferred, they get both—they get their preference AND their pro-rata share of remaining proceeds. This is a double-dip that significantly reduces founder upside. Capped participation limits this benefit to 3x total returns.</p>
+
+      <h2>Common Exit Scenarios</h2>
+      <h3>The Good Outcome ($100M+ Exit, 1x Preference)</h3>
+      <p>You raised $20M at a strong valuation. Exit is $100M with 1x preferences and non-participating terms. Investors get $20M, founders/employees split remaining $80M. Founder take-home is likely 50-70% of total.</p>
+
+      <h3>The Mediocre Outcome ($30M Exit, 2x Preference)</h3>
+      <p>You raised $10M and exit at $30M. With 2x preference, investors get $20M. Founders split remaining $10M. Even though it's a 3x gross multiple, founder take-home is often 20-30% of proceeds.</p>
+
+      <h3>The Underwater Scenario ($15M Exit, 2x Preference)</h3>
+      <p>You raised $10M and exit at $15M. With 2x preference, investors want $20M, but the company is only worth $15M total. Common shareholders (founders) get nothing. This is why participation and preference multiples matter—they protect investors in down scenarios but can eliminate founder upside.</p>
+
+      <h2>Tips for Negotiating Exit-Friendly Terms</h2>
+      <ul>
+        <li><strong>Push for 1x liquidation preference:</strong> This is the market standard. 1.5x or 2x should require significant founder concessions elsewhere.</li>
+        <li><strong>Avoid participating preferred:</strong> If you must accept it, cap it at 3x. Full participation is devastating in down scenarios.</li>
+        <li><strong>Understand anti-dilution:</strong> Broad-based weighted average anti-dilution is better than narrow-based. This affects future rounds but impacts your equity.</li>
+        <li><strong>Retain founder-friendly control:</strong> Board representation and information rights give you oversight of exit decisions. Make sure you have a voice.</li>
+        <li><strong>Model your cap table forward:</strong> Run scenarios on future dilution. A 50% stake today might be 20% after another round. Exit math compounds across funding stages.</li>
+      </ul>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How are startup exit proceeds distributed?</button>
+        <div class="faq-a">Exit proceeds are distributed according to the company's cap table and term sheet agreements. Preferred shareholders (investors) get paid according to their liquidation preference. Common shareholders (founders and employees) get whatever remains. The type of preferred stock (participating vs. non-participating) determines if investors get their preference AND a pro-rata share of remaining proceeds, or just the better of the two.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a liquidation preference?</button>
+        <div class="faq-a">A liquidation preference is an investor protection that guarantees they get paid first in an exit before common shareholders. A 1x preference means they get their investment amount first. A 2x preference means they get double their investment first. Non-participating preferred stock means they choose the better outcome: their preference OR their pro-rata share. Participating preferred stock means they get BOTH.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is participating preferred stock?</button>
+        <div class="faq-a">Participating preferred allows investors to receive their liquidation preference AND also participate in remaining proceeds as if they were common shareholders. This is a double-dip scenario. In a $50M exit where investors invested $10M with 1x participating, they get $10M preference plus their pro-rata share of the remaining $40M. Capped participation limits this total benefit (usually to 3x returns). Full participation has no cap.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How much do founders make in an exit?</button>
+        <div class="faq-a">Founder take-home depends on exit valuation, founder ownership percentage, and investor liquidation preferences and participation. In a $50M exit where you own 35% with 1x standard preferences, you might make 60-70% of proceeds. In the same exit with 2x participating, you might make 20-30%. The gap is massive, which is why preference and participation terms matter as much as valuation.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between 1x and 2x liquidation preference?</button>
+        <div class="faq-a">A 1x preference means investors get their investment back before anyone else. A 2x preference means they get double their investment. In a $50M exit after raising $10M: with 1x, investors take the first $10M and common shareholders split the remaining $40M. With 2x, investors take the first $20M and common shareholders split the remaining $30M. Higher multiples protect investors in smaller exits but can eliminate founder upside entirely in mediocre outcomes.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/10-dilution-simulator.html" class="related-card">
+          <h3>Dilution Simulator</h3>
+          <p>Model your ownership dilution across multiple funding rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/12-multi-round-dilution-tracker.html" class="related-card">
+          <h3>Multi-Round Dilution Tracker</h3>
+          <p>Track cumulative dilution and ownership across all funding stages.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/11-safe-vs-convertible-note.html" class="related-card">
+          <h3>SAFE vs Convertible Note</h3>
+          <p>Compare SAFE and convertible note outcomes at conversion.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    // Tool 14: Exit Proceeds
+    function calcExit() {
+      const exitVal = parseFloat(document.getElementById('e-valuation').value) || 0;
+      const raised = parseFloat(document.getElementById('e-raised').value) || 0;
+      const founderPct = (parseFloat(document.getElementById('e-founder').value) || 0) / 100;
+      const optionPct = (parseFloat(document.getElementById('e-options').value) || 0) / 100;
+      const pref = parseFloat(document.getElementById('e-pref').value) || 1;
+      const participation = document.getElementById('e-participation').value;
+
+      const investorPct = 1 - founderPct - optionPct;
+      const prefAmount = raised * pref;
+      let investorTake, founderTake;
+
+      if (participation === 'none') {
+        const investorAsCommon = exitVal * investorPct;
+        investorTake = investorAsCommon > prefAmount ? investorAsCommon : Math.min(prefAmount, exitVal);
+      } else if (participation === 'capped') {
+        const cappedReturn = raised * 3;
+        investorTake = Math.min(cappedReturn, prefAmount + (exitVal - prefAmount) * investorPct);
+        investorTake = Math.max(investorTake, Math.min(prefAmount, exitVal));
+      } else {
+        investorTake = Math.min(exitVal, prefAmount + Math.max(0, exitVal - prefAmount) * investorPct);
+      }
+
+      founderTake = Math.max(0, (exitVal - investorTake) * (founderPct / (founderPct + optionPct)));
+      const multiple = raised > 0 ? (investorTake / raised) : 0;
+
+      document.getElementById('e-fpay').textContent = fmt(founderTake);
+      document.getElementById('e-ipay').textContent = fmt(investorTake);
+      document.getElementById('e-multiple').textContent = multiple.toFixed(1) + 'x';
+
+      let note = 'At a ' + fmt(exitVal) + ' exit, founders take home ' + fmt(founderTake) + ' (' + (founderTake/exitVal*100).toFixed(1) + '% of proceeds).';
+      if (pref > 1) note += ' The ' + pref + 'x liquidation preference means investors get ' + fmt(prefAmount) + ' before common shareholders see anything.';
+      if (participation === 'full') note += ' Full participation means investors double-dip: they get their preference AND their pro-rata share of remaining proceeds.';
+      if (multiple < 1) note += ' Warning: investors lose money at this exit price.';
+      document.getElementById('e-note').textContent = note;
+      document.getElementById('e-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcExit();
+    });
+  </script>
+</body>
+</html>

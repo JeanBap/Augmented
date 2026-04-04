@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pitch Deck Scorecard - Free Investor Deck Evaluation Tool | Raise Ready</title>
+  <meta name="description" content="Score your pitch deck across the 10 signals investors evaluate in 30 seconds. Identify weak slides before they silently kill your raise. Free scorecard.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/13-pitch-deck-scorecard.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Pitch Deck Scorecard | Raise Ready">
+  <meta property="og:description" content="Free pitch deck evaluation tool. Score across 10 signals investors evaluate in 30 seconds.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/13-pitch-deck-scorecard.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Pitch Deck Scorecard", "item": "https://www.raisereadybook.com/tools/raise-ready/13-pitch-deck-scorecard.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pitch Deck Scorecard Calculator",
+    "description": "Free pitch deck evaluation tool that scores your deck across 10 signals investors evaluate",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/13-pitch-deck-scorecard.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes a good pitch deck?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A good pitch deck clearly articulates the problem, presents a unique solution, proves market size, demonstrates traction, explains unit economics, shows team strength, and defines a competitive advantage. Design and narrative flow tie these elements together into a compelling story that moves investors to action."}
+      },
+      {
+        "@type": "Question",
+        "name": "How many slides should a pitch deck have?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Most pitch decks are 10-15 slides. The core story typically takes 10 slides: problem, solution, market, traction, business model, team, competitive moat, financials, the ask, and closing. Additional slides can cover product roadmap, use of funds, or strategic partnerships."}
+      },
+      {
+        "@type": "Question",
+        "name": "What do investors look for in the first 30 seconds?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors make an initial judgment in 30 seconds based on problem clarity, solution uniqueness, and whether they immediately understand what you do. If these three elements don't land clearly in the first 3 slides, you've already lost them. The rest of the deck builds the case for why your solution matters."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I present traction without revenue?",
+        "acceptedAnswer": {"@type": "Answer", "text": "If you don't have revenue, show product-market fit signals through user growth, engagement metrics, retention rates, waitlist demand, press mentions, partnership commitments, or customer development interviews. Investors understand pre-revenue startups; they want evidence that real customers want what you're building."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most important slide in a pitch deck?",
+        "acceptedAnswer": {"@type": "Answer", "text": "The problem slide is the most important. If investors don't believe there's a real, urgent problem worth solving, nothing else matters. Spend time making the problem visceral and personal. Use customer quotes, market size data, or competitive failures to prove the problem is significant."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-bar {
+      width: 100%;
+      height: 20px;
+      background: rgba(200, 164, 90, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .result-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Pitch Deck Scorecard
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Pitch Deck Scorecard</h1>
+      <p>Score your pitch deck across the 10 signals investors evaluate in 30 seconds. Identify weak slides before they silently kill your raise.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Your pitch deck is the first impression you make on investors. In the first 30 seconds, they'll evaluate whether your problem is real, your solution is unique, and whether they want to hear more. Most pitch decks fail silently because founders don't know which slides create doubt in investors' minds.</p>
+      <p>The Pitch Deck Scorecard evaluates your deck across the 10 core signals investors look for: problem clarity, solution uniqueness, market size credibility, traction evidence, business model clarity, team credibility, competitive moat, financial model quality, ask clarity, and design/narrative flow. You get a clear score out of 50, identify weak signals, and understand exactly which slides need rework before you pitch.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Score Your Deck</h2>
+        <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 1rem 0 0.5rem;">Rate each element 1 (weak) to 5 (strong)</p>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Problem clarity (1-5)</label>
+            <input type="number" id="pd-problem" min="1" max="5" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Solution uniqueness (1-5)</label>
+            <input type="number" id="pd-solution" min="1" max="5" value="3">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Market size credibility (1-5)</label>
+            <input type="number" id="pd-market" min="1" max="5" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Traction evidence (1-5)</label>
+            <input type="number" id="pd-traction" min="1" max="5" value="3">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Business model clarity (1-5)</label>
+            <input type="number" id="pd-bizmodel" min="1" max="5" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Team credibility (1-5)</label>
+            <input type="number" id="pd-team" min="1" max="5" value="5">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Competitive moat (1-5)</label>
+            <input type="number" id="pd-moat" min="1" max="5" value="3">
+          </div>
+          <div class="tool-field">
+            <label>Financial model quality (1-5)</label>
+            <input type="number" id="pd-financials" min="1" max="5" value="4">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Ask clarity (amount, use, timeline) (1-5)</label>
+            <input type="number" id="pd-ask" min="1" max="5" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Design and narrative flow (1-5)</label>
+            <input type="number" id="pd-design" min="1" max="5" value="3">
+          </div>
+        </div>
+
+        <button onclick="calcDeckScore()">Score My Deck</button>
+
+        <div class="tool-results" id="pd-results">
+          <div class="result-bar"><div class="result-bar-fill" id="pd-bar"></div></div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="pd-score">--</div>
+              <div class="result-label">Deck Score</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pd-verdict">--</div>
+              <div class="result-label">Verdict</div>
+            </div>
+          </div>
+          <div class="result-note" id="pd-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>How to Evaluate Your Pitch Deck</h2>
+      <p>This scorecard evaluates your deck against the 10 signals investors use to screen pitches in the first 30 seconds. Score each element honestly—this isn't about feeling good about your deck, it's about identifying real gaps before you pitch. A score of 40-50 means you're ready. A score below 30 means you have work to do before outreach.</p>
+
+      <h2>Pitch Deck Scoring Benchmarks</h2>
+      <p>Use these benchmarks to understand what your score means and where you stand in the fundraising journey.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Strong</div>
+          <div class="target">40-50/50</div>
+          <div class="note">Ready for top-tier investors</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Decent</div>
+          <div class="target">30-39/50</div>
+          <div class="note">Fundable with right narrative</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Needs Work</div>
+          <div class="target">20-29/50</div>
+          <div class="note">Fix multiple dimensions</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Major Overhaul</div>
+          <div class="target">Below 20/50</div>
+          <div class="note">Rework before outreach</div>
+        </div>
+      </div>
+
+      <h2>Common Mistakes in Pitch Decks</h2>
+      <h3>1. Leading with Solution Instead of Problem</h3>
+      <p>Your first slides should make investors feel the pain your customers experience. If they don't believe the problem is real and urgent, your solution won't matter. Start with a problem that moves people emotionally, then explain why existing solutions fail.</p>
+
+      <h3>2. TAM/SAM/SOM with No Bottoms-Up Analysis</h3>
+      <p>Investors distrust top-down market sizing. "The market is $50B" means nothing. Instead, show customer acquisition unit economics: "Our SAM is 10,000 customers at $5K per year = $50M ARR. We acquired our first 100 customers at $500 CAC with 3-year payback." Bottoms-up numbers are credible.</p>
+
+      <h3>3. Traction Slide Without Growth Rate Context</h3>
+      <p>Don't just show absolute numbers. "We have 5,000 customers" is weak. "We grew from 1,000 to 5,000 customers in 3 months (40% MoM growth)" tells the story. Growth rate matters more than raw numbers because it proves demand acceleration.</p>
+
+      <h3>4. Financial Projections Without Unit Economics Backing</h3>
+      <p>Ambitious revenue projections are worthless without unit economics. Show CAC, LTV, payback period, and gross margin assumptions. Investors care less about the headline revenue number and more about whether your path to profitability is realistic.</p>
+
+      <h2>Slide-by-Slide Guidance</h2>
+      <h3>Slides 1-3: Hook</h3>
+      <p>Problem, problem evidence, why now. You have 90 seconds. If investors don't feel the pain, you've lost them.</p>
+
+      <h3>Slides 4-6: Solution & Why You Win</h3>
+      <p>Your solution, why it's unique, and your competitive advantage. Be specific—"We use AI" isn't a moat. "Our proprietary algorithm achieves 95% accuracy vs. 70% for competitors" is.</p>
+
+      <h3>Slides 7-10: Proof & Path</h3>
+      <p>Traction, team, business model, and financials. These slides convert interest into conviction. Show proof that customers want this and that your team can execute.</p>
+
+      <h3>Slides 11-12: Ask & Closing</h3>
+      <p>Be crystal clear: how much you're raising, what you'll do with it, and when you'll hit major milestones. Close with a memorable statement that reinforces why your mission matters.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What makes a good pitch deck?</button>
+        <div class="faq-a">A good pitch deck tells a clear story: here's a real problem, here's why our solution uniquely solves it, here's proof customers want it, here's how we make money, here's our team, here's our competitive edge, and here's what we're raising. Design matters—busy slides create doubt. Every slide should pass the "why does this slide exist" test.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How many slides should a pitch deck have?</button>
+        <div class="faq-a">Most effective pitch decks are 10-15 slides for a VC pitch. You need problem, solution, market, traction, business model, team, competitive moat, financials, ask, and closing—that's 10. Additional slides might cover product roadmap, partnerships, or go-to-market strategy. More than 15 slides usually means you're over-explaining.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What do investors look for in the first 30 seconds?</button>
+        <div class="faq-a">Investors make an intuitive judgment in 30 seconds: Is there a real, urgent problem? Is this solution meaningfully different from alternatives? Does this team have a shot at winning? If the answer to all three is yes, they keep listening. If any is no, they're already mentally moving to the next pitch.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I present traction without revenue?</button>
+        <div class="faq-a">Product-market fit signals matter more than revenue for pre-revenue startups. Show user growth (especially weekly active growth), engagement metrics (retention, session length), waitlist demand, NPS scores, customer development interviews showing strong product-market fit, press coverage, or strategic partnership commitments. These prove real demand even without revenue yet.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is the most important slide in a pitch deck?</button>
+        <div class="faq-a">The problem slide. If investors don't believe there's a real, painful, urgent problem worth solving, nothing else matters. Spend time making the problem visceral. Use customer quotes, competitive failures, market size evidence, or day-in-the-life storytelling. A compelling problem slide is the foundation for everything else.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/01-funding-readiness-score.html" class="related-card">
+          <h3>Funding Readiness Score</h3>
+          <p>Score your startup across 10 metrics investors evaluate.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/03-unit-economics-calculator.html" class="related-card">
+          <h3>Unit Economics Calculator</h3>
+          <p>Calculate CAC, LTV, payback period, and LTV:CAC ratio.</p>
+        </a>
+        <a href="/tools/raise-ready/14-exit-proceeds-estimator.html" class="related-card">
+          <h3>Exit Proceeds Estimator</h3>
+          <p>Model startup exit outcomes and founder take-home.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    // Tool 13: Pitch Deck Scorecard
+    function calcDeckScore() {
+      const fields = ['pd-problem','pd-solution','pd-market','pd-traction','pd-bizmodel','pd-team','pd-moat','pd-financials','pd-ask','pd-design'];
+      const labels = ['Problem','Solution','Market','Traction','Business Model','Team','Moat','Financials','Ask','Design'];
+      let total = 0;
+      let weak = [];
+      fields.forEach((f, i) => {
+        const v = Math.min(5, Math.max(1, parseInt(document.getElementById(f).value) || 3));
+        total += v;
+        if (v <= 2) weak.push(labels[i] + ' (scored ' + v + '/5)');
+      });
+
+      const scorePct = Math.round((total / 50) * 100);
+      let verdict, barColor;
+      if (scorePct >= 80) { verdict = 'Strong'; barColor = '#2ecc71'; }
+      else if (scorePct >= 60) { verdict = 'Decent'; barColor = '#f39c12'; }
+      else { verdict = 'Needs Work'; barColor = '#e74c3c'; }
+
+      document.getElementById('pd-score').textContent = total + '/50';
+      document.getElementById('pd-verdict').textContent = verdict;
+      document.getElementById('pd-bar').style.width = scorePct + '%';
+      document.getElementById('pd-bar').style.background = barColor;
+
+      let noteHTML = '';
+      if (weak.length > 0) {
+        noteHTML = '<strong>Weak signals investors will flag:</strong><br>' + weak.map(w => '&bull; ' + w).join('<br>');
+        noteHTML += '<br><br>Investors make a gut decision in 30 seconds. These weak slides create silent no\'s before you get a chance to explain.';
+      } else {
+        noteHTML = 'Your deck scores well across all dimensions. Focus on narrative flow and making the first 3 slides impossible to ignore.';
+      }
+      document.getElementById('pd-note').innerHTML = noteHTML;
+      document.getElementById('pd-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcDeckScore();
+    });
+  </script>
+</body>
+</html>

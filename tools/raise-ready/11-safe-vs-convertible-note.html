@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SAFE vs Convertible Note Calculator - Free Dilution Comparison Tool | Raise Ready</title>
+  <meta name="description" content="Compare pre-money SAFE, post-money SAFE, and convertible notes side by side. See actual dilution, effective price per share, and founder ownership. Free.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/11-safe-vs-convertible-note.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="SAFE vs Convertible Note Calculator | Raise Ready">
+  <meta property="og:description" content="Free tool to compare SAFEs and convertible notes. See dilution impact on founder ownership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/11-safe-vs-convertible-note.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "SAFE vs Convertible Note", "item": "https://www.raisereadybook.com/tools/raise-ready/11-safe-vs-convertible-note.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SAFE vs Convertible Note Calculator",
+    "description": "Free tool to compare SAFEs and convertible notes and their dilution impact",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/11-safe-vs-convertible-note.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between a SAFE and convertible note?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A SAFE is a simpler instrument without interest or maturity date, converting to equity at the next funding round. A convertible note is debt that also converts to equity, with an interest rate (typically 2-8%) and maturity date (usually 2 years)."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a post-money SAFE?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A post-money SAFE gives the investor a fixed ownership percentage regardless of how many other SAFEs you issue. This is the most common SAFE structure since 2020, favored by Y Combinator and modern seed investors."}
+      },
+      {
+        "@type": "Question",
+        "name": "How does a valuation cap work?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A valuation cap sets a maximum price per share at conversion. If your next round values the company at more than the cap, the SAFE investor converts at the cap price, getting more shares and lower effective cost."}
+      },
+      {
+        "@type": "Question",
+        "name": "Should I use a discount or cap?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Use both. Most SAFEs and notes include both a valuation cap and discount rate. The investor gets whichever is better for them: they use the lower price per share resulting from cap or discount."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a reasonable valuation cap for a seed round?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Typical valuation caps: $3-6M for pre-seed, $6-12M for seed, $15-25M for post-seed. The cap should reflect your stage and traction. Higher caps favor founders; lower caps favor investors."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Tool-specific styles */
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; SAFE vs Convertible Note
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>SAFE vs Convertible Note Calculator</h1>
+      <p>Compare pre-money SAFE, post-money SAFE, and convertible notes side by side. See actual dilution, effective price per share, and founder ownership after conversion.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Most founders negotiate SAFEs and convertible notes without fully understanding how dilution differs between instrument types. A post-money SAFE dilutes differently than a pre-money SAFE, which dilutes differently than a convertible note. Miss the nuance and you could leave 5-10% on the table in founder ownership.</p>
+      <p>This calculator shows the exact dilution impact of each instrument type. Model how post-money SAFEs give investors fixed ownership, how pre-money SAFEs stack and compound dilution, and why convertible notes sometimes favor founders despite carrying interest. Get the real numbers before you sign.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Compare Instruments</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Instrument Type</label>
+            <select id="s-type">
+              <option value="pre-safe">Pre-Money SAFE</option>
+              <option value="post-safe" selected>Post-Money SAFE</option>
+              <option value="note">Convertible Note</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label>Investment Amount ($)</label>
+            <input type="number" id="s-amount" placeholder="e.g. 500000" value="500000">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Valuation Cap ($)</label>
+            <input type="number" id="s-cap" placeholder="e.g. 5000000" value="8000000">
+          </div>
+          <div class="tool-field">
+            <label>Discount Rate (%)</label>
+            <input type="number" id="s-discount" placeholder="e.g. 20" step="1" value="20">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Next Round Pre-Money Valuation ($)</label>
+            <input type="number" id="s-nextround" placeholder="e.g. 10000000" value="12000000">
+          </div>
+          <div class="tool-field">
+            <label>Next Round Investment ($)</label>
+            <input type="number" id="s-nextinv" placeholder="e.g. 2000000" value="3000000">
+          </div>
+        </div>
+
+        <button onclick="calcSafe()">Compare Dilution</button>
+        <button style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('safe')">Reset</button>
+
+        <div class="tool-results" id="s-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="s-safepct">--</div>
+              <div class="result-label">SAFE Investor %</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="s-founderpct">--</div>
+              <div class="result-label">Founder % After</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="s-priceshare">--</div>
+              <div class="result-label">Effective Price/Share</div>
+            </div>
+          </div>
+          <div class="result-note" id="s-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding SAFE vs Convertible Note Dilution</h2>
+      <p>The choice between a SAFE and convertible note shapes your cap table more than most founders realize. Each instrument has different mechanics and implications for founder ownership after conversion.</p>
+
+      <h2>Post-Money SAFE: The Modern Default</h2>
+      <p>Post-money SAFEs lock in the investor's ownership percentage upfront. If you issue a $500K post-money SAFE on an $8M valuation cap, the investor gets 5.9% ownership when the SAFE converts, regardless of how many other SAFEs you issue afterward. This protects later SAFE holders from pro-rata dilution. It's the Y Combinator standard and the most common structure since 2020.</p>
+
+      <h3>Advantage for Founders</h3>
+      <ul>
+        <li>If you raise multiple post-money SAFEs, earlier investors don't get diluted by later ones</li>
+        <li>Simpler cap table math—you know the ownership percentages upfront</li>
+        <li>Easier to explain to future investors</li>
+      </ul>
+
+      <h3>Disadvantage for Founders</h3>
+      <ul>
+        <li>If you issue many post-money SAFEs, they all convert at once and dilute founders together</li>
+        <li>Founders see cumulative dilution at the next priced round, not incremental across multiple SAFEs</li>
+      </ul>
+
+      <h2>Pre-Money SAFE: Founder-Friendly But Stacks Dangerously</h2>
+      <p>Pre-money SAFEs dilute all existing shareholders proportionally when they convert. This includes earlier SAFE holders. Issuing three pre-money SAFEs means each one dilutes the others, compounding ownership loss. Pre-money SAFEs are less common today because the math is complex and harder to explain to future investors.</p>
+
+      <h3>Advantage for Founders</h3>
+      <ul>
+        <li>Each SAFE converts at the lower of the cap or discount price, giving early investors less ownership</li>
+        <li>The first SAFE dilutes proportionally, not absolutely, protecting founders slightly</li>
+      </ul>
+
+      <h3>Disadvantage for Founders</h3>
+      <ul>
+        <li>Multiple pre-money SAFEs compound dilution—each SAFE reduces everyone's ownership</li>
+        <li>Hard to explain and calculate accurately</li>
+        <li>Investors often dislike pre-money because the math is unfamiliar</li>
+      </ul>
+
+      <h2>Convertible Note: Debt with Interest and Maturity</h2>
+      <p>A convertible note is debt that converts to equity at the next funding round. Unlike SAFEs, notes carry an interest rate (typically 2-8%) and a maturity date (usually 2 years). If the maturity date passes without a qualified round, the note becomes actual debt you owe.</p>
+
+      <h3>Advantage for Founders</h3>
+      <ul>
+        <li>If your company doesn't raise another round, it's debt—not forced equity dilution</li>
+        <li>Maturity date creates urgency for the next round</li>
+        <li>Sometimes investors favor notes, especially in hot markets</li>
+      </ul>
+
+      <h3>Disadvantage for Founders</h3>
+      <ul>
+        <li>Interest accrues, inflating the conversion amount—$500K at 6% interest becomes $530K at maturity</li>
+        <li>Actual debt obligation if no qualified round occurs by maturity</li>
+        <li>More complex than a SAFE</li>
+      </ul>
+
+      <h2>Typical SAFE and Convertible Note Terms</h2>
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed Stage</div>
+          <div class="target">$3-6M Cap</div>
+          <div class="note">Valuation cap range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed Stage</div>
+          <div class="target">$6-12M Cap</div>
+          <div class="note">Valuation cap range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Post-Seed</div>
+          <div class="target">$15-25M Cap</div>
+          <div class="note">Valuation cap range</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Standard Discount</div>
+          <div class="target">15-25%</div>
+          <div class="note">20% is typical</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Note Interest</div>
+          <div class="target">2-8% APR</div>
+          <div class="note">Accrues to conversion</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Note Maturity</div>
+          <div class="target">2 Years</div>
+          <div class="note">Standard term</div>
+        </div>
+      </div>
+
+      <h2>How to Use This Calculator</h2>
+      <h3>Step 1: Select Your Instrument Type</h3>
+      <p>Choose pre-money SAFE, post-money SAFE, or convertible note. Most modern companies use post-money SAFEs.</p>
+
+      <h3>Step 2: Enter Your Investment Details</h3>
+      <p>Fill in the investment amount, valuation cap, and discount rate. These are negotiated terms that vary by stage and investor.</p>
+
+      <h3>Step 3: Model Your Next Round</h3>
+      <p>Enter the pre-money valuation and investment size for your next round. This is when the SAFE or note converts to equity. You can model conservative or aggressive scenarios.</p>
+
+      <h3>Step 4: Compare Results</h3>
+      <p>The calculator shows your investor's ownership percentage after conversion, your remaining founder ownership, and the effective price per share. Use this to compare different instrument offers or negotiate better terms.</p>
+
+      <h2>Key Metrics Explained</h2>
+      <h3>SAFE Investor %</h3>
+      <p>The percentage ownership the SAFE investor receives after conversion at the next funding round. This assumes the next round fully converts the SAFE. Higher percentages mean more dilution to founders.</p>
+
+      <h3>Founder % After</h3>
+      <p>Your remaining founder ownership after the SAFE/note converts and new investors take their shares in the next round. This is what you actually own post-dilution.</p>
+
+      <h3>Effective Price per Share</h3>
+      <p>The per-share price the SAFE investor effectively pays after considering the cap, discount, or conversion mechanics. Lower prices mean investors get more shares for the same dollar amount.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between a SAFE and convertible note?</button>
+        <div class="faq-a">A SAFE (Simple Agreement for Future Equity) is a straightforward instrument without interest or maturity date. It converts to equity at the next funding round. A convertible note is debt that also converts to equity, but it carries an interest rate (typically 2-8%) and a maturity date (usually 2 years). If you don't raise another round by maturity, the note becomes actual debt you owe.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a post-money SAFE?</button>
+        <div class="faq-a">A post-money SAFE gives the investor a fixed ownership percentage that doesn't change if you issue additional SAFEs. It's called "post-money" because the valuation cap is calculated on the post-money valuation (value after this investment). Post-money SAFEs are the modern default since 2020 because they're simpler to explain and protect earlier investors from later dilution.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How does a valuation cap work?</button>
+        <div class="faq-a">A valuation cap sets a maximum price per share at conversion. When your next round happens, if the per-share price is higher than the cap price, the SAFE investor converts at the cap price and gets more shares. If the per-share price is lower, they convert at the actual round price. The cap protects early investors from huge valuations between rounds while rewarding founders who raise at high valuations.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">Should I use a discount or cap?</button>
+        <div class="faq-a">Use both. Most SAFEs and convertible notes include both a valuation cap and a discount rate. The investor gets whichever is more favorable to them: they compare the per-share price from the cap with the per-share price from the discount, then use the lower one. This double protection benefits investors while still giving founders an incentive to raise at higher valuations.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a reasonable valuation cap for a seed round?</button>
+        <div class="faq-a">Typical valuation caps: $3-6M for pre-seed (almost no traction), $6-12M for seed (product-market fit, some traction), $15-25M for post-seed (established product, clear growth). The cap should reflect your stage, traction, and team strength. Higher caps favor founders because investors convert at higher prices. Lower caps favor investors because they get more ownership for the same capital.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/10-dilution-simulator.html" class="related-card">
+          <h3>Dilution Simulator</h3>
+          <p>Model founder dilution across multiple SAFEs and priced rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/12-multi-round-dilution-tracker.html" class="related-card">
+          <h3>Multi-Round Dilution Tracker</h3>
+          <p>Track cumulative dilution from Seed through Series B.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+        <a href="/tools/raise-ready/01-funding-readiness-score.html" class="related-card">
+          <h3>Funding Readiness Score</h3>
+          <p>Evaluate your startup across 10 investor metrics.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    function pct(n) { return n.toFixed(1) + '%'; }
+
+    // Tool 11: SAFE Calculator
+    function calcSafe() {
+      const type = document.getElementById('s-type').value;
+      const amount = parseFloat(document.getElementById('s-amount').value) || 0;
+      const cap = parseFloat(document.getElementById('s-cap').value) || 0;
+      const discount = (parseFloat(document.getElementById('s-discount').value) || 0) / 100;
+      const nextPre = parseFloat(document.getElementById('s-nextround').value) || 0;
+      const nextInv = parseFloat(document.getElementById('s-nextinv').value) || 0;
+
+      let safePct, founderPct;
+      const nextPost = nextPre + nextInv;
+      const nextRoundPPS = nextPre > 0 ? nextPre / 10000000 : 1;
+      const discountPPS = nextRoundPPS * (1 - discount);
+      const capPPS = cap > 0 ? cap / 10000000 : nextRoundPPS;
+      const effectivePPS = Math.min(discountPPS, capPPS);
+
+      if (type === 'post-safe') {
+        safePct = cap > 0 ? (amount / cap) * 100 : 0;
+        const nextInvPct = (nextInv / nextPost) * 100;
+        founderPct = 100 - safePct - nextInvPct;
+      } else if (type === 'pre-safe') {
+        const effectivePre = Math.min(cap, nextPre * (1 - discount));
+        safePct = (amount / (effectivePre + amount + nextInv)) * 100;
+        const nextInvPct = (nextInv / (effectivePre + amount + nextInv)) * 100;
+        founderPct = 100 - safePct - nextInvPct;
+      } else {
+        const effectiveVal = Math.min(cap, nextPre * (1 - discount));
+        safePct = (amount / (effectiveVal + nextInv)) * 100;
+        founderPct = 100 - safePct - (nextInv / (effectiveVal + nextInv)) * 100;
+      }
+
+      document.getElementById('s-safepct').textContent = safePct.toFixed(1) + '%';
+      document.getElementById('s-founderpct').textContent = Math.max(0, founderPct).toFixed(1) + '%';
+      document.getElementById('s-priceshare').textContent = '$' + effectivePPS.toFixed(4);
+
+      let note = '';
+      if (type === 'post-safe') {
+        note = 'Post-money SAFEs give investors a fixed ownership percentage (' + safePct.toFixed(1) + '%) regardless of how many SAFEs you issue. Additional SAFEs dilute founders, not earlier investors. This is the most common SAFE structure in 2024-2026.';
+      } else {
+        note = 'Pre-money SAFEs dilute all existing shareholders proportionally when they convert. Multiple pre-money SAFEs stack, meaning each additional SAFE dilutes earlier SAFE holders too.';
+      }
+      document.getElementById('s-note').textContent = note;
+      document.getElementById('s-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    function resetTool(toolId) {
+      if (toolId === 'safe') {
+        document.getElementById('s-type').value = 'post-safe';
+        document.getElementById('s-amount').value = '500000';
+        document.getElementById('s-cap').value = '8000000';
+        document.getElementById('s-discount').value = '20';
+        document.getElementById('s-nextround').value = '12000000';
+        document.getElementById('s-nextinv').value = '3000000';
+        document.getElementById('s-results').classList.remove('visible');
+      }
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcSafe();
+    });
+  </script>
+</body>
+</html>

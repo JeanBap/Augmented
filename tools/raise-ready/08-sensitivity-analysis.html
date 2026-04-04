@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sensitivity Analysis Tool - Free Startup Financial Stress Test | Raise Ready</title>
+  <meta name="description" content="Stress test your financial model with a revenue vs burn sensitivity matrix. See how changes in two variables affect runway and cash flow. Free tool.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/08-sensitivity-analysis.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Sensitivity Analysis Tool | Raise Ready">
+  <meta property="og:description" content="Free startup financial stress test. Model how revenue and burn changes affect runway in a sensitivity matrix.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/08-sensitivity-analysis.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Sensitivity Analysis", "item": "https://www.raisereadybook.com/tools/raise-ready/08-sensitivity-analysis.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sensitivity Analysis Tool",
+    "description": "Free startup financial stress test and sensitivity analysis calculator",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/08-sensitivity-analysis.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is sensitivity analysis for startups?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Sensitivity analysis shows how changes in key variables (like revenue and burn) affect your financial outcomes. It identifies which variables have the biggest impact on runway and cash flow, helping you focus on the metrics that matter most."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I stress test my financial model?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Stress testing means adjusting your assumptions downward to see what happens. Use a sensitivity matrix to test how your runway changes if revenue drops 20-30% or burn increases 20-30%. This reveals your breaking point and helps you plan contingencies."}
+      },
+      {
+        "@type": "Question",
+        "name": "What variables should I test in my model?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Start with revenue and burn rate—these have the largest impact on runway. Then test CAC (affects customer acquisition revenue), churn rate (affects retention and growth), and pricing (affects ARR per customer). The highest-impact variables are your key levers."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors use sensitivity analysis?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors use sensitivity matrices to identify which assumptions are most critical to your business. If your model only works if growth is 20%, that's a red flag. If runway survives 30% revenue drop, that's confidence. Investors care about your model robustness."}
+      },
+      {
+        "@type": "Question",
+        "name": "What does a revenue vs burn matrix show?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A revenue vs burn matrix shows runway across combinations of revenue change (rows) and burn change (columns). Green cells show comfortable runway (18+ months). Yellow is caution (12-17 months). Red is danger (<12 months). 'Inf' means revenue exceeds burn and you're profitable."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    .card .value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+    .result-table th {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .result-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+    .result-table tr:last-child td {
+      border-bottom: none;
+    }
+    .result-table .text-right {
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .tool-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1rem 2rem 0;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    @media(max-width: 600px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .seo-intro p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink);
+    }
+
+    .seo-content p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .seo-content ul {
+      margin: 0 0 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .seo-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .benchmark-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-top: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--mid);
+      margin-top: 0.25rem;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.03);
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      content: '-';
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--dim);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+      padding: 0 1.25rem 1rem;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .upsell-card {
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.06);
+    }
+
+    .upsell-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    .tool-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tool-field {
+      margin-bottom: 1rem;
+    }
+
+    .result-bar {
+      width: 100%;
+      height: 20px;
+      background: rgba(200, 164, 90, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .result-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Sensitivity Analysis
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Sensitivity Analysis Tool</h1>
+      <p>Stress test your financial model with a revenue vs burn sensitivity matrix. See how changes in two variables affect runway and cash flow. Free tool.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Most founders build a financial model and hope the assumptions hold. But the best models include sensitivity analysis: a way to test what happens when assumptions change. What if revenue is 30% lower than expected? What if burn runs 20% higher? These aren't pessimistic scenarios—they're planning tools.</p>
+      <p>A sensitivity matrix shows you how runway changes across combinations of two key variables: revenue and burn. It identifies which variables matter most, reveals your breaking points, and shows investors you understand the levers that drive your business. Use this tool to stress test your model in 60 seconds.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Stress Test Your Model</h2>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Base Monthly Revenue ($)</label>
+            <input type="number" id="sens-rev" placeholder="e.g. 120000" value="120000">
+          </div>
+          <div class="tool-field">
+            <label>Base Monthly Burn ($)</label>
+            <input type="number" id="sens-burn" placeholder="e.g. 150000" value="150000">
+          </div>
+        </div>
+
+        <div class="tool-grid-2">
+          <div class="tool-field">
+            <label>Cash on Hand ($)</label>
+            <input type="number" id="sens-cash" placeholder="e.g. 2000000" value="2000000">
+          </div>
+          <div class="tool-field">
+            <label>Output Metric</label>
+            <select id="sens-metric">
+              <option value="runway" selected>Runway (months)</option>
+              <option value="net-monthly">Net Monthly Cash Flow ($)</option>
+            </select>
+          </div>
+        </div>
+
+        <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 1.5rem 0 0.5rem;"><strong>Matrix Explanation</strong></p>
+        <p style="font-family: var(--sans); font-size: 0.92rem; color: var(--dim); margin-bottom: 1.5rem;">The table will show: <strong>rows</strong> = revenue change (-30% to +30%), <strong>columns</strong> = burn change (-30% to +30%)</p>
+
+        <button onclick="calcSensitivity()">Run Sensitivity</button>
+
+        <div class="tool-results" id="sens-results">
+          <div id="sens-table-wrap"></div>
+          <div class="result-note" id="sens-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Your Sensitivity Matrix</h2>
+      <p>A sensitivity matrix shows runway (or cash flow) across different combinations of revenue and burn. Rows represent revenue change: -30% is a severe sales slowdown, 0% is your base assumption, +30% is strong growth. Columns represent burn change: -30% is aggressive cost cutting, 0% is status quo, +30% is higher-than-expected expenses.</p>
+
+      <p>Each cell shows your runway in that scenario. Green cells (18+ months) are safe. Yellow cells (12-17 months) require attention—you should plan your next fundraise. Red cells (<12 months) are danger zones. "Inf" means revenue exceeds burn and you're profitable.</p>
+
+      <h2>Sensitivity Analysis Benchmarks</h2>
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Comfortable</div>
+          <div class="target">18+ months</div>
+          <div class="note">Green runway zone</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Prepare</div>
+          <div class="target">12-17 months</div>
+          <div class="note">Yellow - plan fundraise</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Critical</div>
+          <div class="target"><12 months</div>
+          <div class="note">Red - immediate action</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Profitable</div>
+          <div class="target">Inf</div>
+          <div class="note">Revenue exceeds burn</div>
+        </div>
+      </div>
+
+      <h2>How to Use Sensitivity Results</h2>
+      <h3>Identify Your Safe Zone</h3>
+      <p>Look at your baseline (0% change in both revenue and burn). This is your expected scenario. Then look at the surrounding cells. If dropping to -10% revenue and +10% burn (a modest downside) still keeps you in the green, you're in good shape. If that sends you to red, you have less margin for error.</p>
+
+      <h3>Find Your Breaking Point</h3>
+      <p>Sensitivity analysis reveals your breaking point: how much revenue can drop or burn can increase before you're in crisis? If you break below 12-month runway with just a 10% revenue decline, that's a red flag. It means your model is fragile, and you should focus on diversifying revenue or reducing burn first.</p>
+
+      <h3>Test Different Output Metrics</h3>
+      <p>You can run the sensitivity matrix two ways: runway (months until you run out of cash) or net monthly cash flow (revenue minus burn). Runway tells you planning horizons. Cash flow tells you which combinations are profitable. Both matter.</p>
+
+      <h2>Common Mistakes in Sensitivity Analysis</h2>
+      <h3>Testing Unrealistic Ranges</h3>
+      <p>Don't use ±50% swings unless you're in a highly volatile business. For most SaaS and services startups, ±30% revenue change is reasonable. Larger swings become academic and don't inform real decisions.</p>
+
+      <h3>Ignoring Cost Structure Changes</h3>
+      <p>This tool holds burn constant. In reality, if you're burning cash faster, you'd cut costs. A better approach: if a sensitivity scenario shows you in red, layer in your cost-cutting plan. Where can you reduce burn 20-30% in that scenario?</p>
+
+      <h3>Not Testing Individual Drivers</h3>
+      <p>Revenue and burn are summary metrics. For deeper analysis, build separate sensitivity matrices for: CAC changes (affects customer acquisition revenue), churn rate changes (affects retention), and pricing changes (affects ARR per customer). The highest-impact driver is your biggest lever.</p>
+
+      <h3>Misinterpreting "Infinite" Runway</h3>
+      <p>"Inf" means revenue exceeds burn and you're cash flow positive. But you still have operating expenses—you're not truly profitable until you account for all costs (COGS, opex, etc). Use this as a milestone, not an end state.</p>
+
+      <h2>When to Use Sensitivity Analysis</h2>
+      <p>Run sensitivity analysis when building your financial model for investors, when you're fundraising and need to show you understand your risks, when business conditions change (new competitors, market shifts, cost increases), and when deciding on headcount or spend. A quick 5-minute sensitivity check can prevent costly decisions based on brittle assumptions.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is sensitivity analysis for startups?</button>
+        <div class="faq-a">Sensitivity analysis shows how changes in key variables (like revenue and burn) affect your financial outcomes like runway and cash flow. It identifies which variables have the biggest impact on your business and helps you understand which assumptions are most critical to your success.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I stress test my financial model?</button>
+        <div class="faq-a">Stress testing means adjusting your assumptions downward to see what happens to key outcomes. Use a sensitivity matrix to test how runway changes if revenue drops 10-30% or burn increases 10-30%. This reveals your breaking point and helps you identify what safeguards you need (cost cuts, more capital, etc.).</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What variables should I test in my model?</button>
+        <div class="faq-a">Start with revenue and burn—these have the largest impact on runway and cash flow. Then test customer acquisition cost (CAC), which affects customer acquisition revenue. Test churn rate, which affects retention and growth. Test pricing, which affects ARR per customer. The highest-impact variables are your key business levers.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors use sensitivity analysis?</button>
+        <div class="faq-a">Investors use sensitivity matrices to understand which assumptions are critical to your model and identify whether your business can survive scenarios where assumptions change. If your model only works if growth is 20% forever, that's a red flag. If runway survives a 30% revenue drop, that's a sign of resilience. Investors care about model robustness.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What does a revenue vs burn matrix show?</button>
+        <div class="faq-a">A revenue vs burn matrix shows your runway (or cash flow) across combinations of revenue change and burn change. Rows show revenue shifts (-30% to +30%). Columns show burn shifts (-30% to +30%). Green cells are comfortable runway (18+ months). Yellow is caution (12-17 months). Red is danger (<12 months). "Inf" means revenue exceeds burn (profitable).</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/07-three-scenario-planner.html" class="related-card">
+          <h3>Three-Scenario Planner</h3>
+          <p>Model base, bull, and bear cases to see how different growth assumptions change your trajectory.</p>
+        </a>
+        <a href="/tools/raise-ready/02-runway-burn-calculator.html" class="related-card">
+          <h3>Runway & Burn Calculator</h3>
+          <p>Calculate months of runway and your zero-cash date with scenario modeling.</p>
+        </a>
+        <a href="/tools/raise-ready/06-pnl-snapshot.html" class="related-card">
+          <h3>P&L Snapshot</h3>
+          <p>Generate a quick income statement from your key financial metrics.</p>
+        </a>
+        <a href="/tools/raise-ready/09-valuation-estimator.html" class="related-card">
+          <h3>Valuation Estimator</h3>
+          <p>Estimate your pre-money valuation for upcoming rounds.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    // Tool 8: Sensitivity Analysis
+    function calcSensitivity() {
+      const baseRev = parseFloat(document.getElementById('sens-rev').value) || 0;
+      const baseBurn = parseFloat(document.getElementById('sens-burn').value) || 0;
+      const cash = parseFloat(document.getElementById('sens-cash').value) || 0;
+      const metric = document.getElementById('sens-metric').value;
+
+      if (baseRev <= 0 && baseBurn <= 0) { alert('Please enter revenue and burn values.'); return; }
+
+      const revChanges = [-30, -20, -10, 0, 10, 20, 30];
+      const burnChanges = [-30, -20, -10, 0, 10, 20, 30];
+
+      let html = '<table class="result-table"><thead><tr><th>Rev \\ Burn</th>';
+      burnChanges.forEach(bc => { html += '<th class="text-right">' + (bc >= 0 ? '+' : '') + bc + '%</th>'; });
+      html += '</tr></thead><tbody>';
+
+      revChanges.forEach(rc => {
+        html += '<tr><td style="font-weight:600">' + (rc >= 0 ? '+' : '') + rc + '%</td>';
+        burnChanges.forEach(bc => {
+          const adjRev = baseRev * (1 + rc/100);
+          const adjBurn = baseBurn * (1 + bc/100);
+          let val, color;
+          if (metric === 'runway') {
+            const netBurn = adjBurn - adjRev;
+            val = netBurn <= 0 ? 'Inf' : Math.round(cash / netBurn);
+            color = val === 'Inf' || val >= 18 ? '#2ecc71' : val >= 12 ? '#f39c12' : '#e74c3c';
+          } else {
+            val = adjRev - adjBurn;
+            color = val >= 0 ? '#2ecc71' : '#e74c3c';
+            val = fmt(val);
+          }
+          html += '<td class="text-right" style="color:' + color + '">' + (metric === 'runway' ? val : val) + '</td>';
+        });
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      document.getElementById('sens-table-wrap').innerHTML = html;
+
+      document.getElementById('sens-note').textContent = metric === 'runway'
+        ? 'Values show months of runway. Green = 18+ months, yellow = 12-17, red = under 12. "Inf" means revenue exceeds burn.'
+        : 'Values show net monthly cash flow. Green = positive, red = negative.';
+      document.getElementById('sens-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcSensitivity();
+    });
+  </script>
+</body>
+</html>

@@ -10,7 +10,8 @@ Raise Ready is a financial intelligence platform by Yanni Papoutsi. It covers th
 
 ### Free Tools (60+)
 - 18 personal finance calculators: net worth, budgeting, debt payoff, compound growth, retirement, salary negotiation, buy vs rent, credit cards, tax brackets, Roth vs Traditional, student loans, mortgage, insurance, personal runway, and more
-- 14 fundraising tools: funding readiness score, runway calculator, unit economics, revenue model, P&L, scenario planning, sensitivity analysis, valuation, dilution, SAFE notes, cap table, pitch deck scorecard
+- 14 fundraising tools (each with dedicated page, benchmarks, FAQ): funding readiness score, runway calculator, unit economics, revenue model, headcount planner, P&L, scenario planning, sensitivity analysis, valuation, dilution, SAFE notes, multi-round dilution, pitch deck scorecard, exit proceeds estimator
+- Raise Ready tools URL pattern: https://www.raisereadybook.com/tools/raise-ready/{01-14}-{tool-name}.html
 - 30 exit planning tools: exit proceeds, EBITDA bridge, valuation multiples, earnout optimizer, PE rollover, data room checklist, working capital, LOI comparator, advisor fees, tax optimization, post-exit planning
 - URL: https://www.raisereadybook.com/tools/
 

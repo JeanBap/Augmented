@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Headcount & Salary Planner - Free Startup Team Cost Calculator | Raise Ready</title>
+  <meta name="description" content="Plan startup headcount by department with loaded salary costs. Free headcount planner showing monthly and annual burn from Engineering, Sales, Ops, and G&A.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/05-headcount-salary-planner.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Headcount & Salary Planner | Raise Ready">
+  <meta property="og:description" content="Free startup headcount calculator. Plan team costs with loaded salary including benefits and taxes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/05-headcount-salary-planner.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "Headcount & Salary Planner", "item": "https://www.raisereadybook.com/tools/raise-ready/05-headcount-salary-planner.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Headcount & Salary Planner Calculator",
+    "description": "Free startup headcount and salary planning tool",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/05-headcount-salary-planner.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much should a startup spend on salaries?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Most startups spend 40-60% of revenue on fully-loaded salary costs. Early-stage startups (pre-revenue) allocate their entire burn budget to salary and core operating costs. As you scale, salaries typically decrease as a percentage of revenue."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a benefits burden rate?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Benefits burden is the cost of health insurance, payroll taxes, equipment, and overhead per employee, expressed as a percentage of base salary. 25% is typical for early-stage startups; mature companies often run 30-40% depending on location and benefits offered."}
+      },
+      {
+        "@type": "Question",
+        "name": "How many engineers should a startup hire?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Pre-Seed startups are typically 80-100% technical. Seed-stage startups are 60-70% engineering. Series A startups shift to 40-50% engineering and add sales, marketing, and ops. The right ratio depends on your business model and GTM strategy."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average startup salary by role?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Average startup salaries vary by location and stage. Engineering: $100K-$180K. Sales: $70K-$120K. Operations/Support: $60K-$90K. Leadership/G&A: $100K-$200K. Early-stage startups typically pay 20-30% below market rates in equity upside."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I plan headcount for fundraising?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Include a hiring plan in your financial model showing headcount growth month by month. Show how hiring aligns with revenue milestones. Investors expect you to hire sparingly until revenue validates your growth model. Overhiring before product-market fit is a red flag."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid.single {
+      grid-template-columns: 1fr;
+    }
+
+    .tool-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    thead {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .seo-intro p {
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 3rem auto 2rem;
+      padding: 0 2rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .benchmark-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-q {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem;
+      width: 100%;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.08);
+    }
+
+    .faq-a {
+      display: none;
+      background: rgba(200, 164, 90, 0.02);
+      border: 1px solid var(--rule);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      padding: 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .related-card:hover {
+      background: rgba(200, 164, 90, 0.08);
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 0.5rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .upsell-card {
+      background: rgba(200, 164, 90, 0.08);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .upsell-card p {
+      color: var(--dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .upsell-link {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-icon {
+      font-size: 1.5rem;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--mid);
+    }
+
+    .tool-footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .tool-footer a:hover {
+      color: var(--gold2);
+    }
+
+    .back-link {
+      display: block;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; Headcount & Salary Planner
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>Headcount & Salary Planner</h1>
+      <p>Plan your team build by department and see total loaded salary cost. Headcount is the largest expense for most startups. Model it before you commit.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Hiring decisions shape your startup's burn rate, cash runway, and ability to hit growth milestones. Yet most founders hire without a clear plan for how many people they actually need—or what those people will cost, fully loaded. This leads to expensive mistakes: either you overhire before product-market fit, or you struggle with a team that's too small to execute.</p>
+      <p>The Headcount & Salary Planner helps you model your team build by department and see the total monthly and annual burn. Enter headcount and average salary for Engineering, Sales & Marketing, Operations, and Leadership. The calculator accounts for fully-loaded costs (benefits, payroll taxes, equipment) and shows you exactly how much salary burn eats into your cash runway each month. Use this to validate hiring plans against your fundraising projections, understand when you can afford to add headcount, and communicate team costs to investors.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Plan Your Team</h2>
+
+        <p style="font-family: var(--mono); font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem;">Enter headcount and average annual salary by department:</p>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Engineering (# people)</label>
+            <input type="number" id="hc-eng" placeholder="e.g. 5" value="8">
+          </div>
+          <div class="tool-field">
+            <label>Avg Eng Salary ($)</label>
+            <input type="number" id="hc-eng-sal" placeholder="e.g. 150000" value="140000">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Sales & Marketing (# people)</label>
+            <input type="number" id="hc-sales" placeholder="e.g. 3" value="4">
+          </div>
+          <div class="tool-field">
+            <label>Avg Sales Salary ($)</label>
+            <input type="number" id="hc-sales-sal" placeholder="e.g. 120000" value="95000">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Operations & Support (# people)</label>
+            <input type="number" id="hc-ops" placeholder="e.g. 2" value="3">
+          </div>
+          <div class="tool-field">
+            <label>Avg Ops Salary ($)</label>
+            <input type="number" id="hc-ops-sal" placeholder="e.g. 90000" value="70000">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Leadership / G&A (# people)</label>
+            <input type="number" id="hc-ga" placeholder="e.g. 2" value="2">
+          </div>
+          <div class="tool-field">
+            <label>Avg G&A Salary ($)</label>
+            <input type="number" id="hc-ga-sal" placeholder="e.g. 175000" value="120000">
+          </div>
+        </div>
+
+        <div class="grid single">
+          <div class="tool-field">
+            <label>Benefits & Tax Burden (% of salary)</label>
+            <input type="number" id="hc-burden" placeholder="e.g. 25" step="1" value="25">
+          </div>
+        </div>
+
+        <button onclick="calcHeadcount()">Calculate Team Cost</button>
+
+        <div class="tool-results" id="hc-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="hc-total">--</div>
+              <div class="result-label">Total Headcount</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="hc-monthly">--</div>
+              <div class="result-label">Monthly Loaded Cost</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="hc-annual">--</div>
+              <div class="result-label">Annual Loaded Cost</div>
+            </div>
+          </div>
+          <div id="hc-table-wrap"></div>
+          <div class="result-note" id="hc-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Your Team Composition</h2>
+      <p>The right team ratio changes as you grow. Early-stage startups are heavily weighted toward engineering because product comes first. But as you grow and hit product-market fit, you'll need to shift investment toward sales, marketing, and operations to scale.</p>
+
+      <h2>Startup Team Composition Benchmarks by Stage</h2>
+      <p>These benchmarks show typical team distribution at each funding stage. Your actual ratio should depend on your business model and go-to-market strategy.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">80% Engineering</div>
+          <div class="note">2-5 people</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Pre-Seed</div>
+          <div class="target">20% Business</div>
+          <div class="note">Founders wear hats</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">60-70% Engineering</div>
+          <div class="note">5-15 people</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Seed</div>
+          <div class="target">20% Sales/Ops</div>
+          <div class="note">Early GTM</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A</div>
+          <div class="target">50% Engineering</div>
+          <div class="note">15-40 people</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series A</div>
+          <div class="target">25% Sales, 15% Ops, 10% G&A</div>
+          <div class="note">Scaling GTM</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B</div>
+          <div class="target">40% Engineering</div>
+          <div class="note">40-100 people</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Series B</div>
+          <div class="target">30% Sales, 15% Ops, 15% G&A</div>
+          <div class="note">Mature org</div>
+        </div>
+      </div>
+
+      <h2>What Is Fully-Loaded Salary Cost?</h2>
+      <p>Fully-loaded cost includes base salary plus all employer-paid benefits and taxes. This typically includes health insurance, 401(k) matching, payroll taxes (7.65% FICA plus unemployment tax), workers compensation insurance, equipment, and corporate overhead allocated per employee. A 25% burden rate is typical for early-stage startups. Mature companies often run 30-40% depending on benefits generosity and location.</p>
+
+      <h2>Common Mistakes When Modeling Headcount</h2>
+      <h3>Underestimating Burden Rate</h3>
+      <p>Many founders think salaries are the only people cost. In reality, a $100K employee often costs you $125K fully-loaded when you add health insurance, taxes, equipment, and overhead. Use at least 25% burden for any planning. If you offer generous benefits or hire in expensive cities, use 30-40%.</p>
+
+      <h3>Hiring Before Revenue Validates Headcount</h3>
+      <p>Early-stage startups should stay lean until revenue signals product-market fit. Overhiring before you validate customer demand is one of the top reasons startups fail. Keep your team small until revenue per employee hits $100K+.</p>
+
+      <h3>Not Linking Hiring to Revenue Milestones</h3>
+      <p>Your hiring plan should tie to specific revenue or growth milestones. "Hire when we hit $50K MRR" is a good rule. "Hire because we need help" is how you blow through runway. Each hire should be justified by revenue growth or a concrete metric that proves you're ready to invest in that role.</p>
+
+      <h3>Treating All Departments the Same</h3>
+      <p>Different roles scale differently. You need engineering early to build product. You need sales at scale to grow revenue. You need ops to handle infrastructure and compliance later. Sequence your hiring strategically, not evenly.</p>
+
+      <h2>Using This Tool for Fundraising</h2>
+      <p>When building financial models for investors, include a detailed hiring plan. Show headcount growth month-by-month for 12-24 months. Link each hire to revenue milestones or growth targets. Investors want to see that you're being disciplined about headcount—that you're adding people only when you've earned it through traction. A conservative hiring plan actually builds investor confidence more than aggressive hiring.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How much should a startup spend on salaries?</button>
+        <div class="faq-a">Most startups spend 40-60% of revenue on fully-loaded salary costs. Early-stage startups (pre-revenue) allocate their entire burn budget to salary and core operating costs. As you scale and revenue grows, salaries typically decrease as a percentage of revenue.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a benefits burden rate?</button>
+        <div class="faq-a">Benefits burden is the cost of health insurance, payroll taxes, equipment, and overhead per employee, expressed as a percentage of base salary. 25% is typical for early-stage startups offering basic health insurance. Mature companies often run 30-40% depending on location and benefits generosity.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How many engineers should a startup hire?</button>
+        <div class="faq-a">Pre-Seed startups are typically 80-100% technical. Seed-stage startups should be 60-70% engineering. Series A startups shift to 40-50% engineering and add sales, marketing, and ops. The exact ratio depends on your business model, market dynamics, and go-to-market strategy. Product-first businesses hire more engineers early. Sales-heavy businesses shift to sales hiring sooner.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is the average startup salary by role?</button>
+        <div class="faq-a">Average startup salaries vary by location, stage, and market competition. Engineering: $100K-$180K. Sales: $70K-$120K. Operations/Support: $60K-$90K. Leadership/G&A: $100K-$200K. Early-stage startups typically pay 20-30% below market rates in exchange for equity upside. As you scale, salaries approach market rates.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I plan headcount for fundraising?</button>
+        <div class="faq-a">Include a detailed hiring plan in your financial model showing headcount growth month-by-month. Show how hiring aligns with revenue milestones and growth targets. Investors expect you to hire sparingly until revenue validates your growth model. Overhiring before product-market fit is a red flag that signals poor capital discipline.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/02-runway-burn-calculator.html" class="related-card">
+          <h3>Runway & Burn Calculator</h3>
+          <p>Calculate months of runway and your zero-cash date with scenario modeling.</p>
+        </a>
+        <a href="/tools/raise-ready/06-pnl-snapshot.html" class="related-card">
+          <h3>P&L Snapshot</h3>
+          <p>Build a monthly P&L statement in 60 seconds. See gross margin and net income.</p>
+        </a>
+        <a href="/tools/raise-ready/04-revenue-model-builder.html" class="related-card">
+          <h3>Revenue Model Builder</h3>
+          <p>Project MRR growth over 18 months using starting MRR and growth rates.</p>
+        </a>
+        <a href="/tools/raise-ready/07-three-scenario-planner.html" class="related-card">
+          <h3>Three-Scenario Planner</h3>
+          <p>Model base, bull, and bear cases side-by-side for investor presentations.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    // Tool 5: Headcount Planner
+    function calcHeadcount() {
+      const depts = [
+        { name: 'Engineering', count: parseFloat(document.getElementById('hc-eng').value) || 0, sal: parseFloat(document.getElementById('hc-eng-sal').value) || 0 },
+        { name: 'Sales & Marketing', count: parseFloat(document.getElementById('hc-sales').value) || 0, sal: parseFloat(document.getElementById('hc-sales-sal').value) || 0 },
+        { name: 'Operations & Support', count: parseFloat(document.getElementById('hc-ops').value) || 0, sal: parseFloat(document.getElementById('hc-ops-sal').value) || 0 },
+        { name: 'Leadership / G&A', count: parseFloat(document.getElementById('hc-ga').value) || 0, sal: parseFloat(document.getElementById('hc-ga-sal').value) || 0 }
+      ];
+      const burden = (parseFloat(document.getElementById('hc-burden').value) || 25) / 100;
+
+      let totalHead = 0, totalAnnual = 0;
+      let html = '<table class="result-table"><thead><tr><th>Department</th><th class="text-right">People</th><th class="text-right">Avg Salary</th><th class="text-right">Loaded Annual</th><th class="text-right">Loaded Monthly</th></tr></thead><tbody>';
+      depts.forEach(d => {
+        totalHead += d.count;
+        const loaded = d.sal * (1 + burden);
+        const deptAnnual = d.count * loaded;
+        totalAnnual += deptAnnual;
+        if (d.count > 0) {
+          html += '<tr><td>' + d.name + '</td><td class="text-right">' + d.count + '</td><td class="text-right">' + fmt(d.sal) + '</td><td class="text-right">' + fmt(deptAnnual) + '</td><td class="text-right">' + fmt(deptAnnual / 12) + '</td></tr>';
+        }
+      });
+      html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Total</td><td class="text-right">' + totalHead + '</td><td></td><td class="text-right">' + fmt(totalAnnual) + '</td><td class="text-right">' + fmt(totalAnnual / 12) + '</td></tr>';
+      html += '</tbody></table>';
+      document.getElementById('hc-table-wrap').innerHTML = html;
+
+      document.getElementById('hc-total').textContent = totalHead;
+      document.getElementById('hc-monthly').textContent = fmt(totalAnnual / 12);
+      document.getElementById('hc-annual').textContent = fmt(totalAnnual);
+
+      const costPerHead = totalHead > 0 ? totalAnnual / totalHead : 0;
+      document.getElementById('hc-note').textContent = 'Average fully-loaded cost per employee: ' + fmt(costPerHead) + '/year (' + fmt(costPerHead/12) + '/month). The ' + (burden*100).toFixed(0) + '% burden covers benefits, taxes, equipment, and overhead.';
+      document.getElementById('hc-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcHeadcount();
+    });
+  </script>
+</body>
+</html>

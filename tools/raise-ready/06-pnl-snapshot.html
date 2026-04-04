@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>P&L Snapshot Calculator - Free Startup Profit & Loss Tool | Raise Ready</title>
+  <meta name="description" content="Build a monthly P&L statement in 60 seconds. Revenue, COGS, salaries, and opex to get gross margin and net income. Free startup P&L calculator.">
+  <link rel="canonical" href="https://www.raisereadybook.com/tools/raise-ready/06-pnl-snapshot.html">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="P&L Snapshot Calculator | Raise Ready">
+  <meta property="og:description" content="Free startup P&L calculator. Build profit and loss statements showing gross margin and net income.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raisereadybook.com/tools/raise-ready/06-pnl-snapshot.html">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/style.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Raise Ready", "item": "https://www.raisereadybook.com/tools/raise-ready.html"},
+      {"@type": "ListItem", "position": 4, "name": "P&L Snapshot", "item": "https://www.raisereadybook.com/tools/raise-ready/06-pnl-snapshot.html"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "P&L Snapshot Calculator",
+    "description": "Free startup P&L and profit loss statement tool",
+    "url": "https://www.raisereadybook.com/tools/raise-ready/06-pnl-snapshot.html",
+    "applicationCategory": "BusinessApplication"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a good gross margin for a SaaS startup?",
+        "acceptedAnswer": {"@type": "Answer", "text": "SaaS startups typically aim for 70-85% gross margin. Gross margin measures revenue minus cost of goods sold, expressed as a percentage. Higher gross margins indicate efficient unit economics and pricing power."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I build a P&L statement?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A P&L statement starts with revenue, subtracts cost of goods sold to get gross profit, then subtracts operating expenses to get net income. Line items typically include: Revenue - COGS = Gross Profit - Operating Expenses = Net Income."}
+      },
+      {
+        "@type": "Question",
+        "name": "What should my burn rate be relative to revenue?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Burn rate should decrease as a percentage of revenue as you grow. Early-stage startups often have negative burn (spending more than revenue). By Series A, you should be burning less than 3-4x net new ARR. By Series B+, unit economics should be approaching breakeven."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do investors evaluate P&L statements?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Investors evaluate gross margin trends, operating expense ratio (opex as % of revenue), and path to profitability. They look for improving gross margins over time, efficient customer acquisition, and realistic unit economics that support sustainable growth."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between gross margin and net margin?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Gross margin is revenue minus cost of goods sold (variable costs). Net margin is revenue minus all expenses including operating costs. A business can have high gross margin but negative net margin if operating expenses are too high."}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #08080d;
+      --paper: #f2ede4;
+      --gold: #c8a45a;
+      --gold2: #e5c97e;
+      --dim: #3a3830;
+      --mid: #6e6a61;
+      --rule: rgba(200, 164, 90, 0.18);
+      --serif: 'Instrument Serif';
+      --mono: 'DM Mono';
+      --sans: 'Syne';
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-content { min-height: 100vh; }
+
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold2); }
+
+    .tool-hero {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .tool-hero p {
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-family: var(--sans);
+    }
+    .tool-hero .chapter-ref {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .tool-hero .chapter-ref a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .tool-hero .chapter-ref a:hover {
+      color: var(--gold2);
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+
+    input[type=number],
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      margin-bottom: 0.75rem;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--paper);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold2);
+    }
+
+    .result-box {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1.25rem;
+    }
+
+    .result-box h3 {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .result-box .big {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+    }
+
+    .result-box .sub {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid.triple {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tool-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-item {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .result-note {
+      background: rgba(200, 164, 90, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem;
+      border-radius: 0 6px 6px 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+
+    .tool-results {
+      display: none;
+    }
+
+    .tool-results.visible {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    thead {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .seo-intro {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .seo-intro p {
+      margin-bottom: 1rem;
+    }
+
+    .seo-content {
+      max-width: 800px;
+      margin: 3rem auto 2rem;
+      padding: 0 2rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .seo-content h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .seo-content h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .benchmark-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .benchmark-card .age {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .benchmark-card .target {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .benchmark-card .note {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-q {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem;
+      width: 100%;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .faq-q:hover {
+      background: rgba(200, 164, 90, 0.08);
+    }
+
+    .faq-a {
+      display: none;
+      background: rgba(200, 164, 90, 0.02);
+      border: 1px solid var(--rule);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      padding: 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .related-tools {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .related-tools h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: rgba(200, 164, 90, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .related-card:hover {
+      background: rgba(200, 164, 90, 0.08);
+      border-color: var(--gold);
+    }
+
+    .related-card h3 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 0.5rem;
+    }
+
+    .related-card p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .upsell-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .upsell-card {
+      background: rgba(200, 164, 90, 0.08);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .upsell-card h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .upsell-card p {
+      color: var(--dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .upsell-link {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .upsell-link:hover {
+      border-color: var(--gold);
+      background: rgba(200, 164, 90, 0.04);
+    }
+
+    .upsell-icon {
+      font-size: 1.5rem;
+    }
+
+    .upsell-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .upsell-name {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    .upsell-price {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--mid);
+    }
+
+    .tool-footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+
+    .tool-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .tool-footer a:hover {
+      color: var(--gold2);
+    }
+
+    .back-link {
+      display: block;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="page-content">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <a href="/tools/raise-ready.html">Raise Ready</a> &rsaquo; P&L Snapshot
+    </div>
+
+    <a href="/tools/raise-ready.html" class="back-link">&larr; Back to Raise Ready Tools</a>
+
+    <div class="tool-hero">
+      <h1>P&L Snapshot</h1>
+      <p>Build a monthly P&L statement in 60 seconds. Revenue, COGS, salaries, and opex to get gross margin and net income at a glance.</p>
+      <div class="chapter-ref">From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi</div>
+    </div>
+
+    <!-- SEO Intro -->
+    <div class="seo-intro">
+      <p>Your P&L statement is the financial summary investors care about most. It shows whether your business is moving toward profitability or burning cash. Yet many early-stage founders don't build one regularly—they focus only on cash and runway. This blindness to unit economics costs them negotiating power in fundraising conversations.</p>
+      <p>The P&L Snapshot calculator helps you build a monthly P&L statement in 60 seconds. Enter revenue, cost of goods sold, salaries, and operating expenses. The calculator shows you gross margin, total operating expenses, net income, and net margin. Use this to understand your unit economics, communicate your path to profitability to investors, and identify which expense categories are killing your margin.</p>
+    </div>
+
+    <!-- Calculator -->
+    <div class="tool-container">
+      <div class="section">
+        <h2>Build Your Monthly P&L</h2>
+
+        <p style="font-family: var(--mono); font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem;"><strong>Revenue</strong></p>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Monthly Revenue ($)</label>
+            <input type="number" id="pl-rev" placeholder="e.g. 80000" value="120000">
+          </div>
+          <div class="tool-field">
+            <label>COGS / Cost of Revenue ($)</label>
+            <input type="number" id="pl-cogs" placeholder="e.g. 20000" value="30000">
+          </div>
+        </div>
+
+        <p style="font-family: var(--mono); font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem;"><strong>Operating Expenses</strong></p>
+
+        <div class="grid triple">
+          <div class="tool-field">
+            <label>Salaries & Wages ($)</label>
+            <input type="number" id="pl-salaries" placeholder="e.g. 60000" value="180000">
+          </div>
+          <div class="tool-field">
+            <label>Marketing & Sales ($)</label>
+            <input type="number" id="pl-marketing" placeholder="e.g. 15000" value="25000">
+          </div>
+          <div class="tool-field">
+            <label>Tools & Infrastructure ($)</label>
+            <input type="number" id="pl-tools" placeholder="e.g. 5000" value="8000">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="tool-field">
+            <label>Rent & Office ($)</label>
+            <input type="number" id="pl-rent" placeholder="e.g. 3000" value="5000">
+          </div>
+          <div class="tool-field">
+            <label>Other Expenses ($)</label>
+            <input type="number" id="pl-other" placeholder="e.g. 2000" value="3000">
+          </div>
+        </div>
+
+        <button onclick="calcPnL()">Generate P&L</button>
+
+        <div class="tool-results" id="pl-results">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-value" id="pl-gross-margin">--</div>
+              <div class="result-label">Gross Margin %</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-opex-total">--</div>
+              <div class="result-label">Total OpEx</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-net">--</div>
+              <div class="result-label">Net Income</div>
+            </div>
+            <div class="result-item">
+              <div class="result-value" id="pl-net-margin">--</div>
+              <div class="result-label">Net Margin %</div>
+            </div>
+          </div>
+          <div id="pl-table-wrap"></div>
+          <div class="result-note" id="pl-note"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+      <h2>Understanding Your P&L Statement</h2>
+      <p>A P&L statement has three main sections: Revenue, Gross Profit (Revenue - COGS), and Net Income (Gross Profit - Operating Expenses). Each metric tells you something different about your business health. Gross margin shows pricing power and product costs. Net margin shows whether you're actually profitable. Operating expense ratio shows efficiency.</p>
+
+      <h2>SaaS P&L Benchmarks by Stage</h2>
+      <p>These benchmarks show typical P&L metrics for SaaS startups at different funding stages. Your actual ratios will vary based on your market, customer segment, and business model.</p>
+
+      <div class="benchmark-grid">
+        <div class="benchmark-card">
+          <div class="age">Typical SaaS</div>
+          <div class="target">70-85%</div>
+          <div class="note">Gross Margin</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Services-Heavy</div>
+          <div class="target">50-70%</div>
+          <div class="note">Gross Margin</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Growth-Stage</div>
+          <div class="target">30-50%</div>
+          <div class="note">Sales & Marketing % Rev</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Efficient</div>
+          <div class="target">20-30%</div>
+          <div class="note">Sales & Marketing % Rev</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Typical</div>
+          <div class="target">20-30%</div>
+          <div class="note">R&D/Engineering % Rev</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Typical</div>
+          <div class="target">10-15%</div>
+          <div class="note">G&A % Revenue</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Pre-Profit</div>
+          <div class="target">-50% to -20%</div>
+          <div class="note">Net Margin</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="age">Mature SaaS</div>
+          <div class="target">10-20%</div>
+          <div class="note">Net Margin</div>
+        </div>
+      </div>
+
+      <h2>How to Read Your Results</h2>
+      <p><strong>Gross Margin:</strong> Shows what percentage of each revenue dollar is left after paying for direct costs to deliver your product. High gross margin (70%+) is a sign of strong unit economics and pricing power. Low gross margin (<50%) suggests your product costs too much relative to price.</p>
+      <p><strong>Total Operating Expenses:</strong> Sum of all costs to run the business (salaries, marketing, tools, rent, etc.). As you scale, opex should grow slower than revenue, driving margins toward profitability.</p>
+      <p><strong>Net Income:</strong> The bottom line—what you actually earn or lose each month. Negative net income means you're burning cash. Positive net income means you're profitable.</p>
+      <p><strong>Net Margin:</strong> Net income as a percentage of revenue. Pre-profit startups typically have negative net margin. As you grow toward profitability, net margin improves from negative to positive.</p>
+
+      <h2>Common P&L Mistakes</h2>
+      <h3>Ignoring COGS</h3>
+      <p>Many SaaS founders treat all costs as operating expenses. But COGS—the direct cost to deliver your product—should be separated from opex. COGS might include cloud infrastructure, payment processing fees, or customer support directly tied to serving customers. This distinction matters for understanding true gross margin.</p>
+
+      <h3>Not Tracking Operating Expense Ratios</h3>
+      <p>It's not enough to know total opex. You need to know opex as a percentage of revenue. A startup spending $100K/month on marketing with $50K revenue has a 200% sales & marketing ratio—unsustainable. The same $100K on $1M revenue is 10%—healthy. Track opex ratios, not just absolute dollars.</p>
+
+      <h3>Assuming All Expenses Are Variable</h3>
+      <p>Some expenses (COGS) scale with revenue. Others (rent, salaries) are mostly fixed. Understanding which expenses are variable vs. fixed helps you model profitability as you scale. Fixed costs decline as a percentage of revenue as revenue grows.</p>
+
+      <h3>Including One-Time Expenses in Regular P&L</h3>
+      <p>For monthly P&L statements you share with investors, exclude one-time expenses like legal fees from your fundraise or equipment purchases. These distort your operating picture. Create separate line items for one-time items or exclude them from your core operating P&L.</p>
+
+      <h2>Using P&L in Fundraising Conversations</h2>
+      <p>Investors want to see your P&L trending toward profitability. Show a 12-24 month P&L projection with realistic assumptions about revenue growth and expense scaling. Show how you're improving gross margin over time (even pre-profit startups should be improving margins). Investors reward startups that are disciplined about unit economics, even if they're still burning cash.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is a good gross margin for a SaaS startup?</button>
+        <div class="faq-a">SaaS startups typically aim for 70-85% gross margin. Gross margin measures revenue minus cost of goods sold (direct costs to deliver product), expressed as a percentage. Higher gross margins indicate strong unit economics and pricing power. If your gross margin is below 50%, examine your COGS and pricing strategy.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I build a P&L statement?</button>
+        <div class="faq-a">A P&L statement starts with revenue, subtracts cost of goods sold (COGS) to get gross profit, then subtracts operating expenses (salaries, marketing, tools, rent, etc.) to get net income. The format is: Revenue - COGS = Gross Profit - Operating Expenses = Net Income. Break operating expenses into categories (salaries, marketing, tools, rent, G&A) for clarity.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What should my burn rate be relative to revenue?</button>
+        <div class="faq-a">Burn rate should decrease as a percentage of revenue as you grow. Early-stage startups often have negative burn (spending more than revenue). By Series A, you should be burning less than 3-4x net new ARR. By Series B+, unit economics should approach breakeven. The goal is to improve burn multiple and path to profitability with each milestone.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate P&L statements?</button>
+        <div class="faq-a">Investors evaluate gross margin trends (are margins improving?), operating expense ratio as percentage of revenue, path to profitability, and unit economics quality. They look for evidence that you're building a scalable, profitable business—not just one burning cash. A startup with improving gross margin and disciplined opex allocation is more attractive than one with high revenue but deteriorating margins.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between gross margin and net margin?</button>
+        <div class="faq-a">Gross margin is revenue minus cost of goods sold (variable product costs). Net margin is revenue minus all expenses including operating costs. A business can have high gross margin (70%) but negative net margin if operating expenses (salaries, marketing, rent) are too high. Both metrics matter—gross margin shows product health, net margin shows business profitability.</div>
+      </div>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools">
+      <h2>You Might Also Need</h2>
+      <div class="related-grid">
+        <a href="/tools/raise-ready/05-headcount-salary-planner.html" class="related-card">
+          <h3>Headcount & Salary Planner</h3>
+          <p>Plan startup headcount by department with loaded salary costs.</p>
+        </a>
+        <a href="/tools/raise-ready/02-runway-burn-calculator.html" class="related-card">
+          <h3>Runway & Burn Calculator</h3>
+          <p>Calculate months of runway and your zero-cash date with scenarios.</p>
+        </a>
+        <a href="/tools/raise-ready/04-revenue-model-builder.html" class="related-card">
+          <h3>Revenue Model Builder</h3>
+          <p>Project MRR growth over 18 months using realistic drivers.</p>
+        </a>
+        <a href="/tools/raise-ready/08-sensitivity-analysis.html" class="related-card">
+          <h3>Sensitivity Analysis</h3>
+          <p>Stress-test your financial model with variable scenarios.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Upsell -->
+    <div class="upsell-section">
+      <div class="upsell-card">
+        <h2>Go Deeper</h2>
+        <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to raise capital with confidence.</p>
+        <div class="upsell-grid">
+          <a href="https://finance.raisereadybook.com/" class="upsell-link" target="_blank">
+            <span class="upsell-icon">&#9889;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Financial Model Builder</span>
+              <span class="upsell-price">From $9.99/mo</span>
+            </span>
+          </a>
+          <a href="/templates/" class="upsell-link">
+            <span class="upsell-icon">&#128196;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Complete Financial Model</span>
+              <span class="upsell-price">$49 one-time</span>
+            </span>
+          </a>
+          <a href="/book/#raise-ready" class="upsell-link">
+            <span class="upsell-icon">&#128214;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Raise Ready Book</span>
+              <span class="upsell-price">$9.99 on Amazon</span>
+            </span>
+          </a>
+          <a href="/services/" class="upsell-link">
+            <span class="upsell-icon">&#128640;</span>
+            <span class="upsell-text">
+              <span class="upsell-name">Advisory Services</span>
+              <span class="upsell-price">From $990</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-footer">
+      From <a href="/book/#raise-ready">Raise Ready</a> by Yanni Papoutsi
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/shared/components.js" defer></script>
+
+  <script>
+    function fmt(n) {
+      if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    // Tool 6: P&L Snapshot
+    function calcPnL() {
+      const rev = parseFloat(document.getElementById('pl-rev').value) || 0;
+      const cogs = parseFloat(document.getElementById('pl-cogs').value) || 0;
+      const salaries = parseFloat(document.getElementById('pl-salaries').value) || 0;
+      const marketing = parseFloat(document.getElementById('pl-marketing').value) || 0;
+      const tools = parseFloat(document.getElementById('pl-tools').value) || 0;
+      const rent = parseFloat(document.getElementById('pl-rent').value) || 0;
+      const other = parseFloat(document.getElementById('pl-other').value) || 0;
+
+      const grossProfit = rev - cogs;
+      const grossMargin = rev > 0 ? (grossProfit / rev) * 100 : 0;
+      const totalOpex = salaries + marketing + tools + rent + other;
+      const netIncome = grossProfit - totalOpex;
+      const netMargin = rev > 0 ? (netIncome / rev) * 100 : 0;
+
+      document.getElementById('pl-gross-margin').textContent = grossMargin.toFixed(1) + '%';
+      document.getElementById('pl-opex-total').textContent = fmt(totalOpex);
+      document.getElementById('pl-net').textContent = fmt(netIncome);
+      document.getElementById('pl-net-margin').textContent = netMargin.toFixed(1) + '%';
+
+      let html = '<table class="result-table"><tbody>';
+      html += '<tr><td>Revenue</td><td class="text-right">' + fmt(rev) + '</td></tr>';
+      html += '<tr><td>COGS</td><td class="text-right" style="color:#e74c3c">(' + fmt(cogs) + ')</td></tr>';
+      html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Gross Profit</td><td class="text-right">' + fmt(grossProfit) + '</td></tr>';
+      html += '<tr><td>&nbsp;&nbsp;Salaries & Wages</td><td class="text-right">(' + fmt(salaries) + ')</td></tr>';
+      html += '<tr><td>&nbsp;&nbsp;Marketing & Sales</td><td class="text-right">(' + fmt(marketing) + ')</td></tr>';
+      html += '<tr><td>&nbsp;&nbsp;Tools & Infrastructure</td><td class="text-right">(' + fmt(tools) + ')</td></tr>';
+      html += '<tr><td>&nbsp;&nbsp;Rent & Office</td><td class="text-right">(' + fmt(rent) + ')</td></tr>';
+      html += '<tr><td>&nbsp;&nbsp;Other</td><td class="text-right">(' + fmt(other) + ')</td></tr>';
+      html += '<tr style="font-weight:600;border-top:2px solid var(--rule)"><td>Net Income</td><td class="text-right" style="color:' + (netIncome >= 0 ? '#2ecc71' : '#e74c3c') + '">' + fmt(netIncome) + '</td></tr>';
+      html += '</tbody></table>';
+      document.getElementById('pl-table-wrap').innerHTML = html;
+
+      let note = 'Gross margin of ' + grossMargin.toFixed(0) + '% ';
+      if (grossMargin >= 70) note += 'is strong for a SaaS business. ';
+      else if (grossMargin >= 50) note += 'is acceptable but below the 70%+ SaaS benchmark. ';
+      else note += 'is low. Consider optimizing COGS. ';
+      note += 'Monthly net ' + (netIncome >= 0 ? 'profit' : 'loss') + ' of ' + fmt(Math.abs(netIncome)) + ' (' + fmt(Math.abs(netIncome) * 12) + '/year).';
+      document.getElementById('pl-note').textContent = note;
+      document.getElementById('pl-results').classList.add('visible');
+    }
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Prefill and auto-calc on load
+    document.addEventListener('DOMContentLoaded', function() {
+      calcPnL();
+    });
+  </script>
+</body>
+</html>
