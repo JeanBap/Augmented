@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Net Worth Calculator | Start Ready</title>
+<title>Net Worth Calculator - Free Personal Net Worth Tracker | Start Ready</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,55 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+/* SEO editorial content styles */
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.benchmark-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.25rem 0}
+.benchmark-card{border:1px solid var(--rule);border-radius:8px;padding:1rem;text-align:center}
+.benchmark-card .age{font-family:var(--mono);font-size:.8rem;color:var(--gold);text-transform:uppercase;letter-spacing:.03em}
+.benchmark-card .target{font-family:var(--serif);font-size:1.3rem;color:var(--ink);margin-top:.25rem}
+.benchmark-card .note{font-family:var(--sans);font-size:.78rem;color:var(--mid);margin-top:.25rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Free net worth calculator. Track assets minus liabilities to see your true financial position. Interactive tool from Start Ready by Yanni Papoutsi.">
+<meta name="description" content="Calculate your net worth instantly. Free interactive calculator tracks assets minus liabilities, monthly cash flow, and savings rate. See your true financial position in one number.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/01-net-worth-calculator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/01-net-worth-calculator.html">
-<meta property="og:title" content="Net Worth Calculator | Start Ready">
-<meta property="og:description" content="Free net worth calculator. Track assets minus liabilities to see your true financial position. Interactive tool from Start Ready by Yanni Papoutsi.">
+<meta property="og:title" content="Net Worth Calculator - Free Personal Net Worth Tracker | Start Ready">
+<meta property="og:description" content="Calculate your net worth instantly. Free interactive calculator tracks assets minus liabilities, monthly cash flow, and savings rate. See your true financial position in one number.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Net Worth Calculator | Start Ready">
-<meta name="twitter:description" content="Free net worth calculator. Track assets minus liabilities to see your true financial position. Interactive tool from Start Ready by Yanni Papoutsi.">
+<meta name="twitter:title" content="Net Worth Calculator - Free Personal Net Worth Tracker | Start Ready">
+<meta name="twitter:description" content="Calculate your net worth instantly. Free interactive calculator tracks assets minus liabilities, monthly cash flow, and savings rate.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Net Worth Calculator",
-  "description": "Free net worth calculator. Track assets minus liabilities to see your true financial position. Interactive tool from Start Ready by Yanni Papoutsi.",
+  "description": "Calculate your net worth instantly. Free interactive calculator tracks assets minus liabilities, monthly cash flow, and savings rate.",
   "url": "https://www.raisereadybook.com/tools/start-ready/01-net-worth-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -113,11 +143,72 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate my net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net worth equals total assets minus total liabilities. Add up everything you own (cash, investments, retirement accounts, real estate equity, vehicles) and subtract everything you owe (mortgage balance, student loans, credit card debt, car loans). The result is your net worth. A positive number means you own more than you owe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should my net worth be at my age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A widely-used benchmark is the formula from The Millionaire Next Door: multiply your age by your pre-tax annual income, then divide by 10. For example, a 30-year-old earning $60,000 should have a net worth around $180,000. By 40 with $80,000 income, the target is $320,000. These are guidelines, not rules. What matters more is consistent positive trajectory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I include my home in my net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but only include the equity portion, not the full market value. Your home equity is the current market value minus the remaining mortgage balance. For example, if your home is worth $400,000 and you owe $280,000, include $120,000 as an asset. Some financial planners track two net worth figures: one with home equity and one without, since your home is not a liquid asset."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good savings rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A savings rate of 20% or more of gross income is considered excellent and is the target in the 50/30/20 budgeting framework. Between 10-20% is solid progress. Below 10% is a warning sign that expenses are crowding out wealth building. For early retirement or financial independence, savings rates of 30-50% or more accelerate the timeline dramatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I check my net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly or quarterly is ideal. Checking too frequently (daily or weekly) creates anxiety from normal market fluctuations, while checking too rarely (once a year) means you miss trends. A monthly check helps you track whether your net worth is moving in the right direction without overreacting to short-term noise."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="tools">
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
-<div class="tool-hero"><h1>Net Worth Calculator</h1><p>Chapter 1: Your Financial Starting Position</p></div>
+
+<!-- Hero -->
+<div class="tool-hero">
+  <h1>Net Worth Calculator</h1>
+  <p>Your financial starting position in one number. Assets minus liabilities, plus monthly cash flow and savings rate.</p>
+</div>
+
+<!-- SEO intro: problem context targeting "how to calculate net worth" -->
+<div class="seo-intro">
+  <p>Your net worth is the single most important number in personal finance. It tells you where you actually stand, not where your income or job title suggests you stand. Two people earning the same salary can have wildly different net worth figures depending on how they save, spend, and invest.</p>
+  <p>This calculator adds up everything you own, subtracts everything you owe, and gives you the number. It also calculates your monthly savings rate, which tells you how fast that number is growing. Use it as a baseline, then come back monthly to track your trajectory.</p>
+</div>
+
+<!-- ============ CALCULATOR (unchanged) ============ -->
 <div class="tool-container">
 <div class="section"><h2>Assets</h2>
 <div class="grid">
@@ -144,8 +235,97 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div><label>Monthly Total Expenses</label><input type="number" id="exp" placeholder="0" value="4800"></div>
 </div></div>
 <button onclick="calc()">Calculate Net Worth</button>
-<div id="res" class="hidden"></div></div>
+<div id="res" class="hidden"></div>
 </div>
+<!-- ============ END CALCULATOR ============ -->
+
+<!-- SEO content: interpretation, benchmarks, common mistakes -->
+<div class="seo-content">
+
+  <h2>How to Read Your Results</h2>
+  <p>Your net worth is positive when assets exceed liabilities and negative when debts outweigh what you own. A negative net worth is not unusual for people in their 20s who carry student loans, but the trajectory matters more than the snapshot. If the number is moving up each month, you are on the right track regardless of where you start.</p>
+  <p>Your savings rate is the percentage of after-tax income left over after expenses. This is the engine that drives net worth growth. A high savings rate accelerates your progress; a negative savings rate means you are falling behind every month.</p>
+
+  <h2>Net Worth Benchmarks by Age</h2>
+  <p>These targets use the formula from <em>The Millionaire Next Door</em>: age multiplied by pre-tax income, divided by 10. They assume consistent saving and investing over time.</p>
+  <div class="benchmark-grid">
+    <div class="benchmark-card"><div class="age">Age 25</div><div class="target">0.5x Income</div><div class="note">Building foundations. Positive net worth is the goal.</div></div>
+    <div class="benchmark-card"><div class="age">Age 30</div><div class="target">1x Income</div><div class="note">Emergency fund + retirement contributions established.</div></div>
+    <div class="benchmark-card"><div class="age">Age 35</div><div class="target">2x Income</div><div class="note">Investments compounding. Debt declining.</div></div>
+    <div class="benchmark-card"><div class="age">Age 40</div><div class="target">3x Income</div><div class="note">Mid-career acceleration. Real estate equity building.</div></div>
+    <div class="benchmark-card"><div class="age">Age 50</div><div class="target">6x Income</div><div class="note">Peak earning years. Retirement accounts growing fast.</div></div>
+    <div class="benchmark-card"><div class="age">Age 60</div><div class="target">8-10x Income</div><div class="note">Approaching financial independence range.</div></div>
+  </div>
+
+  <h2>Common Net Worth Mistakes</h2>
+
+  <h3>Counting depreciating assets at purchase price</h3>
+  <p>Your car is not worth what you paid for it. Use current resale value, not original price. The same applies to electronics, furniture, and other personal property. Most people overcount assets by 10-20% by using purchase prices instead of market values.</p>
+
+  <h3>Ignoring retirement accounts</h3>
+  <p>Your 401(k), IRA, and HSA balances absolutely count toward net worth. These are real assets you own, even if you cannot access them penalty-free until retirement age. Excluding them dramatically understates your true position.</p>
+
+  <h3>Forgetting about taxes on gains</h3>
+  <p>If you sold all your investments today, you would owe capital gains tax on the profits. Your true liquid net worth is somewhat lower than the headline number if most of your wealth is in taxable brokerage accounts with large unrealized gains.</p>
+
+  <h3>Not tracking monthly</h3>
+  <p>A single calculation is a snapshot. The real value comes from tracking over time. Set a recurring monthly reminder to update your numbers. The trend line matters more than any individual data point.</p>
+
+</div>
+
+<!-- FAQ Section (collapsible, matches FAQPage schema above) -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I calculate my net worth?</div>
+    <div class="faq-a">Net worth equals total assets minus total liabilities. Add up everything you own (cash, investments, retirement accounts, real estate equity, vehicles) and subtract everything you owe (mortgage balance, student loans, credit card debt, car loans). The result is your net worth. A positive number means you own more than you owe.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should my net worth be at my age?</div>
+    <div class="faq-a">A widely-used benchmark is the formula from The Millionaire Next Door: multiply your age by your pre-tax annual income, then divide by 10. For example, a 30-year-old earning $60,000 should have a net worth around $180,000. By 40 with $80,000 income, the target is $320,000. These are guidelines, not rules. What matters more is consistent positive trajectory.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Should I include my home in my net worth?</div>
+    <div class="faq-a">Yes, but only include the equity portion, not the full market value. Your home equity is the current market value minus the remaining mortgage balance. For example, if your home is worth $400,000 and you owe $280,000, include $120,000 as an asset. Some financial planners track two net worth figures: one with home equity and one without, since your home is not a liquid asset.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a good savings rate?</div>
+    <div class="faq-a">A savings rate of 20% or more of gross income is considered excellent and is the target in the 50/30/20 budgeting framework. Between 10-20% is solid progress. Below 10% is a warning sign that expenses are crowding out wealth building. For early retirement or financial independence, savings rates of 30-50% or more accelerate the timeline dramatically.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often should I check my net worth?</div>
+    <div class="faq-a">Monthly or quarterly is ideal. Checking too frequently (daily or weekly) creates anxiety from normal market fluctuations, while checking too rarely (once a year) means you miss trends. A monthly check helps you track whether your net worth is moving in the right direction without overreacting to short-term noise.</div>
+  </div>
+</div>
+
+<!-- Related Tools -->
+<div class="related-tools">
+  <h2>You Might Also Need</h2>
+  <div class="related-grid">
+    <a href="/tools/start-ready/02-budget-allocator.html" class="related-card">
+      <h3>50/30/20 Budget Allocator</h3>
+      <p>Auto-split your income into needs, wants, and savings goals to optimize your savings rate.</p>
+    </a>
+    <a href="/tools/start-ready/05-compound-growth-visualiser.html" class="related-card">
+      <h3>Compound Growth Visualiser</h3>
+      <p>See how your current savings and investments grow over 10, 20, or 30 years with compound returns.</p>
+    </a>
+    <a href="/tools/start-ready/04-debt-payoff-simulator.html" class="related-card">
+      <h3>Debt Payoff Simulator</h3>
+      <p>Avalanche vs snowball strategy. See which approach eliminates your liabilities faster.</p>
+    </a>
+    <a href="/tools/start-ready/06-retirement-calculator.html" class="related-card">
+      <h3>Retirement Number Calculator</h3>
+      <p>Your target net worth for retirement and how much to save monthly to reach it.</p>
+    </a>
+  </div>
+</div>
+
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
 function calc(){
