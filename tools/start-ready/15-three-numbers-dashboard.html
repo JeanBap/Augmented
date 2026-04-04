@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Three Numbers Dashboard | Start Ready</title>
+<title>Three Numbers Dashboard: Financial Dashboard Calculator for Founders</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,97 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Three numbers dashboard. Calculate your personal runway, monthly flex, and non-retirement net worth to assess founder financial readiness.">
+<meta name="description" content="Three numbers financial dashboard to assess founder readiness. Calculate runway, monthly flex, and net worth in one place.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/15-three-numbers-dashboard.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/15-three-numbers-dashboard.html">
-<meta property="og:title" content="Three Numbers Dashboard | Start Ready">
-<meta property="og:description" content="Three numbers dashboard. Calculate your personal runway, monthly flex, and non-retirement net worth to assess founder financial readiness.">
+<meta property="og:title" content="Three Numbers Dashboard: Financial Dashboard Calculator for Founders">
+<meta property="og:description" content="Three numbers financial dashboard to assess founder readiness. Calculate runway, monthly flex, and net worth in one place.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Three Numbers Dashboard | Start Ready">
-<meta name="twitter:description" content="Three numbers dashboard. Calculate your personal runway, monthly flex, and non-retirement net worth to assess founder financial readiness.">
+<meta name="twitter:title" content="Three Numbers Dashboard: Financial Dashboard Calculator for Founders">
+<meta name="twitter:description" content="Three numbers financial dashboard to assess founder readiness. Calculate runway, monthly flex, and net worth in one place.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the three numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The three numbers are: (1) Personal Runway, which is how many months your liquid savings will support you based on essential expenses; (2) Monthly Flex, which is the gap between your current spending and bare-minimum survival spending, giving you room to cut if needed; and (3) Non-Retirement Net Worth, which is your total assets minus total liabilities, excluding retirement accounts. These three numbers together tell you if you have the financial cushion to start a company without risking personal insolvency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What runway target should I aim for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most financial advisors recommend at least 12 months of runway before leaving a job to start a company. This gives you a full year to build your business and reach customers without constant pressure to generate revenue immediately. Eighteen months or more is considered very strong. Between 6 and 12 months is acceptable but tight, requiring aggressive focus on revenue generation. Less than 6 months is high risk and should only be considered if you have additional income sources or a strong personal safety net."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much monthly flex do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly flex of at least 1,000 dollars is considered healthy. This means you can cut 1,000 dollars per month from your budget if needed without triggering financial crisis. With flex of 1,500 dollars or more, you have strong financial flexibility. Between 500 and 1,000 dollars is moderate. Less than 500 dollars means you have very little room to adjust and should increase your emergency fund before taking the leap. The larger your flex, the more setbacks your startup can weather."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why exclude retirement accounts from net worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retirement accounts are protected money. Early withdrawal before age 59.5 triggers a 10 percent penalty plus income taxes, meaning you lose 30 to 40 percent of what you withdraw. Additionally, withdrawing from retirement accounts defeats the purpose of long-term wealth building. For net worth assessment, use only accessible assets that you can liquidate without penalties. This gives you a realistic view of your actual financial position and what's truly available in an emergency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a healthy non-retirement net worth for an entrepreneur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A positive net worth is the minimum. This means your assets exceed your liabilities by at least a few thousand dollars. Ideally, aim for 50,000 dollars or more before starting your company. A strong net worth of 100,000 dollars or more shows you've been building wealth and can navigate setbacks better. However, the most important thing is that your net worth is positive, not negative. If you have more debt than assets, that's a red flag that you should resolve before the entrepreneurial leap."
+      }
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Three Numbers Dashboard",
-  "description": "Three numbers dashboard. Calculate your personal runway, monthly flex, and non-retirement net worth to assess founder financial readiness.",
+  "description": "Three numbers financial dashboard calculator to assess founder readiness using runway, monthly flex, and net worth.",
   "url": "https://www.raisereadybook.com/tools/start-ready/15-three-numbers-dashboard.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -109,7 +181,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
     {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
     {"@type": "ListItem", "position": 3, "name": "Start Ready Tools", "item": "https://www.raisereadybook.com/tools/start-ready/"},
-    {"@type": "ListItem", "position": 4, "name": "The Three Numbers Dashboard", "item": "https://www.raisereadybook.com/tools/start-ready/15-three-numbers-dashboard.html"}
+    {"@type": "ListItem", "position": 4, "name": "Three Numbers Dashboard", "item": "https://www.raisereadybook.com/tools/start-ready/15-three-numbers-dashboard.html"}
   ]
 }
 </script>
@@ -118,6 +190,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>The Three Numbers Dashboard</h1><p>Chapter 25: The Three Numbers That Tell You If You Are Ready</p></div>
+<div class="seo-intro">
+<p>Before you quit your job to start a company, you need to understand three critical numbers that determine your financial readiness. These three numbers work together to tell you if you have enough cushion to take the leap safely. They're not just about how much money you have, but about how that money translates into months of survival, flexibility during tough times, and overall wealth position.</p>
+<p>This dashboard brings all three numbers together in one place so you can see your complete financial picture. If all three are in the green, you're ready. If one or more are yellow or red, the dashboard shows you exactly what to address before taking the entrepreneurial leap.</p>
+</div>
 <div class="tool-container">
 <div class="section"><h2>Number 1: Personal Runway</h2>
 <div class="grid">
@@ -137,6 +213,86 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Assess Readiness</button>
 <div id="res"></div></div>
 </div>
+
+<div class="seo-content">
+<h2>How to Read Your Results</h2>
+<p>The three numbers dashboard shows each metric with a status indicator. Green means you're in the ready zone for that metric. Yellow means cautious but still workable. Red means not ready. If all three numbers are green, your personal finances are not the reason your company will fail. You can focus entirely on building the business.</p>
+<p>If one or more numbers are yellow, you can still proceed but with caution. If any number is red, it's a red flag. That doesn't mean you can't start a business, but it means you're taking on additional financial risk that you should acknowledge and plan for.</p>
+<h2>Understanding Each Number</h2>
+<ul>
+<li><strong>Runway:</strong> How many months you can survive with zero income. Calculated by dividing liquid savings by monthly essential expenses. This is your financial clock ticking down.</li>
+<li><strong>Monthly Flex:</strong> The gap between current and survival spending. This is your ability to cut expenses if things get tough. More flex means more resilience.</li>
+<li><strong>Net Worth:</strong> Assets minus liabilities (excluding retirement). This shows whether you're building wealth or going backwards. Negative net worth is a risk factor.</li>
+</ul>
+<h2>Benchmarks and What They Mean</h2>
+<ul>
+<li><strong>Runway 12+ months:</strong> Ready. You have a full year to build your business.</li>
+<li><strong>Runway 6-11 months:</strong> Cautious. Possible but requires focus on revenue.</li>
+<li><strong>Runway under 6 months:</strong> Not ready. Too much financial pressure.</li>
+<li><strong>Monthly flex 1,500+:</strong> Ready. Strong ability to adjust.</li>
+<li><strong>Monthly flex 500-1,500:</strong> Cautious. Some room to cut.</li>
+<li><strong>Monthly flex under 500:</strong> Not ready. Too tight.</li>
+<li><strong>Net worth 50,000+:</strong> Ready. Solid financial foundation.</li>
+<li><strong>Net worth 0-50,000:</strong> Cautious. Okay but not strong.</li>
+<li><strong>Net worth negative:</strong> Not ready. Build wealth first.</li>
+</ul>
+<h2>Common Mistakes</h2>
+<h3>Mistake 1: Focusing only on runway and ignoring flex</h3>
+<p>You can have 18 months of runway but only 200 dollars of monthly flex. This means your current and survival spending are nearly identical, so you can't actually cut expenses if revenue is slow. You're trapped. Both runway and flex matter. Runway tells you how long, flex tells you how flexible you are.</p>
+<h3>Mistake 2: Using net worth as your only readiness metric</h3>
+<p>A high net worth is good, but it doesn't guarantee startup readiness if most of it is illiquid (house equity) or restricted (retirement accounts). A founder with 100,000 in a house, 50,000 in a 401k, and 5,000 in savings is actually less ready than a founder with 40,000 in liquid savings, even though net worth is similar. Liquid savings and runway matter more than total net worth.</p>
+<h3>Mistake 3: Confusing current spending with essential expenses</h3>
+<p>Your current spending includes discretionary items. Your essential expenses are what you must pay to survive. There's a difference, and the dashboard uses essential expenses for runway calculation. Be honest about what you could cut immediately if you had to.</p>
+<h3>Mistake 4: Not updating these numbers quarterly</h3>
+<p>Your financial situation changes every quarter. Savings grow, expenses change, liabilities shift. Retake this dashboard every three months to track your progress toward readiness. It's motivating to see your runway increase or your flex expand as you work toward your goal.</p>
+</div>
+
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">Should I count credit card balances as liabilities?</div>
+<div class="faq-a">Yes, absolutely. Credit card balances count as liabilities and should reduce your net worth. If you have 10,000 in credit card debt, that's a liability that reduces your net worth by 10,000. More importantly, high-interest credit card debt is money you're losing to interest. It's also the first thing to pay off before taking the entrepreneurial leap because it limits your financial flexibility and costs you thousands per year.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How should I count my partner's income when calculating runway?</div>
+<div class="faq-a">Calculate runway based on your own liquid savings and essential expenses, not including your partner's income. Then separately calculate household runway if your partner can cover some of your expenses. Your personal runway shows your individual safety net. Household runway shows your true position if you pool resources. These are two different questions. Your personal runway should be strong enough to support your startup even if your partner can't help.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What if I have stock options or unvested equity?</div>
+<div class="faq-a">Don't count unvested stock options as liquid savings. They're too risky and uncertain. Only count vested stock that you can sell immediately without restrictions. Even then, factor in capital gains taxes. If you have 20,000 in vested options but will owe 5,000 in taxes, your actual liquid assets are 15,000. Be conservative with illiquid or taxable positions.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Should I build a higher runway if I have dependents?</div>
+<div class="faq-a">Yes, absolutely. If you have kids or others relying on your income, aim for 18 to 24 months of runway instead of 12. Your financial pressure is higher because more people depend on you. The safety margin needs to be larger. Also, your monthly flex becomes more important because you have less ability to cut expenses dramatically without affecting dependents.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What if my net worth is negative but my runway and flex are strong?</div>
+<div class="faq-a">This can happen if you have high student loans or a mortgage but good liquid savings. While negative net worth is not ideal, if you have strong runway and flex, you can still proceed with caution. However, work on getting net worth positive before taking the leap. The combination of debt and income uncertainty creates psychological and financial stress that makes entrepreneurship harder.</div>
+</div>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<div class="related-grid">
+<a href="/tools/start-ready/13-personal-runway-calculator.html" class="related-card">
+<h3>Personal Runway Calculator</h3>
+<p>Calculate your runway in detail with projections for different spending and income scenarios.</p>
+</a>
+<a href="/tools/start-ready/7-net-worth-calculator.html" class="related-card">
+<h3>Net Worth Calculator</h3>
+<p>Track your complete balance sheet with all assets and liabilities in one spreadsheet.</p>
+</a>
+<a href="/tools/start-ready/10-monthly-budget-allocator.html" class="related-card">
+<h3>Budget Allocator</h3>
+<p>Design your ideal spending allocation to understand where your money goes and where you can cut.</p>
+</a>
+<a href="/tools/start-ready/16-insurance-checklist.html" class="related-card">
+<h3>Insurance Needs Checklist</h3>
+<p>Identify critical insurance policies you need before losing employer coverage.</p>
+</a>
+</div>
+</div>
+
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
 function calc(){
@@ -175,11 +331,19 @@ function calc(){
   <tr><td>Net Worth (ex-retirement)</td><td>Negative</td><td>$0-$50K</td><td>&gt; $50K</td><td><strong>${fmt(nw)}</strong></td></tr>
   </tbody></table>`;
 }
+document.addEventListener('DOMContentLoaded',function(){
+  const faqItems=document.querySelectorAll('.faq-item');
+  faqItems.forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',function(){
+      item.classList.toggle('open');
+    });
+  });
+  calc();
+});
 </script>
 
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 
-<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

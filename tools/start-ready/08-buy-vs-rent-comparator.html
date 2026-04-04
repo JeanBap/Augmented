@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Buy vs Rent Comparator | Start Ready</title>
+<title>Rent vs Buy Calculator - Compare Housing Costs & Build Wealth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,49 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Buy vs rent calculator. Compare the true cost of buying a home versus renting, including maintenance, taxes, opportunity cost, and appreciation.">
+<meta name="description" content="Rent vs buy calculator comparing total housing wealth. Evaluate the true cost of buying vs renting including mortgage, taxes, maintenance, and opportunity cost over 5-30 years.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/08-buy-vs-rent-comparator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/08-buy-vs-rent-comparator.html">
-<meta property="og:title" content="Buy vs Rent Calculator | Start Ready">
-<meta property="og:description" content="Buy vs rent calculator. Compare the true cost of buying a home versus renting, including maintenance, taxes, opportunity cost, and appreciation.">
+<meta property="og:title" content="Rent vs Buy Calculator - Compare Housing Costs & Build Wealth">
+<meta property="og:description" content="Rent vs buy calculator comparing total housing wealth. Evaluate the true cost of buying vs renting including mortgage, taxes, maintenance, and opportunity cost over 5-30 years.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Buy vs Rent Calculator | Start Ready">
-<meta name="twitter:description" content="Buy vs rent calculator. Compare the true cost of buying a home versus renting, including maintenance, taxes, opportunity cost, and appreciation.">
+<meta name="twitter:title" content="Rent vs Buy Calculator - Compare Housing Costs & Build Wealth">
+<meta name="twitter:description" content="Rent vs buy calculator comparing total housing wealth. Evaluate the true cost of buying vs renting including mortgage, taxes, maintenance, and opportunity cost over 5-30 years.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Buy vs Rent Calculator",
-  "description": "Buy vs rent calculator. Compare the true cost of buying a home versus renting, including maintenance, taxes, opportunity cost, and appreciation.",
+  "name": "Rent vs Buy Calculator",
+  "description": "Rent vs buy calculator comparing total housing wealth. Evaluate the true cost of buying vs renting including mortgage, taxes, maintenance, and opportunity cost over 5-30 years.",
   "url": "https://www.raisereadybook.com/tools/start-ready/08-buy-vs-rent-comparator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -113,11 +137,63 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I rent or buy based on this calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The answer depends on your time horizon and local market. Buying usually wins long-term (10+ years) because you build equity while renting builds landlord wealth. However, renting wins in high-cost markets with low appreciation, or if you're renting at a price below what you'd pay in mortgage, taxes, and maintenance combined. Use this calculator to test your specific numbers, then consider lifestyle factors: flexibility, maintenance burden, and how much longer you'll stay in the area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does buy equity mean versus rent portfolio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buy equity is your home value minus what you still owe on the mortgage. Rent portfolio is the down payment plus any monthly savings (rental cost minus buying cost) invested at your expected return rate. This comparison assumes renters invest their savings, while buyers lock capital into appreciation and equity paydown. This is realistic if you actually invest the difference; many renters don't."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does maintenance matter so much?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most homeowners underestimate maintenance costs, which historically run 1-2% of home value annually. A $450,000 home costs $4,500-9,000/year in repairs, replacements, and upkeep. Renters pay zero for major repairs because landlords cover them (though they build it into rent). This cost is why renters often come out ahead in the first 5 years despite not building equity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use my market's actual appreciation rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if you know it. The long-term U.S. average is 3-3.5% annually, but markets vary dramatically. Check your local history using Zillow or Census data. Use conservative numbers rather than extrapolating the last boom. A market that appreciated 10% last year might appreciate 1% next year. Testing sensitivity is wise: run the calculator at 1%, 3%, and 5% to see the range of outcomes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if I can afford a home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most banks use debt-to-income ratio: your housing payment (mortgage, taxes, insurance) should be no more than 28% of gross income. Your total debt (housing plus car loans, student loans) should be under 43%. But having approval doesn't mean it's wise. Run this calculator with your numbers to see if buying actually builds wealth faster than investing rent savings. A house you can afford to buy may not be the best financial choice."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="tools">
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>Buy vs Rent Comparator</h1><p>Chapter 17 & 19: Real Estate Decisions</p></div>
+<div class="seo-intro">
+<p>The rent versus buy decision is one of the biggest financial choices you'll make, yet most people approach it emotionally or by comparing only the monthly payments. The truth is more complex: buying builds equity through mortgage paydown and home appreciation, while renting preserves flexibility and keeps your cash liquid for investments.</p>
+<p>This calculator shows the true wealth comparison over time. It accounts for all buying costs (mortgage, taxes, maintenance, insurance, and private mortgage insurance if applicable), models home appreciation, and compares it to a renting scenario where you invest your savings at expected market returns. The winner depends on your market, how long you stay, and whether you actually invest the difference.</p>
+</div>
 <div class="tool-container">
 <div class="section"><h2>Buying Scenario</h2>
 <div class="grid">
@@ -139,6 +215,74 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Compare Over Time</button>
 <div id="res"></div></div>
 </div>
+
+<div class="seo-content">
+<h2>How to Read Your Results</h2>
+<p>The chart shows net equity over time for both scenarios. For buying, net equity is the home value minus remaining mortgage balance. For renting, net wealth is your down payment plus any monthly savings (if rent costs less than buying) invested at your expected return. The table shows the winner at each time milestone. Note that the winner often changes: renting wins early when buying's maintenance and tax burden is high, but buying usually catches up as you build equity and appreciation compounds.</p>
+
+<h2>Benchmarks and Decision Framework</h2>
+<p>A common rule is the 1% rule: if monthly rent divided by home price exceeds 1%, renting is cheaper. Another framework compares the price-to-rent ratio. If your home costs 20x annual rent, buying is competitive with 3% appreciation; if it costs 30x, renting is likely better unless appreciation exceeds 4%. Most importantly, identify your time horizon. Buying only makes sense if you'll stay 5+ years to recover closing costs and take advantage of appreciation. Shorter stays favor renting.</p>
+
+<h2>Common Mistakes</h2>
+<h3>Ignoring Opportunity Cost of Down Payment</h3>
+<p>Your $100,000 down payment has an opportunity cost. If you invest it instead, it could grow to $200,000+ over 20 years at 7% returns. The calculator accounts for this by comparing buying wealth to renting wealth (where you invest savings). Many people don't, and incorrectly conclude buying is always better.</p>
+
+<h3>Underestimating Maintenance and Repairs</h3>
+<p>New homeowners routinely ignore or underestimate maintenance costs. A roof replacement is $10,000-20,000. HVAC systems fail and cost $5,000-8,000. Foundations crack, plumbing fails, and appliances break. Budget 1-2% of home value annually or you'll be caught off-guard. Older homes cost more; new construction costs less initially but often has warranty periods that don't cover everything.</p>
+
+<h3>Failing to Model Local Market Conditions</h3>
+<p>Appreciation rates vary wildly by market. High-growth tech cities appreciate 4-6% annually; declining Rust Belt cities appreciate 0-1%. Your local market data is critical. Also check rent growth: markets with high rent appreciation (4%+) may favor buying, while stable-rent markets (1-2%) favor renting.</p>
+
+<h3>Buying with Too Little Down Payment</h3>
+<p>Putting down less than 20% triggers private mortgage insurance (PMI), adding $100-400/month depending on loan size. You don't gain equity from PMI; it's pure overhead. Additionally, smaller down payments mean larger loans, more interest, and more total cost. If you can't put down 20%, consider renting longer to save.</p>
+</div>
+
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">Should I rent or buy based on this calculator?</div>
+<div class="faq-a">The answer depends on your time horizon and local market. Buying usually wins long-term (10+ years) because you build equity while renting builds landlord wealth. However, renting wins in high-cost markets with low appreciation, or if you're renting at a price below what you'd pay in mortgage, taxes, and maintenance combined. Use this calculator to test your specific numbers, then consider lifestyle factors: flexibility, maintenance burden, and how much longer you'll stay in the area.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What does buy equity mean versus rent portfolio?</div>
+<div class="faq-a">Buy equity is your home value minus what you still owe on the mortgage. Rent portfolio is the down payment plus any monthly savings (rental cost minus buying cost) invested at your expected return rate. This comparison assumes renters invest their savings, while buyers lock capital into appreciation and equity paydown. This is realistic if you actually invest the difference; many renters don't.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Why does maintenance matter so much?</div>
+<div class="faq-a">Most homeowners underestimate maintenance costs, which historically run 1-2% of home value annually. A $450,000 home costs $4,500-9,000/year in repairs, replacements, and upkeep. Renters pay zero for major repairs because landlords cover them (though they build it into rent). This cost is why renters often come out ahead in the first 5 years despite not building equity.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Should I use my market's actual appreciation rate?</div>
+<div class="faq-a">Yes, if you know it. The long-term U.S. average is 3-3.5% annually, but markets vary dramatically. Check your local history using Zillow or Census data. Use conservative numbers rather than extrapolating the last boom. A market that appreciated 10% last year might appreciate 1% next year. Testing sensitivity is wise: run the calculator at 1%, 3%, and 5% to see the range of outcomes.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How do I know if I can afford a home?</div>
+<div class="faq-a">Most banks use debt-to-income ratio: your housing payment (mortgage, taxes, insurance) should be no more than 28% of gross income. Your total debt (housing plus car loans, student loans) should be under 43%. But having approval doesn't mean it's wise. Run this calculator with your numbers to see if buying actually builds wealth faster than investing rent savings. A house you can afford to buy may not be the best financial choice.</div>
+</div>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<div class="related-grid">
+<a href="/tools/start-ready/02-mortgage-affordability.html" class="related-card">
+<h3>Mortgage Affordability Calculator</h3>
+<p>Determine how much home you can afford based on income and debt levels using bank lending criteria.</p>
+</a>
+<a href="/tools/start-ready/03-net-worth-tracker.html" class="related-card">
+<h3>Net Worth Tracker</h3>
+<p>Track how your home equity and rental portfolio contribute to your total wealth over time.</p>
+</a>
+<a href="/tools/start-ready/04-compound-growth.html" class="related-card">
+<h3>Compound Growth Calculator</h3>
+<p>Model how renting savings invested in the market grow over decades at different return rates.</p>
+</a>
+<a href="/tools/start-ready/05-budget-allocator.html" class="related-card">
+<h3>Budget Allocator</h3>
+<p>Allocate your income to housing costs plus other expenses using the 50/30/20 rule.</p>
+</a>
+</div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
@@ -204,9 +348,19 @@ function calc(){
 }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  calc();
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
+});
+</script>
+
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
-
-<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

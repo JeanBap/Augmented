@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Student Loan Repayment Simulator | Start Ready</title>
+<title>Student Loan Repayment Calculator - Loan Payoff Plan Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,49 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Student loan repayment simulator. Compare standard, income-driven, and accelerated payoff plans to find the strategy that saves you the most.">
+<meta name="description" content="Student loan repayment calculator comparing payoff strategies. Model standard, income-driven, and refinanced plans to find the optimal strategy for your situation.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/12-student-loan-simulator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/12-student-loan-simulator.html">
-<meta property="og:title" content="Student Loan Simulator | Start Ready">
-<meta property="og:description" content="Student loan repayment simulator. Compare standard, income-driven, and accelerated payoff plans to find the strategy that saves you the most.">
+<meta property="og:title" content="Student Loan Repayment Calculator - Compare Payoff Plans">
+<meta property="og:description" content="Student loan repayment calculator comparing payoff strategies. Model standard, income-driven, and refinanced plans to find the optimal strategy for your situation.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Student Loan Simulator | Start Ready">
-<meta name="twitter:description" content="Student loan repayment simulator. Compare standard, income-driven, and accelerated payoff plans to find the strategy that saves you the most.">
+<meta name="twitter:title" content="Student Loan Repayment Calculator - Compare Payoff Plans">
+<meta name="twitter:description" content="Student loan repayment calculator comparing payoff strategies. Model standard, income-driven, and refinanced plans to find the optimal strategy for your situation.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Student Loan Simulator",
-  "description": "Student loan repayment simulator. Compare standard, income-driven, and accelerated payoff plans to find the strategy that saves you the most.",
+  "name": "Student Loan Repayment Calculator",
+  "description": "Student loan repayment calculator comparing payoff strategies. Model standard, income-driven, and refinanced plans to find the optimal strategy for your situation.",
   "url": "https://www.raisereadybook.com/tools/start-ready/12-student-loan-simulator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -113,11 +137,63 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the balance-to-income ratio and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your balance-to-income ratio is your total student loan debt divided by your annual income. If you owe $50,000 and earn $50,000, your ratio is 1.0. Below 1.0, the standard 10-year plan usually works best because you can pay it off before income-driven forgiveness ever matters. Above 1.0, income-driven repayment with forgiveness might be optimal depending on how much you'd pay in interest. Ratios above 2.0 strongly favor income-driven plans with eventual forgiveness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I refinance federal loans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Refinancing federal loans into private loans removes income-driven repayment options and federal forgiveness programs. Only refinance if you're committed to the standard plan and you'll save significant interest (at least 1% rate reduction). Federal loans are valuable safety nets for income drops or hardship. If you're certain you'll earn enough to pay under the standard plan in 10 years, refinancing can save money. Uncertain? Keep federal protections and pay aggressively instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is income-driven repayment and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Income-driven repayment (IDR) calculates your payment as a percentage of discretionary income (income above 150% of poverty line). You pay roughly 10% of discretionary income for 20 years, then remaining balance is forgiven. This plan protects low earners from unaffordable payments. If your balance is very high relative to income, you might pay only interest and never touch principal. When forgiveness occurs after 20 years, the forgiven amount is taxable as income, which is a major consideration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is student loan debt forgiveness taxable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, forgiven amounts are generally treated as taxable income. If you have $20,000 forgiven, you owe income tax on that $20,000 in the year of forgiveness. At a 22% tax rate, that's a $4,400 tax bill. Some recent changes may exempt forgiveness from tax, but don't count on it. Model assuming you'll owe taxes on forgiveness. This makes the real cost of income-driven forgiveness much higher than it appears. The calculator estimates this but check current tax law for your situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I pay extra toward student loans or invest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you have federal loans at 5% interest and stock market investments returning 7-10%, the math favors investing. However, guaranteed returns (paying down 5% interest) might feel psychologically better than variable market returns. Additionally, early payoff enables other goals sooner (home down payment, early retirement). A balanced approach: pay minimums, get employer match in retirement accounts first, then split extra money between accelerated loan payoff and investing."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="tools">
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>Student Loan Repayment Simulator</h1><p>Chapter 7: Student Loans</p></div>
+<div class="seo-intro">
+<p>Student loan repayment strategy determines whether you escape debt in 10 years or carry balances for 20+ years. The three primary paths are standard repayment (fixed payment over 10 years), income-driven repayment (variable payment based on income with forgiveness after 20 years), and refinancing (replacing federal loans with private ones at potentially lower rates). Each path has different costs, timelines, and risks.</p>
+<p>This calculator models all three strategies to show you the true cost and timeline of each. It accounts for income growth, interest accrual, and the tax impact of loan forgiveness. Understanding how these plans differ helps you choose the strategy that minimizes total cost while fitting your income and life situation.</p>
+</div>
 <div class="tool-container">
 <div class="section">
 <div class="grid">
@@ -130,6 +206,74 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Compare Repayment Plans</button>
 </div><div id="res"></div></div>
 </div>
+
+<div class="seo-content">
+<h2>How to Read Your Results</h2>
+<p>The chart compares total interest and total paid for each plan over the 10-20 year period. The table breaks down monthly payment, total interest, total paid, and payoff timeline for each approach. Standard plan shows a fixed payment (usually $400-800/month). Income-driven shows variable payments that start lower but potentially result in forgiveness (with tax consequences). Refinancing shows the interest savings if you qualify for a lower rate. Note which plan minimizes total interest and which fits your monthly budget best.</p>
+
+<h2>Repayment Strategy Benchmarks</h2>
+<p>The standard 10-year plan works best for balance-to-income ratios under 1.0 (you earn at least what you owe). Interest costs are lower and you avoid forgiveness tax consequences. Income-driven plans make sense above 1.0, especially above 2.0. Refinancing makes sense only if you'll save significant interest (at least 1% rate reduction) and you're sure you won't need federal protections. Federal loans have valuable income protections, public service loan forgiveness programs, and income-driven options that private loans lack.</p>
+
+<h2>Common Mistakes</h2>
+<h3>Ignoring Income Growth in Long Payoff Plans</h3>
+<p>Income-driven repayment assumes your income grows over time. If you're at $65,000 today with 3% annual growth, you'll be earning $125,000 in 20 years. Payments scale up as you earn more. This makes the math work because early low payments don't burden you early-career, then higher payments feel more affordable later. If you don't account for this growth, you underestimate how much total you'll pay.</p>
+
+<h3>Forgetting About Forgiveness Tax Consequences</h3>
+<p>If you have $45,000 forgiven after 20 years, you owe income tax on $45,000 in the year of forgiveness. At a 22% tax rate, that's $9,900 in taxes. Many people calculate forgiveness as a win without accounting for the tax hit. The true cost of income-driven forgiveness is principal forgiven minus interest you saved, not the full forgiven amount.</p>
+
+<h3>Choosing Income-Driven Without Considering Refinancing</h3>
+<p>Before committing to 20 years of income-driven payments, explore refinancing. Dropping from 6.5% to 4.5% interest saves 10s of thousands over 10 years. Federal loan protections matter only if you might use them (income drop, disability, hardship). If you're confident in income stability, private refinancing with lower rates often beats income-driven federal loans long-term.</p>
+
+<h3>Not Comparing After-Tax Outcomes</h3>
+<p>Total interest is only half the story. The real question is: what's the total out-of-pocket cost including taxes? Income-driven forgiveness forgoes interest savings in exchange for eventual forgiveness, but that forgiveness is taxable. Model the actual cash you'll spend including taxes to make fair comparisons.</p>
+</div>
+
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">What's the balance-to-income ratio and why does it matter?</div>
+<div class="faq-a">Your balance-to-income ratio is your total student loan debt divided by your annual income. If you owe $50,000 and earn $50,000, your ratio is 1.0. Below 1.0, the standard 10-year plan usually works best because you can pay it off before income-driven forgiveness ever matters. Above 1.0, income-driven repayment with forgiveness might be optimal depending on how much you'd pay in interest. Ratios above 2.0 strongly favor income-driven plans with eventual forgiveness.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Should I refinance federal loans?</div>
+<div class="faq-a">Refinancing federal loans into private loans removes income-driven repayment options and federal forgiveness programs. Only refinance if you're committed to the standard plan and you'll save significant interest (at least 1% rate reduction). Federal loans are valuable safety nets for income drops or hardship. If you're certain you'll earn enough to pay under the standard plan in 10 years, refinancing can save money. Uncertain? Keep federal protections and pay aggressively instead.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What is income-driven repayment and how does it work?</div>
+<div class="faq-a">Income-driven repayment (IDR) calculates your payment as a percentage of discretionary income (income above 150% of poverty line). You pay roughly 10% of discretionary income for 20 years, then remaining balance is forgiven. This plan protects low earners from unaffordable payments. If your balance is very high relative to income, you might pay only interest and never touch principal. When forgiveness occurs after 20 years, the forgiven amount is taxable as income, which is a major consideration.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Is student loan debt forgiveness taxable?</div>
+<div class="faq-a">Yes, forgiven amounts are generally treated as taxable income. If you have $20,000 forgiven, you owe income tax on that $20,000 in the year of forgiveness. At a 22% tax rate, that's a $4,400 tax bill. Some recent changes may exempt forgiveness from tax, but don't count on it. Model assuming you'll owe taxes on forgiveness. This makes the real cost of income-driven forgiveness much higher than it appears. The calculator estimates this but check current tax law for your situation.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Should I pay extra toward student loans or invest?</div>
+<div class="faq-a">If you have federal loans at 5% interest and stock market investments returning 7-10%, the math favors investing. However, guaranteed returns (paying down 5% interest) might feel psychologically better than variable market returns. Additionally, early payoff enables other goals sooner (home down payment, early retirement). A balanced approach: pay minimums, get employer match in retirement accounts first, then split extra money between accelerated loan payoff and investing.</div>
+</div>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<div class="related-grid">
+<a href="/tools/start-ready/06-debt-payoff.html" class="related-card">
+<h3>Debt Payoff Calculator</h3>
+<p>Model multiple debts and prioritize payoff using avalanche or snowball strategies.</p>
+</a>
+<a href="/tools/start-ready/09-credit-card-true-cost.html" class="related-card">
+<h3>Credit Card Interest Calculator</h3>
+<p>Compare how credit card interest costs compare to student loan interest rates.</p>
+</a>
+<a href="/tools/start-ready/05-budget-allocator.html" class="related-card">
+<h3>Budget Allocator</h3>
+<p>Allocate your income to prioritize loan payments within your overall spending plan.</p>
+</a>
+<a href="/tools/start-ready/01-personal-runway.html" class="related-card">
+<h3>Personal Runway Calculator</h3>
+<p>Model how long your savings last when building emergency funds alongside loan payoff.</p>
+</a>
+</div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
@@ -192,9 +336,19 @@ function calc(){
 }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  calc();
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
+});
+</script>
+
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
-
-<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

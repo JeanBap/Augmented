@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Personal Runway Calculator | Start Ready</title>
+<title>Personal Runway Calculator: How Long Will Your Savings Last</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,97 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Personal runway calculator for founders. Calculate how many months you can sustain yourself before you need income from your startup or a job.">
+<meta name="description" content="Personal runway calculator to determine how long your savings will last. Calculate startup runway based on spending, savings, and monthly burn rate.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/13-personal-runway-calculator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/13-personal-runway-calculator.html">
-<meta property="og:title" content="Personal Runway Calculator | Start Ready">
-<meta property="og:description" content="Personal runway calculator for founders. Calculate how many months you can sustain yourself before you need income from your startup or a job.">
+<meta property="og:title" content="Personal Runway Calculator: How Long Will Your Savings Last">
+<meta property="og:description" content="Personal runway calculator to determine how long your savings will last. Calculate startup runway based on spending, savings, and monthly burn rate.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Personal Runway Calculator | Start Ready">
-<meta name="twitter:description" content="Personal runway calculator for founders. Calculate how many months you can sustain yourself before you need income from your startup or a job.">
+<meta name="twitter:title" content="Personal Runway Calculator: How Long Will Your Savings Last">
+<meta name="twitter:description" content="Personal runway calculator to determine how long your savings will last. Calculate startup runway based on spending, savings, and monthly burn rate.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate my personal runway?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Personal runway is calculated by dividing your liquid savings by your monthly burn rate. Liquid savings include checking accounts, savings accounts, and accessible brokerage accounts (excluding retirement funds). Monthly burn rate is how much money you spend each month. For example, if you have 50,000 in savings and spend 3,000 per month, your runway is approximately 16.7 months. You can calculate two versions: one using your current spending and another using bare-minimum survival spending, which shows how long you could last if you drastically cut expenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between current lifestyle and survival spending?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Current lifestyle spending is what you typically spend each month on rent, food, utilities, entertainment, and all other expenses. Survival spending is the bare minimum you need to stay afloat: essential housing, food, and utilities only. The gap between these two is your monthly flex, which is your financial shock absorber. A larger flex means you have more room to cut spending if your startup income is lower than expected, giving you more financial stability during the entrepreneurial journey."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What runway length should I target before quitting my job?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most experts recommend at least 12 months of runway based on survival spending before leaving stable employment to start a company. This gives you a full year to build your business without the pressure of immediate income. A runway of 18 months or more is considered a strong position and provides substantial breathing room for business development. Between 6 and 12 months is cautious territory where you need to be aggressive about generating revenue. Less than 6 months is risky and leaves little room for setbacks or slower-than-expected growth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does expected monthly income affect my runway calculation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you expect to generate some income during your startup phase, you can factor this into your runway calculation. This might be from consulting work, freelance projects, or early customer revenue. Your true burn rate becomes your monthly spending minus this expected income. For example, if you spend 3,000 per month but expect 500 in early revenue, your actual burn rate is 2,500. This extends your runway significantly, but be conservative with income projections until you have proven these revenues are achievable and recurring."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I count retirement accounts in my runway calculations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, retirement accounts like 401ks and IRAs should not be counted as part of your personal runway. Not only do these accounts have tax penalties and restrictions if you withdraw early, but using retirement savings for living expenses defeats the purpose of long-term wealth building. This is why the calculator uses liquid savings only. Keep your retirement accounts intact and build your entrepreneurial runway with money you can freely access without penalties or tax consequences."
+      }
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Personal Runway Calculator",
-  "description": "Personal runway calculator for founders. Calculate how many months you can sustain yourself before you need income from your startup or a job.",
+  "description": "Personal runway calculator to determine how long your savings will last before needing income from your startup or another job.",
   "url": "https://www.raisereadybook.com/tools/start-ready/13-personal-runway-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -118,6 +190,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>Personal Runway Calculator</h1><p>Chapter 23: The Personal Finance of Taking the Leap</p></div>
+<div class="seo-intro">
+<p>Before you quit your job to start a company, you need to know exactly how long you can survive on your savings. Personal runway is the number of months your liquid savings will support you based on your spending. It's the most important number for aspiring entrepreneurs to understand because it tells you whether you have the financial cushion to take the leap safely.</p>
+<p>Runway isn't just about having savings. It's about understanding the gap between your current lifestyle and your bare-minimum survival spending, and knowing whether your emergency fund buys you 6 months, 12 months, or 18+ months of safety. This calculator shows you both scenarios and helps you identify your monthly flex for cutting expenses in tough times.</p>
+</div>
 <div class="tool-container">
 <div class="section">
 <div class="grid">
@@ -129,6 +205,75 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <button onclick="calc()">Calculate Runway</button>
 </div><div id="res"></div></div>
 </div>
+
+<div class="seo-content">
+<h2>How to Read Your Results</h2>
+<p>The calculator shows you two runway numbers: one at your current spending level and one if you cut back to survival mode. The current lifestyle runway tells you how long you can operate without cutting anything. The survival mode runway shows your true financial safety net if expenses become critical.</p>
+<p>The most important output is your monthly flex, the gap between current and survival spending. If you have 1,500 in monthly flex, you have significant room to cut expenses if your startup revenue comes in slower than expected. If your flex is under 500, you're operating with minimal margin and should plan conservatively.</p>
+<h2>Runway Benchmarks for Entrepreneurs</h2>
+<ul>
+<li><strong>18+ months</strong>: You're in a strong position. You have time to build your business without revenue pressure. Your personal finances won't be the bottleneck.</li>
+<li><strong>12-17 months</strong>: Good runway. You can operate comfortably but should have concrete plans for revenue within a year.</li>
+<li><strong>6-11 months</strong>: Acceptable but tight. You need to be aggressive about reaching customers and generating early revenue.</li>
+<li><strong>Under 6 months</strong>: High risk. Only consider taking the leap if you have other income sources (partner's salary, side consulting work) or are willing to return to work quickly if needed.</li>
+</ul>
+<h2>Common Mistakes</h2>
+<h3>Mistake 1: Counting retirement accounts as runway</h3>
+<p>Your 401k or IRA is not emergency money. Early withdrawals carry tax penalties and defeat the purpose of retirement savings. Only count liquid savings you can access without penalties or taxes. This means checking, savings, brokerage, and possibly home equity, but not retirement accounts.</p>
+<h3>Mistake 2: Overestimating survival spending</h3>
+<p>Many people estimate their bare minimum too high. True survival includes rent or mortgage, utilities, basic groceries, and essential insurance. It does not include dining out, entertainment, subscriptions, or vacation. Be honest about what you could cut immediately if you had to.</p>
+<h3>Mistake 3: Using average income instead of guaranteed income</h3>
+<p>If you're planning to earn money while building your startup, only count income you're confident you can maintain consistently. Sporadic consulting gigs or hoped-for revenue don't count. Conservative estimates here are better than optimistic ones.</p>
+<h3>Mistake 4: Forgetting about taxes and bigger expenses</h3>
+<p>Your runway calculation uses take-home spending, but if you're self-employed, you need to factor in quarterly tax payments and annual expenses like insurance renewals. Build an extra 2-3 month buffer into your runway target to account for lumpy expenses.</p>
+</div>
+
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">What counts as liquid savings?</div>
+<div class="faq-a">Liquid savings are money you can access within days without penalties. This includes checking accounts, savings accounts, and brokerage accounts. Home equity and retirement accounts do not count because withdrawing from them triggers taxes and penalties. High-yield savings accounts count even though they take 1-2 business days to transfer.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Can I include stock I own in my runway calculation?</div>
+<div class="faq-a">Only if the stock is in a regular brokerage account, not a 401k or IRA. If you own individual stocks or index funds in a taxable account, yes, include them. However, be conservative because you'll owe capital gains taxes when you sell. If a stock is worth 10,000 but you'll owe 2,000 in taxes, count 8,000 as usable savings.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Should I factor in my partner's income when calculating runway?</div>
+<div class="faq-a">Only count your own liquid savings for your personal runway, but do separate calculations for household runway if your partner can support some of your expenses. Your personal runway shows your individual safety net, while household runway shows your true financial position if you can pool resources. These are two different questions, and the answer matters for how much risk you can take.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What if my expenses are seasonal or lumpy?</div>
+<div class="faq-a">Calculate an average monthly spend across a full year, not just the cheapest month. If you spend 3,000 most months but 5,000 in three months (taxes, insurance, car repair), your true average is closer to 3,500. Use this average in the runway calculation, not the minimum. This gives you a more realistic picture of your actual burn rate.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How much runway is enough for my specific situation?</div>
+<div class="faq-a">That depends on your business model and financial obligations. If you have dependents, zero other income sources, or a high monthly burn rate, target 18-24 months. If you're single with low expenses and confident in your sales ability, 12 months might be enough. Use this calculator with the Leap Scorecard to assess your overall readiness, not just runway alone.</div>
+</div>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<div class="related-grid">
+<a href="/tools/start-ready/16-insurance-checklist.html" class="related-card">
+<h3>Insurance Needs Checklist</h3>
+<p>Identify which policies you actually need before leaving employment and losing employer coverage.</p>
+</a>
+<a href="/tools/start-ready/15-three-numbers-dashboard.html" class="related-card">
+<h3>Three Numbers Dashboard</h3>
+<p>See your runway, monthly flex, and net worth together to assess full financial readiness.</p>
+</a>
+<a href="/tools/start-ready/14-leap-scorecard.html" class="related-card">
+<h3>Leap Scorecard</h3>
+<p>Score your financial and personal readiness across 12 dimensions to know if you're truly ready to start.</p>
+</a>
+<a href="/tools/start-ready/10-monthly-budget-allocator.html" class="related-card">
+<h3>Budget Allocator</h3>
+<p>Design your ideal spending allocation to understand where your money goes and where you can cut.</p>
+</a>
+</div>
+</div>
+
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
 function calc(){
@@ -162,11 +307,19 @@ function calc(){
   <tr><td>Survival mode, ${fmt(inc)}/mo income</td><td>${fmt(burnSurvival)}</td><td>${(sav/burnSurvival).toFixed(1)} mo</td><td>${tag(sav/burnSurvival)}</td></tr>`:''}
   </tbody></table>`;
 }
+document.addEventListener('DOMContentLoaded',function(){
+  const faqItems=document.querySelectorAll('.faq-item');
+  faqItems.forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',function(){
+      item.classList.toggle('open');
+    });
+  });
+  calc();
+});
 </script>
 
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 
-<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
 </body></html>

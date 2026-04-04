@@ -5,7 +5,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Compound Growth Visualiser | Start Ready</title>
+<title>Compound Interest Calculator - Investment Growth Calculator | Start Ready</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
-.tool-hero{text-align:center;padding:3rem 2rem 2rem}
+.tool-hero{text-align:center;padding:3rem 2rem 1rem}
 .tool-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.5rem}
 .tool-hero p{color:var(--mid);max-width:600px;margin:0 auto;font-size:.95rem;line-height:1.5}
 .tool-hero .chapter-ref{font-family:var(--mono);font-size:.8rem;color:var(--gold);margin-top:.5rem}
@@ -64,25 +64,49 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .range-row input[type=range]{flex:1;margin:0}
 .range-row .range-val{font-family:var(--mono);font-size:.85rem;min-width:60px;text-align:right}
 @media(max-width:600px){.grid,.grid-3{grid-template-columns:1fr}.row-add{flex-wrap:wrap}}
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Compound growth visualiser. See how your investments grow over 10, 20, or 30 years with different contribution amounts and return rates.">
+<meta name="description" content="Visualize how your investments grow with compound returns. Use our free calculator to see the impact of monthly contributions, starting balance, and time horizons.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/05-compound-growth-visualiser.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/start-ready/05-compound-growth-visualiser.html">
-<meta property="og:title" content="Compound Growth Visualiser | Start Ready">
-<meta property="og:description" content="Compound growth visualiser. See how your investments grow over 10, 20, or 30 years with different contribution amounts and return rates.">
+<meta property="og:title" content="Compound Interest Calculator - Investment Growth Calculator | Start Ready">
+<meta property="og:description" content="Visualize how your investments grow with compound returns. Use our free calculator to see the impact of monthly contributions, starting balance, and time horizons.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Start Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Compound Growth Visualiser | Start Ready">
-<meta name="twitter:description" content="Compound growth visualiser. See how your investments grow over 10, 20, or 30 years with different contribution amounts and return rates.">
+<meta name="twitter:title" content="Compound Interest Calculator - Investment Growth Calculator | Start Ready">
+<meta name="twitter:description" content="Visualize how your investments grow with compound returns. Use our free calculator to see the impact of monthly contributions, starting balance, and time horizons.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Compound Growth Visualiser",
-  "description": "Compound growth visualiser. See how your investments grow over 10, 20, or 30 years with different contribution amounts and return rates.",
+  "name": "Compound Interest Calculator",
+  "description": "Visualize how your investments grow with compound returns. Use our free calculator to see the impact of monthly contributions, starting balance, and time horizons.",
   "url": "https://www.raisereadybook.com/tools/start-ready/05-compound-growth-visualiser.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -109,7 +133,55 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
     {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.raisereadybook.com/tools/"},
     {"@type": "ListItem", "position": 3, "name": "Start Ready Tools", "item": "https://www.raisereadybook.com/tools/start-ready/"},
-    {"@type": "ListItem", "position": 4, "name": "Compound Growth Visualiser", "item": "https://www.raisereadybook.com/tools/start-ready/05-compound-growth-visualiser.html"}
+    {"@type": "ListItem", "position": 4, "name": "Compound Interest Calculator", "item": "https://www.raisereadybook.com/tools/start-ready/05-compound-growth-visualiser.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is compound interest and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compound interest is when you earn returns not just on your initial investment, but also on your accumulated returns. It's often called earning returns on returns. This creates exponential growth over time. A $10,000 investment returning 7% annually grows to $20,000 in 10 years, but $76,000 in 30 years. The longer your money compounds, the more powerful the effect. Time is your most valuable asset in investing because it allows compound returns to work in your favor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does monthly investing improve compound growth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly investing adds new principal that compounds alongside your previous returns. Someone investing $500 monthly for 30 years contributes $180,000, but ends up with far more due to compound returns. The longer each contribution sits invested, the more it grows. Starting early with small contributions often outperforms starting late with large contributions because you get more compound growth cycles. Consistency matters more than the amount, especially when you can harness decades of compounding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What return rate should I assume for my investments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Historical stock market returns average 7-10% annually, but vary significantly year-to-year. A 7% assumption is conservative and reasonable for long-term planning. Bonds typically return 3-5%, and cash returns 4-5% currently. If you're investing in a diversified portfolio (stocks and bonds), 5-7% is a reasonable estimate depending on your allocation. Don't assume 10%+ returns because that leads to overoptimistic projections. Be conservative in your planning so you're surprised by better-than-expected results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does starting early impact investment growth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starting early is worth far more than starting with a large amount. A 25-year-old investing $200/month for 40 years at 7% returns ends up with far more than a 35-year-old investing $400/month for 30 years, despite the same total contributions. Each year you delay costs you compound growth cycles you can never recapture. This is why starting even with small amounts in your 20s is better than waiting to invest more in your 30s or 40s. Time in the market beats timing the market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I adjust for inflation when planning my investments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inflation averages 2-3% annually historically. If you assume 7% returns and 3% inflation, your real purchasing power grows about 4% annually. When calculating retirement needs, account for inflation increasing your expenses over time. If you need $60,000 annually today, in 30 years you might need $145,000 due to inflation. This calculator shows nominal returns and growth. Subtract inflation from your assumed return rate to estimate real growth, or multiply your future spending target by inflation."
+      }
+    }
   ]
 }
 </script>
@@ -118,6 +190,10 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div id="site-nav"></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>Compound Growth Visualiser</h1><p>Chapter 13: Why You Need to Invest</p></div>
+<div class="seo-intro">
+<p>Compound interest is the most powerful force in wealth building. Einstein allegedly called it the eighth wonder of the world because exponential growth is unintuitive. Most people underestimate how much their money can grow over decades, which is why this visualization tool exists. Seeing your growth projected visually makes the math concrete and motivating.</p>
+<p>This calculator shows you how your investments grow when combining a starting balance, monthly contributions, and market returns. Adjust the parameters to see how starting earlier, investing more, or getting better returns changes your outcome. The chart visually breaks down how much of your final balance comes from your contributions versus compound growth from market returns.</p>
+</div>
 <div class="tool-container">
 <div class="section">
 <div class="grid">
@@ -131,6 +207,75 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="chart-wrap"><canvas id="chart"></canvas></div>
 <div id="res"></div></div>
 </div>
+<div class="seo-content">
+<h2>How to Read Your Results</h2>
+<p>Your stacked bar chart shows two components: contributions (your actual deposits over time) stacked with growth (the returns your investments earned). The chart displays year-by-year progression, making visible how your balance grows faster as compound returns accumulate. In early years, contributions dominate. In later years, investment growth often exceeds new contributions, showing compounding accelerating your wealth.</p>
+<p>The three key numbers below the chart show your total contributed amount, total investment growth (gains from returns), and your final total value. The insight brief tells you what percentage of your final balance came from growth versus contributions. If growth is 60%+ of your final balance, compounding is doing most of the work. This demonstrates why time in the market is more important than the amount you invest.</p>
+
+<h2>Time Horizon and Compounding Impact</h2>
+<p>The time horizon dramatically impacts your results. A 10-year timeline shows mostly contributions with moderate growth. A 30-year timeline shows growth potentially exceeding your contributions. This is why starting in your 20s versus 30s makes such a huge difference. The extra decade provides 7-10x more compound growth. Even if you start with less money in your 20s, you'll end up with far more by your 60s than someone who invests more aggressively later.</p>
+<p>The chart vividly shows this effect by the expanding growth section over time. Early years show thin growth bars. Later years show massive growth accumulating annually. This visual is more impactful than equations because it makes exponential growth tangible. Many people commit to investing after seeing this chart because they understand the opportunity cost of waiting.</p>
+
+<h2>Common Mistakes with Compound Growth Projections</h2>
+<h3>Assuming Linear Instead of Exponential Growth</h3>
+<p>People often assume if $1,000/month grows to $100,000 in 10 years, it will grow to $200,000 in 20 years. Actually, exponential returns mean it grows to far more because you earn returns on returns. A $100,000 balance earning 7% returns generates $7,000 in growth that year alone. This accelerating effect is why decades matter so much. Don't think in straight lines. Expect exponential acceleration as your balance grows.</p>
+
+<h3>Giving Up After Market Downturns</h3>
+<p>Markets decline about 20% every few years and 50% occasionally. Most people see their portfolio drop and panic-sell, locking in losses. Those who stay invested through downturns see their monthly contributions buy investments at discount prices, accelerating recovery and long-term growth. Downturns are actually opportunities if you can stay invested. The calculator assumes consistent returns, but real markets are volatile. Volatility shouldn't change your strategy because you have years to recover.</p>
+
+<h3>Neglecting Inflation's Impact</h3>
+<p>A 7% return sounds great until you realize 2% goes to inflation, leaving 5% real growth. If you're projecting you'll have $1,000,000 in 30 years but inflation averages 3%, your purchasing power is equivalent to only $400,000 in today's dollars. Always adjust your goals for inflation. Increase your contribution amounts over time as your income rises. A 5% annual contribution increase roughly offsets inflation and keeps you on pace for real wealth growth.</p>
+
+<h3>Overestimating or Underestimating Return Rates</h3>
+<p>Assuming 10% returns when earning 5% leads to dangerous retirement shortfalls. Assuming 3% when earning 7% means undersaving when you could be wealthier. Use historically realistic return rates based on your actual asset allocation. 7% for diversified stock portfolios is reasonable. 5% for conservative portfolios with bonds is appropriate. 4% for mostly bonds is realistic. Don't choose return rates based on wishful thinking. Use data-driven assumptions and you'll sleep better at night.</p>
+</div>
+
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">What is compound interest and why does it matter?</div>
+<div class="faq-a">Compound interest is when you earn returns not just on your initial investment, but also on your accumulated returns. It's often called earning returns on returns. This creates exponential growth over time. A $10,000 investment returning 7% annually grows to $20,000 in 10 years, but $76,000 in 30 years. The longer your money compounds, the more powerful the effect. Time is your most valuable asset in investing because it allows compound returns to work in your favor.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How does monthly investing improve compound growth?</div>
+<div class="faq-a">Monthly investing adds new principal that compounds alongside your previous returns. Someone investing $500 monthly for 30 years contributes $180,000, but ends up with far more due to compound returns. The longer each contribution sits invested, the more it grows. Starting early with small contributions often outperforms starting late with large contributions because you get more compound growth cycles. Consistency matters more than the amount, especially when you can harness decades of compounding.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What return rate should I assume for my investments?</div>
+<div class="faq-a">Historical stock market returns average 7-10% annually, but vary significantly year-to-year. A 7% assumption is conservative and reasonable for long-term planning. Bonds typically return 3-5%, and cash returns 4-5% currently. If you're investing in a diversified portfolio (stocks and bonds), 5-7% is a reasonable estimate depending on your allocation. Don't assume 10%+ returns because that leads to overoptimistic projections. Be conservative in your planning so you're surprised by better-than-expected results.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How does starting early impact investment growth?</div>
+<div class="faq-a">Starting early is worth far more than starting with a large amount. A 25-year-old investing $200/month for 40 years at 7% returns ends up with far more than a 35-year-old investing $400/month for 30 years, despite the same total contributions. Each year you delay costs you compound growth cycles you can never recapture. This is why starting even with small amounts in your 20s is better than waiting to invest more in your 30s or 40s. Time in the market beats timing the market.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How do I adjust for inflation when planning my investments?</div>
+<div class="faq-a">Inflation averages 2-3% annually historically. If you assume 7% returns and 3% inflation, your real purchasing power grows about 4% annually. When calculating retirement needs, account for inflation increasing your expenses over time. If you need $60,000 annually today, in 30 years you might need $145,000 due to inflation. This calculator shows nominal returns and growth. Subtract inflation from your assumed return rate to estimate real growth, or multiply your future spending target by inflation.</div>
+</div>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<div class="related-grid">
+<a href="/tools/start-ready/06-retirement-calculator.html" class="related-card">
+<h3>Retirement Calculator</h3>
+<p>Calculate your retirement number based on your desired spending and time horizon.</p>
+</a>
+<a href="/tools/start-ready/01-roth-vs-traditional.html" class="related-card">
+<h3>Roth vs Traditional Calculator</h3>
+<p>Compare retirement account types and optimize your tax strategy.</p>
+</a>
+<a href="/tools/start-ready/01-buy-vs-rent.html" class="related-card">
+<h3>Buy vs Rent Calculator</h3>
+<p>See how home ownership compares to renting and investing the difference.</p>
+</a>
+<a href="/tools/start-ready/01-net-worth-calculator.html" class="related-card">
+<h3>Net Worth Calculator</h3>
+<p>Track your total wealth and watch it grow over time.</p>
+</a>
+</div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
@@ -175,5 +320,15 @@ function calc(){
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
 
-<script>document.addEventListener('DOMContentLoaded', function() { calc(); });</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add FAQ expand/collapse functionality
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+  calc();
+});
+</script>
 </body></html>
