@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
-<title>QSBS Savings Calculator | Exit Ready Tools</title>
+<title>QSBS Calculator: Qualified Small Business Stock Exclusion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -28,7 +28,7 @@
   --sans: 'Syne';
 }
 body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
-.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero { text-align: center; padding: 3rem 2rem 1rem; }
 .tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
 .tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
 .tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
@@ -60,25 +60,49 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .alert.warning { border-left-color: #e5c97e; }
 .back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
 .back-link:hover { color: var(--gold2); }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Free QSBS savings calculator. Interactive tool calculates Qualified Small Business Stock tax benefits and exclusion impact.">
+<meta name="description" content="Calculate your Qualified Small Business Stock exclusion and tax savings. Model the impact of QSBS deferral on your exit proceeds.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/05-qsbs-calculator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/exit-ready/05-qsbs-calculator.html">
-<meta property="og:title" content="QSBS Savings Calculator">
-<meta property="og:description" content="Free QSBS savings calculator. Interactive tool calculates Qualified Small Business Stock tax benefits and exclusion impact.">
+<meta property="og:title" content="QSBS Calculator: Qualified Small Business Stock Exclusion">
+<meta property="og:description" content="Calculate your Qualified Small Business Stock exclusion and tax savings. Model the impact of QSBS deferral on your exit proceeds.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Exit Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="QSBS Savings Calculator">
-<meta name="twitter:description" content="Free QSBS savings calculator. Interactive tool calculates Qualified Small Business Stock tax benefits and exclusion impact.">
+<meta name="twitter:title" content="QSBS Calculator: Qualified Small Business Stock Exclusion">
+<meta name="twitter:description" content="Calculate your Qualified Small Business Stock exclusion and tax savings. Model the impact of QSBS deferral on your exit proceeds.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "QSBS Savings Calculator",
-  "description": "Free QSBS savings calculator. Interactive tool calculates Qualified Small Business Stock tax benefits and exclusion impact.",
+  "description": "Calculate your Qualified Small Business Stock exclusion and tax savings. Model the impact of QSBS deferral on your exit proceeds.",,
   "url": "https://www.raisereadybook.com/tools/exit-ready/05-qsbs-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -122,6 +146,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>QSBS Savings Calculator</h1>
     <p>Calculate your potential tax savings from Qualified Small Business Stock (QSBS) exclusion.</p>
     <div class="chapter-ref">From Chapter 24: Tax Planning & Risk Management</div>
+  </div>
+
+  <div class="seo-intro">
+    <p>If you've held your business as a C-corporation since inception and owned it for at least five years, you may qualify for the Qualified Small Business Stock (QSBS) exclusion, one of the most powerful tax benefits available to entrepreneurs. This provision allows you to exclude up to $10 million (or 10x your basis, whichever is greater) of QSBS gains from federal taxes.</p>
+    <p>However, QSBS is complex, with strict holding period requirements, 50% gain limitation rules, and specific stock issuance criteria. Not all founders qualify, and qualifying doesn't mean you automatically get the benefit. Understanding QSBS rules and structuring your exit to preserve eligibility can save hundreds of thousands or even millions in taxes.</p>
   </div>
 
   <div class="tool-container">
@@ -218,10 +247,79 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 
       <div class="result-note" id="r-details"></div>
     </div>
+  
+  <div class="seo-content">
+    <h2>How QSBS Works</h2>
+    <p>QSBS allows you to exclude gains from the sale of qualified stock issued by a C-corporation. You must have held the stock for at least five years and met specific requirements at issuance. The exclusion is limited to the greater of $10 million or 10x your basis. A $5M gain with $1M basis might allow you to exclude $10M of gain, but you can only exclude the $1M you earned.</p>
+
+    <h2>QSBS Eligibility Requirements</h2>
+    <p>Your business must be a C-corporation incorporated in the US. At the time you acquired the stock, it must have been newly issued and the corporation must have had less than $50M in assets. More than 50% of the corporation's assets must be used in an active trade or business (not passive investments). Certain businesses like financial services, hospitality, and health care are excluded. Your recent exit timeline and the history of your cap table both matter for qualification.</p>
+
+    <h2>Common QSBS Pitfalls</h2>
+    <p>Many founders lose QSBS benefits through inadvertent actions. If you receive preferred stock instead of common stock, you might not qualify. If your company raised more than $50M in assets at any point while you held the stock, you could lose benefits. If you sell before the five-year holding period, you get no QSBS benefit at all. Even worse, some founders don't realize they qualify and don't structure their exit to preserve the benefit.</p>
+
+    <h2>Common Mistakes</h2>
+    <h3>Not checking QSBS eligibility before exiting</h3>
+    <p>Many founders exit without consulting a tax advisor about QSBS eligibility. If you might qualify, get professional confirmation before finalizing deal terms. The tax savings can be enormous and worth structuring around.</p>
+
+    <h3>Holding stock past five years but forgetting the requirement</h3>
+    <p>You must have held the stock for five years from acquisition. If you acquired in 2019, you can't use QSBS until after 2024. Plan your exit timing around this threshold when possible.</p>
+
+    <h3>Overlooking the asset test</h3>
+    <p>The corporation must have less than $50M in assets at the time you acquired the stock. Many founders don't realize they crossed this threshold and lost qualification. Track your company's balance sheet growth against this limit.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Do I automatically get QSBS exclusion when I sell?</span>
+      </div>
+      <div class="faq-a">No. You must meet several criteria at the time you acquired the stock and maintain them until sale. Your business must have been a domestic C-corporation under $50M in assets at issuance, the stock must be newly issued (not secondary), and you must have held it for at least five years. Many businesses don't meet all requirements.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is the $10 million QSBS exclusion cap?</span>
+      </div>
+      <div class="faq-a">The exclusion is limited to the greater of $10 million or 10 times your basis in the stock. If your basis was $100K and you sell for $5M, you could exclude gains up to $1M (10x basis), not the full $10M cap. You still owe taxes on gains above that threshold.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What happens if I sell before five years?</span>
+      </div>
+      <div class="faq-a">If you haven't held the stock for five years, you get no QSBS exclusion at all. The five-year holding period is strictly enforced. Timing your exit to clear this threshold can be worth millions in tax savings.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Do preferred shareholders get QSBS benefits?</span>
+      </div>
+      <div class="faq-a">Generally no. QSBS applies to common stock, not preferred stock. Founders who issue themselves preferred stock or receive preferred shares in a seed round may disqualify themselves from QSBS benefits, even if they otherwise meet all other criteria.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="/tools/exit-ready/04-asset-vs-stock-comparator.html" class="related-card">
+        <h3>Asset vs Stock Comparator</h3>
+        <p>Compare asset sale and stock sale tax implications. QSBS benefits apply to stock sales only.</p>
+      </a>
+      <a href="/tools/exit-ready/01-exit-proceeds-calculator.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Calculate net proceeds after accounting for capital gains taxes. QSBS exclusion reduces your tax burden.</p>
+      </a>
+      <a href="/tools/exit-ready/20-cross-border-tax.html" class="related-card">
+        <h3>Cross-Border Tax Considerations</h3>
+        <p>Understand how international tax rules interact with QSBS and your exit structure.</p>
+      </a>
+      <a href="/tools/exit-ready/18-installment-sale-optimizer.html" class="related-card">
+        <h3>Installment Sale Optimizer</h3>
+        <p>Combine QSBS treatment with installment sales for additional tax efficiency.</p>
+      </a>
+    </div>
   </div>
 </main>
 <div id="site-footer"></div>
-
 <script src="/shared/components.js" defer></script>
 <script>
 function fmt(n) {

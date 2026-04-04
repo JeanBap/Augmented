@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
-<title>EBITDA Bridge Builder | Exit Ready Tools</title>
+<title>EBITDA Bridge Calculator: Adjusted EBITDA Add-Backs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -28,7 +28,7 @@
   --sans: 'Syne';
 }
 body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
-.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero { text-align: center; padding: 3rem 2rem 1rem; }
 .tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
 .tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
 .tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
@@ -66,25 +66,49 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .result-table .text-right { text-align: right; }
 .back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
 .back-link:hover { color: var(--gold2); }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Build an EBITDA bridge instantly. Free interactive EBITDA bridge builder tool shows add-backs and adjustments. Calculate normalized earnings.">
+<meta name="description" content="Build your EBITDA bridge to show normalized earnings. Add back owner costs, non-recurring expenses, and adjustments. Calculate adjusted EBITDA for valuation.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/02-ebitda-bridge-builder.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/exit-ready/02-ebitda-bridge-builder.html">
-<meta property="og:title" content="EBITDA Bridge Builder">
-<meta property="og:description" content="Build an EBITDA bridge instantly. Free interactive EBITDA bridge builder tool shows add-backs and adjustments. Calculate normalized earnings.">
+<meta property="og:title" content="EBITDA Bridge Calculator: Adjusted EBITDA Add-Backs">
+<meta property="og:description" content="Build your EBITDA bridge to show normalized earnings. Add back owner costs, non-recurring expenses, and adjustments. Calculate adjusted EBITDA for valuation.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Exit Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EBITDA Bridge Builder">
-<meta name="twitter:description" content="Build an EBITDA bridge instantly. Free interactive EBITDA bridge builder tool shows add-backs and adjustments. Calculate normalized earnings.">
+<meta name="twitter:title" content="EBITDA Bridge Calculator: Adjusted EBITDA Add-Backs">
+<meta name="twitter:description" content="Build your EBITDA bridge to show normalized earnings. Add back owner costs, non-recurring expenses, and adjustments. Calculate adjusted EBITDA for valuation.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "EBITDA Bridge Builder",
-  "description": "Build an EBITDA bridge instantly. Free interactive EBITDA bridge builder tool shows add-backs and adjustments. Calculate normalized earnings.",
+  "description": "Build your EBITDA bridge to show normalized earnings. Add back owner costs, non-recurring expenses, and adjustments. Calculate adjusted EBITDA for valuation.",
   "url": "https://www.raisereadybook.com/tools/exit-ready/02-ebitda-bridge-builder.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -109,6 +133,46 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between EBITDA and adjusted EBITDA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reported EBITDA is earnings before interest, taxes, depreciation, and amortization based on your financial statements. Adjusted EBITDA removes one-time or non-recurring items and owner-specific expenses that wouldn't be incurred by a new buyer. Adjusted EBITDA shows normalized earnings power and is the standard metric used for business valuation multiples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What expenses should I add back when calculating adjusted EBITDA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common add-backs include owner compensation above market rates, one-time consulting or legal fees, non-recurring expenses, related party transactions, non-business travel, excessive rent to related parties, and unusual items. The goal is to show what earnings would be under new ownership with standard cost structures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do buyers use adjusted EBITDA in valuation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buyers apply a multiple to adjusted EBITDA to determine enterprise value. The multiple depends on industry, growth rate, margins, customer concentration, and competitive position. A business with $1M adjusted EBITDA might be valued at 4x to 10x that amount, resulting in a $4M to $10M valuation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is confidence weighting and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Confidence weighting recognizes that some adjustments are certain to recur while others are questionable. High confidence adjustments receive 100% weight, medium confidence receives 70% weight, and low confidence receives 40% weight. This helps you present a realistic picture of the adjustments you can defend to a buyer."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
@@ -128,6 +192,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>EBITDA Bridge Builder</h1>
     <p>Start with reported EBITDA and add/subtract adjustments to model Adjusted EBITDA for valuation.</p>
     <div class="chapter-ref">From Chapter 6: Valuation & Multiple Analysis</div>
+  </div>
+
+  <div class="seo-intro">
+    <p>Your reported EBITDA is what appears on your financial statements. But buyers don't value you on reported EBITDA alone. They value you on adjusted EBITDA, which strips out one-time costs and owner-specific expenses to reveal normalized earnings. The difference between reported and adjusted EBITDA can mean millions in deal value.</p>
+    <p>An EBITDA bridge is the document that takes buyers from your reported numbers to an adjusted baseline they can apply standard multiples to. Building a defensible bridge requires identifying the right adjustments and presenting them credibly so buyers accept them as legitimate add-backs rather than accounting games.</p>
   </div>
 
   <div class="tool-container">
@@ -202,6 +271,85 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
       <div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin-top:1rem;"><canvas id="bridgeChart" style="max-height:280px;"></canvas></div>
 
       <div class="result-note" id="r-details"></div>
+    </div>
+  </div>
+
+  <div class="seo-content">
+    <h2>How to Read Your EBITDA Bridge</h2>
+    <p>The bridge starts with reported EBITDA from your audited or reviewed financials. It then lists each adjustment with the amount added or subtracted. Common add-backs appear at the top, then subtractions. The bridge concludes with adjusted EBITDA, which is the number buyers use for valuation.</p>
+    <p>The confidence weighting column tells you how much of each adjustment you can realistically defend. High confidence adjustments get 100% weight because they're obvious (like one-time severance). Medium confidence adjustments get 70% weight because they're defensible but less clear-cut (like owner salary above market). Low confidence adjustments get 40% weight because buyers might challenge them.</p>
+
+    <h2>Common Add-Backs and When to Use Them</h2>
+    <p>Owner compensation above market is the most common add-back. If you pay yourself $500K but a hired CEO would cost $200K, you can add back $300K. Be prepared to document comparable salaries in your industry and region.</p>
+    <p>Non-recurring expenses are one-time costs that won't recur under new ownership. Examples include facility relocations, severance for departing employees, litigation settlements, and integration costs from prior acquisitions. These are high confidence because they're clearly non-recurring.</p>
+    <p>Related party transactions at above-market rates are add-backs if you rent space from a related party at inflated rates or purchase supplies from related entities. The bridge should show the add-back amount and a comparable market rate.</p>
+    <p>Founder-specific costs like the founder's excessive travel, personal expenses, or family salaries are add-backs if they won't continue under new ownership. Similarly, if you have duplicate functions that will be consolidated, that savings should appear as an adjustment.</p>
+    <p>Stock-based compensation that won't continue is frequently added back, particularly options that vest post-closing since the buyer won't be issuing additional equity.</p>
+
+    <h2>Common Mistakes</h2>
+    <h3>Adding back items that will continue post-close</h3>
+    <p>The biggest bridge mistake is adding back costs that the new owner will incur. If your CFO will stay post-close, you can't add back her salary. If related party rent continues under the same terms, you can't add it back. Buyers are sophisticated and will challenge anything that doesn't clearly terminate.</p>
+
+    <h3>Being too aggressive with adjustments</h3>
+    <p>The goal isn't to maximize adjustments but to present realistic numbers. An aggressive bridge that buyers don't believe in will destroy negotiating credibility. It's better to be conservative and have buyers accept your bridge than to claim too much and lose the deal over trust.</p>
+
+    <h3>Forgetting to document adjustments</h3>
+    <p>Every add-back needs backup documentation. Vendor invoices for one-time expenses, executive compensation surveys for market rate comparisons, and related party contracts showing above-market terms are essential. Without documentation, adjustments become unsupported claims.</p>
+
+    <h3>Missing obvious add-backs</h3>
+    <p>Some founders don't add back significant items because they seem normal. But if it's founder-specific or non-recurring, it belongs in the bridge. Be comprehensive and let buyers see the full picture of adjustments.</p>
+
+    <h3>Mixing GAAP and non-GAAP adjustments</h3>
+    <p>Be clear about the starting point. Are you adjusting from GAAP net income or reported EBITDA? Different starting points require different adjustments. Most buyers prefer to start from audited EBITDA and work from there for credibility.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is the difference between EBITDA and adjusted EBITDA?</span>
+      </div>
+      <div class="faq-a">Reported EBITDA is earnings before interest, taxes, depreciation, and amortization based on your financial statements. Adjusted EBITDA removes one-time or non-recurring items and owner-specific expenses that wouldn't be incurred by a new buyer. Adjusted EBITDA shows normalized earnings power and is the standard metric used for business valuation multiples.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What expenses should I add back when calculating adjusted EBITDA?</span>
+      </div>
+      <div class="faq-a">Common add-backs include owner compensation above market rates, one-time consulting or legal fees, non-recurring expenses, related party transactions, non-business travel, excessive rent to related parties, and unusual items. The goal is to show what earnings would be under new ownership with standard cost structures.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>How do buyers use adjusted EBITDA in valuation?</span>
+      </div>
+      <div class="faq-a">Buyers apply a multiple to adjusted EBITDA to determine enterprise value. The multiple depends on industry, growth rate, margins, customer concentration, and competitive position. A business with $1M adjusted EBITDA might be valued at 4x to 10x that amount, resulting in a $4M to $10M valuation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is confidence weighting and why does it matter?</span>
+      </div>
+      <div class="faq-a">Confidence weighting recognizes that some adjustments are certain to recur while others are questionable. High confidence adjustments receive 100% weight, medium confidence receives 70% weight, and low confidence receives 40% weight. This helps you present a realistic picture of the adjustments you can defend to a buyer.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="/tools/exit-ready/01-exit-proceeds-calculator.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Calculate your net proceeds from the acquisition after fees, escrow, and taxes.</p>
+      </a>
+      <a href="/tools/exit-ready/03-multiple-estimator.html" class="related-card">
+        <h3>Multiple Estimator</h3>
+        <p>Calculate the EBITDA multiple your business should command based on growth and margins.</p>
+      </a>
+      <a href="/tools/exit-ready/08-sde-vs-ebitda-calculator.html" class="related-card">
+        <h3>SDE vs EBITDA Calculator</h3>
+        <p>Compare seller discretionary earnings to EBITDA to understand which metric applies to your business.</p>
+      </a>
+      <a href="/tools/exit-ready/09-exit-readiness-scorecard.html" class="related-card">
+        <h3>Exit Readiness Scorecard</h3>
+        <p>Assess your business readiness for sale across operations, financials, and market factors.</p>
+      </a>
     </div>
   </div>
 </main>
@@ -321,143 +469,38 @@ function calculateBridge() {
   // Render EBITDA bridge waterfall chart
   if(window._bridgeChart) window._bridgeChart.destroy();
   const ctx = document.getElementById('bridgeChart').getContext('2d');
-
-  // Build waterfall data structure
-  // Each bar shows: [value, stack position]
-  // For waterfall: each segment floats on top of the cumulative previous value
-  let runningTotal = 0;
-  const waterfallData = [];
-  const baselineData = [];
-  const barLabels = ['Reported EBITDA'];
-
-  // Starting bar (Reported EBITDA)
-  waterfallData.push(reported);
-  baselineData.push(0);
-  runningTotal = reported;
-
-  // Collect adjustments in order
-  const adjustmentsList = [];
-  document.querySelectorAll('.adjustment-row').forEach(row => {
-    const amount = parseFloat(row.querySelector('.adj-amount').value) || 0;
-    const type = row.querySelector('.adj-type').value;
-    if (amount > 0) {
-      adjustmentsList.push({ amount, type });
-    }
-  });
-
-  // Add each adjustment as a floating bar
-  adjustmentsList.forEach((adj, idx) => {
-    barLabels.push(adj.type === 'add-back' ? `+${fmt(adj.amount)}` : `-${fmt(adj.amount)}`);
-    if (adj.type === 'add-back') {
-      waterfallData.push(adj.amount);
-      baselineData.push(runningTotal);
-      runningTotal += adj.amount;
-    } else {
-      waterfallData.push(adj.amount);
-      baselineData.push(runningTotal - adj.amount);
-      runningTotal -= adj.amount;
-    }
-  });
-
-  // Final bar (Adjusted EBITDA)
-  barLabels.push('Adjusted EBITDA');
-  waterfallData.push(adjustedEbitda);
-  baselineData.push(0);
-
-  // Create color array: first bar navy, add-backs green, subtractions red, last bar gold
-  const colors = [];
-  colors.push('url(#gradientNavy)'); // Reported EBITDA
-  adjustmentsList.forEach(adj => {
-    colors.push(adj.type === 'add-back' ? 'url(#gradientGreen)' : 'url(#gradientRed)');
-  });
-  colors.push('url(#gradientGold)'); // Adjusted EBITDA
-
-  // Create SVG with gradient defs (Chart.js will render this)
-  const svgNS = 'http://www.w3.org/2000/svg';
-
   window._bridgeChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: barLabels,
-      datasets: [
-        {
-          // Invisible baseline dataset to position bars
-          label: 'Base',
-          data: baselineData,
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-          borderWidth: 0,
-          barThickness: 40
-        },
-        {
-          // Visible waterfall segments
-          label: 'Bridge',
-          data: waterfallData,
-          backgroundColor: [
-            '#1B2A4A',  // Reported EBITDA - dark navy
-            ...adjustmentsList.map(adj => adj.type === 'add-back' ? '#27ae60' : '#c0392b'),
-            '#c8a45a'   // Adjusted EBITDA - gold
-          ],
-          borderRadius: 6,
-          borderSkipped: false,
-          borderWidth: 0,
-          barThickness: 40
-        }
-      ]
+      labels: ['Reported', 'Add-backs', 'Subtractions', 'Adjusted'],
+      datasets: [{
+        label: 'EBITDA ($)',
+        data: [reported, addbacks, -subtractions, adjustedEbitda],
+        backgroundColor: ['#c8a45a', '#10b981', '#ef4444', '#7c5cfc'],
+        borderRadius: 4,
+        borderSkipped: false
+      }]
     },
     options: {
-      indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: true,
-      animation: {
-        duration: 800
-      },
+      indexAxis: 'y',
       plugins: {
         legend: { display: false },
-        tooltip: {
-          backgroundColor: 'rgba(8,8,13,0.95)',
-          borderColor: 'rgba(200,164,90,0.15)',
-          borderWidth: 1,
-          padding: 10,
-          titleFont: { family: "'DM Mono', monospace", size: 12 },
-          bodyFont: { family: "'DM Mono', monospace", size: 11 },
-          displayColors: false,
-          callbacks: {
-            title: (context) => context[0].label || '',
-            label: (context) => {
-              if (context.datasetIndex === 1) {
-                return fmt(context.parsed.x);
-              }
-              return '';
-            }
-          }
-        }
+        filler: { propagate: true }
       },
       scales: {
         x: {
-          stacked: true,
-          grid: {
-            color: 'rgba(200,164,90,0.08)',
-            drawBorder: false
-          },
-          ticks: {
-            color: 'rgba(200,164,90,0.6)',
-            font: { family: "'DM Mono', monospace", size: 10 },
-            callback: v => '$' + (v/1000000).toFixed(1) + 'M'
-          }
+          stacked: false,
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', callback: v => '$' + (v/1000000).toFixed(0) + 'M' }
         },
         y: {
-          stacked: true,
-          grid: {
-            color: 'rgba(200,164,90,0.08)',
-            drawBorder: false
-          },
-          ticks: {
-            color: 'rgba(200,164,90,0.7)',
-            font: { family: "'DM Mono', monospace", size: 10 }
-          }
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#94a3b8', font: { family: "'DM Mono', monospace" } }
         }
-      }
+      },
+      backgroundColor: '#1B2A4A'
     }
   });
 }

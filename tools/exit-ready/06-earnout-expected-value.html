@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
-<title>Earnout Expected Value | Exit Ready Tools</title>
+<title>Earnout Expected Value Calculator: Present Value of Earnouts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -28,7 +28,7 @@
   --sans: 'Syne';
 }
 body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
-.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero { text-align: center; padding: 3rem 2rem 1rem; }
 .tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
 .tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
 .tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
@@ -62,25 +62,49 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
 .back-link:hover { color: var(--gold2); }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Calculate earnout expected value instantly. Free interactive earnout calculator. Model probability-weighted payout scenarios.">
+<meta name="description" content="Calculate the present value of earnout payments. Model probability-weighted payouts and discount rates to evaluate earnout structures.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/06-earnout-expected-value.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/exit-ready/06-earnout-expected-value.html">
-<meta property="og:title" content="Earnout Expected Value">
-<meta property="og:description" content="Calculate earnout expected value instantly. Free interactive earnout calculator. Model probability-weighted payout scenarios.">
+<meta property="og:title" content="Earnout Expected Value Calculator: Present Value of Earnouts">
+<meta property="og:description" content="Calculate the present value of earnout payments. Model probability-weighted payouts and discount rates to evaluate earnout structures.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Exit Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Earnout Expected Value">
-<meta name="twitter:description" content="Calculate earnout expected value instantly. Free interactive earnout calculator. Model probability-weighted payout scenarios.">
+<meta name="twitter:title" content="Earnout Expected Value Calculator: Present Value of Earnouts">
+<meta name="twitter:description" content="Calculate the present value of earnout payments. Model probability-weighted payouts and discount rates to evaluate earnout structures.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Earnout Expected Value",
-  "description": "Calculate earnout expected value instantly. Free interactive earnout calculator. Model probability-weighted payout scenarios.",
+  "description": "Calculate the present value of earnout payments. Model probability-weighted payouts and discount rates to evaluate earnout structures.",,
   "url": "https://www.raisereadybook.com/tools/exit-ready/06-earnout-expected-value.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
@@ -124,6 +148,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>Earnout Expected Value Calculator</h1>
     <p>Calculate the probability-weighted value of earnout tranches and risk adjustments.</p>
     <div class="chapter-ref">From Chapter 19: Deal Terms & Negotiation</div>
+  </div>
+
+    <div class="seo-intro">
+    <p>Earnouts are contingent payments tied to future performance after closing. They're common in acquisition deals but often overestimated by sellers. A $2M earnout sounds great until you realize the targets might not be achievable or the buyer controls the metrics. Understanding the real expected value of an earnout requires modeling probability and discounting future cash.</p>
+    <p>This calculator helps you understand what earnouts are actually worth in today's dollars. It accounts for the probability you'll hit the targets, the discount rate reflecting risk and time value, and the payment schedule. By comparing the present value to what you could get as an upfront payment, you can negotiate more strategically.</p>
   </div>
 
   <div class="tool-container">
@@ -192,6 +221,74 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
       </div>
 
       <div class="result-note" id="r-details"></div>
+      <div class="seo-content">
+    <h2>How Earnout Expected Value Works</h2>
+    <p>Earnouts are risky because they depend on future performance. If your business is valued at 8x EBITDA and the buyer offers a $2M earnout if you hit 10% growth, your actual expected value depends on the probability of hitting that target. If you think it's 80% likely, the expected value is $1.6M, not $2M. Discounting for time value further reduces it.</p>
+
+    <h2>Setting Realistic Earnout Targets</h2>
+    <p>The biggest earnout mistake is agreeing to targets you can't control or that depend on the buyer's actions. If the earnout depends on the buyer retaining customers or reaching new markets, you have no control over success. Realistic targets depend on your recent performance trend, market conditions, and the buyer's commitment to growth. Conservative founders should discount probability estimates significantly.</p>
+
+    <h2>Earnout Versus Cash</h2>
+    <p>Always compare earnout expected value to upfront cash you could negotiate instead. A $2M earnout with 60% probability is worth $1.2M in expected value, less any discount rate. You might negotiate for $1.5M less in headline price but with full cash at close. The cash is certain; the earnout is risky. Conservative sellers prefer less upfront certainty.</p>
+
+    <h2>Common Mistakes</h2>
+    <h3>Overestimating earnout probability</h3>
+    <p>Founders are optimistic about hitting earnout targets. Be conservative in your probability estimates. If you've never hit 40% growth, don't assume you will post-close. Discount your historical performance trend by 10-20% to account for integration challenges.</p>
+
+    <h3>Underestimating discount rate</h3>
+    <p>A $1M earnout paid in two years is worth less than $1M today due to time value of money and risk. Use a 15-25% discount rate depending on business stability. For volatile businesses, use 25-30%.</p>
+
+    <h3>Focusing on headline value instead of expected value</h3>
+    <p>Earnout size is irrelevant if the probability is low. A $5M earnout with 20% probability is worth $1M in expected value. A $2M cash bonus is better.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is earnout expected value?</span>
+      </div>
+      <div class="faq-a">Expected value is the probability-weighted cash you expect to receive. If an earnout pays $2M if you hit targets with 70% probability, the expected value is $1.4M. Discount this for time value of money since you won't receive it immediately, often using a 10-20% annual discount rate.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>How do I estimate the probability of hitting earnout targets?</span>
+      </div>
+      <div class="faq-a">Look at your recent performance trend. If you've grown 25% the last two years and the earnout requires 20% growth, probability is high. If you need 40% growth and you've been flat, probability is low. Be conservative. Buyer's actions also matter. If hitting targets depends on buyer retaining employees or customers, probability drops.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Why discount earnout payments?</span>
+      </div>
+      <div class="faq-a">Discounting accounts for two things: time value of money (you'd rather have $1 today than in two years) and risk (future payments might not occur). Standard discount rates range from 10-20% depending on business risk. Higher risk businesses use higher discount rates.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Should I take a lower headline with a big earnout?</span>
+      </div>
+      <div class="faq-a">Usually no. If you can negotiate, take more upfront cash and less earnout. Cash at close is certain. Earnouts depend on future performance and buyer actions you don't control. Unless your earnout is achievable with high confidence, upfront money is safer.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="/tools/exit-ready/01-exit-proceeds-calculator.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Calculate proceeds accounting for earnouts and holdbacks in your deal structure.</p>
+      </a>
+      <a href="/tools/exit-ready/03-multiple-estimator.html" class="related-card">
+        <h3>Multiple Estimator</h3>
+        <p>Understand what multiple your earnout target is based on for valuation context.</p>
+      </a>
+      <a href="/tools/exit-ready/07-pe-rollover-simulator.html" class="related-card">
+        <h3>PE Rollover Simulator</h3>
+        <p>Model second-bite equity versus earnout structures in PE-backed deals.</p>
+      </a>
+      <a href="/tools/exit-ready/06-earnout-expected-value.html" class="related-card">
+        <h3>LOI Comparator</h3>
+        <p>Compare multiple LOI structures including different earnout terms.</p>
+      </a>
     </div>
   </div>
 </main>

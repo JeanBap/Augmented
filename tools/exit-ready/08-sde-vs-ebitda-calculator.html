@@ -62,6 +62,30 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .result-note { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .back-link { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--gold); text-decoration: none; padding: 1rem 2rem 0; }
 .back-link:hover { color: var(--gold2); }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
 <meta name="description" content="Compare SDE vs EBITDA earnings metrics. Free interactive calculator tool. Understand which metric applies to your business.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/08-sde-vs-ebitda-calculator.html">
@@ -124,6 +148,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>SDE vs EBITDA Calculator</h1>
     <p>Compare SDE and EBITDA valuations for your business size and profitability.</p>
     <div class="chapter-ref">From Chapter 28: Small Business Valuations</div>
+  </div>
+
+    <div class="seo-intro">
+    <p>SDE (Seller Discretionary Earnings) and EBITDA are the two main earning metrics used to value privately held businesses. For small businesses ($1-5M revenue), buyers often use SDE multiples. For larger, more structured businesses, EBITDA multiples apply. Using the wrong metric can dramatically undervalue or overvalue your business, affecting your entire exit strategy.</p>
+    <p>Understanding which metric applies to your business and how to convert between them is essential for accurate valuation. A business showing $300K SDE at 3x multiples is worth $900K. The same business at 5x EBITDA multiple (if it qualifies) might be worth $1.5M. Getting the metric right can be worth hundreds of thousands.</p>
   </div>
 
   <div class="tool-container">
@@ -230,6 +259,74 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
       </table>
 
       <div class="result-note" id="r-summary"></div>
+      <div class="seo-content">
+    <h2>Understanding SDE vs EBITDA</h2>
+    <p>SDE is net profit plus owner salary plus owner benefits plus one-time/non-recurring expenses. It shows cash earnings available to an owner-operator. EBITDA is earnings before interest, taxes, depreciation, and amortization. It shows normalized operating earnings independent of capital structure or ownership.</p>
+
+    <h2>When to Use SDE</h2>
+    <p>SDE multiples apply to small, owner-operated businesses where the buyer will be hands-on. Typical SDE businesses have $1-5M revenue, strong owner involvement, and limited need for outside management. Buyers of SDE businesses typically pay 2-4x SDE multiples. SDE is easier to calculate and adjust than EBITDA.</p>
+
+    <h2>When to Use EBITDA</h2>
+    <p>EBITDA multiples apply to larger, more structured businesses where professional management and systems are in place. Typical EBITDA businesses have $5M+ revenue, professional management, documented processes, and multiple revenue streams. Buyers pay 5-12x EBITDA multiples. EBITDA is more relevant for institutional buyers and growth-focused buyers.</p>
+
+    <h2>Common Mistakes</h2>
+    <h3>Mixing SDE and EBITDA metrics</h3>
+    <p>Don't claim SDE adjustments when building an EBITDA bridge. If you're using EBITDA multiples, stick to EBITDA add-backs. If you're using SDE, stick to SDE calculation. Mixing metrics confuses buyers.</p>
+
+    <h3>Assuming one metric applies to your business</h3>
+    <p>Size and structure determine which metric applies. Consult a broker or advisor to determine if your business should be valued on SDE or EBITDA. The difference can be 50%+ of your valuation.</p>
+
+    <h3>Forgetting that buyers expect different structures</h3>
+    <p>SDE buyers expect involved ownership. EBITDA buyers expect them to step back. If you want to stay involved, position on SDE. If you want to exit cleanly, position on EBITDA and show it doesn't depend on you.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is the difference between SDE and EBITDA?</span>
+      </div>
+      <div class="faq-a">SDE is net profit plus owner compensation and one-time expenses. EBITDA is earnings before interest, taxes, depreciation, and amortization. SDE shows cash available to an owner-operator. EBITDA shows normalized operating earnings. SDE multiples apply to small businesses; EBITDA multiples apply to larger, professional companies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Which metric should I use for my business?</span>
+      </div>
+      <div class="faq-a">Use SDE if your business is under $5M revenue, owner-operated, and the buyer will be involved in management. Use EBITDA if your business is $5M+ revenue, professionally managed, and the buyer is an institutional investor. When in doubt, have a broker assess your business.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What are typical SDE and EBITDA multiples?</span>
+      </div>
+      <div class="faq-a">SDE businesses typically sell for 2-4x multiples. EBITDA businesses typically sell for 5-12x multiples. The multiple depends on growth, margins, customer concentration, and buyer type. Strategic buyers often pay more than financial buyers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Can I convert my SDE to EBITDA?</span>
+      </div>
+      <div class="faq-a">Yes. EBITDA equals net profit plus interest, taxes, depreciation, and amortization. You can back out these items from SDE to get EBITDA. However, the resulting EBITDA might not support EBITDA multiples if your business is still owner-dependent.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="/tools/exit-ready/02-ebitda-bridge-builder.html" class="related-card">
+        <h3>EBITDA Bridge Builder</h3>
+        <p>Build your EBITDA bridge with add-backs if EBITDA is your valuation metric.</p>
+      </a>
+      <a href="/tools/exit-ready/03-multiple-estimator.html" class="related-card">
+        <h3>Multiple Estimator</h3>
+        <p>Estimate whether your business commands SDE or EBITDA multiples.</p>
+      </a>
+      <a href="/tools/exit-ready/01-exit-proceeds-calculator.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Calculate net proceeds based on your valuation multiple.</p>
+      </a>
+      <a href="/tools/exit-ready/09-exit-readiness-scorecard.html" class="related-card">
+        <h3>Exit Readiness Scorecard</h3>
+        <p>Assess your business maturity to determine which valuation metric applies.</p>
+      </a>
     </div>
   </div>
 </main>

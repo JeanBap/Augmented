@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
-<title>Opportunity Zone Investment Modeler | Exit Ready Tools</title>
+<title>Opportunity Zone Calculator | OZ Investment Tax Benefit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -28,7 +28,7 @@
   --sans: 'Syne';
 }
 body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
-.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero { text-align: center; padding: 3rem 2rem 1rem; }
 .tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
 .tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
 .tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
@@ -61,19 +61,59 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .timeline { margin-top: 1.5rem; display: flex; justify-content: space-around; text-align: center; font-family: var(--mono); font-size: 0.8rem; }
 .timeline-item { flex: 1; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: rgba(200,164,90,0.05); margin: 0 0.25rem; }
 .timeline-item .year { color: var(--gold); font-weight: bold; }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Model Opportunity Zone tax benefits. Free interactive modeler tool. Calculate deferral, reduction, and exclusion impact.">
+<meta name="description" content="Free Opportunity Zone (OZ) calculator. Model tax deferral, step-up basis, and exclusion benefits from OZ investments.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/19-opportunity-zone-modeler.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/exit-ready/19-opportunity-zone-modeler.html">
-<meta property="og:title" content="Opportunity Zone Investment Modeler">
-<meta property="og:description" content="Model Opportunity Zone tax benefits. Free interactive modeler tool. Calculate deferral, reduction, and exclusion impact.">
+<meta property="og:title" content="Opportunity Zone Calculator | OZ Investment Tax Benefit">
+<meta property="og:description" content="Free Opportunity Zone (OZ) calculator. Model tax deferral, step-up basis, and exclusion benefits from OZ investments.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Exit Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Opportunity Zone Investment Modeler">
-<meta name="twitter:description" content="Model Opportunity Zone tax benefits. Free interactive modeler tool. Calculate deferral, reduction, and exclusion impact.">
+<meta name="twitter:title" content="Opportunity Zone Calculator | OZ Investment Tax Benefit">
+<meta name="twitter:description" content="Free Opportunity Zone (OZ) calculator. Model tax deferral, step-up basis, and exclusion benefits from OZ investments.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Key FAQ 1",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answer 1"
+      }
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -123,6 +163,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>Opportunity Zone Investment Modeler</h1>
     <p>Calculate the tax benefits of reinvesting exit proceeds in a Qualified Opportunity Zone investment.</p>
     <div class="chapter-ref">From Chapter 25: Tax-Efficient Exit Structures</div>
+  </div>
+
+  <div class="seo-intro">
+    <p>Opportunity Zones offer powerful tax incentives for reinvesting exit proceeds into qualified businesses in economically distressed areas. You can defer the taxable gain from your sale, and if you hold the OZ investment long enough (10 years), you exclude all appreciation in that investment from federal taxation. At 15-20% federal plus state tax rates, OZ benefits can save $100K+ on a $1M exit.</p>
+    <p>OZ investments come with trade-offs: you lose liquidity for up to 10 years, your money is at risk in a new venture, and benefits are only certain if you hold until the deadline. This calculator helps you model whether the tax benefits justify the opportunity cost of illiquidity and whether your exit proceeds qualify for OZ treatment.</p>
   </div>
 
   <div class="tool-container">
@@ -239,12 +284,78 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
       <div class="timeline" id="r-timeline"></div>
 
       <div class="result-note" id="r-details"></div>
+
+  <div class="seo-content">
+    <h2>Understanding Opportunity Zone Tax Benefits</h2>
+    <p>If you sell your business for $5M gain and reinvest the proceeds into a qualified OZ business: (1) you defer the entire $5M gain until December 31, 2026; (2) if you hold the OZ investment for 5+ years, you reduce the deferred gain by 10%; (3) if you hold for 7+ years, you reduce the deferred gain by 15%; (4) if you hold for 10 years, you exclude all appreciation of the OZ investment from taxation. Tax brackets combined with these benefits can defer or eliminate $500K-$1M in taxes on a large exit.</p>
+    <p>The 2026 deadline for recognizing deferred gains is firm. On December 31, 2026, you must recognize any deferred gains not rolled over into new OZ investments. Plan accordingly if you're considering multiple OZ investments over time.</p>
+
+    <h2>OZ Investment Requirements and Restrictions</h2>
+    <p>Only investments made directly into OZ businesses (not funds) qualify. The business must use the capital for active operations (not passive real estate holding). The business must be in a federally designated Opportunity Zone. You need proof of QOF (Qualified Opportunity Fund) certification. Investments typically lock up for at least 5 years to achieve any tax benefit, and 10 years to achieve maximum benefit.</p>
+    <p>Not all ventures work in OZ format. Tech startups, real estate development, hospitality, and manufacturing businesses commonly use OZ structure. SaaS, professional services, and capital-light businesses may not benefit from OZ structure if capital isn't productively deployed.</p>
+
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How much can I save in taxes with an Opportunity Zone investment?</div>
+      <div class="faq-a">Tax savings depend on your tax bracket (15-37% federal) plus state taxes (0-13%). Potential savings range from 15-50% of the deferred gain plus future appreciation exclusion. On a $5M gain, realistic savings are $750K-$2M depending on your tax bracket and investment performance. Run detailed scenarios with your tax advisor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are the biggest risks with OZ investments?</div>
+      <div class="faq-a">Primary risk: you lose $5M of liquidity for 5-10 years. If you need the capital, you're forced to liquidate at potential loss. Secondary risk: OZ businesses often have higher risk profiles than your primary business. You're reinvesting into uncertain ventures. Third risk: regulatory changes could affect OZ benefits (though unlikely given Congressional support).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I have to invest all exit proceeds in an OZ fund?</div>
+      <div class="faq-a">No. You can invest a portion and take the remainder as taxable proceeds. If you need liquidity, invest only what you can afford to lock up for 10 years. Invest enough to meaningfully reduce your tax burden but not so much that you create cash flow strain.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if my OZ investment doesn't perform?</div>
+      <div class="faq-a">Tax benefits apply only if your investment qualifies as OZ investment (correct zone, qualified business, proper structures). If the investment fails, you lose your capital but the OZ tax benefits don't disappear. You'll still defer gain until 2026 and exclude post-5-year appreciation (even if appreciation is negative). However, you're left with a failed investment and deferred tax bills.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I invest in an OZ fund instead of direct OZ businesses?</div>
+      <div class="faq-a">Yes. QOF (Qualified Opportunity Fund) structures allow passive investment into OZ businesses. These carry similar tax benefits but typically charge management fees and reduce your control. Direct investment offers more control but requires more active management and expertise.</div>
     </div>
   </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="02-exit-readiness.html" class="related-card">
+        <h3>Exit Readiness Scorer</h3>
+        <p>Assess readiness across all dimensions.</p>
+      </a>
+      <a href="03-exit-proceeds.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Model your net proceeds after all adjustments.</p>
+      </a>
+      <a href="16-loi-comparator.html" class="related-card">
+        <h3>LOI Comparator</h3>
+        <p>Compare multiple letter of intent terms.</p>
+      </a>
+      <a href="14-timeline-planner.html" class="related-card">
+        <h3>Timeline Planner</h3>
+        <p>Map the full exit process timeline.</p>
+      </a>
+    </div>
+  </div>
+
 </main>
 <div id="site-footer"></div>
 
-<script src="/shared/components.js" defer></script>
+$1
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+});
+</script>
+
 <script>
 function fmt(n) {
   if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';

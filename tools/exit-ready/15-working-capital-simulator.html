@@ -7,7 +7,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXXBYNXWZ7');</script>
 <meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
-<title>Working Capital True-Up Simulator | Exit Ready Tools</title>
+<title>Working Capital True-Up Calculator | Working Capital Adjustment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -28,7 +28,7 @@
   --sans: 'Syne';
 }
 body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
-.tool-hero { text-align: center; padding: 3rem 2rem 2rem; }
+.tool-hero { text-align: center; padding: 3rem 2rem 1rem; }
 .tool-hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
 .tool-hero p { color: var(--mid); max-width: 600px; margin: 0 auto; font-size: 0.95rem; }
 .tool-hero .chapter-ref { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; }
@@ -63,19 +63,59 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
 .result-bar-fill { height: 100%; border-radius: 6px; background: var(--gold); }
 .months-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
 .month-field { margin-bottom: 0; }
+.seo-intro{max-width:800px;margin:0 auto;padding:0 2rem 1.5rem}
+.seo-intro p{font-family:var(--sans);font-size:.95rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content{max-width:800px;margin:0 auto;padding:2rem 2rem 1rem}
+.seo-content h2{font-family:var(--serif);font-size:1.3rem;margin:2rem 0 .75rem;color:var(--ink)}
+.seo-content h3{font-family:var(--sans);font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--ink)}
+.seo-content p{font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim);margin-bottom:1rem}
+.seo-content ul{margin:0 0 1rem 1.25rem;font-family:var(--sans);font-size:.92rem;line-height:1.7;color:var(--dim)}
+.seo-content li{margin-bottom:.35rem}
+.faq-section{max-width:800px;margin:0 auto;padding:0 2rem 2rem}
+.faq-section h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--rule);padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-family:var(--mono);font-size:1.2rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:.9rem;line-height:1.7;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding-top:.75rem}
+.related-tools{max-width:800px;margin:0 auto;padding:1rem 2rem 2rem}
+.related-tools h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:1rem;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-card{display:block;border:1px solid var(--rule);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
+.related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
 </style>
-<meta name="description" content="Model working capital adjustments instantly. Free interactive simulator tool. Calculate payment or receive impact at close.">
+<meta name="description" content="Free working capital simulator. Model true-up adjustments and calculate final purchase price post-closing.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/exit-ready/15-working-capital-simulator.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.raisereadybook.com/tools/exit-ready/15-working-capital-simulator.html">
-<meta property="og:title" content="Working Capital True-Up Simulator">
-<meta property="og:description" content="Model working capital adjustments instantly. Free interactive simulator tool. Calculate payment or receive impact at close.">
+<meta property="og:title" content="Working Capital True-Up Calculator | Working Capital Adjustment">
+<meta property="og:description" content="Free working capital simulator. Model true-up adjustments and calculate final purchase price post-closing.">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
 <meta property="og:site_name" content="Exit Ready">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Working Capital True-Up Simulator">
-<meta name="twitter:description" content="Model working capital adjustments instantly. Free interactive simulator tool. Calculate payment or receive impact at close.">
+<meta name="twitter:title" content="Working Capital True-Up Calculator | Working Capital Adjustment">
+<meta name="twitter:description" content="Free working capital simulator. Model true-up adjustments and calculate final purchase price post-closing.">
 <meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Key FAQ 1",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Answer 1"
+      }
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,6 +165,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
     <h1>Working Capital True-Up Simulator</h1>
     <p>Model working capital adjustments at closing based on monthly historical data.</p>
     <div class="chapter-ref">From Chapter 31: Closing Mechanics Details</div>
+  </div>
+
+  <div class="seo-intro">
+    <p>Working capital true-ups are how buyers adjust your purchase price based on actual balance sheet items at closing compared to a target level. If your company ends up with less working capital than agreed, you owe the buyer a refund. If you exceed the target, the buyer pays you additional funds. These adjustments often range from 5-15% of transaction value.</p>
+    <p>Understanding true-up mechanics protects you during deal negotiation. Buyers often set artificially low working capital targets hoping to receive refunds after closing. This calculator helps you model different scenarios and understand the financial impact of various working capital targets.</p>
   </div>
 
   <div class="tool-container">
@@ -209,12 +254,82 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         </thead>
         <tbody id="r-body"></tbody>
       </table>
+
+  <div class="seo-content">
+    <h2>Understanding Working Capital True-Ups</h2>
+    <p>A working capital true-up adjusts the final purchase price based on your company's actual net working capital (current assets minus current liabilities, excluding cash) at closing versus a target amount. If you agree to a $50M purchase price with a $5M working capital target and close with only $4M working capital, you typically owe the buyer $1M. These adjustments are standard in M&A and affect 10-15% of all deals.</p>
+    <p>The true-up process happens post-closing during an earn-out or escrow period (usually 60-120 days after closing). Your accountants calculate actual working capital using GAAP principles, compare it to the target, and execute payment adjustments. Disputes over true-up calculations are common and expensive to litigate, so clear target definitions are critical.</p>
+
+    <h2>Setting Reasonable Working Capital Targets</h2>
+    <p>Working capital targets are typically set as a percentage of revenue or as a dollar amount. A reasonable target reflects your normal operating needs. If you collect receivables in 30 days and pay suppliers in 45 days, your working capital cycle is 15 days of revenue. If monthly revenue is $2M, you'd need $1M working capital. Setting the target lower than this creates risk you'll owe money at closing.</p>
+    <p>Buyers often propose low targets hoping to trigger refunds. Your role is to justify why your target is reasonable based on cash conversion cycles, seasonal fluctuations, and growth investments. Having 12+ months of historical working capital data (calculated consistently) provides evidence for your target.</p>
+
+    <h2>Modeling Scenarios with Different Targets</h2>
+    <p>Use this calculator to model how working capital targets affect your net proceeds. A $50M deal with a $5M target is different financially from the same deal with a $4M target because you'll invest more capital to maintain the higher working capital level at closing. Over-funding working capital before closing increases your cost of capital and reduces your net proceeds.</p>
+    <p>Sophisticated sellers model multiple scenarios: conservative (lower target, lower risk of owing money), realistic (based on historical levels), and aggressive (lower target to reduce working capital). Present the realistic scenario during LOI negotiation, but be prepared to defend why that's appropriate.</p>
+
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is a working capital adjustment and why do I need it?</div>
+      <div class="faq-a">A working capital adjustment (true-up) allows the buyer to ensure they're getting the business with the agreed-upon level of operating capital. If you've been running lean on working capital and close with depleted receivables, the buyer has inherited a strained business. True-ups protect the buyer from intentional working capital stripping and ensure both parties have the same expectations about the business's condition at close.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is the working capital target typically set?</div>
+      <div class="faq-a">Targets are usually set based on your historical average working capital or as a percentage of annual revenue (for example, 10% of annual revenue or 30 days of operating expenses). Your accountants calculate this using 12-24 months of trailing data. Buyers may propose lower targets hoping to trigger refunds. Realistic targets are based on your actual operating needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can working capital targets be negotiated?</div>
+      <div class="faq-a">Yes. Targets should reflect your company's actual operating needs and historical levels. If your business requires substantial inventory or has long receivables cycles, justify a higher target. Conversely, if you have strong cash collection and pay suppliers quickly, a lower target may be defensible. Historical data is key to justifying your position.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens if I close with less working capital than the target?</div>
+      <div class="faq-a">You owe the buyer the difference. For example, if you agree to a $5M target and close with $4M, you pay the buyer $1M (typically from the closing proceeds or the seller indemnification escrow). This happens during post-closing true-up within 60-120 days after closing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I minimize working capital adjustments risk?</div>
+      <div class="faq-a">Calculate your working capital carefully throughout deal process and avoid any last-minute changes to receivables, payables, or inventory. Don't artificially inflate working capital right before closing only to draw it down after closing (buyers will true-up and you'll owe money). Maintain consistent accounting throughout diligence and maintain the working capital levels you've represented.</div>
     </div>
   </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="02-exit-readiness.html" class="related-card">
+        <h3>Exit Readiness Scorer</h3>
+        <p>Assess readiness across all dimensions.</p>
+      </a>
+      <a href="03-exit-proceeds.html" class="related-card">
+        <h3>Exit Proceeds Calculator</h3>
+        <p>Model your net proceeds after all adjustments.</p>
+      </a>
+      <a href="16-loi-comparator.html" class="related-card">
+        <h3>LOI Comparator</h3>
+        <p>Compare multiple letter of intent terms.</p>
+      </a>
+      <a href="14-timeline-planner.html" class="related-card">
+        <h3>Timeline Planner</h3>
+        <p>Map the full exit process timeline.</p>
+      </a>
+    </div>
+  </div>
+
 </main>
 <div id="site-footer"></div>
 
-<script src="/shared/components.js" defer></script>
+$1
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+});
+</script>
+
 <script>
 function fmt(n) {
   if(Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
