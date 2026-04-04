@@ -88,6 +88,18 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 .related-card:hover{border-color:var(--gold);box-shadow:0 2px 12px rgba(200,164,90,.12)}
 .related-card h3{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
 .related-card p{font-family:var(--sans);font-size:.82rem;color:var(--mid);line-height:1.5}
+
+.upsell-section{max-width:800px;margin:0 auto;padding:1.5rem 2rem 2rem}
+.upsell-card{border:2px solid var(--gold);border-radius:12px;padding:1.5rem 2rem;background:rgba(200,164,90,.04)}
+.upsell-card h2{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:.75rem}
+.upsell-card p{font-family:var(--sans);font-size:.9rem;line-height:1.6;color:var(--dim);margin-bottom:1rem}
+.upsell-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:1rem}
+.upsell-link{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;border:1px solid var(--rule);border-radius:8px;text-decoration:none;transition:border-color .2s,background .2s}
+.upsell-link:hover{border-color:var(--gold);background:rgba(200,164,90,.06)}
+.upsell-link .upsell-icon{font-size:1.2rem;flex-shrink:0}
+.upsell-link .upsell-text{display:flex;flex-direction:column}
+.upsell-link .upsell-name{font-family:var(--sans);font-size:.85rem;font-weight:700;color:var(--ink)}
+.upsell-link .upsell-price{font-family:var(--mono);font-size:.75rem;color:var(--gold)}
 </style>
 <meta name="description" content="Calculate your target emergency fund based on your income stability and monthly expenses. Get a personalized savings plan and timeline to financial security.">
 <link rel="canonical" href="https://www.raisereadybook.com/tools/start-ready/03-emergency-fund-calculator.html">
@@ -306,6 +318,31 @@ function calc(){
 }
 </script>
 
+
+<div class="upsell-section">
+  <div class="upsell-card">
+    <h2>Go Deeper</h2>
+    <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to build lasting financial health.</p>
+    <div class="upsell-grid">
+      <a href="https://app.raisereadybook.com/" class="upsell-link" target="_blank">
+        <span class="upsell-icon">&#9889;</span>
+        <span class="upsell-text"><span class="upsell-name">Personal Finance App</span><span class="upsell-price">From $4.99/mo</span></span>
+      </a>
+      <a href="/templates/" class="upsell-link">
+        <span class="upsell-icon">&#128196;</span>
+        <span class="upsell-text"><span class="upsell-name">Personal Finance Workbook</span><span class="upsell-price">$49 one-time</span></span>
+      </a>
+      <a href="/book/#start-ready" class="upsell-link">
+        <span class="upsell-icon">&#128214;</span>
+        <span class="upsell-text"><span class="upsell-name">Start Ready Book</span><span class="upsell-price">$9.99 on Amazon</span></span>
+      </a>
+      <a href="/services/" class="upsell-link">
+        <span class="upsell-icon">&#128640;</span>
+        <span class="upsell-text"><span class="upsell-name">Advisory Services</span><span class="upsell-price">From $299</span></span>
+      </a>
+    </div>
+  </div>
+</div>
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
 <div id="site-footer"></div>
 <script src="/shared/components.js" defer></script>
