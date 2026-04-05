@@ -22,6 +22,9 @@ Raise Ready is a financial intelligence platform by Yanni Papoutsi. It covers th
 ### Excel Templates
 - Complete Financial Model ($49): 15-sheet investor-ready model with 5-year monthly projections, 3 scenarios, cap table, KPI dashboard
 - Personal Finance Workbook ($49): 9-sheet workbook covering budgeting, debt payoff, investing, retirement, net worth
+- Raise Ready Calculator Toolkit ($9.99): 14-tab workbook with all fundraising calculators (307 formulas)
+- Start Ready Calculator Toolkit ($9.99): 18-tab workbook with all personal finance calculators (109 formulas)
+- Exit Ready Calculator Toolkit ($9.99): 30-tab workbook with all exit planning calculators (162 formulas)
 
 ### Books ($9.99 each on Amazon)
 - Start Ready: Personal finance playbook (281 pages)
