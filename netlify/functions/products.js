@@ -37,6 +37,27 @@ var PRODUCTS = {
     file: '/products/pf001/Personal_Finance_Workbook.xlsx',
     mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   },
+  'tpl-raise-toolkit': {
+    name: 'Raise Ready Calculator Toolkit',
+    description: '14-tab Excel workbook with all fundraising calculators. 307 formulas: funding readiness, runway, unit economics, revenue model, headcount, P&L, scenarios, sensitivity, valuation, dilution, SAFE notes, pitch deck scorecard, exit proceeds.',
+    price: 999,
+    file: '/products/rr-toolkit-e4a1/Raise_Ready_Toolkit.xlsx',
+    mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  },
+  'tpl-start-toolkit': {
+    name: 'Start Ready Calculator Toolkit',
+    description: '18-tab Excel workbook with all personal finance calculators. 109 formulas: net worth, budgeting, debt payoff, compound growth, retirement, salary negotiation, buy vs rent, credit cards, tax brackets, Roth vs Traditional, student loans, mortgage, insurance.',
+    price: 999,
+    file: '/products/sr-toolkit-b7c3/Start_Ready_Toolkit.xlsx',
+    mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  },
+  'tpl-exit-toolkit': {
+    name: 'Exit Ready Calculator Toolkit',
+    description: '30-tab Excel workbook with all exit planning calculators. 162 formulas: exit proceeds, EBITDA bridge, valuation multiples, earnout optimizer, PE rollover, data room checklist, working capital, LOI comparator, advisor fees, tax optimization.',
+    price: 999,
+    file: '/products/er-toolkit-d9f2/Exit_Ready_Toolkit.xlsx',
+    mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  },
   'tpl-complete-support': {
     name: 'Complete Financial Model + 1hr Video Support',
     description: '15-sheet model with 17 charts plus a 1-hour video walkthrough session.',
