@@ -347,6 +347,12 @@
     // Check if we're on an individual post (not the blog index)
     if (window.location.pathname === '/blog/' || window.location.pathname === '/blog/index.html') return;
 
+    // Skip if a BlogPosting schema already exists on the page
+    var existing = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < existing.length; i++) {
+      try { if (JSON.parse(existing[i].textContent)['@type'] === 'BlogPosting') return; } catch(e) {}
+    }
+
     var title = document.querySelector('h1')?.textContent || document.title;
     var description = document.querySelector('meta[name="description"]')?.content || '';
     var schema = {
