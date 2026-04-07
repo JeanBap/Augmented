@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Model Churn and Its Impact on LTV | Raise Ready</title>
+<meta name="description" content="Churn is the rate customers leave. It directly impacts LTV. Reducing monthly churn from 5% to 3% can double LTV, making churn reduction more valuable...">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/model-churn-ltv.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/model-churn-ltv.html">
+<meta property="og:title" content="How to Model Churn and Its Impact on LTV">
+<meta property="og:description" content="Churn is the rate customers leave. It directly impacts LTV. Reducing monthly churn from 5% to 3% can double LTV, making churn reduction more valuable...">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Model Churn and Its Impact on LTV">
+<meta name="twitter:description" content="Churn is the rate customers leave. It directly impacts LTV. Reducing monthly churn from 5% to 3% can double LTV, making churn reduction more valuable...">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Model Churn and Its Impact on LTV",
+  "description": "Churn is the rate customers leave. It directly impacts LTV. Reducing monthly churn from 5% to 3% can double LTV, making churn reduction more valuable...",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/model-churn-ltv.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/model-churn-ltv.html",
+  "articleSection": "Financial Modeling",
+  "timeRequired": "PT8M"
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script
+  defer
+  data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"
+  data-domain="raisereadybook.com"
+  src="https://datafa.st/js/script.js">
+</script>
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">8 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2026</span>
+    </div>
+    <h1>How to Model Churn and Its Impact on LTV</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+      <a href="https://twitter.com/intent/tweet?text=How%20to%20Model%20Churn%20and%20Its%20Impact%20on%20LTV%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/model-churn-ltv.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Share
+      </a>
+    </div>
+    <div class="blog-article-content">
+      <h3>Defining Churn: Monthly, Annual, and Revenue</h3>
+<p>Churn is the percentage of customers who stop paying during a period. Monthly churn is: (Customers who left this month) / (Customers at start of month). If you start January with 100 customers and 5 leave, your January churn is 5%. Annual churn is similar but at annual scale. Revenue churn is the same calculation but by revenue dollars instead of customer count. A $10M customer leaving represents massive revenue churn even if it's one customer.</p>
+<p>Healthy SaaS churn is 2-5% monthly. Anything above 10% monthly suggests product problems or bad-fit customers. Anything below 2% is exceptional and suggests strong product-market fit or high switching costs. Track both customer churn and revenue churn separately. A customer-heavy business (many small customers) might have 3% customer churn but 1% revenue churn if small customers churn and large customers stay. A revenue-heavy business (few large customers) might have 10% customer churn but 2% revenue churn.</p>
+
+<h3>The Formula: How Churn Impacts LTV</h3>
+<p>LTV (Lifetime Value) is the total revenue a customer generates before leaving. The formula: LTV = (Monthly Revenue per Customer) / (Monthly Churn Rate). If a customer pays $500/month and monthly churn is 5%, LTV = $500 / 0.05 = $10,000. If you improve churn to 3%, LTV = $500 / 0.03 = $16,667. The same customer generates 67% more lifetime value by staying longer.</p>
+<p>This formula assumes constant churn rate, which isn't reality, but it's useful for quick estimation. In reality, churn is usually higher early (bad-fit customers) and lower later (sticky customers). But for planning purposes, if your median churn is 5%, the formula works.</p>
+
+<h3>Modeling Churn by Cohort and Age</h3>
+<p>More sophisticated modeling tracks churn by customer cohort. January cohort of 100 customers: by February, 95 remain (5% churn). By March, 90 remain (5% of February remaining). By December, perhaps 50-60 remain. Your 12-month retention is 50-60%. A different cohort from June might have different retention. Enterprise cohort might have 95% annual retention (95% churn). SMB cohort might have 60% annual retention.</p>
+<p>Build a cohort table: Months down the rows, customer cohorts across columns. Month 1 cohort shows 100 customers. Month 2 shows 95 (5% churn). Track forward monthly. Sum each month row to see total active customers. This granular model reveals when customers churn (usually month 2-4) and when they stick. Most SaaS have a "cliff" in months 2-3 where bad-fit customers leave.</p>
+
+<h3>Revenue Churn vs Customer Churn: Why They Differ</h3>
+<p>A SaaS company might have 5% customer churn but -2% revenue churn. This happens when small-revenue customers churn but large-revenue customers expand. Month start: 100 customers, $50K MRR. Month end: 95 customers (5% churn), but $51K MRR (because large customers expanded). Your revenue actually grew despite customer attrition.</p>
+<p>This is why venture-focused SaaS companies often improve retention metrics through expansion, not customer stickiness. They keep customer count stable but expand dollars per customer through upsells and upgrades. This improves net revenue retention (revenue after churn + expansion) even if customer retention stagnates.</p>
+
+<h3>Calculating LTV with Expansion and Contraction</h3>
+<p>Simple LTV assumes revenue stays constant. Real LTV must account for expansion (customers increase spend) and contraction (customers decrease spend). Advanced formula: LTV = (Starting MRR + Expansion Revenue) / (Churn Rate * (1 + Expansion Rate)). If customers expand 2% monthly and churn 3% monthly, LTV is significantly higher than just revenue/churn.</p>
+<p>Example: $500/month customer, 3% monthly churn, 2% monthly expansion. Without expansion: LTV = $500 / 0.03 = $16,667. With expansion, the customer's revenue grows to $510 in month 2, $520 in month 3, etc. LTV > $20,000. Expansion makes huge difference in LTV and makes customer retention incredibly valuable.</p>
+
+<h3>Churn Cohort Analysis: Understanding What Drives Churn</h3>
+<p>Not all customers churn equally. Analyze: which cohort has highest churn? Which industries? Which price points? You might discover Enterprise customers have 1% monthly churn but SMB have 8% monthly churn. This insight drives decisions: focus on enterprise segment, improve SMB product, or adjust SMB pricing.</p>
+<p>Also analyze churn by months since signup. "Month 1-3 churn: 12%. Month 4-6 churn: 3%. Month 7+ churn: 2%." This shows you have onboarding problems (early churn is high). Fix onboarding, improve Month 1-3 churn to 8%, and you've improved overall retention significantly. Specific churn analysis drives specific improvements.</p>
+
+<h3>The Importance of Churn Improvement vs New Customer Acquisition</h3>
+<p>Early founders often think "we need more customers." Reality: improving churn is often 3-5x more valuable than acquiring new customers. If you spend $50K acquiring 10 customers (CAC = $5,000) and they churn after 5 months, you've spent $50K to get 5 months of revenue. If you spend $50K on retention improvements and reduce churn from 5% to 3%, extending customer lifetime by 40%, you've increased LTV dramatically on your entire customer base.</p>
+<p>Calculate the math for your business. If improving churn from 5% to 3% costs $20K (hiring customer success, improving product), and you have 100 customers paying $1K/month, you've improved total LTV from $20M to $33M on 100 customers. That's a $13M improvement for $20K investment. Compare this to acquiring new customers and the ROI is obviously in retention.</p>
+
+<h3>Projecting Churn and Revenue Forward</h3>
+<p>In your financial models, use realistic churn assumptions. Don't assume 0% churn (impossible). Don't assume 20% monthly churn and expect investors to believe you have paths to profitability (you don't at that churn). Be honest about current churn, show improvements you expect from product and retention efforts, and model conservatively. "Current churn is 5%. We're investing in customer success and product improvements to reduce this to 3% by Month 6. Model assumes 4% for months 1-3, then 3% months 4+."</p>
+<p>Use cohort retention curves from similar companies as benchmarks. Horizontal SaaS (wide appeal) typically achieves 90%+ annual retention quickly. Vertical SaaS or niche products might have 70-80% annual retention. Use benchmarks to validate whether your churn assumptions are realistic. If you're benchmarked at 70% annual retention but modeling 95%, investors will question your assumptions.</p>
+    </div>
+  </div>
+
+  <section class="newsletter-signup">
+    <h3>Stay sharp on startup finance</h3>
+    <p>Get new articles on fundraising, financial modeling, and unit economics. No spam, unsubscribe anytime.</p>
+    <form class="newsletter-form" method="POST" data-netlify="true" name="newsletter">
+      <input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <input type="hidden" name="_subject" value="New newsletter signup">
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+</body>
+</html>
