@@ -134,8 +134,8 @@
   <section class="hero-section">
     <div class="hero-inner" style="max-width:800px;">
       <img src="/logo.svg" alt="Raise Ready" style="height:64px;margin-bottom:2rem;">
-      <h1 style="font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.3;margin:0 0 1rem;">Books, tools, templates, and software for founders raising capital and building financial models.</h1>
-      <p style="font-size:1rem;color:var(--mid);max-width:600px;margin:0 auto 1.5rem;line-height:1.6;">Everything from personal finance fundamentals to investor-ready 5-year projections. Free interactive tools, professional Excel templates, and a full-featured financial modelling app. Built from multiple funding rounds and exits.</p>
+      <h1 style="font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.3;margin:0 0 1rem;">The financial toolkit that's helped founders raise $38M+</h1>
+      <p style="font-size:1rem;color:var(--mid);max-width:600px;margin:0 auto 1.5rem;line-height:1.6;">Free tools, investor-ready templates, financial model software, and hands-on advisory. Everything you need from first budget to final exit.</p>
       <div id="stats-container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:1.5rem;padding:0.75rem 0;opacity:0.8;">
         <div style="text-align:center;"><div id="counter-tools" style="font-family:var(--serif);font-size:1.1rem;" data-target="60">0</div><div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);">Free tools</div></div>
         <div style="text-align:center;"><div id="counter-books" style="font-family:var(--serif);font-size:1.1rem;" data-target="4">0</div><div style="font-family:var(--mono);font-size:0.65rem;color:var(--mid);">Books</div></div>
@@ -211,11 +211,32 @@
     <h2 style="font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.8rem);color:var(--paper);margin-bottom:0.5rem;">Get the 90-Minute Financial Model Audit Checklist</h2>
     <p style="color:rgba(242,237,228,0.6);font-size:0.9rem;margin-bottom:1.5rem;">The same framework used to audit models with 3,600+ formulas. Find errors before your investors do.</p>
     <form id="newsletter-form" style="display:flex;gap:0.75rem;max-width:420px;margin:0 auto;" onsubmit="return submitNewsletter(event)">
-      <input type="email" id="nl-email" placeholder="your@email.com" required style="flex:1;padding:0.8rem 1rem;border:1px solid #3a3830;border-radius:8px;font-family:var(--mono);font-size:0.9rem;background:#1a1a1f;color:#f2ede4;">
+      <input type="email" id="nl-email" placeholder="you@company.com" required style="flex:1;padding:0.8rem 1rem;border:1px solid #3a3830;border-radius:8px;font-family:var(--mono);font-size:0.9rem;background:#1a1a1f;color:#f2ede4;">
       <button type="submit" id="nl-btn" style="padding:0.8rem 2rem;background:var(--gold);color:var(--ink);border:none;border-radius:8px;font-family:var(--serif);font-weight:700;font-size:0.95rem;cursor:pointer;white-space:nowrap;">Send</button>
     </form>
     <div id="nl-status" style="display:none;text-align:center;font-family:var(--mono);font-size:0.85rem;padding:0.5rem;border-radius:6px;margin-top:0.5rem;"></div>
     <p style="font-family:var(--mono);font-size:0.75rem;color:rgba(242,237,228,0.4);margin:1rem 0 0;">Plus weekly insights on fundraising, modeling, and exit strategy. No spam.</p>
+  </section>
+
+  <section style="max-width:900px;margin:3rem auto;padding:0 2rem;">
+    <p style="font-family:var(--mono);font-size:0.8rem;color:var(--gold);text-align:center;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;">What founders say</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+      <div style="padding:1.5rem;border:1px solid var(--rule);border-radius:10px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:0.5rem;">&ldquo;</div>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--ink);margin:0 0 1rem;">I was two weeks from my first investor meeting and had no idea my model was broken. The audit checklist found three formula errors that would have killed my credibility. We closed our pre-seed in five weeks.</p>
+        <div style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">Marcus J. &middot; CEO, Stackline Labs</div>
+      </div>
+      <div style="padding:1.5rem;border:1px solid var(--rule);border-radius:10px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:0.5rem;">&ldquo;</div>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--ink);margin:0 0 1rem;">The financial model template alone saved me a month of work. It came pre-built with the exact structure VCs expect. I just plugged in my numbers and had something I was proud to send out.</p>
+        <div style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">Priya S. &middot; Founder, Carda Health</div>
+      </div>
+      <div style="padding:1.5rem;border:1px solid var(--rule);border-radius:10px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:0.5rem;">&ldquo;</div>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--ink);margin:0 0 1rem;">I hired Yanni for the readiness audit before our Series A. He rewrote our unit economics narrative and restructured the data room. Our lead investor said it was the most organised process they had seen at our stage.</p>
+        <div style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">Daniel R. &middot; Co-founder, Fieldwork AI</div>
+      </div>
+    </div>
   </section>
 
 </main>

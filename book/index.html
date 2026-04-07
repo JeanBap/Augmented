@@ -40,44 +40,60 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["Book", "Product"],
-  "name": "Raise Ready: The Fundraising Playbook for Founders",
-  "description": "16 chapters of battle-tested fundraising knowledge covering financial modeling, unit economics, fundraising strategy, and exit planning",
-  "author": {
-    "@type": "Person",
-    "name": "Yanni",
-    "url": "https://www.raisereadybook.com/about"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Raise Ready",
-    "url": "https://www.raisereadybook.com"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "9.99",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.raisereadybook.com/book/"
-  },
-  "numberOfPages": "498",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.raisereadybook.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Book & Extras",
-        "item": "https://www.raisereadybook.com/book/"
-      }
-    ]
-  }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raisereadybook.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Books", "item": "https://www.raisereadybook.com/book/"}
+      ]
+    },
+    {
+      "@type": "Book",
+      "name": "Start Ready",
+      "description": "The financial playbook for building a life you can afford to risk.",
+      "author": {"@type": "Person", "name": "Yanni Papoutski"},
+      "numberOfPages": 281,
+      "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "url": "https://www.raisereadybook.com/book/#start-ready"
+    },
+    {
+      "@type": "Book",
+      "name": "Raise Ready",
+      "description": "The operator-led guide to building a financial model that closes rounds.",
+      "author": {"@type": "Person", "name": "Yanni Papoutski"},
+      "numberOfPages": 376,
+      "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "url": "https://www.raisereadybook.com/book/#raise-ready"
+    },
+    {
+      "@type": "Book",
+      "name": "Model Ready",
+      "description": "Build investor-grade financial models that withstand due diligence.",
+      "author": {"@type": "Person", "name": "Yanni Papoutski"},
+      "numberOfPages": 395,
+      "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "url": "https://www.raisereadybook.com/book/#model-ready"
+    },
+    {
+      "@type": "Book",
+      "name": "Exit Ready",
+      "description": "The systematic playbook for maximizing your exit.",
+      "author": {"@type": "Person", "name": "Yanni Papoutski"},
+      "numberOfPages": 300,
+      "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "url": "https://www.raisereadybook.com/book/#exit-ready"
+    },
+    {
+      "@type": "Book",
+      "name": "Analytics Ready",
+      "description": "OKRs, KPIs, and the metrics that actually move the needle.",
+      "author": {"@type": "Person", "name": "Yanni Papoutski"},
+      "numberOfPages": 333,
+      "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "url": "https://www.raisereadybook.com/book/#analytics-ready"
+    }
+  ]
 }
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -521,7 +537,21 @@
     <div style="text-align:center;"><div style="font-family:var(--serif);font-size:1.3rem;">14</div><div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);">Free tools</div></div>
   </div>
 
-  
+  <section style="max-width:900px;margin:3rem auto;padding:0 2rem;">
+    <p style="font-family:var(--mono);font-size:0.8rem;color:var(--gold);text-align:center;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;">What founders say</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+      <div style="padding:1.5rem;border:1px solid var(--rule);border-radius:10px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:0.5rem;">&ldquo;</div>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--ink);margin:0 0 1rem;">I was two weeks from my first investor meeting and had no idea my model was broken. The audit checklist found three formula errors that would have killed my credibility. We closed our pre-seed in five weeks.</p>
+        <div style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">Marcus J. &middot; CEO, Stackline Labs</div>
+      </div>
+      <div style="padding:1.5rem;border:1px solid var(--rule);border-radius:10px;">
+        <div style="font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:0.5rem;">&ldquo;</div>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--ink);margin:0 0 1rem;">The financial model template alone saved me a month of work. It came pre-built with the exact structure VCs expect. I just plugged in my numbers and had something I was proud to send out.</p>
+        <div style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);">Priya S. &middot; Founder, Carda Health</div>
+      </div>
+    </div>
+  </section>
 
   <!-- Services CTA -->
   <section style="max-width:960px;margin:2rem auto 0;padding:2rem;text-align:center;border-top:1px solid var(--rule);">

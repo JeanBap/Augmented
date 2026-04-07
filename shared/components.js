@@ -46,34 +46,15 @@
       <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
       <div class="nav-tabs">
         <div class="nav-dropdown">
-          <a href="/book/" class="nav-tab" data-page="book">Books</a>
+          <a href="/book/" class="nav-tab" data-page="products">Products</a>
           <div class="dropdown-menu">
-            <a href="/book/#start-ready">Start Ready</a>
-            <a href="/book/#raise-ready">Raise Ready</a>
-            <a href="/book/#model-ready">Model Ready</a>
-            <a href="/book/#exit-ready">Exit Ready</a>
-          </div>
-        </div>
-        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
-        <div class="nav-dropdown">
-          <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
-          <div class="dropdown-menu">
-            <a href="/tools/start-ready/">Personal Finance (18 tools)</a>
-            <a href="/tools/raise-ready.html">Fundraising Tools</a>
-            <a href="/tools/exit-ready/">Exit Planning (30 tools)</a>
-            <a href="/tools/fundraising-readiness-scorecard.html">Investor Readiness Scorecard</a>
-          </div>
-        </div>
-        <div class="nav-dropdown">
-          <a href="/software/" class="nav-tab" data-page="software">Software</a>
-          <div class="dropdown-menu">
-            <a href="https://finance.raisereadybook.com" target="_blank" style="color:#c8a45a;font-weight:600;">Financial Model Builder</a>
-            <a href="/tools/financial-model-pro.html">Financial Model Light</a>
-            <a href="https://app.raisereadybook.com" target="_blank">Personal Finance App</a>
+            <a href="/book/">Books</a>
+            <a href="/templates/">Templates</a>
+            <a href="/tools/">Tools</a>
+            <a href="/software/">Software</a>
           </div>
         </div>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/jobboard/" class="nav-tab" data-page="jobboard">Jobs</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
@@ -136,15 +117,20 @@
 
   /**
    * Set active nav tab based on body data-page attribute
+   * Maps book, templates, tools, software pages to 'products' tab
    */
   function setActiveNavTab() {
     const currentPage = document.body.getAttribute('data-page');
     if (!currentPage) return;
 
+    // Map product-related pages to 'products' tab
+    const productPages = ['book', 'templates', 'tools', 'software'];
+    const pageToMatch = productPages.includes(currentPage) ? 'products' : currentPage;
+
     const navTabs = document.querySelectorAll('.nav-tab');
     navTabs.forEach(tab => {
       const tabPage = tab.getAttribute('data-page');
-      if (tabPage === currentPage) {
+      if (tabPage === pageToMatch) {
         tab.classList.add('active');
       } else {
         tab.classList.remove('active');
@@ -194,7 +180,7 @@
     bar.innerHTML =
       '<form id="rr-sticky-form" style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;justify-content:center;">' +
         '<span style="font-family:var(--serif,Georgia,serif);font-size:0.9rem;color:#f2ede4;">' + barLabel + '</span>' +
-        '<input type="email" id="rr-sticky-email" placeholder="your@email.com" required style="padding:0.5rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.8rem;background:#1a1a1f;color:#f2ede4;width:200px;">' +
+        '<input type="email" id="rr-sticky-email" placeholder="you@company.com" required style="padding:0.5rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.8rem;background:#1a1a1f;color:#f2ede4;width:200px;">' +
         '<button type="submit" style="padding:0.5rem 1.2rem;background:#c8a45a;color:#08080d;border:none;border-radius:6px;font-family:monospace;font-size:0.8rem;font-weight:500;cursor:pointer;">Send</button>' +
       '</form>' +
       '<button id="rr-sticky-close" aria-label="Close" style="position:absolute;top:0.4rem;right:0.6rem;background:none;border:none;color:#6e6a61;font-size:1.2rem;cursor:pointer;padding:0.2rem;">&times;</button>';
@@ -256,7 +242,7 @@
           '<h3 style="font-family:Georgia,serif;font-size:1.4rem;margin:0 0 0.5rem;line-height:1.3;">The 90-Minute Financial Model Audit Checklist</h3>' +
           '<p style="font-size:0.9rem;color:#6e6a61;margin:0 0 1.5rem;line-height:1.5;">The same checklist used to audit models with 3,600+ formulas. Find errors before your investors do.</p>' +
           '<form id="rr-popup-form" style="display:flex;gap:0.5rem;">' +
-            '<input type="email" id="rr-popup-email" placeholder="your@email.com" required style="flex:1;padding:0.7rem 0.75rem;border:1.5px solid #d5d0c7;border-radius:8px;font-family:monospace;font-size:0.85rem;background:#fff;color:#08080d;">' +
+            '<input type="email" id="rr-popup-email" placeholder="you@company.com" required style="flex:1;padding:0.7rem 0.75rem;border:1.5px solid #d5d0c7;border-radius:8px;font-family:monospace;font-size:0.85rem;background:#fff;color:#08080d;">' +
             '<button type="submit" style="padding:0.7rem 1.5rem;background:#c8a45a;color:#08080d;border:none;border-radius:8px;font-family:Georgia,serif;font-weight:700;font-size:0.9rem;cursor:pointer;white-space:nowrap;">Send</button>' +
           '</form>' +
           '<p style="font-family:monospace;font-size:0.7rem;color:#a09b90;margin:0.75rem 0 0;text-align:center;">No spam. Unsubscribe anytime.</p>' +
@@ -294,6 +280,89 @@
         if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Timed Popup Signup' });
       });
     }, 30000); // 30 seconds
+  }
+
+  /**
+   * Handle mid-article email capture form submission
+   */
+  function handleBlogInlineSignup(e) {
+    e.preventDefault();
+    var form = e.target;
+    var email = form.querySelector('input[type="email"]').value.trim();
+    if (!email) return false;
+
+    fetch('/.netlify/functions/email-gate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, tool: 'blog-inline-checklist' })
+    }).then(function() {
+      // Replace form with success message
+      var container = form.closest('.blog-inline-cta');
+      if (container) {
+        container.innerHTML = '<p style="font-family:var(--mono);font-size:0.85rem;color:var(--gold);text-align:center;margin:0;">Check your inbox. The checklist is on its way.</p>';
+      }
+      if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Blog Inline Checklist' });
+    });
+    return false;
+  }
+  window.handleBlogInlineSignup = handleBlogInlineSignup;
+
+  /**
+   * Inject mid-article email capture after the 3rd paragraph
+   */
+  function initBlogParagraphCTA() {
+    if (document.body.getAttribute('data-page') !== 'blog') return;
+    var article = document.querySelector('.blog-article');
+    if (!article) return;
+
+    // Find all paragraph tags in the article
+    var paragraphs = article.querySelectorAll('p');
+    if (paragraphs.length < 3) return;
+
+    // Get the 3rd paragraph
+    var thirdParagraph = paragraphs[2];
+
+    // Create the email capture HTML
+    var ctaDiv = document.createElement('div');
+    ctaDiv.className = 'blog-inline-cta';
+    ctaDiv.style.cssText = 'margin:2rem 0;padding:1.5rem 2rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper);';
+    ctaDiv.innerHTML =
+      '<p style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.5rem;">Get the free Financial Model Audit Checklist</p>' +
+      '<p style="font-family:var(--mono);font-size:0.75rem;color:var(--mid);margin:0 0 1rem;">90 checks. Used by 47+ founders before investor meetings.</p>' +
+      '<form class="blog-inline-form" style="display:flex;gap:0.5rem;" onsubmit="return handleBlogInlineSignup(event)">' +
+        '<input type="email" placeholder="you@company.com" required style="flex:1;padding:0.6rem 1rem;border:1px solid var(--rule);border-radius:6px;font-size:0.85rem;font-family:var(--mono);">' +
+        '<button type="submit" style="padding:0.6rem 1.5rem;background:var(--gold);color:#fff;border:none;border-radius:6px;font-family:var(--mono);font-size:0.8rem;cursor:pointer;white-space:nowrap;">Get It Free</button>' +
+      '</form>';
+
+    // Insert after the 3rd paragraph
+    thirdParagraph.parentNode.insertBefore(ctaDiv, thirdParagraph.nextSibling);
+  }
+
+  /**
+   * Inject BlogPosting JSON-LD schema on individual blog post pages
+   */
+  function initBlogSchema() {
+    if (document.body.getAttribute('data-page') !== 'blog') return;
+    if (!document.querySelector('.blog-article')) return;
+    // Check if we're on an individual post (not the blog index)
+    if (window.location.pathname === '/blog/' || window.location.pathname === '/blog/index.html') return;
+
+    var title = document.querySelector('h1')?.textContent || document.title;
+    var description = document.querySelector('meta[name="description"]')?.content || '';
+    var schema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "description": description,
+      "author": {"@type": "Person", "name": "Yanni Papoutsi"},
+      "publisher": {"@type": "Organization", "name": "Raise Ready", "url": "https://www.raisereadybook.com"},
+      "url": window.location.href,
+      "mainEntityOfPage": window.location.href
+    };
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
   }
 
   /**
@@ -349,7 +418,7 @@
         '<p style="font-family:Georgia,serif;font-size:1.1rem;margin:0 0 0.5rem;line-height:1.3;">Get the 90-Minute Financial Model Audit Checklist</p>' +
         '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 1rem;line-height:1.5;">The same framework used to audit models with 3,600+ formulas. Find errors before investors do.</p>' +
         '<form class="rr-inline-cta-form" style="display:flex;gap:0.5rem;max-width:400px;">' +
-          '<input type="email" placeholder="your@email.com" required style="flex:1;padding:0.6rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.85rem;background:#08080d;color:#f2ede4;">' +
+          '<input type="email" placeholder="you@company.com" required style="flex:1;padding:0.6rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.85rem;background:#08080d;color:#f2ede4;">' +
           '<button type="submit" style="padding:0.6rem 1.2rem;background:#c8a45a;color:#08080d;border:none;border-radius:6px;font-family:monospace;font-size:0.8rem;font-weight:500;cursor:pointer;">Send</button>' +
         '</form>';
 
@@ -379,7 +448,7 @@
       '<p style="font-family:Georgia,serif;font-size:1.15rem;margin:0 0 0.5rem;">Stay sharp on startup finance</p>' +
       '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 1.25rem;">Weekly articles on fundraising, financial modeling, and exit strategy. No spam.</p>' +
       '<form class="rr-blog-nl-form" style="display:flex;gap:0.5rem;max-width:400px;margin:0 auto;">' +
-        '<input type="email" placeholder="your@email.com" required style="flex:1;padding:0.7rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.85rem;background:#08080d;color:#f2ede4;">' +
+        '<input type="email" placeholder="you@company.com" required style="flex:1;padding:0.7rem 0.75rem;border:1px solid #3a3830;border-radius:6px;font-family:monospace;font-size:0.85rem;background:#08080d;color:#f2ede4;">' +
         '<button type="submit" style="padding:0.7rem 1.5rem;background:#c8a45a;color:#08080d;border:none;border-radius:6px;font-family:monospace;font-size:0.85rem;font-weight:500;cursor:pointer;">Subscribe</button>' +
       '</form>';
 
@@ -410,6 +479,8 @@
   function initConversionElements() {
     initStickyBar();
     initTimedPopup();
+    initBlogParagraphCTA();
+    initBlogSchema();
     initBlogCTAs();
   }
 
