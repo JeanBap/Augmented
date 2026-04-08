@@ -172,12 +172,12 @@
 
   <!-- Filters -->
   <section class="filter-section">
-    <div class="filter-label">Book</div>
-    <div class="filter-row" id="book-filters">
-      <button class="filter-btn active" data-book="all">All</button>
-      <button class="filter-btn" data-book="start-ready">Start Ready</button>
-      <button class="filter-btn" data-book="raise-ready">Raise Ready</button>
-      <button class="filter-btn" data-book="exit-ready">Exit Ready</button>
+    <div class="search-row" style="max-width:420px;margin:0 auto 1rem;">
+      <input type="text" id="tool-search" placeholder="Search tools..." style="
+        width:100%;padding:0.6rem 1rem;border:1px solid var(--rule);border-radius:20px;
+        font-family:var(--mono);font-size:0.85rem;background:var(--paper);color:var(--ink);
+        outline:none;transition:border-color 0.2s;
+      " onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--rule)'">
     </div>
     <div class="filter-label">Topic</div>
     <div class="filter-row" id="topic-filters">
@@ -542,21 +542,27 @@
 <script>
 (function() {
   var cards = document.querySelectorAll('.tool-card');
-  var bookBtns = document.querySelectorAll('#book-filters .filter-btn');
   var topicBtns = document.querySelectorAll('#topic-filters .filter-btn');
+  var searchInput = document.getElementById('tool-search');
   var countEl = document.getElementById('result-count');
   var noResults = document.getElementById('no-results');
   var grid = document.getElementById('tools-grid');
 
-  var activeBook = 'all';
   var activeTopic = 'all';
+  var searchQuery = '';
 
   function applyFilters() {
     var visible = 0;
+    var query = searchQuery.toLowerCase().trim();
     cards.forEach(function(card) {
-      var bookMatch = activeBook === 'all' || card.dataset.book === activeBook;
       var topicMatch = activeTopic === 'all' || card.dataset.topic === activeTopic;
-      if (bookMatch && topicMatch) {
+      var searchMatch = !query;
+      if (!searchMatch) {
+        var title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+        var desc = card.querySelector('.desc') ? card.querySelector('.desc').textContent.toLowerCase() : '';
+        searchMatch = title.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
+      }
+      if (topicMatch && searchMatch) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -571,7 +577,6 @@
 
   function updateHash() {
     var parts = [];
-    if (activeBook !== 'all') parts.push('book=' + activeBook);
     if (activeTopic !== 'all') parts.push('topic=' + activeTopic);
     history.replaceState(null, '', parts.length ? '#' + parts.join('&') : window.location.pathname);
   }
@@ -581,20 +586,14 @@
     if (!hash) return;
     hash.split('&').forEach(function(pair) {
       var kv = pair.split('=');
-      if (kv[0] === 'book') activeBook = kv[1];
       if (kv[0] === 'topic') activeTopic = kv[1];
     });
-    bookBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.book === activeBook); });
     topicBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.topic === activeTopic); });
   }
 
-  bookBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      bookBtns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      activeBook = btn.dataset.book;
-      applyFilters();
-    });
+  searchInput.addEventListener('input', function() {
+    searchQuery = this.value;
+    applyFilters();
   });
 
   topicBtns.forEach(function(btn) {
