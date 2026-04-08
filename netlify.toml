@@ -1,3 +1,7 @@
+[build]
+  command = "node scripts/generate-sitemap.js && node scripts/ping-search-engines.js"
+  publish = "."
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "nft"
