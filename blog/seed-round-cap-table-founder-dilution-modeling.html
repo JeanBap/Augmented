@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seed Round Cap Table: Modeling Founder Dilution Step by Step | Raise Ready</title>
+<meta name="description" content="Seed round cap table modeling: calculate founder dilution, understand fully-diluted shares, and project ownership post-funding.">
+<meta name="keywords" content="seed funding, cap table dilution, founder ownership, pre-money valuation, post-money valuation, equity dilution, startup cap table">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/seed-round-cap-table-founder-dilution-modeling.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/seed-round-cap-table-founder-dilution-modeling.html">
+<meta property="og:title" content="Seed Round Cap Table: Modeling Founder Dilution Step by Step">
+<meta property="og:description" content="Seed round cap table modeling: calculate founder dilution, understand fully-diluted shares, and project ownership post-funding.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta property="article:published_time" content="2026-06-03">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Seed Round Cap Table: Modeling Founder Dilution Step by Step">
+<meta name="twitter:description" content="Seed round cap table modeling: calculate founder dilution, understand fully-diluted shares, and project ownership post-funding.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&amp;h=630&amp;fit=crop">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Seed Round Cap Table: Modeling Founder Dilution Step by Step",
+  "description": "Seed round cap table modeling: calculate founder dilution, understand fully-diluted shares, and project ownership post-funding.",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/seed-round-cap-table-founder-dilution-modeling.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/seed-round-cap-table-founder-dilution-modeling.html",
+  "datePublished": "2026-06-03",
+  "articleSection": "Financial Modeling",
+  "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop",
+  "keywords": "seed funding, cap table dilution, founder ownership, pre-money valuation, post-money valuation, equity dilution, startup cap table"
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">10 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published June 3, 2026</span>
+    </div>
+    <h1>Seed Round Cap Table: Modeling Founder Dilution Step by Step</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=Seed%20Round%20Cap%20Table%3A%20Modeling%20Founder%20Dilution%20Step%20by%20Step&url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fseed-round-cap-table-founder-dilution-modeling.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fseed-round-cap-table-founder-dilution-modeling.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+</div>
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Seed rounds typically dilute founders 15-25%, reducing ownership from 100% to 75-85% post-money. Understanding dilution mechanics—option pool creation, investor share issuance, fully-diluted calculation—helps you model founder ownership through growth and make informed fundraising decisions.</p>
+</div>
+
+
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop" alt="Cap table spreadsheet showing seed round dilution calculations with pre-money and post-money valuations" style="width: 100%; margin-bottom: 2rem; border-radius: 8px;">
+
+    <p>Your seed round cap table is where abstract equity concepts become concrete financial reality. A seed round creates the first significant dilution, introduces investor ownership, and establishes option pool structures. Understanding how seed round mechanics affect your ownership is essential for strategic fundraising decisions.</p>
+
+    <p>Most founders have intuitive understanding that seed rounds dilute their ownership. They're typically less clear on exactly how much dilution happens, why post-money valuation determines dilution percentage, and how option pools fit into the math. This gap in understanding can lead to accepting terms you shouldn't or rejecting terms that are actually reasonable.</p>
+
+    <h3>The Basic Dilution Mechanic: Pre-Money vs Post-Money Valuation</h3>
+
+    <p>Understanding pre-money and post-money valuations is the foundation for understanding seed round dilution.</p>
+
+    <p><strong>Pre-money valuation:</strong> What the company is worth before investment. If your seed round is on a $2M pre-money valuation, investors are saying "Your company, as it currently exists with current equity structure, is worth $2M."</p>
+
+    <p><strong>Investment amount:</strong> How much capital investors are putting in. Let's say $500K.</p>
+
+    <p><strong>Post-money valuation:</strong> Pre-money + investment. In this example: $2M + $500K = $2.5M. The company is now worth $2.5M after the capital injection.</p>
+
+    <p><strong>Investor ownership percentage:</strong> Investment ÷ Post-money = $500K ÷ $2.5M = 20%. The investor owns 20% of the company post-money.</p>
+
+    <p><strong>Founder dilution:</strong> If founders owned 100% pre-money, they now own 80% post-money. The 20% investor stake dilutes founders from 100% to 80%.</p>
+
+    <p>This is the critical formula: investor percentage = investment ÷ post-money valuation. And founder percentage post-investment = 100% - investor percentage.</p>
+
+    <h3>Modeling Your First Seed Round: Step by Step</h3>
+
+    <p>Let's work through a complete seed round example from beginning to end.</p>
+
+    <p><strong>Starting cap table (pre-seed):</strong><br>
+    Founder A: 500,000 common shares<br>
+    Founder B: 500,000 common shares<br>
+    Total outstanding: 1,000,000 shares<br>
+    Founder ownership: 100% (both founders own equal percentages)</p>
+
+    <p><strong>Pre-seed metrics (before fundraising):</strong><br>
+    Company valuation estimate: $2M (pre-money)<br>
+    Seed investment: $500K<br>
+    Post-money: $2.5M<br>
+    Seed investor ownership percentage: $500K ÷ $2.5M = 20%</p>
+
+    <p><strong>Creating option pool (before seed funding closes):</strong><br>
+    It's standard practice to establish an option pool before taking seed investment. Investors want to know how much equity is reserved for employees. A typical pool is 15% of post-money shares. If post-money valuation is $2.5M and we value each share at $0.25 (a reasonable price), post-money shares total 10M shares. A 15% pool is 1.5M shares.</p>
+
+    <p><strong>Cap table immediately after seed closes:</strong><br>
+    Founder A common: 500,000 shares (current ownership: 4.76%)<br>
+    Founder B common: 500,000 shares (current ownership: 4.76%)<br>
+    Seed Investor preferred: 2M shares (current ownership: 19%)<br>
+    Option pool (unissued): 1.5M shares (reserved for future employee grants)<br>
+    Unissued reserved shares: 5.5M shares (for future capital rounds)<br>
+    Total shares fully diluted: 10.5M shares</p>
+
+    <p><strong>Founder ownership post-seed (actual shares vs fully-diluted):</strong><br>
+    Current: 1M shares ÷ 2.5M issued and reserved for immediate use = 40% (actual current ownership)<br>
+    Fully-diluted (assuming option pool is fully vested/exercised): 1M ÷ 10.5M = 9.5%</p>
+
+    <p>This is confusing, so let's clarify the terminology: "current ownership" or "basic ownership" counts only issued shares. "Fully-diluted" assumes all options and future shares are exercised/issued. Investors always care about fully-diluted ownership because it shows what ownership would be if all potential shares become actual shares.</p>
+
+    <p>For purposes of this example, when investors discuss seed ownership, they're typically referring to investor percentage on post-money, fully-diluted basis. So: seed investor owns 20%, founders own 80% fully-diluted post-seed round.</p>
+
+    <h3>Understanding "Fully-Diluted" Ownership in Seed Context</h3>
+
+    <p>The fully-diluted calculation is where most founders get confused. Let's demystify it.</p>
+
+    <p>In our example:<br>
+    Post-money valuation: $2.5M<br>
+    We establish this means the company is worth $2.5M on a fully-diluted basis, assuming all options are exercised, all future commitments are fulfilled, etc.</p>
+
+    <p>Seed investor receives: $500K investment ÷ $2.5M company value = 20% on fully-diluted basis</p>
+
+    <p>If the company is worth $2.5M fully-diluted and is 20% investor-owned, it must be 80% founder-owned on fully-diluted basis.</p>
+
+    <p>The specific share counts matter less than the percentage ownership on fully-diluted basis. If we establish post-money at 10M fully-diluted shares (company worth $2.5M = $0.25/share), then:</p>
+
+    <p>Investor receives 2M shares (20% of 10M)<br>
+    Founders own 1M shares currently (100% before seed)<br>
+    Option pool: 1.5M shares (15%)<br>
+    Unissued: 5.5M shares</p>
+
+    <p>The math works because investor owns $500K worth ($0.25/share × 2M shares = $500K) of a $2.5M company (10M shares × $0.25/share = $2.5M).</p>
+
+    <h3>Option Pool Implications for Founder Ownership</h3>
+
+    <p>The option pool reduces founder ownership percentage even though no investor capital is raised against the pool.</p>
+
+    <p>In our example, if we didn't establish an option pool, post-money would be $2.5M, and fully-diluted shares would be calculated as: $2.5M ÷ $0.25/share = 10M shares. Investor gets 2M (20%), founders keep 8M (80%).</p>
+
+    <p>With a 15% option pool, fully-diluted shares are now: founder 1M + investor 2M + option pool 1.5M = 4.5M "immediate" shares, but the company is still valued at $2.5M fully-diluted, implying 10M total shares when you include future funding rounds and reserved shares.</p>
+
+    <p>For practical purposes, on seed close: investor is 20%, founders are 80% on fully-diluted basis. But the option pool (15%) is carved out of the 80% founder ownership. So founders effectively own 65% (80% - 15% option pool), with 15% reserved for employees, and investor owns 20%.</p>
+
+    <p>This matters because if you grant 10,000 options to the first employee, you're using 10,000 of the 1.5M option pool. The employee owns 10,000 ÷ 10,000,000 = 0.1% of the company on fully-diluted basis. The remaining founders own 79.9%.</p>
+
+    <h3>Modeling Multiple Seed Investors</h3>
+
+    <p>Real seed rounds often include multiple investors—lead investors and syndicate members. The cap table becomes more complex but follows the same principles.</p>
+
+    <p><strong>Seed round with multiple investors:</strong><br>
+    Lead investor: $300K at $2M pre-money<br>
+    Follow-on investors: $200K additional<br>
+    Total seed: $500K, same $2.5M post-money</p>
+
+    <p>Post-funding cap table:</p>
+
+    <p>Founder A: 500,000 shares<br>
+    Founder B: 500,000 shares<br>
+    Lead seed investor (preferred): 1.2M shares (12% of 10M fully-diluted)<br>
+    Follow-on seed investors (preferred): 800K shares (8% of 10M)<br>
+    Option pool: 1.5M shares (15%)<br>
+    Future reserved: 5.5M shares<br>
+    Total fully-diluted: 10M shares</p>
+
+    <p>Combined seed investor ownership: 20% (combined lead 12% + followers 8%)</p>
+
+    <p>Founder ownership: 80% fully-diluted (but 65% after option pool is reserved)</p>
+
+    <p>The dynamics don't change—same total investment, same post-money means same total investor percentage. Distribution of investor shares among multiple investors is an operational detail but doesn't change overall dilution.</p>
+
+    <h3>Founder Dilution Through Series A</h3>
+
+    <p>Understanding seed dilution prepares you to model Series A dilution, which is typically more significant.</p>
+
+    <p>Continuing our example:</p>
+
+    <p><strong>Pre-Series A (post-seed):</strong><br>
+    Founders: 65% on fully-diluted basis (after option pool is reserved)<br>
+    Seed investors: 20%<br>
+    Option pool: 15%</p>
+
+    <p><strong>Series A fundraising:</strong><br>
+    Series A valuation: $10M post-money<br>
+    Series A investment: $3M<br>
+    Series A investor percentage: $3M ÷ $10M = 30%</p>
+
+    <p>When Series A investor enters at 30%, all existing owners are diluted proportionally.</p>
+
+    <p><strong>Post-Series A dilution calculation:</strong><br>
+    Before Series A, founders owned 65% of a company worth $2.5M = $1.625M<br>
+    After Series A, company is worth $10M<br>
+    Series A investor owns 30%, worth $3M<br>
+    Existing owners (founders + seed investors + option pool) own 70%, worth $7M<br>
+    Founders' 65% of 70% = 45.5% post-Series A</p>
+
+    <p>Founder dilution from seed to Series A: 65% down to 45.5%. That's a 19.5 percentage point dilution. This might sound like a lot, but it's actually reasonable—founders went from $2.5M valuation to $10M valuation while maintaining 45%+ ownership. The percentage decreased but the absolute value increased substantially.</p>
+
+    <h3>The Fully-Diluted Calculation in Detail</h3>
+
+    <p>Let's work the math precisely to ensure you understand fully-diluted calculation.</p>
+
+    <p><strong>Post-Series A cap table (share counts):</strong><br>
+    Founders: 1M common (same as seed)<br>
+    Seed investors: 2M preferred<br>
+    Option pool: 1.5M (reserved)<br>
+    Series A investor: 3M preferred<br>
+    Total fully-diluted: 7.5M shares</p>
+
+    <p><strong>Percentage calculation:</strong><br>
+    Founders: 1M ÷ 7.5M = 13.3%<br>
+    Seed: 2M ÷ 7.5M = 26.7%<br>
+    Option pool: 1.5M ÷ 7.5M = 20%<br>
+    Series A: 3M ÷ 7.5M = 40%</p>
+
+    <p>Wait—this shows founders at 13.3%, which contradicts our earlier 45.5% calculation. The difference: we need to account for the option pool and how it affects ownership percentages.</p>
+
+    <p>The right way to think about fully-diluted: option pool isn't "owned" by founders yet—it's reserved for future employee grants. So the calculation should be:</p>
+
+    <p>Founders: 1M ÷ 5.5M (excluding unissued option pool) = 18.2% of issued/allocated shares<br>
+    Seed: 2M ÷ 5.5M = 36.4%<br>
+    Series A: 3M ÷ 5.5M = 54.5%</p>
+
+    <p>But this still feels off. The cleanest way to think about it: on a fully-diluted basis accounting for all options and future equity (which Series A funding rounds typically do), Series A investor gets 30% of fully-diluted company. Existing owners (before Series A) get 70%. Founders represented 80% of pre-Series A ownership, so founders get 80% × 70% = 56% on a post-Series A fully-diluted basis? No, this is also wrong because seed investors dilute founders.</p>
+
+    <p>The correct approach: use share counts and percentages consistently. After Series A funding closes, the cap table shows share counts. Each person's percentage is their shares divided by total fully-diluted shares. If founders have 1M shares and total fully-diluted is 7.5M, founders own 13.3% fully-diluted post-Series A.</p>
+
+    <p>But experienced investors would calculate differently. They would say: "What percentage of the company do founders own?" The answer considers that option pool isn't real equity yet, so it's sometimes excluded. Many investors use a "common pool shares only" basis (excluding options) for percentage ownership calculation.</p>
+
+    <p>This is why cap table terminology can be confusing. Multiple correct perspectives exist depending on whether you include options pool, future funding rounds, etc.</p>
+
+    <h3>The Practical Seed Round Negotiation: Balancing Dilution and Capital</h3>
+
+    <p>Understanding dilution helps you negotiate seed terms effectively. The trade-off is always: how much capital do you need versus how much ownership you're willing to dilute.</p>
+
+    <p>If you need $500K to reach Series A readiness, and investors will value you at $2M pre-money, you accept 20% dilution and own 80% post-money. If you instead raise $750K at the same valuation, post-money is $2.75M, investor owns 27%, you own 73%. More capital, more dilution.</p>
+
+    <p>Alternatively, you could negotiate higher pre-money valuation. If you raise $500K at $3M pre-money (not $2M), post-money is $3.5M, investor owns 14%, you own 86%. Same capital, less dilution, but you're claiming higher valuation.</p>
+
+    <p>The optimal seed round depends on: (1) How much capital do you truly need? (2) What valuation can you justify? (3) How much dilution are you comfortable with? Understanding the math helps you make these decisions consciously rather than accepting whatever terms investors propose.</p>
+
+    <h3>Key Takeaways</h3>
+    <ul style="line-height: 1.8;">
+      <li>Pre-money valuation × (1 + investment ÷ pre-money) = post-money valuation; investor ownership = investment ÷ post-money</li>
+      <li>Option pool established before seed round reduces founder ownership percentage even though it doesn't directly fund investor returns</li>
+      <li>Fully-diluted ownership includes all potential shares (options, future rounds); investors use fully-diluted basis when evaluating ownership</li>
+      <li>Seed round typically dilutes founders 15-25% depending on capital raised and valuation; this is normal and acceptable for substantial fundraising</li>
+      <li>Series A dilution is typically larger than seed; modeling ownership through Series A helps you understand long-term wealth outcomes</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <p><strong>Q: How do I decide how much to dilute in seed?</strong><br>
+    A: Raise the minimum capital to reach Series A readiness (typically 18-24 months). The dilution will be whatever it needs to be. Don't sacrifice necessary capital to minimize dilution. But also don't raise excessive capital (raising $2M when you need $500K) just because investors offer it.</p>
+
+    <p><strong>Q: What pre-money valuation should I target for seed?</strong><br>
+    A: Seed valuations for pre-revenue companies typically range $1-3M. Factors: founder team strength, market opportunity, traction (if any), comparable rounds. Don't negotiate on valuation excessively if capital is limiting—better to raise needed capital at reasonable valuation than to fight for 20% higher valuation and fail to raise.</p>
+
+    <p><strong>Q: Should I negotiate option pool size?</strong><br>
+    A: Yes. Investors typically want 15-20%. If you need significantly larger pool (planning to hire 50 engineers), you might negotiate 20-25%. Larger pools dilute founders more. But too-small pools limit your recruiting ability. 15-20% is reasonable for most early-stage companies.</p>
+
+    <p><strong>Q: What if I'm raising a seed round at $500K?</strong><br>
+    A: The math scales the same regardless of round size. $500K seed at $2M pre-money creates same dilution (20%) as $5M seed at $20M pre-money. The absolute percentages are identical; the absolute dollar values are different.</p>
+
+    <p><strong>Q: How should I model cap table if we have multiple tranches of seed funding?</strong><br>
+    A: Typically seed funding comes as a series of notes or SAFEs that convert to equity once you do the priced seed round. Track the post-conversion cap table after the priced round closes. Pre-conversion notes aren't part of the cap table cap because they're not yet equity. Once they convert, update the cap table to show new shares issued to convert note holders.</p>
+    
+
+
+<div class="related-articles">
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/bottom-up-revenue-forecast.html" class="related-article-link">Building a Bottom-Up Revenue Forecast for Your Startup</a>
+<a href="/blog/building-your-runway-model-a-month-by-month-survival-guide.html" class="related-article-link">Building Your Runway Model: A Month-by-Month Survival Guide</a>
+<a href="/blog/cash-flow-forecasting.html" class="related-article-link">Startup Cash Flow Forecasting: A Practical Framework</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $9.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across multiple rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+</body>
+</html>

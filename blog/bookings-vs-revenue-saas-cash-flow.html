@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookings vs Revenue: Understanding SaaS Cash Flow Timing | Raise Ready</title>
+<meta name="description" content="Master bookings vs revenue in SaaS. Learn GAAP revenue recognition, understand cash flow timing, and build accurate financial models.">
+<meta name="keywords" content="bookings SaaS, revenue recognition, cash flow, GAAP accounting, SaaS metrics">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/bookings-vs-revenue-saas-cash-flow.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/bookings-vs-revenue-saas-cash-flow.html">
+<meta property="og:title" content="Bookings vs Revenue: Understanding SaaS Cash Flow Timing">
+<meta property="og:description" content="Master bookings vs revenue in SaaS. Learn GAAP revenue recognition, understand cash flow timing, and build accurate financial models.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1554224311-beee415c15c9?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Financial Modeling">
+<meta property="article:published_time" content="2026-08-05">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bookings vs Revenue: Understanding SaaS Cash Flow Timing">
+<meta name="twitter:description" content="Master bookings vs revenue in SaaS. Learn GAAP revenue recognition, understand cash flow timing, and build accurate financial models.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1554224311-beee415c15c9?w=1200&amp;h=630&amp;fit=crop">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bookings vs Revenue: Understanding SaaS Cash Flow Timing",
+  "description": "Master bookings vs revenue in SaaS. Learn GAAP revenue recognition, understand cash flow timing, and build accurate financial models.",
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready"
+  },
+  "url": "https://www.raisereadybook.com/blog/bookings-vs-revenue-saas-cash-flow.html",
+  "mainEntityOfPage": "https://www.raisereadybook.com/blog/bookings-vs-revenue-saas-cash-flow.html",
+  "datePublished": "2026-08-05",
+  "articleSection": "Financial Modeling",
+  "image": "https://images.unsplash.com/photo-1554224311-beee415c15c9?w=1200&h=630&fit=crop",
+  "keywords": "bookings SaaS, revenue recognition, cash flow, GAAP accounting, SaaS metrics"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can a company be profitable in cash but unprofitable in GAAP revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If deferred revenue grows faster than you spend cash, you're positive operationally but might show losses on income statement. Early SaaS companies experience this. Deferred revenue growth is healthy—it represents customers prepaying for future value. Investors understand this, but make sure the deferred revenue is sustainable (i.e., not customer acquisition incentives you can't support)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we recognize revenue for implementation services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Implementation services are separate performance obligations from subscription service. Recognize implementation revenue when the service is complete (usually over 30-90 days post-contract) rather than ratably. The subscription portion recognizes separately over the contract term. ASC 606 requires this separation when services are distinct."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What discount rate should we use for multi-year contracts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Industry standard is 15-30% discount for annual versus monthly; 20-35% for multi-year. But optimize for your cohort economics. If annual-billed customers have better retention and expansion, justify steeper discounts. If they're just payment acceleration, minimize discounts. Track cohort unit economics by billing term."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should we model revenue for net-new bookings that arrive throughout the year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Build cohort models: bookings signed in month 1 at avg price X with contracts Y months long generate revenue Z. Model each booking cohort separately, then sum. Account for mid-contract acquisitions (customers starting service mid-month recognize partial revenue that month). This is more complex than simple bookings ÷ 12 but far more accurate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is high deferred revenue always good?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually yes, but watch composition. Deferred revenue from genuine customer commitment (multi-year renewals) is excellent. Deferred revenue from acquisition incentives or promotional terms might be unsustainable. Analyze deferred revenue turnover—how quickly you recognize it relative to bookings. Too-high turnover suggests short contracts; too-low suggests customer acquisition incentives."
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">9 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published August 5, 2026</span>
+    </div>
+    <h1>Bookings vs Revenue: Understanding SaaS Cash Flow Timing</h1>
+    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=Bookings%20vs%20Revenue%3A%20Understanding%20SaaS%20Cash%20Flow%20Timing&url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fbookings-vs-revenue-saas-cash-flow.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fbookings-vs-revenue-saas-cash-flow.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+</div>
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#c8a45a; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Understand why bookings and revenue differ in SaaS accounting. Master the timing gap between cash received and GAAP revenue recognition to build accurate financial models and manage cash flow effectively.</p>
+</div>
+
+
+      <img src="https://images.unsplash.com/photo-1554224311-beee415c15c9?w=1200&h=630&fit=crop" alt="Financial timeline showing when cash comes in versus when revenue is recognized" style="width:100%;height:auto;margin-bottom:2rem;">
+
+      <h3>The Fundamental Difference: Bookings vs Revenue</h3>
+      <p>In SaaS, a customer signing a two-year contract worth $24,000 creates a critical distinction: bookings and revenue are different things. Bookings represent the total contractual value committed. Revenue represents what GAAP accounting allows you to recognize in a specific period. Understanding this gap is essential for accurate financial forecasting and cash management.</p>
+      <p>Bookings hit your balance sheet as deferred revenue (a liability) and represent cash received or contracted to be received. Revenue is recognized over the contract period as you deliver service. This timing mismatch has profound implications for financial modeling, cash runway, and investor communications.</p>
+
+      <h3>GAAP Revenue Recognition Rules in SaaS</h3>
+      <p>Under ASC 606 (the accounting standard), revenue is recognized when (or as) you transfer a promised service to a customer in an amount reflecting expected consideration. For SaaS, this typically means monthly or annual rateable revenue recognition. A $24,000 two-year contract recognizes $1,000 per month in revenue for 24 months.</p>
+      <p>This ratable recognition principle applies even if you receive the full $24,000 upfront as cash. Month 1 revenue is $1,000 despite receiving $24,000 in cash. The difference ($23,000) is deferred revenue—a liability on your balance sheet representing future service obligation.</p>
+      <p>Professional services, implementation fees, and support may have different recognition patterns than subscription services. Multi-element arrangements require careful analysis of when each component's performance obligation is satisfied. This complexity is why CFOs obsess over revenue recognition—mistakes create audit findings and restatements.</p>
+
+      <h3>Why the Timing Gap Matters for Cash Management</h3>
+      <p>Early-stage startups are acutely aware of this gap. You receive a customer's annual contract ($60,000) upfront, but can only recognize $5,000 monthly in revenue. This creates a critical advantage: positive cash flow precedes revenue recognition. You have cash to fund operations before GAAP revenue reflects the win.</p>
+      <p>This dynamic means cash position and revenue trajectory tell different stories. A startup might have 24 months of cash runway despite only $50,000 monthly revenue because bookings were front-loaded and contracts auto-renew. Conversely, a company with $1M monthly revenue might have only 6 months of cash if contracts are quarterly and collected in arrears.</p>
+      <p>Understanding this gap prevents the common mistake of confusing cash position with profitability. You can be cash-positive but GAAP revenue-negative if deferred revenue grows faster than you spend. This is actually healthy in growth-stage SaaS—it means customers are paying for future value you're contractually obligated to deliver.</p>
+
+      <h3>Calculating Bookings Accurately</h3>
+      <p>Bookings include all committed contract value: annual contracts, multi-year deals, and amounts customers have pre-paid. A customer signing a 3-year, $36,000 contract creates $36,000 in bookings regardless of billing rhythm. Some companies include expansion revenue within existing customer contracts; others count it separately as "non-recurring bookings."</p>
+      <p>Careful definition matters for investor reporting. Your definition of "new bookings" versus "expansion bookings" signals growth quality. Enterprise SaaS companies emphasize expansion bookings (existing customers buying more) because they indicate product stickiness and pricing power. Early-stage companies maximize new bookings to show market traction.</p>
+      <p>Monthly Recurring Revenue (MRR) and Annual Recurring Revenue (ARR) derive from bookings but measure different things. MRR represents the monthly revenue you expect to recognize if all active contracts continue. ARR annualizes current MRR. Both assume contract continuance—they don't account for churn. This distinction matters when modeling cash flow with realistic churn assumptions.</p>
+
+      <h3>Deferred Revenue: The Liability That Funds Growth</h3>
+      <p>Deferred revenue grows as you sign multi-year contracts. This liability funds your growth without dilution—customers are paying for future service you're contractually obligated to deliver. Many founders view deferred revenue with confusion, not realizing it's an asset on the cash flow statement.</p>
+      <p>A $10M increase in deferred revenue means customers paid you $10M for future service. This is cash in the bank, available to fund operations. Over time, you convert deferred revenue to recognized revenue as you deliver service. The balance decreases by the amount you recognize monthly.</p>
+      <p>Deferred revenue trends signal health. Growing deferred revenue indicates strong bookings and multi-year customer commitment. Declining deferred revenue might signal churn acceleration or shift toward shorter contract terms. Investors scrutinize this metric closely—deferred revenue growth often precedes revenue growth, giving visibility into future trajectory.</p>
+
+      <h3>Modeling Revenue from Bookings Contracts</h3>
+      <p>To forecast revenue from known bookings, you must understand the contract mix. What percentage of customers choose annual versus monthly billing? What's the mix of 1-year versus multi-year contracts? These choices determine revenue timing.</p>
+      <p>Create a booking-to-revenue bridge model: Start with bookings, apply mix assumptions (20% annual, 80% monthly), apply cohort-based churn curves, and recognize revenue monthly. This approach accounts for customer acquisition timing, contract terms, and expected churn. Most errors in revenue modeling stem from oversimplifying this bridge.</p>
+      <p>Model different scenarios: optimistic (bookings forecast +25%, churn -25%), realistic (bookings forecast +10%, churn baseline), and conservative (bookings forecast -10%, churn +25%). This range reflects true uncertainty and helps boards prepare for various outcomes.</p>
+
+      <h3>Annual vs Monthly Billing and Cash Impact</h3>
+      <p>Annual billing creates favorable cash dynamics but commits you to delivering 12 months of service. Monthly billing spreads cash collection and aligns risk—either party can exit with 30 days notice. Most SaaS companies incentivize annual billing with discounts (15-25% savings versus monthly equivalent), driving upfront cash and contract lock-in.</p>
+      <p>Annual billing customers churn similarly to monthly customers but in lumpier patterns—renewals happen all at once annually. Monthly billing customers churn continuously. Both patterns matter for cash forecasting. Monthly-billing heavy companies have more predictable monthly cash but lower total bookings. Annual-billing heavy companies have cash lumpy but better multi-year visibility.</p>
+      <p>Advanced companies offer multi-year discounts (20-30% off three-year contracts). This frontloads cash massively—a $100K annual customer might prepay $250K for three years. This funding mechanism is incredibly valuable for startup growth but creates contract obligations that must be fulfilled.</p>
+
+      <h3>Contract Renewal and Expansion Impact on Cash Flow</h3>
+      <p>Renewal bookings create a second cash flow wave. If you signed 100 customers in year 1 at $10K annually, you'll have 100 renewal opportunities in year 2 (if retention is 100%). Retention rate directly impacts cash predictability. 90% retention means you're replacing 10% of cohort but can count on 90K in renewal cash from year-1 customers.</p>
+      <p>Expansion revenue—existing customers buying additional licenses, upgrades, or modules—creates the best cash flow pattern. It's lower CAC than new customer acquisition, sticky (requires account disruption to churn), and often grows faster than new customer bookings. Healthy SaaS companies see expansion bookings equal new bookings by year 5.</p>
+      <p>Model expansion separately from new business. Track net dollar retention (NDR) or net revenue retention (NRR): the percentage of prior-year revenue retained by cohort (including contraction, expansion, and churn). NRR above 100% signals strong expansion and improving unit economics. Enterprise SaaS companies target 120-130% NRR; smaller SaaS targets 110-115%.</p>
+
+      <h3>Common Pitfalls in Bookings vs Revenue Modeling</h3>
+      <p>The most common error: treating bookings as revenue in financial models. This inflates growth projections and confuses investors. Always separately model bookings (what you sell) and revenue (what GAAP lets you recognize). They're equally important—bookings predict future revenue, revenue predicts profitability.</p>
+      <p>Another pitfall: ignoring churn in revenue projections. If you sign $100K in monthly bookings but 5% monthly churn, your revenue base shrinks despite new bookings. This churn drag is invisible in bookings-only models. Include cohort-based retention curves in revenue models to reflect realistic trajectories.</p>
+      <p>Companies also misunderstand deferred revenue timing. It's not revenue; it's a liability. But it's also not a tax on growth—it's customer prepayment funding your operations. Don't view deferred revenue growth negatively; view it as a growth capital advantage.</p>
+
+      <h3>Building a Comprehensive Cash Flow Model</h3>
+      <p>Combine bookings, revenue, and cash into a cohesive model. Bookings flow in from sales. Revenue recognizes monthly from deferred revenue. Cash flow accounts for actual collection timing (some customers don't pay upfront), payment terms, and refunds. These three streams rarely align perfectly.</p>
+      <p>Include working capital impacts: DSO (days sales outstanding—how long customers take to pay), DPO (days payable outstanding—how long you take to pay suppliers), and inventory levels (if applicable). Early SaaS is collection-constrained; most enterprise SaaS has net 30 payment terms, creating working capital needs.</p>
+      <p>Model churn cohort-by-cohort. Customers acquired in month 1 at price $X with churn Y% generate revenue pattern Z. Customers acquired in month 12 at different price and churn generate different pattern. Summing across cohorts reveals true revenue trajectory accounting for customer acquisition timing, pricing evolution, and churn curves.</p>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Bookings represent total contract value; revenue is what GAAP accounting lets you recognize monthly. They diverge significantly in SaaS.</li>
+        <li>Customer pays upfront (bookings/cash), you recognize revenue ratably (typically monthly) for service delivery duration.</li>
+        <li>Deferred revenue is a liability reflecting future service obligation—but it's also cash funding your growth without dilution.</li>
+        <li>Multi-year contracts create favorable cash dynamics but require disciplined execution to deliver promised service.</li>
+        <li>Model bookings → revenue bridge explicitly: apply contract mix, churn curves, and expansion assumptions to forecast revenue from bookings.</li>
+        <li>Annual billing concentrates cash but creates churn lumpiness. Monthly billing smooths churn but reduces upfront cash.</li>
+        <li>Track renewal and expansion revenue separately from new business. Healthy companies see expansion bookings 30-50% of new bookings by maturity.</li>
+        <li>Don't confuse cash position with profitability. Strong deferred revenue growth can support growth even when GAAP revenue lags bookings.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h4>Can a company be profitable in cash but unprofitable in GAAP revenue?</h4>
+      <p>Yes. If deferred revenue grows faster than you spend cash, you're positive operationally but might show losses on income statement. Early SaaS companies experience this. Deferred revenue growth is healthy—it represents customers prepaying for future value. Investors understand this, but make sure the deferred revenue is sustainable (i.e., not customer acquisition incentives you can't support).</p>
+
+      <h4>How do we recognize revenue for implementation services?</h4>
+      <p>Implementation services are separate performance obligations from subscription service. Recognize implementation revenue when the service is complete (usually over 30-90 days post-contract) rather than ratably. The subscription portion recognizes separately over the contract term. ASC 606 requires this separation when services are distinct.</p>
+
+      <h4>What discount rate should we use for multi-year contracts?</h4>
+      <p>Industry standard is 15-30% discount for annual versus monthly; 20-35% for multi-year. But optimize for your cohort economics. If annual-billed customers have better retention and expansion, justify steeper discounts. If they're just payment acceleration, minimize discounts. Track cohort unit economics by billing term.</p>
+
+      <h4>How should we model revenue for net-new bookings that arrive throughout the year?</h4>
+      <p>Build cohort models: bookings signed in month 1 at avg price X with contracts Y months long generate revenue Z. Model each booking cohort separately, then sum. Account for mid-contract acquisitions (customers starting service mid-month recognize partial revenue that month). This is more complex than simple bookings ÷ 12 but far more accurate.</p>
+
+      <h4>Is high deferred revenue always good?</h4>
+      <p>Usually yes, but watch composition. Deferred revenue from genuine customer commitment (multi-year renewals) is excellent. Deferred revenue from acquisition incentives or promotional terms might be unsustainable. Analyze deferred revenue turnover—how quickly you recognize it relative to bookings. Too-high turnover suggests short contracts; too-low suggests customer acquisition incentives.</p>
+    
+
+
+<div class="related-articles">
+<h3>Related Articles</h3>
+<div class="related-articles-list">
+<a href="/blog/7-formula-errors-i-find-in-every-founders-financial-model.html" class="related-article-link">The 7 Formula Errors I Find in Every Founder&#39;s Financial Model</a>
+<a href="/blog/advisor-equity-grants-vesting.html" class="related-article-link">Advisor Equity: Common Grant Sizes and Vesting Schedules Explained</a>
+<a href="/blog/arr-annual-recurring-revenue.html" class="related-article-link">What Is ARR Annual Recurring Revenue and How to Calculate It</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - $9.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#c8a45a;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#c8a45a;">Raise Ready</a>. Has supported fundraising across multiple rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets.</p>
+  </div>
+</div>
+    </div>
+</main>
+<div id="site-footer"></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+</body>
+</html>
