@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const SITE_URL = 'https://www.raisereadybook.com';
 const ROOT_DIR = path.resolve(__dirname, '..');
@@ -84,6 +85,17 @@ function fileToUrl(filePath) {
 }
 
 function getLastmod(filePath) {
+  // 1. Prefer the git commit date of the last change. File mtimes are reset
+  //    on every `git clone`, so on Netlify every file would otherwise show
+  //    today's build date, which gives Google no signal about freshness.
+  try {
+    const gitDate = execSync(
+      `git log -1 --format=%cs -- "${filePath}"`,
+      { cwd: ROOT_DIR, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    if (gitDate && /^\d{4}-\d{2}-\d{2}$/.test(gitDate)) return gitDate;
+  } catch {}
+  // 2. Fallback to filesystem mtime (covers files not yet committed).
   try {
     const stat = fs.statSync(path.join(ROOT_DIR, filePath));
     return stat.mtime.toISOString().split('T')[0];
