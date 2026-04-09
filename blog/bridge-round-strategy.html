@@ -118,15 +118,14 @@
     </div>
   </div>
 
-  <section class="newsletter-signup">
-    <h3>Stay sharp on startup finance</h3>
-    <p>Get new articles on fundraising, financial modeling, and unit economics. No spam, unsubscribe anytime.</p>
-    <form class="newsletter-form" method="POST" data-netlify="true" name="newsletter">
-      <input type="hidden" name="form-name" value="newsletter">
+  <section class="newsletter-signup rr-brevo-newsletter">
+    <h3>The Raise Ready Weekly</h3>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>
-      <input type="hidden" name="_subject" value="New newsletter signup">
       <button type="submit">Subscribe</button>
     </form>
+    <p class="rr-brevo-msg" style="display:none;margin-top:0.75rem;font-size:0.85rem;"></p>
   </section>
 
 </main>
