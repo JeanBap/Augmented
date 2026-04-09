@@ -13,6 +13,13 @@
   status = 301
   force = true
 
+# Legacy slug redirect: sanitised two-sided marketplace post
+[[redirects]]
+  from = "/blog/how-to-model-a-two-sided-marketplace-lessons-from-building-the-indeed-flex-finan.html"
+  to = "/blog/how-to-model-a-two-sided-marketplace-financial-model.html"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
