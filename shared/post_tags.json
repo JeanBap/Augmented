@@ -1,0 +1,1597 @@
+{
+  "you-have-93-seconds-most-founders-waste-80-of-them": {
+    "stage": "pre-seed",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "stop-polishing-your-deck-investors-are-not-buying-the-font": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "running-out-of-cash-during-a-fundraise-is-more-common-than-you-think-here-is-how": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "raise-when-you-dont-need-to-sell-when-you-dont-have-to": {
+    "stage": "exit",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "venture-debt-the-startup-financing-tool-nobody-explains-properly": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "convertible-notes-are-not-free-money-here-is-what-founders-get-wrong": {
+    "stage": "pre-seed",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "convertible-notes-bridge-financing": {
+    "stage": "bridge",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "safe-vs-convertible-note": {
+    "stage": "seed",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "startup-burn-rate-cash-runway": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "revenue-recognition-asc-606": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "startup-budget-zero-series-a": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "dilution-funding-rounds": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "monthly-financial-reporting-vc": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "insider"
+  },
+  "gross-margin-saas": {
+    "stage": "series-a",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "calculate-cac": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "bottom-up-revenue-forecast": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "startup-valuation-methods": {
+    "stage": "series-a",
+    "topic": "valuation",
+    "lens": "framework"
+  },
+  "working-capital-management": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "due-diligence-checklist": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "saas-pricing-strategy": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "model-churn-ltv": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "cash-flow-forecasting": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "preferred-stock-terms": {
+    "stage": "exit",
+    "topic": "term-sheet",
+    "lens": "how-to"
+  },
+  "hiring-plan-aligned-budget": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "arr-mrr-revenue": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "comparison"
+  },
+  "bridge-round-strategy": {
+    "stage": "bridge",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "startup-tax-planning": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "negotiate-term-sheet": {
+    "stage": "any-stage",
+    "topic": "term-sheet",
+    "lens": "how-to"
+  },
+  "cohort-analysis-saas": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "pre-seed-fundraising": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "financial-modeling-best-practices": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "warning"
+  },
+  "three-statement-financial-model": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "scenario-planning-startups": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "startup-board-meetings": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "unit-economics-growth-profit": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "exit-readiness-metrics": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "the-unit-economics-bible-every-metric-defined-calculated-and-benchmarked": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "the-exit-readiness-bible-the-complete-playbook-from-preparation-to-post-close": {
+    "stage": "exit",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "the-saas-financial-modeling-bible-the-complete-guide-for-founders": {
+    "stage": "pre-seed",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "the-b2b2c-marketplace-bible-the-definitive-operating-guide-for-founders": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "not-all-money-is-equal-how-to-pick-the-right-vc-for-your-stage": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "what-creandum-profounders-and-b2ventures-actually-look-for-in-your-model": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "the-30-investor-diligence-questions-you-will-get-here-are-the-answers": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "seed-round-vs-series-a-how-your-financial-model-must-change-between-stages": {
+    "stage": "seed",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-run-a-competitive-fundraising-process-without-burning-every-bridge-in-tow": {
+    "stage": "bridge",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "term-sheet-red-flags-what-to-watch-for-before-you-sign-away-control-of-your-comp": {
+    "stage": "any-stage",
+    "topic": "term-sheet",
+    "lens": "comparison"
+  },
+  "bridge-rounds-when-they-save-your-company-and-when-they-bury-it": {
+    "stage": "bridge",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "how-to-negotiate-valuation-without-killing-the-deal": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "what-happens-when-investors-challenge-your-numbers-and-how-to-win-the-conversati": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-build-a-data-room-that-closes-rounds-instead-of-stalling-them": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "the-fundraising-timeline-what-actually-takes-how-long-and-why-it-always-takes-lo": {
+    "stage": "seed",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "post-raise-the-first-90-days-that-determine-whether-the-money-actually-works": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "how-to-write-an-investor-update-that-keeps-your-round-warm": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "warning"
+  },
+  "the-cap-table-what-every-founder-must-understand-before-taking-a-single-dollar": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "how-to-build-a-financial-model-for-your-startup-2026-guide": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "driver-based-modeling-build-revenue-from-reality-not-from-hope": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "the-assumptions-tab-the-most-important-sheet-in-your-entire-financial-model": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-build-a-headcount-plan-that-investors-trust-and-founders-can-actually-use": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "story"
+  },
+  "the-cash-flow-statement-founders-always-get-wrong": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "how-to-build-three-scenarios-that-prove-you-have-actually-thought-about-what-cou": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-model-a-two-sided-marketplace-financial-model": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "saas-vs-marketplace-financial-models-the-key-differences-that-change-everything": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "multi-currency-financial-models-how-to-run-finance-across-uk-us-and-europe": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-model-gross-margin-for-different-business-models": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "sensitivity-analysis-pre-building-the-questions-investors-will-ask": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-audit-your-financial-model-before-sharing-it-with-investors": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "excel-vs-google-sheets-for-startup-financial-modeling-the-honest-answer": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "the-balance-sheet-founders-skip-and-why-thats-a-mistake": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-model-pre-revenue-startups": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "financial-model-red-flags-what-breaks-investor-confidence": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "how-to-update-your-model-mid-fundraise-without-losing-consistency": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "from-model-to-board-report-keeping-the-spreadsheet-alive-post-raise": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "cac-ltv-and-payback-period-calculated-correctly-for-once": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "why-blended-cac-is-a-lie-and-how-to-model-it-by-channel": {
+    "stage": "exit",
+    "topic": "growth-gtm",
+    "lens": "framework"
+  },
+  "net-revenue-retention-the-number-that-predicts-everything": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "how-to-model-ltv-for-a-marketplace-business": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "unit-economics-across-multiple-markets-uk-vs-us-vs-uae": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "the-ltvcac-benchmarks-by-stage-and-business-model": {
+    "stage": "pre-seed",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "gross-margin-by-business-model-whats-good-whats-bad-whats-a-problem": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "how-to-build-a-cohort-analysis-that-actually-tells-you-something": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "the-metrics-that-matter-at-pre-seed-vs-seed-vs-series-a": {
+    "stage": "seed",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "how-to-model-network-effects-in-a-marketplace": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "churn-rate-every-way-to-calculate-it-and-why-the-method-you-choose-changes-the-s": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore": {
+    "stage": "seed",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "leading-vs-lagging-indicators-how-to-see-problems-three-months-before-they-hit-y": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "you-do-not-need-to-be-a-genius-with-excel-anymore-ai-does-that-now": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "safe-notes-vs-convertible-notes-which-one-when-and-why-it-matters": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "pro-rata-rights-board-seats-and-anti-dilution-what-you-are-actually-negotiating": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "the-option-pool-game-how-to-plan-for-dilution-before-it-is-too-late": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "what-different-vcs-actually-look-for-analyzing-the-pattern-in-their-checks": {
+    "stage": "pre-seed",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "building-your-runway-model-a-month-by-month-survival-guide": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "runway-vs-profitability-which-path-is-right-for-your-business-at-each-stage": {
+    "stage": "pre-seed",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "expanding-internationally-tax-currency-and-multi-entity-financial-modeling": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "the-revenue-recognition-trap-when-your-books-and-your-bank-account-disagree": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "warning"
+  },
+  "board-meetings-what-financial-data-to-prepare-and-how-to-frame-your-story": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "story"
+  },
+  "the-startup-kpi-dictionary-precise-definitions-and-investor-benchmarks-by-stage": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "equity-packages-that-actually-work-409a-valuations-strike-prices-and-vesting": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "investor-update-templates-what-to-send-when-and-the-one-section-you-are-missing": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "post-acquisition-finance-what-happens-to-your-cap-table-escrowed-funds-and-earn": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "the-fundraise-that-almost-killed-my-company-and-what-i-learned-from-it": {
+    "stage": "any-stage",
+    "topic": "founder-psychology",
+    "lens": "how-to"
+  },
+  "ai-powered-financial-forecasting-what-works-what-does-not-and-what-is-coming": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "funding-readiness-score-how-to-know-if-your-startup-is-ready-to-raise": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "startup-runway-calculator-how-to-model-your-burn-rate-and-survival-timeline": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "framework"
+  },
+  "unit-economics-calculator-cac-ltv-payback-period-benchmarks-for-startups": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "revenue-model-builder-how-to-project-mrr-growth-with-real-drivers": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "startup-headcount-planner-how-to-model-team-costs-and-hiring-timelines": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "startup-pnl-guide-how-to-build-a-profit-and-loss-statement-that-investors-trust": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "three-scenario-planning-for-startups-base-bull-and-bear-case-modeling": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "startup-valuation-how-to-estimate-your-company-worth-by-stage": {
+    "stage": "seed",
+    "topic": "valuation",
+    "lens": "framework"
+  },
+  "founder-dilution-how-much-equity-you-lose-each-funding-round": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "safe-vs-convertible-note-dilution-comparison-for-founders": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "multi-round-dilution-tracker-how-founder-ownership-erodes-from-seed-to-series-b": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "pitch-deck-scorecard-10-signals-investors-evaluate-in-30-seconds": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "why-most-founders-leave-money-on-the-table-when-selling-their-company": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "the-six-exit-paths-every-founder-should-understand-before-selling": {
+    "stage": "exit",
+    "topic": "growth-gtm",
+    "lens": "how-to"
+  },
+  "what-makes-a-company-worth-buying-the-seven-pillars-of-exit-readiness": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "how-buyers-actually-price-private-companies-the-three-valuation-frameworks": {
+    "stage": "exit",
+    "topic": "valuation",
+    "lens": "framework"
+  },
+  "the-ebitda-bridge-how-to-recast-your-financials-and-add-millions-to-your-valuation": {
+    "stage": "bridge",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "the-metrics-that-move-exit-multiples-and-how-to-improve-them": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "building-a-data-room-that-closes-deals-the-seven-category-framework": {
+    "stage": "exit",
+    "topic": "investor-relations",
+    "lens": "framework"
+  },
+  "customer-concentration-risk-how-it-destroys-exit-value-and-how-to-fix-it": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "reducing-founder-dependence-the-twelve-month-roadmap-to-a-sellable-business": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "strategic-vs-financial-buyers-how-to-choose-and-what-each-one-means-for-your-exit": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "comparison"
+  },
+  "the-pe-rollover-how-the-second-bite-can-double-your-exit-returns": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "earnouts-escrows-and-the-money-you-might-never-see": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "how-to-create-competitive-tension-in-your-exit-process": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "comparison"
+  },
+  "the-confidential-information-memorandum-how-to-write-a-cim-that-sells": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "due-diligence-survival-guide-what-buyers-investigate-and-how-to-prepare": {
+    "stage": "exit",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "qsbs-the-most-valuable-tax-provision-most-founders-miss": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "asset-sale-vs-stock-sale-how-deal-structure-affects-your-take-home": {
+    "stage": "exit",
+    "topic": "growth-gtm",
+    "lens": "warning"
+  },
+  "the-two-year-exit-countdown-a-quarter-by-quarter-preparation-timeline": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "handling-unsolicited-acquisition-offers-without-leaving-money-on-the-table": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "telling-employees-about-the-sale-when-how-and-what-to-expect": {
+    "stage": "exit",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "saas-exit-multiples-what-drives-valuation-for-recurring-revenue-businesses": {
+    "stage": "exit",
+    "topic": "valuation",
+    "lens": "framework"
+  },
+  "small-business-exits-under-10m-what-is-different-and-what-still-matters": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "comparison"
+  },
+  "the-psychology-of-selling-your-company-identity-loss-and-what-comes-after": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "managing-wealth-after-a-liquidity-event-the-first-year-playbook": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "warning"
+  },
+  "when-the-best-exit-is-not-selling-dividends-recapitalisation-and-holding": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "salary-negotiation-why-your-first-5k-raise-is-worth-230k": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "marginal-vs-effective-tax-rates-the-myth-that-costs-you-money": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "warning"
+  },
+  "the-hsa-the-only-triple-tax-advantaged-account-in-america": {
+    "stage": "any-stage",
+    "topic": "growth-gtm",
+    "lens": "how-to"
+  },
+  "snowball-vs-avalanche-how-to-pick-a-debt-payoff-strategy": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "the-personal-finance-of-taking-the-entrepreneurial-leap": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "warning"
+  },
+  "buy-vs-rent-the-math-nobody-shows-you": {
+    "stage": "any-stage",
+    "topic": "growth-gtm",
+    "lens": "comparison"
+  },
+  "three-numbers-that-tell-you-if-you-are-financially-ready-to-start-a-company": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "good-debt-bad-debt-and-the-debt-that-kills-quietly": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "the-12-month-credit-building-plan": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "insurance-you-actually-need-and-the-policies-that-are-a-waste-of-money": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "alternative-financing-revenue-based-financing-grants-and-when-not-to-raise-vc": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "down-rounds-washout-rounds-and-navigating-startup-financial-distress": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "framework"
+  },
+  "working-capital-adjustments-the-number-that-changes-between-signing-and-closing": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "how-to"
+  },
+  "quality-of-earnings-what-the-qoe-report-reveals-and-how-to-prepare": {
+    "stage": "exit",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "installment-sales-how-to-defer-exit-taxes-legally-over-multiple-years": {
+    "stage": "exit",
+    "topic": "growth-gtm",
+    "lens": "how-to"
+  },
+  "e2-visa-qualifying-spend-what-actually-counts": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "warning"
+  },
+  "how-to-value-a-small-business-when-there-are-no-comparables": {
+    "stage": "exit",
+    "topic": "valuation",
+    "lens": "framework"
+  },
+  "should-i-take-on-investors-decision-framework": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "framework"
+  },
+  "headcount-planning-by-stage-pre-seed-to-series-a": {
+    "stage": "seed",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "7-formula-errors-i-find-in-every-founders-financial-model": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "fundraising-readiness-checklist-are-you-ready-to-raise": {
+    "stage": "seed",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "how-to-build-a-5-year-financial-model-for-your-startup": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "net-revenue-retention-nrr-why-it-matters-more-than-new-sales": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "saas-unit-economics-explained-cac-ltv-payback-period": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "the-fundraising-process-bible-the-complete-playbook-from-pitch-to-close": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "understanding-term-sheets-key-clauses-every-founder-must-know": {
+    "stage": "exit",
+    "topic": "term-sheet",
+    "lens": "how-to"
+  },
+  "what-is-a-cap-table-complete-guide-for-startup-founders": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "12-slide-pitch-deck-structure-seed-rounds": {
+    "stage": "seed",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "explain-traction-skeptical-investors-pitch-deck": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "pitch-deck-design-psychology-fonts-colors-visualization": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "common-pitch-deck-mistakes-kill-investments": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "warning"
+  },
+  "pitch-deck-hero-journey-founder-narrative": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "story"
+  },
+  "handle-team-slide-unknown-founder": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "market-sizing-tam-sam-som-due-diligence": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "framework"
+  },
+  "revenue-model-slide-unit-economics-pitch": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "framework"
+  },
+  "ask-slide-anchoring-psychology-fundraising": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "pitch-deck-iteration-ab-testing-investor-feedback": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "story"
+  },
+  "virtual-pitch-decks-vs-printed-decks": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "comparison"
+  },
+  "pitch-deck-animation-interactivity-investor-impact": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "comparison"
+  },
+  "pitch-deck-presentation-skills-without-reading": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "story"
+  },
+  "pitch-deck-templates-investor-expectations": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "competitive-landscape-slide-investor-pitch": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "use-of-funds-slide-capital-allocation": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "capitalization-table-cap-table-equity-founder-guide": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "reading-cap-table-equity-options-liquidation-preferences": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "seed-round-cap-table-founder-dilution-modeling": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "framework"
+  },
+  "series-a-cap-table-preferred-stock-implications": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "employee-stock-option-pool-sizing": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "advisor-equity-grants-vesting": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "convertible-note-cap-table-impact": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "safe-agreement-mechanics-not-equity": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "warning"
+  },
+  "cap-table-modeling-tools-comparison": {
+    "stage": "seed",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "founder-equity-splits-allocation": {
+    "stage": "idea",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "co-founder-departure-equity-management": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "calculating-true-burn-rate": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "warning"
+  },
+  "gross-burn-vs-net-burn-startup-metrics": {
+    "stage": "series-a",
+    "topic": "burn-runway",
+    "lens": "comparison"
+  },
+  "runway-calculation-startup-cash": {
+    "stage": "series-a",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "burn-rate-trends-early-warning-dashboards": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "warning"
+  },
+  "unit-economics-burn-rate-hidden-connection": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "warning"
+  },
+  "seasonal-burn-rate-variation-business-cycles": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "burn-rate-by-department-cash-flow-analysis": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "burn-rate-improvement-strategies": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "extending-runway-without-funding": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "when-to-burn-more-strategic-spending": {
+    "stage": "exit",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "convertible-note-what-is-debt": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "warning"
+  },
+  "convertible-note-terms-discount-cap": {
+    "stage": "series-a",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "convertible-note-conversion-mechanics": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "valuation-cap-convertible-notes": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "convertible-note-discount-rate": {
+    "stage": "series-a",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "convertible-note-pro-forma": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "convertible-note-interest-rate": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "multiple-convertible-notes": {
+    "stage": "series-a",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "bridge-financing-convertible-notes": {
+    "stage": "bridge",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "safe-agreements": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "post-money-safe": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "uncapped-safe": {
+    "stage": "series-a",
+    "topic": "valuation",
+    "lens": "comparison"
+  },
+  "safe-conversion-trigger": {
+    "stage": "exit",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "safe-document-review-key-terms": {
+    "stage": "any-stage",
+    "topic": "valuation",
+    "lens": "how-to"
+  },
+  "multiple-safe-tranches-seed-round": {
+    "stage": "seed",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "pro-rata-rights-safes": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "due-diligence-startup-founders": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "legal-due-diligence-documents": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "financial-due-diligence-books": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "insider"
+  },
+  "technical-due-diligence-cto-review": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "data-room-strategy-diligence": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "red-flags-due-diligence": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "warning"
+  },
+  "value-based-pricing-vs-cost-based-pricing": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "freemium-pricing-model-saas-startups": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "tiered-pricing-strategy-saas-packages": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "per-user-pricing-vs-usage-based-pricing": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "annual-vs-monthly-saas-pricing": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "price-anchoring-psychological-pricing": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "enterprise-saas-pricing-negotiation": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "how-to-raise-prices-saas-customers": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "arr-annual-recurring-revenue": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "mrr-monthly-recurring-revenue": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "churn-rate-calculation-saas-cohort-analysis": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "customer-acquisition-cost-cac-calculation-guide": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "customer-lifetime-value-ltv-saas-profitability": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "ltv-cac-ratio-unit-economics-benchmark": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "net-revenue-retention-nrr-saas-metric": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "dollar-based-net-retention-dnrr-importance": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "annual-contract-value-acv-segmentation-saas": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "saas-magic-number-cac-efficiency-growth": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "saas-gross-margin-unit-economics-scale": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "cohort-analysis-customer-performance-tracking": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "viral-coefficient-product-led-growth": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "bookings-vs-revenue-saas-cash-flow": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "revenue-projections-bottom-up-top-down": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "expense-projections-headcount-cost-structure": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "sensitivity-analysis-assumptions-testing": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "cash-flow-timing-startup-management": {
+    "stage": "any-stage",
+    "topic": "growth-gtm",
+    "lens": "how-to"
+  },
+  "seasonal-adjustments-revenue-forecasting": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "operating-leverage-startup-profitability": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "comparison"
+  },
+  "financial-model-documentation-investors": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "income-statement-profit-loss": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "balance-sheet-assets-liabilities-equity": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "cash-flow-statement-profit-vs-cash": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "comparison"
+  },
+  "three-statements-reconciliation-mechanics": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "revenue-recognition-income-statement": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "accounts-payable-payment-timing": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "how-to"
+  },
+  "accounts-receivable-payment-timing": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "inventory-accounting-cogs-margin": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "depreciation-amortization-non-cash": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "warning"
+  },
+  "debt-financing-interest-expense": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "warning"
+  },
+  "three-scenario-modeling-startup-finance": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "assumption-sensitivity-analysis-startup-finance": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "customer-acquisition-cost-scenarios": {
+    "stage": "exit",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "churn-rate-impact-startup-viability": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "pricing-power-scenarios-startups": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "market-size-scenarios-tam-risk": {
+    "stage": "any-stage",
+    "topic": "growth-gtm",
+    "lens": "framework"
+  },
+  "competitive-response-scenarios": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "technical-risk-product-launch-delay": {
+    "stage": "any-stage",
+    "topic": "burn-runway",
+    "lens": "framework"
+  },
+  "regulatory-risk-scenarios-startups": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "funding-contingency-planning": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "framework"
+  },
+  "headcount-scaling-scenarios": {
+    "stage": "series-a",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "gross-margin-improvement-paths": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "international-expansion-scenarios": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "product-pivot-scenarios": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "framework"
+  },
+  "ma-scenario-modeling": {
+    "stage": "exit",
+    "topic": "exit-planning",
+    "lens": "framework"
+  },
+  "board-meeting-structure-timing": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "pre-board-meeting-preparation": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "board-deck-format": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "metric-dashboards-board-reviews": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "one-line-summary-board-communication": {
+    "stage": "any-stage",
+    "topic": "pitch-deck",
+    "lens": "how-to"
+  },
+  "problem-flagging-early-warnings-solutions": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "warning"
+  },
+  "progress-against-milestones-board-accountability": {
+    "stage": "any-stage",
+    "topic": "metrics-kpis",
+    "lens": "how-to"
+  },
+  "fundraising-status-investor-pipeline-updates": {
+    "stage": "any-stage",
+    "topic": "investor-relations",
+    "lens": "how-to"
+  },
+  "competitive-landscape-updates-market-strategy": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "team-updates-organizational-changes-alignment": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "customer-wins-product-milestones-traction": {
+    "stage": "idea",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "board-dynamics-difficult-conversations": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "recording-following-board-decisions-documentation": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "proxy-voting-shareholder-approvals-governance": {
+    "stage": "any-stage",
+    "topic": "cap-table",
+    "lens": "how-to"
+  },
+  "board-conflict-resolution-managing-disagreement": {
+    "stage": "any-stage",
+    "topic": "fundraising-general",
+    "lens": "how-to"
+  },
+  "unit-economics-fundamentals": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "customer-acquisition-cost-cac": {
+    "stage": "exit",
+    "topic": "growth-gtm",
+    "lens": "how-to"
+  },
+  "customer-lifetime-value-ltv": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "ltv-cac-ratio": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "gross-margin-unit-economics": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "payback-period-cash-recovery": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "cohort-based-unit-economics": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "customer-segment-unit-economics": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "unit-economics-pricing-strategy": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "unit-economics-product-quality": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "improving-unit-economics-actionable-levers": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "negative-unit-economics-when-to-invest": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "framework"
+  },
+  "unit-economics-marketplace-models": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "network-effects-unit-economics": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "unit-economics-freemium-models": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "expansion-revenue-impact-ltv": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "unit-economics-dashboard-daily-management": {
+    "stage": "any-stage",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  },
+  "investors-obsess-unit-economics": {
+    "stage": "any-stage",
+    "topic": "financial-model",
+    "lens": "how-to"
+  },
+  "building-acquisition-vs-independence": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "comparison"
+  },
+  "acquisition-multiples-saas-valuation": {
+    "stage": "exit",
+    "topic": "unit-economics",
+    "lens": "how-to"
+  }
+}
