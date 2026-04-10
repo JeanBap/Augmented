@@ -140,17 +140,27 @@
    * Initialize navigation and footer components
    */
   function initializeComponents() {
-    // Inject nav into #site-nav placeholder
+    // Inject nav into #site-nav placeholder.
+    // Idempotency: the build step (scripts/inject-static-scaffolding.js) now
+    // pre-renders NAV_HTML into the raw HTML so Googlebot sees a full nav on
+    // first paint. If that injection has already happened, the placeholder
+    // has children, so we skip the runtime assignment to avoid a flash of
+    // duplicated markup during hydration. We still call setActiveNavTab so
+    // the active state gets applied to the pre-rendered nav.
     const navPlaceholder = document.getElementById('site-nav');
     if (navPlaceholder) {
-      navPlaceholder.innerHTML = NAV_HTML;
+      if (!navPlaceholder.children.length) {
+        navPlaceholder.innerHTML = NAV_HTML;
+      }
       setActiveNavTab();
     }
 
-    // Inject footer into #site-footer placeholder
+    // Inject footer into #site-footer placeholder (same idempotency pattern).
     const footerPlaceholder = document.getElementById('site-footer');
     if (footerPlaceholder) {
-      footerPlaceholder.innerHTML = FOOTER_HTML;
+      if (!footerPlaceholder.children.length) {
+        footerPlaceholder.innerHTML = FOOTER_HTML;
+      }
       const yearSpan = footerPlaceholder.querySelector('.footer-year');
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     }
