@@ -37,82 +37,22 @@
     .software-hero h1 { font-family:var(--serif); font-size:clamp(2rem,5vw,3.2rem); margin-bottom:1rem; }
     .software-hero p { color:var(--mid); max-width:640px; margin:0 auto; font-size:1.05rem; line-height:1.7; }
     .software-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem; max-width:960px; margin:2rem auto 3rem; padding:0 2rem; }
-    .software-card { border:1px solid var(--rule); border-radius:12px; overflow:hidden; background:var(--paper); display:flex; flex-direction:column; transition:border-color 0.3s, transform 0.2s; }
+    .software-card { border:1px solid var(--rule); border-radius:12px; overflow:hidden; background:var(--paper); display:flex; flex-direction:column; transition:border-color 0.3s, transform 0.2s; text-decoration:none; color:inherit; }
     .software-card:hover { border-color:var(--gold); transform:translateY(-2px); }
     .software-card-accent { height:4px; background:var(--gold); }
     .software-card-body { padding:2rem; flex:1; display:flex; flex-direction:column; }
-    .software-card-badge { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:12px; display:inline-block; width:fit-content; text-transform:uppercase; margin-bottom:0.75rem; }
-    .software-card-badge.free { background:rgba(39,174,96,0.12); color:#27ae60; }
-    .software-card-badge.featured { background:var(--gold); color:var(--ink); }
+    .software-card-badge { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:12px; display:inline-block; width:fit-content; text-transform:uppercase; margin-bottom:0.75rem; background:var(--gold); color:var(--ink); }
     .software-card-name { font-family:var(--serif); font-size:1.5rem; margin-bottom:0.5rem; line-height:1.3; }
     .software-card-url { font-family:var(--mono); font-size:0.75rem; color:var(--gold); margin-bottom:1rem; }
-    .software-card-desc { font-size:0.9rem; color:var(--dim); line-height:1.6; flex:1; margin-bottom:1.5rem; }
-    .software-card-features { list-style:none; margin:0 0 1.5rem; padding:0; }
-    .software-card-features li { font-size:0.82rem; color:var(--dim); padding:0.25rem 0 0.25rem 1.2rem; position:relative; line-height:1.5; }
-    .software-card-features li::before { content:"\2713"; position:absolute; left:0; font-weight:bold; color:var(--gold); }
-    .software-card-actions { display:flex; gap:0.75rem; margin-top:auto; }
-    .sw-btn { flex:1; padding:0.75rem 1.5rem; border:none; border-radius:6px; cursor:pointer; font-family:var(--mono); font-size:0.85rem; font-weight:500; letter-spacing:0.04em; text-align:center; text-decoration:none; transition:all 0.2s; display:inline-block; }
-    .sw-btn-primary { background:var(--gold); color:var(--ink); }
-    .sw-btn-primary:hover { background:#e5c97e; }
-    .sw-btn-secondary { border:1px solid var(--rule); background:transparent; color:var(--ink); }
-    .sw-btn-secondary:hover { border-color:var(--gold); color:var(--gold); }
-
-    /* Expandable views accordion */
-    .expand-views-toggle { background:none; border:none; cursor:pointer; color:var(--gold); font-family:var(--mono); font-size:0.82rem; font-weight:500; padding:0; margin:1.5rem 0; text-decoration:none; letter-spacing:0.04em; }
-    .expand-views-toggle:hover { text-decoration:underline; }
-    .expand-views-toggle::before { content:"+"; display:inline-block; margin-right:0.5rem; transition:transform 0.2s; }
-    .expand-views-toggle.open::before { content:"-"; }
-
-    .views-container { display:none; margin:1.5rem 0; }
-    .views-container.open { display:block; }
-
-    .views-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1rem 0; }
-
-    .view-card { border:1px solid var(--rule); border-radius:8px; padding:1rem; background:rgba(200,164,90,0.02); transition:border-color 0.2s; }
-    .view-card:hover { border-color:var(--gold); }
-
-    .view-card-header { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem; }
-    .view-card-accent { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
-    .view-card-name { font-family:var(--serif); font-size:0.95rem; font-weight:600; margin:0; }
-    .view-card-desc { font-size:0.75rem; color:var(--dim); line-height:1.5; margin:0; }
-
-    /* Color accents for different view cards */
-    .views-container.financial .view-card-accent { background:var(--gold); }
-    .views-container.finance-tools .view-card-accent { background:#27ae60; }
-
-    @media(max-width:700px) {
-      .views-grid { grid-template-columns:1fr; }
-    }
-
+    .software-card-desc { font-size:0.9rem; color:var(--dim); line-height:1.6; flex:1; margin-bottom:1.25rem; }
+    .software-card-meta { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--mid); text-transform:uppercase; margin-bottom:1.25rem; }
+    .software-card-cta { font-family:var(--mono); font-size:0.82rem; color:var(--gold); letter-spacing:0.04em; margin-top:auto; }
+    .software-card-cta::after { content:" \2192"; }
     @media(max-width:600px){ .software-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body data-page="software">
-  <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
-    <header>
-    <nav>
-      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
-      <div class="nav-tabs">
-        <div class="nav-dropdown">
-          <a href="/book/" class="nav-tab" data-page="products">Products</a>
-          <div class="dropdown-menu">
-            <a href="/book/">Books</a>
-            <a href="/templates/">Templates</a>
-            <a href="/tools/">Tools</a>
-            <a href="/software/">Software</a>
-          </div>
-        </div>
-        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/services/" class="nav-tab" data-page="services">Services</a>
-        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
-      </div>
-      <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    </header></div>
+  <div id="site-nav"></div>
   <main class="page-content">
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Software</div>
 
@@ -122,282 +62,29 @@
     </section>
 
     <div class="software-grid">
-      <!-- Financial Model Builder -->
-      <div class="software-card">
+      <a href="/software/financial-model-builder/" class="software-card">
         <div class="software-card-accent"></div>
         <div class="software-card-body">
-          <span class="software-card-badge featured">From $9.99/mo</span>
+          <span class="software-card-badge">From $9.99/mo</span>
           <h2 class="software-card-name">Financial Model Builder</h2>
           <div class="software-card-url">finance.raisereadybook.com</div>
-          <p class="software-card-desc">A full 5-year financial model you can build directly in the browser. Three scenarios, hiring plan, unit economics, sensitivity analysis, and a board-ready report. Free to explore; subscribe to export to Excel, PDF, or slides.</p>
-          <ul class="software-card-features">
-            <li>5-year P&amp;L, cash flow, and balance sheet</li>
-            <li>3 scenarios: base, bull, and bear</li>
-            <li>Hiring plan with department-level detail</li>
-            <li>Unit economics and sensitivity analysis</li>
-            <li>Board report with 17 built-in charts</li>
-            <li>Export to Excel or PDF</li>
-            <li>One-click Pitch Deck generator with guided narrative builder</li>
-          </ul>
-
-          <button class="expand-views-toggle" onclick="toggleViews(this)">Explore all 13 views</button>
-          <div class="views-container financial">
-            <div class="views-grid">
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Assumptions</h3>
-                </div>
-                <p class="view-card-desc">Central control panel for your entire financial model. Set revenue growth drivers, churn rates, pricing tiers, marketing spend, and fundraising parameters. Every number in the model flows from these inputs, making scenario planning instant.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Hiring Plan</h3>
-                </div>
-                <p class="view-card-desc">Build a department-level headcount plan with roles, salaries, start months, and burden rates. The hiring plan automatically feeds into your P&amp;L as the largest operating expense and, in Sales mode, directly drives revenue projections.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Unit Economics</h3>
-                </div>
-                <p class="view-card-desc">Live calculation of CAC, LTV, LTV:CAC ratio, payback period, and net revenue retention. Answers the investor question: does your business model actually work at scale? Benchmarked against SaaS industry standards.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Customers</h3>
-                </div>
-                <p class="view-card-desc">Customer acquisition funnel and cohort analysis. Track how leads convert to paying customers, monitor expansion and contraction revenue, and visualise retention curves by signup month.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">P&amp;L (Profit &amp; Loss)</h3>
-                </div>
-                <p class="view-card-desc">Full 60-month income statement with monthly, quarterly, and annual views. Revenue, COGS, gross margin, departmental OpEx, EBITDA, and net income. Toggle between Base, Bull, and Bear scenarios instantly.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Cash Flow</h3>
-                </div>
-                <p class="view-card-desc">Monthly cash balance projection showing operating cash flow, capital expenditure, and funding events. Visual runway indicator flags when cash falls below critical thresholds. Answers: when do we run out of money?</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Board Report</h3>
-                </div>
-                <p class="view-card-desc">17 pre-built charts covering revenue growth, burn rate, unit economics, hiring trajectory, and cash runway. Designed to be exported as a board-ready PDF with one click.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Cap Table</h3>
-                </div>
-                <p class="view-card-desc">Fully diluted ownership model across Founders, Seed, Series A, Series B, and ESOP pool. See exactly how each fundraising round dilutes your equity and plan your negotiation strategy.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Fundraising</h3>
-                </div>
-                <p class="view-card-desc">Stage-specific readiness scorecard for Seed, Series A, and Series B. Grades your metrics against investor benchmarks, identifies gaps, and shows milestone timelines so you know when to start your raise.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Valuation</h3>
-                </div>
-                <p class="view-card-desc">Blended valuation using four methods: Revenue Multiple, ARR Multiple, EBITDA Multiple, and DCF. Select your industry vertical and compare against real market multiples to set realistic expectations.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Audit</h3>
-                </div>
-                <p class="view-card-desc">Automated model health check that scans for common errors: negative cash, unrealistic growth, hiring gaps, and metric inconsistencies. RAG-rated findings with specific recommendations to fix each issue.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Pitch Deck Builder</h3>
-                </div>
-                <p class="view-card-desc">Guided questionnaire that walks you through 13 key narrative questions investors expect: problem, solution, traction, business model, competition, team, and the ask. Each question includes real examples. Hit Generate to combine your answers with financial model data into a 15-slide investor-ready PowerPoint deck. One-click export.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">How to Use</h3>
-                </div>
-                <p class="view-card-desc">Step-by-step guide built into the app. Walks through each tab in order, explains what to enter, shows how formulas connect, and provides troubleshooting tips for common issues.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="software-card-actions">
-            <a href="https://finance.raisereadybook.com" target="_blank" class="sw-btn sw-btn-primary">Launch App</a>
-            <a href="/tools/financial-model-pro.html" class="sw-btn sw-btn-secondary">Learn More</a>
-          </div>
+          <p class="software-card-desc">A full 5-year financial model you can build directly in the browser. Three scenarios, hiring plan, unit economics, sensitivity analysis, and a board-ready report.</p>
+          <div class="software-card-meta">13 views &middot; Excel + PDF export &middot; Pitch deck generator</div>
+          <div class="software-card-cta">Explore Financial Model Builder</div>
         </div>
-      </div>
+      </a>
 
-      <!-- Personal Finance & Startup Tools -->
-      <div class="software-card">
+      <a href="/software/personal-finance-tools/" class="software-card">
         <div class="software-card-accent"></div>
         <div class="software-card-body">
-          <span class="software-card-badge featured">From $4.99/mo</span>
-          <h2 class="software-card-name">Personal Finance & Startup Tools</h2>
+          <span class="software-card-badge">From $4.99/mo</span>
+          <h2 class="software-card-name">Personal Finance &amp; Startup Tools</h2>
           <div class="software-card-url">app.raisereadybook.com</div>
-          <p class="software-card-desc">18 interactive personal finance tools plus a full startup financial model builder. Budget with the 50/30/20 rule, plan debt payoff, optimize taxes, calculate retirement, and more. Subscribe to save your data and export.</p>
-          <ul class="software-card-features">
-            <li>APR and loan cost calculators</li>
-            <li>50/30/20 budget allocator</li>
-            <li>Debt payoff strategies</li>
-            <li>Tax-optimized investing</li>
-            <li>Retirement planning and financial health score</li>
-            <li>18 interactive tools in one app</li>
-          </ul>
-
-          <button class="expand-views-toggle" onclick="toggleViews(this)">Explore all 18 tools</button>
-          <div class="views-container finance-tools">
-            <div class="views-grid">
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">APR Calculator</h3>
-                </div>
-                <p class="view-card-desc">True annual percentage rate calculator that accounts for fees, compounding, and loan terms. Compare loan offers on an equal basis to find the lowest real cost of borrowing.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Loan Comparison</h3>
-                </div>
-                <p class="view-card-desc">Side-by-side comparison of up to 3 loan offers with different rates, terms, and fee structures. Shows total cost over the life of each loan with amortisation schedules.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Mortgage Calculator</h3>
-                </div>
-                <p class="view-card-desc">Monthly payment calculator with PMI, property tax, and insurance estimates. Adjustable down payment and term length to see how each variable affects affordability.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Refinance Analyser</h3>
-                </div>
-                <p class="view-card-desc">Break-even analysis for mortgage refinancing. Factors in closing costs, rate differential, and remaining term to show exactly when refinancing pays off.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Budget Planner (50/30/20)</h3>
-                </div>
-                <p class="view-card-desc">Automatic budget allocation using the 50/30/20 framework. Input your after-tax income and expenses, and see whether your spending on needs, wants, and savings hits healthy targets.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Debt Payoff</h3>
-                </div>
-                <p class="view-card-desc">Avalanche and Snowball strategy comparison. Enter all debts with balances, rates, and minimum payments. See the optimal payoff order, total interest saved, and your debt-free date.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Emergency Fund</h3>
-                </div>
-                <p class="view-card-desc">Calculate your target emergency fund based on monthly expenses and risk tolerance (3, 6, or 12 months). Track progress and see how many months of coverage you currently have.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Net Worth Tracker</h3>
-                </div>
-                <p class="view-card-desc">Consolidated assets minus liabilities with category breakdown. Track net worth over time with visual trends showing your trajectory toward financial independence.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Retirement Planner</h3>
-                </div>
-                <p class="view-card-desc">Project retirement readiness using the 25x rule, expected Social Security, and current savings rate. Adjustable retirement age shows how working one more year changes the outcome.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Investment Growth</h3>
-                </div>
-                <p class="view-card-desc">Compound growth projections with adjustable return rates, monthly contributions, and inflation. See how your portfolio grows over 5, 10, 20, or 30 years with interactive charts.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Tax Optimiser</h3>
-                </div>
-                <p class="view-card-desc">Tax-bracket-aware analysis showing the impact of retirement contributions, capital gains, and deductions on your effective tax rate. Answers: where should I put my next dollar?</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Rent vs. Buy</h3>
-                </div>
-                <p class="view-card-desc">Housing decision framework comparing renting vs. buying over 5-30 years. Factors in appreciation, maintenance, opportunity cost of down payment, and tax benefits.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Credit Card Payoff</h3>
-                </div>
-                <p class="view-card-desc">Minimum payment trap calculator showing how long payoff takes at minimum vs. fixed payments. Visualises total interest paid and motivates accelerated payoff.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Savings Goals</h3>
-                </div>
-                <p class="view-card-desc">Track multiple savings goals with target amounts, deadlines, and monthly contributions. Progress bars and projected completion dates for each goal.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Insurance Needs</h3>
-                </div>
-                <p class="view-card-desc">Life insurance needs calculator based on income replacement, debts, dependents, and existing coverage. Answers: how much coverage do I actually need?</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Education Fund</h3>
-                </div>
-                <p class="view-card-desc">529 plan and education savings projector. Estimates future tuition costs with inflation and shows required monthly contributions to fully fund education.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Financial Health Score</h3>
-                </div>
-                <p class="view-card-desc">Comprehensive scoring across 8 dimensions: emergency fund, debt-to-income, savings rate, insurance, retirement progress, and more. Colour-coded status with specific action steps.</p>
-              </div>
-              <div class="view-card">
-                <div class="view-card-header">
-                  <div class="view-card-accent"></div>
-                  <h3 class="view-card-name">Startup Financial Model</h3>
-                </div>
-                <p class="view-card-desc">Full 5-year financial model builder matching the standalone Financial Model Builder app. Build P&amp;L, cash flow, hiring plans, and investor-ready projections directly within the personal finance toolkit.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="software-card-actions">
-            <a href="https://app.raisereadybook.com" target="_blank" class="sw-btn sw-btn-primary">Launch App</a>
-          </div>
+          <p class="software-card-desc">18 interactive personal finance tools plus a full startup financial model builder. Budget with 50/30/20, plan debt payoff, optimize taxes, calculate retirement, and more.</p>
+          <div class="software-card-meta">18 tools &middot; Save &amp; export &middot; Includes startup model</div>
+          <div class="software-card-cta">Explore Personal Finance &amp; Startup Tools</div>
         </div>
-      </div>
+      </a>
     </div>
 
     <section style="max-width:900px;margin:3rem auto;padding:0 2rem;">
@@ -411,33 +98,13 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section style="max-width:600px;margin:0 auto 3rem;padding:2rem;text-align:center;border:1px solid var(--rule);border-radius:12px;background:rgba(200,164,90,0.03);">
       <h2 style="font-family:var(--serif);font-size:1.6rem;margin-bottom:0.75rem;">Need a custom model?</h2>
       <p style="color:var(--mid);margin-bottom:1.25rem;line-height:1.7;">Our services team builds investor-ready financial models tailored to your business.</p>
       <a href="/services/" style="display:inline-block;padding:0.8rem 1.8rem;background:var(--gold);color:var(--ink);border:none;border-radius:6px;font-family:var(--mono);font-size:0.85rem;font-weight:500;text-decoration:none;">View Services</a>
     </section>
   </main>
-  <div id="site-footer"><footer>
-      <div class="footer-links">
-        <a href="/book/">Books</a>
-        <a href="/templates/">Templates</a>
-        <a href="/tools/">Tools</a>
-        <a href="/software/">Software</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
-      </div>
-      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
-      <span>Fundraising Intelligence for Founders</span>
-    </footer></div>
+  <div id="site-footer"></div>
   <script src="/shared/components.js" defer></script>
-  <script>
-    function toggleViews(button) {
-      const container = button.nextElementSibling;
-      button.classList.toggle('open');
-      container.classList.toggle('open');
-    }
-  </script>
 </body>
 </html>
