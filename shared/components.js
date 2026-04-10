@@ -536,13 +536,15 @@
    * Initialize all conversion elements
    */
   function initConversionElements() {
-    initStickyBar();
-    initTimedPopup();
-    initBlogParagraphCTA();
-    initBlogSchema();
-    initBlogCTAs();
-    initBrevoNewsletter();
+    try { initStickyBar(); } catch (e) { console.error('initStickyBar failed', e); }
+    try { initTimedPopup(); } catch (e) { console.error('initTimedPopup failed', e); }
+    try { initBlogParagraphCTA(); } catch (e) { console.error('initBlogParagraphCTA failed', e); }
+    try { initBlogSchema(); } catch (e) { console.error('initBlogSchema failed', e); }
+    try { initBlogCTAs(); } catch (e) { console.error('initBlogCTAs failed', e); }
   }
+
+  // Attach Brevo handler immediately (document-level listener, safe before DOM ready)
+  try { initBrevoNewsletter(); } catch (e) { console.error('initBrevoNewsletter failed', e); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initConversionElements);
