@@ -199,7 +199,31 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 </script>
 </head>
 <body data-page="tools">
-<div id="site-nav"></div>
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav>
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
+      <div class="nav-tabs">
+        <div class="nav-dropdown">
+          <a href="/book/" class="nav-tab" data-page="products">Products</a>
+          <div class="dropdown-menu">
+            <a href="/book/">Books</a>
+            <a href="/templates/">Templates</a>
+            <a href="/tools/">Tools</a>
+            <a href="/software/">Software</a>
+          </div>
+        </div>
+        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
+      </div>
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    </header></div>
 <a href="/tools/start-ready/" class="back-link">&larr; Back to Start Ready Tools</a>
 <div class="tool-hero"><h1>Student Loan Repayment Simulator</h1><p>Chapter 7: Student Loans</p></div>
 <div class="seo-intro">
@@ -386,6 +410,18 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 <div class="tool-footer">From <a href="/book/#start-ready">Start Ready</a> by Yanni Papoutsi</div>
-<div id="site-footer"></div>
+<div id="site-footer"><footer>
+      <div class="footer-links">
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
+        <a href="/tools/">Tools</a>
+        <a href="/software/">Software</a>
+        <a href="/blog/">Blog</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
+      <span>Fundraising Intelligence for Founders</span>
+    </footer></div>
 <script src="/shared/components.js" defer></script>
 </body></html>
