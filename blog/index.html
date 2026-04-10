@@ -126,8 +126,19 @@
 const blogList = document.getElementById('blog-list');
 const filters = document.querySelectorAll('.blog-filter');
 
+// Only show posts whose publishDate has arrived. Posts without a publishDate
+// are treated as already live. This keeps the drip schedule consistent with
+// the sitemap: if Google sees a post in sitemap-blog.xml, the blog listing
+// page should show it; otherwise both stay hidden until the date arrives.
+const TODAY_ISO = new Date().toISOString().split('T')[0];
+function isLive(a) {
+  if (!a.publishDate) return true;
+  return a.publishDate <= TODAY_ISO;
+}
+
 function renderBlogCards(category) {
-  const articles = category === 'all' ? BLOG_ARTICLES : category === 'long-reads' ? BLOG_ARTICLES.filter(a => a.readTime >= 45) : BLOG_ARTICLES.filter(a => a.category === category);
+  const source = BLOG_ARTICLES.filter(isLive);
+  const articles = category === 'all' ? source : category === 'long-reads' ? source.filter(a => a.readTime >= 45) : source.filter(a => a.category === category);
   blogList.innerHTML = articles.map(a => `
     <a href="/blog/${a.slug}.html" class="blog-card" data-cat="${a.category}" style="text-decoration:none">
       <span class="blog-num">${a.num}</span>
