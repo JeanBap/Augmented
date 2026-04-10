@@ -39,6 +39,59 @@
 (function() {
   'use strict';
 
+  // Brevo newsletter handler (rr-brevo-form). Binds in capture phase and
+  // stopImmediatePropagation so the older .newsletter-form email-gate handlers
+  // below do not also fire. Submits to /.netlify/functions/subscribe-newsletter.
+  function initBrevoNewsletter() {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      if (!form || form.id !== 'rr-brevo-form') return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var input = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button[type="submit"]');
+      var section = form.closest('.rr-brevo-newsletter');
+      var msg = section ? section.querySelector('.rr-brevo-msg') : null;
+      var email = input ? input.value.trim() : '';
+      if (!email) return;
+      if (btn) { btn.disabled = true; btn.textContent = 'Subscribing...'; }
+      if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+      fetch('/.netlify/functions/subscribe-newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, body: j }; }); })
+      .then(function(res) {
+        if (res.ok && res.body && res.body.success) {
+          if (msg) {
+            msg.style.display = 'block';
+            msg.style.color = '#c8a45a';
+            msg.textContent = 'You are in. The Raise Ready Weekly lands in your inbox Fridays.';
+          }
+          if (input) input.value = '';
+          if (btn) { btn.textContent = 'Subscribed'; }
+          if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Brevo Newsletter Signup' });
+        } else {
+          if (msg) {
+            msg.style.display = 'block';
+            msg.style.color = '#e06c6c';
+            msg.textContent = (res.body && res.body.error) ? res.body.error : 'Something went wrong. Please try again.';
+          }
+          if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        }
+      })
+      .catch(function() {
+        if (msg) {
+          msg.style.display = 'block';
+          msg.style.color = '#e06c6c';
+          msg.textContent = 'Network error. Please try again.';
+        }
+        if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+      });
+    }, true); // capture phase
+  }
+
   const NAV_HTML = `
     <a href="#main" class="skip-to-content">Skip to main content</a>
     <header>
@@ -488,6 +541,7 @@
     initBlogParagraphCTA();
     initBlogSchema();
     initBlogCTAs();
+    initBrevoNewsletter();
   }
 
   if (document.readyState === 'loading') {
