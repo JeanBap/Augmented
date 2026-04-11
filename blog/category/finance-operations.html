@@ -121,7 +121,96 @@
     <p>Build and maintain the financial infrastructure that powers your startup. From SQL queries and KPI dashboards to leading indicators and metrics tracking, these articles help you create operational discipline and early warning systems.</p>
   </div>
 
-  <div class="article-list" id="article-list"></div>
+  <div class="article-list" id="article-list">
+  <a href="/blog/investor-update-templates-what-to-send-when-and-the-one-section-you-are-missing.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">102</span>
+    <div class="blog-card-body">
+      <h3>Investor Update Templates: What to Send, When, and the One Section You Are Missing</h3>
+      <p class="blog-tldr">Monthly or quarterly investor updates keep stakeholders aligned. Key sections: progress, metrics, financials, ask.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">9 min read</span>
+    </div>
+  </a>
+  <a href="/blog/equity-packages-that-actually-work-409a-valuations-strike-prices-and-vesting.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">101</span>
+    <div class="blog-card-body">
+      <h3>Equity Packages That Actually Work: 409A Valuations, Strike Prices, and Vesting</h3>
+      <p class="blog-tldr">409A valuations determine tax treatment. Strike price is the option exercise price. Vesting is typically 4 years with 1-year cliff.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">11 min read</span>
+    </div>
+  </a>
+  <a href="/blog/the-startup-kpi-dictionary-precise-definitions-and-investor-benchmarks-by-stage.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">100</span>
+    <div class="blog-card-body">
+      <h3>The Startup KPI Dictionary: Precise Definitions and Investor Benchmarks by Stage</h3>
+      <p class="blog-tldr">Precise KPI definitions matter. CAC, LTV, NRR, CAC payback, churn, and rule of 40 all have specific formulas.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">12 min read</span>
+    </div>
+  </a>
+  <a href="/blog/board-meetings-what-financial-data-to-prepare-and-how-to-frame-your-story.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">099</span>
+    <div class="blog-card-body">
+      <h3>Board Meetings: What Financial Data to Prepare and How to Frame Your Story</h3>
+      <p class="blog-tldr">Board meetings require financial dashboards, progress against milestones, and forward-looking narratives.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">10 min read</span>
+    </div>
+  </a>
+  <a href="/blog/leading-vs-lagging-indicators-how-to-see-problems-three-months-before-they-hit-y.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">089</span>
+    <div class="blog-card-body">
+      <h3>Leading vs. Lagging Indicators: How to See Problems Three Months Before They Hit Your Revenue</h3>
+      <p class="blog-tldr">Most startup metrics are lagging indicators: they tell you what already happened. Revenue, churn, and cash balance are outcomes of decisions made 1-6 months ago. By the time they s</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">6 min read</span>
+    </div>
+  </a>
+  <a href="/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">088</span>
+    <div class="blog-card-body">
+      <h3>How to Build a Metrics Dashboard That You Will Actually Use Every Week</h3>
+      <p class="blog-tldr">Most startup dashboards are built once and abandoned within a month because they show too many metrics, require manual updates, or do not connect to the decisions the team actually</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">5 min read</span>
+    </div>
+  </a>
+  <a href="/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">087</span>
+    <div class="blog-card-body">
+      <h3>The 10 KPIs Every Founder Should Track (And the 20 They Should Ignore)</h3>
+      <p class="blog-tldr">Founders track too many metrics or the wrong ones. The result is dashboards with 30 numbers and no clarity about what actually matters. A seed-stage startup needs 8-12 KPIs. Not 8-</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">6 min read</span>
+    </div>
+  </a>
+  <a href="/blog/how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">086</span>
+    <div class="blog-card-body">
+      <h3>How to Use SQL for Startup Analytics: The Queries Every Founder Should Know</h3>
+      <p class="blog-tldr">SQL is the fastest way to extract the metrics that drive your financial model from your actual data. You do not need to be an engineer. You need to know 10-15 queries that pull the</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Finance Operations</span>
+      <span class="blog-time">7 min read</span>
+    </div>
+  </a>
+</div>
 </main>
 <div id="site-footer"><footer>
       <div class="footer-links">
@@ -144,7 +233,7 @@
 const articleList = document.getElementById('article-list');
 const categoryArticles = BLOG_ARTICLES.filter(a => a.category === "Finance Operations");
 
-articleList.innerHTML = categoryArticles.map(a => `
+if (!articleList.children.length) articleList.innerHTML = categoryArticles.map(a => `
   <a href="/blog/${a.slug}.html" class="blog-card" style="text-decoration:none">
     <span class="blog-num">${a.num}</span>
     <div class="blog-card-body">

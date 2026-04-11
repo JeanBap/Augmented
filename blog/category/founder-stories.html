@@ -100,7 +100,30 @@
     <p>Real stories from the trenches. Learn directly from founders and operators who have navigated fundraising, scaling challenges, and exits. These are the lessons that don't fit in frameworks but determine outcomes.</p>
   </div>
 
-  <div class="article-list" id="article-list"></div>
+  <div class="article-list" id="article-list">
+  <a href="/blog/the-fundraise-that-almost-killed-my-company-and-what-i-learned-from-it.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">104</span>
+    <div class="blog-card-body">
+      <h3>The Fundraise That Almost Killed My Company And What I Learned From It</h3>
+      <p class="blog-tldr">A personal account of a difficult fundraising process and the financial decisions that nearly destroyed the company.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Founder Stories</span>
+      <span class="blog-time">13 min read</span>
+    </div>
+  </a>
+  <a href="/blog/post-acquisition-finance-what-happens-to-your-cap-table-escrowed-funds-and-earn.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">103</span>
+    <div class="blog-card-body">
+      <h3>Post-Acquisition Finance: What Happens to Your Cap Table, Escrowed Funds, and Earnouts</h3>
+      <p class="blog-tldr">Most acquisitions include escrow and earnouts. These create cash flow timing issues and tax complexity for shareholders.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">Founder Stories</span>
+      <span class="blog-time">11 min read</span>
+    </div>
+  </a>
+</div>
 </main>
 <div id="site-footer"><footer>
       <div class="footer-links">
@@ -123,7 +146,7 @@
 const articleList = document.getElementById('article-list');
 const categoryArticles = BLOG_ARTICLES.filter(a => a.category === "Founder Stories");
 
-articleList.innerHTML = categoryArticles.map(a => `
+if (!articleList.children.length) articleList.innerHTML = categoryArticles.map(a => `
   <a href="/blog/${a.slug}.html" class="blog-card" style="text-decoration:none">
     <span class="blog-num">${a.num}</span>
     <div class="blog-card-body">

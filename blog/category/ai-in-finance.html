@@ -106,7 +106,30 @@
     <p>Explore how AI is transforming startup finance. From AI-powered financial modeling to automation of routine tasks, these articles cover how founders can leverage AI to build better models faster and make smarter financial decisions.</p>
   </div>
 
-  <div class="article-list" id="article-list"></div>
+  <div class="article-list" id="article-list">
+  <a href="/blog/ai-powered-financial-forecasting-what-works-what-does-not-and-what-is-coming.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">105</span>
+    <div class="blog-card-body">
+      <h3>AI-Powered Financial Forecasting: What Works, What Does Not, and What Is Coming</h3>
+      <p class="blog-tldr">AI can accelerate model building and scenario analysis. It cannot replace understanding business mechanics.</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">AI in Finance</span>
+      <span class="blog-time">12 min read</span>
+    </div>
+  </a>
+  <a href="/blog/you-do-not-need-to-be-a-genius-with-excel-anymore-ai-does-that-now.html" class="blog-card" style="text-decoration:none">
+    <span class="blog-num">090</span>
+    <div class="blog-card-body">
+      <h3>You Do Not Need to Be a Genius With Excel Anymore. AI Does That Now.</h3>
+      <p class="blog-tldr">AI tools have fundamentally changed what a financial analyst or modeller can accomplish alone. Tasks that previously required hours of manual work --- building model structure, aud</p>
+    </div>
+    <div class="blog-meta">
+      <span class="blog-cat">AI in Finance</span>
+      <span class="blog-time">6 min read</span>
+    </div>
+  </a>
+</div>
 </main>
 <div id="site-footer"><footer>
       <div class="footer-links">
@@ -129,7 +152,7 @@
 const articleList = document.getElementById('article-list');
 const categoryArticles = BLOG_ARTICLES.filter(a => a.category === "AI in Finance");
 
-articleList.innerHTML = categoryArticles.map(a => `
+if (!articleList.children.length) articleList.innerHTML = categoryArticles.map(a => `
   <a href="/blog/${a.slug}.html" class="blog-card" style="text-decoration:none">
     <span class="blog-num">${a.num}</span>
     <div class="blog-card-body">
