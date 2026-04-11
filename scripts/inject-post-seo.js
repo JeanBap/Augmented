@@ -247,15 +247,13 @@ function main() {
     const bodyBlocks = [];
     headBlocks.push(STYLE_BLOCK);
     if (!html.includes('"BreadcrumbList"')) {
-      headBlocks.push(buildBreadcrumbSchema(article));
-      crumbAdded++;
-    } else {
-      // There is already a BreadcrumbList somewhere (e.g. a prior run
-      // that inlined it without the marker). Leave it alone; our marker
-      // approach means we only control marked blocks.
+      // No existing breadcrumb: inject ours.
       headBlocks.push(buildBreadcrumbSchema(article));
       crumbAdded++;
     }
+    // Else: a BreadcrumbList already exists (usually from the original
+    // template). Skip injection to avoid duplicate structured data, which
+    // Google Rich Results flags as a warning.
     const relPath = `blog/${file}`;
     const dateMod = gitLastmod(relPath);
     if (dateMod) {
