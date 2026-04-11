@@ -196,9 +196,9 @@
 <p>Example: You lose $4K in churn and contraction but gain $6K from upsells and seat expansion. Net revenue churn = ($4K - $6K) / $100K = -2%.</p>
 <p>Negative net revenue churn means your existing customer base is growing without any new customer acquisition. This is the holy grail metric for SaaS and recurring revenue businesses. Companies like Slack, Twilio, and Datadog famously had negative net churn for years, meaning the business would grow even if they stopped acquiring new customers entirely. 4. Net Revenue Retention (NRR)</p>
 <p>Formula: (Starting MRR - churn - contraction + expansion) / Starting MRR. Or equivalently: 1 minus net revenue churn.</p>
-<p>Example: From the above, NRR = ($100K - $4K + $6K) / $100K = 102%. NRR above 100% means your existing customers are worth more this month than last month. This is the metric Series A and growth investors focus on more than any other. Bessemer's State of the Cloud report shows that top-quartile SaaS companies have NRR of 120%+. Median is around 105-110%. Below 100% means your customer base is eroding, and you are on a treadmill where new acquisition must outrun existing loss. 5. Annual Churn Rate</p>
-<p>Formula: There are two approaches, and they produce different numbers. Approach A (simple annualization): 1 - (1 - monthly churn rate)\^12. With 4% monthly churn: 1 - (0.96)\^12 = 39.2% annual churn. This compounds the monthly rate and is mathematically correct.</p>
-<p>Approach B (direct annual measurement): Customers lost over 12 months / customers at start of the period. This can differ from Approach A if churn rates are not constant across months (seasonality, product changes, pricing changes).</p>
+<p>Example: From the above, NRR = ($100K - $4K + $6K) / $100K = 102%. NRR above 100% means your existing customers are worth more this month than last month. This is the metric Series A and growth investors focus on more than any other. Bessemer's State of the Cloud report shows that top-quartile SaaS companies have NRR of 120%+. Median is around 105-110%. Below 100% means your customer base is eroding, and you are on a treadmill where new acquisition must outrun existing loss. 5. Annual <a href="/blog/dilution-funding-rounds.html">Churn Rate</a></p>
+<p>Formula: There are two approaches, and they produce different numbers. Approach A (simple annualization): 1 - (1 - monthly <a href="/blog/gross-margin-saas.html">churn rate</a>)\^12. With 4% monthly churn: 1 - (0.96)\^12 = 39.2% annual churn. This compounds the monthly rate and is mathematically correct.</p>
+<p>Approach B (direct annual measurement): Customers lost over 12 months / customers at start of the period. This can differ from Approach A if <a href="/blog/calculate-cac.html">churn rate</a>s are not constant across months (seasonality, product changes, pricing changes).</p>
 <p>Use Approach A for projections in your financial model. Use Approach B for reporting historical performance. Always specify which method you are using, because 4% monthly sounds manageable while 39% annual sounds alarming, even though they are the same number.</p>
 <p>6. Cohort-Based Churn</p>
 <p>Formula: For each acquisition cohort, track the percentage of original revenue (or customers) retained in each subsequent month.</p>
@@ -257,7 +257,7 @@
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
     <h2>The Raise Ready Weekly</h2>
-    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>
       <button type="submit">Subscribe</button>

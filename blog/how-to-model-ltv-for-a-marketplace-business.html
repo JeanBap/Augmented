@@ -199,8 +199,8 @@
 <h2>LTV Components for a Marketplace</h2>
 <p>**For a transaction-fee marketplace (e.g. staffing, freelance, logistics):**</p>
 <p>LTV = Average Transaction Value × Take Rate × Gross Margin on Take Rate ×</p>
-<p>Average Monthly Transactions × (1 ÷ Monthly Demand-Side Churn Rate) This is equivalent to:</p>
-<p>LTV = Average Monthly Gross Profit per Customer ÷ Monthly Churn Rate \...where "gross profit" is the marketplace's net take after payment processing and direct fulfilment costs, not the full transaction GMV. **For a subscription marketplace (e.g. platforms where the buyer pays a subscription):**</p>
+<p>Average Monthly Transactions × (1 ÷ Monthly Demand-Side <a href="/blog/gross-margin-saas.html">Churn Rate</a>) This is equivalent to:</p>
+<p>LTV = Average Monthly Gross Profit per Customer ÷ Monthly <a href="/blog/calculate-cac.html">Churn Rate</a> \...where "gross profit" is the marketplace's net take after payment processing and direct fulfilment costs, not the full transaction GMV. **For a subscription marketplace (e.g. platforms where the buyer pays a subscription):**</p>
 <p>The LTV model is closer to SaaS: monthly subscription revenue × gross margin ÷ churn rate. But transaction data should be layered in if the subscription price is linked to usage volume.</p>
 <h2>The GMV vs. Net Revenue Distinction</h2>
 <p>The most common LTV error for marketplaces: using GMV (gross merchandise value, the full transaction value passing through the platform) as the revenue basis for LTV rather than net revenue (the take rate portion the marketplace actually keeps).</p>
@@ -252,7 +252,7 @@
 </div>
 </div>
 <h2>Summary</h2>
-<p>Marketplace LTV is calculated on gross profit from net revenue (the take rate portion), not on GMV. Transaction frequency evolves over time and should be modelled using cohort data where available. Supply-side retention drives demand-side LTV and should be modelled as a linked assumption even if supply-side LTV is not calculated directly. The most common error --- using GMV as the LTV basis --- overstates LTV by the inverse of the take rate, which at typical marketplace take rates is a 5-7x error. Get the LTV denominator right before any investor conversation about unit economics.</p>
+<p>Marketplace LTV is calculated on gross profit from net revenue (the take rate portion), not on GMV. Transaction frequency evolves over time and should be modelled using cohort data where available. Supply-side retention drives demand-side LTV and should be modelled as a linked assumption even if supply-side LTV is not calculated directly. The most common error --- using GMV as the LTV basis --- overstates LTV by the inverse of the take rate, which at typical marketplace take rates is a 5-7x error. Get the LTV denominator right before any investor conversation about unit economics. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
 
     </div>
     <div class="related-articles">
@@ -278,7 +278,7 @@
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
     <h2>The Raise Ready Weekly</h2>
-    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, <a href="/blog/dilution-funding-rounds.html">unit economics</a>. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>
       <button type="submit">Subscribe</button>
