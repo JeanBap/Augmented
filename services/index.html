@@ -53,125 +53,380 @@
 
   <!-- Structured Data: Service offerings -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Raise Ready Startup Finance Services",
-    "description": "Fundraising advisory and financial modeling services for startup founders, from pre-seed through Series B.",
-    "url": "https://www.raisereadybook.com/services/",
-    "numberOfItems": 9,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Service",
-          "name": "Complete Model + 1hr Video Session",
-          "description": "15-sheet financial model template with a 1-hour video walkthrough customized to your business metrics.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "One-off"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Service",
-          "name": "Fundraising Readiness Audit",
-          "description": "2-3 hour deep-dive reviewing your financial model, pitch deck, data room, and fundraise plan. Delivered as a scored report with specific fixes.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Fundraising Advisory",
-          "category": "One-off"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Service",
-          "name": "Fractional Fundraise Advisory",
-          "description": "Ongoing advisory through an active fundraise including investor targeting, pitch prep, term sheet review, model iteration, and weekly strategy calls.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Fundraising Advisory",
-          "category": "Retainer"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Service",
-          "name": "Model Build",
-          "description": "Complete financial model built for your business covering revenue drivers, COGS, headcount, P&L, cash flow, runway, and scenario analysis with 8 hours of walkthrough support.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "One-off"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "Service",
-          "name": "Investor Materials Package",
-          "description": "Pitch deck review and restructure, full financial model build, data room setup, curated investor target list, and pre-meeting preparation brief.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Fundraising Advisory",
-          "category": "Project"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "Service",
-          "name": "Pre-Seed Modeling",
-          "description": "Foundation financial model built with your assumptions. Includes revenue projections, basic unit economics, 18-month runway, and a full walkthrough of every driver.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "Pre-Seed"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "Service",
-          "name": "Seed Modeling",
-          "description": "Full cohort-based financial model with channel economics, three fundraising scenarios, 24-month projections, and hiring plan.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "Seed"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "Service",
-          "name": "Series A Modeling",
-          "description": "Multi-product financial model with departmental headcount planning, unit economics analysis, 36-month projections, and board-ready reporting.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "Series A"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "item": {
-          "@type": "Service",
-          "name": "Series B Modeling",
-          "description": "Enterprise-grade financial model with multi-geography support, currency management, balance sheet integration, 48-month projections, and M&A scenario tabs.",
-          "provider": {"@type": "Person", "name": "Yanni Papoutsi"},
-          "serviceType": "Financial Modeling",
-          "category": "Series B"
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Raise Ready Startup Finance Services",
+  "description": "Fundraising advisory and financial modeling services for startup founders, from pre-seed through Series B.",
+  "url": "https://www.raisereadybook.com/services/",
+  "numberOfItems": 9,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Service",
+        "name": "Complete Model + 1hr Video Session",
+        "description": "15-sheet financial model template with a 1-hour video walkthrough customized to your business metrics.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Financial Modeling",
+        "category": "One-off",
+        "offers": {
+          "@type": "Offer",
+          "price": "499",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "499",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
         }
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Service",
+        "name": "Fundraising Readiness Audit",
+        "description": "2-3 hour deep-dive reviewing your financial model, pitch deck, data room, and fundraise plan. Delivered as a scored report with specific fixes.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Fundraising Advisory",
+        "category": "One-off",
+        "offers": {
+          "@type": "Offer",
+          "price": "1500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "1500",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "name": "Fractional Fundraise Advisory",
+        "description": "Ongoing advisory through an active fundraise including investor targeting, pitch prep, term sheet review, model iteration, and weekly strategy calls.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Fundraising Advisory",
+        "category": "Retainer",
+        "offers": {
+          "@type": "Offer",
+          "price": "6000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "6000",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Service",
+        "name": "Model Build",
+        "description": "Complete financial model built for your business covering revenue drivers, COGS, headcount, P&L, cash flow, runway, and scenario analysis with 8 hours of walkthrough support.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Financial Modeling",
+        "category": "One-off",
+        "offers": {
+          "@type": "Offer",
+          "price": "3500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "3500",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
+        "name": "Investor Materials Package",
+        "description": "Pitch deck review and restructure, full financial model build, data room setup, curated investor target list, and pre-meeting preparation brief.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Fundraising Advisory",
+        "category": "Project",
+        "offers": {
+          "@type": "Offer",
+          "price": "4500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "4500",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Service",
+        "name": "Pre-Seed Modeling",
+        "description": "Foundation financial model built with your assumptions. Includes revenue projections, basic unit economics, 18-month runway, and a full walkthrough of every driver.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/",
+          "sameAs": [
+            "https://www.linkedin.com/in/yanni-papoutsi/"
+          ]
+        },
+        "serviceType": "Financial Modeling",
+        "category": "Pre-Seed",
+        "offers": {
+          "@type": "Offer",
+          "price": "1200",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "1200",
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.raisereadybook.com/services/",
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Worldwide"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders raising Seed to Series B"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Service",
+        "name": "Seed Modeling",
+        "description": "Full cohort-based financial model with channel economics, three fundraising scenarios, 24-month projections, and hiring plan.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/"
+        },
+        "serviceType": "Financial Modeling",
+        "category": "Seed",
+        "offers": {
+          "@type": "Offer",
+          "price": "2000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "2000",
+            "priceCurrency": "USD"
+          },
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Service",
+        "name": "Series A Modeling",
+        "description": "Multi-product financial model with departmental headcount planning, unit economics analysis, 36-month projections, and board-ready reporting.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/"
+        },
+        "serviceType": "Financial Modeling",
+        "category": "Series A",
+        "offers": {
+          "@type": "Offer",
+          "price": "3500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "3500",
+            "priceCurrency": "USD"
+          },
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Service",
+        "name": "Series B Modeling",
+        "description": "Enterprise-grade financial model with multi-geography support, currency management, balance sheet integration, 48-month projections, and M&A scenario tabs.",
+        "provider": {
+          "@type": "Person",
+          "name": "Yanni Papoutsi",
+          "url": "https://www.raisereadybook.com/about/"
+        },
+        "serviceType": "Financial Modeling",
+        "category": "Series B",
+        "offers": {
+          "@type": "Offer",
+          "price": "5000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "5000",
+            "priceCurrency": "USD"
+          },
+          "seller": {
+            "@type": "Organization",
+            "name": "Raise Ready Book"
+          }
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Startup founders"
+        }
+      }
+    }
+  ]
+}
+</script>
 
   <!-- FAQ Structured Data -->
   <script type="application/ld+json">
