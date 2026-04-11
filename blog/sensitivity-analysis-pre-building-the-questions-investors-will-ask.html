@@ -20,6 +20,8 @@
 <meta property="og:title" content="Sensitivity Analysis: Pre-Building the Questions Investors Will Ask">
 <meta property="og:description" content="Sensitivity analysis is the practice of testing how your model outputs change when key input assumptions change. Done well, it pre-answers the most impo...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Financial Modeling">
@@ -42,7 +44,10 @@
   "description": "Sensitivity analysis is the practice of testing how your model outputs change when key input assumptions change. Done well, it pre-answers the most important investor questions before they are asked: what does the business look like if growth is slower, if CAC increases, if churn worsens? Founders w",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/sensitivity-analysis-pre-building-the-questions-investors-will-ask.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/sensitivity-analysis-pre-building-the-questions-investors-will-ask.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 1271,
   "timeRequired": "PT5M",
@@ -183,17 +191,17 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~7 min</p>
-<h3>What Is Sensitivity Analysis in a Startup Financial Model?</h3>
+<h2>What Is Sensitivity Analysis in a Startup Financial Model?</h2>
 <p>Sensitivity analysis shows how a change in one or more input assumptions flows through to a change in the model's key outputs --- typically runway, gross margin, and revenue. It is distinct from scenario planning (which changes multiple assumptions together to reflect different business environments) and is instead focused on isolating the impact of individual variables.</p>
 <p>Key distinctions:</p>
 <p>What | One variable at a time | Multiple variables together changes</p>
 <p>Purpose | Identify which inputs drive the Show coherent future states most variance</p>
 <p>Output | Tornado chart or sensitivity | Conservative / Base / table | Aggressive cases</p>
 <p>Best for | Identifying risk concentration Investor-facing narrative Builds | Model robustness | Investor confidence</p>
-<h3>Why Investors Use Sensitivity Analysis in Diligence</h3>
+<h2>Why Investors Use Sensitivity Analysis in Diligence</h2>
 <p>When a VC analyst goes through a financial model in diligence, one of the standard checks is to change the key assumptions by 10-20% and see what happens to the bottom line. This is not adversarial. It is how experienced investors understand which assumptions the model is most dependent on.</p>
 <p>If the model has not been built with this flexibility in mind --- if assumptions are hard-coded rather than centralised --- the analyst cannot run the test and flags this as a model quality issue. If the model has sensitivity analysis pre-built, the analyst can see the founder has already done the work and understands their own key risks. The question "what are the two or three assumptions your model is most sensitive to?" is one of the most common investor diligence questions. Pre-building the sensitivity is the equivalent of pre-building the answer.</p>
-<h3>The Four Most Important Sensitivities for Early-Stage Models</h3>
+<h2>The Four Most Important Sensitivities for Early-Stage Models</h2>
 <p>1. CAC (Customer Acquisition Cost)</p>
 <p>If CAC is 20% higher than modelled, what happens to marketing spend, to the CAC payback period, to LTV:CAC, and to monthly burn? For most early-stage businesses, CAC is one of the most uncertain and highest-impact variables. Build a sensitivity that shows the impact across a range of CAC scenarios.</p>
 <p>2. Churn rate</p>
@@ -202,7 +210,7 @@
 <p>If the core growth assumption is 20% below plan, what is the revised runway? What is the new point at which the company needs its next round? This is often the most powerful single sensitivity because it directly addresses the question investors most want answered: what is the downside scenario?</p>
 <p>4. Gross margin</p>
 <p>If COGS are 10% higher than modelled (due to higher infrastructure costs, pricing pressure, or operational inefficiency), what happens to gross margin and operating leverage? For businesses targeting high gross margins, the sensitivity shows how robust the unit economics are to cost pressure.</p>
-<h3>How to Build a Sensitivity Table in Excel</h3>
+<h2>How to Build a Sensitivity Table in Excel</h2>
 <p>A sensitivity table (or data table in Excel terminology) shows the output of a model formula across a range of input values. The structure is straightforward:</p>
 <p>One-variable sensitivity (1D data table):</p>
 <p>Column header: range of values for the input (e.g. CAC from $200 to</p>
@@ -215,14 +223,14 @@
 <p>cell</p>
 <p>The key requirement for both: the input must flow from a single cell reference in the model (not be hard-coded in multiple places). Centralised assumptions tabs are what make sensitivity analysis possible without rebuilding.</p>
 <p>Key insight: Sensitivity analysis is only possible if the model is built with centralised assumptions. A model where growth rates, CAC, and churn are hard-coded in multiple tabs cannot be stress-tested efficiently. The assumptions tab is what makes sensitivity analysis fast.</p>
-<h3>The Tornado Chart: Visualising Which Inputs Matter Most</h3>
+<h2>The Tornado Chart: Visualising Which Inputs Matter Most</h2>
 <p>A tornado chart ranks input variables by the size of their impact on a key output (typically revenue, runway, or gross margin). The widest bar is the variable the business is most sensitive to. The narrowest is the least critical.</p>
 <p>Building a tornado chart requires running a high and low test for each variable (e.g. ±20%) and recording the change in output. The result is a ranked list that immediately communicates the model's key risk concentrations.</p>
 <p>For most early-stage companies, the ranking looks roughly like this: 1. Revenue growth rate (widest bar, highest impact)</p>
 <p>2. Churn rate (for subscription businesses)</p>
 <p>3. CAC (for sales-led or performance-marketing-driven businesses) 4. Gross margin</p>
 <p>5. Headcount growth (typically lower impact in early models) A tornado chart in the investor deck communicates two things simultaneously: the founder has done the work of understanding their key uncertainties, and the business is not dependent on a single fragile assumption.</p>
-<h3>Common Sensitivity Analysis Mistakes</h3>
+<h2>Common Sensitivity Analysis Mistakes</h2>
 <p>Running sensitivities on outputs that are already robust, ignoring</p>
 <p>the fragile ones</p>
 <p>Hard-coding assumptions that prevent efficient testing</p>
@@ -233,7 +241,7 @@
 <p>Sensitivity ranges that are too narrow to reflect realistic</p>
 <p>uncertainty</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">How wide should sensitivity ranges be?</p>
 <p class="faq-a">Wide enough to reflect realistic uncertainty. For CAC, a ±30% range around the base assumption is reasonable for an early-stage business. For churn, ±1-2 percentage points per month. For growth rate, ±20-30% of the base assumption. If the model breaks materially within the realistic range, that is important information --- not something to hide.</p>
@@ -247,12 +255,12 @@
 <p class="faq-a">Sensitivity analysis typically tests realistic ranges around base assumptions. Stress testing pushes inputs to extreme values to identify where the model breaks down entirely --- for example, what churn rate would cause the business to run out of cash within 12 months? Both are useful and together give a complete picture of model robustness.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Sensitivity analysis turns a financial model from a static forecast into a tool for understanding risk. The four variables most worth testing in early-stage models are CAC, churn, revenue growth rate, and gross margin. Build sensitivity tables using centralised assumption cells, visualise the results in a tornado chart for investor materials, and use the analysis to pre-answer the questions investors will ask. A founder who has run their own sensitivities and can speak to the results is in a structurally stronger position in any diligence conversation than one who has not.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
 <a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
@@ -273,7 +281,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

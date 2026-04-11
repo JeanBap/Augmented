@@ -20,6 +20,8 @@
 <meta property="og:title" content="SaaS vs. Marketplace Financial Models: The Key Differences That Change Everything">
 <meta property="og:description" content="SaaS and marketplace businesses look similar on the surface: they are both technology-enabled, both have recurring revenue characteristics, and both are...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Financial Modeling">
@@ -42,7 +44,10 @@
   "description": "SaaS and marketplace businesses look similar on the surface: they are both technology-enabled, both have recurring revenue characteristics, and both are venture-fundable. But their financial models are structurally different in ways that affect every tab in the spreadsheet. Revenue mechanics, cost s",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/saas-vs-marketplace-financial-models-the-key-differences-that-change-everything.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-vs-marketplace-financial-models-the-key-differences-that-change-everything.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 1633,
   "timeRequired": "PT7M",
@@ -182,11 +190,11 @@
 
       <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-03-23 - Last updated: 2025-03-23</p>
 <p>Reading time: \~9 min</p>
-<h3>The Fundamental Structural Difference</h3>
+<h2>The Fundamental Structural Difference</h2>
 <p>A SaaS business has one customer type who pays a subscription. The relationship is direct: the company builds a product, the customer pays to use it, recurring revenue accumulates. The financial model is built around that single customer relationship.</p>
 <p>A marketplace has two (or more) customer types whose behavior is interdependent. Revenue comes from transactions between those groups, and the marketplace takes a cut. The financial model must capture both sides and the interaction between them.</p>
 <p>This is not a minor distinction. It changes how you model revenue, how you calculate unit economics, how you think about growth, and what investors look for when they evaluate your numbers.</p>
-<h3>Revenue: Subscription vs. Transaction</h3>
+<h2>Revenue: Subscription vs. Transaction</h2>
 <p>SaaS Revenue Model</p>
 <p>Revenue is driven by: number of customers x price per customer x retention rate. You acquire a customer, they pay monthly or annually, and they stay until they churn. New MRR comes from new logos and expansion (upsell, additional seats). Lost MRR comes from churn and contraction. Net new MRR = new + expansion - churn - contraction. The beauty of SaaS revenue from a modeling perspective: it is highly predictable once you have a few months of data. Churn rates stabilize, expansion patterns emerge, and you can forecast with reasonable confidence 12-18 months out.</p>
 <p>Marketplace Revenue Model</p>
@@ -196,14 +204,14 @@
 <p>Key metric | ARR, NRR</p>
 <p>Growth lever | New logos + expansion</p>
 <p>Churn impact | Direct revenue loss</p>
-<h3>Unit Economics: Direct vs. Two-Sided</h3>
+<h2>Unit Economics: Direct vs. Two-Sided</h2>
 <p>SaaS Unit Economics</p>
 <p>Straightforward to calculate: CAC is total sales and marketing spend divided by new customers. LTV is average revenue per customer x gross margin / churn rate. LTV:CAC ratio is the benchmark that every SaaS investor knows. Payback period is CAC / (monthly revenue x gross margin). These formulas apply cleanly because there is one customer type.</p>
 <p>Marketplace Unit Economics</p>
 <p>Immediately more complex. You have acquisition costs for both sides. Worker acquisition cost and employer acquisition cost are separate budgets with separate channels. LTV must be calculated for the monetized side (usually demand) but supply-side retention affects demand-side LTV. At the platform, we calculated employer LTV as: average monthly gross profit per employer / monthly employer churn rate. But that LTV was only achievable if worker supply was sufficient to maintain high fill rates. If worker supply dropped, fill rates dropped, employers got a worse experience, and churn increased. The supply-side investment was a prerequisite for demand-side LTV, not separate from it.</p>
 <p>This interconnection means marketplace unit economics cannot be calculated in isolation the way SaaS metrics can. You have to model the system, not just the customer.</p>
 <p>*Key insight: The biggest mistake I see in marketplace models is applying SaaS unit economics frameworks without adaptation. LTV:CAC for a marketplace must account for the cost of maintaining the other side of the market. An employer LTV:CAC of 5:1 is meaningless if you need to spend $200K per market to build sufficient worker supply. The real question is: total investment to reach liquidity in a market vs. total value extracted from that market over time.*</p>
-<h3>Cost Structure: Fixed Platform vs. Variable Fulfillment</h3>
+<h2>Cost Structure: Fixed Platform vs. Variable Fulfillment</h2>
 <p>SaaS Cost Structure</p>
 <p>COGS is primarily hosting, infrastructure, and customer support. These scale slowly relative to revenue because software delivery has near-zero marginal cost. A SaaS company serving 1,000 customers might spend $20K/month on AWS. Serving 10,000 customers might cost $60K. That is 3x cost for 10x customers, which is why SaaS gross margins are structurally high.</p>
 <p>OpEx is dominated by engineering (building the product) and sales & marketing (acquiring customers). The cost structure is front-loaded: you invest heavily in product and GTM, then revenue scales faster than costs. This is the fundamental SaaS value proposition.</p>
@@ -213,18 +221,18 @@
 <p>However, marketplaces benefit from operational leverage at scale: the per-transaction cost of matching, support, and operations decreases as the platform gets more efficient. At the platform, the cost of filling the 10,000th shift was meaningfully lower than the cost of filling the 100th shift because the matching algorithm was better, the operations team was more experienced, and insurance rates were negotiated at higher volume.</p>
 <p>COGS | Scales slowly (near-zero marginal cost)</p>
 <p>Customer support | Scales with customer count Engineering | Front-loaded, then maintenance mode Sales & marketing | Scales with growth targets Gross margin trajectory | High from early stages, stable</p>
-<h3>Growth Dynamics: Linear vs. Network Effects</h3>
+<h2>Growth Dynamics: Linear vs. Network Effects</h2>
 <p>SaaS growth is relatively linear: invest X in sales and marketing, acquire Y customers. Double X, roughly double Y (with some diminishing returns). The growth rate is a function of investment and execution. Marketplace growth has a network effect component: each new participant on one side makes the platform more valuable for the other side. This means growth can be super-linear once you cross the liquidity threshold, but it also means growth is painfully slow before you reach that threshold.</p>
 <p>The financial model must reflect this non-linearity. A marketplace model that shows constant percentage growth in GMV is ignoring the most distinctive feature of the marketplace business model. Instead, model the supply-demand flywheel explicitly: show how supply density drives fill rate, which drives demand retention, which drives demand-side referrals, which attracts more supply.</p>
-<h3>What Investors Evaluate Differently</h3>
+<h2>What Investors Evaluate Differently</h2>
 <p>ARR growth rate | GMV growth rate and take rate stability</p>
 <p>Net revenue retention | Fill rate and supply-demand balance CAC payback period | Cost to reach liquidity per market Gross margin level | Gross margin trajectory at scale Logo churn rate | Both-side retention rates Magic number / sales efficiency | Network effect strength (cross-side elasticity)</p>
 <p>Path to profitability via margins Path to profitability via operational leverage</p>
-<h3>Hybrid Models: When Your Business Is Both</h3>
+<h2>Hybrid Models: When Your Business Is Both</h2>
 <p>Some businesses have elements of both. A SaaS platform with a marketplace layer (like Shopify, which charges subscriptions and takes a cut of transactions). A marketplace that adds premium subscription features for one side.</p>
 <p>Simplifii and Haus both had hybrid elements: platform subscription revenue plus transaction-based or service-based revenue. In these cases, model each revenue stream separately with its own driver structure. Do not blend them into one revenue line because the economics, growth dynamics, and investor questions are different for each stream. The hybrid model typically requires a SaaS module (subscribers x price x retention) and a marketplace or transaction module (transactions x value x take rate), running in parallel and sharing a common cost structure. The investor presentation should clearly distinguish between the two revenue types and show the gross margin for each.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Which model is easier to build?</p>
 <p class="faq-a">SaaS models are structurally simpler because there is one customer type and one revenue mechanism. A competent SaaS financial model can be built in 3-5 days. A marketplace model with supply-demand dynamics, fill rate modeling, and multi-segment economics takes 7-14 days to build properly. The additional complexity is not optional; it reflects the actual complexity of the business.</p>
@@ -238,12 +246,12 @@
 <p class="faq-a">Model it as a hybrid. Build the subscription component using SaaS methodology (MRR, churn, expansion) and the transaction component using marketplace methodology (GMV, take rate, fill rate). Present both revenue streams to investors and show how they interact. Subscription revenue often provides a predictable base while transaction revenue provides upside growth potential. Investors value the combination.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>SaaS and marketplace financial models differ in every dimension: revenue mechanics, cost structure, unit economics, and growth dynamics. SaaS models are built around a single customer relationship with subscription revenue. Marketplace models are system models built around the interaction between two customer groups and the transactions that result. Applying a SaaS framework to a marketplace (or vice versa) produces a model that looks structurally correct but generates projections that are wrong in ways that investors will immediately identify. Choose the right framework for your business, model the drivers that actually matter, and present metrics that reflect the true economics of how your company creates value.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
 <a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
@@ -264,7 +272,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

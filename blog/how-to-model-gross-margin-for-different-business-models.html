@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Model Gross Margin for Different Business Models">
 <meta property="og:description" content="Gross margin is the first number sophisticated investors check in a financial model, and the benchmark they use depends entirely on your business model....">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Financial Modeling">
@@ -42,7 +44,10 @@
   "description": "Gross margin is the first number sophisticated investors check in a financial model, and the benchmark they use depends entirely on your business model. A 60% gross margin is exceptional for a marketplace but mediocre for pure SaaS. Modelling gross margin correctly requires knowing which costs belon",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-model-gross-margin-for-different-business-models.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-model-gross-margin-for-different-business-models.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 1203,
   "timeRequired": "PT5M",
@@ -183,13 +191,13 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~7 min</p>
-<h3>Why Gross Margin Modelling Varies by Business Model</h3>
+<h2>Why Gross Margin Modelling Varies by Business Model</h2>
 <p>Gross margin measures the revenue remaining after the direct costs of delivering your product. Because "direct costs of delivery" means something different for a SaaS company than for a marketplace or a professional services firm, the structure of the COGS model and the resulting gross margin benchmarks differ significantly across business types.</p>
 <p>Key benchmarks at a glance:</p>
 <p>Pure SaaS | 70-85% | Hosting, payment processing, support costs</p>
 <p>SaaS with services | 55-75% | Weight of managed services in revenue mix</p>
 <p>Marketplace (take rate 60-80% | Payment processing, trust and</p>
-<h3>SaaS Gross Margin: What to Include</h3>
+<h2>SaaS Gross Margin: What to Include</h2>
 <p>For a pure software-as-a-service business, COGS typically includes: Cloud hosting and infrastructure (AWS, GCP, Azure) scaled with</p>
 <p>customer count or usage</p>
 <p>Third-party API costs consumed per customer (payment processors,</p>
@@ -199,22 +207,22 @@
 <p>and support (not account growth)</p>
 <p>Amortisation of capitalised software development costs if applicable Product engineering salaries (building features) belong in R&D (OpEx), not COGS, unless they are maintaining the delivery infrastructure. Getting this wrong artificially raises gross margin.</p>
 <p>The key modelling question for SaaS is whether hosting and infrastructure costs are variable (per customer or per usage) or largely fixed (flat regardless of customer count). Variable infrastructure costs compress gross margin as volume grows until economies of scale kick in. Fixed infrastructure costs mean gross margin improves significantly as revenue scales.</p>
-<h3>Marketplace Gross Margin: What to Include</h3>
+<h2>Marketplace Gross Margin: What to Include</h2>
 <p>Marketplace COGS depends on whether the business takes transaction risk or simply facilitates transactions.</p>
 <p>Pure take-rate model (no fulfilment risk): COGS includes payment processing, fraud and trust and safety operations that scale with transaction volume, and any insurance costs tied to individual transactions. Gross margins in this model are typically high (60-80%) because the primary cost is just friction on the transaction, not delivery of the underlying service.</p>
 <p>Marketplace with operations (e.g. staffing, logistics, services): COGS includes the cost of the service being fulfilled, direct operations staff managing the supply side at volume, compliance and verification costs per transaction, and any insurance or indemnity tied to individual placements. Gross margins here are lower (35-60%) because the business is taking on more of the economic risk of the transaction.</p>
 <p>For a staffing marketplace like the platform, the key COGS lines were worker pay (the largest single line), employer obligations (NI, holiday pay), compliance and verification operations, and payment processing. The resulting gross margin reflects the spread between the rate charged to employers and the rate paid to workers plus the direct costs of managing that relationship.</p>
-<h3>Professional Services Gross Margin: The Utilisation Model</h3>
+<h2>Professional Services Gross Margin: The Utilisation Model</h2>
 <p>Professional services gross margin is primarily driven by two factors: the billing rate per hour and the utilisation rate (percentage of billable hours actually billed).</p>
 <p>Gross margin formula for professional services:</p>
 <p>Gross Margin = (Revenue - Direct Delivery Costs) / Revenue Direct Delivery Costs = Staff Time Costs + Direct Project Costs Staff Time Costs = (Senior FTE cost × hours) + (Junior FTE cost × hours) The key lever is the ratio of junior to senior staff on deliverables. Higher junior leverage (more junior staff per senior) typically improves gross margin at the cost of quality risk. Higher senior intensity improves quality but compresses margin.</p>
 <p>In the model, build utilisation assumptions explicitly. A team of 10 that is 70% utilised on billable work produces very different economics than one that is 90% utilised. And the trajectory --- whether utilisation improves as the team matures and processes stabilise --- drives the gross margin trend in the forecast.</p>
-<h3>How to Model Gross Margin Trajectory at Scale</h3>
+<h2>How to Model Gross Margin Trajectory at Scale</h2>
 <p>For every business model, gross margin should improve as scale increases. The question is by how much and through which mechanism. SaaS: Gross margin improves as fixed infrastructure costs are spread over more customers. Model this explicitly by separating fixed and variable COGS components and showing the fixed cost dilution effect per customer.</p>
 <p>Marketplace: Gross margin improves as payment processing rates improve with volume (negotiated rates) and as operations costs per transaction decline through process automation and scale. Show these as explicit assumptions with a rationale.</p>
 <p>Professional services: Gross margin improves as utilisation increases and as the junior-to-senior ratio in delivery is optimised. Build utilisation as an explicit driver.</p>
 <p>The model should show the gross margin trajectory over the forecast period, with clear attribution of what drives each change. An investor who sees gross margin improving from 45% to 65% over five years without an explanation of the mechanism will ask. Build the explanation into the model before they do.</p>
-<h3>Common Gross Margin Modelling Mistakes</h3>
+<h2>Common Gross Margin Modelling Mistakes</h2>
 <p>Flat gross margin across the entire forecast period with no</p>
 <p>explanation</p>
 <p>Engineering costs in COGS for product development work</p>
@@ -224,7 +232,7 @@
 <p>Gross margin that significantly outperforms the business model</p>
 <p>benchmark with no explanation</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">What gross margin should I target to raise a Series A?</p>
 <p class="faq-a">Investors do not have a universal threshold; they benchmark against comparable companies at similar stages and in similar business models. For SaaS, a Series A gross margin below 60% with no clear path to 70%+ will raise questions. For a marketplace with operations, 45-55% at Series A is often acceptable if the trajectory is upward. Know your comparable benchmarks and be able to explain how you compare.</p>
@@ -238,12 +246,12 @@
 <p class="faq-a">Yes, but separated. If a SaaS company has both product revenue and professional services revenue, the gross margin for each should be shown separately. Blending them hides the economics of the core product and makes it harder for investors to assess the quality of the recurring revenue stream.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Gross margin varies by business model and should be modelled with that context in mind. Build COGS using the delivery test, benchmark the output against comparable business models, separate fixed and variable components, show the trajectory and explain the mechanism for improvement, and know the answers to the questions investors will ask about any line that diverges from benchmark. Gross margin is not just a number --- it is the clearest signal of how efficiently your business delivers value relative to what it costs to deliver it.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
 <a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
@@ -264,7 +272,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Use SQL for Startup Analytics: The Queries Every Founder Should Know">
 <meta property="og:description" content="SQL is the fastest way to extract the metrics that drive your financial model from your actual data. You do not need to be an engineer. You need to know...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Finance Operations">
@@ -42,7 +44,10 @@
   "description": "SQL is the fastest way to extract the metrics that drive your financial model from your actual data. You do not need to be an engineer. You need to know 10-15 queries that pull the numbers investors will ask for: MRR, churn, cohort retention, CAC by channel, and LTV. Most startup databases (PostgreS",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Finance Operations",
   "wordCount": 1522,
   "timeRequired": "PT7M",
@@ -169,13 +177,13 @@
 
       <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-04-04 - Last updated: 2025-04-04</p>
 <p>Reading time: \~9 min</p>
-<h3>Why Founders Should Know SQL</h3>
+<h2>Why Founders Should Know SQL</h2>
 <p>There is a gap in most startups between the financial model and the actual data. The model says churn is 4%. But where did that number come from? Someone pulled it from a dashboard, or estimated it from a report, or "just knows." The problem: when an investor asks for churn by cohort, by segment, or by channel, the founder has to go back to the engineering team, wait 3 days, and hope the query is right. Learning basic SQL closes that gap. Not because the founder should be the data team, but because the founder who can pull their own metrics from the database understands their business at a different level than the one who waits for a report. Every number in your financial model should be traceable to a query. When it is, the model becomes trustworthy.</p>
 <p>At the platform, I ran SQL queries directly against the production database to validate model assumptions. When the acquirer challenged a specific churn metric during the exit, I could rerun the query with different parameters in real time. That responsiveness was only possible because the analysis lived in SQL, not in someone's head.</p>
-<h3>What You Need Before You Start</h3>
+<h2>What You Need Before You Start</h2>
 <p>Access to your company's database (ask your CTO or engineering lead). A SQL client: free options include DBeaver, pgAdmin, or Google BigQuery's web interface. The schema: a list of tables and what they contain. At minimum, you need a customers table, a transactions or subscriptions table, and ideally a marketing spend table.</p>
 <p>Start with read-only access. You should never modify the production database. Read-only means you can query data but cannot accidentally change or delete it.</p>
-<h3>The 8 Queries That Feed Your Financial Model</h3>
+<h2>The 8 Queries That Feed Your Financial Model</h2>
 <p>Query 1: Monthly Recurring Revenue (MRR)</p>
 <p>This query calculates total MRR for any given month by summing active subscription values.</p>
 <p>SELECT DATE_TRUNC('month', billing_date) AS month, SUM(monthly_amount) AS mrr FROM subscriptions WHERE status = 'active' GROUP BY 1 ORDER BY 1;</p>
@@ -206,13 +214,13 @@
 <p>SELECT DATE_TRUNC('month', transaction_date) AS month, COUNT(DISTINCT customer_id) AS active_customers, SUM(amount) AS total_revenue, ROUND(SUM(amount) / NULLIF(COUNT(DISTINCT customer_id), 0), 2) AS arpa FROM transactions GROUP BY 1 ORDER BY 1;</p>
 <p>ARPA trending up means your customers are spending more over time (expansion). ARPA trending down might mean you are acquiring smaller customers or existing ones are contracting. Both signals feed directly into your revenue model assumptions.</p>
 <p>*Key insight: The goal is not to become a data engineer. It is to be able to pull the 8-10 numbers that drive your financial model from actual data, verify them, and update them monthly. A founder who can do this operates at a fundamentally different level of credibility than one who relies entirely on reports generated by someone else.*</p>
-<h3>Practical Tips for Non-Technical Founders</h3>
+<h2>Practical Tips for Non-Technical Founders</h2>
 <p>Start with SELECT \ FROM table_name LIMIT 10.** Look at the raw data before writing complex queries. Understanding what your tables contain and how they are structured saves hours of debugging.</p>
 <p>Use DATE_TRUNC everywhere. Most startup metrics are monthly. DATE_TRUNC('month', date_column) groups dates into months and is the most commonly used function in startup analytics.</p>
 <p>Save your queries. Create a folder of saved SQL files, one per metric. When an investor asks for updated cohort data, you run the saved query instead of rebuilding from scratch.</p>
 <p>Ask your CTO to set up a read replica. Running heavy queries against the production database can slow down the application. A read replica is a copy of the database designed for analytics queries. It is a standard setup that any competent engineering team can implement in a day.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">What if our data is messy or incomplete?</p>
 <p class="faq-a">It always is. Start with what you have and improve it over time. If acquisition channel is not tracked, that is a problem to fix now, not a reason to skip the analysis. Every month you wait to start tracking clean data is a month of history you will never recover.</p>
@@ -222,12 +230,12 @@
 <p class="faq-a">Both. SQL is the foundation: it gives you the raw queries. A BI tool turns those queries into dashboards that update automatically. Learn SQL first so you understand what the dashboard is actually showing. Then set up the BI tool for ongoing monitoring.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>SQL gives founders direct access to the metrics that drive their financial model. Eight core queries cover MRR, churn, cohort retention, CAC by channel, revenue by segment, NRR, active customers, and ARPA. These are the exact numbers investors ask for during diligence. Learning basic SQL is a one-time investment of a few hours that pays back every time you need to pull, verify, or update a metric. The model becomes traceable, the assumptions become verifiable, and the founder becomes someone who knows their numbers from the data up, not from a report down.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html" class="related-article-link">The 10 KPIs Every Founder Should Track (And the 20 They Should Ignore)</a>
 <a href="/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html" class="related-article-link">How to Build a Metrics Dashboard That You Will Actually Use Every Week</a>
@@ -248,7 +256,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

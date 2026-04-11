@@ -14,6 +14,8 @@
   <meta property="og:title" content="The 7 Formula Errors I Find in Every Founder's Financial Model">
   <meta property="og:description" content="After auditing dozens of startup financial models, the same mistakes appear almost every time. Seven errors from blank subtotals to inconsistent formulas, with how to find and fix each one.">
   <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Raise Ready">
   <meta property="article:author" content="Yanni Papoutsi">
   <meta property="article:section" content="Financial Modeling">
@@ -34,15 +36,19 @@
     "headline": "The 7 Formula Errors I Find in Every Founder's Financial Model",
     "description": "After auditing dozens of startup financial models, the same mistakes appear almost every time. Seven errors from blank subtotals to inconsistent formulas, with how to find and fix each one.",
     "author": {
-      "@type": "Person",
-      "name": "Yanni Papoutsi"
-    },
+    "@type": "Person",
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
+  },
     "publisher": {
       "@type": "Organization",
       "name": "Raise Ready"
     },
     "url": "https://www.raisereadybook.com/blog/7-formula-errors-i-find-in-every-founders-financial-model",
     "mainEntityOfPage": "https://www.raisereadybook.com/blog/7-formula-errors-i-find-in-every-founders-financial-model",
+  "image": "https://www.raisereadybook.com/og-image.png",
     "articleSection": "Financial Modeling",
     "wordCount": 2100,
     "datePublished": "2025-06-15",
@@ -101,46 +107,46 @@
       <p style="font-size:0.85rem;color:#6e6a61;">Published: 2025-06-15 · Last updated: 2025-06-15</p>
       <p style="font-size:0.85rem;color:#6e6a61;">Reading time: ~10 min</p>
 
-      <h3>The Model Audit Gap</h3>
+      <h2>The Model Audit Gap</h2>
       <p>I've reviewed financial models from 100+ founders raising Series A. Roughly 90% of them have at least one formula error that changes the bottom line by 10% or more. Some have errors that hide $2-3 million of burn. The terrifying part: most founders spent 40-60 hours building their model and zero hours auditing it.</p>
       <p>The errors aren't mathematical genius mistakes. They're systematic mistakes that appear in almost every model. Once you know what to look for, they're easy to spot and fix. Here are the seven most common.</p>
 
-      <h3>Error 1: Blank Subtotals (The Invisible Tax)</h3>
+      <h2>Error 1: Blank Subtotals (The Invisible Tax)</h2>
       <p><strong>What happens:</strong> You create a section for COGS (cost of goods sold), add a few line items, and forget to add a SUM formula at the bottom. Month 1, you have $10K in COGS but the subtotal is blank or shows 0. Month 2, you add COGS and the subtotal finally populates. This creates an inconsistency that causes hours of confusion.</p>
       <p><strong>Why it's dangerous:</strong> If you're calculating gross margin as (Revenue - COGS) / Revenue, and COGS subtotal is sometimes blank, sometimes zero, sometimes correct, your margin calculation is garbage. Investors notice when your gross margin jumps from 65% in month 2 to 45% in month 3 for no clear reason.</p>
       <p><strong>How to fix it:</strong> Every section should have a SUM formula from the beginning, even if the section is empty. Use SUM(B5:B20) for all 60 months. If it's zero, that's honest. If it's blank, your model looks broken.</p>
 
-      <h3>Error 2: The One-Month Headcount Lag</h3>
+      <h2>Error 2: The One-Month Headcount Lag</h2>
       <p><strong>What happens:</strong> You model hiring someone in month 3. You put their salary in month 4 because you assume they start mid-month. But you don't account for ramp-up time. A developer earning $120K/year costs $10K/month, but in month 1, they cost $5K because they ramp. In month 2, $8K. By month 3, full $10K. Most models skip this ramp entirely.</p>
       <p><strong>Why it's dangerous:</strong> It understates payroll expenses by 5-10% across the forecast. Over 24 months with three hires, this becomes a $50-100K gap between model and reality. Investors catch this because they know onboarding takes time.</p>
       <p><strong>How to fix it:</strong> When you hire someone, create a ramp-up schedule. 50% productivity month 1, 80% month 2, 100% month 3 is conservative. Model salaries with this curve. Or, simpler: assume anyone hired in month N is productive starting month N+2. This naturally builds in buffer.</p>
 
-      <h3>Error 3: Wrong Base Year Anchoring</h3>
+      <h2>Error 3: Wrong Base Year Anchoring</h2>
       <p><strong>What happens:</strong> You're in month 8 of operation. Your model starts in month 1, but months 1-7 are historical actuals, and months 8-24 are forecast. You copy a formula from a historical month (month 5) to the forecast (month 12). But month 5 has different assumptions than month 12 (month 5 was pre-product, month 12 is post-launch). The formula now uses wrong assumptions.</p>
       <p><strong>Why it's dangerous:</strong> It creates inconsistency between historical and forecast periods. Your COGS might be 25% in historical months (wrong) and 35% in forecast months (correct) because the formulas are different.</p>
       <p><strong>How to fix it:</strong> Clearly separate historical (actual) data from forecast. Use different colors or a different sheet. Historical data should have static numbers, not formulas. Forecast data should have formulas. Never copy a historical formula to forecast—rebuild the formula fresh for the forecast period with current assumptions.</p>
 
-      <h3>Error 4: Revenue vs. Cash Mismatch</h3>
+      <h2>Error 4: Revenue vs. Cash Mismatch</h2>
       <p><strong>What happens:</strong> Your income statement shows $100K revenue in month 3. Your cash flow statement shows $50K. You're modeling accrual-basis revenue (you recognize it when sold) but your cash flow is cash-basis (you recognize it when paid). But you don't document this anywhere, and the two don't tie out.</p>
       <p><strong>Why it's dangerous:</strong> Investors see revenue and cash flow that don't match and question your assumptions. Are customers paying late? Are you collecting only 50% of revenue? Your model appears unreliable.</p>
       <p><strong>How to fix it:</strong> Either model everything on a cash basis (recognize revenue when paid), or reconcile explicitly. Create a "revenue recognition" section that shows: revenue recognized in month 3 ($100K) minus collections in month 3 ($50K) = accounts receivable increase ($50K). Then in cash flow, show collections ($50K) which ties to historical AR increases. This reconciliation makes the model credible.</p>
 
-      <h3>Error 5: Circular References (The Silent Killer)</h3>
+      <h2>Error 5: Circular References (The Silent Killer)</h2>
       <p><strong>What happens:</strong> You model operating expenses, and one of them is bank fees. You set bank fees as 0.1% of average cash balance. You calculate average cash balance as (month N + month N-1) / 2. But that calculation depends on month N's net income, which depends on month N's bank fees. You've created a circular reference.</p>
       <p><strong>Why it's dangerous:</strong> Excel will warn you, but many founders just ignore the warning and accept the calculated value. The spreadsheet is now iteratively solving instead of calculating cleanly. This can hide errors and make the model unreliable.</p>
       <p><strong>How to fix it:</strong> Avoid formulas that depend on themselves. If you're calculating bank fees based on cash balance, use prior-month cash balance (month N-1), not current (month N). This breaks the circle and makes the formula clean.</p>
 
-      <h3>Error 6: Inconsistent Formulas Across Periods</h3>
+      <h2>Error 6: Inconsistent Formulas Across Periods</h2>
       <p><strong>What happens:</strong> Month 1, COGS = $5K. You calculate it as a manual entry. Month 2, COGS = $8K, calculated as a percentage of revenue (30%). Month 3 onward, COGS = revenue × 30% (formula). So months 1-2 are static, months 3+ are dynamic. This inconsistency hides the real cost structure.</p>
       <p><strong>Why it's dangerous:</strong> When you stress-test the model (what if revenue is 20% higher?), months 1-2 don't respond, but months 3+ do. The model looks weird. Investors notice that you're not applying the same logic to historical and forecast data.</p>
       <p><strong>How to fix it:</strong> Decide on your approach: static or percentage-based. For historical months, use actual data (static). For forecast months, use the same formula everywhere. Create a "COGS %" assumption cell at the top of your sheet. Reference it in every month's COGS calculation: =Revenue × $COGS%.</p>
 
-      <h3>Error 7: Tax and Employer Cost Understatement</h3>
+      <h2>Error 7: Tax and Employer Cost Understatement</h2>
       <p><strong>What happens:</strong> You budget payroll as base salary only: three employees at $100K = $300K/year payroll. But you forget that you're paying employment taxes (employer-side FICA in the US is 7.65%), health insurance (typically $300-500/month per employee), equipment ($2-3K per employee), and recruiting costs (10-15% of salary for first time hires).</p>
       <p><strong>Why it's dangerous:</strong> Your actual fully-loaded cost for three employees is $375K, not $300K. That's a 25% variance between model and reality. Over 24 months, this is a $150K+ error that directly impacts your runway calculation.</p>
       <p><strong>How to fix it:</strong> Create a "Fully-Loaded Salary Multiplier" at the top of your sheet. Use 1.3-1.4x for US-based employees, 1.4-1.6x for international. Every payroll line item should be: Base Salary × Multiplier. This automatically captures taxes, benefits, and equipment. It's transparent to investors and matches reality.</p>
 
-      <h3>Auditing Your Model: A Checklist</h3>
+      <h2>Auditing Your Model: A Checklist</h2>
       <ul style="margin: 1rem 0;">
         <li><strong>Check all SUM formulas:</strong> Scroll through every subtotal row. Make sure they use SUM() and aren't blank or hard-coded.</li>
         <li><strong>Verify hiring timeline:</strong> Cross-reference your headcount plan with your payroll. Every hire in headcount should appear in payroll 1-2 months later.</li>
@@ -151,7 +157,7 @@
         <li><strong>Validate margins and ratios:</strong> Calculate gross margin, operating margin, and payroll-as-percent-of-burn. Compare to industry benchmarks. If you're 20% off, something's wrong.</li>
       </ul>
 
-      <h3>The Investor's Audit Checklist</h3>
+      <h2>The Investor's Audit Checklist</h2>
       <p>Here's what investors look for when auditing your model (and what they'll ask about):</p>
       <p><strong>First:</strong> They'll check your runway. If you say 24 months but they calculate 19 months, they'll ask why. Have your math bulletproof.</p>
       <p><strong>Second:</strong> They'll compare your model to comparables. If you model 40% gross margin but similar SaaS companies have 60%, they'll challenge it. Have a defense.</p>
@@ -159,7 +165,7 @@
       <p><strong>Fourth:</strong> They'll check sensitivities. What if revenue is 30% lower? What if payroll is 20% higher? Your model should handle these cleanly.</p>
 
       <div class="faq-section">
-        <h3>Frequently Asked Questions</h3>
+        <h2>Frequently Asked Questions</h2>
 
         <div style="margin: 1.5rem 0; padding: 1rem; border: 1px solid #3a3830; border-radius: 4px;">
           <strong style="display: block; margin-bottom: 0.5rem;">Should I build my model in Excel or Google Sheets?</strong>
@@ -184,7 +190,7 @@
     </div>
 
     <div class="related-articles">
-      <h3>Related Articles</h3>
+      <h2>Related Articles</h2>
       <div class="related-articles-list">
         <div style="margin: 1rem 0; padding: 1rem; border: 1px solid #3a3830; border-radius: 4px;">
           <a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once" style="text-decoration: none; color: #c8a45a; font-weight: bold;">CAC, LTV, and Payback Period: Calculated Correctly for Once</a>
@@ -210,7 +216,7 @@
       </div>
     </div>
     <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

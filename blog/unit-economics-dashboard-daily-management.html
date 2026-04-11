@@ -21,6 +21,8 @@
 <meta property="og:title" content="Building Your Unit Economics Dashboard: Daily Management Metrics">
 <meta property="og:description" content="Unit economics dashboard: metrics, calculation, tracking. Daily management tool for SaaS and marketplace founders.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Startup Finance">
@@ -43,7 +45,10 @@
   "description": "Unit economics dashboard: metrics, calculation, tracking. Daily management tool for SaaS and marketplace founders.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -164,34 +169,34 @@
 <article>
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Digital dashboard displaying unit economics metrics and KPIs">
 
-<h3>The Core Metrics Every Dashboard Needs</h3>
+<h2>The Core Metrics Every Dashboard Needs</h2>
 <p>A functional unit economics dashboard tracks seven core metrics: CAC, payback period, LTV, monthly churn, ARPU, gross margin, and NRR. These are not optional—they're the fundamental health indicators of your business. CAC tells you how much you're spending to acquire value. Payback tells you how fast you recover that investment. LTV tells you the total value of a customer. Churn tells you whether retention is improving or deteriorating. ARPU tells you whether pricing and expansion are working. Gross margin tells you whether unit economics can actually scale. NRR tells you whether expansion revenue is offsetting churn. Track all seven weekly, not monthly. Monthly reporting is too slow—a metric can deteriorate 15% in a month before you notice on a monthly dashboard. Weekly reporting gives you leading indicators to act on.</p>
 
-<h3>Calculating CAC: Precision Matters</h3>
+<h2>Calculating CAC: Precision Matters</h2>
 <p>CAC calculation seems simple—divide marketing spend by new customers acquired. But precision matters. First: only count direct CAC (paid ads, sales, marketing). Don't include product development or customer support. Second: account for lag between spend and customer acquisition. A customer acquired this month might have been influenced by ads spent three months ago. Track CAC with 3-month lookback window to account for sale cycle. Third: calculate CAC by channel separately, not in aggregate. Your CAC from paid ads might be $50 per customer but organic might be $5 per customer (or negative, if organic customers drive referrals). Aggregate CAC masks channel quality. Fourth: apply payback period to CAC. A $5,000 CAC that takes 3 months to recover is different than a $5,000 CAC that takes 12 months to recover. Calculate payback-adjusted CAC by multiplying CAC by months-to-payback divided by 3 (to normalize).</p>
 
-<h3>Calculating LTV: Multiple Approaches for Precision</h3>
+<h2>Calculating LTV: Multiple Approaches for Precision</h2>
 <p>LTV calculation differs based on your business model. For subscription SaaS, use: (ARPU × gross margin) / monthly churn rate. For product-based SaaS, use: (ARPU × gross margin) / monthly churn rate + expansion revenue component. For high-churn products, add a maximum customer lifetime (e.g., assume no customer lasts longer than 5 years). For expansion-heavy businesses, model ARPU cohort-by-cohort. A cohort acquired at $500 ARPU might reach $750 ARPU in year 2. Model that expansion explicitly rather than using flat ARPU. The most accurate LTV calculation is cohort-based: track each acquisition cohort's retention, ARPU, and churn separately, then sum their lifetime contribution. This is more work but gives you accurate LTV by segment.</p>
 
-<h3>Dashboard Structure: Weekly, Monthly, and Quarterly Views</h3>
+<h2>Dashboard Structure: Weekly, Monthly, and Quarterly Views</h2>
 <p>Your dashboard should show three views. Weekly: current-week metrics and trends (CAC, payback, NRR, churn). This identifies acute problems. Monthly: month-over-month comparisons and rolling 12-month trends. This shows seasonal patterns. Quarterly: cohort analysis and unit economics by segment. This identifies structural issues. A well-designed dashboard lets you drill from weekly to monthly to quarterly without switching tools. Your CFO should see the quarterly view. Your marketing team should see weekly CAC and channel trends. Your product team should see weekly churn and engagement. Different audiences need different granularity on the same underlying data.</p>
 
-<h3>Cohort Retention Analysis: The Hidden Signal</h3>
+<h2>Cohort Retention Analysis: The Hidden Signal</h2>
 <p>Headline churn rate (5% monthly) masks critical information. Cohort retention analysis reveals truth. Acquisition cohort from January 2026 might have 80% 12-month retention. Cohort from July 2026 might have 65% 12-month retention. This doesn't mean you're getting worse—it might mean your product improvement efforts are working on old cohorts but new cohorts need onboarding improvements. Track retention curves by cohort. Plot each acquisition month's retention trajectory side-by-side. If newer cohorts show improving retention curves relative to old cohorts, your product is improving. If retention curves are deteriorating regardless of cohort, you have a product issue.</p>
 
-<h3>Leading Indicators That Predict Future Metrics</h3>
+<h2>Leading Indicators That Predict Future Metrics</h2>
 <p>Don't wait for lagging indicators like churn to hit before acting. Track leading indicators that predict future churn. Feature adoption rate in week 1 predicts 3-month retention with 85% accuracy. Activation speed (time from signup to first value) predicts churn. Onboarding completion rate predicts expansion likelihood. Support ticket response time predicts churn. Build these leading indicators into your dashboard alongside trailing metrics. If new cohorts show 20% lower feature adoption in week 1, you'll see churn impact in 6 weeks. This gives you time to diagnose and fix onboarding before churn actually increases.</p>
 
-<h3>Comparative Benchmarking: What's Good and What's Concerning</h3>
+<h2>Comparative Benchmarking: What's Good and What's Concerning</h2>
 <p>Knowing your metrics is necessary but insufficient. You need benchmarks. For B2B SaaS: CAC payback of 12-18 months is healthy. Below 12 months is exceptional. Above 24 months is concerning. Churn of 3-5% monthly is typical for early stage. Below 2% is excellent. Above 7% suggests product issues. ARPU growth of 5-15% annually is healthy. Above 20% indicates strong expansion. LTV/CAC ratio of 3:1 is minimum healthy. 5:1 is strong. 10:1+ is exceptional. These benchmarks vary by industry, so research your specific segment's benchmarks. But use them to identify which metrics need attention.</p>
 
-<h3>Segment-Level Unit Economics: Finding Your Most Profitable Customers</h3>
+<h2>Segment-Level Unit Economics: Finding Your Most Profitable Customers</h2>
 <p>Aggregate unit economics hide segment differences. A product might have healthy unit economics overall but terrible economics in one segment. Calculate CAC, LTV, churn, and NRR by customer segment: by geography, by company size, by use case, by acquisition channel. This reveals which segments are actually profitable. You might discover that enterprise customers have 2x LTV but 3x CAC, while mid-market customers have both lower. You might discover CAC is high in North America but low in Europe because of different marketing spend patterns. Segment analysis drives strategic decisions about where to focus acquisition and which segments to de-prioritize.</p>
 
-<h3>Building the Technical Dashboard: Tools and Automation</h3>
+<h2>Building the Technical Dashboard: Tools and Automation</h2>
 <p>Your dashboard should be automated, not manual. Manual dashboards get stale and unreliable. Connect your data sources (billing system, analytics platform, CRM) to a BI tool (Mixpanel, Amplitude, Tableau, Looker). Build SQL queries that calculate CAC, LTV, churn, and cohort retention automatically. These queries run daily and update your dashboard. Share the dashboard read-only with the team. Establish a weekly standup where the team reviews trends and investigates anomalies. Most problems are discovered through questioning why a metric changed, not from the metric itself. A well-designed dashboard enables this investigation by providing context and drill-down capability.</p>
 
-<h3>Key Takeaways</h3>
+<h2>Key Takeaways</h2>
 <ul>
 <li>Track seven core metrics weekly: CAC, payback period, LTV, churn, ARPU, gross margin, NRR</li>
 <li>Weekly tracking enables early identification of problems that take a month to become visible</li>
@@ -204,10 +209,10 @@
 </ul>
 
 
-<h3>Advanced Dashboard Metrics Beyond the Basics</h3>
+<h2>Advanced Dashboard Metrics Beyond the Basics</h2>
 <p>After implementing CAC, LTV, and payback period, your next dashboard should include cohort-based retention curves, segmented unit economics by customer segment and acquisition channel, and leading indicators that predict churn before it happens. Retention curves show whether each cohort is cohering (flattening) or deteriorating (declining). If your month-1 cohort has 90% retention at month 12 and your month-12 cohort has 80% retention at month 12, you have an onboarding or product quality issue that's degrading over time. Leading indicators might include feature adoption rates (customers who haven't adopted your core feature within 30 days churn at 5x rates), support ticket response time (customers experiencing slow support churn at 2x rates), or product usage velocity (customers whose daily active users decline from peak churn at 3x rates). By measuring these leading indicators weekly, you can act on churn predictions rather than observing churn after it happens. Another critical metric is the cohort economics evolution. For each acquisition cohort, measure their unit economics at months 1, 3, 6, 12, and 24. You should see payback period shortening as the cohort matures (because gross margin improves, CAC allocation decreases with time). If payback period is lengthening, something is deteriorating (churn is accelerating, upsell is declining, or your cost structure is increasing). Finally, implement a segment-based view where you can drill into each customer segment to see their individual unit economics. Your enterprise segment might have 15-month payback and 48-month LTV while your SMB segment has 9-month payback and 18-month LTV. Allocate your resources toward segments where unit economics work.</p>
-<h3>Building Operational Discipline Through Dashboard Culture</h3>
-<p>The most successful operations teams use dashboards not as reporting artifacts but as operational discipline mechanisms. Weekly standup meetings center on dashboard metrics, not slides. When metrics miss targets, you have a structured conversation: which lever caused the miss (CAC, conversion rate, churn, pricing)? How will you correct it? What's the experiment or initiative that addresses the root cause? This operational rhythm creates transparency and accountability around unit economics. One founder I work with shares a weekly dashboard with the entire company. It shows CAC by channel, churn by cohort, payback period, NRR, and gross margin. Every employee understands how their work affects these metrics. The engineering team sees how feature adoption rates affect churn. The sales team sees how their selling approach affects long-term churn. The customer success team sees how their onboarding approach affects month-1 retention. This transparency creates organizational alignment around unit economics that directives cannot replicate. Build your dashboard culture by starting with metrics that matter to each team, not metrics that matter to board reports. Sales team needs to see payback period and CAC by channel. Engineering needs to see churn by feature adoption and usage patterns. Customer success needs to see cohort retention and early churn indicators. When each team owns metrics that affect unit economics, optimization becomes distributed and compounding. Finally, protect your dashboard from vanity metrics. CAC, LTV, and payback are hard truths. Don't add metrics that make you feel better unless they're leading indicators of the hard metrics. "Customer satisfaction" is valuable only if it correlates with retention. "Feature usage" matters only if it predicts churn. Use data to inform strategy, not to confirm bias.</p><h3>Frequently Asked Questions</h3>
+<h2>Building Operational Discipline Through Dashboard Culture</h2>
+<p>The most successful operations teams use dashboards not as reporting artifacts but as operational discipline mechanisms. Weekly standup meetings center on dashboard metrics, not slides. When metrics miss targets, you have a structured conversation: which lever caused the miss (CAC, conversion rate, churn, pricing)? How will you correct it? What's the experiment or initiative that addresses the root cause? This operational rhythm creates transparency and accountability around unit economics. One founder I work with shares a weekly dashboard with the entire company. It shows CAC by channel, churn by cohort, payback period, NRR, and gross margin. Every employee understands how their work affects these metrics. The engineering team sees how feature adoption rates affect churn. The sales team sees how their selling approach affects long-term churn. The customer success team sees how their onboarding approach affects month-1 retention. This transparency creates organizational alignment around unit economics that directives cannot replicate. Build your dashboard culture by starting with metrics that matter to each team, not metrics that matter to board reports. Sales team needs to see payback period and CAC by channel. Engineering needs to see churn by feature adoption and usage patterns. Customer success needs to see cohort retention and early churn indicators. When each team owns metrics that affect unit economics, optimization becomes distributed and compounding. Finally, protect your dashboard from vanity metrics. CAC, LTV, and payback are hard truths. Don't add metrics that make you feel better unless they're leading indicators of the hard metrics. "Customer satisfaction" is valuable only if it correlates with retention. "Feature usage" matters only if it predicts churn. Use data to inform strategy, not to confirm bias.</p><h2>Frequently Asked Questions</h2>
 <h4>What's the minimum viable dashboard for early-stage startups?</h4>
 <p>Three metrics: CAC, LTV, and churn. These are calculable with minimal data and tell you whether your business model works. Add NRR and ARPU once you have 6+ months of data.</p>
 
@@ -222,13 +227,13 @@
 
 <h4>How do I handle seasonal variations in metrics?</h4>
 <p>Always compare year-over-year when possible. Compare July 2026 to July 2025. For short-term trends, use 13-week rolling averages to smooth seasonal noise while showing underlying trends.</p>
-<h3>Real-Time Unit Economics Monitoring and Alert Systems</h3>
+<h2>Real-Time Unit Economics Monitoring and Alert Systems</h2>
 <p>The most operationally mature companies implement real-time dashboards that alert when unit economics metrics deviate from expected ranges. If monthly cohort payback is expected to be 14 months and it's 16 months, that's a flag. If NRR is expected to be 115% and it drops to 110%, that's a signal that expansion revenue is slipping. Building alert systems around unit economics changes enables you to diagnose problems while they're small rather than discovering them in quarterly reviews. Implement alerts that fire when: CAC increases 10% month-over-month without explanation, churn increases 0.5% month-over-month, conversion rate drops 20% from baseline, payback period extends more than 2 months from prior month, or NRR declines. When alerts fire, you have a structured investigation: what changed? Did you change acquisition channel (different CAC profile)? Did product quality degrade (churn spike)? Did you change pricing? Once you diagnose the change, you can decide whether it's intentional or accidental. Some alerts will be intentional (you launched a paid channel with higher CAC but better retention), so the alert shouldn't cause panic but should trigger investigation. Other alerts indicate unintentional drift that needs immediate response. One founder implemented this system and discovered that churn was increasing due to bugs in the onboarding flow that were introduced by a deployment three weeks prior. Without real-time alerts, they wouldn't have discovered the connection. With alerts, they fixed the bug and prevented months of downstream churn damage. Real-time monitoring also enables faster experimentation. Instead of running a three-month test, you can see CAC impact within two weeks and churn impact within a month. This accelerates learning velocity around unit economics.</p>
 </article>
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/accounts-payable-payment-timing.html" class="related-article-link">Accounts Payable and Payment Timing: Managing Working Capital</a>
 <a href="/blog/accounts-receivable-payment-timing.html" class="related-article-link">Accounts Receivable: Modeling Customer Payment Timing</a>
@@ -249,7 +254,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

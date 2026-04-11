@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Audit Your Financial Model Before Sharing It With Investors">
 <meta property="og:description" content="A financial model that has not been audited before it goes to investors is a liability. Errors, inconsistencies, and broken links that you did not catch...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Financial Modeling">
@@ -42,7 +44,10 @@
   "description": "A financial model that has not been audited before it goes to investors is a liability. Errors, inconsistencies, and broken links that you did not catch will be caught in diligence --- at the worst possible time. A pre-share audit takes two to three hours and eliminates the most common model credibi",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-audit-your-financial-model-before-sharing-it-with-investors.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-audit-your-financial-model-before-sharing-it-with-investors.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 1420,
   "timeRequired": "PT6M",
@@ -183,7 +191,7 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~7 min</p>
-<h3>Why Auditing Your Own Model Matters</h3>
+<h2>Why Auditing Your Own Model Matters</h2>
 <p>Founders who share unaudited models make a specific kind of mistake. The model goes to a diligence analyst who finds a formula error on the revenue tab, a cash balance that does not reconcile to the P&L, or an assumption that is inconsistent across two different tabs. The technical error may be minor. The signal it sends is not.</p>
 <p>A model error tells an investor one or more of the following: the founder has not reviewed this themselves, the numbers should not be trusted at face value, there may be other errors not found yet. None of these are the signal you want to send when someone is deciding whether to write a check.</p>
 <p>Audit checklist summary:</p>
@@ -192,17 +200,17 @@
 <p>Assumption | All key inputs in one place, no | 30 min centralisation | hard-coding</p>
 <p>Internal | Headcount plan matches costs, revenue | 30 min consistency | builds match summary</p>
 <p>Logic review | Growth rates credible, margins trend | 30 min correctly, no sign errors</p>
-<h3>Step 1: Structural Integrity Check</h3>
+<h2>Step 1: Structural Integrity Check</h2>
 <p>Before reviewing any numbers, verify the model's structural health. Circular references: A circular reference occurs when a formula refers back to its own cell, directly or through a chain of references. Excel will flag these with a warning. They should be eliminated or, if intentional (e.g. in an interest model), explicitly documented. Circular references in unintended places are a sign the model has not been reviewed.</p>
 <p>Broken links: If the model references external files, check whether those links are live. Broken external links return errors that cascade through dependent formulas.</p>
 <p>Error values: Scan every tab for #REF!, #VALUE!, #DIV/0!, and #NAME? errors. These indicate broken formulas. Address each one before the model leaves the building.</p>
 <p>Tool: Excel's Formulas > Error Checking function surfaces all errors in the active sheet. Run it on every tab.</p>
-<h3>Step 2: Mathematical Consistency</h3>
+<h2>Step 2: Mathematical Consistency</h2>
 <p>The most important mathematical check is the three-statement reconciliation: the P&L, the cash flow statement, and the balance sheet must tie together.</p>
 <p>The cash reconciliation test: The ending cash balance in the cash flow statement must match the cash line on the balance sheet for every period. If they diverge, there is an error somewhere in the model structure.</p>
 <p>The retained earnings test: The cumulative net income from the P&L must match the change in retained earnings on the balance sheet. If they do not reconcile, equity movements have not been captured correctly. The P&L to operating cash flow bridge: Starting from net income, the bridge to operating cash flow must account for all non-cash items (depreciation, SBC) and working capital movements. The bridge should reconcile exactly.</p>
 <p>Key insight: A model that passes the three-statement reconciliation test has almost certainly been built correctly in structure, even if individual assumptions are wrong. A model that fails it has a structural error that will be found in diligence.</p>
-<h3>Step 3: Assumption Centralisation</h3>
+<h2>Step 3: Assumption Centralisation</h2>
 <p>Every key assumption in the model should live in exactly one place: the assumptions tab. When reviewing the model before sharing, the test is straightforward: open the assumptions tab, find the CAC assumption, and trace the formula chain from that assumption cell through to the revenue model.</p>
 <p>If the formula chain breaks --- if you find the CAC value hard-coded somewhere else in the model, or if the number in the model differs from the assumptions tab --- you have found a centralisation failure. These failures mean that changing an assumption in one place does not change it everywhere, which produces inconsistencies that analysts find during diligence.</p>
 <p>What to look for:</p>
@@ -211,23 +219,23 @@
 <p>Assumptions that appear in multiple places with slightly different</p>
 <p>values</p>
 <p>Key inputs that are not in the assumptions tab at all</p>
-<h3>Step 4: Internal Consistency</h3>
+<h2>Step 4: Internal Consistency</h2>
 <p>Internal consistency means the model tells one coherent story across all tabs. Inconsistencies --- where the headcount plan does not support the revenue assumptions, or the gross margin calculation uses different COGS than the P&L --- are often more damaging than simple formula errors because they suggest the model was assembled rather than designed. Key consistency checks:</p>
 <p>Headcount to revenue: If revenue grows 3x, does headcount grow enough to support that? If the model shows headcount flat while revenue triples, either the model assumes the product scales with no marginal operational support (which needs explicit justification) or the headcount plan has not been connected to the revenue model. COGS consistency: Does the COGS build on the gross margin tab match the COGS line on the P&L? These should be the same formula, not separate calculations.</p>
 <p>Revenue bridge: Does the revenue from the detailed revenue build match the revenue line on the P&L? This sounds obvious but is frequently wrong in models assembled from multiple sources.</p>
-<h3>Step 5: Logic Review</h3>
+<h2>Step 5: Logic Review</h2>
 <p>The final audit step is a logic review --- reading the model as an investor would and asking whether each assumption and output is credible.</p>
 <p>Growth rate credibility: Is the growth rate in year one consistent with current traction? Is the growth rate in year five credible given the market size and the competitive environment? Investors who see hockey-stick models with no explanation of what changes in year two will ask.</p>
 <p>Margin trajectory: Does gross margin improve over time, and is the mechanism explained? Does operating leverage appear in the model (OpEx growing slower than revenue at scale)?</p>
 <p>Sign checks: Revenue should be positive. Costs should be negative (or shown as positive in a cost-only view, consistently). Mixed sign conventions are a common source of confusion and errors.</p>
 <p>Runway check: Does the cash runway calculation use the cash flow statement or the P&L? It must use cash flow. A runway number derived from the P&L is wrong for any business with working capital.</p>
-<h3>The 90-Minute Audit in Practice</h3>
+<h2>The 90-Minute Audit in Practice</h2>
 <p>The full audit described above takes two to three hours for a complex model. For a standard early-stage model, a focused 90-minute audit covers the most important ground:</p>
 <p>1. Run error checking on every tab (20 min)</p>
 <p>2. Verify cash reconciliation (15 min)</p>
 <p>3. Test assumptions centralisation on five key inputs (20 min) 4. Check headcount-to-revenue and COGS-to-P&L consistency (20 min) 5. Read the model as an investor: does the story make sense? (15 min) This is the minimum before the model goes to any serious investor.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Should someone else audit the model or is self-auditing sufficient?</p>
 <p class="faq-a">Self-auditing catches most structural and formula errors. A second review by someone who did not build the model catches logic errors and internal inconsistency that the original builder is too close to see. If possible, have a trusted advisor or financial professional review the model before it goes to a lead investor.</p>
@@ -241,12 +249,12 @@
 <p class="faq-a">Hard-coded assumptions that diverge from the assumptions tab after the model is updated. This happens when the model is revised in response to investor feedback but some cells are updated manually rather than through the central assumptions. The fix is centralisation from the start.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Auditing a financial model before sharing it is not optional. It is the final step between building a model and using it as an instrument for raising capital. The five checks --- structural integrity, mathematical consistency, assumption centralisation, internal consistency, and logic review --- take less than three hours and eliminate the most common model credibility killers. A model that passes this audit does not guarantee a successful raise. But a model that fails it in diligence can stop one.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
 <a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
@@ -267,7 +275,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

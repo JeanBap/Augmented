@@ -21,6 +21,8 @@
 <meta property="og:title" content="Convertible Note Pro Formas: Modeling Conversion Scenarios Step by Step">
 <meta property="og:description" content="Learn to build convertible note pro formas: model Series A conversions, dilution impacts, and multiple funding scenarios.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Fundraising">
@@ -43,7 +45,10 @@
   "description": "Learn to build convertible note pro formas: model Series A conversions, dilution impacts, and multiple funding scenarios.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -116,23 +121,23 @@
 
       <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop" alt="Spreadsheet with financial models and scenario analysis for investor conversion" style="width: 100%; margin-bottom: 30px; border-radius: 8px;">
 
-      <h3>Why Pro Formas Matter for Convertible Notes</h3>
+      <h2>Why Pro Formas Matter for Convertible Notes</h2>
       <p>A convertible note pro forma is a projection of your cap table after the note converts to equity at your Series A. It answers: "How much will this note dilute my ownership?" Most founders avoid building these models because they seem complex, but the math is straightforward once you understand the flow.</p>
       <p>Without a pro forma, you're signing convertible notes blind—you don't actually know what ownership percentage you'll lose. This is how founders end up shocked at Series A close, discovering they're more diluted than expected.</p>
 
-      <h3>Step 1: Establish Your Current Cap Table</h3>
+      <h2>Step 1: Establish Your Current Cap Table</h2>
       <p>Start with your founder equity. Let's say you and a co-founder each own 50% of 1 million authorized shares. That's 500,000 shares each. Document all outstanding options (employee grants), warrants, and any other equity claims.</p>
       <p>If you've reserved 20% of your cap table for employee options, that's 200,000 shares in the option pool. These shares don't have an owner yet, but they count toward your fully diluted capitalization.</p>
       <p>Your starting cap table: Founder A: 500,000 shares (50%). Founder B: 500,000 shares (50%). Option pool: 200,000 shares (20% reserved, unallocated). Total outstanding: 1,000,000 shares. Fully diluted: 1,200,000 shares (assuming you'll authorize that many).</p>
 
-      <h3>Step 2: List All Convertible Notes with Terms</h3>
+      <h2>Step 2: List All Convertible Notes with Terms</h2>
       <p>Document each convertible note separately: investment amount, valuation cap, discount rate, and interest rate (if any). Let's model two notes for simplicity:</p>
       <p>Note 1: $150,000, $2.5M cap, 20% discount, 2% interest (accrued)</p>
       <p>Note 2: $100,000, $3M cap, 15% discount, 2% interest (accrued)</p>
       <p>Note 1 has accrued interest of $3,000 (2 years × 2% = 4% of $150K). Total owed at conversion: $153,000.</p>
       <p>Note 2 has accrued interest of $2,000. Total owed at conversion: $102,000.</p>
 
-      <h3>Step 3: Project Your Series A Scenario</h3>
+      <h2>Step 3: Project Your Series A Scenario</h2>
       <p>Estimate where your Series A valuation might land. Let's model three scenarios: base case ($6M post-money), optimistic ($10M post-money), and conservative ($4M post-money).</p>
       <p>For each scenario, you need:</p>
       <ul>
@@ -141,7 +146,7 @@
         <li>Share price per share = Post-money ÷ total shares pre-Series A</li>
       </ul>
 
-      <h3>Step 4: Calculate Note Conversions—Base Case</h3>
+      <h2>Step 4: Calculate Note Conversions—Base Case</h2>
       <p>Base case: $6M post-money Series A, $1M investment.</p>
       <p>Your pre-Series A fully diluted shares: 1,200,000 (from Step 1)</p>
       <p>Share price at Series A: $6M ÷ 1,200,000 = $5.00 per share</p>
@@ -153,7 +158,7 @@
       <p>The cap is more favorable (40,800 > 23,994). Note 2 converts to 40,800 shares.</p>
       <p><strong>Series A:</strong> $1M investment at $5.00 per share = 200,000 shares.</p>
 
-      <h3>Step 5: Calculate the New Cap Table</h3>
+      <h2>Step 5: Calculate the New Cap Table</h2>
       <p>After all conversions:</p>
       <p>Founder A: 500,000 shares (original)</p>
       <p>Founder B: 500,000 shares (original)</p>
@@ -165,32 +170,32 @@
       <p>Founder total: 1,000,000 shares ÷ 1,514,358 = 66% ownership</p>
       <p>You've diluted from 83% (fully diluted pre-Series A) to 66% (fully diluted post-Series A). That's a 17 percentage point hit.</p>
 
-      <h3>Step 6: Model Optimistic and Conservative Scenarios</h3>
+      <h2>Step 6: Model Optimistic and Conservative Scenarios</h2>
       <p>Repeat Steps 4-5 for your $10M and $4M scenarios. This is where spreadsheets shine—use formulas to auto-calculate so you can change assumptions quickly.</p>
       <p>$10M scenario: Share price $8.33, discounts apply differently, founders dilute less because the company is worth more.</p>
       <p>$4M scenario: Share price $3.33, caps become more binding, founders dilute more because they're worth less.</p>
       <p>You now have a range of likely outcomes. Most pro formas show a 15-35% founder dilution range across reasonable Series A scenarios.</p>
 
-      <h3>Step 7: Stress-Test Assumptions</h3>
+      <h2>Step 7: Stress-Test Assumptions</h2>
       <p>What if you raised another convertible note before Series A? Model it. What if an investor exercises a warrant? Model it. What if you've granted more options than expected? Model it.</p>
       <p>The goal is to understand how sensitive your dilution is to changes in assumptions. If a single note change of $50K swings your founder ownership by 5 percentage points, you're in a fragile situation. If it swings by 0.5 points, you have room to maneuver.</p>
 
-      <h3>Using Pro Formas in Negotiation</h3>
+      <h2>Using Pro Formas in Negotiation</h2>
       <p>Pro formas are powerful negotiation tools. When an investor proposes a $2M cap, you can show them (and yourself) exactly what that means for founder dilution in realistic scenarios. Sometimes seeing the math makes a $2.5M cap seem reasonable in comparison.</p>
       <p>You can also use pro formas to argue why a certain Series A valuation matters. If raising at $4M vs. $6M changes founder ownership by 10 points, that's a material difference worth negotiating hard for.</p>
 
-      <h3>Tools for Building Pro Formas</h3>
+      <h2>Tools for Building Pro Formas</h2>
       <p>Basic spreadsheet: Google Sheets or Excel work fine for simple models. Templates are available online.</p>
       <p>Cap table software: Tools like Pulley, Captable.io, or Carta automate conversions and keep everything organized. They're worth the cost if you're managing multiple notes and employees.</p>
       <p>Custom models: Some founders build detailed models in Python or R to run thousands of scenarios. Overkill for most, but useful if you have complex scenarios.</p>
 
-      <h3>Common Pro Forma Mistakes</h3>
+      <h2>Common Pro Forma Mistakes</h2>
       <p>Forgetting interest accrual on convertible notes. That 2% annual interest isn't huge, but after 2-3 years it adds up.</p>
       <p>Not modeling down cases. Your base case is optimistic by definition. Model a 30% down scenario—it happens to many startups.</p>
       <p>Assuming no additional option grants. By Series A close, you've probably promised employees more options than your initial pool. Update your model.</p>
       <p>Treating caps and discounts as separate. Model them together—whichever is better for the investor applies.</p>
 
-      <h3>Key Takeaways</h3>
+      <h2>Key Takeaways</h2>
       <ul>
         <li>Pro formas project cap table changes when convertible notes convert at Series A</li>
         <li>Build on your current cap table, apply note conversion math, then add Series A shares</li>
@@ -199,7 +204,7 @@
         <li>Account for interest accrual, option grants, and both caps and discounts in your models</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h2>Frequently Asked Questions</h2>
       <p><strong>Q: How often should I update my pro forma?</strong><br>
       A: Every time something material changes: new convertible note, new employee options, or Series A timeline shifts.</p>
 
@@ -218,7 +223,7 @@
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/alternative-financing-revenue-based-financing-grants-and-when-not-to-raise-vc.html" class="related-article-link">Alternative Financing: Revenue-Based Financing, Grants, and When Not to Raise Venture Capital</a>
 <a href="/blog/ask-slide-anchoring-psychology-fundraising.html" class="related-article-link">Ask Slide Psychology: Why Anchoring Works or Backfires in Fundraising</a>
@@ -239,7 +244,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

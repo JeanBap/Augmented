@@ -21,6 +21,8 @@
 <meta property="og:title" content="Cohort-Based Unit Economics Analysis: Understanding Customer Behavior at Scale">
 <meta property="og:description" content="Master cohort-based analysis to identify unit economics trends, customer quality variations, and optimization opportunities.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Startup Finance">
@@ -43,7 +45,10 @@
   "description": "Master cohort-based analysis to identify unit economics trends, customer quality variations, and optimization opportunities.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -164,37 +169,37 @@
 <article>
 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800" alt="Data analyst reviewing cohort retention and revenue charts" style="width:100%;max-width:800px;margin:20px 0;border-radius:8px;">
 
-<h3>Cohort Analysis Fundamentals: Grouping Customers to Reveal Patterns</h3>
+<h2>Cohort Analysis Fundamentals: Grouping Customers to Reveal Patterns</h2>
 <p>Cohort analysis groups customers by acquisition date (or other characteristic) and tracks their behavior over time collectively. January 2026 cohort includes all customers acquired in January; you track their retention, revenue, and costs month-by-month. This reveals patterns invisible in aggregate metrics: how customer quality varies by month, how retention declines over time, which acquisition sources produce highest-LTV customers.</p>
 <p>Aggregate metrics hide critical variations. If your overall churn is 5%, that might mask one cohort with 2% churn and another with 8% churn—indicating quality differences in acquisition or product-market fit evolution. Cohort analysis reveals these variations, enabling you to diagnose problems and identify opportunities at granular levels.</p>
 <p>Cohort analysis is particularly valuable because it captures customer lifetime dynamics. A single month's metrics tell you nothing about whether retention is improving. But 12 months of cohort data shows whether your January cohort has better or worse retention than your December cohort—revealing whether your product, acquisition quality, or onboarding has improved.</p>
 
-<h3>Building Your Cohort Table: Structure and Key Metrics</h3>
+<h2>Building Your Cohort Table: Structure and Key Metrics</h2>
 <p>A cohort table typically has cohorts as rows (acquisition date: January, February, etc.) and time periods as columns (month 0, month 1, month 2, etc.). Cells contain metrics: retention (percentage of original cohort still active), cumulative revenue, cumulative margin, or churn rate. This structure reveals trends instantly: if retention column declines left-to-right, customers are churning; if it's stable, retention is improving.</p>
 <p>Start simple: cohort size, month-0 revenue, month-1 revenue, cumulative revenue to month 12. This reveals LTV trajectory without complexity. Add churn rates once you can calculate them reliably. Add cohort profitability (cumulative margin minus cohort acquisition costs) once you can allocate acquisition costs accurately.</p>
 <p>Populate your cohort table with as much historical data as available, but minimum 12 months. Early cohorts that are "mature" (12+ months old) show the full lifetime. Recent cohorts are "immature" and incomplete. When making LTV projections, weight mature cohorts heavily and treat immature cohorts conservatively.</p>
 
-<h3>Reading Cohort Patterns: What Different Trends Mean</h3>
+<h2>Reading Cohort Patterns: What Different Trends Mean</h2>
 <p>Retention declining over time (Jan cohort 100% at month 0, 95% at month 1, 85% at month 2, etc.) is normal—churn happens. Retention stabilizing around a steady state (month 6 onward retention stays 75%) is healthy. Retention that falls suddenly (month 3 retention drops 15 points from month 2) signals a problem: product issue, pricing change, or support degradation.</p>
 <p>Compare cohorts horizontally: if January cohort has 75% month-3 retention and February cohort has 70%, something changed between acquisitions. Possible causes: different customer type acquired, product degradation, support quality decline, or onboarding changes. Investigating cohort divergence often reveals operational changes worth knowing about.</p>
 <p>Revenue per user increasing over time indicates expansion working (customers upgrading, adding seats, buying more features). Revenue flat over time indicates transactional model with no expansion. Revenue declining indicates downgrade behavior. These patterns inform pricing and product strategy: if expansion is weak, product development should focus on expansion features.</p>
 
-<h3>Cohort Analysis by Acquisition Channel: Unit Economics Varies Dramatically</h3>
+<h2>Cohort Analysis by Acquisition Channel: Unit Economics Varies Dramatically</h2>
 <p>Calculate cohort analysis separately for customers acquired through different channels: paid ads, organic, referral, direct sales, partners. Each channel often produces cohorts with different quality, retention, and LTV profiles. Paid ads might produce 70% month-3 retention, organic might produce 85%, referral might produce 90%.</p>
 <p>These differences compound. A startup acquiring 60% through paid ads (70% retention) and 40% through organic (85% retention) has blended retention of 76%. But channel-specific cohorts show that organic cohorts are significantly higher quality. This insight should drive strategy: invest more in organic, optimize paid ads, or identify why organic attracts better customers and replicate that quality in paid acquisition.</p>
 <p>Channel cohort analysis also reveals which channels produce expansion-prone customers. If enterprise sales channel produces customers who expand 40% within 12 months while freemium channel produces near-zero expansion, you have strategic insight: focus enterprise sales on expansion-prone segments, and optimize freemium for retention rather than upsell.</p>
 
-<h3>Cohort Economics: Profitability Analysis Across Customer Groups</h3>
+<h2>Cohort Economics: Profitability Analysis Across Customer Groups</h2>
 <p>Once you have cohort retention and revenue, calculate cohort-level economics: cumulative revenue minus cumulative CAC (allocated per cohort) equals cohort margin. Then project forward: if January cohort has $500 cumulative revenue at month 6 and stabilizes retention at 75%, project month-12 revenue at roughly $1,000 (assuming stable revenue per month). Calculate LTV at that level.</p>
 <p>Compare cohort profitability: January cohort LTV $1,200, CAC $400, ratio 3:1. February cohort LTV $1,000, CAC $450, ratio 2.2:1. This reveals declining unit economics—either CAC is increasing or cohort quality is declining. If trend continues, profitability per customer is eroding, requiring intervention.</p>
 <p>Cohort profitability analysis also reveals the impact of pricing changes, feature launches, and product improvements. If you increase pricing or add features in month 6, subsequent cohorts (post-pricing/feature) have different economics than earlier cohorts. This helps quantify product investment ROI: did that feature increase retention or LTV measurably?</p>
 
-<h3>Using Cohort Analysis for Forecasting and Planning</h3>
+<h2>Using Cohort Analysis for Forecasting and Planning</h2>
 <p>Mature cohorts (12+ months old) provide the foundation for LTV projection. If your oldest cohorts are stable (retention and revenue per user aren't changing significantly), project forward: mature cohorts likely represent your ultimate LTV. Use that to evaluate new cohorts: "Is new cohort tracking like mature January cohort, or showing different pattern?"</p>
 <p>Cohort analysis also informs CAC budgeting. If January cohort (acquired at $400 CAC) generates $1,200 LTV, you can afford $400 CAC. If subsequent cohorts achieve 3:1 ratio, CAC budgets of $333 per customer are sustainable. If CAC is drifting toward $500, you need to either improve LTV or reduce CAC before profitability deteriorates.</p>
 <p>Use cohort analysis to forecast revenue: Project mature cohorts' full lifetime, multiply by number of customers in each cohort, and sum to get total projected LTV revenue. This is more accurate than simple LTV formulas because it captures actual customer behavior rather than assuming stability.</p>
 
-<h3>Key Takeaways</h3>
+<h2>Key Takeaways</h2>
 <ul>
 <li>Cohort analysis groups customers by acquisition date and tracks retention, revenue, and profitability over time.</li>
 <li>Cohort tables reveal whether customer quality is improving or declining, whether retention is stable or degrading, and which cohorts drive best unit economics.</li>
@@ -204,15 +209,15 @@
 </ul>
 
 
-<h3>Defining Cohorts and Building Cohort Analysis Infrastructure</h3>
+<h2>Defining Cohorts and Building Cohort Analysis Infrastructure</h2>
 <p>Cohort-based analysis means grouping customers by shared characteristics—typically acquisition date (customers acquired in the same month), acquisition source (paid ads, organic, direct sales), or customer type (SMB, midmarket, enterprise). By analyzing groups of customers with shared characteristics, you reveal performance patterns masked in aggregate metrics. A company with average 5% monthly churn looks stable in aggregate. But cohort analysis might reveal that customers acquired in January have 8% monthly churn while customers acquired in June have 2% monthly churn. This variation signals either changing product-market fit, acquisition quality variations, or seasonal effects. Building cohort analysis infrastructure requires tracking customer acquisition date and source accurately, calculating churn and lifetime value for each cohort, and visualizing trends over time. Most analytics platforms (Mixpanel, Amplitude, Looker) have built-in cohort analysis. Alternatively, SQL queries on your customer database can generate cohort retention tables showing percentage of each cohort remaining after 1, 3, 6, 12, 24 months. The investment in building cohort infrastructure is high-ROI because it immediately reveals which acquisition sources and customer types have sustainable economics.</p>
 
-<h3>Cohort Analysis Revealing Acquisition Quality and Market Fit</h3>
+<h2>Cohort Analysis Revealing Acquisition Quality and Market Fit</h2>
 <p>Cohort analysis uniquely reveals acquisition quality variations that hurt long-term unit economics even while top-line growth looks strong. A company growing 50% monthly might seem healthy, but if early cohorts have 50% 12-month retention while recent cohorts have 20% 12-month retention, the company is acquiring increasingly poor-fit customers. Growth is accelerating but unit economics are deteriorating. This pattern suggests either product-market fit is declining, acquisition messaging is attracting the wrong customers, or new market segments have poor fit. Without cohort analysis, this decline goes undetected until the company hits a wall when growth can't sustain the churn. Conversely, cohort analysis might reveal that certain acquisition sources (specific paid channels, partnerships, referrals) have dramatically superior unit economics. A company discovering that customers from partner A have 60% 12-month retention while customers from partner B have 20% retention might quadruple investment in partner A while exiting partner B. This allocation optimization has massive impact on long-term unit economics. Cohort analysis essentially allows you to reverse-engineer which acquisition channels and customer types build sustainable business and which ones create illusion of growth masking deteriorating fundamentals.</p>
 
-<h3>Segmentation Strategy Based on Cohort Insights</h3>
+<h2>Segmentation Strategy Based on Cohort Insights</h2>
 <p>Cohort analysis informs strategic segmentation decisions that improve overall unit economics. If analysis reveals that enterprise customers have 80% 12-month retention while SMB customers have 40% retention, but SMB unit economics are superior due to lower CAC, the company might segment strategy: invest in self-serve SMB at scale while pursuing enterprise selectively. If analysis reveals that customers acquired through paid search have 3x LTV of customers from paid social, despite similar CAC, the company reallocates budget to search. If analysis reveals that recent cohorts are deteriorating due to product changes, the company might revert changes or improve onboarding. The power of cohort analysis is that it enables data-driven strategy adjustment based on real unit economics evidence rather than intuition. Many founders make strategic decisions (which markets to enter, which customer types to pursue, which acquisition channels to invest in) based on intuition or surface-level metrics. Cohort analysis removes guesswork. By tracking cohort performance meticulously and adjusting strategy based on patterns, companies build sustainable growth engines where each incremental customer acquisition improves or maintains unit economics rather than degrading them.</p>
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 
 <h4>How many cohorts do I need to establish trends?</h4>
 <p>Minimum 6-12 months of cohorts for meaningful analysis. With fewer, you don't have enough data to distinguish signal from noise. Ideally, track 24+ months of cohorts to account for seasonal patterns and long-term trends. Companies with strong data infrastructure update cohort tables monthly.</p>
@@ -232,7 +237,7 @@
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/accounts-payable-payment-timing.html" class="related-article-link">Accounts Payable and Payment Timing: Managing Working Capital</a>
 <a href="/blog/accounts-receivable-payment-timing.html" class="related-article-link">Accounts Receivable: Modeling Customer Payment Timing</a>
@@ -253,7 +258,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

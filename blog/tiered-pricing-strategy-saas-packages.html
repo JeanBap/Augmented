@@ -21,6 +21,8 @@
 <meta property="og:title" content="Tiered Pricing Strategy: Creating SaaS Packages That Convert">
 <meta property="og:description" content="Design high-converting SaaS pricing tiers: feature differentiation, pricing gaps, and tier positioning strategies.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Unit Economics">
@@ -43,7 +45,10 @@
   "description": "Design high-converting SaaS pricing tiers: feature differentiation, pricing gaps, and tier positioning strategies.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -118,42 +123,42 @@
 
       <p>Tiered pricing—offering multiple product variants at different price points—is the dominant pricing model in SaaS. Most successful products offer three to five tiers targeting different customer segments: Starter for individuals, Professional for small teams, Business for growing companies, and Enterprise for large organizations. Designing tiers that maximize conversion while capturing appropriate value at each level is both art and science.</p>
 
-      <h3>The Psychology of Good Tier Design</h3>
+      <h2>The Psychology of Good Tier Design</h2>
       <p>Well-designed tiers leverage behavioral economics and decision psychology. When customers see three options, they typically compare the middle option (Goldilocks effect). If your Professional tier is designed as the "just right" option for your target customer, most conversions will occur at that price point. The Premium tier serves as a higher anchor that makes Professional seem more affordable by comparison.</p>
       <p>This is why many SaaS products deliberately make their most expensive tier unattractive compared to mid-tier. Atlassian's higher-tier offerings often include features most customers don't need, making the mid-tier look like the obvious choice. The high-tier existence, however, validates the pricing structure and creates anchoring effects that make mid-tier pricing seem reasonable.</p>
 
-      <h3>Tier Positioning: The Anchor Strategy</h3>
+      <h2>Tier Positioning: The Anchor Strategy</h2>
       <p>Create your tiers by starting with your target customer and working outward. Identify the value proposition for your primary customer segment—let's say small teams with 10-50 people. Design your Professional tier features and price to capture value from this segment. Then design your Starter tier for users who fit in adjacent segments (individuals, tiny teams) who derive proportionally less value. Finally, design your Premium tier for customers who need features that appeal to larger, more complex organizations.</p>
       <p>This approach ensures your Professional tier is genuinely optimized rather than defaulting to a middle ground. Your price architecture becomes: Starter (50% of Professional), Professional (baseline), Premium (200-300% of Professional). These ratios feel natural because each tier is optimized for specific customer needs, not arbitrary price points.</p>
 
-      <h3>Feature Differentiation Without Feature Fragmentation</h3>
+      <h2>Feature Differentiation Without Feature Fragmentation</h2>
       <p>The most common mistake in tier design is arbitrary feature gates that frustrate users. "Basic tier gets 2GB storage, Pro gets 10GB, Enterprise gets unlimited" is lazy segmentation. Better feature differentiation aligns features with customer needs: Starter tier targets solo practitioners who don't need team collaboration; Professional tier includes collaboration tools like commenting and shared workspaces; Enterprise tier adds SSO, custom roles, and audit logs for compliance.</p>
       <p>Effective feature gates create natural upgrade incentives. When a user invites a second team member and experiences friction without collaboration features, the upgrade decision is obvious. Gates based on team size, organizational complexity, or feature scope feel logical and justified.</p>
       <p>Avoid fragmenting your codebase across tiers. All tiers should run the same underlying product code. Use feature flags and configuration to enable/disable capabilities rather than building separate product versions. This ensures consistent quality, easier maintenance, and faster feature development cycles.</p>
 
-      <h3>Quantifying Tier Values and Pricing</h3>
+      <h2>Quantifying Tier Values and Pricing</h2>
       <p>Start by understanding your customer value distribution. Survey your target segments and estimate how much value each segment derives from your product. Starter tier customers might save $5,000 annually; Professional might be worth $50,000 in annual value; Enterprise might be worth $500,000. Your pricing should capture a percentage of these values: perhaps 10-20% from Starter, 15-25% from Professional, and 20-30% from Enterprise.</p>
       <p>This translates to pricing: Starter at $50/month (capturing 12% of $5,000 annual value), Professional at $200/month (capturing 20% of $50,000 annual value), Enterprise at $2,000/month (capturing 24% of $500,000 annual value). Pricing that captures 15-25% of customer value across your tiers represents healthy economics.</p>
 
-      <h3>Price Gaps and Tier Spacing</h3>
+      <h2>Price Gaps and Tier Spacing</h2>
       <p>The gap between tier prices dramatically affects conversion distribution. Too small a gap (Starter $99, Professional $129), and most customers upgrade to Professional, leaving revenue on the table. Too large a gap (Starter $99, Professional $499), and most customers stick with Starter, failing to capture expansion value.</p>
       <p>Research indicates 2-3x price gaps between consecutive tiers optimize for both conversion and revenue capture. A gap of 2-2.5x creates natural progression: $99 → $250 → $750. This spacing makes each tier feel like a distinct value proposition without creating a cliff that prevents conversions.</p>
 
-      <h3>The Good-Better-Best Framework</h3>
+      <h2>The Good-Better-Best Framework</h2>
       <p>Many successful products use three-tier structures following Good-Better-Best positioning: Starter (Good) covers basic needs and appeals to budget-conscious customers or those new to category. Professional (Better) includes the features most customers want and represents optimal value. Premium (Best) targets power users and organizations with complex needs willing to pay for comprehensive capabilities.</p>
       <p>Tier naming matters. "Basic," "Professional," "Enterprise" clearly signal progression. Avoid confusing names like "Silver," "Gold," "Platinum" that don't communicate relative value. Some startups use product-related names (for example, a project management tool might use "Solo," "Team," "Enterprise"), which can work if names clearly signal intended audience.</p>
 
-      <h3>Annual Commitment and Pricing Incentives</h3>
+      <h2>Annual Commitment and Pricing Incentives</h2>
       <p>Most SaaS products offer discounts (typically 15-25%) for annual commitments. This incentivizes customers to commit longer, improving revenue predictability and reducing churn risk. However, implement annual pricing strategically. If annual pricing causes customers to choose a lower tier just to afford commitment, you've lost expansion revenue. For example, if annual discount on Professional tier makes it cheaper than monthly Starter, customers will choose Professional annually at a lower ACV.</p>
       <p>Ensure tier pricing gaps remain consistent across monthly and annual billing. If monthly Professional is 2.5x Starter, annual Professional should also be 2.5x annual Starter (just with a discount applied proportionally to both).</p>
 
-      <h3>Add-Ons and Expansion Revenue</h3>
+      <h2>Add-Ons and Expansion Revenue</h2>
       <p>Beyond base tier pricing, successful SaaS products offer add-ons that capture expansion revenue. Slack charges extra for message history export, workspace analytics, and advanced integrations. These add-ons are perfect for customers who've maximized a tier but don't need to upgrade to the next one. Add-ons also serve as upgrade path stepping stones; a customer on Professional using three premium add-ons might see Enterprise tier as the logical next step.</p>
 
-      <h3>Testing and Iteration</h3>
+      <h2>Testing and Iteration</h2>
       <p>Tier design isn't static. Test different tier structures, feature combinations, and pricing with new customer cohorts. A/B test pricing gaps and feature sets to optimize for revenue while maintaining conversion rates. Monitor what percentage of conversions land in each tier; if 80% land in Professional with no Professional→Premium conversions, your feature differentiation needs adjustment.</p>
 
-      <h3>Key Takeaways</h3>
+      <h2>Key Takeaways</h2>
       <ul>
         <li>Design tiers around customer segments and their value perception, not arbitrary feature gates</li>
         <li>Use 2-3x price gaps between tiers to optimize for both customer conversion and revenue capture</li>
@@ -162,7 +167,7 @@
         <li>Maintain consistent code across tiers using feature flags; avoid fragmenting your product</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h2>Frequently Asked Questions</h2>
       <p><strong>How many tiers should I offer?</strong> Three tiers is the default for most SaaS—it's enough to segment customers without creating decision paralysis. Five tiers can work for complex enterprise products but risks confusing buyers. More than five tiers usually indicates unclear value propositions.</p>
       <p><strong>Should I make my Starter tier profitable?</strong> No. Starter tiers often operate at thin margins or even losses in the short term. Your CAC for Starter customers should be low (organic growth, self-serve), and your expectation is that some will upgrade over time. Focus on making your Professional tier highly profitable; Starter is an acquisition vehicle.</p>
       <p><strong>How do I gate features without feeling punitive?</strong> Gate features that create diminishing returns for single users but high value for teams (collaboration, API access, audit logs). Avoid gating basic features users expect—ease of use should be consistent across tiers. Gate complexity and scale, not core functionality.</p>
@@ -172,7 +177,7 @@
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/arr-mrr-revenue.html" class="related-article-link">ARR vs MRR vs Revenue: Metrics That Actually Matter</a>
 <a href="/blog/calculate-cac.html" class="related-article-link">How to Calculate Customer Acquisition Cost (CAC) Correctly</a>
@@ -193,7 +198,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

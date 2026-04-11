@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Model LTV for a Marketplace Business">
 <meta property="og:description" content="LTV for a marketplace is more complex than LTV for a SaaS business because a marketplace often has two customer sides --- buyers and suppliers --- and t...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Unit Economics">
@@ -42,7 +44,10 @@
   "description": "LTV for a marketplace is more complex than LTV for a SaaS business because a marketplace often has two customer sides --- buyers and suppliers --- and the value generated is a function of transaction volume, take rate, and retention on both sides. Modelling LTV correctly for a marketplace requires d",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-model-ltv-for-a-marketplace-business.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-model-ltv-for-a-marketplace-business.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Unit Economics",
   "wordCount": 1156,
   "timeRequired": "PT5M",
@@ -182,18 +190,18 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~7 min</p>
-<h3>The Two-Sided LTV Problem</h3>
+<h2>The Two-Sided LTV Problem</h2>
 <p>A SaaS business has one customer type. A marketplace has two: the demand side (buyers, employers, clients) and the supply side (workers, vendors, service providers). Both sides generate value, both sides can churn, and the economics of each differ.</p>
 <p>The first modelling decision is which side to calculate LTV for. The answer depends on which side the marketplace monetises.</p>
 <p>Monetisation-side LTV: Calculate LTV for whichever side pays the marketplace (demand side in most marketplace models). This is the LTV that maps directly to CAC, because CAC is typically the cost of acquiring the paying side.</p>
 <p>Supply-side value: Even if the supply side does not pay, supply-side retention drives demand-side LTV. A marketplace where workers or vendors churn frequently forces the demand side to re-onboard new supply, reducing quality and driving demand-side churn. Model supply retention as a driver of demand-side LTV even if supply-side LTV is not calculated directly.</p>
-<h3>LTV Components for a Marketplace</h3>
+<h2>LTV Components for a Marketplace</h2>
 <p>**For a transaction-fee marketplace (e.g. staffing, freelance, logistics):**</p>
 <p>LTV = Average Transaction Value × Take Rate × Gross Margin on Take Rate ×</p>
 <p>Average Monthly Transactions × (1 ÷ Monthly Demand-Side Churn Rate) This is equivalent to:</p>
 <p>LTV = Average Monthly Gross Profit per Customer ÷ Monthly Churn Rate \...where "gross profit" is the marketplace's net take after payment processing and direct fulfilment costs, not the full transaction GMV. **For a subscription marketplace (e.g. platforms where the buyer pays a subscription):**</p>
 <p>The LTV model is closer to SaaS: monthly subscription revenue × gross margin ÷ churn rate. But transaction data should be layered in if the subscription price is linked to usage volume.</p>
-<h3>The GMV vs. Net Revenue Distinction</h3>
+<h2>The GMV vs. Net Revenue Distinction</h2>
 <p>The most common LTV error for marketplaces: using GMV (gross merchandise value, the full transaction value passing through the platform) as the revenue basis for LTV rather than net revenue (the take rate portion the marketplace actually keeps).</p>
 <p>A staffing marketplace that places a worker at £15/hour and charges the employer £18/hour has:</p>
 <p>GMV: £18/hour × hours worked</p>
@@ -202,7 +210,7 @@
 <p>fulfilment</p>
 <p>LTV should be calculated on gross profit from net revenue, not GMV. Using GMV as the LTV basis overstates LTV by the inverse of the take rate --- at a typical 15-20% take rate, this is a 5-7x overstatement.</p>
 <p>Key insight: When a marketplace founder says their LTV is £X, the first clarifying question is always: is that gross profit on net revenue, or is it GMV? The answer changes the number dramatically and determines whether the LTV:CAC ratio reflects a viable business or an accounting artefact.</p>
-<h3>Modelling Transaction Frequency Over Time</h3>
+<h2>Modelling Transaction Frequency Over Time</h2>
 <p>One of the key differentiators in marketplace LTV is transaction frequency: how often does a demand-side customer transact, and does frequency grow or shrink over time?</p>
 <p>Cohort analysis of transaction frequency is the most valuable input to marketplace LTV modelling:</p>
 <p>In the first 1-3 months after acquisition, transaction frequency is</p>
@@ -213,11 +221,11 @@
 <p>to grow for deeply embedded customers</p>
 <p>Building LTV as a constant (average monthly transactions × take × margin) misses this ramp-up dynamic. A more accurate model uses cohort-observed frequency curves to build a lifetime transaction schedule.</p>
 <p>For early-stage marketplaces without 12+ months of cohort data, use a conservative frequency assumption (no ramp-up, steady-state from month one) as the base case and model the ramp-up as upside.</p>
-<h3>Supply-Side Retention as a LTV Driver</h3>
+<h2>Supply-Side Retention as a LTV Driver</h2>
 <p>Supply-side churn creates demand-side LTV risk that does not appear in a buyer-only LTV model. If the supply side churns and quality or availability on the platform deteriorates, demand-side churn follows. For marketplace models, include a supply-side retention assumption and model the feedback loop:</p>
 <p>LTV</p>
 <p>The exact relationship varies by marketplace type, but acknowledging this linkage in the model notes is important for any marketplace with operational supply-demand matching.</p>
-<h3>Worked Example: Staffing Marketplace LTV</h3>
+<h2>Worked Example: Staffing Marketplace LTV</h2>
 <p>Assumptions:</p>
 <p>Average employer (demand-side customer) places 3 workers per month Each worker placed generates £250 in net revenue (take) to the</p>
 <p>marketplace</p>
@@ -228,7 +236,7 @@
 <p>Incorrect LTV = (3 × £1,500 × 55%) ÷ 0.03 = £82,500</p>
 <p>The GMV-based LTV is 6x the correct number. This is not an edge case --- it is the most common marketplace LTV error.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Should marketplace LTV include both buyer and seller sides?</p>
 <p class="faq-a">Only if you monetise both sides. If the marketplace charges workers or vendors a fee in addition to charging employers, model LTV for both sides. More commonly, two-sided LTV is calculated only for the monetised side, with supply-side retention modelled as a driver rather than a separate LTV component.</p>
@@ -242,12 +250,12 @@
 <p class="faq-a">As soon as there are enough customers to create meaningful segments --- typically 50+ customers on the demand side. High-frequency, high-ACV buyers typically have very different LTV profiles from low-frequency, low-ACV buyers. Blending them into a single LTV hides the quality concentration that sophisticated investors will ask about.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Marketplace LTV is calculated on gross profit from net revenue (the take rate portion), not on GMV. Transaction frequency evolves over time and should be modelled using cohort data where available. Supply-side retention drives demand-side LTV and should be modelled as a linked assumption even if supply-side LTV is not calculated directly. The most common error --- using GMV as the LTV basis --- overstates LTV by the inverse of the take rate, which at typical marketplace take rates is a 5-7x error. Get the LTV denominator right before any investor conversation about unit economics.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html" class="related-article-link">CAC, LTV, and Payback Period: Calculated Correctly for Once</a>
 <a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html" class="related-article-link">Why Blended CAC Is a Lie (And How to Model It by Channel)</a>
@@ -268,7 +276,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

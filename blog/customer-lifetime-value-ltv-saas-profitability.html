@@ -21,6 +21,8 @@
 <meta property="og:title" content="Customer Lifetime Value (LTV): Predicting Long Term SaaS Profitability">
 <meta property="og:description" content="Complete guide to calculating LTV for SaaS companies. Learn how to project customer profitability and improve lifetime value through expansion.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Unit Economics">
@@ -43,7 +45,10 @@
   "description": "Complete guide to calculating LTV for SaaS companies. Learn how to project customer profitability and improve lifetime value through expansion.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -119,7 +124,7 @@
 
 <p>LTV calculation seems straightforward on the surface but becomes complex when accounting for real-world dynamics: variable churn rates, expansion revenue, multiple cohorts with different retention patterns, and the time value of money.</p>
 
-<h3>The Simple LTV Formula: A Dangerous Oversimplification</h3>
+<h2>The Simple LTV Formula: A Dangerous Oversimplification</h2>
 
 <p>The most common LTV formula is deceptively simple and dangerously wrong for most SaaS companies:</p>
 
@@ -129,7 +134,7 @@
 
 <p>This formula assumes: (1) infinite lifetime if churn never occurs, (2) constant ARPU (no expansion or contraction), (3) churn is random rather than showing cohort-specific patterns. These assumptions are so wrong that this formula should be abandoned in favor of more accurate models.</p>
 
-<h3>The Gross Margin-Adjusted LTV: Accounting for Unit Economics</h3>
+<h2>The Gross Margin-Adjusted LTV: Accounting for Unit Economics</h2>
 
 <p>Revenue is not profit. A customer paying $100/month but costing $80/month to serve (hosting, customer success, payment processing) only contributes $20 to your lifetime value. High-growth SaaS companies focus on gross margin-adjusted LTV.</p>
 
@@ -141,7 +146,7 @@
 
 <p>This $1,500 represents the profit contribution from that customer over their expected lifetime. This is the number that matters for profitability—not the raw revenue they generate.</p>
 
-<h3>Cohort-Based LTV: The Real Predictor of Long-Term Value</h3>
+<h2>Cohort-Based LTV: The Real Predictor of Long-Term Value</h2>
 
 <p>Different customer cohorts have different retention patterns and expansion rates. Customers acquired 18 months ago might have 40% cumulative churn while customers acquired 6 months ago might have only 10% churn. These different cohorts have different LTVs, not a single company-wide LTV.</p>
 
@@ -157,7 +162,7 @@ Sum the revenue contribution from each cohort across all months of their lifecyc
 
 <p>This cohort approach reveals patterns: if recent cohorts show faster expansion than older cohorts, you have improving LTV trajectory. If recent cohorts show faster churn, your product quality has degraded.</p>
 
-<h3>Accounting for Expansion Revenue in LTV Calculation</h3>
+<h2>Accounting for Expansion Revenue in LTV Calculation</h2>
 
 <p>Many SaaS companies have expansion revenue where existing customers upgrade to higher tiers or add products. This expansion significantly increases LTV beyond initial contract value.</p>
 
@@ -172,7 +177,7 @@ A customer acquiring at $50/month who expands to $150/month by month 12 has much
 
 <p>The highest-value SaaS businesses are those with strong expansion (Net Revenue Retention above 130%) combined with low churn. This combination compounds—customers generate increasing revenue over time rather than constant or declining revenue.</p>
 
-<h3>Calculating Payback Period as Part of LTV Analysis</h3>
+<h2>Calculating Payback Period as Part of LTV Analysis</h2>
 
 <p>LTV doesn't exist in isolation—it must be considered alongside payback period. A customer with $5,000 LTV but $2,000 CAC and 30-month payback period is very different from a customer with $3,000 LTV but $500 CAC and 6-month payback period.</p>
 
@@ -182,7 +187,7 @@ A customer acquiring at $50/month who expands to $150/month by month 12 has much
 
 <p>For venture-scale SaaS, target payback periods of 12-18 months. Beyond 24 months, you're burning too much cash for too long before recovering acquisition costs. Shorter payback periods (6-12 months) allow for faster scaling and lower capital requirements.</p>
 
-<h3>Discount Rate and Present Value of LTV</h3>
+<h2>Discount Rate and Present Value of LTV</h2>
 
 <p>Technically, LTV should account for the time value of money. A dollar received today is worth more than a dollar received in two years. For SaaS businesses, this is often ignored in practice, but for rigorous financial modeling, apply a discount rate.</p>
 
@@ -192,7 +197,7 @@ A customer acquiring at $50/month who expands to $150/month by month 12 has much
 
 <p>Most startup investors understand this intuitively but don't require rigorous present value LTV calculations. However, for accurate financial modeling and valuation, present value matters.</p>
 
-<h3>Enterprise vs. SMB LTV: Segmentation Matters</h3>
+<h2>Enterprise vs. SMB LTV: Segmentation Matters</h2>
 
 <p>Enterprise customers have different LTV profiles than SMB customers. Enterprise typically has:
 - Higher initial ARPU
@@ -208,7 +213,7 @@ SMB typically has:
 
 Calculate segment-specific LTV. Your company LTV might be $5,000, but enterprise LTV might be $25,000 while SMB LTV is $1,500. This drives completely different go-to-market strategies and unit economics.</p>
 
-<h3>LTV Prediction: Forward-Looking vs. Backward-Looking</h3>
+<h2>LTV Prediction: Forward-Looking vs. Backward-Looking</h2>
 
 <p>There are two approaches to LTV: backward-looking (historical) and forward-looking (projected). Investors care about the forward-looking number because it determines whether unit economics are sustainable.</p>
 
@@ -218,7 +223,7 @@ Calculate segment-specific LTV. Your company LTV might be $5,000, but enterprise
 
 <p>The gap between historical and projected LTV tells a story. If projected LTV is significantly higher than historical LTV, you're either improving the product or delusional about future churn. If projected LTV is lower, you're facing headwinds you should address.</p>
 
-<h3>LTV Bridges and Waterfall Analysis</h3>
+<h2>LTV Bridges and Waterfall Analysis</h2>
 
 <p>Show investors an LTV bridge that details how you get from acquisition to lifetime value:
 
@@ -235,7 +240,7 @@ Starting point: Customer acquired
 
 This waterfall shows investors each assumption and makes the LTV number defensible. More importantly, it identifies which assumptions you're most uncertain about so you can run experiments or gather data to validate them.</p>
 
-<h3>Benchmarking LTV and Detecting Problems</h3>
+<h2>Benchmarking LTV and Detecting Problems</h2>
 
 <p>LTV varies by business model, but benchmarks exist:
 
@@ -265,7 +270,7 @@ If your LTV appears high relative to CAC (8x or higher) but CAC is very low, que
 </ul>
 </div>
 
-<h3>FAQ: Customer Lifetime Value Calculation</h3>
+<h2>FAQ: Customer Lifetime Value Calculation</h2>
 
 <p><strong>Q: Should I use gross margin or net margin in LTV?</strong>
 A: Use gross margin (revenue minus cost of goods sold). Net margin includes overhead allocation, which should be handled separately in profitability analysis. LTV should measure the profit directly attributable to serving that customer, which is gross margin.</p>
@@ -284,7 +289,7 @@ A: Include payment processing fees (typically 2-3% of revenue) in cost of goods 
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/arr-mrr-revenue.html" class="related-article-link">ARR vs MRR vs Revenue: Metrics That Actually Matter</a>
 <a href="/blog/annual-vs-monthly-saas-pricing.html" class="related-article-link">Annual vs Monthly SaaS Pricing: Impact on Churn and Cash Flow</a>
@@ -305,7 +310,7 @@ A: Include payment processing fees (typically 2-3% of revenue) in cost of goods 
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Build a Metrics Dashboard That You Will Actually Use Every Week">
 <meta property="og:description" content="Most startup dashboards are built once and abandoned within a month because they show too many metrics, require manual updates, or do not connect to the...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Finance Operations">
@@ -42,7 +44,10 @@
   "description": "Most startup dashboards are built once and abandoned within a month because they show too many metrics, require manual updates, or do not connect to the decisions the team actually makes. A useful dashboard shows 8-12 KPIs that update automatically, highlights deviations from plan, and takes less th",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Finance Operations",
   "wordCount": 1198,
   "timeRequired": "PT5M",
@@ -177,9 +185,9 @@
 
       <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-04-06 - Last updated: 2025-04-06</p>
 <p>Reading time: \~8 min</p>
-<h3>Why Most Dashboards Fail</h3>
+<h2>Why Most Dashboards Fail</h2>
 <p>The pattern is predictable. A founder decides they need a dashboard. They spend a week building an elaborate 30-metric view with charts, filters, and drill-downs. They check it daily for two weeks. Then a fundraise starts, or a product launch absorbs their attention, and the dashboard goes stale because half the metrics require manual data entry. The failure is not in the tools. It is in the design. A dashboard that requires manual input is a report that will eventually stop being produced. A dashboard with 30 metrics is a data dump, not a decision tool. A dashboard that does not show variance from plan is a rearview mirror without a speedometer.</p>
-<h3>The Three-Layer Dashboard Architecture</h3>
+<h2>The Three-Layer Dashboard Architecture</h2>
 <p>Build three views, not one. Each serves a different purpose and audience.</p>
 <p>Layer 1: CEO Daily View (5 metrics)</p>
 <p>This is the view you check every morning. It should load in under 3 seconds and answer one question: is anything on fire?</p>
@@ -189,11 +197,11 @@
 <p>This is the view the leadership team reviews every Monday. It covers the full KPI set: MRR and growth rate, CAC by top 3 channels, new customers this week and month, churn this month, gross margin, burn rate, pipeline value (if applicable), and the top 3 milestones with status. The weekly view should include a comparison to plan. For each metric, show: actual, plan, and variance (both absolute and percentage). Color-code: green if within 10% of plan, yellow if 10-20% off, red if more than 20% off. This visual system lets the team scan the dashboard in 2 minutes and focus discussion on red items.</p>
 <p>Layer 3: Investor Monthly View (10-12 metrics with trends) This is the view you share with investors in your monthly update. It includes the same metrics as the weekly view but with 6-12 months of historical trend data and narrative context.</p>
 <p>The investor view should be exportable as a PDF or built into your monthly update template. It should show each KPI with a small trend chart (sparkline), the current value, the plan value, and a one-line note on any material variance. This becomes the financial section of your investor update.</p>
-<h3>Tool Selection: What to Use at Each Stage</h3>
+<h2>Tool Selection: What to Use at Each Stage</h2>
 <p>Pre-seed / early seed | Google Sheets with automated data imports</p>
 <p>Seed with revenue | Metabase (free, open-source) or Notion dashboards</p>
 <p>Post-seed with engineering support Metabase, Looker, or Mode Analytics Series A+ | Looker, Tableau, or a dedicated FP&A tool like Mosaic</p>
-<h3>The Build Process</h3>
+<h2>The Build Process</h2>
 <p>Step 1: Define the metric list</p>
 <p>Use the 10 KPIs from the previous article. Remove any that you cannot currently measure. Add any that are business-specific and material (for a marketplace: fill rate, supply density. For e-commerce: average order value, return rate).</p>
 <p>Step 2: Identify data sources</p>
@@ -206,7 +214,7 @@
 <p>Daily: CEO checks the 5-metric view. Weekly: leadership team reviews the full dashboard in a 30-minute meeting. Monthly: CEO compiles the investor view and sends the update. Quarterly: full variance analysis against the financial model with model recalibration.</p>
 <p>*Key insight: The best dashboard I have worked with was at the platform after we installed an automated daily metrics email. Six numbers, every morning at 8am, color-coded against plan. No login required, no dashboard to open. The CEO read it on his phone during his commute. When something was red, we discussed it by 10am. When everything was green, we moved on. Simplicity is the feature that makes a dashboard sustainable.*</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Should I build the dashboard myself or hire someone?</p>
 <p class="faq-a">Build the first version yourself using Google Sheets or a free BI tool. Once you have defined exactly what you need and validated that you actually use it, invest in a more polished version. Hiring a data analyst to build a dashboard before you know what you need produces a beautiful product you do not use.</p>
@@ -220,12 +228,12 @@
 <p class="faq-a">Then it is not useful enough or not integrated into a ritual. The fix: make the weekly dashboard review a standing 30-minute meeting. Go through each KPI. Ask who owns the red metrics. Assign action items. When the dashboard drives the meeting, the team uses it.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>A useful dashboard has three layers: a daily CEO view (5 survival metrics), a weekly team view (10-12 KPIs with plan comparison), and a monthly investor view (trends and narrative). Automate as much as possible. Show actuals versus plan, not just actuals. Set alerts for critical thresholds. Establish a review cadence that ties the dashboard to decisions. Use simple tools: Google Sheets and Metabase will cover 90% of needs through Series A. The goal is not a beautiful dashboard. It is a dashboard you check every day and that changes how you run the company.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-use-sql-for-startup-analytics-the-queries-every-founder-should-know.html" class="related-article-link">How to Use SQL for Startup Analytics: The Queries Every Founder Should Know</a>
 <a href="/blog/the-10-kpis-every-founder-should-track-and-the-20-they-should-ignore.html" class="related-article-link">The 10 KPIs Every Founder Should Track (And the 20 They Should Ignore)</a>
@@ -246,7 +254,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

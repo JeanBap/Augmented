@@ -20,6 +20,8 @@
 <meta property="og:title" content="Multi-Currency Financial Models: How to Run Finance Across UK, US, and Europe">
 <meta property="og:description" content="Running a startup across multiple currencies is not just an accounting complexity --- it creates real economic exposure that will affect your P&amp;L, your ...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Financial Modeling">
@@ -42,7 +44,10 @@
   "description": "Running a startup across multiple currencies is not just an accounting complexity --- it creates real economic exposure that will affect your P&amp;L, your runway calculation, and your unit economics in ways that a single-currency model cannot capture. The founders who get this right build models in a f",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/multi-currency-financial-models-how-to-run-finance-across-uk-us-and-europe.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/multi-currency-financial-models-how-to-run-finance-across-uk-us-and-europe.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 1231,
   "timeRequired": "PT5M",
@@ -183,17 +191,17 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~8 min</p>
-<h3>What Is the Multi-Currency Problem in Startup Finance?</h3>
+<h2>What Is the Multi-Currency Problem in Startup Finance?</h2>
 <p>A startup operating across currencies earns revenue in one currency, pays costs in another, holds cash in both, and reports to investors in a third. Each translation creates FX exposure: the risk that exchange rate movements change the real value of the business's financial position. Key facts at a glance:</p>
 <p>UK startup with US | GBP/USD movement Revenue recognised in USD, customers | costs in GBP</p>
 <p>USD-functional company | GBP/USD movement UK team costs fluctuate in with UK ops | USD terms</p>
 <p>EUR entity paying USD | EUR/USD movement Vendor costs fluctuate in contracts | EUR terms</p>
 <p>Multi-entity group | All cross-entity Intercompany eliminations consolidation | currencies | required</p>
-<h3>The Functional vs. Presentation Currency Distinction</h3>
+<h2>The Functional vs. Presentation Currency Distinction</h2>
 <p>The first structural decision in a multi-currency model is distinguishing functional currency from presentation currency. Functional currency is the currency of the primary economic environment in which the entity operates. For a UK startup that earns most revenue in GBP and pays most costs in GBP, the functional currency is GBP. For a US Delaware C-corp that invoices in USD and pays its key staff in USD, the functional currency is USD, even if it has a UK subsidiary.</p>
 <p>Presentation currency is the currency in which you report financial statements. Many international startups present in USD for investor reporting, even when the functional currency of the operating entity is GBP or EUR. This requires translating the financial statements from functional to presentation currency at period-end rates.</p>
 <p>Key insight: The distinction matters because translation from functional to presentation currency creates exchange differences that sit in equity (not the P&L). Many founders confuse these translation differences with actual operating losses or gains, which distorts the reading of the model.</p>
-<h3>How to Build a Multi-Currency Model That Works</h3>
+<h2>How to Build a Multi-Currency Model That Works</h2>
 <p>Step 1: Define the functional currency for each entity.</p>
 <p>If you have a UK entity and a US entity, each has its own functional currency. Transactions within each entity are recorded in functional currency. Intercompany transactions require explicit FX translation. **Step 2: Apply a single functional currency for the model consolidation.**</p>
 <p>For investor reporting, pick one currency --- typically USD --- and translate all entities into it. Apply average rates for P&L items, closing rates for balance sheet items. Flag this methodology in the assumptions tab.</p>
@@ -202,19 +210,19 @@
 <p>A 10% movement in your main cross-currency pair is a realistic scenario over a multi-year model horizon. Show what a 10% depreciation of your revenue currency (or appreciation of your cost currency) does to gross margin and operating cash flow. This is a standard investor diligence question for any international business.</p>
 <p>Step 5: Model intercompany charges explicitly.</p>
 <p>If the UK entity provides services to the US entity (or vice versa), these intercompany charges need to be at arm's length for tax purposes and eliminated at consolidation for financial reporting. Build these flows explicitly rather than netting them out informally.</p>
-<h3>The Specific Challenges by Entity Structure</h3>
+<h2>The Specific Challenges by Entity Structure</h2>
 <p>UK Ltd operating with USD revenue:</p>
 <p>Revenue recorded in USD must be translated to GBP at the transaction rate or a monthly average rate. If GBP strengthens against USD, the translated GBP revenue is lower even if USD revenue grew. This is not a business problem --- it is a translation effect --- but it looks like one in the P&L if it is not clearly labelled.</p>
 <p>US Delaware C-corp with UK subsidiary:</p>
 <p>The UK subsidiary's costs (largely GBP) are translated into USD for consolidation. A weak GBP environment reduces the USD cost of the UK team. A strong GBP environment increases it. Model the UK subsidiary's P&L in GBP, then translate at the assumption rate for the US entity consolidation.</p>
 <p>Multi-entity with EUR operations (e.g. France, Italy, Romania): EUR-denominated costs and any EUR revenue need their own FX assumptions. The EUR/USD rate and EUR/GBP rate both matter. Build each entity's P&L in its functional currency, then translate to the presentation currency for the consolidated view.</p>
-<h3>The FX Assumptions Most Models Get Wrong</h3>
+<h2>The FX Assumptions Most Models Get Wrong</h2>
 <p>Using spot rates for multi-year forecasts. Spot rates are</p>
 <p>appropriate for today. For years two through five of a forecast, use forward rates or an explicitly stated assumption with a rationale. "We assume stable rates throughout the forecast period" is an acceptable assumption if stated explicitly. Implicitly assuming stable rates without flagging it is a model credibility issue.</p>
 <p>Not separating transaction exposure from translation exposure. Transaction exposure arises when you have a contractual obligation in a foreign currency (e.g. a USD invoice outstanding in a GBP entity). Translation exposure arises when you consolidate foreign subsidiaries. These require different treatments.</p>
 <p>Ignoring hedging costs. If the business uses FX forwards or other hedging instruments to manage currency exposure, the cost of those hedges belongs in the model. Hedging reduces volatility but is not free.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Should startup financial models use actual or forecast FX rates?</p>
 <p class="faq-a">Both, in different places. For the historical section of the model, use actual rates. For the forecast, use forward rates or explicitly stated assumptions based on a source. Flag all FX assumptions clearly in the assumptions tab with a note on methodology.</p>
@@ -228,12 +236,12 @@
 <p class="faq-a">A +/-10% movement in the primary cross-currency pairs affecting gross margin and operating cash flow. This covers most realistic FX scenarios over a 12-18 month window. For businesses with significant USD/GBP exposure, the post-Brexit rate history shows a range of approximately 1.10 to 1.45 over recent years, which is a wide band and worth stress-testing.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Multi-currency operations require multi-currency models. The key steps are: define functional currency for each entity, use a single presentation currency for investor reporting, build an explicit FX assumption table with sourced rates, run a 10% sensitivity on major cross-currency pairs, and model intercompany charges explicitly. The most common errors are using spot rates for multi-year forecasts, conflating translation effects with operating performance, and ignoring the cost of hedging. Get the structure right and the model will reconcile to actual bank balances across currencies --- which is the final test of whether it has been built correctly.</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
 <a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
@@ -254,7 +262,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

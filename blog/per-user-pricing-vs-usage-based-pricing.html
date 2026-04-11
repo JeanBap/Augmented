@@ -21,6 +21,8 @@
 <meta property="og:title" content="Per User Pricing vs Usage Based Pricing: Choosing Your SaaS Model">
 <meta property="og:description" content="Compare per-user vs usage-based SaaS pricing models: predictability, customer satisfaction, and revenue optimization.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1527014176846-936c46b41d40?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Unit Economics">
@@ -43,7 +45,10 @@
   "description": "Compare per-user vs usage-based SaaS pricing models: predictability, customer satisfaction, and revenue optimization.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -118,42 +123,42 @@
 
       <p>Two pricing models dominate SaaS: per-user (seat-based) pricing and usage-based (consumption) pricing. Per-user pricing charges a fixed amount per user per month; Slack charges $12.50 per user monthly on their Professional tier. Usage-based pricing charges based on consumption; AWS charges based on compute hours, storage, and data transfer. Each model has profound implications for revenue predictability, customer economics, and sales strategy.</p>
 
-      <h3>Per-User Pricing: Predictability and CAC Recovery</h3>
+      <h2>Per-User Pricing: Predictability and CAC Recovery</h2>
       <p>Per-user pricing offers significant advantages for SaaS startups. Revenue is predictable: if you have 500 customers with an average of 8 users each at $100 per user annually, your ARR is straightforward to calculate: $400,000. This predictability enables better cash flow management and financial planning. Investors love predictable recurring revenue; per-user pricing businesses command higher valuations than unpredictable, lumpy usage-based revenue.</p>
       <p>Per-user pricing also creates natural incentives for adoption. Organizations that add users increase their commitment and switching costs. A company with 50 users has higher lock-in than one with 5. Per-user pricing subtly incentivizes depth of adoption within existing customers.</p>
       <p>Finance teams prefer per-user pricing because they can budget easily. $100 per user annually is simple math; their CFO knows costs will grow predictably with headcount. This certainty makes SaaS budgeting easier, which accelerates purchasing decisions.</p>
       <p>However, per-user pricing has limitations. It can feel arbitrary if not all users benefit equally from your product. An organization might have 100 employees but only 30 actively using your tool daily. Charging for all 100 feels like a tax on inactive users. Additionally, per-user pricing can limit market expansion into price-sensitive segments where organizations have many potential users but low willingness to pay per user.</p>
 
-      <h3>Usage-Based Pricing: Alignment and Scaling</h3>
+      <h2>Usage-Based Pricing: Alignment and Scaling</h2>
       <p>Usage-based pricing aligns your revenue directly with customer value. When a customer uses your product more intensively, they derive more value and your revenue increases proportionally. This creates fairness perception: customers only pay for what they use. It also naturally improves unit economics as your best customers—those deriving maximum value—automatically pay the most.</p>
       <p>Usage-based pricing removes the "tax on inactive users" problem. An organization with 100 employees but only 30 daily active users pays for 30 users' worth of value, not 100. This eliminates purchase friction for large organizations where product adoption is uneven.</p>
       <p>Usage-based pricing also opens new customer segments. A startup with 20 employees might balk at paying for 20 users on a $100/user model ($24,000 annually), but happily pay based on actual usage if their consumption is modest ($200-500 monthly). Usage-based pricing can expand your addressable market.</p>
       <p>The downsides of usage-based pricing are substantial. Revenue becomes unpredictable. Customers' consumption varies month to month, making forecasting difficult. A customer might use 1,000 API calls one month and 10,000 the next. Your revenue is lumpy and hard to project. This unpredictability reduces enterprise value and makes fundraising more difficult.</p>
 
-      <h3>The Customer Psychology of Billing Models</h3>
+      <h2>The Customer Psychology of Billing Models</h2>
       <p>Usage-based pricing creates billing anxiety. Customers worry about surprise bills. What if they accidentally trigger millions of API calls? What's the bill then? This uncertainty delays purchase decisions. Many organizations require a spending cap (commit to not exceed $X monthly) before signing up for usage-based products.</p>
       <p>Per-user pricing creates different psychology. It's the price of doing business with clear parameters. However, it can create perverse incentives. Why would an organization remove inactive users if they're paying for them anyway? Some per-user products observe customers adding ghost users to inflate value perception without getting corresponding value.</p>
 
-      <h3>Hybrid Models: The Best of Both Worlds</h3>
+      <h2>Hybrid Models: The Best of Both Worlds</h2>
       <p>Many successful SaaS products use hybrid models that combine per-user and usage-based pricing. Slack charges per user monthly but also charges extra for message history, file storage, and advanced integrations. The per-user base is predictable; usage add-ons capture expansion revenue from power users.</p>
       <p>A project management tool might charge per team member ($30/month) but also charge usage-based fees for teams exceeding 50 projects monthly. The base tier captures core adoption; usage overage pricing scales with usage intensity.</p>
       <p>Hybrid models enable you to capture both the revenue predictability of per-user pricing and the expansion potential of usage-based pricing. This creates the most favorable economics for most SaaS startups.</p>
 
-      <h3>Usage Metrics and Defining Your Unit of Consumption</h3>
+      <h2>Usage Metrics and Defining Your Unit of Consumption</h2>
       <p>If you adopt usage-based pricing, choosing the right consumption metric is critical. Your metric should be strongly correlated with customer value. A document collaboration tool might use "active user count" (similar to per-user) or "documents created" or "bytes stored." The right metric depends on what drives value—if storage is the primary constraint, charge for storage; if active users are the constraint, charge per user (even if labeled as usage-based).</p>
       <p>Weak correlation between consumption metric and value creates problems. If you charge for API calls but customer value comes from the insights generated rather than call volume, pricing becomes feel arbitrary. A customer making 10,000 calls to perform a 100-call insight-generation process feels overcharged.</p>
 
-      <h3>Enterprise Expectations and Negotiation</h3>
+      <h2>Enterprise Expectations and Negotiation</h2>
       <p>Enterprise customers often request commitment-based pricing regardless of your model. "We'll commit to $100,000 annually in usage" combined with committed discounts appeals to enterprises who want predictable costs. Usage-based startups might offer 20-30% discounts to customers committing to minimum usage levels, converting variable revenue to predictable contracts.</p>
       <p>Enterprise also expects consumption thresholds and discounts. Much like tiered pricing, enterprise usage-based pricing might apply: first 10 million API calls at $0.10 each, next 10 million at $0.08 each, and so forth. Volume discounts incentivize larger commitment.</p>
 
-      <h3>Implementation Considerations</h3>
+      <h2>Implementation Considerations</h2>
       <p>Usage-based pricing requires robust metering and billing infrastructure. You must accurately track customer consumption, prevent fraud (customers shouldn't manually report usage), and bill consistently. Per-user pricing requires simple license management: who's assigned to which seat. Switching from per-user to usage-based (or vice versa) during your lifecycle is costly; choose carefully before implementing.</p>
 
-      <h3>Market Fit and Your Customer Base</h3>
+      <h2>Market Fit and Your Customer Base</h2>
       <p>Consider your customer's purchasing process. Enterprise customers often prefer per-user pricing because it's easier to budget. Startups and SMBs, especially those just beginning their journey with a category, often prefer usage-based pricing because it feels low-risk. A new customer might be hesitant to commit to 20 user seats but willing to try usage-based pricing and discover their actual consumption pattern.</p>
 
-      <h3>Key Takeaways</h3>
+      <h2>Key Takeaways</h2>
       <ul>
         <li>Per-user pricing offers revenue predictability and appeals to finance teams but can feel unfair with uneven adoption</li>
         <li>Usage-based pricing aligns revenue with customer value and removes inactive user costs but creates billing unpredictability</li>
@@ -162,7 +167,7 @@
         <li>Consider your target market's preferences; startups often prefer usage-based, enterprises prefer per-user predictability</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h2>Frequently Asked Questions</h2>
       <p><strong>Can I switch from per-user to usage-based pricing?</strong> Yes, but plan the transition carefully. Offer both options during transition, grandfathering existing customers at current pricing. Use new cohorts to test usage-based model, giving you 6-12 months to assess impact before converting all customers. Transparency during transition prevents churn.</p>
       <p><strong>What consumption metric should I use?</strong> Choose metrics with the strongest correlation to customer value. For data products, storage or query count. For collaboration tools, active users or documents created. Survey customers about what truly drives value and base your metric there.</p>
       <p><strong>How do I prevent billing surprises with usage-based pricing?</strong> Implement usage alerts that notify customers when approaching spending thresholds. Offer spending caps customers can set. Provide clear, transparent dashboards showing current month usage and projected costs. Some of the best usage-based products provide "surprise prevention" features that delight customers.</p>
@@ -172,7 +177,7 @@
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/arr-mrr-revenue.html" class="related-article-link">ARR vs MRR vs Revenue: Metrics That Actually Matter</a>
 <a href="/blog/calculate-cac.html" class="related-article-link">How to Calculate Customer Acquisition Cost (CAC) Correctly</a>
@@ -193,7 +198,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

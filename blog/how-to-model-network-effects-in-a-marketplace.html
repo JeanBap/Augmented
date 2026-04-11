@@ -20,6 +20,8 @@
 <meta property="og:title" content="How to Model Network Effects in a Marketplace">
 <meta property="og:description" content="Network effects --- the property that a product becomes more valuable as more people use it --- are one of the most powerful competitive moats in busine...">
 <meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Unit Economics">
@@ -42,7 +44,10 @@
   "description": "Network effects --- the property that a product becomes more valuable as more people use it --- are one of the most powerful competitive moats in business. But they are also one of the most frequently claimed and least rigorously modelled dynamics in startup pitches. Claiming network effects without",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -50,6 +55,9 @@
   },
   "url": "https://www.raisereadybook.com/blog/how-to-model-network-effects-in-a-marketplace.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/how-to-model-network-effects-in-a-marketplace.html",
+  "image": "https://www.raisereadybook.com/og-image.png",
+  "datePublished": "2025-01-15",
+  "dateModified": "2026-04-11",
   "articleSection": "Unit Economics",
   "wordCount": 1358,
   "timeRequired": "PT6M",
@@ -182,7 +190,7 @@
       <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
 <p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
 <p>Reading time: \~7 min</p>
-<h3>What Network Effects Are (and Are Not)</h3>
+<h2>What Network Effects Are (and Are Not)</h2>
 <p>A network effect exists when the value of the product increases as more users join. There are two relevant types for marketplaces: Direct network effects: Each additional user makes the product more valuable for all existing users. Example: a professional network where more connections means more value for every member.</p>
 <p>Indirect (two-sided) network effects: More supply makes the platform more valuable for demand, and more demand makes the platform more valuable for supply. This is the standard marketplace dynamic. More workers on a staffing platform means employers find staff faster. More employers means workers get more shifts.</p>
 <p>What is not a network effect:</p>
@@ -193,12 +201,12 @@
 <p>Lower CAC from brand recognition building over time (brand effects,</p>
 <p>not network effects)</p>
 <p>The test: if you removed half the users from the platform tomorrow, would the product be significantly worse for the remaining users? If yes: network effects. If no: something else.</p>
-<h3>The Marketplace Flywheel Model</h3>
+<h2>The Marketplace Flywheel Model</h2>
 <p>The two-sided marketplace flywheel works as follows:</p>
 <p>More demand-side supply</p>
 <p>The flywheel does not spin automatically. It requires sufficient density on both sides in a specific geography or category. A marketplace that has broad coverage but thin density --- many geographies, few workers or products in each --- does not have network effects. It has fragmented supply that does not improve the demand-side experience.</p>
 <p>The critical modelling question: at what supply density does the flywheel become self-reinforcing?</p>
-<h3>How to Model Network Effects in a Financial Model</h3>
+<h2>How to Model Network Effects in a Financial Model</h2>
 <p>Most financial models do not explicitly model network effects --- they model the outcome (declining CAC, improving NRR, rising LTV) without attributing it to the mechanism. A model that explicitly models network effects requires three things:</p>
 <p>1. Define the density threshold.</p>
 <p>What is the minimum supply density in a given market segment or geography for the network effect to be active? For a local staffing marketplace, this might be: enough workers to fill 90% of open shifts within 4 hours. Below this threshold, the network effect is not yet active. Above it, each additional worker improves fill rate on the margin.</p>
@@ -206,7 +214,7 @@
 <p>Build supply and demand counts by geography or category. When the supply:demand ratio in a specific market passes the density threshold, begin modelling the reduced CAC, improved NRR, or higher transaction frequency that the network effect produces.</p>
 <p>3. Separate network effect benefits from organic growth.</p>
 <p>The model should show the baseline unit economics without network effects and then show the incremental improvement as density passes the threshold. This makes the network effect assumption explicit and testable rather than baked into an improving growth rate curve with no attribution.</p>
-<h3>What Network Effect Claims Investors Scrutinise</h3>
+<h2>What Network Effect Claims Investors Scrutinise</h2>
 <p>Investors hear "network effects" in most marketplace pitches. The claims that hold up under scrutiny have evidence. The ones that do not have narrative.</p>
 <p>Claims that hold up:</p>
 <p>"Fill rate in markets where we have 200+ workers is 94%. In markets</p>
@@ -223,13 +231,13 @@
 <p>"Our NRR improves as we scale." (Does it improve in specific</p>
 <p>markets as density increases, or is it improving globally as the product matures?)</p>
 <p>The evidence standard for network effects is market-level data showing the relationship between density and the unit economic metric it is supposed to improve.</p>
-<h3>The Cold Start Problem: Modelling the Threshold</h3>
+<h2>The Cold Start Problem: Modelling the Threshold</h2>
 <p>The cold start problem is the primary challenge for marketplace network effects: the flywheel does not spin until sufficient density is reached, but reaching that density requires investing before the flywheel produces returns.</p>
 <p>Modelling the cold start requires:</p>
 <p>Supply subsidy economics: What does it cost to seed supply density in a new market? For a staffing marketplace, this might be the cost of guaranteed minimum hours or premium rates for early workers. Model this as a market entry cost with an explicit density target and timeline. Time to threshold: How long does it take to reach network effect density in a new market? This determines the payback horizon for market expansion. If it takes 6 months and £50k in supply subsidy to reach threshold density in a new geography, that is the effective CAC for the market, and it should appear in the model.</p>
 <p>Threshold sensitivity: What happens if the density threshold is higher than modelled? A market entry cost model that assumes 6 months to threshold should show what happens if it takes 9 months. This is the most important sensitivity for marketplace expansion models.</p>
 <div class="faq-section">
-<h3>Frequently Asked Questions</h3>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-card">
 <p class="faq-q">Do all marketplaces have network effects?</p>
 <p class="faq-a">No. Many businesses described as marketplaces have supply-demand matching but no meaningful network effect. If the value of the platform to a buyer is not materially improved by having twice as many sellers (because the buyer only needs one good match, and additional sellers are irrelevant once that match is made), the network effect is weak or absent. The strength of network effects varies significantly by marketplace type.</p>
@@ -243,14 +251,14 @@
 <p class="faq-a">For transaction marketplaces, the liquidity network effect is specifically the improvement in transaction success rate (fill rate, match quality, speed) as more participants are present on both sides in a specific category or location. This is the most practically relevant network effect for early-stage marketplace companies and the one most amenable to measurement with existing transaction data.</p>
 </div>
 </div>
-<h3>Summary</h3>
+<h2>Summary</h2>
 <p>Network effects in marketplaces are real, powerful, and frequently overclaimed. Modelling them requires defining the density threshold at which they activate, building supply-demand balance by market, and separating the network effect contribution from organic growth. The evidence standard for investor conversations is market-level data showing the relationship between supply density and the unit economic outcome (fill rate, NRR, CAC) that the network effect is supposed to improve. Claims without this data are narratives. Claims with it are analyses. Be the founder with the analysis.</p>
-<h3>About the Author</h3>
+<h2>About the Author</h2>
 <p>Yanni Papoutsi is the author of *Raise Ready: The Founder's Guide to Financial Models That Close Rounds* and a Finance and Strategy executive with a Master's in Finance and Leadership. Having raised across multiple rounds alongside investors including Creandum, Profounders, B2Ventures, and Boost Capital, and contributed to a successful exit, Yanni works with early-stage founders on financial modelling, fundraising preparation, and marketplace analytics. [[Connect on LinkedIn]{.underline}](https://linkedin.com/in/theyanni/) · Work with Yanni · Read \Raise Ready\</p>
 
     </div>
     <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html" class="related-article-link">CAC, LTV, and Payback Period: Calculated Correctly for Once</a>
 <a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html" class="related-article-link">Why Blended CAC Is a Lie (And How to Model It by Channel)</a>
@@ -271,7 +279,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>

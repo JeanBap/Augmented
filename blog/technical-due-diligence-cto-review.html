@@ -21,6 +21,8 @@
 <meta property="og:title" content="Technical Due Diligence: Getting Ready for CTO and Engineering Review">
 <meta property="og:description" content="Technical due diligence guide: code review, architecture, scalability, security. How to prepare your tech team and codebase for investor scrutiny.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
 <meta property="article:author" content="Yanni Papoutsi">
 <meta property="article:section" content="Finance Ops">
@@ -43,7 +45,10 @@
   "description": "Technical due diligence guide: code review, architecture, scalability, security. How to prepare your tech team and codebase for investor scrutiny.",
   "author": {
     "@type": "Person",
-    "name": "Yanni Papoutsi"
+    "name": "Yanni Papoutsi",
+    "url": "https://www.raisereadybook.com/about/",
+    "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"],
+    "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"]
   },
   "publisher": {
     "@type": "Organization",
@@ -120,7 +125,7 @@
 
       <p>For technical founders, technical due diligence can feel invasive—an investor is essentially auditing your engineering capability. But approached correctly, technical due diligence is an opportunity to demonstrate that you've built a solid technical foundation and that you have a realistic technical roadmap.</p>
 
-      <h3>What Investor CTOs Look For</h3>
+      <h2>What Investor CTOs Look For</h2>
       <p><strong>Code quality and practices:</strong> Is your code well-structured, documented, and maintainable? Are you following best practices for version control, testing, and deployment? An investor CTO will pull your code and review it for quality indicators: test coverage, code comments, architecture clarity, and adherence to known design patterns.</p>
 
       <p><strong>Scalability and performance:</strong> Can your technology scale as you grow? If you're serving 1,000 customers today, can your infrastructure handle 100,000? Investor CTOs assess your architecture for scalability bottlenecks. Common issues: database queries not optimized, no caching layer, hardcoded assumptions about scale, or infrastructure that requires manual intervention to scale.</p>
@@ -133,7 +138,7 @@
 
       <p><strong>Roadmap and technology choices:</strong> Is your technical roadmap realistic and achievable? Have you made sound technology choices (frameworks, databases, infrastructure) that will scale with your company? Investor CTOs want to ensure your roadmap won't be derailed by technical decisions.</p>
 
-      <h3>Preparing Your Codebase for Review</h3>
+      <h2>Preparing Your Codebase for Review</h2>
       <p><strong>Organize your GitHub or code repository:</strong> Your code repository should be well-organized with clear naming conventions, documented structure, and up-to-date README files. An investor CTO's first impression is often from browsing your repo. Make it easy for them to navigate and understand.</p>
 
       <p><strong>Ensure code is production-ready:</strong> Remove debug code, unused branches, and testing artifacts. Your repo should reflect only production-quality code and legitimate development branches. Debug code or commented-out sections signal sloppy practices.</p>
@@ -146,7 +151,7 @@
 
       <p><strong>Include architecture diagrams or documentation:</strong> If you have a microservices architecture or complex system design, include diagrams or documentation. This helps investor CTOs understand how the system works without needing to reverse-engineer it from code.</p>
 
-      <h3>Infrastructure and Operations</h3>
+      <h2>Infrastructure and Operations</h2>
       <p><strong>Cloud infrastructure:</strong> Most modern startups use cloud infrastructure (AWS, GCP, Azure). Be prepared to explain your infrastructure: which services you're using, how you've architected for reliability, and your auto-scaling setup. Investor CTOs will want to verify that your infrastructure can handle growth.</p>
 
       <p><strong>Monitoring and alerts:</strong> Do you have monitoring in place to detect when your system is having issues? Are there alerts that notify your team of problems? Lack of monitoring suggests you're not prepared for operating at scale.</p>
@@ -157,7 +162,7 @@
 
       <p><strong>Security practices:</strong> Beyond secure coding, investor CTOs assess operational security. Are you rotating credentials? Are there access controls on who can deploy to production? Is there logging to track who did what and when? These operational security practices matter as much as code-level security.</p>
 
-      <h3>Scalability Assessment</h3>
+      <h2>Scalability Assessment</h2>
       <p>Investor CTOs often perform a scalability audit: they look at your system under load and assess where bottlenecks emerge. Common issues:</p>
 
       <p><strong>Database scalability:</strong> If all your data is in a single database and your database queries aren't optimized, you'll hit a wall as data volume grows. Investor CTOs assess whether you've designed for scalability: indexing, partitioning, caching, or sharding.</p>
@@ -168,28 +173,28 @@
 
       <p><strong>API rate limiting and throttling:</strong> If you have a public API, do you have rate limiting to prevent abuse? This is both a scalability and security practice.</p>
 
-      <h3>Team and Hiring</h3>
+      <h2>Team and Hiring</h2>
       <p><strong>Engineering team overview:</strong> Provide a list of engineers with their roles, experience, and background. Investor CTOs will want to assess team capability. A mix of senior and junior engineers is healthy; all senior engineers suggests inability to scale, and all junior engineers suggests lack of experience.</p>
 
       <p><strong>Engineering process and practices:</strong> How do you organize engineering work? Do you use sprints, agile, or another methodology? Do you have code review processes? Investor CTOs want to see that you have a mature engineering process, not just hacking.</p>
 
       <p><strong>Hiring and growth plan:</strong> How many engineers do you plan to hire? What roles? Investor CTOs want to understand whether your headcount plan is realistic and whether you'll be able to attract and retain talent. Hiring plans that assume 5x engineer growth in a year are ambitious and will be scrutinized.</p>
 
-      <h3>Product Roadmap and Technology Choices</h3>
+      <h2>Product Roadmap and Technology Choices</h2>
       <p><strong>Feature roadmap:</strong> What are your top product priorities for the next 6–12 months? Investor CTOs want to ensure your roadmap is realistic given your team size and technical constraints. If you're a team of three engineers planning to ship 30 major features in a year, that's not realistic.</p>
 
       <p><strong>Technology stack justification:</strong> Be prepared to justify your technology choices. Why did you choose your language, framework, database? If you're using an unusual or niche technology, have good reasons. Investor CTOs worry about technology choices that limit hiring (very few engineers know your chosen language) or that don't scale well.</p>
 
       <p><strong>Technical debt and refactoring plans:</strong> Acknowledge technical debt and have a plan to address it. Investor CTOs want to see that you're aware of debt and that you're allocating engineering time to reduce it. Debt that's spiraling out of control is a red flag.</p>
 
-      <h3>Security and Compliance</h3>
+      <h2>Security and Compliance</h2>
       <p><strong>Data handling practices:</strong> If you handle sensitive data (customer data, payment information, healthcare information), explain your security practices. Are you encrypting data? Have you undergone security audits? Do you have a security policy or incident response plan?</p>
 
       <p><strong>Compliance certifications:</strong> For some industries, you may have regulatory compliance requirements (HIPAA for healthcare, PCI DSS for payment processing, GDPR for European data). Have you pursued these certifications or have a plan to? Investor CTOs will assess your compliance readiness.</p>
 
       <p><strong>Third-party dependencies:</strong> If your product relies on third-party libraries or services, investor CTOs want to understand these dependencies and their reliability. Relying on a single third-party API that you can't replace is a risk.</p>
 
-      <h3>Red Flags in Technical Due Diligence</h3>
+      <h2>Red Flags in Technical Due Diligence</h2>
       <p><strong>No code repository or closed-source codebase:</strong> If you can't or won't share your code with investor CTOs, that's a red flag. Most modern companies have code repositories (GitHub, GitLab); closed-source is unusual unless there's a specific reason.</p>
 
       <p><strong>Extremely high technical debt:</strong> Some debt is normal; massive amounts of debt suggest poor engineering practices or emergency-driven development. Investor CTOs will worry that debt will slow you down or require a major rewrite.</p>
@@ -202,7 +207,7 @@
 
       <p><strong>Undocumented or very complex architecture:</strong> If your architecture is so complex that it's hard to understand, or if it's completely undocumented, investor CTOs will worry about maintainability and future scaling.</p>
 
-      <h3>The Technical Interview</h3>
+      <h2>The Technical Interview</h2>
       <p>Investor CTOs will typically conduct technical interviews with your team. Be prepared for:</p>
 
       <p><strong>Architecture walkthrough:</strong> Walk through your system architecture: components, how they interact, data flow. Be prepared to explain design decisions.</p>
@@ -215,7 +220,7 @@
 
       <p><strong>Code walkthrough:</strong> Be prepared to walk through key parts of your codebase. Investor CTOs might ask you to explain specific functions or architectural decisions.</p>
 
-      <h3>Key Takeaways</h3>
+      <h2>Key Takeaways</h2>
       <ul>
         <li><strong>Code organization and quality matter:</strong> A well-organized, documented codebase signals engineering maturity. Clean up and document before due diligence.</li>
         <li><strong>Scalability is critical:</strong> Investor CTOs assess whether your architecture can scale. Have clear plans for scaling database, application, and infrastructure.</li>
@@ -226,7 +231,7 @@
         <li><strong>Prepare your team for technical interviews:</strong> Engineers should be able to discuss architecture and technical decisions thoughtfully and confidently.</li>
       </ul>
 
-      <h3>FAQ: Technical Due Diligence</h3>
+      <h2>FAQ: Technical Due Diligence</h2>
       <p><strong>Q: What if my codebase is messy or not well-documented?</strong><br>
       A: Spend a week or two cleaning up. Add comments to important sections, organize code structure, add a comprehensive README. You don't need to achieve perfection, but clean, readable code and basic documentation show you care about quality.</p>
 
@@ -245,7 +250,7 @@
 
 
 <div class="related-articles">
-<h3>Related Articles</h3>
+<h2>Related Articles</h2>
 <div class="related-articles-list">
 <a href="/blog/burn-rate-trends-early-warning-dashboards.html" class="related-article-link">Burn Rate Trends: Creating Early Warning Dashboards for Startups</a>
 <a href="/blog/burn-rate-by-department-cash-flow-analysis.html" class="related-article-link">Burn Rate by Department: Granular Cash Flow Analysis for Startups</a>
@@ -266,7 +271,7 @@
 </div>
     </div>
   <section class="newsletter-signup rr-brevo-newsletter">
-    <h3>The Raise Ready Weekly</h3>
+    <h2>The Raise Ready Weekly</h2>
     <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
     <form class="newsletter-form" id="rr-brevo-form">
       <input type="email" name="email" placeholder="you@company.com" required>
