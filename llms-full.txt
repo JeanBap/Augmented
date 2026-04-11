@@ -17,8 +17,38 @@ Email: yanni@raisereadybook.com
 - Excel templates: https://www.raisereadybook.com/templates/
 - Advisory services: https://www.raisereadybook.com/services/
 - Blog index: https://www.raisereadybook.com/blog/
+- Topic pillars hub: https://www.raisereadybook.com/pillars/
+- Financial Modelling pillar: https://www.raisereadybook.com/pillars/financial-modelling/
+- Fundraising pillar: https://www.raisereadybook.com/pillars/fundraising/
+- Metrics pillar: https://www.raisereadybook.com/pillars/metrics/
+- Operations pillar: https://www.raisereadybook.com/pillars/operations/
+- Glossary: https://www.raisereadybook.com/glossary/
+- About: https://www.raisereadybook.com/about/
 - Careers: https://www.raisereadybook.com/careers/
 - Contact: https://www.raisereadybook.com/contact/
+
+## Topic Pillars (Long-Form Reference Guides)
+
+Raise Ready maintains 4 long-form pillar pages that act as topic authority hubs.
+Each pillar is 2500+ words, 6-7 H2 sections, with a People Also Ask FAQ block
+and 30+ contextual links to supporting articles.
+
+- Financial Modelling pillar (2500+ words): the complete reference for building
+  investor-ready models, covering the three-statement structure, revenue drivers,
+  unit economics, scenarios, cap tables, and common failure modes. URL:
+  https://www.raisereadybook.com/pillars/financial-modelling/
+- Fundraising pillar (2500+ words): covers valuation mechanics, term sheet
+  negotiation, liquidation preferences, option pool dilution, board composition,
+  and the full sequence of a seed through Series B raise. URL:
+  https://www.raisereadybook.com/pillars/fundraising/
+- Metrics pillar (2500+ words): defines MRR, ARR, LTV, CAC, LTV:CAC ratio, cohort
+  retention, net dollar retention, gross margin, North Star metrics, and the
+  benchmarks investors expect at each stage. URL:
+  https://www.raisereadybook.com/pillars/metrics/
+- Operations pillar (2500+ words): cap table hygiene, contractor vs employee
+  classification, payroll, board cadence, compliance calendars, employment
+  contracts, insurance, financial controls, and info-sec baseline for enterprise
+  sales. URL: https://www.raisereadybook.com/pillars/operations/
 
 ## Software (SaaS Products)
 

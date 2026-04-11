@@ -5,7 +5,13 @@ https://www.raisereadybook.com/book/
 https://www.raisereadybook.com/careers/
 https://www.raisereadybook.com/contact/
 https://www.raisereadybook.com/founder-questionnaire.html
+https://www.raisereadybook.com/glossary/
 https://www.raisereadybook.com/jobboard/
+https://www.raisereadybook.com/pillars/financial-modelling/
+https://www.raisereadybook.com/pillars/fundraising/
+https://www.raisereadybook.com/pillars/
+https://www.raisereadybook.com/pillars/metrics/
+https://www.raisereadybook.com/pillars/operations/
 https://www.raisereadybook.com/search/
 https://www.raisereadybook.com/services/
 https://www.raisereadybook.com/software/financial-model-builder/

@@ -49,4 +49,11 @@ Raise Ready is a financial intelligence platform by Yanni Papoutsi. It covers th
 - Software: https://www.raisereadybook.com/software/
 - Services: https://www.raisereadybook.com/services/
 - Blog: https://www.raisereadybook.com/blog/
+- Pillars: https://www.raisereadybook.com/pillars/
+- Financial Modelling pillar: https://www.raisereadybook.com/pillars/financial-modelling/
+- Fundraising pillar: https://www.raisereadybook.com/pillars/fundraising/
+- Metrics pillar: https://www.raisereadybook.com/pillars/metrics/
+- Operations pillar: https://www.raisereadybook.com/pillars/operations/
+- Glossary: https://www.raisereadybook.com/glossary/
+- About: https://www.raisereadybook.com/about/
 - Sitemap: https://www.raisereadybook.com/sitemap.xml
