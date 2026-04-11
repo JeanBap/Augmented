@@ -71,6 +71,29 @@ const LENS_LABELS = {
 };
 
 const CATCHALL_SLUGS = new Set(['any-stage', 'how-to']);
+
+// Longer SEO-optimised <title> overrides. If a tag hub is here, the generator
+// uses this string instead of `${label} | Raise Ready`. This lives on top of
+// the generator rather than the static HTML so Netlify rebuilds don't regress.
+// Keys are `${dimension}/${slug}`.
+const SEO_TITLE_OVERRIDES = {
+  'stage/pre-seed': 'Pre-Seed Stage Guides: Idea to First Check | Raise Ready',
+  'stage/seed': 'Seed Stage Startup Guides: Fundraising & Metrics | Raise Ready',
+  'stage/exit': 'Exit Stage Guides: M&A, IPO, Sale Readiness | Raise Ready',
+  'topic/financial-model': 'Financial Modeling Guides for Startups | Raise Ready',
+  'topic/valuation': 'Startup Valuation Guides: Methods & Calculators | Raise Ready',
+  'topic/exit-planning': 'Exit Planning Guides: M&A, Valuation, Post-Close | Raise Ready',
+  'topic/fundraising-general': 'Startup Fundraising Guides: Pre-Seed to Series B | Raise Ready',
+  'topic/unit-economics': 'Unit Economics Guides: LTV, CAC, Payback | Raise Ready',
+  'topic/cap-table': 'Cap Table Management Guides: SAFEs & Dilution | Raise Ready',
+  'topic/growth-gtm': 'Growth & GTM Strategy Guides for Startups | Raise Ready',
+  'topic/metrics-kpis': 'Startup Metrics & KPI Guides (MRR, NRR, LTV) | Raise Ready',
+  'topic/pitch-deck': 'Pitch Deck Guides: Templates, Slides & Investor Tips | Raise Ready',
+  'topic/investor-relations': 'Investor Relations Guides for Startup Founders | Raise Ready',
+  'topic/burn-runway': 'Burn Rate & Runway Management Guides | Raise Ready',
+  'topic/term-sheet': 'Term Sheet Guides: Key Terms & Negotiation | Raise Ready',
+  'topic/founder-psychology': 'Founder Psychology Guides: Mental Health & Resilience | Raise Ready',
+};
 const MIN_HUB_POSTS = 5;
 
 const HUB_BLURBS = {
@@ -174,7 +197,7 @@ function renderHubPage(hub) {
   const { dimension, slug, label, posts } = hub;
   const url = `${SITE_URL}/tag/${dimension}-${slug}.html`;
   const dimLabel = dimension === 'stage' ? 'Funding Stage' : dimension === 'topic' ? 'Topic' : 'Format';
-  const title = `${label} | Raise Ready`;
+  const title = SEO_TITLE_OVERRIDES[`${dimension}/${slug}`] || `${label} | Raise Ready`;
   const blurb = HUB_BLURBS[`${dimension}/${slug}`]
     || `All Raise Ready writing tagged ${label.toLowerCase()}. Practical playbooks, frameworks, and post-mortems for startup founders.`;
   const description = truncate(blurb, 158);

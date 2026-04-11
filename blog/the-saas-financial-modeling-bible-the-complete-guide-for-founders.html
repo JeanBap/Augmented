@@ -195,7 +195,7 @@
       </div>
       <a href="/products/saas-modeling-bible-free/The_SaaS_Financial_Modeling_Bible.pdf" download style="display:inline-block;padding:0.6rem 1.4rem;background:var(--gold,#c8a45a);color:var(--ink,#08080d);font-family:var(--mono,'DM Mono',monospace);font-size:0.8rem;font-weight:500;border-radius:6px;text-decoration:none;white-space:nowrap;">Download PDF</a>
     </div>
-<h1>Part I: Foundations</h1>
+<h2>Part I: Foundations</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 1: What a SaaS Financial Model Actually Is (and What It Isn&#039;t)</h2>
@@ -225,7 +225,7 @@
 <p>Beyond just listing assumptions, a professional assumptions tab explains the logic. Why is churn 5% per month? Because customer cohort analysis shows that 60% of customers retain after year one, which calculates to a 5% monthly churn rate. Why is CAC $12,000? Because your sales team costs $150k per year fully loaded, each salesperson closes 15 deals per year, so the fully loaded cost per deal is $10,000. Plus marketing overhead at 20%, so $12,000 total. This logic allows an investor to either accept or challenge the assumption. They might say &#039;I think CAC is too low because you are not accounting for marketing overhead&#039;, or &#039;I think churn will be higher because your customer profile is more at-risk than typical cohorts&#039;. Those are productive conversations.</p>
 <p>One advanced technique used by professional modelers is scenario-based assumptions. Instead of a single set of assumptions, you document a base case, a bull case, and a bear case. The base case reflects what you think is most likely given current data. The bull case reflects the upside if execution is excellent and the market tailwinds are strong. The bear case reflects a more conservative view or what happens if some key assumption turns out to be wrong. By modeling all three, you show that you have thought about risks and upside, not just blindly projected the most optimistic scenario.</p>
 <p>Finally, the assumptions tab should include a sensitivity analysis section. This shows how sensitive the model is to changes in key variables. For example, a 1% increase in churn might reduce three-year revenue by 15%. A 10% decrease in CAC allows you to hit profitability one year earlier. These sensitivities tell you which assumptions matter most and which are second-order. They also give investors a sense of how resilient the business is. A model that is devastated by small changes in key variables is riskier than one that is relatively robust.</p>
-<h1>Part II: Revenue Modeling</h1>
+<h2>Part II: Revenue Modeling</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 4: Driver-Based Revenue Modeling (MRR/ARR from First Principles)</h2>
@@ -279,7 +279,7 @@
 <p>Revenue, under accrual accounting, is the amount recognized according to revenue recognition rules (typically ASC 606). For the $120,000 annual contract, regardless of billing, you recognize $10,000 per month in revenue under the subscription model. So in the month of January, you have $120,000 in bookings, some amount of billings (depending on payment terms), and $10,000 in revenue recognition.</p>
 <p>This matters enormously for cash flow. If you sign a $120,000 contract upfront and bill it upfront, you get $120,000 in cash in January. But your P&amp;L only records $10,000 in revenue that month. For the first three months, you have cash in the bank that has not yet been recognized as revenue. This is deferred revenue, a liability on your balance sheet. This gap between cash and revenue is critical for forecasting your runway and understanding your cash position.</p>
 <p>Professional models track all three. The bookings tab or forecast shows what sales you expect to close. The billings forecast shows when you expect to collect cash based on payment terms (net-30, net-60, upfront, or a mix). The revenue forecast shows what you will recognize on your P&amp;L each month according to ASC 606. They are three different pictures of the same underlying business, and all three matter for different purposes: bookings drive sales targets, revenue drives investor growth narratives, and billings drive cash forecasting.</p>
-<h1>Part III: Cost Structure</h1>
+<h2>Part III: Cost Structure</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 9: COGS in SaaS (Hosting, Support, CS - What Belongs and What Doesn&#039;t)</h2>
@@ -325,7 +325,7 @@
 <p>Under ASC 718 (Accounting for Stock Compensation), all stock-based compensation must be expensed on your P&amp;L. The expense is calculated using a fair value method (typically Black-Scholes for options). When you grant an employee 10,000 options over a four-year vesting period, you do not take the full expense in month one. Instead, you recognize 1/48 of the grant value each month over the four-year period. This is called amortization.</p>
 <p>For modeling purposes, SBC is typically 8-15% of total compensation on top of base salary and benefits. So if your total payroll is $10M per year including base, benefits, and taxes, you might add another $1.2M for SBC as an operating expense. This is an area where many founders underestimate because the impact on cash flow is muted (the actual cash outflow of SBC is primarily when the company is first funded and equity is created, not when it is expensed). But the P&amp;L impact is real and should be modeled.</p>
 <p>A professional model tracks SBC by cohort of employees (early hires typically get larger grants, later hires get smaller grants) and models the expensing schedule. When you hire the first engineer at a $100k salary in month 1 with a $200k grant vesting over four years, the monthly cash cost is $100k salary but the monthly P&amp;L cost is $100k salary plus $200k/48 = $104.2k. This is why SaaS company P&amp;L losses are often larger than cash burn in early stages: SBC is a big non-cash expense.</p>
-<h1>Part IV: Unit Economics</h1>
+<h2>Part IV: Unit Economics</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 13: CAC Calculated Correctly (Blended vs Segmented, by Channel)</h2>
@@ -358,7 +358,7 @@
 <p>NRR is the single most predictive metric for SaaS business health. A company with 100%+ NRR is adding revenue from existing customers faster than it is losing it to churn. This is the holy grail of SaaS because it means your installed base is growing in value, which allows sustainable growth even if new customer acquisition slows. Companies with 100%+ NRR typically grow faster with lower customer acquisition costs than companies with 90% NRR, even if they are in the same market.</p>
 <p>The reason NRR is so predictive is that it captures the product&#039;s stickiness, unit economics, and the product-market fit. If NRR is below 100%, you are losing more to churn than you gain from expansion, which is ultimately unsustainable. If NRR is above 120%, you are creating a compounding growth engine where the business becomes easier to grow over time. Investors will focus heavily on NRR, especially at Series A and beyond.</p>
 <p>In your financial model, NRR should be explicitly calculated and tracked quarterly or annually. It should be based on cohort data, not blended averages (see Chapter 14 on LTV). By tracking NRR by cohort, you can see if your product improvements are working and if newer cohorts have better retention and expansion than earlier cohorts. This is the kind of granular insight that separates investors from founders who understand their business at a deep level.</p>
-<h1>Part V: Cash Flow and Balance Sheet</h1>
+<h2>Part V: Cash Flow and Balance Sheet</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 17: The Cash Flow Statement Most Founders Get Wrong</h2>
@@ -393,7 +393,7 @@
 <p>Runway is how many months you can operate with current cash, given current burn rate. It is the ultimate founder metric for early-stage companies. It answers the question: when do I run out of money and need to raise capital or reach profitability? The formula is simple: Cash Balance / Monthly Burn = Runway in Months.</p>
 <p>Most founders think about runway as a static number (&#039;we have 12 months of runway&#039;). But runway is dynamic. It changes every month as you burn cash and hopefully increase revenue. A professional model tracks runway monthly and projects when you will hit critical decision points. If you have 12 months of runway today but project 18 months of runway in 6 months (because revenue is growing and burn is decreasing), you might be on track to profitability without raising capital. If you have 12 months of runway but project 6 months of runway in 6 months (because burn is accelerating), you need to raise capital now.</p>
 <p>The &#039;fundraising trigger&#039; is the point at which you decide to start fundraising. Most VCs want you to raise when you have 6-12 months of runway remaining. If you wait until you have 2 months of runway, you are negotiating from a position of weakness and will get worse terms. If you raise at 12 months, you have time to run the process properly (which takes 3-4 months) and end up with capital in the bank while you still have runway. A professional model shows your fundraising trigger explicitly: &#039;When runway reaches 6 months, we begin fundraising.&#039;</p>
-<h1>Part VI: Scenarios and Sensitivity</h1>
+<h2>Part VI: Scenarios and Sensitivity</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 21: Three-Scenario Planning (Base, Bull, Bear)</h2>
@@ -417,7 +417,7 @@
 <p>For fundraising, you present a base case with clear assumptions and supporting data. You show the bull and bear cases. You show unit economics, CAC, LTV, payback period, and other metrics that prove the business works. You show a clear path to profitability or dominant market position. You might include growth traction that has been achieved to date (months 1-6 of actual data) and then project forward from month 6 onward.</p>
 <p>For board reporting, you build a much more detailed model (often 12-24 months of monthly projections). You reforecast based on actual results in the current quarter. You compare actual revenue and spend to prior forecasts and investigate variances. You update assumptions based on what you have learned. A board reporting model is a working document that changes monthly as you learn more and adjust your outlook.</p>
 <p>A professional practice is to build one comprehensive underlying model and then create two different &#039;views&#039; of that model for different purposes. The fundraising view shows the summary at a high level. The board reporting view shows the detailed monthly breakdowns and actual vs forecast analysis. Both are built from the same underlying source of truth, just presented differently.</p>
-<h1>Part VII: Stage-Specific Guidance</h1>
+<h2>Part VII: Stage-Specific Guidance</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 24: Pre-Seed/Seed Models (What to Include, What to Skip)</h2>
@@ -434,7 +434,7 @@
 <p>By Series B and beyond, the model has shifted. Early stage is about growth and unit economics. Series B and beyond is about the path to profitability and unit economics in a mature business. Investors at this stage want to see that you can grow rapidly and also eventually be profitable. You need to model not just growth, but expansion margins and the path to profitability.</p>
 <p>A Series B model should be comprehensive and detailed. Include a detailed hiring plan by department. Model expansion margins as you scale (typically OpEx should decline as a percentage of revenue as you get bigger). Show operating leverage in the model: that every 10% of incremental revenue eventually drops X% to operating expense, proving operating leverage. Model a clear path to profitability, typically within 5 years and often within 3.</p>
 <p>Additionally, model the &#039;Rule of 40&#039; metric: Growth Rate (%) + Profit Margin (%) should add to 40 or higher. A fast-growing unprofitable company might be at 50% growth + (-10%) margin = 40. As you scale, the growth rate will slow but the margin will improve, and you should still be above 40. This is the metric that proves you can sustainably grow and eventually be a profitable business.</p>
-<h1>Part VIII: Common Mistakes</h1>
+<h2>Part VIII: Common Mistakes</h2>
 <div class="spacer"></div>
 <hr class="page-break">
 <h2>Chapter 27: The 20 Most Common Financial Model Mistakes and How to Fix Them</h2>
