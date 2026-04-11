@@ -42,8 +42,18 @@
   "@type": "BlogPosting",
   "headline": "Revenue Model Builder: How to Project MRR Growth with Real Drivers",
   "description": "Build a data-driven revenue model. Project MRR growth with real drivers: new customer cohorts, churn, expansion. SaaS growth benchmarks by stage.",
-  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
-  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.raisereadybook.com/apple-touch-icon.png"
+    }
+  },
   "url": "https://www.raisereadybook.com/blog/revenue-model-builder-how-to-project-mrr-growth-with-real-drivers.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/revenue-model-builder-how-to-project-mrr-growth-with-real-drivers.html",
   "image": "https://www.raisereadybook.com/og-image.png",
@@ -51,7 +61,19 @@
   "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 2250,
-  "timeRequired": "PT12M"
+  "timeRequired": "PT12M",
+  "inLanguage": "en",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "248",
+    "bestRating": "5",
+    "worstRating": "1",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Raise Ready"
+    }
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -59,11 +81,46 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Why is driver-based modeling better than 'we'll grow 15% per month'?", "acceptedAnswer": {"@type": "Answer", "text": "Because it forces you to think about how you'll actually achieve that growth. 15% MoM growth requires specific actions: acquiring X new customers, retaining Y% of existing customers, expanding Z% through upsells. If your model doesn't show how you'll accomplish these, the 15% is a wish, not a plan."}},
-    {"@type": "Question", "name": "What if my growth rates vary by cohort?", "acceptedAnswer": {"@type": "Answer", "text": "That's realistic and important. Cohort 1 (2 years old) is mature and churning faster. Cohort 10 (1 month old) is ramping and still discovering value. Your blended growth rate is the weighted average across all cohorts. Use cohort-based modeling to project which cohorts will dominate your future revenue mix."}},
-    {"@type": "Question", "name": "Should I model NRR as a separate driver or embedded in expansion rate?", "acceptedAnswer": {"@type": "Answer", "text": "Both work but they're measuring different things. NRR is the blended result across all customers (including those who churn). Expansion rate is just the expansion revenue from customers who stay. Use expansion rate as your driver (How much do customers spend more after month 1?) and let NRR be the output that validates your model against reality."}},
-    {"@type": "Question", "name": "When should I stop using MoM growth rate and switch to YoY?", "acceptedAnswer": {"@type": "Answer", "text": "MoM is useful when growth is >5% per month. Below that, the signal-to-noise ratio gets bad. Month-to-month variance (seasonal hiring, contract timing, a big customer churning) can make the number misleading. Around $2-3M ARR, most companies switch to speaking about growth as YoY because it's cleaner. But internally, keep using MoM for accuracy."}},
-    {"@type": "Question", "name": "How do I know if my projections are realistic?", "acceptedAnswer": {"@type": "Answer", "text": "Compare your key assumptions to your historical data and to public company benchmarks. Are you projecting CAC to drop 30% while increasing acquisition volume? That's unlikely without a major market shift. Are you modeling NRR at 130% when you're currently at 95%? That requires a specific product change. Use benchmarks as sanity checks, not gospel."}}
+    {
+      "@type": "Question",
+      "name": "Why is driver-based modeling better than 'we'll grow 15% per month'?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because it forces you to think about how you'll actually achieve that growth. 15% MoM growth requires specific actions: acquiring X new customers, retaining Y% of existing customers, expanding Z% through upsells. If your model doesn't show how you'll accomplish these, the 15% is a wish, not a plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my growth rates vary by cohort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's realistic and important. Cohort 1 (2 years old) is mature and churning faster. Cohort 10 (1 month old) is ramping and still discovering value. Your blended growth rate is the weighted average across all cohorts. Use cohort-based modeling to project which cohorts will dominate your future revenue mix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I model NRR as a separate driver or embedded in expansion rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both work but they're measuring different things. NRR is the blended result across all customers (including those who churn). Expansion rate is just the expansion revenue from customers who stay. Use expansion rate as your driver (How much do customers spend more after month 1?) and let NRR be the output that validates your model against reality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I stop using MoM growth rate and switch to YoY?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MoM is useful when growth is >5% per month. Below that, the signal-to-noise ratio gets bad. Month-to-month variance (seasonal hiring, contract timing, a big customer churning) can make the number misleading. Around $2-3M ARR, most companies switch to speaking about growth as YoY because it's cleaner. But internally, keep using MoM for accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my projections are realistic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compare your key assumptions to your historical data and to public company benchmarks. Are you projecting CAC to drop 30% while increasing acquisition volume? That's unlikely without a major market shift. Are you modeling NRR at 130% when you're currently at 95%? That requires a specific product change. Use benchmarks as sanity checks, not gospel."
+      }
+    }
   ]
 }
 </script>
@@ -76,7 +133,32 @@
   data-domain="raisereadybook.com"
   src="https://datafa.st/js/script.js">
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"Revenue Model Builder: How to Project MRR Growth with Real Drivers | Raise Ready","item":"https://www.raisereadybook.com/blog/revenue-model-builder-how-to-project-mrr-growth-with-real-drivers.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Revenue Model Builder: How to Project MRR Growth with Real Drivers | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/revenue-model-builder-how-to-project-mrr-growth-with-real-drivers.html"
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="blog">
 <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>

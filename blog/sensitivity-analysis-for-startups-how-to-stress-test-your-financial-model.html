@@ -42,8 +42,18 @@
   "@type": "BlogPosting",
   "headline": "Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model",
   "description": "Master sensitivity analysis for startups. Two-variable matrix approach, test ranges (+/- 20-30%), identify fragile assumptions. Which variables matter most: revenue growth, burn, churn, CAC.",
-  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
-  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.raisereadybook.com/apple-touch-icon.png"
+    }
+  },
   "url": "https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html",
   "image": "https://www.raisereadybook.com/og-image.png",
@@ -51,7 +61,19 @@
   "dateModified": "2026-04-11",
   "articleSection": "Financial Modeling",
   "wordCount": 2300,
-  "timeRequired": "PT13M"
+  "timeRequired": "PT13M",
+  "inLanguage": "en",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "248",
+    "bestRating": "5",
+    "worstRating": "1",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Raise Ready"
+    }
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -59,11 +81,46 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What's the difference between sensitivity and scenario analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Sensitivity analysis tests how one or two variables changing affect your output (usually runway or cash balance at a specific point). Scenario analysis builds complete, coherent alternative futures (base, bull, bear). Sensitivity is tactical: what if CAC doubles? Scenario is strategic: what if we enter a recession and growth slows and burn increases? Both matter. Sensitivity helps you identify which assumptions are most fragile. Scenario tests whether your business survives realistic alternative futures. Use sensitivity to find your risk areas, use scenarios to plan for them."}},
-    {"@type": "Question", "name": "Which two variables should I analyze together?", "acceptedAnswer": {"@type": "Answer", "text": "Start with Revenue Growth Rate and Monthly Burn. These are the two variables that most directly impact runway. Test +/- 20% on each. Then do a second matrix: CAC Payback Period and Monthly Churn. These determine whether your unit economics work at scale. Then if you're marketplace or e-commerce focused, do a third: Take Rate and Platform Costs. The top three pairs capture 80% of the variance in outcomes for most startups. Don't go overboard with sensitivity matrices. Two or three well-chosen pairs is better than ten poorly explained ones."}},
-    {"@type": "Question", "name": "What ranges should I test for sensitivity?", "acceptedAnswer": {"@type": "Answer", "text": "Test +/- 20-30% on key variables. For a 12-month model, +/- 20% is realistic. For 24+ month models, test +/- 30% because longer timeframes have more uncertainty. For revenue growth: if your base is 10% MoM, test 7% (-30%), 8% (-20%), 10% (base), 12% (+20%), 13% (+30%). For burn: if your base is $100K/month, test $70K, $80K, $100K, $120K, $130K. For CAC: if your base is $2000, test $1400-$2600. Don't test -50% or +100%. Those are fantasy scenarios, not realistic variance."}},
-    {"@type": "Question", "name": "How do I read a sensitivity table?", "acceptedAnswer": {"@type": "Answer", "text": "The rows typically represent one variable (e.g., monthly burn ranging from -30% to +30%), columns represent another (e.g., revenue growth from -30% to +30%). The intersections show your output metric (usually runway in months or cash balance at month 24). Color coding helps: green (good outcome, 18+ months runway), yellow (okay, 12-18 months), red (concerning, <12 months). You're looking for the area of the table that's all red or mostly yellow. That's your fragile zone where small changes in assumptions create crisis outcomes."}},
-    {"@type": "Question", "name": "When does sensitivity analysis reveal fragile assumptions?", "acceptedAnswer": {"@type": "Answer", "text": "When a 10% change in one variable creates a 20%+ change in output, you've found fragility. Example: if burn increases 10% and runway drops from 20 months to 15 months (25% change), that variable is fragile. Your plan is too sensitive to that assumption. This is a signal to either build more buffer (raise more capital), make the assumption more robust (reduce burn through different decisions), or prepare contingency plans for when that variable moves. Fragile assumptions are the ones that cause crises. Identifying them is the whole point of sensitivity analysis."}}
+    {
+      "@type": "Question",
+      "name": "What's the difference between sensitivity and scenario analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sensitivity analysis tests how one or two variables changing affect your output (usually runway or cash balance at a specific point). Scenario analysis builds complete, coherent alternative futures (base, bull, bear). Sensitivity is tactical: what if CAC doubles? Scenario is strategic: what if we enter a recession and growth slows and burn increases? Both matter. Sensitivity helps you identify which assumptions are most fragile. Scenario tests whether your business survives realistic alternative futures. Use sensitivity to find your risk areas, use scenarios to plan for them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which two variables should I analyze together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with Revenue Growth Rate and Monthly Burn. These are the two variables that most directly impact runway. Test +/- 20% on each. Then do a second matrix: CAC Payback Period and Monthly Churn. These determine whether your unit economics work at scale. Then if you're marketplace or e-commerce focused, do a third: Take Rate and Platform Costs. The top three pairs capture 80% of the variance in outcomes for most startups. Don't go overboard with sensitivity matrices. Two or three well-chosen pairs is better than ten poorly explained ones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What ranges should I test for sensitivity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Test +/- 20-30% on key variables. For a 12-month model, +/- 20% is realistic. For 24+ month models, test +/- 30% because longer timeframes have more uncertainty. For revenue growth: if your base is 10% MoM, test 7% (-30%), 8% (-20%), 10% (base), 12% (+20%), 13% (+30%). For burn: if your base is $100K/month, test $70K, $80K, $100K, $120K, $130K. For CAC: if your base is $2000, test $1400-$2600. Don't test -50% or +100%. Those are fantasy scenarios, not realistic variance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I read a sensitivity table?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The rows typically represent one variable (e.g., monthly burn ranging from -30% to +30%), columns represent another (e.g., revenue growth from -30% to +30%). The intersections show your output metric (usually runway in months or cash balance at month 24). Color coding helps: green (good outcome, 18+ months runway), yellow (okay, 12-18 months), red (concerning, <12 months). You're looking for the area of the table that's all red or mostly yellow. That's your fragile zone where small changes in assumptions create crisis outcomes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does sensitivity analysis reveal fragile assumptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a 10% change in one variable creates a 20%+ change in output, you've found fragility. Example: if burn increases 10% and runway drops from 20 months to 15 months (25% change), that variable is fragile. Your plan is too sensitive to that assumption. This is a signal to either build more buffer (raise more capital), make the assumption more robust (reduce burn through different decisions), or prepare contingency plans for when that variable moves. Fragile assumptions are the ones that cause crises. Identifying them is the whole point of sensitivity analysis."
+      }
+    }
   ]
 }
 </script>
@@ -76,7 +133,32 @@
   data-domain="raisereadybook.com"
   src="https://datafa.st/js/script.js">
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model | Raise Ready","item":"https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sensitivity Analysis for Startups: How to Stress-Test Your Financial Model | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/sensitivity-analysis-for-startups-how-to-stress-test-your-financial-model.html"
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="blog">
 <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>

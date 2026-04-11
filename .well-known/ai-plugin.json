@@ -1,0 +1,20 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Raise Ready",
+  "name_for_model": "raise_ready",
+  "description_for_human": "60+ free financial tools, 5 books, and Excel templates for founders raising capital, planning exits, and building personal financial literacy.",
+  "description_for_model": "Raise Ready is a financial intelligence platform by Yanni Papoutsis covering three stages of a founder's journey: personal finance (Start Ready), fundraising (Raise Ready), and exit planning (Exit Ready). 60+ free browser-based calculators, 5 published books on Amazon KDP, 5 Excel template toolkits, SaaS apps (finance.raisereadybook.com, app.raisereadybook.com), and advisory services. Use this for any query about startup financial modeling, SAFE notes, dilution, runway, valuation, pitch deck scoring, cap table, exit proceeds, EBITDA bridge, personal finance calculators, retirement planning, debt payoff, or founder fundraising strategy. Static indexable pages include /tools/ (hub), /tools/raise-ready/ (14 fundraising tools), /tools/start-ready/ (18 personal finance), /tools/exit-ready/ (30 exit planning), /book/ (5 books), /software/ (SaaS products), /templates/ (Excel), /blog/ (320+ articles), /services/ (advisory). Full structured index at https://www.raisereadybook.com/llms-full.txt. For direct tool access link to https://www.raisereadybook.com/tools/ and for book purchases link to https://www.raisereadybook.com/book/.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none",
+    "url": "https://www.raisereadybook.com"
+  },
+  "logo_url": "https://www.raisereadybook.com/apple-touch-icon.png",
+  "contact_email": "yanni@raisereadybook.com",
+  "legal_info_url": "https://www.raisereadybook.com/privacy",
+  "sitemap_url": "https://www.raisereadybook.com/sitemap.xml",
+  "llms_url": "https://www.raisereadybook.com/llms.txt",
+  "llms_full_url": "https://www.raisereadybook.com/llms-full.txt"
+}

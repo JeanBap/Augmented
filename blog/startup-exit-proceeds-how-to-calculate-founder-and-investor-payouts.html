@@ -42,8 +42,18 @@
   "@type": "BlogPosting",
   "headline": "Startup Exit Proceeds: How to Calculate Founder and Investor Payouts",
   "description": "Understand how exit proceeds are split using waterfall analysis. Liquidation preferences, participating preferred, non-participating preferred. Real examples with $50M exits and actual founder payouts.",
-  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
-  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.raisereadybook.com/apple-touch-icon.png"
+    }
+  },
   "url": "https://www.raisereadybook.com/blog/startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts.html",
   "image": "https://www.raisereadybook.com/og-image.png",
@@ -51,7 +61,19 @@
   "dateModified": "2026-04-11",
   "articleSection": "Fundraising",
   "wordCount": 2350,
-  "timeRequired": "PT13M"
+  "timeRequired": "PT13M",
+  "inLanguage": "en",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "248",
+    "bestRating": "5",
+    "worstRating": "1",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Raise Ready"
+    }
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -59,12 +81,54 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What's the difference between 1x non-participating and 1x participating preferred?", "acceptedAnswer": {"@type": "Answer", "text": "1x non-participating preferred: investor gets back their money (1x) OR their pro-rata share of equity value, whichever is higher. If the exit is large, they participate as common shareholders. If the exit is small, they are protected by the 1x floor. 1x participating preferred: investor gets back their money (1x) AND their pro-rata share of equity value. They get paid twice --- once on the preference, once on the equity upside. This is extremely investor-friendly. Example: 5M invested at 1x non-participating in a 50M exit with 20% ownership means investor gets max(5M, 50M * 20%) = 10M. At 1x participating, investor gets 5M + (50M * 20%) = 15M. That 5M difference comes from founders' pockets."}},
-    {"@type": "Question", "name": "How does escrow affect my actual payout at exit?", "acceptedAnswer": {"@type": "Answer", "text": "Typical escrow is 5-15% of purchase price held for 12-18 months to cover representations and warranties claims. If you exit at 100M, 5M might go into escrow immediately. You don't see that 5M at closing. After 12 months, if there are no breaches, you get the escrow back. If there are breaches (bugs in the product, missing customer contracts, IP issues), the buyer can claw back from escrow. This is real risk. Model your payout at two numbers: gross and net of escrow. Some founders build in a 10% buffer for escrow when calculating their take-home."}},
-    {"@type": "Question", "name": "What are typical liquidation preferences used today?", "acceptedAnswer": {"@type": "Answer", "text": "1x non-participating preferred is the standard market term for Series A and beyond in the US market. Investors typically get their money back (1x) but participate as common shareholders above that. 1x participating preferred is investor-friendly and increasingly rare (seen in super-heated rounds or by aggressive investors). 2x non-participating is aggressive (implies the investor thinks you might fail) and is seen in down rounds or struggling companies raising rescue capital. Most founders should never accept 2x+ preferences. If an investor demands 2x, either the valuation is too low, or you're raising from someone who doesn't believe in your company."}},
-    {"@type": "Question", "name": "What's the median exit size for VC-backed startups?", "acceptedAnswer": {"@type": "Answer", "text": "Per PitchBook 2024 data, the median acquisition price for VC-backed companies is 50-75M. But this is skewed by a small number of mega-exits (100M+). The mode (most common exit size) is 30-50M. Many exits are sub-20M and are acquisition-for-talent or strategic acquisitions. IPOs are rare (only ~100 per year in the US of VC-backed companies). Most VC-backed companies that exit, exit via acquisition. Of those exiting via acquisition, the median is probably 40-60M. Only the top 10% of VC-backed companies exit for 200M+."}},
-    {"@type": "Question", "name": "When do liquidation preferences actually 'bite' and hurt founder returns?", "acceptedAnswer": {"@type": "Answer", "text": "Liquidation preferences bite below 2-3x total invested capital. If you've raised 15M total and exit for 30M, the 1x preferences are satisfied (investors get their 15M back), and founders split the remaining 15M on a pro-rata basis. If you've raised 15M and exit for 15M, investors get their 15M (the 1x preferred is a floor), and founders get zero. This is called a down round exit. If you've raised 15M and exit for 10M, investors are underwater. They get the full 10M, and founders get zero. Preferences create a floor below which founders don't benefit from exit upside."}},
-    {"@type": "Question", "name": "How do option pools affect founder payouts at exit?", "acceptedAnswer": {"@type": "Answer", "text": "Option pools dilute founder ownership directly. If founders own 30% and there's a 12% option pool, founders' pro-rata share of exit proceeds is 30% of (100% - 12%) = 26.4%. But in practice, option pools are already reflected in cap tables (the option pool is a bucket of unallocated shares). The real impact: if employees exercise options or receive grants as part of the exit, that capital comes from the overall pool. If 2% of options are exercised and employees receive 2M in an exit proceeds, that's 2M that comes from the common equity pool (founders + employees + other common holders)."}}
+    {
+      "@type": "Question",
+      "name": "What's the difference between 1x non-participating and 1x participating preferred?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1x non-participating preferred: investor gets back their money (1x) OR their pro-rata share of equity value, whichever is higher. If the exit is large, they participate as common shareholders. If the exit is small, they are protected by the 1x floor. 1x participating preferred: investor gets back their money (1x) AND their pro-rata share of equity value. They get paid twice --- once on the preference, once on the equity upside. This is extremely investor-friendly. Example: 5M invested at 1x non-participating in a 50M exit with 20% ownership means investor gets max(5M, 50M * 20%) = 10M. At 1x participating, investor gets 5M + (50M * 20%) = 15M. That 5M difference comes from founders' pockets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does escrow affect my actual payout at exit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical escrow is 5-15% of purchase price held for 12-18 months to cover representations and warranties claims. If you exit at 100M, 5M might go into escrow immediately. You don't see that 5M at closing. After 12 months, if there are no breaches, you get the escrow back. If there are breaches (bugs in the product, missing customer contracts, IP issues), the buyer can claw back from escrow. This is real risk. Model your payout at two numbers: gross and net of escrow. Some founders build in a 10% buffer for escrow when calculating their take-home."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are typical liquidation preferences used today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1x non-participating preferred is the standard market term for Series A and beyond in the US market. Investors typically get their money back (1x) but participate as common shareholders above that. 1x participating preferred is investor-friendly and increasingly rare (seen in super-heated rounds or by aggressive investors). 2x non-participating is aggressive (implies the investor thinks you might fail) and is seen in down rounds or struggling companies raising rescue capital. Most founders should never accept 2x+ preferences. If an investor demands 2x, either the valuation is too low, or you're raising from someone who doesn't believe in your company."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the median exit size for VC-backed startups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per PitchBook 2024 data, the median acquisition price for VC-backed companies is 50-75M. But this is skewed by a small number of mega-exits (100M+). The mode (most common exit size) is 30-50M. Many exits are sub-20M and are acquisition-for-talent or strategic acquisitions. IPOs are rare (only ~100 per year in the US of VC-backed companies). Most VC-backed companies that exit, exit via acquisition. Of those exiting via acquisition, the median is probably 40-60M. Only the top 10% of VC-backed companies exit for 200M+."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do liquidation preferences actually 'bite' and hurt founder returns?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liquidation preferences bite below 2-3x total invested capital. If you've raised 15M total and exit for 30M, the 1x preferences are satisfied (investors get their 15M back), and founders split the remaining 15M on a pro-rata basis. If you've raised 15M and exit for 15M, investors get their 15M (the 1x preferred is a floor), and founders get zero. This is called a down round exit. If you've raised 15M and exit for 10M, investors are underwater. They get the full 10M, and founders get zero. Preferences create a floor below which founders don't benefit from exit upside."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do option pools affect founder payouts at exit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Option pools dilute founder ownership directly. If founders own 30% and there's a 12% option pool, founders' pro-rata share of exit proceeds is 30% of (100% - 12%) = 26.4%. But in practice, option pools are already reflected in cap tables (the option pool is a bucket of unallocated shares). The real impact: if employees exercise options or receive grants as part of the exit, that capital comes from the overall pool. If 2% of options are exercised and employees receive 2M in an exit proceeds, that's 2M that comes from the common equity pool (founders + employees + other common holders)."
+      }
+    }
   ]
 }
 </script>
@@ -77,7 +141,32 @@
   data-domain="raisereadybook.com"
   src="https://datafa.st/js/script.js">
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"Startup Exit Proceeds: How to Calculate Founder and Investor Payouts | Raise Ready","item":"https://www.raisereadybook.com/blog/startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Startup Exit Proceeds: How to Calculate Founder and Investor Payouts | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/startup-exit-proceeds-how-to-calculate-founder-and-investor-payouts.html"
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="blog">
 <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>

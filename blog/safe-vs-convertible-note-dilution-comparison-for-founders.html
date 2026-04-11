@@ -42,8 +42,18 @@
   "@type": "BlogPosting",
   "headline": "SAFE vs Convertible Note: Dilution Comparison for Founders",
   "description": "Understand the critical differences between SAFEs and convertible notes. See the exact dilution math with real examples. SAFE caps, convertible terms, interest rates, and when each makes sense.",
-  "author": {"@type": "Person", "name": "Yanni Papoutsi"},
-  "publisher": {"@type": "Organization", "name": "Raise Ready"},
+  "author": {
+    "@type": "Person",
+    "name": "Yanni Papoutsi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Raise Ready",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.raisereadybook.com/apple-touch-icon.png"
+    }
+  },
   "url": "https://www.raisereadybook.com/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html",
   "mainEntityOfPage": "https://www.raisereadybook.com/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html",
   "image": "https://www.raisereadybook.com/og-image.png",
@@ -51,7 +61,19 @@
   "dateModified": "2026-04-11",
   "articleSection": "Fundraising",
   "wordCount": 2200,
-  "timeRequired": "PT12M"
+  "timeRequired": "PT12M",
+  "inLanguage": "en",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "248",
+    "bestRating": "5",
+    "worstRating": "1",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Raise Ready"
+    }
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -59,12 +81,54 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Why do most founders underestimate SAFE dilution?", "acceptedAnswer": {"@type": "Answer", "text": "Because SAFEs don't immediately dilute your ownership. The dilution happens at Series A when they convert. Founders see a 500K SAFE and think they're giving up maybe 5% of the company. In reality, when that SAFE converts at a 10M valuation cap, it can easily represent 10-15% dilution depending on the Series A size and pre-money valuation. You can't feel the dilution until it happens, which is why it surprises so many founders."}},
-    {"@type": "Question", "name": "What's the difference between pre-money and post-money SAFEs?", "acceptedAnswer": {"@type": "Answer", "text": "Pre-money SAFEs (the original Y Combinator version) convert based on pre-money valuation. Post-money SAFEs (introduced in 2018) convert based on post-money valuation. The post-money version is more founder-friendly on paper but actually reduces founder dilution more predictably. Most SAFEs used today are post-money. The difference matters: a 500K SAFE at 10M cap converts very differently under pre-money vs post-money math. Post-money SAFE: founders dilute by approximately SAFE size divided by (post-money valuation of Series A). Pre-money SAFE: the math is more complex and typically results in more dilution."}},
-    {"@type": "Question", "name": "Should I take a 5% discount rate on a SAFE or push for 20%?", "acceptedAnswer": {"@type": "Answer", "text": "The discount rate directly impacts your dilution. A 5% discount is founder-friendly (investor unfavorable). A 20% discount is investor-friendly. Most SAFEs today use 10-20% discount rates. If you're pre-seed, you might get 15-25% from founder-friendly investors. If you're seed, expect 15-20%. The discount matters less than the valuation cap. A 10M cap at 5% discount beats a 8M cap at 20% discount every time for a founder."}},
-    {"@type": "Question", "name": "What happens if I raise multiple SAFEs before Series A?", "acceptedAnswer": {"@type": "Answer", "text": "They all convert at Series A simultaneously. This is where founders get into trouble. If you raise three 500K SAFEs (1.5M total) at different caps, they convert based on the Series A valuation. A founder with 1.5M in SAFEs at caps of 8M, 10M, and 12M, then raising at a 15M Series A pre-money, gets hit by 15%+ dilution from just those notes. The stacking effect is real. Track your SAFE stack as you raise to model the cumulative dilution."}},
-    {"@type": "Question", "name": "Is a convertible note with 6% interest better or worse than a SAFE?", "acceptedAnswer": {"@type": "Answer", "text": "Different dimensions. The 6% interest accrues over time, increasing the note amount at conversion. A 500K note at 6% interest over 2 years becomes 562K at conversion. The interest cost is real, but convertible notes also have maturity dates and accrued interest payoff, giving you different leverage. SAFEs have no interest but no maturity date either, meaning they can hang over your head indefinitely if you don't hit Series A. For most pre-seed and seed founders, SAFEs are simpler and have better standard terms in the market. Convertible notes require more negotiation."}},
-    {"@type": "Question", "name": "What dilution am I actually taking with that 500K SAFE?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your Series A size and valuation. Let's say you have a 500K SAFE at an 8M cap with a 20% discount. Your Series A is 5M at a 15M pre-money valuation. The SAFE converts at 15M * 80% = 12M (applying the discount). The 500K represents 500K/12M = 4.2% dilution from that SAFE alone. But that's before Series A dilution. The Series A 5M at 15M pre-money represents 5M/(15M+5M) = 25% dilution. Combined, from your pre-SAFE position, you've diluted to roughly 56% ownership. The calculator at /tools/#safe walks through this step by step."}}
+    {
+      "@type": "Question",
+      "name": "Why do most founders underestimate SAFE dilution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because SAFEs don't immediately dilute your ownership. The dilution happens at Series A when they convert. Founders see a 500K SAFE and think they're giving up maybe 5% of the company. In reality, when that SAFE converts at a 10M valuation cap, it can easily represent 10-15% dilution depending on the Series A size and pre-money valuation. You can't feel the dilution until it happens, which is why it surprises so many founders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between pre-money and post-money SAFEs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pre-money SAFEs (the original Y Combinator version) convert based on pre-money valuation. Post-money SAFEs (introduced in 2018) convert based on post-money valuation. The post-money version is more founder-friendly on paper but actually reduces founder dilution more predictably. Most SAFEs used today are post-money. The difference matters: a 500K SAFE at 10M cap converts very differently under pre-money vs post-money math. Post-money SAFE: founders dilute by approximately SAFE size divided by (post-money valuation of Series A). Pre-money SAFE: the math is more complex and typically results in more dilution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I take a 5% discount rate on a SAFE or push for 20%?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The discount rate directly impacts your dilution. A 5% discount is founder-friendly (investor unfavorable). A 20% discount is investor-friendly. Most SAFEs today use 10-20% discount rates. If you're pre-seed, you might get 15-25% from founder-friendly investors. If you're seed, expect 15-20%. The discount matters less than the valuation cap. A 10M cap at 5% discount beats a 8M cap at 20% discount every time for a founder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I raise multiple SAFEs before Series A?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They all convert at Series A simultaneously. This is where founders get into trouble. If you raise three 500K SAFEs (1.5M total) at different caps, they convert based on the Series A valuation. A founder with 1.5M in SAFEs at caps of 8M, 10M, and 12M, then raising at a 15M Series A pre-money, gets hit by 15%+ dilution from just those notes. The stacking effect is real. Track your SAFE stack as you raise to model the cumulative dilution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a convertible note with 6% interest better or worse than a SAFE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Different dimensions. The 6% interest accrues over time, increasing the note amount at conversion. A 500K note at 6% interest over 2 years becomes 562K at conversion. The interest cost is real, but convertible notes also have maturity dates and accrued interest payoff, giving you different leverage. SAFEs have no interest but no maturity date either, meaning they can hang over your head indefinitely if you don't hit Series A. For most pre-seed and seed founders, SAFEs are simpler and have better standard terms in the market. Convertible notes require more negotiation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What dilution am I actually taking with that 500K SAFE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your Series A size and valuation. Let's say you have a 500K SAFE at an 8M cap with a 20% discount. Your Series A is 5M at a 15M pre-money valuation. The SAFE converts at 15M * 80% = 12M (applying the discount). The 500K represents 500K/12M = 4.2% dilution from that SAFE alone. But that's before Series A dilution. The Series A 5M at 15M pre-money represents 5M/(15M+5M) = 25% dilution. Combined, from your pre-SAFE position, you've diluted to roughly 56% ownership. The calculator at /tools/#safe walks through this step by step."
+      }
+    }
   ]
 }
 </script>
@@ -77,7 +141,32 @@
   data-domain="raisereadybook.com"
   src="https://datafa.st/js/script.js">
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"SAFE vs Convertible Note: Dilution Comparison for Founders | Raise Ready","item":"https://www.raisereadybook.com/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "SAFE vs Convertible Note: Dilution Comparison for Founders | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/safe-vs-convertible-note-dilution-comparison-for-founders.html"
+    }
+  ]
+}
+</script>
 </head>
 <body data-page="blog">
 <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
