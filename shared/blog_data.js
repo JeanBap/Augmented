@@ -672,7 +672,7 @@ Yes! If your revenue exceeds operating expenses, you're not burning cash—you'r
 <h3>Key Takeaways</h3>
 
 <p>Burn rate is the rate at which your company spends cash; runway is how long that cash lasts. Calculating burn accurately requires tracking gross and net burn separately and averaging over 3-6 months to smooth fluctuations. Understanding what comprises your burn helps identify optimization opportunities. Runway should inform your fundraising timeline—begin Series A conversations when you have 6-9 months remaining, never closer to zero. If runway is short, address it through revenue growth, strategic expense reduction, and disciplined hiring. Most importantly, track burn rate monthly and let it drive disciplined decision-making about every company investment. Your burn rate is not a finance number; it's the heartbeat of your startup's viability.</p>`},
-{num:"010",title:"Revenue Recognition for SaaS Startups: ASC 606 Basics",slug:"revenue-recognition-asc-606",category:"Finance Ops",publishDate:"2026-04-19",readTime:10,tldr:"ASC 606 requires SaaS companies to recognize revenue when control of promised goods/services transfers to customers. For subscription businesses, this typically means recognizing revenue monthly as services are delivered, with deferred revenue for upfront annual payments.",metaDescription:"Understand revenue recognition and ASC 606 for SaaS startups. Learn how to record deferred revenue, handle annual contracts, and maintain audit-ready accounting.",keywords:["revenue recognition SaaS","ASC 606","deferred revenue","SaaS accounting","subscription revenue","performance obligations"],image:"https://images.unsplash.com/photo-1527482797697-8795b1a55a45?w=1200",imageAlt:"Accountant reviewing SaaS revenue and deferred revenue schedules",body:`<img src="https://images.unsplash.com/photo-1527482797697-8795b1a55a45?w=1200&h=600&fit=crop" alt="Accountant reviewing revenue schedules" class="post-hero-image" />
+{num:"010",title:"Revenue Recognition for SaaS Startups: ASC 606 Basics",slug:"revenue-recognition-asc-606",category:"Finance Operations",publishDate:"2026-04-19",readTime:10,tldr:"ASC 606 requires SaaS companies to recognize revenue when control of promised goods/services transfers to customers. For subscription businesses, this typically means recognizing revenue monthly as services are delivered, with deferred revenue for upfront annual payments.",metaDescription:"Understand revenue recognition and ASC 606 for SaaS startups. Learn how to record deferred revenue, handle annual contracts, and maintain audit-ready accounting.",keywords:["revenue recognition SaaS","ASC 606","deferred revenue","SaaS accounting","subscription revenue","performance obligations"],image:"https://images.unsplash.com/photo-1527482797697-8795b1a55a45?w=1200",imageAlt:"Accountant reviewing SaaS revenue and deferred revenue schedules",body:`<img src="https://images.unsplash.com/photo-1527482797697-8795b1a55a45?w=1200&h=600&fit=crop" alt="Accountant reviewing revenue schedules" class="post-hero-image" />
 
 <h3>Why ASC 606 Matters for SaaS Startups</h3>
 
@@ -1039,7 +1039,7 @@ In an acquisition, ownership percentages determine payout amounts. If you own 40
 <h3>Key Takeaways</h3>
 
 <p>Dilution—the reduction in ownership percentage from new equity issuance—is natural and normal in venture-backed startups. While dilution can seem painful (owning 100% becomes 54% becomes 40%), it's only problematic if it's not accompanied by significant company value growth. Each funding round dilutes founder ownership, but also increases company valuation when investors are pricing rationally. Understanding pre-money valuation, how dilution calculations work, and how to negotiate terms helps you minimize dilution while maintaining capital to execute. The goal isn't to avoid dilution entirely (impossible in VC-backed companies) but to ensure that dilution is accompanied by sufficient company growth that your absolute equity value increases even as your percentage decreases. Most successful founders who've exited profitably experienced significant dilution—but their equity was worth millions despite owning a minority by the end.</p>`},
-{num:"013",title:"Monthly Financial Reporting: What VCs Want to See",slug:"monthly-financial-reporting-vc",category:"Finance Ops",publishDate:"2026-04-22",readTime:10,tldr:"VCs expect monthly board packages with dashboards, P&L statements, cash flow, and key metrics (MRR, burn rate, runway, CAC, LTV). Reports should be one-page dashboards highlighting trends, wins, and concerns rather than detailed financial statements.",metaDescription:"Learn what metrics VCs want in monthly board reports. Includes templates for investor updates, financial dashboards, and key performance indicators.",keywords:["VC monthly report template","investor update","startup financial reporting","board report","investor metrics","board package"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Startup founder presenting monthly financial report to VC investors",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop" alt="Founder presenting financial report" class="post-hero-image" />
+{num:"013",title:"Monthly Financial Reporting: What VCs Want to See",slug:"monthly-financial-reporting-vc",category:"Finance Operations",publishDate:"2026-04-22",readTime:10,tldr:"VCs expect monthly board packages with dashboards, P&L statements, cash flow, and key metrics (MRR, burn rate, runway, CAC, LTV). Reports should be one-page dashboards highlighting trends, wins, and concerns rather than detailed financial statements.",metaDescription:"Learn what metrics VCs want in monthly board reports. Includes templates for investor updates, financial dashboards, and key performance indicators.",keywords:["VC monthly report template","investor update","startup financial reporting","board report","investor metrics","board package"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Startup founder presenting monthly financial report to VC investors",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop" alt="Founder presenting financial report" class="post-hero-image" />
 
 <h3>Why Monthly Reporting Matters to Investors</h3>
 
@@ -1895,7 +1895,7 @@ A: No. Let investors lead with their own analysis. If you anchor too high, you'l
 
 <p><strong>Q: What if I disagree with investor valuations?</strong><br/>
 A: Dig into their model. Request the comps they're using, the discount rate assumptions, their exit thesis. Often, misalignment comes from different revenue projections or market cap assumptions, which you can address with better data. If the gap is irreconcilable, you may not be aligned long-term.</p>`},
-{num:"018",title:"Working Capital Management for Early-Stage Startups",slug:"working-capital-management",category:"Finance Ops",publishDate:"2026-04-27",readTime:12,tldr:"Master working capital management to extend your runway. Learn cash conversion cycles, receivables strategy, and payables optimization for early-stage startups.",metaDescription:"Working capital management guide for startups: optimize cash conversion cycle, accounts receivable, payables. Extend runway without raising capital.",keywords:["working capital management","startup cash management","accounts receivable","payables management","cash conversion cycle"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Business professional reviewing cash flow and working capital metrics on spreadsheet",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200" alt="Business professional reviewing cash flow and working capital metrics on spreadsheet" class="post-hero-image" />
+{num:"018",title:"Working Capital Management for Early-Stage Startups",slug:"working-capital-management",category:"Finance Operations",publishDate:"2026-04-27",readTime:12,tldr:"Master working capital management to extend your runway. Learn cash conversion cycles, receivables strategy, and payables optimization for early-stage startups.",metaDescription:"Working capital management guide for startups: optimize cash conversion cycle, accounts receivable, payables. Extend runway without raising capital.",keywords:["working capital management","startup cash management","accounts receivable","payables management","cash conversion cycle"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Business professional reviewing cash flow and working capital metrics on spreadsheet",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200" alt="Business professional reviewing cash flow and working capital metrics on spreadsheet" class="post-hero-image" />
 
 <h3>Working Capital: The Oxygen Your Startup Needs to Breathe</h3>
 
@@ -3110,7 +3110,7 @@ A: Depends on structure. Convertible note investors typically get minimal govern
 
 <p><strong>Q: What if Series A valuation is much higher than expected?</strong><br/>
 A: Your bridge investors celebrate (their discount meant they got a great deal). You also celebrate because founder dilution is lower than feared (convert at 25% discount on high valuation = strong outcome). This is the upside of bridge terms—you've capped founder dilution in downside scenarios, but participate in upside.</p>`},
-{num:"027",title:"Startup Tax Planning: R&D Credits and Section 1202 QSBS Explained",slug:"startup-tax-planning",category:"Finance Ops",publishDate:"2026-05-06",readTime:12,tldr:"Maximize startup tax planning with R&D tax credits worth 6-15% of payroll and Section 1202 QSBS gains exclusions. Strategic startup tax strategy can save founders millions in federal taxes while funding innovation.",metaDescription:"Master startup tax planning: R&D credits (6-15% of payroll), Section 1202 QSBS exclusions, and proven tax strategies to save founders millions in federal taxes.",keywords:["startup tax planning","R&D tax credit","Section 1202 QSBS","startup tax strategy","research development credit","qualified small business stock"],image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200",imageAlt:"Startup founder reviewing tax planning documents and financial calculations",body:`<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200" alt="Startup founder reviewing tax planning documents and financial calculations" class="post-hero-image" />
+{num:"027",title:"Startup Tax Planning: R&D Credits and Section 1202 QSBS Explained",slug:"startup-tax-planning",category:"Finance Operations",publishDate:"2026-05-06",readTime:12,tldr:"Maximize startup tax planning with R&D tax credits worth 6-15% of payroll and Section 1202 QSBS gains exclusions. Strategic startup tax strategy can save founders millions in federal taxes while funding innovation.",metaDescription:"Master startup tax planning: R&D credits (6-15% of payroll), Section 1202 QSBS exclusions, and proven tax strategies to save founders millions in federal taxes.",keywords:["startup tax planning","R&D tax credit","Section 1202 QSBS","startup tax strategy","research development credit","qualified small business stock"],image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200",imageAlt:"Startup founder reviewing tax planning documents and financial calculations",body:`<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200" alt="Startup founder reviewing tax planning documents and financial calculations" class="post-hero-image" />
 
 <h3>Understanding Startup Tax Planning Fundamentals</h3>
 
@@ -3836,7 +3836,7 @@ Mar Cohort: Month 0: 100%, Month 1: 94%, Month 2: 87%, Month 3: 79%</p>
 <p><strong>Q: Should different scenarios assume different funding rounds?</strong><br>A: Yes, bull case might show path to Series A at stronger metrics, while bear case shows conservative Series A at higher dilution. This clarifies funding implications of different execution paths.</p>
 
 <p>Disciplined scenario planning transforms financial modeling from prophecy exercise into genuine strategic foresight tool. By building multiple credible scenarios anchored to specific variable changes and establishing decision rules for each scenario, founders compress learning timelines and improve resource allocation despite fundamental business uncertainty.</p>`},
-{num:"034",title:"Startup Board Meetings: Financial Reporting Templates and Best Practices",slug:"startup-board-meetings",category:"Finance Ops",publishDate:"2026-05-13",readTime:12,tldr:"Master startup board meeting financial reporting: monthly metrics dashboards, variance analysis from plan, and executive narratives. Professional board reporting builds investor confidence and enables strategic guidance.",metaDescription:"Startup board meeting financial reporting templates: metrics dashboards, variance analysis, board deck structure. Monthly financial reporting best practices for investor-backed startups.",keywords:["startup board meeting","board deck template","financial reporting board","board report format","metrics dashboard","board metrics"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Startup founder presenting financial metrics and board report to investors",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200" alt="Startup founder presenting financial metrics and board report to investors" class="post-hero-image" />
+{num:"034",title:"Startup Board Meetings: Financial Reporting Templates and Best Practices",slug:"startup-board-meetings",category:"Finance Operations",publishDate:"2026-05-13",readTime:12,tldr:"Master startup board meeting financial reporting: monthly metrics dashboards, variance analysis from plan, and executive narratives. Professional board reporting builds investor confidence and enables strategic guidance.",metaDescription:"Startup board meeting financial reporting templates: metrics dashboards, variance analysis, board deck structure. Monthly financial reporting best practices for investor-backed startups.",keywords:["startup board meeting","board deck template","financial reporting board","board report format","metrics dashboard","board metrics"],image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",imageAlt:"Startup founder presenting financial metrics and board report to investors",body:`<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200" alt="Startup founder presenting financial metrics and board report to investors" class="post-hero-image" />
 
 <h3>Understanding Board Financial Reporting Purpose and Stakeholder Perspectives</h3>
 
@@ -11566,7 +11566,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 64,
     title: "Calculating True Burn Rate: Common Mistakes Founders Make",
     slug: "calculating-true-burn-rate",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-12",
     readTime: "8 min",
     tldr: "Gross burn: total monthly spending (salaries, servers, marketing, all costs). Net burn: gross burn minus revenue (or ARR/12). Most founders undercount COGS and forget depreciation. Track both monthly and rolling 3-month average. Avoid short-term spikes skewing perception.",
@@ -11754,7 +11754,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 65,
     title: "Gross Burn vs Net Burn: Which Startup Metric Actually Matters",
     slug: "gross-burn-vs-net-burn-startup-metrics",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-13",
     readTime: "7 min",
     tldr: "Gross burn determines months of runway left. Net burn shows progress to profitability. Early stage focuses on gross burn (cash runway). Growth stage with revenue focuses on net burn (profitability path). Investors care about both, trending together.",
@@ -11922,7 +11922,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 66,
     title: "Runway Calculation: How Many Months of Survival on Current Cash",
     slug: "runway-calculation-startup-cash",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-14",
     readTime: "7 min",
     tldr: "Runway = Cash on hand / Monthly burn. Use net burn for profitability path, gross burn for conservative estimate. Most founders target 18-24 month runway post-Series A. Declining runway is a fundraising signal. Include cash reserves for payroll timing.",
@@ -12101,7 +12101,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 67,
     title: "Burn Rate Trends: Creating Early Warning Dashboards for Startups",
     slug: "burn-rate-trends-early-warning-dashboards",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-15",
     readTime: "12 min",
     tldr: "Early warning dashboards track burn rate trends before they become crises. Learn how to build real-time visibility into your cash burn, identify concerning patterns, and take corrective action with months of runway to spare.",
@@ -12207,7 +12207,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 68,
     title: "Unit Economics and Burn Rate: The Hidden Connection Founders Miss",
     slug: "unit-economics-burn-rate-hidden-connection",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-16",
     readTime: "13 min",
     tldr: "Most founders manage burn rate and unit economics separately. This is a critical mistake. Poor unit economics amplify burn rate—while you're spending to acquire customers, those customers generate negative unit economics that require future burn to fix.",
@@ -12309,7 +12309,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 69,
     title: "Seasonal Burn Rate Variation: Managing Cash Through Business Cycles",
     slug: "seasonal-burn-rate-variation-business-cycles",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-17",
     readTime: "12 min",
     tldr: "Most startups treat burn rate as a constant monthly metric. In reality, seasonality creates dramatic swings in cash requirements. Managing through seasonal cycles requires forecasting the full year, building cash reserves in strong months, and planning hiring and spending around seasonal cash flow, not average burn.",
@@ -12410,7 +12410,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 70,
     title: "Burn Rate by Department: Granular Cash Flow Analysis for Startups",
     slug: "burn-rate-by-department-cash-flow-analysis",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-18",
     readTime: "11 min",
     tldr: "Company-wide burn rate hides departmental inefficiencies and overspending. Break burn down by department (Engineering, Sales, Marketing, Operations) to identify where money is actually going and where cuts or investment will have the most impact on runway.",
@@ -12511,7 +12511,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 71,
     title: "Burn Rate Improvement Strategies: What Actually Works for Startups",
     slug: "burn-rate-improvement-strategies",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-19",
     readTime: "12 min",
     tldr: "Reducing burn rate requires choices: cut costs, improve revenue, or both. Some approaches work (negotiating vendor contracts, automating operations, firing underperforming channels). Others create false savings (cutting quality, eliminating strategic projects). Learn which burn rate improvements actually preserve business value.",
@@ -12612,7 +12612,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 72,
     title: "Bridging the Gap: Extending Startup Runway Without New Funding",
     slug: "extending-runway-without-funding",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-20",
     readTime: "11 min",
     tldr: "Extending runway doesn't always mean raising capital. Optimize cash conversion cycles, improve unit economics, and implement working capital strategies to stretch months of cash into quarters without a dime of new capital.",
@@ -12710,7 +12710,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 73,
     title: "When to Burn More: Why Spending More Is Sometimes the Right Move",
     slug: "when-to-burn-more-strategic-spending",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-06-21",
     readTime: "11 min",
     tldr: "Burn rate reduction is not always the optimal strategy. In competitive markets with short windows, spending more to acquire market share or accelerate product development can extend runway by creating revenue growth that outpaces burn. Learn when increasing burn is the right call.",
@@ -14840,7 +14840,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 93,
     title: "Financial Due Diligence: Preparing Your Books for Investor Review",
     slug: "financial-due-diligence-books",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-07-11",
     readTime: "12 min read",
     tldr: "Master financial due diligence: prepare audited financials, customer metrics, CAC, LTV, and unit economics. Learn what investors scrutinize and how to present numbers confidently.",
@@ -14982,7 +14982,7 @@ Fully Diluted (Series A) | 11.5M | 100% | Updated
     num: 94,
     title: "Technical Due Diligence: Getting Ready for CTO and Engineering Review",
     slug: "technical-due-diligence-cto-review",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-07-12",
     readTime: "12 min read",
     tldr: "Prepare for technical due diligence: code quality, architecture, scalability, security, and technical roadmap. What investor CTOs scrutinize and how to demonstrate technical strength.",
@@ -18726,7 +18726,7 @@ margin-bottom:2rem;">
     num: 123,
     title: "Cash Flow Timing for Startups: When Money Actually Comes In",
     slug: "cash-flow-timing-startup-management",
-    category: "Finance Ops",
+    category: "Finance Operations",
     publishDate: "2026-08-10",
     readTime: "9 min read",
     tldr: "Master cash flow timing in SaaS: understand the gap between cash received, revenue recognized, and expenses paid. Learn how to manage working capital and prevent cash crunches despite profitable growth.",
