@@ -2843,3 +2843,8 @@ footer a {
   .hero-ctas { flex-direction: column; align-items: center; }
   .stats-grid { grid-template-columns: 1fr; }
 }
+
+/* Home page cards - compact on mobile */
+@media (max-width: 640px) {
+  .home-card { padding: 1.25rem !important; }
+}
