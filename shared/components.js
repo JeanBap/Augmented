@@ -455,17 +455,17 @@
       toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
         '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Build your model in minutes</p>' +
         '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Try the free 5-Year Financial Model Builder with 3 scenarios, hiring plan, and board report.</p>' +
-        '<a href="/tools/financial-model-pro.html" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">Launch the model &rarr;</a></div>';
+        '<a href="/tools/financial-model-pro.html" style="font-family:monospace;font-size:0.85rem;color:#7a6320;text-decoration:none;">Launch the model &rarr;</a></div>';
     } else if (category.indexOf('fundrais') >= 0) {
       toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
         '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Not sure if you are ready to raise?</p>' +
         '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">Get a 2-3 hour deep-dive audit of your model, deck, and data room. Scored report included.</p>' +
-        '<a href="/services/" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">View the Readiness Audit ($990) &rarr;</a></div>';
+        '<a href="/services/" style="font-family:monospace;font-size:0.85rem;color:#7a6320;text-decoration:none;">View the Readiness Audit ($990) &rarr;</a></div>';
     } else if (category.indexOf('exit') >= 0) {
       toolCTA = '<div style="border:1px solid rgba(200,164,90,0.3);border-radius:10px;padding:1.25rem;margin:2rem 0;background:rgba(200,164,90,0.04);">' +
         '<p style="font-family:Georgia,serif;font-size:1rem;margin:0 0 0.4rem;">Planning your exit?</p>' +
         '<p style="font-size:0.85rem;color:#6e6a61;margin:0 0 0.75rem;">30 free exit planning tools covering valuation, deal structure, tax, and readiness.</p>' +
-        '<a href="/tools/exit-ready/" style="font-family:monospace;font-size:0.85rem;color:#c8a45a;text-decoration:none;">Explore Exit Ready Tools &rarr;</a></div>';
+        '<a href="/tools/exit-ready/" style="font-family:monospace;font-size:0.85rem;color:#7a6320;text-decoration:none;">Explore Exit Ready Tools &rarr;</a></div>';
     }
 
     // Find all h3 headings to insert the inline CTA roughly midway
