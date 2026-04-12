@@ -98,16 +98,12 @@
     <nav aria-label="Main navigation">
       <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
       <div class="nav-tabs">
-        <div class="nav-dropdown">
-          <a href="/book/" class="nav-tab" data-page="products">Products</a>
-          <div class="dropdown-menu">
-            <a href="/book/">Books</a>
-            <a href="/templates/">Templates</a>
-            <a href="/tools/">Tools</a>
-            <a href="/software/">Software</a>
-          </div>
-        </div>
+        <a href="/book/" class="nav-tab" data-page="books">Books</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
+        <a href="/software/" class="nav-tab" data-page="software">Software</a>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
         <a href="/services/" class="nav-tab" data-page="services">Services</a>
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
@@ -189,9 +185,10 @@
     const currentPage = document.body.getAttribute('data-page');
     if (!currentPage) return;
 
-    // Map product-related pages to 'products' tab
-    const productPages = ['book', 'templates', 'tools', 'software'];
-    const pageToMatch = productPages.includes(currentPage) ? 'products' : currentPage;
+    // Map body data-page to the matching nav-tab data-page value.
+    // 'book' body maps to 'books' tab, 'pillar'/'guide' map to 'pillars', etc.
+    const pageMap = { book: 'books', pillar: 'pillars', guide: 'pillars' };
+    const pageToMatch = pageMap[currentPage] || currentPage;
 
     const navTabs = document.querySelectorAll('.nav-tab');
     navTabs.forEach(tab => {
