@@ -170,20 +170,20 @@ window.dataLayer = window.dataLayer || [];
 </tr></thead>
 <tbody>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">USD-functional company</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">GBP/USD movement UK team costs fluctuate in with UK ops</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">USD terms</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">USD-functional company</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">GBP/USD movement UK team costs fluctuate in with UK ops</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">USD terms</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR entity paying USD</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR/USD movement Vendor costs fluctuate in contracts</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR terms</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">EUR entity paying USD</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">EUR/USD movement Vendor costs fluctuate in contracts</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">EUR terms</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Multi-entity group</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">All cross-entity Intercompany eliminations consolidation</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">currencies</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">required</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Multi-entity group</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">All cross-entity Intercompany eliminations consolidation</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">currencies</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">required</td>
 </tr>
 </tbody>
 </table>
@@ -207,8 +207,7 @@ window.dataLayer = window.dataLayer || [];
 <p>The UK subsidiary's costs (largely GBP) are translated into USD for consolidation. A weak GBP environment reduces the USD cost of the UK team. A strong GBP environment increases it. Model the UK subsidiary's P&L in GBP, then translate at the assumption rate for the US entity consolidation.</p>
 <p>Multi-entity with EUR operations (e.g. France, Italy, Romania): EUR-denominated costs and any EUR revenue need their own FX assumptions. The EUR/USD rate and EUR/GBP rate both matter. Build each entity's P&L in its functional currency, then translate to the presentation currency for the consolidated view.</p>
 <h2>The FX Assumptions Most Models Get Wrong</h2>
-<p>Using spot rates for multi-year forecasts. Spot rates are</p>
-<p>appropriate for today. For years two through five of a forecast, use forward rates or an explicitly stated assumption with a rationale. "We assume stable rates throughout the forecast period" is an acceptable assumption if stated explicitly. Implicitly assuming stable rates without flagging it is a model credibility issue.</p>
+<p>Using spot rates for multi-year forecasts. Spot rates are appropriate for today. For years two through five of a forecast, use forward rates or an explicitly stated assumption with a rationale. "We assume stable rates throughout the forecast period" is an acceptable assumption if stated explicitly. Implicitly assuming stable rates without flagging it is a model credibility issue.</p>
 <p>Not separating transaction exposure from translation exposure. Transaction exposure arises when you have a contractual obligation in a foreign currency (e.g. a USD invoice outstanding in a GBP entity). Translation exposure arises when you consolidate foreign subsidiaries. These require different treatments.</p>
 <p>Ignoring hedging costs. If the business uses FX forwards or other hedging instruments to manage currency exposure, the cost of those hedges belongs in the model. Hedging reduces volatility but is not free.</p>
 <div class="faq-section">

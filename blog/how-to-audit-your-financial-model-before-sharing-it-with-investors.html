@@ -172,26 +172,26 @@ window.dataLayer = window.dataLayer || [];
 </tr></thead>
 <tbody>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Mathematical</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">P&L to cash flow reconciliation, balance 30 min consistency</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">sheet balance</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Mathematical</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">P&L to cash flow reconciliation, balance 30 min consistency</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">sheet balance</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Assumption</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">All key inputs in one place, no</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">30 min centralisation</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">hard-coding</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Assumption</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">All key inputs in one place, no</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">30 min centralisation</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">hard-coding</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Internal</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Headcount plan matches costs, revenue</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">30 min consistency</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">builds match summary</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Internal</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Headcount plan matches costs, revenue</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">30 min consistency</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">builds match summary</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Logic review</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Growth rates credible, margins trend</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">30 min correctly, no sign errors</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Logic review</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Growth rates credible, margins trend</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">30 min correctly, no sign errors</td>
 </tr>
 </tbody>
 </table>
@@ -209,10 +209,8 @@ window.dataLayer = window.dataLayer || [];
 <p>Every key assumption in the model should live in exactly one place: the assumptions tab. When reviewing the model before sharing, the test is straightforward: open the assumptions tab, find the CAC assumption, and trace the formula chain from that assumption cell through to the revenue model.</p>
 <p>If the formula chain breaks --- if you find the CAC value hard-coded somewhere else in the model, or if the number in the model differs from the assumptions tab --- you have found a centralisation failure. These failures mean that changing an assumption in one place does not change it everywhere, which produces inconsistencies that analysts find during diligence.</p>
 <p>What to look for:</p>
-<p>Any numeric constants in formula cells that should be references to</p>
-<p>the assumptions tab</p>
-<p>Assumptions that appear in multiple places with slightly different</p>
-<p>values</p>
+<p>Any numeric constants in formula cells that should be references to the assumptions tab</p>
+<p>Assumptions that appear in multiple places with slightly different values</p>
 <p>Key inputs that are not in the assumptions tab at all</p>
 <h2>Step 4: Internal Consistency</h2>
 <p>Internal consistency means the model tells one coherent story across all tabs. Inconsistencies --- where the headcount plan does not support the revenue assumptions, or the gross margin calculation uses different COGS than the P&L --- are often more damaging than simple formula errors because they suggest the model was assembled rather than designed. Key consistency checks:</p>

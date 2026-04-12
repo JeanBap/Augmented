@@ -163,12 +163,9 @@ window.dataLayer = window.dataLayer || [];
       <h2>What Cohort Analysis Is and Why It Beats Aggregate Metrics</h2>
 <p>An aggregate retention metric --- "we retain 85% of customers annually" --- describes the current cross-section of the customer base. It does not tell you whether retention is improving or deteriorating, whether early cohorts behave differently from recent ones, or whether the 15% who churn do so in month one or month eighteen.</p>
 <p>Cohort analysis tracks the same group of customers from their start date forward. This reveals:</p>
-<p>When churn happens (is it front-loaded or distributed across the</p>
-<p>lifetime?)</p>
-<p>Whether newer cohorts retain better or worse than older ones How revenue per cohort evolves (does expansion offset churn? At what</p>
-<p>point?)</p>
-<p>What the actual LTV trajectory looks like from observed data rather</p>
-<p>than assumptions</p>
+<p>When churn happens (is it front-loaded or distributed across the lifetime?)</p>
+<p>Whether newer cohorts retain better or worse than older ones How revenue per cohort evolves (does expansion offset churn? At what point?)</p>
+<p>What the actual LTV trajectory looks like from observed data rather than assumptions</p>
 <h2>The Structure of a Revenue Cohort Analysis</h2>
 <p>The standard revenue cohort table shows, for each acquisition cohort, the revenue generated in each subsequent period as a percentage of the revenue generated in the first period.</p>
 <p>Example structure (simplified):</p>
@@ -202,21 +199,15 @@ window.dataLayer = window.dataLayer || [];
 </table>
 <h2>What a Good vs. Problematic Cohort Chart Looks Like</h2>
 <p>Healthy patterns:</p>
-<p>Revenue curve flattens after initial churn and stabilises ---</p>
-<p>cohorts reach steady-state retention</p>
-<p>Later months show values above 100% --- expansion revenue drives NRR</p>
-<p>above 100%</p>
-<p>Newer cohorts show similar or better retention curves than older</p>
-<p>ones --- product-market fit is consistent</p>
+<p>Revenue curve flattens after initial churn and stabilises --- cohorts reach steady-state retention</p>
+<p>Later months show values above 100% --- expansion revenue drives NRR above 100%</p>
+<p>Newer cohorts show similar or better retention curves than older ones --- product-market fit is consistent</p>
 <p>Warning patterns:</p>
 <p>Revenue continues declining through month 12+ without stabilising</p>
 <p>--- ongoing churn with no floor</p>
-<p>Newer cohorts show worse retention than older ones --- potential</p>
-<p>product-market fit erosion or quality of acquisition declining</p>
-<p>All growth is in month 0 with rapid decay --- new customer</p>
-<p>acquisition driving the top line, not retention</p>
-<p>Only a few cohorts are large enough to read --- data concentration</p>
-<p>risk Key insight: Investors reviewing cohort data are specifically looking for the "smile curve" --- a revenue cohort that dips in early months due to initial churn, then recovers and climbs above 100% as expansion revenue kicks in. Businesses with smile curves on their cohort data have materially stronger unit economics conversations than those without. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
+<p>Newer cohorts show worse retention than older ones --- potential product-market fit erosion or quality of acquisition declining</p>
+<p>All growth is in month 0 with rapid decay --- new customer acquisition driving the top line, not retention</p>
+<p>Only a few cohorts are large enough to read --- data concentration risk Key insight: Investors reviewing cohort data are specifically looking for the "smile curve" --- a revenue cohort that dips in early months due to initial churn, then recovers and climbs above 100% as expansion revenue kicks in. Businesses with smile curves on their cohort data have materially stronger unit economics conversations than those without. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
 <h2>The Three Cohort Analyses Every Startup Should Have</h2>
 <p>1. Revenue retention cohort</p>
 <p>Tracks revenue from each cohort over time, as a percentage of first-period revenue. This is the primary cohort analysis for any subscription or recurring revenue business. Shows NRR, GRR, and the expansion pattern all in one view.</p>
@@ -226,15 +217,13 @@ window.dataLayer = window.dataLayer || [];
 <p>For PLG businesses or products with usage-based pricing, cohort analysis on product usage (active sessions, feature adoption, API calls) is often the leading indicator of future revenue retention. Declining engagement cohorts predict revenue churn before it appears in the financials.</p>
 <h2>How to Build Cohort Analysis in Excel</h2>
 <p>The structure:</p>
-<p>Rows: acquisition cohorts (each row is a group of customers who</p>
-<p>started in the same month)</p>
+<p>Rows: acquisition cohorts (each row is a group of customers who started in the same month)</p>
 <p>Columns: periods since acquisition (month 0, month 1, month 2\...) Values: revenue (or customers) from that cohort in that period The calculation for each cell is: revenue from cohort X in period N ÷ revenue from cohort X in period 0.</p>
 <p>Important: normalise to cohort start revenue, not absolute revenue. Absolute revenue comparisons across cohorts are misleading because later cohorts are typically larger. Percentage of starting revenue puts all cohorts on the same scale.</p>
 <p>For startups with fewer than 12 months of data, the cohort table will have a triangular shape --- early cohorts have more periods of data than recent ones. This is normal. Plot what you have and fill in the rest as data accumulates.</p>
 <h2>What Investors Ask When They See Cohort Data</h2>
 <p>"Show me the cohort where retention stabilises."</p>
-<p>This asks for the month at which the decay curve flattens. Businesses where retention never stabilises have a churn problem that compounds over time. The stabilisation point also determines the appropriate LTV calculation window.</p>
-<p>"Are your newer cohorts better or worse than your older ones?" Improving cohorts signal that retention is getting better as the product matures. Deteriorating cohorts signal that quality of acquisition may be declining (less targeted growth) or that the product is regressing. <strong>"What drives the expansion in cohorts that show revenue above 100%?"</strong></p>
+<p>This asks for the month at which the decay curve flattens. Businesses where retention never stabilises have a churn problem that compounds over time. The stabilisation point also determines the appropriate LTV calculation window. "Are your newer cohorts better or worse than your older ones?" Improving cohorts signal that retention is getting better as the product matures. Deteriorating cohorts signal that quality of acquisition may be declining (less targeted growth) or that the product is regressing. <strong>"What drives the expansion in cohorts that show revenue above 100%?"</strong></p>
 <p>Investors want to understand whether expansion is from organic usage growth, from proactive upselling, from seat additions, or from price increases. Each has different implications for sustainability and scalability.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>

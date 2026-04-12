@@ -171,20 +171,20 @@ window.dataLayer = window.dataLayer || [];
 </tr></thead>
 <tbody>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Purpose</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Identify which inputs drive the Show coherent future states most variance</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Purpose</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Identify which inputs drive the Show coherent future states most variance</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Output</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Tornado chart or sensitivity</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Conservative / Base / table</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Aggressive cases</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Output</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Tornado chart or sensitivity</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Conservative / Base / table</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Aggressive cases</td>
 </tr>
 <tr>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Best for</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Identifying risk concentration Investor-facing narrative Builds</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Model robustness</td>
-  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Investor confidence</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Best for</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Identifying risk concentration Investor-facing narrative Builds</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Model robustness</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#3a3830;vertical-align:top;">Investor confidence</td>
 </tr>
 </tbody>
 </table>
@@ -205,12 +205,10 @@ window.dataLayer = window.dataLayer || [];
 <p>One-variable sensitivity (1D data table):</p>
 <p>Column header: range of values for the input (e.g. CAC from $200 to</p>
 <p>$400 in $25 increments)</p>
-<p>Row output: the metric being measured (e.g. 18-month runway, gross</p>
-<p>margin)</p>
+<p>Row output: the metric being measured (e.g. 18-month runway, gross margin)</p>
 <p>Built using Excel's Data > What-If Analysis > Data Table Two-variable sensitivity (2D data table):</p>
 <p>Row header: range of values for input A (e.g. CAC)</p>
-<p>Column header: range of values for input B (e.g. churn rate) Cell values: output metric (e.g. monthly burn at month 18) Built the same way but using both row input cell and column input</p>
-<p>cell</p>
+<p>Column header: range of values for input B (e.g. churn rate) Cell values: output metric (e.g. monthly burn at month 18) Built the same way but using both row input cell and column input cell</p>
 <p>The key requirement for both: the input must flow from a single cell reference in the model (not be hard-coded in multiple places). Centralised assumptions tabs are what make sensitivity analysis possible without rebuilding.</p>
 <p>Key insight: Sensitivity analysis is only possible if the model is built with centralised assumptions. A model where growth rates, CAC, and churn are hard-coded in multiple tabs cannot be stress-tested efficiently. The assumptions tab is what makes sensitivity analysis fast.</p>
 <h2>The Tornado Chart: Visualising Which Inputs Matter Most</h2>
@@ -221,15 +219,11 @@ window.dataLayer = window.dataLayer || [];
 <p>3. CAC (for sales-led or performance-marketing-driven businesses) 4. Gross margin</p>
 <p>5. Headcount growth (typically lower impact in early models) A tornado chart in the investor deck communicates two things simultaneously: the founder has done the work of understanding their key uncertainties, and the business is not dependent on a single fragile assumption.</p>
 <h2>Common Sensitivity Analysis Mistakes</h2>
-<p>Running sensitivities on outputs that are already robust, ignoring</p>
-<p>the fragile ones</p>
+<p>Running sensitivities on outputs that are already robust, ignoring the fragile ones</p>
 <p>Hard-coding assumptions that prevent efficient testing</p>
-<p>Showing only upside sensitivities (what happens if CAC is lower than</p>
-<p>expected)</p>
-<p>Not including sensitivity results in investor materials, doing the</p>
-<p>analysis only internally</p>
-<p>Sensitivity ranges that are too narrow to reflect realistic</p>
-<p>uncertainty</p>
+<p>Showing only upside sensitivities (what happens if CAC is lower than expected)</p>
+<p>Not including sensitivity results in investor materials, doing the analysis only internally</p>
+<p>Sensitivity ranges that are too narrow to reflect realistic uncertainty</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
 <div class="faq-card">
