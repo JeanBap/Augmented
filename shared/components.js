@@ -95,7 +95,7 @@
   const NAV_HTML = `
     <a href="#main" class="skip-to-content">Skip to main content</a>
     <header>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
       <div class="nav-tabs">
         <div class="nav-dropdown">

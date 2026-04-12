@@ -357,8 +357,8 @@
 <body data-page="book">
 <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
     <header>
-    <nav>
-      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" loading="lazy" decoding="async"></a>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" decoding="async"></a>
       <div class="nav-tabs">
         <a href="/book/" class="nav-tab" data-page="books">Books</a>
         <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
@@ -503,7 +503,7 @@
       <div class="book-card-cover">
         <picture>
           <source srcset="/covers/start-ready-cover.webp" type="image/webp">
-          <img src="/covers/start-ready-cover.jpg" alt="Start Ready Book Cover" width="1800" height="2700" loading="lazy" decoding="async">
+          <img src="/covers/start-ready-cover.jpg" alt="Start Ready Book Cover" width="1800" height="2700" fetchpriority="high" decoding="async">
         </picture>
       </div>
       <div class="book-card-body">
