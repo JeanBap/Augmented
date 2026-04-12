@@ -2848,3 +2848,19 @@ footer a {
 @media (max-width: 640px) {
   .home-card { padding: 1.25rem !important; }
 }
+
+/* ─── Width utility classes (Round 15) ─────────────────────────────────────
+ * Use these instead of one-off inline max-width values.
+ * .rr-wide   → 1100px  main content / card grids
+ * .rr-mid    →  960px  secondary grids / tables
+ * .rr-hero   →  760px  hero intro text (centred)
+ * .rr-narrow →  720px  prose / FAQ / long-form text
+ * ─────────────────────────────────────────────────────────────────────── */
+.rr-wide   { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 2rem; padding-right: 2rem; }
+.rr-mid    { max-width:  960px; margin-left: auto; margin-right: auto; padding-left: 2rem; padding-right: 2rem; }
+.rr-hero   { max-width:  760px; margin-left: auto; margin-right: auto; text-align: center; }
+.rr-narrow { max-width:  720px; margin-left: auto; margin-right: auto; padding-left: 2rem; padding-right: 2rem; }
+@media (max-width: 768px) {
+  .rr-wide, .rr-mid, .rr-narrow { padding-left: 1rem; padding-right: 1rem; }
+  .rr-hero { padding-left: 1rem; padding-right: 1rem; }
+}
