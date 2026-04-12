@@ -1,5 +1,5 @@
 [build]
-  command = "node scripts/inject-static-scaffolding.js && node scripts/generate-tag-hubs.js && node scripts/inject-post-seo.js && node scripts/generate-sitemap.js && node scripts/patch-counters.js && node scripts/ping-search-engines.js"
+  command = "node scripts/inject-static-scaffolding.js && node scripts/generate-tag-hubs.js && node scripts/inject-post-seo.js && node scripts/sync-robots-meta.js && node scripts/generate-sitemap.js && node scripts/patch-counters.js && node scripts/ping-search-engines.js"
   publish = "."
 
 [functions]
