@@ -385,9 +385,9 @@
   <style>
   .books-grid {
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1.5rem;
-    max-width:1100px;
+    grid-template-columns:repeat(5,1fr);
+    gap:1.25rem;
+    max-width:1300px;
     margin:0 auto 3rem;
     padding:0 2rem;
   }
@@ -491,8 +491,11 @@
   @media(max-width:820px){
     .books-grid { grid-template-columns:1fr; max-width:400px; }
   }
-  @media(min-width:821px) and (max-width:1024px){
-    .books-grid { grid-template-columns:repeat(4,1fr); gap:1rem; }
+  @media(min-width:821px) and (max-width:1099px){
+    .books-grid { grid-template-columns:repeat(3,1fr); gap:1rem; }
+  }
+  @media(min-width:1100px) and (max-width:1299px){
+    .books-grid { grid-template-columns:repeat(5,1fr); gap:1rem; }
     .book-card-cover { padding:1rem; }
   }
   </style>
