@@ -8,10 +8,13 @@
  * etc.) have already run and the blog/tools dirs reflect the final state.
  *
  * Counters patched:
- *   counter-tools     → class="tool-card" count in tools/index.html
- *   counter-books     → static constant (books don't change often)
- *   counter-articles  → *.html files in blog/ excluding blog/index.html
- *   counter-software  → sub-directories in software/
+ *   counter-tools     -> class="tool-card" count in tools/index.html
+ *   counter-books     -> static constant (books don't publish automatically)
+ *   counter-articles  -> blog/*.html files with publish date <= today
+ *                        (same logic as inject-post-seo.js / the blog index)
+ *                        Posts not in publish_schedule.json are already live.
+ *                        Posts with a future date are not yet visible.
+ *   counter-software  -> sub-directories in software/
  *
  * Patches two locations in index.html (both must match for the animated
  * counter to work correctly):
@@ -23,11 +26,14 @@
 
 'use strict';
 
-const fs   = require('fs');
-const path = require('path');
+var fs   = require('fs');
+var path = require('path');
 
-const ROOT       = path.resolve(__dirname, '..');
-const INDEX_PATH = path.join(ROOT, 'index.html');
+var ROOT       = path.resolve(__dirname, '..');
+var INDEX_PATH = path.join(ROOT, 'index.html');
+
+// ISO date string for today: "YYYY-MM-DD" - matches inject-post-seo.js
+var TODAY_ISO = new Date().toISOString().split('T')[0];
 
 // ─── Count helpers ────────────────────────────────────────────────────────────
 
@@ -38,21 +44,38 @@ const INDEX_PATH = path.join(ROOT, 'index.html');
  */
 function countExactClass(filePath, className) {
   if (!fs.existsSync(filePath)) return 0;
-  const src = fs.readFileSync(filePath, 'utf8');
-  const re = new RegExp(`class="${className}(?:"| )`, 'g');
+  var src = fs.readFileSync(filePath, 'utf8');
+  var re = new RegExp('class="' + className + '(?:"| )', 'g');
   return (src.match(re) || []).length;
 }
 
 /**
- * Count *.html files in a directory, optionally excluding a set of filenames.
+ * Count published blog posts: blog/*.html files where the publish date
+ * is <= today or the post has no scheduled date (already live).
+ *
+ * Mirrors the isPublished() logic in inject-post-seo.js so the counter
+ * always matches what visitors can actually see.
  */
-function countHtmlFiles(dir, exclude) {
-  exclude = exclude || [];
-  if (!fs.existsSync(dir)) return 0;
-  return fs
-    .readdirSync(dir)
-    .filter(function(f) { return f.endsWith('.html') && exclude.indexOf(f) === -1; })
-    .length;
+function countPublishedPosts(blogDir, scheduleFile) {
+  if (!fs.existsSync(blogDir)) return 0;
+
+  // Load schedule: { slug: "YYYY-MM-DD" }
+  var schedule = {};
+  if (fs.existsSync(scheduleFile)) {
+    try { schedule = JSON.parse(fs.readFileSync(scheduleFile, 'utf8')); } catch (e) { /* ignore */ }
+  }
+
+  var htmlFiles = fs.readdirSync(blogDir)
+    .filter(function(f) { return f.endsWith('.html') && f !== 'index.html'; });
+
+  var published = htmlFiles.filter(function(f) {
+    var slug = f.replace(/\.html$/, '');
+    var date = schedule[slug];
+    // No entry in schedule = already published; entry must be <= today to be live
+    return !date || date <= TODAY_ISO;
+  });
+
+  return published.length;
 }
 
 /**
@@ -68,17 +91,21 @@ function countSubDirs(dir) {
 
 // ─── Gather counts ────────────────────────────────────────────────────────────
 
-// Books rarely change; keep as a static constant.
-// Increment BOOK_COUNT manually when a new book is published.
-var BOOK_COUNT = 4;
+// Books rarely change; increment manually when a new book is published.
+// Current books: Start Ready, Raise Ready, Model Ready, Exit Ready, Analytics Ready
+var BOOK_COUNT = 5;
 
 var counts = {
   tools:    countExactClass(path.join(ROOT, 'tools', 'index.html'), 'tool-card'),
   books:    BOOK_COUNT,
-  articles: countHtmlFiles(path.join(ROOT, 'blog'), ['index.html']),
+  articles: countPublishedPosts(
+              path.join(ROOT, 'blog'),
+              path.join(ROOT, 'shared', 'publish_schedule.json')
+            ),
   software: countSubDirs(path.join(ROOT, 'software')),
 };
 
+console.log('patch-counters: build date: ' + TODAY_ISO);
 console.log('patch-counters: computed counts:', JSON.stringify(counts));
 
 // ─── Patch index.html ─────────────────────────────────────────────────────────
@@ -126,8 +153,8 @@ if (src !== original) {
 
 console.log(
   'patch-counters: done\n' +
-  '  Free tools  -> ' + counts.tools + '\n' +
-  '  Books       -> ' + counts.books + '\n' +
-  '  Articles    -> ' + counts.articles + '\n' +
+  '  Free tools  -> ' + counts.tools   + '\n' +
+  '  Books       -> ' + counts.books   + '\n' +
+  '  Articles    -> ' + counts.articles + ' (published as of ' + TODAY_ISO + ')\n' +
   '  Software    -> ' + counts.software
 );
