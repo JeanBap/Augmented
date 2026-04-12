@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -99,7 +99,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue | Raise Ready",
+"name": "The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html"
     }
   ]
@@ -160,14 +160,27 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">Cohort-based revenue forecasting groups customers by the month they were acquired and tracks each group's revenue contribution over time. It is the most accurate forecasting method for any subscription, recurring, or repeat-purchase business because it captures the two things that flat-line models miss: how customer behavior changes over time, and what new customer acquisition actually contributes each period. If you are raising at seed or Series A, this is the method that will earn you credibility in any investor meeting.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-03-16 - Last updated: 2025-03-16</p>
-<p>Reading time: \~9 min</p>
-<h2>What Is Cohort-Based <a href="/blog/model-churn-ltv.html">Revenue Forecast</a>ing?</h2>
+      <h2>What Is Cohort-Based <a href="/blog/model-churn-ltv.html">Revenue Forecast</a>ing?</h2>
 <p>A cohort is a group of customers who share a common starting point, typically the month they signed up, made their first purchase, or activated on your platform. Cohort-based forecasting tracks each group independently rather than lumping all customers into a single aggregate number.</p>
 <p>Why does this matter? Because customer behavior is not uniform over time. A customer acquired in January behaves differently than a customer acquired in June. The January customer has had six more months to churn, expand, or change their usage pattern. Treating both as identical leads to forecasts that are wrong in predictable, avoidable ways. The most common alternative, aggregate forecasting, looks at total revenue and applies a growth rate. This tells you nothing about the health of your customer base. You could be losing old customers while acquiring new ones at a faster rate, and the aggregate line would still go up. But the underlying economics would be deteriorating. Cohort analysis catches this. Aggregate analysis does not.</p>
-<p>Total revenue grows 10% MoM | January cohort: -2% MoM, March cohort: +5% MoM</p>
-<p>Cannot distinguish new vs. existing New revenue and retained revenue revenue | tracked separately</p>
-<p>Hides churn behind acquisition | Churn visible per cohort, per month Breaks at scale | Scales naturally with more cohorts Investors see through it | Investors trust it</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Total revenue grows 10% MoM</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">January cohort: -2% MoM, March cohort: +5% MoM</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Cannot distinguish new vs. existing New revenue and retained revenue revenue</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">tracked separately</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Hides churn behind acquisition</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Churn visible per cohort, per month Breaks at scale</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Scales naturally with more cohorts Investors see through it</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Investors trust it</td>
+</tr>
+</tbody>
+</table>
 <h2>How Cohort Forecasting Works</h2>
 <p>The mechanics are straightforward once you understand the structure. Step 1: Define your cohorts</p>
 <p>Group customers by acquisition month. January 2025 cohort = all customers who made their first purchase or signed up in January 2025. Each cohort gets its own row in the model.</p>
@@ -190,8 +203,21 @@
 <h2>Investor Perspective</h2>
 <p>When a fund like Creandum or B2Ventures evaluates a SaaS or marketplace model, the cohort analysis is where they spend the most time. Here is what they look for:</p>
 <p>Improving retention per cohort over Product-market fit is strengthening time</p>
-<p>Stable retention after Month 6 | Predictable revenue base NRR above 100% per cohort | Expansion revenue is real Consistent cohort size growth | Acquisition engine is scaling Cohort curves that decline then | Natural churn floor found stabilize</p>
-<p>Declining retention in recent | Product, market, or ICP problem cohorts</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Stable retention after Month 6</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Predictable revenue base NRR above 100% per cohort</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Expansion revenue is real Consistent cohort size growth</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Acquisition engine is scaling Cohort curves that decline then</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Natural churn floor found stabilize</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Declining retention in recent</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Product, market, or ICP problem cohorts</td>
+</tr>
+</tbody>
+</table>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
 <div class="faq-card">
@@ -211,13 +237,6 @@
 <p>Cohort-based revenue forecasting is the gold standard for any startup with recurring or repeat revenue. It separates the health of your existing customer base from the performance of your acquisition engine, making your forecasts more accurate and your investor conversations more credible. Build the structure early, even if your cohorts are small. Track retention at the cohort level, account for expansion, and segment by customer type if the behavior differs meaningfully. This is not just a better forecasting method. It is a better way to understand your business. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
 
     </div>
-    <div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
-<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
-<a href="/blog/the-assumptions-tab-the-most-important-sheet-in-your-entire-financial-model.html" class="related-article-link">The Assumptions Tab: The Most Important Sheet in Your Entire Financial Model</a>
-</div>
 </div>
 
     <div class="blog-article-cta">

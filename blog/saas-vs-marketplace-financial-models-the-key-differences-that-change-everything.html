@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -99,7 +99,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "SaaS vs. Marketplace Financial Models: The Key Differences That Change Everything | Raise Ready",
+"name": "SaaS vs. Marketplace Financial Models: The Key Differences That Change Everything | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/saas-vs-marketplace-financial-models-the-key-differences-that-change-everything.html"
     }
   ]
@@ -160,9 +160,7 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">SaaS and marketplace businesses look similar on the surface: they are both technology-enabled, both have recurring revenue characteristics, and both are venture-fundable. But their financial models are structurally different in ways that affect every tab in the spreadsheet. Revenue mechanics, cost structure, unit economics, and scaling dynamics all work differently. Having built financial models for both SaaS (Simplifii, Haus) and marketplace (the platform/the company) businesses across multiple funding rounds and an exit, I have seen firsthand where founders go wrong by applying the wrong framework to their business type.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-03-23 - Last updated: 2025-03-23</p>
-<p>Reading time: \~9 min</p>
-<h2>The Fundamental Structural Difference</h2>
+      <h2>The Fundamental Structural Difference</h2>
 <p>A SaaS business has one customer type who pays a subscription. The relationship is direct: the company builds a product, the customer pays to use it, recurring revenue accumulates. The financial model is built around that single customer relationship. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>
 <p>A marketplace has two (or more) customer types whose behavior is interdependent. Revenue comes from transactions between those groups, and the marketplace takes a cut. The <a href="/blog/startup-burn-rate-cash-runway.html">financial model</a> must capture both sides and the interaction between them.</p>
 <p>This is not a minor distinction. It changes how you model revenue, how you calculate unit economics, how you think about growth, and what investors look for when they evaluate your numbers.</p>
@@ -171,11 +169,31 @@
 <p>Revenue is driven by: number of customers x price per customer x retention rate. You acquire a customer, they pay monthly or annually, and they stay until they churn. New MRR comes from new logos and expansion (upsell, additional seats). Lost MRR comes from churn and contraction. Net new MRR = new + expansion - churn - contraction. The beauty of SaaS revenue from a modeling perspective: it is highly predictable once you have a few months of data. Churn rates stabilize, expansion patterns emerge, and you can forecast with reasonable confidence 12-18 months out.</p>
 <p>Marketplace Revenue Model</p>
 <p>Revenue = GMV x take rate, where GMV = number of transactions x average transaction value. The number of transactions depends on the activity of both sides: how many units the supply side offers and how many the demand side wants. The matching between these two sides (fill rate, conversion rate) adds a layer that does not exist in SaaS. Marketplace revenue is inherently more volatile than SaaS revenue because it depends on transaction volume, which fluctuates with seasonality, supply availability, and demand cycles. A staffing marketplace has higher volume in Q4 (holiday season). A real estate marketplace has higher volume in spring. These patterns must be modeled explicitly.</p>
-<p>Revenue driver | Subscriptions (predictable) Revenue volatility | Low (contracted)</p>
-<p>Gross margin | 70-85%</p>
-<p>Key metric | ARR, NRR</p>
-<p>Growth lever | New logos + expansion</p>
-<p>Churn impact | Direct revenue loss</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Revenue driver</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Subscriptions (predictable) Revenue volatility</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Low (contracted)</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Gross margin</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">70-85%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Key metric</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">ARR, NRR</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Growth lever</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">New logos + expansion</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Churn impact</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Direct revenue loss</td>
+</tr>
+</tbody>
+</table>
 <h2>Unit Economics: Direct vs. Two-Sided</h2>
 <p>SaaS Unit Economics</p>
 <p>Straightforward to calculate: CAC is total sales and marketing spend divided by new customers. LTV is average revenue per customer x gross margin / churn rate. LTV:CAC ratio is the benchmark that every SaaS investor knows. Payback period is CAC / (monthly revenue x gross margin). These formulas apply cleanly because there is one customer type.</p>
@@ -191,14 +209,41 @@
 <p>COGS includes fulfillment costs that scale nearly linearly with transactions: payment processing, insurance, supply-side payments, logistics, quality assurance. Every transaction has a direct cost. Gross margins are structurally lower because delivery is not</p>
 <p>zero-marginal-cost.</p>
 <p>However, marketplaces benefit from operational leverage at scale: the per-transaction cost of matching, support, and operations decreases as the platform gets more efficient. At the platform, the cost of filling the 10,000th shift was meaningfully lower than the cost of filling the 100th shift because the matching algorithm was better, the operations team was more experienced, and insurance rates were negotiated at higher volume.</p>
-<p>COGS | Scales slowly (near-zero marginal cost)</p>
-<p>Customer support | Scales with customer count Engineering | Front-loaded, then maintenance mode Sales & marketing | Scales with growth targets Gross margin trajectory | High from early stages, stable</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">COGS</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Scales slowly (near-zero marginal cost)</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Customer support</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Scales with customer count Engineering</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Front-loaded, then maintenance mode Sales & marketing</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Scales with growth targets Gross margin trajectory</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">High from early stages, stable</td>
+</tr>
+</tbody>
+</table>
 <h2>Growth Dynamics: Linear vs. Network Effects</h2>
 <p>SaaS growth is relatively linear: invest X in sales and marketing, acquire Y customers. Double X, roughly double Y (with some diminishing returns). The growth rate is a function of investment and execution. Marketplace growth has a network effect component: each new participant on one side makes the platform more valuable for the other side. This means growth can be super-linear once you cross the liquidity threshold, but it also means growth is painfully slow before you reach that threshold.</p>
 <p>The <a href="/blog/startup-budget-zero-series-a.html">financial model</a> must reflect this non-linearity. A marketplace model that shows constant percentage growth in GMV is ignoring the most distinctive feature of the marketplace business model. Instead, model the supply-demand flywheel explicitly: show how supply density drives fill rate, which drives demand retention, which drives demand-side referrals, which attracts more supply.</p>
 <h2>What Investors Evaluate Differently</h2>
-<p>ARR growth rate | GMV growth rate and take rate stability</p>
-<p>Net revenue retention | Fill rate and supply-demand balance CAC payback period | Cost to reach liquidity per market Gross margin level | Gross margin trajectory at scale Logo churn rate | Both-side retention rates Magic number / sales efficiency | Network effect strength (cross-side elasticity)</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">ARR growth rate</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">GMV growth rate and take rate stability</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Net revenue retention</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Fill rate and supply-demand balance CAC payback period</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Cost to reach liquidity per market Gross margin level</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Gross margin trajectory at scale Logo churn rate</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Both-side retention rates Magic number / sales efficiency</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Network effect strength (cross-side elasticity)</td>
+</tr>
+</tbody>
+</table>
 <p>Path to profitability via margins Path to profitability via operational leverage</p>
 <h2>Hybrid Models: When Your Business Is Both</h2>
 <p>Some businesses have elements of both. A SaaS platform with a marketplace layer (like Shopify, which charges subscriptions and takes a cut of transactions). A marketplace that adds premium subscription features for one side.</p>
@@ -222,13 +267,6 @@
 <p>SaaS and marketplace financial models differ in every dimension: revenue mechanics, cost structure, unit economics, and growth dynamics. SaaS models are built around a single customer relationship with subscription revenue. Marketplace models are system models built around the interaction between two customer groups and the transactions that result. Applying a SaaS framework to a marketplace (or vice versa) produces a model that looks structurally correct but generates projections that are wrong in ways that investors will immediately identify. Choose the right framework for your business, model the drivers that actually matter, and present metrics that reflect the true economics of how your company creates value.</p>
 
     </div>
-    <div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
-<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
-<a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html" class="related-article-link">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a>
-</div>
 </div>
 
     <div class="blog-article-cta">

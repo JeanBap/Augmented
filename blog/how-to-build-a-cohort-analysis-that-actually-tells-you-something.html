@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -99,7 +99,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "How to Build a Cohort Analysis That Actually Tells You Something | Raise Ready",
+"name": "How to Build a Cohort Analysis That Actually Tells You Something | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/how-to-build-a-cohort-analysis-that-actually-tells-you-something.html"
     }
   ]
@@ -160,10 +160,7 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">Cohort analysis is the most powerful tool for understanding whether a business is actually retaining and growing customers over time. A cohort is a group of customers who started at the same time --- and tracking their revenue, activity, or retention together reveals patterns that aggregate metrics hide. Most early-stage cohort analyses show either raw retention data without context or aggregate metrics that make retention look better than it is. A cohort analysis that actually tells you something shows how revenue from each cohort evolves over time, whether retention is improving across cohorts, and what the LTV trajectory looks like as cohorts mature.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready*</p>
-<p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
-<p>Reading time: \~7 min</p>
-<h2>What Cohort Analysis Is and Why It Beats Aggregate Metrics</h2>
+      <h2>What Cohort Analysis Is and Why It Beats Aggregate Metrics</h2>
 <p>An aggregate retention metric --- "we retain 85% of customers annually" --- describes the current cross-section of the customer base. It does not tell you whether retention is improving or deteriorating, whether early cohorts behave differently from recent ones, or whether the 15% who churn do so in month one or month eighteen.</p>
 <p>Cohort analysis tracks the same group of customers from their start date forward. This reveals:</p>
 <p>When churn happens (is it front-loaded or distributed across the</p>
@@ -175,7 +172,34 @@
 <h2>The Structure of a Revenue Cohort Analysis</h2>
 <p>The standard revenue cohort table shows, for each acquisition cohort, the revenue generated in each subsequent period as a percentage of the revenue generated in the first period.</p>
 <p>Example structure (simplified):</p>
-<p>Jan 2024 | 100% | 92% | 88% | 85% | 90% Feb 2024 | 100% | 90% | 86% | 84% | 89% Mar 2024 | 100% | 91% | 87% | 85% | ---</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Jan 2024</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">100%</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">92%</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">88%</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">85%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">90% Feb 2024</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">100%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">90%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">86%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">84%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">89% Mar 2024</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">100%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">91%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">87%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">85%</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">---</td>
+</tr>
+</tbody>
+</table>
 <h2>What a Good vs. Problematic Cohort Chart Looks Like</h2>
 <p>Healthy patterns:</p>
 <p>Revenue curve flattens after initial churn and stabilises ---</p>
@@ -210,7 +234,7 @@
 <h2>What Investors Ask When They See Cohort Data</h2>
 <p>"Show me the cohort where retention stabilises."</p>
 <p>This asks for the month at which the decay curve flattens. Businesses where retention never stabilises have a churn problem that compounds over time. The stabilisation point also determines the appropriate LTV calculation window.</p>
-<p>"Are your newer cohorts better or worse than your older ones?" Improving cohorts signal that retention is getting better as the product matures. Deteriorating cohorts signal that quality of acquisition may be declining (less targeted growth) or that the product is regressing. **"What drives the expansion in cohorts that show revenue above 100%?"**</p>
+<p>"Are your newer cohorts better or worse than your older ones?" Improving cohorts signal that retention is getting better as the product matures. Deteriorating cohorts signal that quality of acquisition may be declining (less targeted growth) or that the product is regressing. <strong>"What drives the expansion in cohorts that show revenue above 100%?"</strong></p>
 <p>Investors want to understand whether expansion is from organic usage growth, from proactive upselling, from seat additions, or from price increases. Each has different implications for sustainability and scalability.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
@@ -231,13 +255,6 @@
 <p>Cohort analysis reveals what aggregate metrics hide: when churn happens, whether newer cohorts retain better than older ones, and how revenue evolves over the lifetime of a customer relationship. The revenue retention cohort table --- showing each cohort's revenue as a percentage of its first-period revenue over time --- is the primary tool. A healthy cohort chart shows a decay that stabilises and then recovers above 100% (the smile curve). Build all three cohort analyses (revenue, logo, engagement), keep the data monthly internally, and present it in investor materials as evidence of the retention dynamics the financial model is based on.</p>
 
     </div>
-    <div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/cac-ltv-and-payback-period-calculated-correctly-for-once.html" class="related-article-link">CAC, LTV, and Payback Period: Calculated Correctly for Once</a>
-<a href="/blog/why-blended-cac-is-a-lie-and-how-to-model-it-by-channel.html" class="related-article-link">Why Blended CAC Is a Lie (And How to Model It by Channel)</a>
-<a href="/blog/net-revenue-retention-the-number-that-predicts-everything.html" class="related-article-link">Net Revenue Retention: The Number That Predicts Everything</a>
-</div>
 </div>
 
     <div class="blog-article-cta">

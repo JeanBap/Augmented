@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -69,7 +69,7 @@
     },
     {
       "@type": "Question",
-      "name": "**Should I model COGS as a percentage of revenue or as absolute numbers?**",
+      "name": "<strong>Should I model COGS as a percentage of revenue or as absolute numbers?</strong>",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Both. Model the individual cost items as absolute numbers (hosting cost, payment processing fees, support salaries). Then calculate the resulting gross margin percentage as a check. If you model COGS as only a percentage of revenue, you lose the ability to see which specific costs are driving margin changes, and you cannot show how economies of scale improve the margin over time."
@@ -107,7 +107,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story | Raise Ready",
+"name": "COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html"
     }
   ]
@@ -168,9 +168,7 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to run the company regardless of how many customers you have. Confusing them, or misclassifying costs between the two, inflates or deflates your gross margin, which is one of the first numbers every investor checks. Gross margin tells investors whether your business model can scale profitably. If it is wrong because costs are in the wrong bucket, every downstream number is unreliable. This article explains exactly how to classify costs correctly for SaaS, marketplace, and services businesses.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-03-19 - Last updated: 2025-03-19 Explore our <a href="/tools/">free tools for founders</a> to apply these concepts.</p>
-<p>Reading time: \~9 min</p>
-<h2>What Is COGS?</h2>
+      <h2>What Is COGS?</h2>
 <p>Cost of Goods Sold represents the direct costs of delivering your product or service. If you did not have the customer, you would not have the cost. The technical definition is: costs that vary directly with revenue.</p>
 <p>For a physical product company, this is intuitive: raw materials, manufacturing, shipping. For software and marketplace businesses, it is less obvious, which is where the mistakes happen.</p>
 <p>COGS for a SaaS Business</p>
@@ -180,26 +178,79 @@
 <p>The sales team that acquired employers? That was OpEx. The engineering team that built the platform? OpEx. The office? OpEx. The distinction is clear once you apply the test: would this cost exist if we had zero transactions this month?</p>
 <p>COGS for a Services Business</p>
 <p>For consulting, professional services, or agency models, COGS is the cost of the people delivering the service and any direct costs associated with delivery (travel, subcontractors, specialized tools used exclusively for client work). The salaries of consultants billing hours are COGS. The salary of the office manager is OpEx.</p>
-<p>AWS hosting (scales with users) | COGS</p>
-<p>Stripe payment processing fees | COGS</p>
-<p>Customer support team salaries | COGS</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">AWS hosting (scales with users)</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">COGS</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Stripe payment processing fees</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">COGS</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Customer support team salaries</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">COGS</td>
+</tr>
+</tbody>
+</table>
 <p>Engineering team salaries (product OpEx (R&D)</p>
 <p>dev)</p>
-<p>Sales team salaries | OpEx (Sales & Marketing) Google Ads spend | OpEx (Sales & Marketing) Office rent | OpEx (G&A)</p>
-<p>CEO salary | OpEx (G&A)</p>
-<p>Legal and accounting fees | OpEx (G&A)</p>
-<p>Worker payments in a marketplace | COGS</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Sales team salaries</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">OpEx (Sales & Marketing) Google Ads spend</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">OpEx (Sales & Marketing) Office rent</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">OpEx (G&A)</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">CEO salary</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">OpEx (G&A)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Legal and accounting fees</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">OpEx (G&A)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Worker payments in a marketplace</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">COGS</td>
+</tr>
+</tbody>
+</table>
 <p>Consultant salaries (billing hours) COGS</p>
 <p>Recruiter fees for hiring | OpEx (G&A)</p>
 <h2>Why Gross Margin Is the Number Investors Check First</h2>
 <p>Gross margin = (Revenue minus COGS) / Revenue. It tells investors how much money is left over from each dollar of revenue after paying for the direct costs of delivery. Everything else (salaries, marketing, office, growth) gets funded from what is left.</p>
 <p>A SaaS company with 75% gross margin has $0.75 of every revenue dollar available to fund growth. A marketplace with 25% net revenue margin has $0.25. A services company with 40% gross margin has $0.40. These numbers dictate the entire growth equation: how fast you can scale, how much you can spend on acquisition, and how quickly you reach profitability.</p>
-<p>SaaS (software delivery) | 70-85%</p>
-<p>Marketplace (net revenue basis) | 60-75%</p>
-<p>Marketplace (GMV basis) | 15-30%</p>
-<p>E-commerce (own inventory) | 30-50%</p>
-<p>Professional services | 35-55%</p>
-<p>Hardware + software | 40-60%</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">SaaS (software delivery)</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">70-85%</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Marketplace (net revenue basis)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">60-75%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Marketplace (GMV basis)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">15-30%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">E-commerce (own inventory)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">30-50%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Professional services</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">35-55%</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Hardware + software</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">40-60%</td>
+</tr>
+</tbody>
+</table>
 <h2>How to Model COGS Correctly</h2>
 <p>Step 1: List every cost in your business</p>
 <p>Write down every expense, from AWS bills to the CEO's salary. Do not categorize yet. Just list.</p>
@@ -235,7 +286,7 @@
 <p class="faq-a">Yes, and this is where you should consult your accountant. The treatment of COGS vs. OpEx can affect gross profit reporting and certain tax calculations. For <a href="/blog/startup-burn-rate-cash-runway.html">financial model</a>ing purposes, follow the economic logic. For tax filing purposes, follow your accountant's guidance. They may differ slightly, and that is normal.</p>
 </div>
 <div class="faq-card">
-<p class="faq-q">**Should I model COGS as a percentage of revenue or as absolute numbers?**</p>
+<p class="faq-q"><strong>Should I model COGS as a percentage of revenue or as absolute numbers?</strong></p>
 <p class="faq-a">Both. Model the individual cost items as absolute numbers (hosting cost, payment processing fees, support salaries). Then calculate the resulting gross margin percentage as a check. If you model COGS as only a percentage of revenue, you lose the ability to see which specific costs are driving margin changes, and you cannot show how economies of scale improve the margin over time.</p>
 </div>
 </div>
@@ -243,13 +294,6 @@
 <p>COGS is the cost of delivering your product. OpEx is the cost of running your company. Getting the classification right determines your gross margin, which is one of the most scrutinized numbers in any investor evaluation. Use the incremental customer test: if the cost scales with customers, it is COGS. Model each COGS component individually so you can show margin evolution at scale. Benchmark against comparable companies to ensure your classification matches industry standards. Document your allocation logic in the assumptions tab. A misclassified model does not just produce wrong numbers. It produces wrong conversations, and those are much harder to fix.</p>
 
     </div>
-    <div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
-<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
-<a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html" class="related-article-link">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a>
-</div>
 </div>
 
     <div class="blog-article-cta">

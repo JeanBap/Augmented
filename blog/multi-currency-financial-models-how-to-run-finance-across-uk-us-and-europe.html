@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -99,7 +99,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Multi-Currency Financial Models: How to Run Finance Across UK, US, and Europe | Raise Ready",
+"name": "Multi-Currency Financial Models: How to Run Finance Across UK, US, and Europe | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/multi-currency-financial-models-how-to-run-finance-across-uk-us-and-europe.html"
     }
   ]
@@ -160,22 +160,40 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">Running a startup across multiple currencies is not just an accounting complexity --- it creates real economic exposure that will affect your P&L, your runway calculation, and your unit economics in ways that a single-currency model cannot capture. The founders who get this right build models in a functional currency, translate reporting into a presentation currency, and apply FX assumptions that are explicit, sourced, and stress-tested. The ones who get it wrong discover the problem when an investor asks why the model does not reconcile to actual bank balances.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi · Fractional VP of Finance and Strategy for early-stage startups · Author, *Raise Ready* Explore our <a href="/tools/">free tools for founders</a> to apply these concepts.</p>
-<p>Published: 2025-03-08 · Last updated: 2025-03-08</p>
-<p>Reading time: \~8 min</p>
-<h2>What Is the Multi-Currency Problem in Startup Finance?</h2>
+      <h2>What Is the Multi-Currency Problem in Startup Finance?</h2>
 <p>A startup operating across currencies earns revenue in one currency, pays costs in another, holds cash in both, and reports to investors in a third. Each translation creates FX exposure: the risk that exchange rate movements change the real value of the business's financial position. Key facts at a glance:</p>
-<p>UK startup with US | GBP/USD movement Revenue recognised in USD, customers | costs in GBP</p>
-<p>USD-functional company | GBP/USD movement UK team costs fluctuate in with UK ops | USD terms</p>
-<p>EUR entity paying USD | EUR/USD movement Vendor costs fluctuate in contracts | EUR terms</p>
-<p>Multi-entity group | All cross-entity Intercompany eliminations consolidation | currencies | required</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">UK startup with US</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">GBP/USD movement Revenue recognised in USD, customers</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">costs in GBP</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">USD-functional company</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">GBP/USD movement UK team costs fluctuate in with UK ops</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">USD terms</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR entity paying USD</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR/USD movement Vendor costs fluctuate in contracts</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">EUR terms</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Multi-entity group</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">All cross-entity Intercompany eliminations consolidation</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">currencies</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">required</td>
+</tr>
+</tbody>
+</table>
 <h2>The Functional vs. Presentation Currency Distinction</h2>
 <p>The first structural decision in a multi-currency model is distinguishing functional currency from presentation currency. Functional currency is the currency of the primary economic environment in which the entity operates. For a UK startup that earns most revenue in GBP and pays most costs in GBP, the functional currency is GBP. For a US Delaware C-corp that invoices in USD and pays its key staff in USD, the functional currency is USD, even if it has a UK subsidiary.</p>
 <p>Presentation currency is the currency in which you report financial statements. Many international startups present in USD for investor reporting, even when the functional currency of the operating entity is GBP or EUR. This requires translating the financial statements from functional to presentation currency at period-end rates.</p>
 <p>Key insight: The distinction matters because translation from functional to presentation currency creates exchange differences that sit in equity (not the P&L). Many founders confuse these translation differences with actual operating losses or gains, which distorts the reading of the model.</p>
 <h2>How to Build a Multi-Currency Model That Works</h2>
 <p>Step 1: Define the functional currency for each entity.</p>
-<p>If you have a UK entity and a US entity, each has its own functional currency. Transactions within each entity are recorded in functional currency. Intercompany transactions require explicit FX translation. **Step 2: Apply a single functional currency for the model consolidation.**</p>
+<p>If you have a UK entity and a US entity, each has its own functional currency. Transactions within each entity are recorded in functional currency. Intercompany transactions require explicit FX translation. <strong>Step 2: Apply a single functional currency for the model consolidation.</strong></p>
 <p>For investor reporting, pick one currency --- typically USD --- and translate all entities into it. Apply average rates for P&L items, closing rates for balance sheet items. Flag this methodology in the assumptions tab.</p>
 <p>Step 3: Build an FX assumption table.</p>
 <p>Do not hard-code exchange rates into revenue or cost lines. Build an assumptions table with the FX rates you are using, their source, and the date of the rate. Use forward rates where available for forecasting rather than spot rates, since forward rates reflect market expectations. Step 4: Create an FX sensitivity.</p>
@@ -212,13 +230,6 @@
 <p>Multi-currency operations require multi-currency models. The key steps are: define functional currency for each entity, use a single presentation currency for investor reporting, build an explicit FX assumption table with sourced rates, run a 10% sensitivity on major cross-currency pairs, and model intercompany charges explicitly. The most common errors are using spot rates for multi-year forecasts, conflating translation effects with operating performance, and ignoring the cost of hedging. Get the structure right and the model will reconcile to actual bank balances across currencies --- which is the final test of whether it has been built correctly.</p>
 
     </div>
-    <div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
-<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
-<a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html" class="related-article-link">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a>
-</div>
 </div>
 
     <div class="blog-article-cta">

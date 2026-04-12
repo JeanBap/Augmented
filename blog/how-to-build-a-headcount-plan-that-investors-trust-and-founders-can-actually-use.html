@@ -4,7 +4,7 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-BXXBYNXWZ7');
@@ -99,7 +99,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "How to Build a Headcount Plan That Investors Trust and Founders Can Actually Use | Raise Ready",
+"name": "How to Build a Headcount Plan That Investors Trust and Founders Can Actually Use | Raise Ready",
       "item": "https://www.raisereadybook.com/blog/how-to-build-a-headcount-plan-that-investors-trust-and-founders-can-actually-use.html"
     }
   ]
@@ -160,9 +160,7 @@
   <p style="margin:0.5rem 0 0; font-size:0.95rem;">Headcount is typically 60-80% of a startup's burn rate, and yet most founders model it as a single line: "Salaries: $800K." That is not a plan. It is a number with no structure behind it. A proper headcount plan models each role individually, with start date, base salary, payroll overhead, and ramp time. It connects directly to revenue capacity (salespeople), product development (engineers), and support load (operations). This article walks through exactly how to build one that both investors and your own hiring manager can rely on.</p>
 </div>
 
-      <p>Author: Yanni Papoutsi - Fractional VP of Finance and Strategy for early-stage startups - Author, Raise Ready Published: 2025-03-18 - Last updated: 2025-03-18</p>
-<p>Reading time: \~9 min</p>
-<h2>Why Headcount Planning Matters More Than Founders Think</h2>
+      <h2>Why Headcount Planning Matters More Than Founders Think</h2>
 <p>Personnel cost is the largest single expense category for almost every startup before profitability. At the platform, headcount represented over 70% of our operating burn at every stage from seed through Series A. Every other cost category, infrastructure, marketing, office space, was secondary. Use our <a href="/tools/fundraising-readiness-scorecard.html">test your fundraising readiness</a> to put this into practice.</p>
 <p>This means that if your headcount plan is wrong, your entire burn rate is wrong. If your burn rate is wrong, your runway calculation is wrong. And if your runway is wrong, you will either run out of money sooner than expected or raise at the wrong time. The downstream consequences of a bad headcount plan are existential.</p>
 <p>Investors understand this, which is why headcount is one of the first areas they scrutinize. When Profounders reviewed our model, they did not just look at the total salary line. They opened the headcount tab, looked at each planned hire, checked the timing against revenue milestones, and asked: "Why do you need this role in Q2 instead of Q3?"</p>
@@ -171,21 +169,66 @@
 <p>Every headcount plan should be built as a table with these columns:</p>
 <p>Role title | Specific title (e.g., "Senior Backend Engineer", not</p>
 <p>"Developer")</p>
-<p>Department | Engineering, Sales, Marketing, Operations, G&A</p>
-<p>Start month | When this person's first paycheck hits</p>
-<p>Base salary (annual) | Gross annual salary in local currency</p>
-<p>Payroll overhead multiplier | 1.2x to 1.5x depending on geography Fully loaded monthly cost | Base salary / 12 x overhead multiplier</p>
-<p>Ramp time | Months to full productivity (especially sales roles)</p>
-<p>Revenue linkage | What revenue or capacity this role enables</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Department</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Engineering, Sales, Marketing, Operations, G&A</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Start month</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">When this person's first paycheck hits</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Base salary (annual)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Gross annual salary in local currency</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Payroll overhead multiplier</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">1.2x to 1.5x depending on geography Fully loaded monthly cost</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Base salary / 12 x overhead multiplier</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Ramp time</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Months to full productivity (especially sales roles)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Revenue linkage</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">What revenue or capacity this role enables</td>
+</tr>
+</tbody>
+</table>
 <h2>Understanding Payroll Overhead</h2>
 <p>This is the number first-time founders almost always underestimate. Base salary is not what an employee costs you. The actual cost includes benefits (health insurance, pension/401k), employer-side payroll taxes, equipment, software licenses, and if you are using an Employer of Record for international hires, the EOR fee.</p>
 <p>The multiplier varies significantly by geography:</p>
-<p>United States | 1.25-1.35x (health insurance, FICA, state taxes)</p>
-<p>United Kingdom | 1.15-1.25x (NI contributions, pension auto-enrolment)</p>
-<p>France | 1.40-1.50x (social charges are among the highest in Europe)</p>
-<p>Romania / Eastern Europe | 1.08-1.15x (lower social contributions)</p>
-<p>UAE / Dubai | 1.05-1.12x (minimal payroll taxes, visa costs instead)</p>
-<p>Via Employer of Record | Add 10-20% on top of local overhead for EOR fee</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">United States</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">1.25-1.35x (health insurance, FICA, state taxes)</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">United Kingdom</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">1.15-1.25x (NI contributions, pension auto-enrolment)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">France</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">1.40-1.50x (social charges are among the highest in Europe)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Romania / Eastern Europe</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">1.08-1.15x (lower social contributions)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">UAE / Dubai</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">1.05-1.12x (minimal payroll taxes, visa costs instead)</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Via Employer of Record</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Add 10-20% on top of local overhead for EOR fee</td>
+</tr>
+</tbody>
+</table>
 <h2>How to Sequence Hiring</h2>
 <p>The order in which you hire matters as much as who you hire. A common mistake is to plan all hires for "Q1" because the money just arrived. In practice, hiring takes 2-4 months from decision to first day, and a new hire takes another 2-6 months to reach full productivity. Your model needs to reflect both lags.</p>
 <p>Hiring for revenue generation</p>
@@ -195,16 +238,138 @@
 <p>Finance, HR, and operations hires are often deferred too long. Most startups should hire their first finance or operations lead around the 15-20 employee mark or $1.5M ARR, whichever comes first. Waiting longer creates the kind of operational debt that manifests as inaccurate financial reporting, compliance gaps, and messy cap tables.</p>
 <h2>A Worked Example: Seed Stage SaaS (12-Month Headcount Plan)</h2>
 <p>Here is a realistic headcount plan for a seed-stage SaaS company that just raised $2.5M.</p>
-<p>CTO (existing) | M1 | $140K | $175K | Eng | Product CEO (existing) | M1 | $120K | $150K | G&A | Strategy Sr. Backend Eng | M1 | $130K | $163K | Eng | Core product Frontend Engineer | M2 | $115K | $144K | Eng | Core product Account Exec #1 | M2 | $80K+OTE | $130K | Sales | 8 deals/mo Product Designer | M3 | $105K | $131K | Eng | User growth Account Exec #2 | M5 | $80K+OTE | $130K | Sales | 8 deals/mo Customer Success | M5 | $75K | $94K | Ops | Retention Marketing Lead | M6 | $100K | $125K | Mktg | Lead gen Backend Eng #2 | M7 | $125K | $156K | Eng | Scale SDR | M8 | $55K+OTE | $88K | Sales | Pipeline Finance/Ops Lead | M9 | $95K | $119K | G&A | Ops debt</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Role</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Start</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Base Salary</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Loaded Cost</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Department</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Justification</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">CTO (existing)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M1</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$140K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$175K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Product</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">CEO (existing)</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M1</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$120K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$150K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">G&A</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Strategy</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Sr. Backend Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M1</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$130K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$163K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Core product</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Frontend Engineer</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M2</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$115K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$144K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Core product</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Account Exec #1</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M2</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$80K+OTE</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$130K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Sales</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">8 deals/mo</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Product Designer</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M3</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$105K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$131K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">User growth</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Account Exec #2</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M5</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$80K+OTE</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$130K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Sales</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">8 deals/mo</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Customer Success</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M5</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$75K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$94K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Ops</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Retention</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Marketing Lead</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M6</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$100K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$125K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Mktg</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Lead gen</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Backend Eng #2</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M7</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$125K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$156K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Eng</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Scale</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">SDR</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M8</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$55K+OTE</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$88K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Sales</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Pipeline</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Finance/Ops Lead</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">M9</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$95K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">$119K</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">G&A</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);vertical-align:top;">Ops debt</td>
+</tr>
+</tbody>
+</table>
 <h2>How the Headcount Plan Connects to the Rest of the Model</h2>
 <p>A well-built headcount plan is not a standalone document. It feeds directly into three other parts of your <a href="/blog/startup-budget-zero-series-a.html">financial model</a>:</p>
 <p>P&L: Salaries and benefits flow into operating expenses. Split by department (Engineering, Sales, Marketing, G&A) so investors can see your cost allocation.</p>
 <p>Cash flow: Salary payments typically hit monthly, but signing bonuses, equipment purchases, and recruiter fees are lumpy. Model the timing, not just the annual total.</p>
 <p>Revenue capacity: If your revenue model assumes 24 new deals per month by Q4, your headcount plan must show enough ramped salespeople to deliver that. If it does not, the investor sees the gap instantly.</p>
 <h2>What Investors Look For in a Headcount Plan</h2>
-<p>Role-by-role detail | Founder understands their burn composition</p>
-<p>Start dates aligned to milestones | Hiring is strategic, not reactive Loaded costs, not just base salary Founder understands real costs Revenue linkage per hire | Every role has a business case Reasonable ramp assumptions | Founder does not expect instant productivity</p>
-<p>Department allocation visible | Cost structure is transparent</p>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+<thead><tr>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Role-by-role detail</th>
+  <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid #3a3830;font-family:'DM Mono',monospace;font-size:0.8rem;color:#7a6320;text-transform:uppercase;letter-spacing:0.04em;">Founder understands their burn composition</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Start dates aligned to milestones</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Hiring is strategic, not reactive Loaded costs, not just base salary Founder understands real costs Revenue linkage per hire</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Every role has a business case Reasonable ramp assumptions</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Founder does not expect instant productivity</td>
+</tr>
+<tr>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Department allocation visible</td>
+  <td style="padding:0.6rem 1rem;border-bottom:1px solid rgba(58,56,48,0.15);color:#f2ede4;vertical-align:top;">Cost structure is transparent</td>
+</tr>
+</tbody>
+</table>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
 <div class="faq-card">
@@ -228,14 +393,6 @@
   <p style="margin:0 0 0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#7a6320;">Related Tool</p>
   <p style="margin:0 0 0.5rem;font-size:0.95rem;"><strong>Financial Model Pro</strong> &mdash; Interactive SaaS financial model with cohort analysis, unit economics, and investor-ready outputs.</p>
   <a href="/tools/financial-model-pro.html" style="color:#7a6320;font-weight:600;text-decoration:none;">Build your own financial model &rarr;</a>
-</div>
-
-<div class="related-articles">
-<h2>Related Articles</h2>
-<div class="related-articles-list">
-<a href="/blog/how-to-build-a-financial-model-for-your-startup-2026-guide.html" class="related-article-link">How to Build a Financial Model for Your Startup (2026 Guide)</a>
-<a href="/blog/driver-based-modeling-build-revenue-from-reality-not-from-hope.html" class="related-article-link">Driver-Based Modeling: Build Revenue From Reality, Not From Hope</a>
-<a href="/blog/the-cohort-method-for-revenue-forecasting-the-most-accurate-way-to-predict-start.html" class="related-article-link">The Cohort Method for Revenue Forecasting: The Most Accurate Way to Predict Startup Revenue</a>
 </div>
 </div>
 
