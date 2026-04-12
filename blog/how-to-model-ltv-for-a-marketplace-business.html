@@ -138,9 +138,7 @@ window.dataLayer = window.dataLayer || [];
       <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
     </div>
     <h1>How to Model LTV for a Marketplace Business</h1>
-<details class="tldr" aria-label="TL;DR summary" style="background:#F6F4EE;border-left:4px solid #C9A961;padding:12px 18px;margin:18px 0 24px;border-radius:6px;"><summary style="cursor:pointer;font-weight:600;list-style:none;">TL;DR <span style="font-weight:400;color:#888;font-size:13px;">(click to expand)</span></summary><p style="margin:10px 0 0;">LTV for a marketplace is more complex than LTV for a SaaS business because a marketplace often has two customer sides --- buyers and suppliers --- and t...</p></details>
-
-    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
   <a href="https://twitter.com/intent/tweet?text=How%20to%20Model%20LTV%20for%20a%20Marketplace%20Business%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/how-to-model-ltv-for-a-marketplace-business.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     Share
@@ -202,18 +200,18 @@ window.dataLayer = window.dataLayer || [];
 <p>The GMV-based LTV is 6x the correct number. This is not an edge case --- it is the most common marketplace LTV error.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-card">
-<p class="faq-q">Should marketplace LTV include both buyer and seller sides?</p>
+<details class="faq-card">
+<summary class="faq-q">Should marketplace LTV include both buyer and seller sides?</summary>
 <p class="faq-a">Only if you monetise both sides. If the marketplace charges workers or vendors a fee in addition to charging employers, model LTV for both sides. More commonly, two-sided LTV is calculated only for the monetised side, with supply-side retention modelled as a driver rather than a separate LTV component.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">How do you handle seasonal transaction patterns in marketplace LTV?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">How do you handle seasonal transaction patterns in marketplace LTV?</summary>
 <p class="faq-a">Use annualised average transaction frequency rather than a specific month's data. If the marketplace is highly seasonal (e.g. retail staffing peaks at Christmas, summer festival staffing), the annualised average smooths the seasonality. Flag the seasonal pattern in the assumptions.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">At what stage should a marketplace start tracking LTV by customer segment?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">At what stage should a marketplace start tracking LTV by customer segment?</summary>
 <p class="faq-a">As soon as there are enough customers to create meaningful segments --- typically 50+ customers on the demand side. High-frequency, high-ACV buyers typically have very different LTV profiles from low-frequency, low-ACV buyers. Blending them into a single LTV hides the quality concentration that sophisticated investors will ask about.</p>
-</div>
+</details>
 </div>
 <h2>Summary</h2>
 <p>Marketplace LTV is calculated on gross profit from net revenue (the take rate portion), not on GMV. Transaction frequency evolves over time and should be modelled using cohort data where available. Supply-side retention drives demand-side LTV and should be modelled as a linked assumption even if supply-side LTV is not calculated directly. The most common error --- using GMV as the LTV basis --- overstates LTV by the inverse of the take rate, which at typical marketplace take rates is a 5-7x error. Get the LTV denominator right before any investor conversation about unit economics. Use our <a href="/tools/financial-model-pro.html">free financial modeling tool</a> to put this into practice.</p>

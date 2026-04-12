@@ -130,9 +130,7 @@ window.dataLayer = window.dataLayer || [];
       <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
     </div>
     <h1>How to Model a Two-Sided Marketplace: Lessons From A Complete Financial Model Guide</h1>
-<details class="tldr" aria-label="TL;DR summary" style="background:#F6F4EE;border-left:4px solid #C9A961;padding:12px 18px;margin:18px 0 24px;border-radius:6px;"><summary style="cursor:pointer;font-weight:600;list-style:none;">TL;DR <span style="font-weight:400;color:#888;font-size:13px;">(click to expand)</span></summary><p style="margin:10px 0 0;">A marketplace financial model is fundamentally different from a SaaS model because you are modeling two interdependent customer groups, not one. Supply ...</p></details>
-
-    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
   <a href="https://twitter.com/intent/tweet?text=How%20to%20Model%20a%20Two-Sided%20Marketplace%3A%20Lessons%20From%20Building%20A%20Complete%20Financial%20Model%20Guide%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/how-to-model-a-two-sided-marketplace-financial-model.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     Share
@@ -194,18 +192,18 @@ window.dataLayer = window.dataLayer || [];
 <p>Not modeling the liquidity threshold. Every marketplace has a point where supply-demand density is sufficient for reliable matching. Below it, the marketplace does not work. Above it, network effects kick in. If your model does not capture this threshold, it cannot tell you how much you need to invest to get a new market to viability.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-card">
-<p class="faq-q">How do I model a marketplace with no transaction history?</p>
+<details class="faq-card">
+<summary class="faq-q">How do I model a marketplace with no transaction history?</summary>
 <p class="faq-a">Start with comparable marketplaces. Look for published metrics from companies in adjacent spaces: take rates, fill rates, retention curves, supply-demand ratios. Use these as starting assumptions and label them clearly. Then, as your own data comes in, replace benchmarks with actuals. The structure should be built from day one even if the numbers are estimated.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">Should I model supply-side costs in the P&L?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">Should I model supply-side costs in the P&L?</summary>
 <p class="faq-a">Yes. Worker payments (in a staffing marketplace), seller payouts (in an e-commerce marketplace), or driver payments (in a ride-sharing marketplace) are COGS. They are the direct cost of fulfilling the transaction. Model them as part of COGS, not as a separate line that sits outside the gross margin calculation.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">How do I present marketplace metrics to SaaS-focused investors? Translate marketplace metrics into language they understand. Net revenue (after supply-side payments) is your equivalent of SaaS revenue. Gross margin on net revenue is comparable to SaaS gross margin. Employer retention is comparable to logo retention. Monthly active employers times average net revenue per employer is comparable to MRR. The underlying structure is different, but the investor questions are the same: is this business acquiring customers efficiently, retaining them, and making money on each one?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">How do I present marketplace metrics to SaaS-focused investors? Translate marketplace metrics into language they understand. Net revenue (after supply-side payments) is your equivalent of SaaS revenue. Gross margin on net revenue is comparable to SaaS gross margin. Employer retention is comparable to logo retention. Monthly active employers times average net revenue per employer is comparable to MRR. The underlying structure is different, but the investor questions are the same: is this business acquiring customers efficiently, retaining them, and making money on each one?</summary>
 <p class="faq-a"></p>
-</div>
+</details>
 </div>
 <h2>Summary</h2>
 <p>A two-sided marketplace model is a system model that captures the interaction between supply and demand. Build it in modules: supply acquisition and retention, demand acquisition and retention, matching and fill rate, GMV, revenue and take rate, COGS, and unit economics by cohort. Model the supply-demand balance explicitly because it drives fill rate, which drives revenue, which drives everything. Segment by geography and customer size. Track take rate evolution. And remember that the marketplace flywheel is a real dynamic that the model must capture, not just a slide in the pitch deck.</p>

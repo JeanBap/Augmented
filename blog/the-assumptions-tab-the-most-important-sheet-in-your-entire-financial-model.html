@@ -138,9 +138,7 @@ window.dataLayer = window.dataLayer || [];
       <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
     </div>
     <h1>The Assumptions Tab: The Most Important Sheet in Your Entire Financial Model</h1>
-<details class="tldr" aria-label="TL;DR summary" style="background:#F6F4EE;border-left:4px solid #C9A961;padding:12px 18px;margin:18px 0 24px;border-radius:6px;"><summary style="cursor:pointer;font-weight:600;list-style:none;">TL;DR <span style="font-weight:400;color:#888;font-size:13px;">(click to expand)</span></summary><p style="margin:10px 0 0;">The assumptions tab is a single, dedicated sheet where every key input in your financial model lives, documented with its value, source, date, and ratio...</p></details>
-
-    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
   <a href="https://twitter.com/intent/tweet?text=The%20Assumptions%20Tab%3A%20The%20Most%20Important%20Sheet%20in%20Your%20Entire%20Financial%20Model%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/the-assumptions-tab-the-most-important-sheet-in-your-entire-financial-model.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     Share
@@ -251,18 +249,18 @@ window.dataLayer = window.dataLayer || [];
 <p>Minute 5: They look at the scenario toggle. Can they flip between conservative, base, and aggressive with one click? If yes, they start engaging with the scenarios. If no, they start marking their own version of scenarios in a side spreadsheet, which means you have lost control of the narrative.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-card">
-<p class="faq-q">Should I include macroeconomic assumptions?</p>
+<details class="faq-card">
+<summary class="faq-q">Should I include macroeconomic assumptions?</summary>
 <p class="faq-a">Only if they directly affect your model. If you operate in multiple currencies, include exchange rate assumptions. If your business is rate-sensitive (real estate, fintech lending), include interest rate assumptions. Most startups at seed stage do not need macro assumptions. Series A and beyond, it depends on the business.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">What if my investor wants to run their own assumptions?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">What if my investor wants to run their own assumptions?</summary>
 <p class="faq-a">That is exactly the point. A well-built assumptions tab is designed to be edited by someone who did not build the model. If an investor can change your churn rate, growth rate, and ACV, and the model recalculates cleanly, you have built a good model. If it breaks when they change something, you have not.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">How do I handle assumptions that change over time?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">How do I handle assumptions that change over time?</summary>
 <p class="faq-a">Some assumptions are not static. Your churn rate might be 6% in Month 1 and improve to 3% by Month 18. In this case, list the starting value and the trajectory in the assumptions tab ("Churn: starts at 6%, improving 0.2pp per month, floor at 3%"). The formula in the revenue tab can reference both the starting value and the improvement rate from the assumptions tab.</p>
-</div>
+</details>
 </div>
 <h2>Summary</h2>
 <p>The assumptions tab is where your entire <a href="/blog/startup-burn-rate-cash-runway.html">financial model</a> lives or dies. It centralizes every key input, sources it, dates it, and makes it editable. It is the first thing investors open, the foundation of scenario analysis, and the fastest way to demonstrate that you understand your own business. Build it with categories, sources, dates, notes, and scenario columns. Audit it by changing each assumption and confirming the model responds. Update it monthly as real data replaces estimates. This single tab determines whether your model is a credible decision-making tool or a beautifully formatted guess.</p>

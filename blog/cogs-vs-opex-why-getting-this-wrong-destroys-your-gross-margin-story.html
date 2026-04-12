@@ -146,9 +146,7 @@ window.dataLayer = window.dataLayer || [];
       <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
     </div>
     <h1>COGS vs. OpEx: Why Getting This Wrong Destroys Your Gross Margin Story</h1>
-<details class="tldr" aria-label="TL;DR summary" style="background:#F6F4EE;border-left:4px solid #C9A961;padding:12px 18px;margin:18px 0 24px;border-radius:6px;"><summary style="cursor:pointer;font-weight:600;list-style:none;">TL;DR <span style="font-weight:400;color:#888;font-size:13px;">(click to expand)</span></summary><p style="margin:10px 0 0;">Cost of Goods Sold (COGS) is what it costs to deliver your product or service to one additional customer. Operating Expenses (OpEx) is what it costs to ...</p></details>
-
-    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
   <a href="https://twitter.com/intent/tweet?text=COGS%20vs.%20OpEx%3A%20Why%20Getting%20This%20Wrong%20Destroys%20Your%20Gross%20Margin%20Story%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/cogs-vs-opex-why-getting-this-wrong-destroys-your-gross-margin-story.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     Share
@@ -278,22 +276,22 @@ window.dataLayer = window.dataLayer || [];
 <p>That conversation only works if your COGS classification is clean and your model has the structure to show margin evolution. If COGS is a single number with no breakdown, none of those questions can be answered, and the investor loses confidence in the model.</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-card">
-<p class="faq-q">Is engineering always OpEx?</p>
+<details class="faq-card">
+<summary class="faq-q">Is engineering always OpEx?</summary>
 <p class="faq-a">Product development engineering is almost always OpEx (classified as R&D). However, engineers who maintain production infrastructure, run DevOps, or manage customer-facing systems can be partially COGS. The standard in software is to classify platform reliability and infrastructure engineering as COGS, and product feature development as R&D OpEx.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">What about software tool costs?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">What about software tool costs?</summary>
 <p class="faq-a">If the tool is used exclusively for product delivery (e.g., a third-party API that powers a feature customers use), it is COGS. If it is used for internal operations (e.g., Slack, Jira, Notion), it is OpEx. Tools used for both? Allocate by usage percentage.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">Does the classification affect my taxes?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">Does the classification affect my taxes?</summary>
 <p class="faq-a">Yes, and this is where you should consult your accountant. The treatment of COGS vs. OpEx can affect gross profit reporting and certain tax calculations. For <a href="/blog/startup-burn-rate-cash-runway.html">financial model</a>ing purposes, follow the economic logic. For tax filing purposes, follow your accountant's guidance. They may differ slightly, and that is normal.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q"><strong>Should I model COGS as a percentage of revenue or as absolute numbers?</strong></p>
+</details>
+<details class="faq-card">
+<summary class="faq-q"><strong>Should I model COGS as a percentage of revenue or as absolute numbers?</strong></summary>
 <p class="faq-a">Both. Model the individual cost items as absolute numbers (hosting cost, payment processing fees, support salaries). Then calculate the resulting gross margin percentage as a check. If you model COGS as only a percentage of revenue, you lose the ability to see which specific costs are driving margin changes, and you cannot show how economies of scale improve the margin over time.</p>
-</div>
+</details>
 </div>
 <h2>Summary</h2>
 <p>COGS is the cost of delivering your product. OpEx is the cost of running your company. Getting the classification right determines your gross margin, which is one of the most scrutinized numbers in any investor evaluation. Use the incremental customer test: if the cost scales with customers, it is COGS. Model each COGS component individually so you can show margin evolution at scale. Benchmark against comparable companies to ensure your classification matches industry standards. Document your allocation logic in the assumptions tab. A misclassified model does not just produce wrong numbers. It produces wrong conversations, and those are much harder to fix.</p>

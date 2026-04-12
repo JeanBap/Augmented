@@ -138,9 +138,7 @@ window.dataLayer = window.dataLayer || [];
       <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 2025</span>
     </div>
     <h1>How to Build a Metrics Dashboard That You Will Actually Use Every Week</h1>
-<details class="tldr" aria-label="TL;DR summary" style="background:#F6F4EE;border-left:4px solid #C9A961;padding:12px 18px;margin:18px 0 24px;border-radius:6px;"><summary style="cursor:pointer;font-weight:600;list-style:none;">TL;DR <span style="font-weight:400;color:#888;font-size:13px;">(click to expand)</span></summary><p style="margin:10px 0 0;">Most startup dashboards are built once and abandoned within a month because they show too many metrics, require manual updates, or do not connect to the...</p></details>
-
-    <div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
   <a href="https://twitter.com/intent/tweet?text=How%20to%20Build%20a%20Metrics%20Dashboard%20That%20You%20Will%20Actually%20Use%20Every%20Week%20%7C%20Raise%20Ready&url=https%3A//www.raisereadybook.com/blog/how-to-build-a-metrics-dashboard-that-you-will-actually-use-every-week.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c8a45a'" onmouseout="this.style.borderColor='#3a3830'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     Share
@@ -203,18 +201,18 @@ window.dataLayer = window.dataLayer || [];
 <p>*Key insight: The best dashboard I have worked with was at the platform after we installed an automated daily metrics email. Six numbers, every morning at 8am, color-coded against plan. No login required, no dashboard to open. The CEO read it on his phone during his commute. When something was red, we discussed it by 10am. When everything was green, we moved on. Simplicity is the feature that makes a dashboard sustainable.*</p>
 <div class="faq-section">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-card">
-<p class="faq-q">Should I build the dashboard myself or hire someone?</p>
+<details class="faq-card">
+<summary class="faq-q">Should I build the dashboard myself or hire someone?</summary>
 <p class="faq-a">Build the first version yourself using Google Sheets or a free BI tool. Once you have defined exactly what you need and validated that you actually use it, invest in a more polished version. Hiring a data analyst to build a dashboard before you know what you need produces a beautiful product you do not use.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">How do I get real-time data without an engineering team?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">How do I get real-time data without an engineering team?</summary>
 <p class="faq-a">Most modern SaaS tools have built-in reporting or API access. Stripe provides revenue and churn data. Google Analytics provides traffic and conversion. Hubspot or your CRM provides pipeline and acquisition data. Many of these integrate directly with Google Sheets or BI tools through connectors like Zapier, Supermetrics, or Fivetran. You do not need a data pipeline. You need 3-4 integrations.</p>
-</div>
-<div class="faq-card">
-<p class="faq-q">What if my team ignores the dashboard?</p>
+</details>
+<details class="faq-card">
+<summary class="faq-q">What if my team ignores the dashboard?</summary>
 <p class="faq-a">Then it is not useful enough or not integrated into a ritual. The fix: make the weekly dashboard review a standing 30-minute meeting. Go through each KPI. Ask who owns the red metrics. Assign action items. When the dashboard drives the meeting, the team uses it.</p>
-</div>
+</details>
 </div>
 <h2>Summary</h2>
 <p>A useful dashboard has three layers: a daily CEO view (5 survival metrics), a weekly team view (10-12 KPIs with plan comparison), and a monthly investor view (trends and narrative). Automate as much as possible. Show actuals versus plan, not just actuals. Set alerts for critical thresholds. Establish a review cadence that ties the dashboard to decisions. Use simple tools: Google Sheets and Metabase will cover 90% of needs through Series A. The goal is not a beautiful dashboard. It is a dashboard you check every day and that changes how you run the company.</p>
