@@ -1612,6 +1612,72 @@ details[open] .desc-arrow {
   color: var(--mid);
 }
 
+/* Blog tables (inline-styled and unstyled) */
+.blog-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.blog-article table th,
+.blog-article table td {
+  padding: 0.75rem 1rem !important;
+  border: 1px solid var(--rule, rgba(58,56,48,0.15)) !important;
+  vertical-align: top;
+  text-align: left;
+}
+
+.blog-article table th {
+  background-color: rgba(200, 164, 90, 0.08) !important;
+  font-family: var(--mono, 'DM Mono', monospace);
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  color: var(--gold, #7a6320) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--gold, #7a6320) !important;
+}
+
+.blog-article table tbody tr:nth-child(even) {
+  background-color: rgba(200, 164, 90, 0.03);
+}
+
+.blog-article table tbody tr:hover {
+  background-color: rgba(200, 164, 90, 0.08);
+}
+
+/* Responsive table wrapper */
+.blog-article .table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0 2rem;
+}
+
+.blog-article .table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .blog-article table {
+    font-size: 0.82rem;
+    table-layout: auto;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .blog-article table th,
+  .blog-article table td {
+    padding: 0.5rem 0.65rem !important;
+    min-width: 120px;
+  }
+}
+
 /* Careers Styles */
 .careers-hero {
   padding: 64px 32px;
