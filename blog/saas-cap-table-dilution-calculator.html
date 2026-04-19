@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds</title>
+<meta name="description" content="How dilution works across SaaS funding rounds. Formulas, worked examples, and how to model ownership from seed to Series B exit.">
+<meta name="keywords" content="SaaS cap table, dilution, cap table dilution, funding rounds, ownership percentage, Series A, Series B, option pool">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/saas-cap-table-dilution-calculator.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/saas-cap-table-dilution-calculator.html">
+<meta property="og:title" content="SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds">
+<meta property="og:description" content="How dilution works across SaaS funding rounds. Formulas, worked examples, and how to model ownership from seed to Series B exit.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Deep Dives">
+<meta property="article:published_time" content="2026-04-19T00:00:00.000Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds">
+<meta name="twitter:description" content="How dilution works across SaaS funding rounds. Formulas, worked examples, and how to model ownership from seed to Series B exit.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds", "description": "How dilution works across SaaS funding rounds. Formulas, worked examples, and how to model ownership from seed to Series B exit.", "author": {"@type": "Person", "name": "Yanni Papoutsi", "url": "https://www.raisereadybook.com/about/", "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"], "sameAs": ["https://www.linkedin.com/in/yannipapoutsi/", "https://www.amazon.com/stores/Yanni-Papoutski/author/B0G1KFHW2R"]}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-cap-table-dilution-calculator.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-cap-table-dilution-calculator.html", "datePublished": "2026-04-19", "articleSection": "Deep Dives", "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format", "keywords": "SaaS cap table, dilution, cap table dilution, funding rounds, ownership percentage, Series A, Series B, option pool", "dateModified": "2026-04-19", "inLanguage": "en", "wordCount": 2065, "keywordsArray": ["SaaS cap table", "dilution", "cap table dilution", "funding rounds", "ownership percentage", "Series A", "Series B", "option pool"], "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1", ".blog-article-content > h2:first-of-type + p"]}, "about": [{"@type": "Thing", "name": "Cap Tables"}], "mentions": [{"@type": "Organization", "name": "Raise Ready Book", "url": "https://www.raisereadybook.com/"}], "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/saas-cap-table-dilution-calculator.html"
+    }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" decoding="async"></a>
+      <div class="nav-tabs">
+        <a href="/book/" class="nav-tab" data-page="books">Books</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
+        <a href="/software/" class="nav-tab" data-page="software">Software</a>
+        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
+      </div>
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    </header></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Deep Dives</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Deep Dives</span>
+      <span class="blog-time">12 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published April 19, 2026</span>
+    </div>
+    <h1>SaaS Cap Table Dilution: How to Calculate and Model Ownership Through Multiple Rounds</h1>
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=SaaS%20Cap%20Table%20Dilution%3A%20How%20to%20Calculate%20and%20Model%20Ownership&url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fsaas-cap-table-dilution-calculator.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fsaas-cap-table-dilution-calculator.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+</div>
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#7a6320; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Dilution reduces founder ownership through multiple funding rounds. Calculate dilution using the formula: new ownership = old ownership / (1 + investment / post-money valuation). Compound dilution across seed, Series A, and Series B can reduce founder stakes from 100% to 25-35%. Model dilution early and plan option pool creation to protect long-term ownership.</p>
+</div>
+
+<article>
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format" alt="SaaS cap table dilution calculator and ownership tracking across funding rounds" width="1200" height="630" loading="lazy" decoding="async">
+
+<h2>What Dilution Is and Why Every Founder Misunderstands It</h2>
+<p>Dilution is the percentage reduction in your ownership stake when the company raises equity funding. Most founders confuse dilution with valuation. You think: if my company was worth £10M before investment and I raise at £20M post-money, I haven't lost anything. That's mathematically correct but emotionally misleading. Your percentage ownership decreased. Your absolute value may have increased, but your governance rights, economics, and control have all declined. Understanding the distinction is crucial to negotiating fairly and planning exit outcomes correctly.</p>
+<p>A concrete example: you own 100% of a company worth £5M. You raise £5M at a £15M post-money valuation. You now own 77% (£5M pre-money divided by £20M post-money). The valuation doubled, but your ownership stake fell from 100% to 77%. You've been diluted 23 percentage points. This is unavoidable and expected. What matters is planning for it and understanding the compounding effect across multiple rounds.</p>
+
+<h2>The Core Dilution Formula: Pre-Money, Post-Money, and New Ownership</h2>
+<p>Dilution follows a simple mathematical formula. If a company has post-money valuation V and raises new investment I, the new fully diluted ownership for existing shareholders is calculated as: existing ownership percentage = (pre-money valuation + existing ownership shares) / (post-money valuation). Restated more simply: your new ownership = your old ownership divided by (1 plus the investment size divided by post-money valuation).</p>
+<p>Example: you own 100% of a company with a £2M post-money valuation after your seed round. You raise a Series A at £10M post-money. Your new ownership is 100% multiplied by £2M divided by £10M, which equals 20%. You've been diluted from 100% to 20%, a reduction of 80 percentage points. In absolute terms, your stake is worth £2M (20% of the £10M post-money), compared to £2M before the round (100% of £2M). The absolute value stayed flat, but your relative ownership fell dramatically.</p>
+<p>This is why founders focus on valuation per share, not percentage ownership. A £10M post-money Series A with £5M raised means the price per share is £10M divided by all fully diluted shares. If you had 10M shares before the round, the price per share is typically £0.50-£1 depending on option pool creation. After the Series A, your 10M shares are worth more nominally, but the ownership percentage still fell.</p>
+
+<h2>Modelling a Three-Round Fundraise: Seed, Series A, Series B</h2>
+<p>Let us walk through a realistic three-round example, tracking ownership at each stage. You start with founder shares: two founders each owning 50%, total 100% ownership. No outside investors yet, company is pre-money.</p>
+<p>Seed round: you raise £2M at a £6M post-money valuation. This means a £4M pre-money valuation. Seed investors receive £2M / £6M = 33.3% of the company. Founders are diluted from 100% to 66.7%. Your personal ownership goes from 50% to 33.35%. The company now has 100 million shares (for simplicity): seed investors own 33.3 million, founders own 66.7 million split equally.</p>
+<p>Series A round: the company is now worth £20M pre-money (let us assume it tripled). You raise £8M at this pre-money valuation, resulting in £28M post-money. Series A investors own £8M / £28M = 28.6% of the company. All previous shareholders (founders and seed investors) are diluted. Your founder shares, which represented 33.35% before the round, now represent 33.35% multiplied by £20M / £28M = 23.8%. Your co-founder is also at 23.8%. Seed investors, who owned 33.3%, are now diluted to 23.8% as well. The cap table looks like this: founders 47.6%, seed investors 23.8%, Series A investors 28.6%. Total equals 100%.</p>
+<p>Series B round: the company is now valued at £80M pre-money. You raise £30M at this valuation, resulting in £110M post-money. Series B investors own 27.3% of the company. Everyone else is diluted: your 23.8% becomes 23.8% multiplied by £80M / £110M = 17.3%. The full diluted cap table is: founders 34.6%, seed investors 17.3%, Series A investors 20.8%, Series B investors 27.3%. Total equals 100%.</p>
+<p>Observe the compounding effect. You started at 100% (pre-seed) and ended at 34.6% after three rounds. You lost 65.4 percentage points of ownership across three fundraises. Yet your absolute stake is worth significantly more (assuming the Series B is at reasonable terms). Your 50M shares (starting shares, unchanged) are worth dramatically more per share post-Series B. That is the trade-off every founder navigates.</p>
+
+<h2>Option Pool Dilution: The Silent Ownership Killer</h2>
+<p>Option pool dilution is different from fundraising dilution. When you create an option pool before a fundraising round, you dilute existing shareholders without raising any money. This is a tax and accounting matter, but the economics are identical to fundraising dilution. Investors protect themselves by requesting post-money option pools. Pre-money pools are founder-friendly but rarely accepted by Series A+ investors.</p>
+<p>Example: your company has 10M fully diluted shares (founders, seed investors, existing options). A Series A investor proposes a post-money option pool of 10% of the post-money capitalisation. The round is £8M at £20M post-money, meaning 8M new shares issued to Series A. After the round, total shares outstanding are 10M + 8M + 2M (10% option pool) = 20M. Everyone is diluted by the 2M option pool shares. Your previous 50% founder stake becomes 50% multiplied by 10M / 12M = 41.7%. You have been diluted 8.3 points just from the option pool, before considering Series A's ownership. This is why founders negotiate aggressively on option pool size. The difference between a 10% and 15% post-money pool is 1M shares at £2.50 per share (assuming valuation), which is £2.5M in founder value destruction.</p>
+
+<h2>Understanding Waterfall Economics at Different Exit Values</h2>
+<p>Dilution matters most when you model exit waterfalls. Your founder stake is worth nothing until all senior shareholders (preferred investors) are paid off. At a £50M exit with 34.6% founder ownership, you own £17.3M of value, before liquidation preferences. But if Series B has 1x non-participating preferred, they get paid £30M before any founder distribution. You receive £17.3M. The mathematics are actually favourable to founders here.</p>
+<p>At a £30M exit (a disappointing outcome), the waterfall looks different. Series B investors have a 1x liquidation preference, meaning they receive £30M before anyone else. You get zero. This is why exit price matters more than ownership percentage for downside protection. A 50% founder stake in a £20M acquisition is worth zero if investors have 1x preferred and the company raised more capital than the exit price.</p>
+<p>Model your exit waterfall at three scenarios: base case (exit value matches investor expectations), upside case (exit is 3x base case), and downside case (flat or modest exit). For each scenario, calculate the founder payout as: (exit price minus total investor distributions) multiplied by your ownership percentage. This shows exactly what your stake is worth at different outcomes. Most founders discover their downside protection is weaker than they assumed because they did not track compound dilution and liquidation preferences together.</p>
+
+<h2>Minimising Dilution Without Sacrificing Growth</h2>
+<p>You cannot eliminate dilution and raise outside capital simultaneously. The trade-off is unavoidable. What you can do is slow dilution and protect your ownership at each round. Tactics include: negotiate valuation aggressively (higher post-money valuations mean lower investor ownership percentages for the same cash raised), raise less capital (£3M instead of £5M if possible, meaning smaller dilution), extend runway between rounds (give yourself more time to grow revenue, allowing higher valuations at the next round), and minimise option pool creation before fundraising (push back on investor requests for 15%+ pools).</p>
+<p>The most effective dilution minimisation tactic is growing revenue faster. A company that grows 200% year-over-year raises at higher valuations and raises less total capital because it reaches profitability faster. A company that grows 30% year-over-year requires more capital and raises at lower valuations, resulting in higher total dilution across all rounds. Revenue growth compounds into ownership preservation through lower dilution percentages.</p>
+
+<h2>Fully Diluted vs Issued Shares: What Investors Mean</h2>
+<p>When investors quote ownership percentages, they always mean fully diluted percentages, not issued percentages. Fully diluted means all shares issued, all option pool shares, all warrant shares, and any other potential common shares are counted. If your cap table shows 10M issued shares but 2M unissued option pool shares, fully diluted is 12M. An investor owning 2M shares owns 16.7% fully diluted, not 20% issued. This distinction matters for voting rights (based on issued shares) and economics (based on fully diluted shares). Always ask for fully diluted ownership percentages in term sheets and investor updates. If an investor says they own 20% but your fully diluted cap table is 12M shares and they own 2M shares, you are correct to push back. They own 16.7% fully diluted.</p>
+
+<h2>Related Reading</h2>
+<p>For cap table mechanics and share classes, see <a href="/blog/saas-preferred-shares-mechanics.html">Preferred Shares in SaaS: What Investors Get That Founders Don't</a>. For exit economics and waterfall design, explore <a href="/blog/saas-exit-waterfall-mechanics.html">SaaS Exit Waterfall: How Proceeds Are Distributed When You Sell Your Company</a>. For employee equity planning, read <a href="/blog/saas-employee-option-pools.html">Employee Option Pools in SaaS: Size, Structure, and How to Avoid the Option Pool Shuffle</a>.</p>
+
+<h2>Key Takeaways</h2>
+<ul>
+<li>Dilution reduces founder ownership through every funding round; ownership percentage always declines even if absolute value increases</li>
+<li>Calculate new ownership using the formula: old ownership multiplied by (pre-money valuation divided by post-money valuation)</li>
+<li>Compound dilution across three rounds (seed, Series A, Series B) typically reduces founder stakes from 100% to 30-40%</li>
+<li>Option pool creation (especially post-money pools) dilutes existing shareholders as much as investor capital does</li>
+<li>Model exit waterfalls at three scenarios (base, upside, downside) to understand actual founder payout, not just ownership percentage</li>
+<li>Minimise dilution by negotiating valuation, raising less capital, and extending runway between rounds</li>
+<li>Always track fully diluted ownership percentages, which include all shares and option pools</li>
+</ul>
+
+</article>
+
+<div class="related-tool-box" style="margin:2rem 0;padding:1.25rem 1.5rem;border:1px solid #3a3830;border-left:4px solid #c8a45a;border-radius:8px;background:rgba(200,164,90,0.04);">
+  <p style="margin:0 0 0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#7a6320;">Related Tool</p>
+  <p style="margin:0 0 0.5rem;font-size:0.95rem;"><strong>Cap Table Tracker</strong> &mdash; Live cap table with dilution calculator, waterfall modelling, and fully diluted share tracking across funding rounds.</p>
+  <a href="/tools/cap-table-tracker.html" style="color:#7a6320;font-weight:600;text-decoration:none;">Build your cap table &rarr;</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Get the complete guide with all 16 chapters, exercises, and model templates.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - £9.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#7a6320;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance & Strategy. Author of <a href="/book/" style="color:#7a6320;">Raise Ready</a>. Has supported fundraising across multiple rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets.</p>
+  </div>
+</div>
+    </div>
+  <section class="newsletter-signup rr-brevo-newsletter">
+    <h2>The Raise Ready Weekly</h2>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <form class="newsletter-form" id="rr-brevo-form">
+      <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address for newsletter">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="rr-brevo-msg" style="display:none;margin-top:0.75rem;font-size:0.85rem;"></p>
+  </section>
+</main>
+<div id="site-footer"><footer>
+      <div class="footer-links">
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
+        <a href="/tools/">Tools</a>
+        <a href="/software/">Software</a>
+        <a href="/blog/">Blog</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
+      <span>Fundraising Intelligence for Founders</span>
+    </footer></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+</body>
+</html>
