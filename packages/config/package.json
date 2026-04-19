@@ -1,0 +1,12 @@
+{
+  "name": "@raiseready/config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./tailwind.config.ts",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "@tailwindcss/typography": "^0.5.16",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raise Ready Platform Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 28px; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
+  .subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; font-weight: 600; color: #f1f5f9; margin: 32px 0 12px; }
+
+  .arch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .app-card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; position: relative; }
+  .app-card .domain { font-size: 13px; color: #60a5fa; font-weight: 600; margin-bottom: 2px; }
+  .app-card .name { font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
+  .app-card .desc { font-size: 13px; color: #94a3b8; margin-bottom: 12px; }
+  .app-card ul { list-style: none; padding: 0; }
+  .app-card li { font-size: 13px; color: #cbd5e1; padding: 3px 0; padding-left: 16px; position: relative; }
+  .app-card li:before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: #475569; }
+  .app-card.primary { border-color: #C9A85A55; }
+  .app-card.primary li:before { background: #C9A85A; }
+  .app-card.blue li:before { background: #60a5fa; }
+  .app-card.green li:before { background: #4ade80; }
+
+  .shared-layer { background: linear-gradient(135deg, #1e293b, #1a2332); border-radius: 12px; padding: 24px; margin: 20px 0; border: 1px dashed #334155; }
+  .shared-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+  .shared-item { background: #0f172a; border-radius: 8px; padding: 14px; text-align: center; }
+  .shared-item .icon { font-size: 24px; margin-bottom: 4px; }
+  .shared-item .name { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+  .shared-item .detail { font-size: 11px; color: #64748b; }
+
+  .flow-section { margin: 28px 0; }
+  .flow-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; font-size: 13px; }
+  .flow-step { background: #1e293b; border-radius: 8px; padding: 8px 14px; color: #cbd5e1; white-space: nowrap; }
+  .flow-arrow { color: #475569; font-size: 18px; }
+  .flow-step.highlight { background: #C9A85A22; border: 1px solid #C9A85A44; color: #C9A85A; }
+
+  .cost-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 14px; }
+  .cost-row .label { color: #94a3b8; }
+  .cost-row .value { color: #4ade80; font-weight: 600; }
+  .cost-total { display: flex; justify-content: space-between; padding: 14px 0; font-size: 16px; font-weight: 700; }
+  .cost-total .label { color: #f1f5f9; }
+  .cost-total .value { color: #4ade80; }
+
+  .phase-list { margin: 12px 0; }
+  .phase { display: flex; gap: 14px; margin: 10px 0; align-items: flex-start; }
+  .phase-num { flex-shrink: 0; width: 28px; height: 28px; background: #334155; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #cbd5e1; }
+  .phase-text { font-size: 14px; color: #94a3b8; }
+  .phase-text strong { color: #e2e8f0; }
+
+  .file-count { display: inline-block; background: #60a5fa22; color: #60a5fa; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+  .tag-next { background: #0f172a; color: #e2e8f0; border: 1px solid #334155; }
+  .tag-supa { background: #3ecf8e22; color: #3ecf8e; }
+  .tag-stripe { background: #635bff22; color: #a5b4fc; }
+  .tag-vercel { background: #f8fafc11; color: #e2e8f0; border: 1px solid #334155; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Raise Ready Platform</h1>
+<p class="subtitle">Consolidated architecture / <span class="file-count">104 files</span> scaffolded / 3 independent apps, 1 shared backend</p>
+
+<!-- Architecture Overview -->
+<h2>Subdomain Architecture</h2>
+<div class="arch-grid">
+  <div class="app-card primary">
+    <div class="domain">raisereadybook.com</div>
+    <div class="name">Main Site</div>
+    <div><span class="tag tag-next">Next.js 15</span><span class="tag tag-stripe">Stripe</span></div>
+    <div class="desc">Marketing, books, services, blog</div>
+    <ul>
+      <li>Landing page + hero</li>
+      <li>4 book product pages</li>
+      <li>3 service tiers ($990-$5K)</li>
+      <li>MDX blog with categories</li>
+      <li>User dashboard (purchases)</li>
+      <li>Stripe checkout + webhooks</li>
+    </ul>
+  </div>
+  <div class="app-card blue">
+    <div class="domain">app.raisereadybook.com</div>
+    <div class="name">Personal Finance</div>
+    <div><span class="tag tag-next">Next.js 15</span><span class="tag tag-supa">Supabase</span></div>
+    <div class="desc">13+ calculators from calculateapr</div>
+    <ul>
+      <li>APR calculator</li>
+      <li>Mortgage calculator</li>
+      <li>Buy vs Rent analysis</li>
+      <li>Retirement planner</li>
+      <li>Budget tools</li>
+      <li>Save calculations to account</li>
+    </ul>
+  </div>
+  <div class="app-card green">
+    <div class="domain">finance.raisereadybook.com</div>
+    <div class="name">Financial Model Pro</div>
+    <div><span class="tag tag-next">Next.js 15</span><span class="tag tag-stripe">Stripe</span></div>
+    <div class="desc">5-year financial model builder</div>
+    <ul>
+      <li>P&L editor</li>
+      <li>Hiring plan</li>
+      <li>Unit economics</li>
+      <li>Sensitivity analysis</li>
+      <li>Board-ready reports</li>
+      <li>Export to Excel/PDF ($10)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Shared Layer -->
+<div class="shared-layer">
+  <div style="font-size:14px; color:#94a3b8; margin-bottom: 4px;">Shared layer (all 3 apps use the same backend)</div>
+  <div class="shared-grid">
+    <div class="shared-item">
+      <div class="icon" style="color:#3ecf8e;">&#9679;</div>
+      <div class="name">Supabase</div>
+      <div class="detail">Auth + PostgreSQL<br>One project for all apps</div>
+    </div>
+    <div class="shared-item">
+      <div class="icon" style="color:#a5b4fc;">&#9679;</div>
+      <div class="name">Stripe</div>
+      <div class="detail">Books, services, exports<br>Webhooks record purchases</div>
+    </div>
+    <div class="shared-item">
+      <div class="icon" style="color:#e2e8f0;">&#9679;</div>
+      <div class="name">@raiseready/auth</div>
+      <div class="detail">Shared auth package<br>Cross-subdomain SSO</div>
+    </div>
+    <div class="shared-item">
+      <div class="icon" style="color:#60a5fa;">&#9679;</div>
+      <div class="name">@raiseready/db</div>
+      <div class="detail">Shared types + client<br>profiles, purchases, models</div>
+    </div>
+  </div>
+</div>
+
+<!-- User Flow -->
+<h2>User Sign-in Flow</h2>
+<div class="flow-section">
+  <div class="flow-row">
+    <div class="flow-step">User visits any subdomain</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">Clicks "Sign in"</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step highlight">Google OAuth or Magic Link</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">Supabase sets cookie on .raisereadybook.com</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-step">Cookie shared across all subdomains</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step highlight">Logged in everywhere instantly</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">Dashboard shows purchases + saved work from all apps</div>
+  </div>
+</div>
+
+<!-- Purchase Flow -->
+<h2>Purchase Flow (Books/Services/Exports)</h2>
+<div class="flow-section">
+  <div class="flow-row">
+    <div class="flow-step">User clicks "Buy" on any app</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">API creates Stripe Checkout session</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step highlight">Stripe hosted checkout</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-step">Payment succeeds</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">Stripe webhook fires</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step highlight">Purchase saved to Supabase</div>
+    <div class="flow-arrow">-></div>
+    <div class="flow-step">User sees it in dashboard</div>
+  </div>
+</div>
+
+<!-- Migration Phases -->
+<h2>Migration Phases (8-10 days)</h2>
+<div class="phase-list">
+  <div class="phase"><div class="phase-num">1</div><div class="phase-text"><strong>Foundation</strong> - Create repo, install deps, configure Supabase auth for subdomains, set up Stripe products</div></div>
+  <div class="phase"><div class="phase-num">2</div><div class="phase-text"><strong>Content migration</strong> - Move blog/book/service content from Augmented + raisereadybook.com into apps/www</div></div>
+  <div class="phase"><div class="phase-num">3</div><div class="phase-text"><strong>Personal finance tools</strong> - Port 13 calculators from calculateapr into apps/app, converting React Router to Next.js App Router</div></div>
+  <div class="phase"><div class="phase-num">4</div><div class="phase-text"><strong>Financial Model Pro</strong> - Port engine + editor components from calculateapr into apps/finance</div></div>
+  <div class="phase"><div class="phase-num">5</div><div class="phase-text"><strong>Deploy to Vercel</strong> - Create 3 Vercel projects, connect to GitHub, set env vars</div></div>
+  <div class="phase"><div class="phase-num">6</div><div class="phase-text"><strong>DNS</strong> - Add CNAME records in Namecheap for app. and finance. subdomains</div></div>
+  <div class="phase"><div class="phase-num">7</div><div class="phase-text"><strong>Decommission</strong> - Cancel Lovable, remove Netlify, archive old repos, set up redirects</div></div>
+  <div class="phase"><div class="phase-num">8</div><div class="phase-text"><strong>Verify</strong> - Test cross-subdomain auth, payment flows, exports, all calculators</div></div>
+</div>
+
+<!-- Cost -->
+<h2>Monthly Cost After Migration</h2>
+<div style="max-width: 500px;">
+  <div class="cost-row"><span class="label">Vercel (3 projects, Hobby tier)</span><span class="value">$0</span></div>
+  <div class="cost-row"><span class="label">Supabase (free tier)</span><span class="value">$0</span></div>
+  <div class="cost-row"><span class="label">Namecheap domains (amortized)</span><span class="value">~$3</span></div>
+  <div class="cost-row"><span class="label">Stripe</span><span class="value">per-txn only</span></div>
+  <div class="cost-row"><span class="label">Lovable</span><span class="value" style="text-decoration: line-through; color: #f87171;">cancelled</span></div>
+  <div class="cost-row"><span class="label">Netlify</span><span class="value" style="text-decoration: line-through; color: #f87171;">cancelled</span></div>
+  <div class="cost-row"><span class="label">Datafast</span><span class="value" style="text-decoration: line-through; color: #f87171;">cancelled</span></div>
+  <div class="cost-total"><span class="label">Total fixed monthly</span><span class="value">~$3/mo</span></div>
+</div>
+
+<!-- What's in the scaffold -->
+<h2>What's in the Scaffold (104 files)</h2>
+<div style="font-size: 13px; color: #94a3b8; margin-top: 8px;">
+<pre style="background: #1e293b; padding: 16px; border-radius: 8px; overflow-x: auto; line-height: 1.7;">
+raiseready-platform/
+├── turbo.json                    Turborepo config
+├── package.json                  Workspace root
+├── MIGRATION_GUIDE.md            Complete step-by-step guide
+│
+├── apps/
+│   ├── www/                      raisereadybook.com (31 files)
+│   │   ├── src/app/              Landing, books, services, blog, dashboard, auth
+│   │   ├── src/components/       Nav, footer
+│   │   └── src/app/api/stripe/   Checkout + webhook endpoints
+│   │
+│   ├── app/                      app.raisereadybook.com (25 files)
+│   │   ├── src/app/tools/        APR, mortgage, buy-vs-rent calculators
+│   │   ├── src/components/       Calculator layout, nav header
+│   │   └── src/lib/calculations/ APR engine (Newton's method)
+│   │
+│   └── finance/                  finance.raisereadybook.com (31 files)
+│       ├── src/app/model/        New model wizard + [id] editor
+│       ├── src/components/       6 editor tabs (P&L, hiring, sensitivity...)
+│       └── src/lib/engine/       Financial model engine + sensitivity + export
+│
+├── packages/
+│   ├── auth/                     Shared Supabase auth (cross-subdomain SSO)
+│   ├── db/                       Shared Supabase client + TypeScript types
+│   └── config/                   Shared Tailwind + brand colors
+│
+└── supabase/
+    └── migrations/001_unified_schema.sql   Tables: profiles, purchases,
+                                            saved_calculations, financial_models, favorites
+</pre>
+</div>
+
+</div>
+</body>
+</html>

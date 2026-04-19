@@ -1,0 +1,23 @@
+{
+  "name": "raiseready-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npx turbo dev",
+    "build": "npx turbo build",
+    "lint": "npx turbo lint",
+    "dev:www": "npx turbo dev --filter=raiseready-www",
+    "dev:app": "npx turbo dev --filter=@raiseready/app",
+    "dev:finance": "npx turbo dev --filter=finance-platform",
+    "build:www": "npx turbo build --filter=raiseready-www",
+    "build:app": "npx turbo build --filter=@raiseready/app",
+    "build:finance": "npx turbo build --filter=finance-platform"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0"
+  },
+  "packageManager": "npm@10.8.0"
+}
