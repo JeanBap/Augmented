@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { getPublishedPosts } from "./blog-posts-data";
 
 export const metadata = {
   title: "Blog | Raise Ready",
@@ -9,105 +10,14 @@ export const metadata = {
 };
 
 const categories = [
-  { id: "all", name: "All Articles", count: 8 },
+  { id: "all", name: "All Articles", count: 15 },
   { id: "fundraising", name: "Fundraising", count: 2 },
-  { id: "financial-modeling", name: "Financial Modeling", count: 5 },
+  { id: "financial-modeling", name: "Financial Modeling", count: 11 },
   { id: "startup-growth", name: "Startup Growth", count: 1 },
   { id: "investor-insights", name: "Investor Insights", count: 1 },
 ];
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Complete Guide to Series A Fundraising",
-    excerpt:
-      "Everything you need to know about raising your Series A round, from preparation to closing.",
-    category: "fundraising",
-    author: "Sarah Chen",
-    date: "Mar 15, 2024",
-    readTime: "8 min",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "5 Financial Model Mistakes Founders Make",
-    excerpt:
-      "Common pitfalls in financial modeling and how to avoid them when pitching to investors.",
-    category: "financial-modeling",
-    author: "Michael Rodriguez",
-    date: "Mar 12, 2024",
-    readTime: "6 min",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Understanding Your Unit Economics",
-    excerpt:
-      "A deep dive into calculating and optimizing the unit economics that matter most.",
-    category: "financial-modeling",
-    author: "Jessica Wang",
-    date: "Mar 8, 2024",
-    readTime: "7 min",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "How Investors Evaluate Startups",
-    excerpt:
-      "What VCs are really looking for and how to present your business to maximize investment appeal.",
-    category: "investor-insights",
-    author: "David Kim",
-    date: "Mar 5, 2024",
-    readTime: "9 min",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Scaling from Pre-Seed to Series A",
-    excerpt:
-      "Strategic advice for growing your startup through your earliest funding stages.",
-    category: "startup-growth",
-    author: "Emily Zhang",
-    date: "Mar 1, 2024",
-    readTime: "8 min",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "The Investor Data Room Checklist",
-    excerpt:
-      "Everything investors need to see during due diligence and how to organize it effectively.",
-    category: "fundraising",
-    author: "Alex Thompson",
-    date: "Feb 28, 2024",
-    readTime: "6 min",
-    featured: false,
-  },
-  {
-    id: 7,
-    slug: "saas-gross-margin-benchmarks-vc-expectations",
-    title: "SaaS Gross Margin Benchmarks: What Investors Expect From Your Numbers",
-    excerpt:
-      "Gross margin benchmarks by ARR stage and delivery model, why the number matters, and how to present it to VCs before they ask.",
-    category: "financial-modeling",
-    author: "Yanni Papoutsis",
-    date: "Apr 17, 2026",
-    readTime: "7 min",
-    featured: false,
-  },
-  {
-    id: 8,
-    slug: "startup-financial-model-vc-trust",
-    title: "How to Build a Startup Financial Model That VCs Will Trust",
-    excerpt:
-      "The five-section architecture of a VC-ready financial model: from bottoms-up revenue build to burn and runway projection.",
-    category: "financial-modeling",
-    author: "Yanni Papoutsis",
-    date: "Apr 17, 2026",
-    readTime: "8 min",
-    featured: false,
-  },
-];
+const blogPosts = getPublishedPosts();
 
 export default function BlogPage() {
   return (
@@ -170,7 +80,7 @@ export default function BlogPage() {
                       .map((post) => (
                         <Link
                           key={post.id}
-                          href={`/blog/${post.id}`}
+                          href={`/blog/${post.slug}`}
                           className="card p-6 group hover:shadow-xl"
                         >
                           <div className="bg-gradient-to-br from-gold/10 to-brand-navy/10 h-40 rounded-lg mb-4 group-hover:from-gold/20 group-hover:to-brand-navy/20 transition-colors" />
@@ -213,7 +123,7 @@ export default function BlogPage() {
                     {blogPosts.map((post) => (
                       <Link
                         key={post.id}
-                        href={`/blog/${post.id}`}
+                        href={`/blog/${post.slug}`}
                         className="card p-6 group hover:shadow-lg flex items-start gap-4"
                       >
                         <div className="w-32 h-32 bg-gradient-to-br from-gold/10 to-brand-navy/10 rounded-lg flex-shrink-0 hidden sm:block group-hover:from-gold/20 group-hover:to-brand-navy/20 transition-colors" />
