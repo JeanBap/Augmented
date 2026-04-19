@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The SaaS Cap Table Bible 2026: Dilution, Option Pools, Exit Waterfalls</title>
+<meta name="description" content="Definitive SaaS cap table guide 2026: founder dilution at each stage, option pool sizing, preference stacks, exit waterfall math, SAFE vs priced round mechanics. Free cap table template.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/saas-cap-table-bible-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/saas-cap-table-bible-2026.html">
+<meta property="og:title" content="The SaaS Cap Table Bible 2026: Dilution, Option Pools, Exit Waterfalls">
+<meta property="og:description" content="Founder dilution at each funding stage, option pool mechanics, preference stacks, exit waterfall calculations. Real cap table examples with actual math.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsis">
+<meta property="article:section" content="SaaS Finance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The SaaS Cap Table Bible 2026: Dilution, Option Pools, Exit Waterfalls">
+<meta name="twitter:description" content="Cap table mechanics, dilution math, option pools, exit waterfalls. Everything SaaS founders need to know before raising.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The SaaS Cap Table Bible 2026", "description": "Founder dilution at each funding stage, option pool mechanics, preference stacks, exit waterfall calculations. Complete cap table guide with real examples.", "author": {"@type": "Person", "name": "Yanni Papoutsis", "url": "https://www.raisereadybook.com/about"}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-cap-table-bible-2026.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-cap-table-bible-2026.html", "datePublished": "2026-04-19", "dateModified": "2026-04-19", "articleSection": "SaaS Finance", "timeRequired": "PT22M", "inLanguage": "en", "wordCount": 9200, "keywords": "SaaS cap table, cap table template, founder dilution, option pool, preference stack, exit waterfall, SAFE note", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1"]}, "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"SaaS Cap Table Bible 2026","item":"https://www.raisereadybook.com/blog/saas-cap-table-bible-2026.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a cap table?","acceptedAnswer":{"@type":"Answer","text":"A cap table (capitalisation table) is a spreadsheet that records every equity stakeholder in a company: founders, employees (option holders), investors, and advisors. It shows each person's number of shares, share class (common vs preferred), percentage ownership, and the economic terms attached to their shares. A cap table is the authoritative record of who owns what and how proceeds would be distributed in an exit. Every fundraising round, option grant, and transfer of shares must be reflected in the cap table."}},{"@type":"Question","name":"How much dilution should founders expect from Seed to Series B?","acceptedAnswer":{"@type":"Answer","text":"Typical cumulative dilution for two co-founders from incorporation to Series B: Pre-Seed/Angel round (10-20% given up), Seed (15-25% given up), Series A (20-25% given up), Series B (15-20% given up), plus option pool top-ups at each stage. By Series B, two co-founders who started at 50% each typically hold 25-35% combined (12-17% each) assuming equal dilution through each round. This is considered healthy. If founders hold below 20% combined by Series B, motivational alignment becomes an investor concern."}},{"@type":"Question","name":"What is an option pool and how is it structured?","acceptedAnswer":{"@type":"Answer","text":"An option pool is a reserved block of shares set aside for employee equity grants (stock options). Investors typically require an option pool of 10-20% of post-money shares to be created or topped up before a priced round closes. This dilutes founders pre-investment, not post -- meaning the pool creation reduces founder ownership before investor shares are issued, which is economically equivalent to founders bearing the full cost of the option pool. A 15% post-money option pool is the most common requirement at Series A."}},{"@type":"Question","name":"What is a liquidation preference?","acceptedAnswer":{"@type":"Answer","text":"A liquidation preference gives preferred shareholders the right to receive a multiple of their investment before common shareholders receive anything in an exit. A 1x non-participating liquidation preference (most common, most founder-friendly) means investors get their money back first, then common shareholders (founders, employees) share the remaining proceeds. A 2x liquidation preference means investors get 2x their investment before common shareholders see anything. Participating preferred (investors get their preference AND participate in remaining proceeds) is strongly founder-unfavorable and now rare in standard term sheets."}},{"@type":"Question","name":"What is the difference between SAFE and a priced round?","acceptedAnswer":{"@type":"Answer","text":"A SAFE (Simple Agreement for Future Equity) is a convertible instrument: you give an investor money now and they receive equity later when a priced round closes, at a discount or valuation cap. SAFEs are simpler, faster, and cheaper than priced rounds (no preferred shares, no board changes). The risk for founders: multiple SAFEs can convert at different caps, creating complex dilution calculations. A priced round (Seed or Series A) sets a specific price per share, creates preferred shares, and typically includes a term sheet with investor rights."}},{"@type":"Question","name":"How does anti-dilution protection work?","acceptedAnswer":{"@type":"Answer","text":"Anti-dilution protection gives existing investors additional shares if a future funding round occurs at a lower valuation (a 'down round'). Broad-based weighted average anti-dilution is the most common and most founder-friendly form: the number of new shares granted is weighted by the size of the down round relative to total outstanding shares. Full ratchet anti-dilution (investors get shares priced at the lower round price) is highly founder-unfavorable and rare in competitive processes. Founders should always negotiate for broad-based weighted average anti-dilution and resist full ratchet provisions."}},{"@type":"Question","name":"What tools do SaaS founders use to manage their cap table?","acceptedAnswer":{"@type":"Answer","text":"The leading cap table management platforms in 2026 are Carta (most widely adopted, especially US/UK), Pulley (founder-friendly pricing, strong for startups), and Angellist Venture (for angel rounds and SPVs). Excel spreadsheets are adequate pre-Seed but become error-prone once you have more than 20-30 stakeholders or multiple share classes. At Series A, investors and law firms expect a professionally managed cap table platform. Carta charges approximately $2,400-$5,000/year for early-stage companies; Pulley charges $2,000-$4,000/year. Both integrate with law firm workflows for share issuance and 409A valuations."}}]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" decoding="async"></a>
+      <div class="nav-tabs">
+        <a href="/blog/" class="nav-tab">Blog</a>
+        <a href="/tools/" class="nav-tab">Tools</a>
+        <a href="/book/" class="nav-tab">The Book</a>
+      </div>
+    </nav>
+    </header>
+</div>
+
+<main id="main" class="blog-post-layout">
+  <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; SaaS Finance</nav>
+
+  <h1>The SaaS Cap Table Bible 2026</h1>
+  <div class="blog-meta">
+    <span class="blog-meta-date">Published 19 April 2026</span>
+    <span class="blog-meta-read">22 min read</span>
+    <span class="blog-meta-author">By <a href="/about/">Yanni Papoutsis</a></span>
+  </div>
+
+  <div class="tldr">
+    <strong>TL;DR:</strong> Two co-founders typically own 25-35% combined by Series B. Option pools of 10-15% are created pre-money (founders bear the cost). Liquidation preferences determine who gets paid first in an exit. 1x non-participating is founder-friendly; 2x or participating preferred is not. SAFEs with no cap or high cap are dangerous at scale. This guide covers cap table anatomy, dilution at each stage, option pool mechanics, preference stacks, exit waterfall math, and four real cap table examples.
+  </div>
+
+  <div class="lead-magnet-box" style="background:#f8f5ff;border:1px solid #d4c5ff;border-radius:10px;padding:20px 24px;margin:28px 0;">
+    <strong style="color:#4a3080;">Free Download: Cap Table Template + Dilution Calculator + Exit Waterfall Modeler</strong>
+    <p style="margin:8px 0 14px;font-size:15px;">Pre-built cap table Excel model covering SAFE conversion, priced rounds, option pool creation, and exit waterfall calculations. Used by 2,200+ SaaS founders from pre-Seed through Series B.</p>
+    <a href="/tools/" style="display:inline-block;background:#4a3080;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:600;font-size:14px;min-height:44px;">Get the Template (Free)</a>
+  </div>
+
+  <div class="blog-article-content">
+
+    <h2>Cap Table Anatomy: What Every Stakeholder Needs to Know</h2>
+    <p>A capitalisation table records every piece of equity ever issued by your company. It is the authoritative record of ownership and the document that determines who gets paid what in every exit scenario. Every financing event, option grant, share transfer, and conversion must be reflected in the cap table immediately and accurately. Errors in the cap table compound over time and can create legal disputes at the worst possible moment -- due diligence.</p>
+
+    <p>A complete cap table shows: each stakeholder's name, share class (common, Series A preferred, Series B preferred, etc.), number of shares held, percentage of fully diluted shares, and the economic terms attached to their shares (liquidation preference multiple, participation rights, anti-dilution provisions). "Fully diluted" is the critical concept: it includes all outstanding shares plus all shares that could be created from outstanding options, warrants, and convertible instruments (SAFEs, convertible notes). Percentage ownership on a fully diluted basis is what investors use to calculate their economic stake and what founders should track from day one.</p>
+
+    <h3>The Four Cap Table Layers</h3>
+    <p>Most SaaS cap tables by Series A have four layers: (1) Founders -- common shares, earliest class, no liquidation preference, highest risk/highest reward. (2) Employees and advisors -- common shares via option grants from the ESOP (Employee Stock Option Pool), subject to vesting schedules (typically 4 years with 1-year cliff). (3) SAFE/convertible note holders -- convert to preferred equity at a priced round, typically with a valuation cap or discount. (4) Preferred shareholders from priced rounds (Seed, Series A, Series B) -- preferred shares with negotiated economic rights above common.</p>
+
+    <h2>Dilution: The Compounding Reality</h2>
+    <p>Dilution is the reduction in an existing shareholder's percentage ownership that occurs when new shares are issued. Every funding round, every option grant, and every SAFE conversion dilutes existing shareholders. Understanding the cumulative effect of dilution is essential for founders to plan their equity ownership trajectory and negotiate informed terms at each stage.</p>
+
+    <h3>Typical Dilution by Stage</h3>
+    <p>The following model shows typical dilution for two equal co-founders starting at 50% each, raising through Series B. These are median figures; actual dilution varies significantly based on round size, valuation, and option pool requirements.</p>
+
+    <div style="overflow-x:auto;margin:24px 0;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr style="background:#4a3080;color:#fff;">
+            <th style="padding:10px 14px;text-align:left;">Event</th>
+            <th style="padding:10px 14px;text-align:center;">New Shares Issued</th>
+            <th style="padding:10px 14px;text-align:center;">Each Founder %</th>
+            <th style="padding:10px 14px;text-align:left;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Incorporation</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">-</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;font-weight:600;">50.0% each</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">10M shares each, 20M total</td>
+          </tr>
+          <tr style="background:#f9f9fb;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Option pool creation (10%)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">2.22M shares</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;font-weight:600;">45.0% each</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Pre-Seed pool; founders diluted</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Pre-Seed / Angels (15% sold)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">3.91M shares</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;font-weight:600;">38.3% each</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">€250k raised at €1.4M pre-money</td>
+          </tr>
+          <tr style="background:#f9f9fb;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Seed round (20% sold, 10% pool top-up)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">7.7M shares</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;font-weight:600;">29.8% each</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">€1.5M raised at €6M pre-money</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Series A (22% sold, 10% pool top-up)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">16.8M shares</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;font-weight:600;">21.6% each</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">€8M raised at €28M pre-money</td>
+          </tr>
+          <tr style="background:#f9f9fb;">
+            <td style="padding:10px 14px;">Series B (18% sold, 5% pool top-up)</td>
+            <td style="padding:10px 14px;text-align:center;">20.5M shares</td>
+            <td style="padding:10px 14px;text-align:center;font-weight:600;">16.2% each</td>
+            <td style="padding:10px 14px;">€25M raised at €110M pre-money</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>In this scenario, two co-founders who started at 50% each hold approximately 16% each at Series B close -- 32% combined. This is considered a healthy outcome. If founders hold below 20% combined by Series B, experienced investors start to question founder motivation alignment and may discuss re-grant packages or "founder shares" as part of the term sheet.</p>
+
+    <h2>Option Pool Mechanics: The Pre-Money Trap</h2>
+    <p>The option pool shuffle is one of the most important negotiating concepts for founders to understand. When investors require an option pool of, say, 15% post-money to be created before the round closes, they almost always require this pool to be created from the pre-money valuation -- meaning the pool dilutes founders, not investors.</p>
+
+    <pre style="background:#1a1a2e;color:#e8e8f0;padding:20px 24px;border-radius:8px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:14px;line-height:1.6;">Option Pool Shuffle Example:
+
+Term sheet states:
+  Pre-money valuation: €10,000,000
+  Investment: €2,000,000
+  Post-money valuation: €12,000,000
+  Required post-money option pool: 15%
+
+What this actually means:
+  Post-money shares: €12M / share price
+  Option pool = 15% of post-money shares
+
+  To maintain 15% post-money, the option pool must be created pre-close.
+  The "real" pre-money value available to founders = €10M - option pool value
+
+  If option pool is worth €1.2M (15% of €8M effective pre-money):
+  Founders receive only €8.8M in effective pre-money value, not €10M
+
+Founder-friendly alternative: negotiate option pool as a % of pre-money,
+  or negotiate a smaller pool (10%) with a commitment to top up at Series B.
+
+The key question: how many options do you actually need to grant in the next 18 months?
+  If you need 20 engineer grants averaging 0.25% each = 5% of options.
+  Negotiate the pool to actual need (7-8%) rather than accepting the 15% default.</pre>
+
+    <p>Founders should model the exact number of options they expect to grant between this round and the next before accepting an option pool requirement. If you only plan to hire 6 people at 0.3% each over the next 18 months, a 10% option pool is vastly oversized. The ungranted portion of the pool dilutes founders without benefit to the employees the pool is supposed to attract.</p>
+
+    <h3>Option Vesting: The 4-Year Standard and Variations</h3>
+    <p>The standard vesting schedule in SaaS is 4-year vesting with a 1-year cliff. The cliff means an employee must stay for 12 months before receiving any options (the first 25% vests at month 12); after the cliff, options vest monthly for the remaining 36 months. Founders should also vest their own shares -- many investors require this as a term sheet condition. Standard founder vesting is 4 years with a 1-year cliff; some founders negotiate for a "time already served" offset if the company has been operating for 12+ months before the round.</p>
+
+    <h2>SAFE vs Priced Round: Mechanics and Risks</h2>
+    <p>The Simple Agreement for Future Equity (SAFE) was created by Y Combinator in 2013 to simplify early-stage fundraising. A SAFE investor gives you money today and receives equity when a priced round occurs, at a discount to the priced round price or capped at a maximum valuation. SAFEs are not debt -- they have no interest rate, no maturity date, no repayment obligation -- but they do represent a future equity obligation that can create significant dilution if poorly structured.</p>
+
+    <h3>SAFE Mechanics</h3>
+    <pre style="background:#1a1a2e;color:#e8e8f0;padding:20px 24px;border-radius:8px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:14px;line-height:1.6;">SAFE Conversion Example:
+
+Angel investor puts in €200,000 on a SAFE with:
+  Valuation cap: €4,000,000
+  Discount: 20% (applies if priced round valuation is below the cap)
+
+Company raises Series A priced at €10,000,000 pre-money.
+
+SAFE converts at: min(cap, priced round price × (1 - discount))
+  Cap price: €4,000,000 / total pre-money shares
+  Priced price × (1 - 20%) = €10M × 0.80
+
+Since €4M cap < €10M × 80% = €8M, SAFE converts at the cap:
+  SAFE shares = €200,000 / (€4,000,000 / total pre-SAFE shares)
+  At €4M cap with 10M shares = €0.40/share
+  SAFE shares: €200,000 / €0.40 = 500,000 shares
+
+  If priced round price = €1.00/share (€10M pre / 10M shares):
+  SAFE converts at €0.40 vs. new investors at €1.00
+  SAFE holder gets 2.5x the shares per dollar invested vs. Series A investors</pre>
+
+    <p>SAFEs are efficient for single investments with clear cap structures. They become dangerous when: multiple SAFEs at different caps stack (the dilution math is complex and often miscalculated), when SAFEs have no cap (pro-rata MFN SAFEs can convert at any price), and when SAFE totals represent more than 20-25% of the anticipated Series A round size (this creates material dilution that surprises founders when they model Series A fully diluted shares).</p>
+
+    <h2>Liquidation Preference and Preference Stack</h2>
+    <p>Liquidation preference is the mechanism that determines how exit proceeds are distributed between preferred investors and common shareholders (founders, employees). In an exit -- acquisition or IPO -- proceeds flow through the preference stack from top to bottom before common shareholders receive anything.</p>
+
+    <h3>Types of Liquidation Preference</h3>
+    <p>The three most common liquidation preference structures, from most to least founder-friendly:</p>
+
+    <div style="overflow-x:auto;margin:24px 0;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr style="background:#4a3080;color:#fff;">
+            <th style="padding:10px 14px;text-align:left;">Structure</th>
+            <th style="padding:10px 14px;text-align:center;">How it Works</th>
+            <th style="padding:10px 14px;text-align:center;">Founder-Friendly?</th>
+            <th style="padding:10px 14px;text-align:left;">Common In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;font-weight:600;">1x Non-Participating</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Investors get 1x investment back first; remaining proceeds to common OR investors convert to common and all share pro-rata</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">Yes ✓</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Standard US/EU term sheets 2023+</td>
+          </tr>
+          <tr style="background:#f9f9fb;">
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;font-weight:600;">1x Participating (Partial)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Investors get 1x back AND participate in remaining proceeds up to a cap (e.g., 2-3x total)</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;text-align:center;">Neutral</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #eee;">Down rounds, bridge rounds</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px;">Full Participating Preferred</td>
+            <td style="padding:10px 14px;">Investors get 1x+ AND participate pro-rata in ALL remaining proceeds (no cap)</td>
+            <td style="padding:10px 14px;text-align:center;">No ✗</td>
+            <td style="padding:10px 14px;">Distress situations; 2020 era excesses</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Exit Waterfall: How the Math Works</h3>
+    <p>The exit waterfall calculation determines who receives what in different exit scenarios. Every founder should model their cap table waterfall before signing a term sheet to understand their actual take-home at various exit prices.</p>
+
+    <pre style="background:#1a1a2e;color:#e8e8f0;padding:20px 24px;border-radius:8px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:14px;line-height:1.6;">Exit Waterfall Example (1x Non-Participating Preferred):
+
+Cap Table:
+  2 Founders:        35% each = 70% common
+  Employee Pool:     15% (40% issued, 60% ungranted/forfeited)
+  Seed Investors:    15% preferred (invested €1.5M, 1x preference)
+  Series A Investors: 20% preferred (invested €8M, 1x preference)
+
+Total preferences:  €1.5M + €8M = €9.5M
+
+Scenario A: Company acquired for €15M
+
+  Step 1: Preferred preferences satisfied
+    Seed:     €1.5M  (at 1x, full preference paid)
+    Series A: €8.0M  (at 1x, full preference paid)
+    Remaining: €15M - €9.5M = €5.5M
+
+  Step 2: Non-participating preferred converts or takes preference
+    At €15M exit, Series A at 20% of €15M = €3M
+    Their preference (€8M) > conversion value (€3M) → take preference
+    Seed at 15% of €15M = €2.25M; preference (€1.5M) < conversion → convert
+
+  Refined calculation (investors optimize individually):
+    Seed investors convert: receive €2.25M (15% of €15M) vs €1.5M preference
+    Series A take preference: receive €8M
+    Remaining for common: €15M - €8M = €7M
+    Founders (70% of common*): receive ~€4.9M
+    Employees (~8.5% issued of 15%): receive ~€0.6M
+
+  *Seed investors now hold common; common = founders + employees + seed = 91%
+
+Scenario B: Company acquired for €50M (strong exit)
+
+  All investors convert to common (€9.5M preference &lt; conversion value)
+  Seed: 15% of €50M = €7.5M
+  Series A: 20% of €50M = €10M
+  Founders (35% each): €17.5M each
+  Employees (8.5% issued): €4.25M</pre>
+
+    <h2>Common Cap Table Mistakes</h2>
+    <p>The mistakes that cause the most damage in SaaS cap tables: (1) SAFE accumulation without modelling conversion -- founders raise €500k on SAFEs without calculating that at a €5M Series A pre-money, those SAFEs convert to 35% of the company at low cap prices. (2) Verbal option promises -- telling early employees "you'll get 2%" without issuing a written option agreement creates legal disputes at exit. (3) Unequal founder vesting -- if one founder leaves at month 6 with unvested shares, there is no mechanism to recapture them without proper vesting agreements. (4) Option pool grants at above 409A fair market value -- this creates a tax event for employees. In the US and UK, options must be granted at or below the 409A/HMRC-approved FMV. (5) Missing clawback provisions for departed co-founders -- if a co-founder leaves in year one and retains their full founder share grant, their equity is a permanent overhang on the cap table.</p>
+
+    <h2>Cap Table Tools: Carta vs Pulley vs Excel</h2>
+    <p>Pre-Seed (less than 20 stakeholders, simple structure): a well-structured Excel spreadsheet is adequate. The template linked below (from the Raise Ready Tools page) is sufficient for pre-Seed tracking. Seed stage and beyond: move to a cap table management platform. The two leading options in 2026 are Carta and Pulley.</p>
+
+    <p>Carta is the market leader, particularly in the US and UK. It integrates with law firms for automated share issuance, runs 409A valuations internally, and provides scenario modelling tools. Pricing for early-stage companies: approximately $2,400-$5,000/year depending on stakeholder count. Pulley is the founder-friendly alternative: similar features, approximately 20-30% lower pricing, a better self-serve onboarding experience, and strong customer support. Pulley is the recommendation for companies pre-Series B who do not have investors requiring Carta specifically. Both platforms provide waterfall analysis tools that eliminate the need for manual waterfall spreadsheets.</p>
+
+    <h2>Four Real Cap Table Scenarios</h2>
+
+    <h3>Scenario 1: The Clean Cap Table (2 Founders, Seed, No SAFEs)</h3>
+    <p>Two co-founders, equal split (50/50 at incorporation). 4-year vesting with 1-year cliff for both. No angel round, no SAFEs. Seed round: €2M at €8M pre-money. Investors receive 20% post-money. Option pool topped up to 15% post-money (created pre-money from founder shares). Post-Seed ownership: each founder holds approximately 37.5% on a fully diluted basis; Seed investors hold 20%; option pool holds 15% (most ungranted). This is a clean, simple structure that any Series A investor will read in under 5 minutes. Clean cap tables close faster and cheaper than complex ones.</p>
+
+    <h3>Scenario 2: SAFE Complexity (3 Founders, Multiple SAFEs)</h3>
+    <p>Three co-founders (60/25/15 split). Over 18 months, raised €750k across 8 SAFEs with caps ranging from €2M to €6M. When the Series A priced at €12M pre-money, the SAFEs converted to approximately 28% of the company -- significantly more than founders anticipated. The lowest-cap SAFEs ($2M cap) converted at $0.28/share while Series A investors paid $1.20/share. The founders had created a 28% preferred overhang that surprised the Series A investors and required two extra weeks of legal work to clean up. The lesson: model SAFE conversion at your expected next round price before issuing each SAFE. If 5 SAFEs at €2-4M caps would give away 30% at a €10M Series A, that is too much pre-price-round dilution.</p>
+
+    <h3>Scenario 3: The Down Round Consequence</h3>
+    <p>A SaaS company raised a Series A at €25M pre-money in 2021, then needed to raise a Series B bridge in 2024 at €18M pre-money (a down round). The original Series A term sheet had broad-based weighted average anti-dilution protection. The down round triggered anti-dilution: Series A investors received additional shares to compensate for the lower price, diluting founders from 38% to 29% combined on a fully diluted basis. The founders retained control (board majority was protected), but the dilution was significant and unexpected. Had they negotiated a pay-to-play provision (investors who don't participate in the down round lose anti-dilution rights), the impact would have been smaller.</p>
+
+    <h3>Scenario 4: Healthy Exit Waterfall Outcome</h3>
+    <p>A two-founder SaaS company sells for €45M after raising: Angel €300k, Seed €2M at €6M pre, Series A €9M at €28M pre. Post-Series A fully diluted cap table: Founders 35% (17.5% each), Angel 4%, Seed Fund 19%, Series A Fund 22%, Employee Pool 20% (12% vested to employees). Total liquidation preferences: €300k + €2M + €9M = €11.3M. At €45M exit with all 1x non-participating preferred, all investors convert to common (conversion value exceeds preference). Founders receive: 17.5% of €45M = €7.875M each. Vested employees share approximately 12% of €45M = €5.4M pool. Clean outcome: four employees with 0.5-1.5% each receive €225k to €675k. This is why building a good option program matters -- €5.4M distributed to early team members creates loyalty, culture, and genuine wealth-sharing.</p>
+
+    <div style="background:#f8f5ff;border-left:4px solid #4a3080;padding:20px 24px;margin:32px 0;border-radius:0 8px 8px 0;">
+      <strong style="color:#4a3080;font-size:17px;">Free: Cap Table Template + Exit Waterfall Calculator</strong>
+      <p style="margin:10px 0 16px;font-size:15px;color:#333;">Excel model with pre-built cap table, SAFE conversion calculator, round-by-round dilution tracker, and exit waterfall that works for any preference stack. The most downloaded Raise Ready tool.</p>
+      <a href="/tools/" style="display:inline-block;background:#4a3080;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:600;font-size:14px;min-height:44px;">Download Free Cap Table Template</a>
+    </div>
+
+    <h2>Related Raise Ready Resources</h2>
+    <ul>
+      <li><a href="/blog/saas-fundraising-timeline-bible-2026.html">The SaaS Fundraising Timeline Bible</a></li>
+      <li><a href="/blog/saas-term-sheet-bible-2026.html">The SaaS Term Sheet Bible: Red Flags and Negotiation</a></li>
+      <li><a href="/blog/saas-unit-economics-bible-2026.html">The SaaS Unit Economics Bible</a></li>
+      <li><a href="/blog/saas-benchmarks-bible-2026.html">The SaaS Benchmarks Bible</a></li>
+      <li><a href="/blog/saas-financial-model.html">The SaaS Financial Modeling Bible</a></li>
+    </ul>
+
+  </div>
+</main>
+
+<footer style="margin-top:60px;padding:32px 0;border-top:1px solid #eee;text-align:center;font-size:14px;color:#888;">
+  <p>&copy; 2026 Raise Ready. All rights reserved. <a href="/privacy/" style="color:#888;">Privacy Policy</a> &middot; <a href="/terms/" style="color:#888;">Terms</a></p>
+</footer>
+</body>
+</html>
