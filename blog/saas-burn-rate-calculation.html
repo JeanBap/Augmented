@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> <script   defer   data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K"   data-domain="raisereadybook.com"   src="https://datafa.st/js/script.js"> </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta name="google-site-verification" content="JdCJFGDqrO29TMr70TQofnIEMA82gDS7KFFm421UT7Q">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Burn Rate: How to Calculate Gross and Net Burn Correctly</title>
+<meta name="description" content="Complete guide to SaaS burn rate: gross burn formula, net burn calculation, trailing 3-month burn, burn by department, benchmarks by ARR stage, how billing terms affect burn.">
+<meta name="keywords" content="SaaS burn rate, gross burn, net burn, burn calculation, monthly burn, runway">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/saas-burn-rate-calculation.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/saas-burn-rate-calculation.html">
+<meta property="og:title" content="SaaS Burn Rate: How to Calculate Gross and Net Burn Correctly">
+<meta property="og:description" content="Gross burn formula, net burn calculation, trailing 3-month burn methodology, burn by department benchmarks.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="SaaS Finance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SaaS Burn Rate: How to Calculate Gross and Net Burn Correctly">
+<meta name="twitter:description" content="Gross vs net burn formulas, burn calculation methodology, benchmarks by stage.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SaaS Burn Rate: How to Calculate Gross and Net Burn Correctly", "description": "Complete guide to calculating SaaS burn rate: gross burn, net burn, trailing 3-month methodology, burn by department, benchmarks by ARR stage.", "author": {"@type": "Person", "name": "Yanni Papoutski", "url": "https://www.raisereadybook.com/about"}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-burn-rate-calculation.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-burn-rate-calculation.html", "datePublished": "2026-04-19", "dateModified": "2026-04-19", "articleSection": "SaaS Finance", "timeRequired": "PT15M", "inLanguage": "en", "wordCount": 2000, "keywords": "SaaS burn rate, gross burn, net burn, burn calculation, runway calculation", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1"]}, "mentions": [{"@type": "Organization", "name": "Raise Ready Book", "url": "https://www.raisereadybook.com/"}], "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raisereadybook.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.raisereadybook.com/blog/"},{"@type":"ListItem","position":3,"name":"SaaS Burn Rate Calculation","item":"https://www.raisereadybook.com/blog/saas-burn-rate-calculation.html"}]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+</head>
+<body data-page="blog">
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" decoding="async"></a>
+      <div class="nav-tabs">
+        <a href="/book/" class="nav-tab" data-page="books">Books</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
+        <a href="/software/" class="nav-tab" data-page="software">Software</a>
+        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
+      </div>
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    </header></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Financial Modeling</div>
+
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Financial Modeling</span>
+      <span class="blog-time">15 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published 19 April 2026</span>
+    </div>
+    <h1>SaaS Burn Rate: How to Calculate Gross and Net Burn Correctly</h1>
+<div class="share-buttons" style="display:flex; gap:0.75rem; margin:1rem 0 1.5rem; flex-wrap:wrap;">
+  <a href="https://twitter.com/intent/tweet?text=SaaS%20Burn%20Rate%20Calculation&url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fsaas-burn-rate-calculation.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    Share
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.raisereadybook.com%2Fblog%2Fsaas-burn-rate-calculation.html" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.4rem 0.8rem; border:1px solid #3a3830; border-radius:4px; color:#3a3830; text-decoration:none; font-family:'DM Mono',monospace; font-size:0.75rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Share
+  </a>
+</div>
+      <div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#7a6320; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">Gross burn is total monthly cash out. Net burn is gross burn minus monthly revenue collected. Use trailing 3-month average burn to smooth volatility. Break burn by department to identify high-efficiency areas. Annual billing creates uneven monthly cash collection, so track net burn across a rolling 3-month window.</p>
+</div>
+
+      <p>Burn rate is the speed at which your company consumes cash. Misunderstanding it leads to miscalculating runway, overestimating survival time, and raising at the wrong moment. This guide covers the precise definitions, how to calculate both gross and net burn, why trailing 3-month burn matters, benchmarks by stage, and how to break burn by department to see where your company is most efficient.</p>
+
+      <h2>Gross Burn: Total Cash Out per Month</h2>
+
+      <p>Gross burn is every pound/euro that leaves your bank account each month, regardless of revenue coming in. It includes payroll, vendor costs, rent, insurance, software subscriptions, contractor payments, tax payments, and any other cash outflow.</p>
+
+      <p><strong>Formula:</strong></p>
+
+      <div style="background:#1a1a2e;color:#e0e0ff;padding:18px 22px;border-radius:8px;font-family:'DM Mono',monospace;font-size:14px;margin:20px 0;overflow-x:auto;">
+        <pre style="margin:0;">Gross Burn = Total Monthly Cash Out
+
+Includes:
+  Payroll (salaries + benefits + payroll tax)
+  Contractors
+  Cloud infrastructure (AWS, Google Cloud)
+  Third-party APIs and integrations
+  Office rent
+  Insurance
+  Software subscriptions and tools
+  Vendor invoices
+  Travel and meals
+  Legal and accounting
+  Equipment and capex</pre>
+      </div>
+
+      <p><strong>Example Company (Month 5):</strong></p>
+
+      <ul>
+        <li>Payroll: €85,000</li>
+        <li>Contractors: €12,000</li>
+        <li>AWS and infrastructure: €18,000</li>
+        <li>Office rent: €8,000</li>
+        <li>Insurance: €3,500</li>
+        <li>Software tools: €4,200</li>
+        <li>Other opex (legal, accounting, travel): €9,300</li>
+        <li><strong>Gross Burn: €140,000</strong></li>
+      </ul>
+
+      <p>Gross burn tells you your minimum cost of running the business. If you collected zero revenue, you'd burn €140,000 monthly. This metric is useful for understanding your cost structure and negotiating with vendors. If your gross burn is rising month-over-month (due to headcount additions or opex increases), you're moving toward a more expensive company, which extends your burn timeline unless revenue grows commensurately.</p>
+
+      <h2>Net Burn: Gross Burn Minus Revenue Collected</h2>
+
+      <p>Net burn is the actual cash loss each month. It's the metric that determines your runway. If gross burn is €140,000 and you collect €95,000 in customer payments, your net burn is €45,000. This is the amount your cash balance declines each month.</p>
+
+      <p><strong>Formula:</strong></p>
+
+      <div style="background:#1a1a2e;color:#e0e0ff;padding:18px 22px;border-radius:8px;font-family:'DM Mono',monospace;font-size:14px;margin:20px 0;overflow-x:auto;">
+        <pre style="margin:0;">Net Burn = Gross Burn - Cash Revenue Collected
+
+Example:
+  Gross Burn: €140,000
+  Cash Collected: €95,000
+  Net Burn: €45,000</pre>
+      </div>
+
+      <p><strong>Why Revenue Collected, Not Revenue Recognised?</strong></p>
+
+      <p>The critical distinction: revenue recognised (P&L, accrual accounting) versus revenue collected (cash). A customer signing a €12,000 annual contract on April 1 has you recognise €1,000 revenue in April. But if the customer pays net-30, you don't collect the €12,000 cash until May 1 (or later if payment fails).</p>
+
+      <p>For burn rate calculation, use only cash collected. If you're waiting on customer invoices to pay, that cash isn't in your bank account yet; it shouldn't reduce your net burn calculation. Using revenue recognised instead of collected understates burn and miscalculates runway.</p>
+
+      <h2>Trailing 3-Month Burn: The Right Methodology</h2>
+
+      <p>Don't use a single month's burn to calculate runway. Monthly burn is volatile. One month might have a customer renewal payment in (reducing burn), the next month no renewal (increasing burn). Annual insurance renewal in Q4 creates a burn spike. Bonus payouts in December inflate December burn.</p>
+
+      <p><strong>The Correct Approach:</strong></p>
+
+      <p>Calculate average net burn over the trailing 3 months. This smooths out one-time events and gives a more reliable picture of sustainable burn rate.</p>
+
+      <p><strong>Example:</strong></p>
+
+      <ul>
+        <li>Month 1 net burn: €48,000</li>
+        <li>Month 2 net burn: €52,000</li>
+        <li>Month 3 net burn: €45,000 (lower because of customer renewal payment)</li>
+        <li><strong>Average (trailing 3-month): €48,333</strong></li>
+      </ul>
+
+      <p>If you have €430,000 cash on hand, your runway is €430,000 / €48,333 = 8.9 months. This is more realistic than using Month 3's €45,000 burn (which would give 9.5 months runway) or Month 1's €48,000 (which would give 8.9 months).</p>
+
+      <p>Update this calculation monthly. Each new month, drop the oldest month from the calculation and add the newest. This rolling 3-month average adapts to changing business dynamics without whipsawing on a single bad or good month.</p>
+
+      <h2>Monthly vs Weekly Burn Tracking</h2>
+
+      <p>Monthly is the standard for investor presentations and runway calculations. Some companies track weekly burn for real-time dashboards, but weekly data is too noisy to be actionable. Stick with monthly for decision-making. Weekly is useful only if you're in a burn-reduction crisis (RIF, emergency cost-cutting); in normal operations, monthly is sufficient.</p>
+
+      <h2>Burn by Department: Identifying Efficiency</h2>
+
+      <p>Break your company into cost centres and calculate burn for each. This reveals where your cash is flowing and which departments create the most value per euro burned.</p>
+
+      <p><strong>Typical Series A SaaS Company (€1m ARR, €500k MRR):</strong></p>
+
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
+        <thead>
+          <tr style="background:#4a3080;color:#fff;">
+            <th style="padding:10px 14px;text-align:left;">Department</th>
+            <th style="padding:10px 14px;text-align:right;">Monthly Burn</th>
+            <th style="padding:10px 14px;text-align:right;">% of Total</th>
+            <th style="padding:10px 14px;text-align:left;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Engineering</td>
+            <td style="padding:10px 14px;text-align:right;">€220,000</td>
+            <td style="padding:10px 14px;text-align:right;">44%</td>
+            <td style="padding:10px 14px;">8 engineers, salaries, tools (GitHub, IDE licenses)</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Sales</td>
+            <td style="padding:10px 14px;text-align:right;">€95,000</td>
+            <td style="padding:10px 14px;text-align:right;">19%</td>
+            <td style="padding:10px 14px;">2 AEs, 1 SDR, commissions, CRM</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Marketing</td>
+            <td style="padding:10px 14px;text-align:right;">€80,000</td>
+            <td style="padding:10px 14px;text-align:right;">16%</td>
+            <td style="padding:10px 14px;">1-2 marketers, paid ads, content agencies</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Customer Success</td>
+            <td style="padding:10px 14px;text-align:right;">€65,000</td>
+            <td style="padding:10px 14px;text-align:right;">13%</td>
+            <td style="padding:10px 14px;">2 CSMs, support software</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">G&amp;A</td>
+            <td style="padding:10px 14px;text-align:right;">€40,000</td>
+            <td style="padding:10px 14px;text-align:right;">8%</td>
+            <td style="padding:10px 14px;">Finance, HR, office, insurance, miscellaneous</td>
+          </tr>
+          <tr style="background:#f5f5f5;">
+            <td style="padding:10px 14px;"><strong>Total</strong></td>
+            <td style="padding:10px 14px;text-align:right;"><strong>€500,000</strong></td>
+            <td style="padding:10px 14px;text-align:right;"><strong>100%</strong></td>
+            <td style="padding:10px 14px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>How to Use This Data:</strong></p>
+
+      <p>If your Engineering burn is 44% and delivering strong product improvements (high NRR, low churn), that department is efficient. Protect it when cutting costs. If Sales burn is 19% and acquiring customers at reasonable CAC (under 12 months payback), that's efficient too.</p>
+
+      <p>But if Marketing burn is 16% and generating low-efficiency customers (CAC payback 24+ months, low LTV), that's a candidate for cuts. Reallocate that €80k to more efficient channels (organic, referral, product-led growth).</p>
+
+      <h2>Burn Rate Benchmarks by ARR Stage</h2>
+
+      <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
+        <thead>
+          <tr style="background:#4a3080;color:#fff;">
+            <th style="padding:10px 14px;text-align:left;">Stage/ARR</th>
+            <th style="padding:10px 14px;text-align:left;">Typical Monthly Burn</th>
+            <th style="padding:10px 14px;text-align:left;">Expected Trajectory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Pre-seed / €0 ARR</td>
+            <td style="padding:10px 14px;">€8,000-€20,000</td>
+            <td style="padding:10px 14px;">Founders, minimal team, outsourced work</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Seed / €10-€100k ARR</td>
+            <td style="padding:10px 14px;">€25,000-€60,000</td>
+            <td style="padding:10px 14px;">Growing from early revenue, hiring first engineers</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Series A / €500k-€2m ARR</td>
+            <td style="padding:10px 14px;">€200,000-€600,000</td>
+            <td style="padding:10px 14px;">Significant teams (eng, sales, marketing), rapid growth</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:10px 14px;">Series B / €5m-€20m ARR</td>
+            <td style="padding:10px 14px;">€800,000-€2,000,000</td>
+            <td style="padding:10px 14px;">Large teams, multiple product lines, international expansion</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 14px;">Series C+ / €30m+ ARR</td>
+            <td style="padding:10px 14px;">€2m+</td>
+            <td style="padding:10px 14px;">Enterprise focus, margin expansion, approaching profitability</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Context:</strong> These numbers vary dramatically by vertical and geography. A European B2B SaaS company has lower salary costs than US Bay Area equivalents. A capital-intensive AI company burns faster than a lightweight SaaS startup. Use these benchmarks as directional guidance, not as targets.</p>
+
+      <h2>How Billing Terms Affect Net Burn</h2>
+
+      <p>A company with 50% annual billing and 50% monthly billing has very different monthly net burn than a 100% monthly billing company, even with identical revenue.</p>
+
+      <p><strong>Example (both companies have €100k MRR / €1.2m ARR):</strong></p>
+
+      <p><strong>Scenario A: 100% Monthly Billing</strong></p>
+
+      <ul>
+        <li>Monthly collections: €100,000 (consistent, every month)</li>
+        <li>Gross burn: €135,000</li>
+        <li>Net burn: €35,000</li>
+        <li>Runway (€2.5m cash): 71.4 months</li>
+      </ul>
+
+      <p><strong>Scenario B: 50% Annual, 50% Monthly</strong></p>
+
+      <ul>
+        <li>Month 1: Collections €650k (half of annual customers pay upfront) + €50k (monthly) = €700k</li>
+        <li>Month 2-12: Collections €50k (monthly) + deferred revenue converted to revenue = ~€100k (once amortised)</li>
+        <li>Gross burn: €135,000</li>
+        <li>Month 1 net burn: -€565,000 (inflow!)</li>
+        <li>Months 2-12 net burn: €35,000</li>
+      </ul>
+
+      <p>In Scenario B, Month 1 shows huge cash inflow, which looks amazing. But by Month 2, net burn reverts to €35,000 (same as Scenario A). The difference: Scenario B frontloads cash, giving the company a cushion. This is why annual billing is powerful for early-stage SaaS.</p>
+
+      <p><strong>Implication for Runway:</strong> If your company has a mix of annual and monthly billing, your month-to-month burn varies. Use trailing 3-month average to get a smooth number. Don't rely on Month 1 burn (which might have an annual renewal) to predict Month 12 survival.</p>
+
+      <h2>Payment Failures and Write-Offs</h2>
+
+      <p>Not all revenue collected is cash. Some customers' credit card payments fail (chargeback, insufficient funds). On average, plan for 1-3% of monthly invoiced revenue to fail to collect. This reduces net burn improvement.</p>
+
+      <p>If you invoice €100,000 and expect 2% failure rate, actual cash collected is €98,000. Your net burn is higher by €2,000 than projected.</p>
+
+      <h2>Key Takeaways</h2>
+
+      <ul>
+        <li>Gross burn is total cash out. Net burn is gross burn minus cash collected. Net burn determines runway.</li>
+        <li>Use trailing 3-month average net burn, not a single month. This smooths volatility from annual payments, bonuses, and other one-time events.</li>
+        <li>Break burn by department to identify where cash is most efficiently deployed. Protect high-efficiency departments when cutting.</li>
+        <li>Annual billing creates uneven monthly cash collection; this is why trailing average is essential.</li>
+        <li>Benchmark your burn rate against peers at your ARR stage, but adjust for vertical, geography, and go-to-market model differences.</li>
+      </ul>
+
+<div class="related-tool-box" style="margin:2rem 0;padding:1.25rem 1.5rem;border:1px solid #3a3830;border-left:4px solid #c8a45a;border-radius:8px;background:rgba(200,164,90,0.04);">
+  <p style="margin:0 0 0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#7a6320;">Related Article</p>
+  <p style="margin:0 0 0.5rem;font-size:0.95rem;"><strong>The SaaS Cash Flow Forecasting Bible</strong> &mdash; The complete 12-chapter guide to building monthly cash flow forecasts, calculating runway, and stress testing scenarios.</p>
+  <a href="/blog/the-saas-cash-flow-forecasting-bible-the-complete-guide-for-founders.html" style="color:#7a6320;font-weight:600;text-decoration:none;">Read the full guide &rarr;</a>
+</div>
+</div>
+
+    <div class="blog-article-cta">
+      <p>Master SaaS financial planning with the complete Raise Ready guide.</p>
+      <a href="/book/" class="buy-btn" style="text-decoration:none">Get Raise Ready - €9.99</a>
+    </div>
+    <div class="author-bio" style="display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; margin:2rem 0; border:1px solid #3a3830; border-radius:8px; background:rgba(200,164,90,0.04);">
+  <div style="min-width:64px; width:64px; height:64px; border-radius:50%; background:#c8a45a; display:flex; align-items:center; justify-content:center; font-family:'Instrument Serif',Georgia,serif; font-size:1.8rem; color:#08080d; font-weight:bold;">YP</div>
+  <div>
+    <strong style="font-family:'DM Mono',monospace; font-size:0.9rem; color:#7a6320;">Yanni Papoutsi</strong>
+    <p style="margin:0.3rem 0 0; font-size:0.85rem; line-height:1.6; color:#6e6a61;">VP Finance &amp; Strategy. Author of <a href="/book/" style="color:#7a6320;">Raise Ready</a>. Has supported fundraising across multiple rounds backed by Creandum, Profounders, B2Ventures, and Boost Capital. Experience spanning UK, US, and Dubai markets.</p>
+  </div>
+</div>
+    </div>
+  <section class="newsletter-signup rr-brevo-newsletter">
+    <h2>The Raise Ready Weekly</h2>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <form class="newsletter-form" id="rr-brevo-form">
+      <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address for newsletter">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="rr-brevo-msg" style="display:none;margin-top:0.75rem;font-size:0.85rem;"></p>
+  </section>
+</main>
+<div id="site-footer"><footer>
+      <div class="footer-links">
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
+        <a href="/tools/">Tools</a>
+        <a href="/software/">Software</a>
+        <a href="/blog/">Blog</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
+      <span>Fundraising Intelligence for Founders</span>
+    </footer></div>
+<script src="/shared/components.js" defer></script>
+<script src="/shared/cart.js" defer></script>
+</body>
+</html>
