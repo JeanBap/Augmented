@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script defer data-website-id="dfid_HS9C0iwIwCdxt1LcHos8K" data-domain="raisereadybook.com" src="https://datafa.st/js/script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXXBYNXWZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXXBYNXWZ7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquidation Preferences in SaaS: The Maths Behind Who Gets What</title>
+<meta name="description" content="How liquidation preferences work in practice. 1x non-participating vs 1x participating vs 2x participating at different exit values. Who gets paid when the company sells.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html">
+<meta property="og:title" content="Liquidation Preferences in SaaS: The Maths Behind Who Gets What">
+<meta property="og:description" content="How liquidation preferences work in practice. 1x non-participating vs 1x participating vs 2x participating at different exit values.">
+<meta property="og:image" content="https://www.raisereadybook.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Raise Ready">
+<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:section" content="Deep Dives">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Liquidation Preferences in SaaS: The Maths Behind Who Gets What">
+<meta name="twitter:description" content="How liquidation preferences work in practice. 1x non-participating vs 1x participating at different exit values.">
+<meta name="twitter:image" content="https://www.raisereadybook.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+<link rel="stylesheet" href="/shared/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Liquidation Preferences in SaaS: The Maths Behind Who Gets What in a Sale", "description": "How liquidation preferences work. 1x non-participating vs 1x participating vs 2x participating. Exit economics at £10M, £30M, and £80M with worked examples.", "author": {"@type": "Person", "name": "Yanni Papoutski"}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "image": "https://www.raisereadybook.com/og-image.png", "datePublished": "2026-04-19", "dateModified": "2026-04-19", "articleSection": "Deep Dives", "wordCount": 2200, "timeRequired": "PT11M", "inLanguage": "en", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1", ".blog-article-content > h2:first-of-type + p"]}, "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.raisereadybook.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.raisereadybook.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Liquidation Preferences in SaaS | Raise Ready",
+      "item": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html"
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="blog">
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;" width="680" height="110" decoding="async"></a>
+      <div class="nav-tabs">
+        <a href="/book/" class="nav-tab" data-page="books">Books</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
+        <a href="/software/" class="nav-tab" data-page="software">Software</a>
+        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
+      </div>
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    </header></div>
+<main class="page-content">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Deep Dives</div>
+  <div class="blog-article visible">
+    <a href="/blog/" class="blog-article-back">&#8592; Back to articles</a>
+    <div class="blog-article-meta">
+      <span class="blog-cat">Deep Dives</span>
+      <span class="blog-time">11 min read</span>
+      <span class="blog-date" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:#6e6a61;">Published April 19, 2026</span>
+    </div>
+    <h1>Liquidation Preferences in SaaS: The Maths Behind Who Gets What in a Sale</h1>
+<p style="font-size:1.05rem;color:#3a3830;line-height:1.7;margin:12px 0 18px;">Liquidation preference determines the order in which investors and founders get paid when the company sells. The difference between 1x non-participating and 2x participating can be millions of pounds. This guide walks through the maths at three different exit values and shows exactly how much each founder and investor receives under different preference structures.</p>
+<div class="key-takeaways" style="border-left:3px solid #c8a45a; padding:1rem 1.5rem; margin:1.5rem 0; background:rgba(200,164,90,0.08); border-radius:4px;">
+  <strong style="color:#7a6320; font-family:'DM Mono',monospace; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em;">Key Takeaways</strong>
+  <p style="margin:0.5rem 0 0; font-size:0.95rem;">1x non-participating is founder-friendly. 2x participating destroys founder returns below £50M exits. Know the maths before you sign.</p>
+</div>
+<!-- share buttons -->
+    <div class="blog-share-buttons">
+      <a href="https://twitter.com/intent/tweet?url=https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html&text=Liquidation%20Preferences%20in%20SaaS%3A%20The%20Maths%20Behind%20Who%20Gets%20What&via=theyanni" target="_blank" rel="noopener" class="share-btn twitter-btn">
+        <span>Share on X</span>
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html" target="_blank" rel="noopener" class="share-btn linkedin-btn">
+        <span>Share on LinkedIn</span>
+      </a>
+      <button class="share-btn copy-btn" onclick="copyLink()">
+        <span>Copy Link</span>
+      </button>
+    </div>
+
+    <!-- ARTICLE BODY -->
+<h2>What Liquidation Preference Actually Does</h2>
+<p>Liquidation preference sets the order of payment when the company liquidates (sells, acquires, or winds down). It answers the question: if the company sells for £X, who gets the first £Y, and what happens to the rest? Without liquidation preference, all shareholders would just be paid pro-rata based on their ownership percentage. Liquidation preferences create a waterfall where certain investors get paid before others.</p>
+<p>The three common structures are: (1) 1x non-participating preferred (founder-friendly), (2) 1x participating preferred (middle ground), and (3) 2x participating preferred (aggressive). Each fundamentally changes the economics.</p>
+<h3>1x Non-Participating Preferred (The Founder Standard)</h3>
+<p>This is the gold standard for founders. Investors get back 1x their investment before common shareholders receive anything. Once preferred shareholders are made whole, all remaining proceeds are distributed pro-rata based on ownership percentage. The key word is non-participating. Investors do not get to participate in the upside beyond their 1x return. They get paid first, then the remaining pie is split based on percentage ownership.</p>
+<p>In practical terms: if Series A invested £5M at a £20M pre-money valuation (meaning they own 20% of the company), and the company sells for £30M, the Series A gets their £5M back first, then they split the remaining £25M pro-rata (20% of £25M = £5M), for a total of £10M. This is fair to investors (they got 2x their money) and fair to founders (they keep the substantial upside).</p>
+<h3>1x Participating Preferred (Hybrid)</h3>
+<p>This is middle ground. Investors get their 1x back first, then they participate in remaining proceeds based on their ownership percentage AND they get an additional payout. Some versions give them a kicker (eg. 1.25x or 1.5x before pro-rata participation). The economics are less favorable to founders than non-participating but better than 2x participating.</p>
+<h3>2x Participating Preferred (Aggressive)</h3>
+<p>This is aggressive. Investors get 1x back, then they participate in the remaining proceeds, and they also get a second 1x payout before any pro-rata. The net effect is that investors get roughly 2x their investment before the remaining pie is split pro-rata. This is dramatically unfavorable to founders in exits below £50-60M.</p>
+<h2>The Maths at Three Exit Values</h2>
+<p>Let me work through a specific example. Assume a company with the following cap table:</p>
+<p>- Founders: 70% ownership (7 million shares)<br>
+- Series A investor: 20% ownership (2 million shares), invested £5M<br>
+- Seed investors and options: 10% ownership (1 million shares)<br>
+- Total: 10 million shares fully diluted</p>
+<p>Now let us see what founders receive under each liquidation preference at three different exit prices.</p>
+<h3>Exit 1: £10M Sale</h3>
+<p><strong>Under 1x non-participating:</strong> Series A gets their £5M back first. Remaining £5M is split pro-rata: Series A gets 20% = £1M (total £6M). Founders get 70% of £5M = £3.5M. Seed investors get 10% = £500k. Founders receive £3.5M.</p>
+<p><strong>Under 2x participating:</strong> Series A gets £5M back first (their 1x). Then they get an additional £5M (their second 1x). That leaves £0 for anyone else. Founders get nothing. Seed investors get nothing. The entire £10M goes to Series A. Founders receive £0.</p>
+<p>This is why 2x participating is devastating in small exits. The investor gets paid twice and there is nothing left for founders.</p>
+<h3>Exit 2: £30M Sale</h3>
+<p><strong>Under 1x non-participating:</strong> Series A gets £5M back first. Remaining £25M split pro-rata: Series A gets 20% = £5M (total £10M). Founders get 70% of £25M = £17.5M. Seed investors get 10% = £2.5M. Founders receive £17.5M.</p>
+<p><strong>Under 2x participating:</strong> Series A gets £5M back (1x). Then they get £10M more (participating in the upside). Then they get another £5M (the second 1x). Wait, that is £20M for Series A before anyone else gets anything. That leaves £10M. Founders get 70% of £10M = £7M. Seed investors get 10% of £10M = £1M. Founders receive £7M (vs £17.5M under 1x non-participating). Founders lose £10.5M due to the liquidation preference.</p>
+<h3>Exit 3: £80M Sale</h3>
+<p><strong>Under 1x non-participating:</strong> Series A gets £5M back first. Remaining £75M split pro-rata: Series A gets 20% = £15M (total £20M). Founders get 70% of £75M = £52.5M. Seed investors get 10% = £7.5M. Founders receive £52.5M.</p>
+<p><strong>Under 2x participating:</strong> Series A gets £5M back (1x), then they participate in the upside (£75M * 20% = £15M), then they get another £5M (second 1x). Total for Series A: £25M. Remaining: £55M. Founders get 70% of £55M = £38.5M. Founders receive £38.5M (vs £52.5M). Loss: £14M.</p>
+<p>Note: In the £80M exit, the impact is smaller percentage-wise, but in absolute pounds, it is still substantial. Even at large exits, 2x participating hurts founders.</p>
+<h2>When Liquidation Preference Matters Most</h2>
+<p>The threshold where liquidation preference stops mattering is roughly 3-4x the amount invested. For a £5M Series A, that is a £15-20M exit. At a £30M exit, liquidation preference matters enormously. At a £80M exit, it matters less because the numerator is so large that the preference is a rounding error. But at the median exit size for most SaaS companies (£15-40M), liquidation preference is material.</p>
+<p>Most venture-backed SaaS companies exit in the £20-50M range. At that scale, 1x non-participating is founder-friendly. 2x participating can reduce founder returns by 40-60%. The difference is not academic. It is the difference between a successful outcome and a disappointing one.</p>
+<h2>How to Negotiate Liquidation Preference</h2>
+<p>Rule 1: Always push for 1x non-participating. It is the market standard for early-stage rounds (seed through Series A). Most investors will accept it if the valuation is right.</p>
+<p>Rule 2: If an investor insists on 1x participating or 2x participating, you should ask why. Is there a concern about the business? Are they pricing in downside risk? Understanding their reasoning allows you to address the underlying concern. Maybe the solution is a lower pre-money valuation instead of more aggressive liquidation terms.</p>
+<p>Rule 3: Do not accept 2x participating unless you get something else in return (significantly lower pre-money, fewer protective provisions, better board control, etc.). The math shows it is too expensive for you.</p>
+<p>Rule 4: Model the economics under different liquidation preferences and different exit scenarios before negotiating. Run the maths. Know exactly how much you are giving away. Use that knowledge in conversations with investors.</p>
+<p>Rule 5: If you have multiple term sheets, use the better terms from one to negotiate with the other. "Investor A offered 1x non-participating. Can you match that?" Most investors will adjust to stay competitive.</p>
+<h2>The Bottom Line</h2>
+<p>Liquidation preference is one of the few terms where the maths are unambiguous. You can model it, calculate it, and know exactly what it means for your pocketbook at different exit values. 1x non-participating is founder-friendly and standard. 2x participating is founder-hostile and rare, but if it appears, understand the cost. At a £30M exit (a successful outcome for most SaaS companies), 2x participating costs founders £10M+ in lost proceeds. That is not a minor detail. Negotiate hard on this term.</p>
+
+    <section class="related-articles">
+      <h3>Related Guides</h3>
+      <div class="related-articles-list">
+        <a href="/blog/the-saas-term-sheet-bible-the-complete-guide-for-founders.html" class="related-article-link">The SaaS Term Sheet Bible &rarr; complete guide to all term sheet terms</a>
+        <a href="/blog/saas-anti-dilution-provisions.html" class="related-article-link">Anti-Dilution Provisions &rarr; how preferences protect against down rounds</a>
+      </div>
+    </section>
+    <div class="blog-article-author">
+      <strong>About the author</strong>
+      <p>Yanni Papoutsi is the author of the Ready Series and a Finance and Strategy executive with a Master's in Finance and Leadership. Having raised across multiple rounds alongside investors including Creandum, Profounders, B2Ventures, and Boost Capital, and contributed to a successful exit, Yanni works with early-stage founders on financial modelling, fundraising preparation, and marketplace analytics. <a href="https://linkedin.com/in/theyanni/">Connect on LinkedIn</a></p>
+    </div>
+  </div>
+  <section class="newsletter-signup rr-brevo-newsletter">
+    <h3>The Raise Ready Weekly</h3>
+    <p>Every Friday: the best startup finance insights. Fundraising, modeling, unit economics. No spam.</p>
+    <form class="newsletter-form" id="rr-brevo-form">
+      <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address for newsletter">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="rr-brevo-msg" style="display:none;margin-top:0.75rem;font-size:0.85rem;"></p>
+  </section>
+</main>
+<div id="site-footer"><footer>
+      <div class="footer-links">
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
+        <a href="/tools/">Tools</a>
+        <a href="/software/">Software</a>
+        <a href="/blog/">Blog</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
+      <span>Fundraising Intelligence for Founders</span>
+    </footer></div>
+<script src="/shared/components.js" defer></script>
+<script>
+function copyLink() {
+  const url = 'https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html';
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Link copied to clipboard!');
+  });
+}
+</script>
+</body>
+</html>
