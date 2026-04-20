@@ -77,6 +77,41 @@
     <strong style="color:#4a3080;">Free Download: SaaS Pricing Calculator</strong>
     <p style="margin:8px 0 14px;font-size:15px;">Model revenue at different price points and tier structures. Includes Van Westendorp price sensitivity analysis, revenue-per-tier calculator, and freemium conversion modeller. Used by 1,800+ SaaS founders.</p>
     <a href="/files/RRB_SaaS_Pricing_Calculator_v1.xlsx" style="display:inline-block;background:#4a3080;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:600;font-size:14px;min-height:44px;">Get the Calculator (Free)</a>
+<div class="rrb-capture" style="margin-top:14px;padding:12px 14px;border-top:1px solid rgba(74,48,128,0.18);font-size:13px;color:#4b5563;">
+  <p style="margin:0 0 8px;color:#1f2937;">Want the rest of the series? Get the next Raise Ready Bible (weekly, free).</p>
+  <form class="rrb-capture-form" data-tool="pricing-calculator" style="display:flex;gap:8px;flex-wrap:wrap;">
+    <label for="rrb-ec-pricing-calculator" class="sr-only" style="position:absolute;left:-9999px;">Your email</label>
+    <input id="rrb-ec-pricing-calculator" type="email" name="email" required placeholder="you@company.com" style="flex:1 1 180px;min-width:0;padding:10px 12px;border:1px solid #d1d5db;border-radius:6px;font-size:14px;">
+    <button type="submit" style="padding:10px 16px;background:#1e3a5f;color:#fff;border:0;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;">Subscribe</button>
+  </form>
+  <p class="rrb-capture-status" style="margin:8px 0 0;font-size:12px;color:#4b5563;min-height:16px;" aria-live="polite"></p>
+</div>
+<script>
+(function(){
+  var forms = document.querySelectorAll('.rrb-capture-form');
+  forms.forEach(function(f){
+    if (f.dataset.wired) return;
+    f.dataset.wired = '1';
+    f.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var status = f.parentElement.querySelector('.rrb-capture-status');
+      var email = (f.querySelector('input[name=email]').value || '').trim();
+      if (!email) return;
+      status.textContent = 'Saving...';
+      fetch('/.netlify/functions/email-gate', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email: email, tool: f.dataset.tool})
+      }).then(function(r){ return r.json().catch(function(){ return {ok:false}; }); })
+        .then(function(d){
+          if (d && d.ok) { status.textContent = 'Thanks - you are subscribed.'; f.querySelector('input[name=email]').value=''; }
+          else { status.textContent = (d && d.error) ? d.error : 'Something went wrong. Try again.'; }
+        })
+        .catch(function(){ status.textContent = 'Network error. Try again.'; });
+    });
+  });
+})();
+</script>
   </div>
 
   <div class="blog-article-content">

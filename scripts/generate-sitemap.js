@@ -115,6 +115,26 @@ htmlFiles.sort((a, b) => {
   return a.localeCompare(b);
 });
 
+// Include downloadable lead magnets (RRB_*.xlsx / .pdf) under /files/ so
+// Google discovery and tracking tools can see them. Only emit files matching
+// the RRB_ prefix (our managed magnets); skip ad-hoc uploads.
+function findDownloadFiles(dir, base = '') {
+  if (!fs.existsSync(dir)) return [];
+  const results = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const relPath = base ? `${base}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      results.push(...findDownloadFiles(path.join(dir, entry.name), relPath));
+    } else if (/^RRB_.+\.(xlsx|pdf)$/i.test(entry.name)) {
+      results.push('files/' + relPath);
+    }
+  }
+  return results;
+}
+const downloadFiles = findDownloadFiles(path.join(ROOT_DIR, 'files'));
+console.log(`Found ${downloadFiles.length} RRB_ downloads`);
+
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
@@ -135,12 +155,23 @@ for (const file of htmlFiles) {
   xml += '  </url>\n';
 }
 
+for (const file of downloadFiles) {
+  const lastmod = getLastmod(file);
+  const url = SITE_URL + '/' + file;
+  xml += '  <url>\n';
+  xml += `    <loc>${url}</loc>\n`;
+  xml += `    <lastmod>${lastmod}</lastmod>\n`;
+  xml += `    <changefreq>monthly</changefreq>\n`;
+  xml += `    <priority>0.5</priority>\n`;
+  xml += '  </url>\n';
+}
+
 xml += '</urlset>\n';
 
 fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), xml);
-console.log(`Sitemap generated: ${htmlFiles.length} URLs -> sitemap.xml`);
+console.log(`Sitemap generated: ${htmlFiles.length + downloadFiles.length} URLs -> sitemap.xml`);
 
 // Also generate a URL list for IndexNow batch submission
-const urlList = htmlFiles.map(f => fileToUrl(f));
+const urlList = [...htmlFiles.map(f => fileToUrl(f)), ...downloadFiles.map(f => SITE_URL + '/' + f)];
 fs.writeFileSync(path.join(ROOT_DIR, 'scripts', 'url-list.txt'), urlList.join('\n'));
 console.log(`URL list generated: ${urlList.length} URLs -> scripts/url-list.txt`);
