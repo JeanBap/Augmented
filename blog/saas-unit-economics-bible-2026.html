@@ -79,9 +79,11 @@
     <a href="/files/RRB_LTV_CAC_Calculator_v1.xlsx" style="display:inline-block;background:#4a3080;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:600;font-size:14px;min-height:44px;">Get the Calculator (Free)</a>
   </div>
 
-  <nav class="table-of-contents" style="background:#fafafa;border:1px solid #eee;border-radius:8px;padding:18px 22px;margin:24px 0;">
-    <strong style="font-size:14px;color:#666;">In this guide:</strong>
-    <ol style="margin:10px 0 0;padding-left:20px;font-size:14px;">
+  <!-- Table of contents: use <aside> not <nav> because the site's global nav styles
+       fix-position every <nav> element, which was breaking this layout. -->
+  <aside class="table-of-contents" aria-label="Article contents" style="background:#fafafa;border:1px solid #eee;border-radius:10px;padding:20px 24px;margin:24px 0;display:block;">
+    <strong style="display:block;font-size:13px;color:#6b5b3d;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;">In this guide</strong>
+    <ol style="margin:0;padding-left:20px;font-size:15px;line-height:1.7;column-count:2;column-gap:28px;">
       <li><a href="#unit-econ-defined">Unit Economics: What They Actually Measure</a></li>
       <li><a href="#ltv-calculation">LTV: The Right Way to Calculate It</a></li>
       <li><a href="#cac-calculation">CAC: Total Cost, Not Just Ads</a></li>
@@ -93,7 +95,7 @@
       <li><a href="#optimization">Optimization Levers: Where to Focus</a></li>
       <li><a href="#founder-cases">5 Real Founder Unit Economics Examples</a></li>
     </ol>
-  </nav>
+  </aside>
 
   <div class="blog-article-content">
 
