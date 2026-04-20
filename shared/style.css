@@ -2971,3 +2971,199 @@ details.faq-card summary.faq-q:hover {
   .rr-wide, .rr-mid, .rr-narrow { padding-left: 1rem; padding-right: 1rem; }
   .rr-hero { padding-left: 1rem; padding-right: 1rem; }
 }
+
+/* ============================================================
+   .blog-post-layout — used by all the "Bible" pillar pages.
+   Previously unstyled, so the content stretched full viewport
+   width with no typography hierarchy. Mirrors .blog-article
+   styling but keeps its own namespace.
+   ============================================================ */
+.blog-post-layout {
+  max-width: 760px;
+  margin: 0 auto 72px;
+  padding: 72px 32px 0;
+}
+
+.blog-post-layout .breadcrumb {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.blog-post-layout .breadcrumb a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.blog-post-layout h1 {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.blog-post-layout .blog-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.blog-post-layout .blog-meta a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.blog-post-layout .tldr {
+  background: rgba(200, 164, 90, 0.08);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 24px 0 28px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  border-radius: 0 6px 6px 0;
+}
+
+.blog-post-layout .tldr strong {
+  color: var(--gold);
+}
+
+.blog-post-layout .lead-magnet-box {
+  margin: 28px 0;
+}
+
+.blog-post-layout .table-of-contents {
+  margin: 24px 0 40px;
+}
+
+.blog-post-layout h2 {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.25;
+  margin: 56px 0 18px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.blog-post-layout h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 36px 0 12px;
+  color: var(--ink);
+}
+
+.blog-post-layout p {
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+
+.blog-post-layout ul,
+.blog-post-layout ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+}
+
+.blog-post-layout li {
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.blog-post-layout strong { color: var(--ink); }
+
+.blog-post-layout code {
+  font-family: var(--mono);
+  background: rgba(200, 164, 90, 0.12);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.92em;
+  color: var(--ink);
+}
+
+.blog-post-layout pre {
+  background: #1a1a2e;
+  color: #e0e0ff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0 24px;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.blog-post-layout pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.blog-post-layout blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 18px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--mid);
+}
+
+/* Tables inside bible articles */
+.blog-post-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0 28px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+.blog-post-layout table th,
+.blog-post-layout table td {
+  padding: 10px 14px;
+  border: 1px solid rgba(58, 56, 48, 0.15);
+  vertical-align: top;
+  text-align: left;
+}
+
+.blog-post-layout table th {
+  background: rgba(200, 164, 90, 0.1);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--gold);
+}
+
+.blog-post-layout table tbody tr:nth-child(even) {
+  background: rgba(200, 164, 90, 0.04);
+}
+
+@media (max-width: 768px) {
+  .blog-post-layout {
+    padding: 56px 20px 0;
+  }
+  .blog-post-layout h1 { font-size: 34px; }
+  .blog-post-layout h2 { font-size: 24px; margin-top: 44px; }
+  .blog-post-layout h3 { font-size: 19px; }
+  .blog-post-layout p,
+  .blog-post-layout li { font-size: 16px; }
+  .blog-post-layout .table-of-contents ol { column-count: 1 !important; }
+  .blog-post-layout table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
