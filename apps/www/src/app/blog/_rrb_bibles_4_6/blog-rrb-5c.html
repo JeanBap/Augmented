@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Series A Cap Table Dynamics (2026) | Raise Ready</title>
+<meta name="description" content="How the Series A round reshapes the cap table: dilution math, pool top-up mechanics, investor preferences, and the real ownership shift from Seed to Series A.">
+<meta name="keywords" content="Series A dilution, Series A cap table, pre-money post-money, option pool top-up, Series A preferences">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-5c/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.5rem;margin:32px 0 10px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;margin:20px 0;border-radius:4px}
+.crosslinks{background:var(--card);padding:16px 22px;border-radius:6px;margin:26px 0;border:1px solid var(--border)}
+footer{background:#0b1220;color:#cbd5e1;padding:24px 22px;margin-top:40px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+@media (max-width:640px){.hero h1{font-size:1.55rem}h2{font-size:1.25rem}main{padding:22px 16px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Series A Cap Table Dynamics","description":"Dilution math and cap-table reshape from Seed to Series A.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready"},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-5c/"}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>Series A Cap Table Dynamics</h1>
+<div class="meta">Spoke 5C · Raise Ready Editorial · ~9 min read</div>
+</div>
+
+<p>A Series A round reshapes the cap table in four ways at once: new preferred stock is issued, the option pool is expanded, SAFEs convert, and a new preference stack is installed. This spoke walks through each, with worked dilution math.</p>
+
+<h2>The pre-money / post-money framework</h2>
+<p>Pre-money valuation is what the company is worth immediately before the new money arrives. Post-money is pre-money plus the new money. Investor ownership equals new money divided by post-money.</p>
+
+<p>Example: $40m pre-money, $10m raise, $50m post-money. Investor gets $10m / $50m = 20 percent.</p>
+
+<p>The subtlety: option-pool top-ups are typically included in the pre-money calculation. An investor offering $10m at $40m pre-money often requires a 15 percent post-money option pool to be created from pre-money shares. If the existing pool is at 8 percent of the pre-round cap table, the pool must expand by an effective 7 percent of post-money, all coming out of pre-money holders.</p>
+
+<h2>Worked Series A dilution</h2>
+<p>Starting cap table (post-Seed):</p>
+<table>
+<tr><th>Holder</th><th>Shares</th><th>% pre-round</th></tr>
+<tr><td>Founder A</td><td>4,000,000</td><td>39.2%</td></tr>
+<tr><td>Founder B</td><td>4,000,000</td><td>39.2%</td></tr>
+<tr><td>Seed investors</td><td>2,040,000</td><td>20.0%</td></tr>
+<tr><td>Option pool (granted + unissued at 12%)</td><td>160,000 unissued / 1,040,000 total</td><td>10.2%</td></tr>
+<tr><td>Advisor grants (granted)</td><td>160,000</td><td>1.6%</td></tr>
+<tr><td>Total fully diluted</td><td>10,200,000</td><td>100%</td></tr>
+</table>
+
+<p>Series A: $10m raised at $40m pre-money, $50m post-money. Pool topped up to 15 percent post-money.</p>
+
+<h3>Post-Series A cap table</h3>
+<table>
+<tr><th>Holder</th><th>Shares</th><th>% post-round</th></tr>
+<tr><td>Founder A</td><td>4,000,000</td><td>29.4%</td></tr>
+<tr><td>Founder B</td><td>4,000,000</td><td>29.4%</td></tr>
+<tr><td>Seed investors</td><td>2,040,000</td><td>15.0%</td></tr>
+<tr><td>Series A investors</td><td>2,720,000</td><td>20.0%</td></tr>
+<tr><td>Advisor grants (granted)</td><td>160,000</td><td>1.2%</td></tr>
+<tr><td>Employee grants (granted at Seed)</td><td>880,000</td><td>6.5%</td></tr>
+<tr><td>Option pool (unissued, post top-up)</td><td>800,000</td><td>5.9% (top-up + unused)</td></tr>
+<tr><td>Total fully diluted</td><td>13,600,000</td><td>100%</td></tr>
+</table>
+
+<p>The pool is now 15 percent of post-money (2,040,000 total pool shares = 15 percent of 13,600,000). Notice that the founders were diluted from 39.2 to 29.4 percent each, a drop of 25 percent, while the Seed investors were diluted from 20 to 15 percent, a drop of 25 percent as well. The Series A investor was not diluted at all by the option pool expansion, because it was included pre-money.</p>
+
+<h2>SAFE conversion at Series A</h2>
+<p>Most Seed rounds involve SAFEs or convertible notes, not priced rounds. At Series A, these convert. Three conversion rules matter.</p>
+
+<h3>The valuation cap</h3>
+<p>The SAFE converts at the lower of (a) the Series A price per share and (b) the valuation cap divided by fully-diluted pre-money shares. If the cap is $10m and the Series A values the company at $40m pre-money, the SAFE holder converts at the $10m cap, receiving four times as many shares as someone investing at the Series A price.</p>
+
+<h3>The discount</h3>
+<p>Most SAFEs include a discount (typically 15-20 percent) off the Series A price. If the cap is not binding, the discount applies: the SAFE investor buys Series A shares at 80 percent of the Series A price.</p>
+
+<h3>Most-favoured-nation (MFN)</h3>
+<p>If a later SAFE has better terms, the MFN clause lets earlier SAFEs match. Less common in 2026 but still appears in seed docs.</p>
+
+<h3>Pre-money vs post-money SAFEs</h3>
+<p>Post-money SAFEs (introduced by Y Combinator in 2018) fix the SAFE investor's ownership percentage at conversion regardless of how many more SAFEs are issued. Pre-money SAFEs float, so additional SAFEs dilute earlier ones. Post-money SAFEs are dominant in 2026; most SAFE conversions follow post-money mechanics.</p>
+
+<h2>Series A liquidation preference</h2>
+<p>Series A investors receive 1x non-participating preferred in the market-standard case. This gives them the right to receive their investment back before common in an exit, OR to convert to common and share pro-rata, whichever is greater. Participating preferred (where investors get both the preference and pro-rata share) is rare in 2026 Series A rounds.</p>
+
+<h3>Stacking with prior preferences</h3>
+<p>Series A preference is senior to Seed preference. At exit, Series A is paid first, then Seed, then common. Within a single class, preferences are pari passu (equal priority among the class).</p>
+
+<div class="callout">
+<strong>Pay-to-play:</strong> a common term in 2026 down rounds. Existing investors who do not participate in the new round have their preferred stock converted to common (losing liquidation preference) or diluted via an anti-dilution adjustment. Protects new-money investors from legacy preference stack overhang.</div>
+
+<h2>Anti-dilution provisions</h2>
+<p>If a later round is priced below the Series A (a down round), anti-dilution adjustments protect Series A holders. Two formulas.</p>
+
+<h3>Weighted-average (market standard)</h3>
+<p>The Series A share price is reduced using a formula that weights the size of the dilutive round against the total capitalization. Modest protection; typical.</p>
+
+<h3>Full ratchet</h3>
+<p>The Series A share price is reduced to match the dilutive round's price in full. Severe; rare outside distressed rounds.</p>
+
+<p>In 2026, weighted-average anti-dilution is near-universal. Full-ratchet appears primarily in bridge rounds or distressed scenarios and is a negotiation red flag for founders.</p>
+
+<h2>Founder-level impact of a Series A</h2>
+<p>A standard Series A ($10m at $40m pre-money, 15 percent post-money pool) takes founder ownership from roughly 39 percent each to 29 percent each in a two-founder company. The cash proceeds remain with the company; the founders now hold smaller percentages of a much more valuable company (on paper).</p>
+
+<p>Secondary sales at Series A are increasingly common: founders selling 5-15 percent of their position to new or existing investors as part of the round. Provides liquidity; reduces founder cash pressure; doesn't change the primary dilution math. Investors typically allow secondary up to 20-30 percent of the primary round size.</p>
+
+<section class="crosslinks"><h3>Keep reading</h3><ul>
+<li><a href="/blog/blog-rrb-5/">The SaaS Cap Table Bible</a></li>
+<li><a href="/blog/blog-rrb-5a/">Founder equity split &amp; vesting</a></li>
+<li><a href="/blog/blog-rrb-5b/">Employee option pools</a></li>
+<li><a href="/blog/blog-rrb-5d/">Preference stacks &amp; exit waterfalls</a></li>
+<li><a href="/blog/blog-rrb-5e/">Real cap table case studies</a></li>
+<li><a href="/blog/blog-rrb-6/">Fundraising Timeline Bible</a></li>
+</ul></section>
+</article></main>
+<footer><p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p></footer>
+</body>
+</html>

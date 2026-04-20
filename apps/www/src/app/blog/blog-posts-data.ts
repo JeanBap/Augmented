@@ -3271,9 +3271,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-pricing-strategy-bible",
     title: "The SaaS Pricing Strategy Bible: Models, Power, Psychology",
     excerpt: "The 2026 reference on SaaS pricing: value-based, flat-rate, usage-based, tiered, freemium. Pricing power by stage, elasticity, international, and 5 real founder decisions.",
-    content: `</div>
-
-<p><strong>Pricing is the fastest-acting lever in a SaaS P&L.</strong> A one percent price lift, all else equal, produces a larger EBITDA improvement than a one percent cost cut or a one percent volume gain. The math is well-established in the McKinsey pricing literature and repeatedly confirmed by Kyle Poyar's benchmarking at OpenView. Yet most founders set prices once, copy a competitor, and leave that number untouched for three years. This Bible is the playbook to stop doing that.</p>
+    content: `<p><strong>Pricing is the fastest-acting lever in a SaaS P&L.</strong> A one percent price lift, all else equal, produces a larger EBITDA improvement than a one percent cost cut or a one percent volume gain. The math is well-established in the McKinsey pricing literature and repeatedly confirmed by Kyle Poyar's benchmarking at OpenView. Yet most founders set prices once, copy a competitor, and leave that number untouched for three years. This Bible is the playbook to stop doing that.</p>
 
 <p>Every model below is paired with the conditions under which it works, the conditions under which it breaks, and at least one real SaaS company that uses it. The closing section details five documented founder pricing decisions, the reasoning, and the commercial result twelve months later.</p>
 
@@ -3468,9 +3466,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-pricing-value-based-framework",
     title: "Value-Based Pricing Framework for SaaS",
     excerpt: "Calculate willingness to pay, quantify customer value, price at 10-25% of value captured. The full framework for SaaS founders.",
-    content: `</div>
-
-<p>Value-based pricing sounds abstract. In practice, it is a spreadsheet. Three inputs, one output, and a defensible number you can put in front of a CFO.</p>
+    content: `<p>Value-based pricing sounds abstract. In practice, it is a spreadsheet. Three inputs, one output, and a defensible number you can put in front of a CFO.</p>
 
 <h2>The three inputs</h2>
 <p>Every value-based pricing exercise reduces to three questions about the customer.</p>
@@ -3557,9 +3553,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-pricing-usage-based-models",
     title: "Usage-Based Pricing Models for SaaS",
     excerpt: "Implementation, billing stack, CAC impact, and hybrid platform-plus-usage for modern SaaS companies.",
-    content: `</div>
-
-<p>Usage-based pricing is SaaS in 2026. OpenView's 2025 benchmarks report 61 percent of surveyed SaaS companies use at least one usage component, and the share is still rising. This spoke is the implementation playbook: how to pick a usage dimension, how to price it, how to bill it, and how it changes CAC math.</p>
+    content: `<p>Usage-based pricing is SaaS in 2026. OpenView's 2025 benchmarks report 61 percent of surveyed SaaS companies use at least one usage component, and the share is still rising. This spoke is the implementation playbook: how to pick a usage dimension, how to price it, how to bill it, and how it changes CAC math.</p>
 
 <h2>Picking the usage dimension</h2>
 <p>The dimension must satisfy three tests. It scales with customer value. It is measurable without disputes. It is forecastable by the customer before they sign.</p>
@@ -3655,9 +3649,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-pricing-tiered-strategy",
     title: "Tiered Pricing Strategy: Anchor, Gate, Upsell",
     excerpt: "Design a three-tier SaaS pricing page: anchor pricing, feature gating, and the upsell funnel that lifts net expansion 8-15%.",
-    content: `</div>
-
-<p>The three-column pricing page is the SaaS default for a reason. It exploits anchor pricing (the Decoy Effect, validated in Ariely's behavioural economics research and replicated in commercial A/B tests) to steer buyers toward the middle tier while capturing enterprise upside with the top tier. This spoke walks through the mechanics.</p>
+    content: `<p>The three-column pricing page is the SaaS default for a reason. It exploits anchor pricing (the Decoy Effect, validated in Ariely's behavioural economics research and replicated in commercial A/B tests) to steer buyers toward the middle tier while capturing enterprise upside with the top tier. This spoke walks through the mechanics.</p>
 
 <h2>The three-tier architecture</h2>
 <p>Each tier has a job.</p>
@@ -3754,9 +3746,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-pricing-evolution-seed-to-series-b",
     title: "Pricing Evolution: Seed to Series B",
     excerpt: "How SaaS pricing should change from Seed to Series B. When to raise prices, how to restructure, and how to migrate customers without churn.",
-    content: `</div>
-
-<p>Pricing that is right at Seed is wrong at Series A and irrelevant at Series B. This spoke is the stage-by-stage playbook for evolving pricing as the company grows, with mechanics for raising prices without losing customers.</p>
+    content: `<p>Pricing that is right at Seed is wrong at Series A and irrelevant at Series B. This spoke is the stage-by-stage playbook for evolving pricing as the company grows, with mechanics for raising prices without losing customers.</p>
 
 <h2>The stage-pricing map</h2>
 <table>
@@ -3870,9 +3860,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-bible",
     title: "The SaaS Cap Table Bible: Anatomy, Dilution, Waterfalls",
     excerpt: "The complete 2026 cap table reference: shares, option pools, founder vesting, dilution by stage, preference stacks, exit waterfalls, Carta vs Pulley.",
-    content: `</div>
-
-<p><strong>Every fundraise begins and ends with the cap table.</strong> Before a term sheet lands, the lead investor has already modelled how the round dilutes every existing holder. Before a wire is sent, their counsel has reviewed every share certificate, every option grant, every SAFE, every convertible note. A clean cap table closes a round two weeks faster than a messy one. A broken cap table can kill the round entirely.</p>
+    content: `<p><strong>Every fundraise begins and ends with the cap table.</strong> Before a term sheet lands, the lead investor has already modelled how the round dilutes every existing holder. Before a wire is sent, their counsel has reviewed every share certificate, every option grant, every SAFE, every convertible note. A clean cap table closes a round two weeks faster than a messy one. A broken cap table can kill the round entirely.</p>
 
 <p>This Bible is the founder's reference for every stage of cap table work: how to set one up correctly at formation, how to evolve it through Seed, Series A, and Series B, how to model waterfalls at exit, and how to avoid the specific documentation failures that surface in legal diligence.</p>
 
@@ -4123,9 +4111,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-founder-vesting",
     title: "Founder Equity Split and Vesting",
     excerpt: "How founders should split equity, set vesting, and handle departures. Market conventions, fairness methodologies, 83(b) election mechanics.",
-    content: `</div>
-
-<p>The founder equity split decision happens once, but its consequences compound for a decade. This spoke covers the methodologies that produce splits founders still respect after a Series C, and the vesting mechanics that make the split survive a co-founder departure.</p>
+    content: `<p>The founder equity split decision happens once, but its consequences compound for a decade. This spoke covers the methodologies that produce splits founders still respect after a Series C, and the vesting mechanics that make the split survive a co-founder departure.</p>
 
 <h2>The two methodologies</h2>
 
@@ -4230,9 +4216,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-option-pools",
     title: "Employee Option Pools: Sizing, 409A, Strike Price",
     excerpt: "Bottom-up option pool sizing, 409A valuation mechanics, ISOs vs NSOs, and how to communicate grants so employees understand them.",
-    content: `</div>
-
-<p>The option pool is the equity budget for every non-founder hire. Get the sizing right and hiring feels resource-rich. Get it wrong and the company either runs out of stock to hire or dilutes founders more than necessary.</p>
+    content: `<p>The option pool is the equity budget for every non-founder hire. Get the sizing right and hiring feels resource-rich. Get it wrong and the company either runs out of stock to hire or dilutes founders more than necessary.</p>
 
 <h2>Bottom-up sizing: the only correct method</h2>
 <p>The conventional advice is "reserve 10 percent at formation." This is a starting point, not a conclusion. The correct method is bottom-up: list every hire you intend to make in the next 12-18 months, assign a target equity grant to each role, sum the total.</p>
@@ -4347,9 +4331,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-series-a-dynamics",
     title: "Series A Cap Table Dynamics",
     excerpt: "How a Series A round reshapes the cap table: dilution math, pool top-up mechanics, SAFE conversion, and the real ownership shift.",
-    content: `</div>
-
-<p>A Series A round reshapes the cap table in four ways at once: new preferred stock is issued, the option pool is expanded, SAFEs convert, and a new preference stack is installed. This spoke walks through each, with worked dilution math.</p>
+    content: `<p>A Series A round reshapes the cap table in four ways at once: new preferred stock is issued, the option pool is expanded, SAFEs convert, and a new preference stack is installed. This spoke walks through each, with worked dilution math.</p>
 
 <h2>The pre-money / post-money framework</h2>
 <p>Pre-money valuation is what the company is worth immediately before the new money arrives. Post-money is pre-money plus the new money. Investor ownership equals new money divided by post-money.</p>
@@ -4448,9 +4430,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-preference-waterfall",
     title: "Preference Stacks and Exit Waterfalls",
     excerpt: "Model who gets paid at exit: liquidation preferences, participation, stacking, dividend accruals, and worked waterfall examples.",
-    content: `</div>
-
-<p>The preference stack is the ordered list of who gets paid first in an exit. The exit waterfall is the calculation of how proceeds flow through that stack at a given exit value. Founders who understand both negotiate better term sheets and set realistic expectations with employees holding options.</p>
+    content: `<p>The preference stack is the ordered list of who gets paid first in an exit. The exit waterfall is the calculation of how proceeds flow through that stack at a given exit value. Founders who understand both negotiate better term sheets and set realistic expectations with employees holding options.</p>
 
 <h2>The mechanics of liquidation preference</h2>
 <p>Preferred stock holders, in an exit, choose between two outcomes:</p>
@@ -4566,9 +4546,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-cap-table-case-studies",
     title: "Real Cap Table Case Studies: Seed to Exit",
     excerpt: "Four anonymised SaaS cap table journeys from formation through exit. Dilution paths, ownership shifts, and what founders took home.",
-    content: `</div>
-
-<p>Four anonymised cap table journeys. Numbers are drawn from founder-approved disclosures, cross-checked against aggregated Carta data and public S-1 filings where applicable. Names are fictional; trajectories are representative.</p>
+    content: `<p>Four anonymised cap table journeys. Numbers are drawn from founder-approved disclosures, cross-checked against aggregated Carta data and public S-1 filings where applicable. Names are fictional; trajectories are representative.</p>
 
 <h2>Case 1: Horizontal B2B SaaS — Seed through $220m strategic exit</h2>
 
@@ -4690,9 +4668,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-fundraising-timeline-bible",
     title: "The SaaS Fundraising Timeline Bible: Seed to Series B",
     excerpt: "The 2026 reference for fundraising timelines: preparation, lead investor search, due diligence, term sheet, legal close. Month-by-month.",
-    content: `</div>
-
-<p><strong>Fundraising takes longer than founders expect.</strong> The median Series A in 2026 takes 4-6 months from active kick-off to wire, according to data aggregated from DocSend, Carta, and the NFX State of Venture reports. Adding 2-3 months of pre-raise preparation brings the realistic total to 6-9 months. A company that starts fundraising with less than 9 months of runway is fundraising from weakness, which can affect both terms and the probability of closing.</p>
+    content: `<p><strong>Fundraising takes longer than founders expect.</strong> The median Series A in 2026 takes 4-6 months from active kick-off to wire, according to data aggregated from DocSend, Carta, and the NFX State of Venture reports. Adding 2-3 months of pre-raise preparation brings the realistic total to 6-9 months. A company that starts fundraising with less than 9 months of runway is fundraising from weakness, which can affect both terms and the probability of closing.</p>
 
 <p>This Bible is the month-by-month reference for a venture round, from "we should raise" to money in the bank.</p>
 
@@ -4970,9 +4946,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-fundraising-pre-raise-prep",
     title: "Pre-Raise Preparation: 3-Month Checklist",
     excerpt: "Week-by-week pre-raise checklist: financial model, pitch deck, data room, cap table clean-up, KPI reconciliation, and warm-intro sourcing.",
-    content: `</div>
-
-<p>The founders who close Series A rounds in 4-6 months are the ones who did three months of prep work before the first investor email. This spoke is the pre-raise checklist, sequenced week by week.</p>
+    content: `<p>The founders who close Series A rounds in 4-6 months are the ones who did three months of prep work before the first investor email. This spoke is the pre-raise checklist, sequenced week by week.</p>
 
 <h2>Month 1: foundations</h2>
 
@@ -5155,9 +5129,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-fundraising-lead-investor-strategy",
     title: "Lead Investor Strategy: Getting to the First Yes",
     excerpt: "Source, sequence, and close a lead investor. Warm-intro strategy, partner-meeting tactics, and the conversion rhythm from first meeting to term sheet.",
-    content: `</div>
-
-<p>A venture round does not happen without a lead. A lead is the investor who sets terms, writes the largest check, signs the term sheet first, and anchors the round for co-investors. This spoke is the playbook for getting to the first yes.</p>
+    content: `<p>A venture round does not happen without a lead. A lead is the investor who sets terms, writes the largest check, signs the term sheet first, and anchors the round for co-investors. This spoke is the playbook for getting to the first yes.</p>
 
 <h2>Who can be a lead</h2>
 <p>Not every fund leads at every stage. Mapping.</p>
@@ -5316,9 +5288,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-fundraising-due-diligence-walkthrough",
     title: "Due Diligence Walkthrough: What Investors Review",
     excerpt: "The four workstreams of Series A diligence: commercial, financial, legal, technical. What investors check and how to keep the process moving.",
-    content: `</div>
-
-<p>Diligence runs in four parallel workstreams over 4-8 weeks. Understanding each one lets founders prepare the documentation, brief the right internal people, and keep the process moving without surprises.</p>
+    content: `<p>Diligence runs in four parallel workstreams over 4-8 weeks. Understanding each one lets founders prepare the documentation, brief the right internal people, and keep the process moving without surprises.</p>
 
 <h2>1. Commercial diligence</h2>
 
@@ -5503,9 +5473,7 @@ Good opening: "Enterprise compliance teams spend $2M/year on manual content revi
     slug: "saas-fundraising-term-sheet-to-close",
     title: "Term Sheet to Close: Negotiation and Legal Process",
     excerpt: "From signed term sheet to wire: negotiation priorities, six closing documents, closing conditions, and the post-close 30 days.",
-    content: `</div>
-
-<p>The term sheet is the start of the legal process, not the end of the fundraise. This spoke covers the 4-6 weeks between a signed term sheet and funds arriving in your bank account.</p>
+    content: `<p>The term sheet is the start of the legal process, not the end of the fundraise. This spoke covers the 4-6 weeks between a signed term sheet and funds arriving in your bank account.</p>
 
 <h2>The term sheet: what to negotiate</h2>
 

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tiered Pricing Strategy: Anchor, Gate, Upsell (2026) | Raise Ready</title>
+<meta name="description" content="Design a three-tier SaaS pricing page: anchor pricing, feature gating, upsell funnel. When to add a fourth tier. How to avoid leakage.">
+<meta name="keywords" content="tiered pricing, good better best pricing, pricing tiers, SaaS packaging, feature gating, anchor pricing">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-4c/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.5rem;margin:32px 0 10px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;margin:20px 0;border-radius:4px}
+.crosslinks{background:var(--card);padding:16px 22px;border-radius:6px;margin:26px 0;border:1px solid var(--border)}
+footer{background:#0b1220;color:#cbd5e1;padding:24px 22px;margin-top:40px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+@media (max-width:640px){.hero h1{font-size:1.55rem}h2{font-size:1.25rem}main{padding:22px 16px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tiered Pricing Strategy","description":"Anchor pricing, feature gating, and upsell funnel for SaaS.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready"},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-4c/"}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a><a href="/finance-app/">Finance App</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>Tiered Pricing Strategy</h1>
+<div class="meta">Spoke 4C · Raise Ready Editorial · ~9 min read</div>
+</div>
+
+<p>The three-column pricing page is the SaaS default for a reason. It exploits anchor pricing (the Decoy Effect, validated in Ariely's behavioural economics research and replicated in commercial A/B tests) to steer buyers toward the middle tier while capturing enterprise upside with the top tier. This spoke walks through the mechanics.</p>
+
+<h2>The three-tier architecture</h2>
+<p>Each tier has a job.</p>
+<ul>
+<li><strong>Starter:</strong> reduce friction for small teams and self-serve adoption. Priced as a sensitivity test, not a revenue driver. Captures 10-20 percent of accounts, contributes 5-10 percent of revenue.</li>
+<li><strong>Professional (the workhorse):</strong> priced to be the obvious choice. Contains 80 percent of features most buyers want. Captures 50-65 percent of accounts, contributes 55-70 percent of revenue.</li>
+<li><strong>Enterprise:</strong> the anchor. Priced at 3-5x Professional, packed with security, compliance, dedicated support. Captures 15-25 percent of accounts, contributes 25-35 percent of revenue.</li>
+</ul>
+
+<h3>Reference tier design</h3>
+<table>
+<tr><th>Tier</th><th>Price ratio</th><th>Target account share</th><th>Target revenue share</th></tr>
+<tr><td>Starter</td><td>1x</td><td>10–20%</td><td>5–10%</td></tr>
+<tr><td>Professional</td><td>3–4x Starter</td><td>50–65%</td><td>55–70%</td></tr>
+<tr><td>Enterprise</td><td>3–5x Professional</td><td>15–25%</td><td>25–35%</td></tr>
+</table>
+
+<h2>Anchor pricing mechanics</h2>
+<p>The anchor tier's job is not to sell directly. It is to make the Professional tier look reasonable by comparison. Ariely's original research showed that introducing a rarely-purchased expensive option lifts the mid-tier's share of choices significantly. In commercial SaaS A/B tests published by Price Intelligently and others, adding an Enterprise tier anchors average revenue per new account 15-30 percent higher than a two-tier page.</p>
+
+<p>Two rules make the anchor work.</p>
+<ol>
+<li>It must be genuinely worth the price to some segment. Fake anchors erode trust and get exposed quickly.</li>
+<li>It must be visibly premium. Prominent label ("Enterprise"), distinct feature list (security, compliance, SLA), different purchase motion ("Contact sales").</li>
+</ol>
+
+<h2>Feature gating: what goes in which tier</h2>
+<p>Feature gating is the core design decision of tiered pricing. Three principles.</p>
+
+<h3>Gate features that correlate with customer size</h3>
+<p>SSO, audit logs, advanced role-based access control, sandbox environments, dedicated infrastructure. These features are non-negotiable for enterprise buyers and irrelevant for SMBs. Placing them in Enterprise causes the right segment to self-select into the right tier.</p>
+
+<h3>Keep essentials in the lowest tier</h3>
+<p>Any feature the product's core value proposition depends on belongs in the cheapest tier. Gating core value kills conversion. HubSpot kept contact management in Starter for this reason, gating marketing automation and advanced reporting.</p>
+
+<h3>Use tier-specific limits, not only features</h3>
+<p>Usage caps (users, records, API calls, storage) segment customers by size more organically than feature gating alone. Airtable does this with record limits: Free 1k records, Plus 5k, Pro 50k, Enterprise unlimited. Customers upgrade as they outgrow.</p>
+
+<h2>Common mistakes</h2>
+<p><strong>Four or more tiers.</strong> Decision fatigue. Conversion drops by 5-12 percent in A/B tests (published by Price Intelligently and corroborated in Buffer's own tier experiments). Three is the sweet spot. Four is justifiable only when you have two genuinely distinct SMB segments.</p>
+
+<p><strong>Tier creep.</strong> Adding a feature to one tier over time without auditing the whole matrix. After three years, nobody (including your sales team) understands which tier includes which feature. Audit the tier matrix annually.</p>
+
+<p><strong>Leakage.</strong> When customers use a workaround to get Professional features on Starter. Usually because the gate is enforced too loosely. Strictly enforce gates at the feature-flag level, not by polite user-agreement expectations.</p>
+
+<p><strong>No material top tier.</strong> If Enterprise is only 1.5x Professional, the anchor effect collapses. Push Enterprise to at least 3x Professional; back it with real security, compliance, and service content.</p>
+
+<h2>The Good-Better-Best framework in practice</h2>
+<p>Simon-Kucher's Good-Better-Best framework (documented in Ramanujam and Tacke's research) operationalises tiered design.</p>
+
+<ul>
+<li><strong>Good:</strong> meets the core need, misses differentiating features. Loss leader.</li>
+<li><strong>Better:</strong> includes features that materially improve the core job. The profitable tier.</li>
+<li><strong>Best:</strong> all features, all limits removed, premium service. The anchor + enterprise capture.</li>
+</ul>
+
+<p>Apply it by listing every feature, ranking by (a) what portion of users need it, (b) how distinctive it is vs. competitors. Features every user needs go in Good. Features 40-70 percent of users need, especially if distinctive, go in Better. Features under 30 percent of users need, or that require operational investment (SSO, dedicated infra) go in Best.</p>
+
+<h2>Upsell funnel design</h2>
+<p>Tiered pricing is a funnel, not a static pricing page. The upsell path matters as much as the tier design.</p>
+
+<div class="callout">
+<strong>In-product upgrade prompts:</strong> the moment a Starter user hits a usage cap or requests a gated feature, trigger an upgrade prompt. Conversion on these triggers is typically 3-5x higher than email-nurture upgrades because intent is at its peak.
+</div>
+
+<p>Operational elements that move the funnel.</p>
+<ul>
+<li>In-product upgrade prompts when gated features are attempted.</li>
+<li>Usage-approaching-limit emails at 75 and 95 percent of tier cap.</li>
+<li>Auto-upgrade suggestions when the usage pattern would be cheaper on a higher tier.</li>
+<li>Customer-success-triggered upgrades at QBRs for expanding accounts.</li>
+<li>Grandfathering communications when tier changes would penalise loyal users.</li>
+</ul>
+
+<p>Net result: a well-instrumented tiered pricing page, combined with in-product triggers, reliably lifts net expansion 8-15 percent above a flat pricing page in blind tests.</p>
+
+<section class="crosslinks"><h3>Keep reading</h3><ul>
+<li><a href="/blog/blog-rrb-4/">The SaaS Pricing Strategy Bible</a></li>
+<li><a href="/blog/blog-rrb-4a/">Value-based pricing framework</a></li>
+<li><a href="/blog/blog-rrb-4b/">Usage-based pricing models</a></li>
+<li><a href="/blog/blog-rrb-4d/">Pricing evolution</a></li>
+<li><a href="/blog/blog-rrb-2/">Unit Economics Bible</a></li>
+</ul></section>
+</article></main>
+<footer><p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p></footer>
+</body>
+</html>

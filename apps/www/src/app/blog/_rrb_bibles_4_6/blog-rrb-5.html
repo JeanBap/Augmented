@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The SaaS Cap Table Bible (2026): Anatomy, Dilution, Waterfalls | Raise Ready</title>
+<meta name="description" content="The complete 2026 reference on SaaS cap tables: shares, option pools, founder vesting, dilution by stage, preference stacks, exit waterfalls, Carta vs Pulley, and four real cap table examples.">
+<meta name="keywords" content="SaaS cap table, cap table template, founder vesting, option pool, dilution, liquidation preference, exit waterfall, Carta, Pulley">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-5/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The SaaS Cap Table Bible (2026)">
+<meta property="og:description" content="Anatomy, dilution by stage, preference stacks, exit waterfalls, and four real cap table examples.">
+<meta property="og:url" content="https://raisereadybook.com/blog/blog-rrb-5/">
+<meta property="og:site_name" content="Raise Ready">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The SaaS Cap Table Bible (2026)">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Raise Ready Editorial">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+a:hover{color:var(--gold)}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.55rem;margin:38px 0 12px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.2rem;margin:26px 0 8px}
+p{margin:0 0 16px}
+ul,ol{margin:0 0 18px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:16px 18px;margin:22px 0;border-radius:4px}
+.callout.gold{border-left-color:var(--gold)}
+.lead-magnet{background:linear-gradient(135deg,#fef7e0,#fff);border:2px solid var(--gold);border-radius:10px;padding:22px;margin:30px 0;text-align:center}
+.lead-magnet h3{color:var(--accent);margin-top:0}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;margin-top:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:12px 16px;margin:10px 0}
+.faq summary{cursor:pointer;font-weight:600}
+.toc{background:var(--card);border:1px solid var(--border);padding:16px 22px;border-radius:6px;margin:0 0 28px}
+.toc ol{margin:0;padding-left:22px}
+footer{background:#0b1220;color:#cbd5e1;padding:28px 22px;margin-top:50px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+.crosslinks{background:var(--card);padding:18px 22px;border-radius:6px;margin:30px 0;border:1px solid var(--border)}
+@media (max-width:640px){body{font-size:16px}.hero h1{font-size:1.55rem}h2{font-size:1.3rem}header nav a{margin-left:10px;font-size:.9rem}main{padding:22px 16px 48px}table{font-size:.88rem;display:block;overflow-x:auto}.lead-magnet{padding:18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The SaaS Cap Table Bible (2026)","description":"Anatomy, dilution by stage, preference stacks, exit waterfalls, and real cap table examples.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready","logo":{"@type":"ImageObject","url":"https://raisereadybook.com/logo.png"}},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-5/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a cap table?","acceptedAnswer":{"@type":"Answer","text":"A capitalization table is the ledger of every security a company has issued: common shares, preferred shares, options, warrants, SAFEs and convertible notes, plus the holder of each security. It is the single source of truth on ownership."}},{"@type":"Question","name":"How big should the option pool be?","acceptedAnswer":{"@type":"Answer","text":"10 percent is typical at Seed. 12 to 15 percent at Series A. Top-up to 15 percent at Series B. The pool is almost always topped up pre-money, diluting existing holders, not the new investor."}},{"@type":"Question","name":"What is 409A valuation?","acceptedAnswer":{"@type":"Answer","text":"An independent appraisal of common-stock fair market value, required by IRS Section 409A so that option grants can be issued at a legal strike price. Refreshed at every priced round or every 12 months, whichever comes first."}},{"@type":"Question","name":"What does a 1x liquidation preference mean?","acceptedAnswer":{"@type":"Answer","text":"In an exit, the preferred investor receives their invested capital back before common shareholders get anything. 1x non-participating is the market standard at Seed and Series A."}},{"@type":"Question","name":"What is participating preferred?","acceptedAnswer":{"@type":"Answer","text":"A structure where preferred investors receive their liquidation preference AND also share pro-rata in the remaining proceeds with common. Investor-friendly; becoming uncommon in 2026 except in distressed rounds."}},{"@type":"Question","name":"Carta vs Pulley: which one?","acceptedAnswer":{"@type":"Answer","text":"Carta is the market leader with mature modelling features. Pulley is cheaper, simpler, and popular with seed stage. At Series A and beyond, most companies consolidate on Carta for investor compatibility."}},{"@type":"Question","name":"What is fully-diluted ownership?","acceptedAnswer":{"@type":"Answer","text":"Ownership calculated as if every outstanding option, warrant, SAFE, and convertible note converted to common stock today. Used for all dilution math and the number that matters in negotiations."}},{"@type":"Question","name":"What is founder vesting?","acceptedAnswer":{"@type":"Answer","text":"A schedule (typically 4 years, 1-year cliff) by which founder shares become fully owned. Before full vest, shares can be repurchased by the company if a founder leaves. Standard for all venture-backed startups."}},{"@type":"Question","name":"What happens to options if a company is acquired?","acceptedAnswer":{"@type":"Answer","text":"Depends on the acquisition agreement. Options can accelerate (full vest on acquisition), partially accelerate, or be assumed by the acquirer. Double-trigger acceleration (acquisition plus termination) is the most employee-favourable standard."}},{"@type":"Question","name":"How do SAFEs affect dilution?","acceptedAnswer":{"@type":"Answer","text":"SAFEs convert at the next priced round using a valuation cap, discount, or most-favoured-nation clause. They dilute founders, not new investors, because the conversion price is computed pre-money."}}]}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a><a href="/finance-app/">Finance App</a><a href="/signup/">Signup</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>The SaaS Cap Table Bible (2026): Anatomy, Dilution, Waterfalls</h1>
+<div class="meta">Published 19 April 2026 · Raise Ready Editorial · Reading time ~20 min</div>
+</div>
+
+<div class="toc"><h3>What this Bible covers</h3>
+<ol>
+<li><a href="#anatomy">Cap table anatomy</a></li>
+<li><a href="#founder">Founder split and vesting</a></li>
+<li><a href="#pool">Option pool: sizing, strike, 409A</a></li>
+<li><a href="#dilution">Equity at each stage: dilution math</a></li>
+<li><a href="#fd">Fully-diluted ownership</a></li>
+<li><a href="#pref">Preference stacks</a></li>
+<li><a href="#waterfall">Exit waterfalls</a></li>
+<li><a href="#red-flags">Red flags and missing documentation</a></li>
+<li><a href="#tools">Tools: Carta vs Pulley vs Excel</a></li>
+<li><a href="#cases">Four real cap table examples</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+</ol></div>
+
+<p><strong>Every fundraise begins and ends with the cap table.</strong> Before a term sheet lands, the lead investor has already modelled how the round dilutes every existing holder. Before a wire is sent, their counsel has reviewed every share certificate, every option grant, every SAFE, every convertible note. A clean cap table closes a round two weeks faster than a messy one. A broken cap table can kill the round entirely.</p>
+
+<p>This Bible is the founder's reference for every stage of cap table work: how to set one up correctly at formation, how to evolve it through Seed, Series A, and Series B, how to model waterfalls at exit, and how to avoid the specific documentation failures that surface in legal diligence.</p>
+
+<h2 id="anatomy">1. Cap table anatomy</h2>
+<p>A cap table has four columns of information for every security class: authorized, issued, outstanding, and holder.</p>
+
+<ul>
+<li><strong>Authorized:</strong> the maximum number of shares of this class the corporation is legally permitted to issue, set in the charter.</li>
+<li><strong>Issued:</strong> the number actually sold, granted, or assigned.</li>
+<li><strong>Outstanding:</strong> issued minus any shares repurchased by the company (treasury).</li>
+<li><strong>Holder:</strong> the legal entity that owns the share.</li>
+</ul>
+
+<p>Most early-stage SaaS cap tables have six categories of securities: common stock (founders, early employees in some structures), preferred stock Series Seed, preferred stock Series A, Series B, and so on, option pool (options granted and unissued), and convertibles (SAFEs, convertible notes pre-conversion).</p>
+
+<h3>A first cap table at formation</h3>
+<table>
+<tr><th>Holder</th><th>Security</th><th>Shares</th><th>%</th></tr>
+<tr><td>Founder A</td><td>Common</td><td>4,500,000</td><td>45%</td></tr>
+<tr><td>Founder B</td><td>Common</td><td>4,500,000</td><td>45%</td></tr>
+<tr><td>Option Pool (reserved)</td><td>Option Pool</td><td>1,000,000</td><td>10%</td></tr>
+<tr><td>Total</td><td></td><td>10,000,000</td><td>100%</td></tr>
+</table>
+
+<p>Ten million authorized is the market convention because it divides neatly and yields option strike prices in the cents, which is psychologically easier for grantees. Two founders, each vesting over four years with a one-year cliff, and a 10 percent option pool reserved is the formation baseline for a venture-backed SaaS.</p>
+
+<h2 id="founder">2. Founder split and vesting</h2>
+<p>The founder equity split is the single most contentious decision in a company's first year. The market defaults are well-documented, but every split is situational.</p>
+
+<h3>The 50/50 default</h3>
+<p>Two-founder companies default to 50/50 because it signals equal partnership and prevents early conflict over "who owns more." It is also the split most investors prefer at Seed; unbalanced splits raise questions about alignment. Where the contribution is materially unequal (one founder with the idea and three years of prior work, one founder joining week one), 60/40 or 55/45 is defensible, but the gap should be earned in demonstrable work, not discussed as an abstract right.</p>
+
+<h3>Three founders and beyond</h3>
+<p>Three founders typically split somewhere between equal thirds and 50/25/25. Four founders start to squeeze the per-founder equity such that each has meaningful upside only if the company reaches $500m+ in enterprise value; at that point, bringing in a co-founder is a high-bar decision.</p>
+
+<h3>Vesting schedule</h3>
+<p>Four years, one-year cliff, monthly vesting thereafter. This is the market standard. A founder who leaves in month 11 vests zero; in month 12, 25 percent; in month 48, 100 percent. Re-vesting on Series A (restart the four-year clock for founders at the Series A close) is increasingly common as rounds push into late Series A territory. Founders should push back on re-vesting beyond 18-24 months of additional vesting; full four-year re-vest is investor-favourable and no longer market-standard.</p>
+
+<div class="callout">
+<strong>Cliff enforcement:</strong> if a founder leaves before the one-year cliff, the company has the right to repurchase 100 percent of their shares at the original issue price (usually a fraction of a cent). This is non-negotiable for investor protection.</div>
+
+<h2 id="pool">3. Option pool: sizing, strike, 409A</h2>
+
+<h3>How to size the pool</h3>
+<p>10 percent at formation is the Seed-stage convention. This is sized to cover the first 12-18 months of hiring. At Series A, investors typically require a top-up to 12-15 percent, pre-money, which dilutes existing holders. At Series B, another top-up to 15 percent is common if the pool has been substantially granted.</p>
+
+<p>The correct way to size is bottom-up: list every hire you intend to make in the next 12 months, attach a target equity grant to each role (CFO 1.0-2.0 percent, VP Sales 0.75-1.25 percent, senior engineer 0.15-0.4 percent, junior engineer 0.05-0.15 percent), sum the total, and that is your required pool.</p>
+
+<h3>Strike price and 409A</h3>
+<p>The strike price (exercise price) of an option grant must equal or exceed the fair market value of the common stock on the grant date. To establish FMV legally, a 409A valuation is required. This is an independent appraisal, typically performed by Carta, Pulley, or specialist firms, refreshed at every priced round or every 12 months (whichever comes first).</p>
+
+<p>The 409A discount is the gap between the preferred price (what investors just paid) and the common price (what options strike at). Discounts of 70-85 percent are typical at Seed and early Series A, narrowing to 40-50 percent by late Series B, and compressing further as an IPO approaches.</p>
+
+<h3>Communicating option grants to employees</h3>
+<p>Option grants are worth nothing if the employee does not understand them. The basic grant letter should include: grant size in shares, strike price, vesting schedule, total authorised shares (for ownership context), current 409A FMV, and a worked example of potential value at a reasonable exit. Clear communication here reduces attrition and improves recruiting outcomes.</p>
+
+<h2 id="dilution">4. Equity at each stage: dilution math</h2>
+<p>Dilution is the arithmetic of a cap table. Every new investment creates new shares, which reduces the percentage ownership of every existing holder.</p>
+
+<h3>Worked example: Seed, Series A, Series B</h3>
+<p>Start: two founders each own 50 percent of 10m shares. 10 percent pool reserved, ungranted.</p>
+
+<p><strong>Seed round:</strong> Raise $2m at $8m pre-money ($10m post-money). Investor receives $2m / $10m = 20 percent. Pre-round, founders each own 50 percent; post-round, each owns 40 percent. Option pool is expanded pre-money (from 10 percent to 12 percent of the post-money cap) at the cost of existing holders. Net founder dilution: 50 percent to roughly 38 percent each.</p>
+
+<p><strong>Series A:</strong> Raise $10m at $40m pre-money ($50m post-money). New investor receives 20 percent. Pool topped up to 15 percent pre-money. Existing holders diluted by approximately 23 percent. Each founder goes from ~38 percent to ~29 percent.</p>
+
+<p><strong>Series B:</strong> Raise $25m at $150m pre-money ($175m post-money). New investor receives 14 percent. Pool topped up to 15 percent if depleted. Each founder goes from ~29 percent to ~24 percent.</p>
+
+<h3>Typical founder ownership by stage</h3>
+<table>
+<tr><th>Stage</th><th>Avg. total founder ownership (2-founder co.)</th><th>Per-founder at 50/50</th></tr>
+<tr><td>Formation</td><td>90%</td><td>45%</td></tr>
+<tr><td>Post-Seed</td><td>60–75%</td><td>30–38%</td></tr>
+<tr><td>Post-Series A</td><td>45–60%</td><td>22–30%</td></tr>
+<tr><td>Post-Series B</td><td>35–50%</td><td>17–25%</td></tr>
+<tr><td>Post-Series C</td><td>25–40%</td><td>12–20%</td></tr>
+<tr><td>At IPO (median)</td><td>10–20%</td><td>5–10%</td></tr>
+</table>
+
+<p>These are medians from Carta's public dilution studies and aggregated accelerator data. Variation is wide; a capital-efficient SaaS reaching IPO can preserve 25-30 percent founder ownership, while a capital-hungry one (AI infra, consumer) may enter IPO with 5-10 percent.</p>
+
+<h2 id="fd">5. Fully-diluted ownership</h2>
+<p>Fully-diluted (FD) ownership calculates percentages as if every option, warrant, SAFE, and convertible note had converted to common stock today. It is the only ownership view that matters for negotiation.</p>
+
+<p>Why it matters: a cap table showing founder ownership at 35 percent on "issued and outstanding" basis may only be 28 percent fully-diluted once unissued options and SAFEs are counted. Investors always negotiate and report on the FD view.</p>
+
+<p>Three common sources of FD confusion.</p>
+<ul>
+<li><strong>Unissued option pool:</strong> options reserved but not granted still count in FD calculations.</li>
+<li><strong>SAFEs and convertibles:</strong> even pre-conversion, these are treated as converted at the applicable cap/discount for FD purposes.</li>
+<li><strong>Warrants:</strong> debt-linked warrants, advisor warrants, customer warrants all count.</li>
+</ul>
+
+<p>The correct way to model a round is to build a post-money fully-diluted table that assumes all SAFEs convert at the lowest applicable price, all options are exercised, and the new pool is fully granted. This is the number every lawyer and every investor will work from.</p>
+
+<h2 id="pref">6. Preference stacks</h2>
+<p>Preferred stock gives investors rights that common stock does not. The most consequential is liquidation preference: the right to receive invested capital back before common shareholders get anything.</p>
+
+<h3>The three structures</h3>
+<ul>
+<li><strong>Non-participating 1x (market standard at Seed and Series A):</strong> investor receives the greater of (a) 1x invested capital or (b) pro-rata share of proceeds as if converted to common. Clean, founder-friendly.</li>
+<li><strong>Participating 1x:</strong> investor receives 1x invested capital AND then shares pro-rata with common in the remainder. Double-dip. Investor-friendly, uncommon in 2026 except in distressed rounds.</li>
+<li><strong>Multi-x (2x, 3x):</strong> investor receives their multiple before common receives anything. Hostile; usually only appears in bridge rounds or highly structured deals.</li>
+</ul>
+
+<h3>Preference stacking</h3>
+<p>Successive rounds stack. Series B preference is paid before Series A, which is paid before Seed, which is paid before common. In a modest exit, senior preference can consume most or all of the proceeds before common sees a dollar.</p>
+
+<h2 id="waterfall">7. Exit waterfalls</h2>
+<p>An exit waterfall is the calculation of who gets paid what, in what order, at different exit values. This is where preference stacks meet reality.</p>
+
+<h3>Example waterfall</h3>
+<p>Company raised $2m Seed ($10m post), $10m Series A ($50m post), $25m Series B ($175m post). Each round is 1x non-participating preferred. Founders hold 24 percent each; investors hold the rest; option pool at 15 percent fully granted.</p>
+
+<table>
+<tr><th>Exit value</th><th>Series B gets</th><th>Series A gets</th><th>Seed gets</th><th>Common gets</th></tr>
+<tr><td>$25m</td><td>$25m (preference)</td><td>$0</td><td>$0</td><td>$0</td></tr>
+<tr><td>$50m</td><td>$25m (preference)</td><td>$10m (preference)</td><td>$2m (preference)</td><td>$13m</td></tr>
+<tr><td>$150m</td><td>Converts: $21m pro-rata</td><td>Converts: $30m pro-rata</td><td>Converts: $6m pro-rata</td><td>$93m</td></tr>
+<tr><td>$500m</td><td>$70m pro-rata</td><td>$100m pro-rata</td><td>$20m pro-rata</td><td>$310m</td></tr>
+</table>
+
+<p>Two features of this table matter.</p>
+
+<p>First, at low exit values, preferred takes everything. At $25m, the Series B preference alone consumes the entire exit. Founders and common holders receive nothing. This is the "bad exit" scenario that preference exists to protect against.</p>
+
+<p>Second, at higher exit values, preferred converts (if non-participating) because the pro-rata share exceeds the preference. At $150m, Series B converts to 14 percent of the proceeds, Series A to 20 percent, Seed to 4 percent; common takes the rest.</p>
+
+<h2 id="red-flags">8. Red flags and missing documentation</h2>
+<p>Investor counsel sees the same problems in 60 percent of Series A diligence. Fixing them before fundraising saves weeks.</p>
+
+<ul>
+<li>Founder share grants without board approval or share certificates.</li>
+<li>Option grants without board-approved grant letters.</li>
+<li>409A valuations older than 12 months or absent entirely.</li>
+<li>SAFE and convertible note terms undocumented in the cap table.</li>
+<li>Advisor grants with vesting schedules that were never signed.</li>
+<li>Missing stock transfer restrictions (ROFR, co-sale).</li>
+<li>Employee separations without a documented repurchase of unvested shares.</li>
+<li>Shareholder rights agreements missing or out of sync with later financing documents.</li>
+</ul>
+
+<div class="callout gold">
+<strong>Pre-raise checklist:</strong> 60 days before kicking off a Series A, commission a legal clean-up review. Costs $5-15k. Saves 2-3 weeks in diligence and can be the difference between closing in Q2 or Q3.</div>
+
+<h2 id="tools">9. Tools: Carta vs Pulley vs Excel</h2>
+
+<table>
+<tr><th>Tool</th><th>Cost</th><th>Best for</th><th>Trade-off</th></tr>
+<tr><td>Carta</td><td>$4k–$25k/yr</td><td>Series A and beyond; investor compatibility</td><td>Most expensive; feature-complete</td></tr>
+<tr><td>Pulley</td><td>$1.2k–$6k/yr</td><td>Seed to Series A</td><td>Fewer advanced modelling features</td></tr>
+<tr><td>AngelList/Republic</td><td>Free–$2k/yr</td><td>Rolling funds, syndicated deals</td><td>Limited modelling</td></tr>
+<tr><td>Custom Excel</td><td>Free (lawyer cost for validation)</td><td>Pre-Seed only</td><td>Breaks at scale; diligence pain</td></tr>
+</table>
+
+<p>The 2026 pattern: start on Pulley or Excel pre-Seed, migrate to Carta at Series A. Investor comfort with Carta is high; with Pulley, rising but not universal. By Series B, essentially every venture-backed SaaS is on Carta.</p>
+
+<h2 id="cases">10. Four real cap table examples</h2>
+
+<h3>Case A — Seed-stage SaaS (post-raise)</h3>
+<p>Horizontal B2B SaaS, $2m Seed at $8m pre-money. Two founders at 50/50 pre-round. 10 percent pool topped up to 12 percent pre-money.</p>
+<ul>
+<li>Founders: 39.2 percent each, fully diluted (78.4 percent combined)</li>
+<li>Seed investors: 20.0 percent</li>
+<li>Option pool (unissued): 12.0 percent</li>
+<li>Advisor grants: 0.8 percent</li>
+</ul>
+
+<h3>Case B — Post-Series A (same company two years later)</h3>
+<p>$10m Series A at $40m pre-money. Pool topped up to 15 percent pre-money.</p>
+<ul>
+<li>Founders: 29.5 percent each (59.0 percent combined)</li>
+<li>Seed investors: 15.0 percent</li>
+<li>Series A investors: 20.0 percent</li>
+<li>Option pool (unissued): 3.7 percent (after grants)</li>
+<li>Advisor/employee grants: 2.3 percent</li>
+</ul>
+
+<h3>Case C — Post-Series B (same company three years later)</h3>
+<p>$25m Series B at $150m pre-money. Pool topped up to 15 percent.</p>
+<ul>
+<li>Founders: 24.6 percent each (49.2 percent combined)</li>
+<li>Seed investors: 12.5 percent</li>
+<li>Series A investors: 16.7 percent</li>
+<li>Series B investors: 14.3 percent</li>
+<li>Option pool (unissued): 2.1 percent</li>
+<li>Employee grants: 5.2 percent</li>
+</ul>
+
+<h3>Case D — Pre-exit ($500m strategic sale)</h3>
+<p>After Series C ($50m at $300m pre-money), strategic acquirer purchases company for $500m.</p>
+<ul>
+<li>Founders: 14 percent each ($70m each gross)</li>
+<li>Early investors: 7 percent each ($35m)</li>
+<li>Series B investors: 11 percent ($55m)</li>
+<li>Series C investors: 14 percent ($70m)</li>
+<li>Option pool holders: 7 percent ($35m across team)</li>
+</ul>
+
+<div class="lead-magnet">
+<h3>Free download: Cap Table Template + Dilution Calculator + Exit Waterfall Modeler</h3>
+<p>Build your cap table from formation through Series C. Model dilution for every round. See exit payouts at different valuation scenarios.</p>
+<a href="/downloads/RRB_Cap_Table_Template_v1.xlsx" class="btn">Download the cap table workbook</a>
+</div>
+
+<h2>Deep dives in the spokes</h2>
+<ul>
+<li><a href="/blog/blog-rrb-5a/">Spoke 5A: Founder Equity Split and Vesting</a></li>
+<li><a href="/blog/blog-rrb-5b/">Spoke 5B: Employee Option Pools</a></li>
+<li><a href="/blog/blog-rrb-5c/">Spoke 5C: Series A Cap Table Dynamics</a></li>
+<li><a href="/blog/blog-rrb-5d/">Spoke 5D: Preference Stacks and Exit Waterfalls</a></li>
+<li><a href="/blog/blog-rrb-5e/">Spoke 5E: Real Cap Table Case Studies</a></li>
+</ul>
+
+<section class="faq"><h2 id="faq">Frequently Asked Questions</h2>
+<details><summary>What is a cap table?</summary><p>A capitalization table is the ledger of every security a company has issued: common shares, preferred shares, options, warrants, SAFEs and convertible notes, plus the holder of each security. It is the single source of truth on ownership.</p></details>
+<details><summary>How big should the option pool be?</summary><p>10 percent is typical at Seed. 12 to 15 percent at Series A. Top-up to 15 percent at Series B. The pool is almost always topped up pre-money, diluting existing holders, not the new investor.</p></details>
+<details><summary>What is 409A valuation?</summary><p>An independent appraisal of common-stock fair market value, required by IRS Section 409A so that option grants can be issued at a legal strike price. Refreshed at every priced round or every 12 months, whichever comes first.</p></details>
+<details><summary>What does a 1x liquidation preference mean?</summary><p>In an exit, the preferred investor receives their invested capital back before common shareholders get anything. 1x non-participating is the market standard at Seed and Series A.</p></details>
+<details><summary>What is participating preferred?</summary><p>A structure where preferred investors receive their liquidation preference AND also share pro-rata in the remaining proceeds with common. Investor-friendly; becoming uncommon in 2026 except in distressed rounds.</p></details>
+<details><summary>Carta vs Pulley: which one?</summary><p>Carta is the market leader with mature modelling features. Pulley is cheaper, simpler, and popular with seed stage. At Series A and beyond, most companies consolidate on Carta for investor compatibility.</p></details>
+<details><summary>What is fully-diluted ownership?</summary><p>Ownership calculated as if every outstanding option, warrant, SAFE, and convertible note converted to common stock today. Used for all dilution math and the number that matters in negotiations.</p></details>
+<details><summary>What is founder vesting?</summary><p>A schedule (typically 4 years, 1-year cliff) by which founder shares become fully owned. Before full vest, shares can be repurchased by the company if a founder leaves. Standard for all venture-backed startups.</p></details>
+<details><summary>What happens to options if a company is acquired?</summary><p>Depends on the acquisition agreement. Options can accelerate (full vest on acquisition), partially accelerate, or be assumed by the acquirer. Double-trigger acceleration (acquisition plus termination) is the most employee-favourable standard.</p></details>
+<details><summary>How do SAFEs affect dilution?</summary><p>SAFEs convert at the next priced round using a valuation cap, discount, or most-favoured-nation clause. They dilute founders, not new investors, because the conversion price is computed pre-money.</p></details>
+</section>
+
+<section class="crosslinks"><h3>Related Raise Ready Bibles &amp; spokes</h3>
+<ul>
+<li><a href="/blog/blog-rrb-5a/">Founder equity split &amp; vesting</a></li>
+<li><a href="/blog/blog-rrb-5b/">Employee option pools</a></li>
+<li><a href="/blog/blog-rrb-5c/">Series A cap table dynamics</a></li>
+<li><a href="/blog/blog-rrb-5d/">Preference stacks &amp; exit waterfalls</a></li>
+<li><a href="/blog/blog-rrb-5e/">Real cap table case studies</a></li>
+<li><a href="/blog/blog-rrb-3/">SaaS Benchmarks Bible (dilution vs investor expectations)</a></li>
+<li><a href="/blog/blog-rrb-6/">SaaS Fundraising Timeline Bible</a></li>
+</ul></section>
+</article></main>
+<footer>
+<p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>
+<p>Nothing in this article is financial or legal advice. Consult a qualified attorney before equity decisions.</p>
+</footer>
+</body>
+</html>

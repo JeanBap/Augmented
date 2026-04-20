@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Usage-Based Pricing Models for SaaS (2026) | Raise Ready</title>
+<meta name="description" content="Implement per-seat, per-transaction, and per-feature usage pricing. Setup, CAC impact, hybrid platform-plus-usage, revenue forecasting, and billing stack.">
+<meta name="keywords" content="usage-based pricing, consumption pricing, per-seat pricing, metered billing, SaaS monetization">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-4b/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.5rem;margin:32px 0 10px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;margin:20px 0;border-radius:4px}
+.crosslinks{background:var(--card);padding:16px 22px;border-radius:6px;margin:26px 0;border:1px solid var(--border)}
+footer{background:#0b1220;color:#cbd5e1;padding:24px 22px;margin-top:40px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+@media (max-width:640px){.hero h1{font-size:1.55rem}h2{font-size:1.25rem}main{padding:22px 16px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Usage-Based Pricing Models for SaaS","description":"Implement per-seat, per-transaction, per-feature usage pricing. Setup, CAC impact, hybrid platform-plus-usage.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready"},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-4b/"}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a><a href="/finance-app/">Finance App</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>Usage-Based Pricing Models for SaaS</h1>
+<div class="meta">Spoke 4B · Raise Ready Editorial · ~9 min read</div>
+</div>
+
+<p>Usage-based pricing is SaaS in 2026. OpenView's 2025 benchmarks report 61 percent of surveyed SaaS companies use at least one usage component, and the share is still rising. This spoke is the implementation playbook: how to pick a usage dimension, how to price it, how to bill it, and how it changes CAC math.</p>
+
+<h2>Picking the usage dimension</h2>
+<p>The dimension must satisfy three tests. It scales with customer value. It is measurable without disputes. It is forecastable by the customer before they sign.</p>
+
+<table>
+<tr><th>Dimension</th><th>Example</th><th>Scales with value?</th><th>Customer can forecast?</th></tr>
+<tr><td>Seats</td><td>Slack, Notion</td><td>Loosely</td><td>Yes</td></tr>
+<tr><td>Transactions</td><td>Stripe, Shopify</td><td>Strongly</td><td>Yes, from historical volume</td></tr>
+<tr><td>API calls / events</td><td>Twilio, Segment</td><td>Strongly</td><td>Partial; new products hard to forecast</td></tr>
+<tr><td>Compute / storage</td><td>Snowflake, Databricks</td><td>Strongly</td><td>Weakly; bill shock risk</td></tr>
+<tr><td>Records / contacts</td><td>HubSpot, Mailchimp</td><td>Moderately</td><td>Yes</td></tr>
+<tr><td>Output units</td><td>OpenAI (tokens), Midjourney (images)</td><td>Strongly</td><td>Variable</td></tr>
+</table>
+
+<p>The most common mistake is picking a dimension because it is easy to meter, not because it tracks value. "API calls" is easy. "Successful API calls that produced a business outcome" is the value-aligned unit but harder to meter. Pick the value-aligned unit even if the metering work is harder; the pricing outlives the engineering.</p>
+
+<h2>Pricing the unit</h2>
+<p>Three techniques.</p>
+
+<h3>Unit-economics back-calculation</h3>
+<p>Calculate the gross margin per unit and price at a multiple that leaves headroom. If COGS per API call is $0.0004 and you want 75 percent gross margin, list price is at least $0.0016. Round up to $0.002 for simplicity.</p>
+
+<h3>Comparable benchmark</h3>
+<p>Find the three closest comparables and price in their range. Twilio's SMS price is a benchmark for messaging. OpenAI's token pricing is a benchmark for LLM inference. Do not under-price the benchmark by more than 20 percent; doing so signals inferior quality to buyers.</p>
+
+<h3>Willingness-to-pay at volume</h3>
+<p>Price the first block low enough for self-serve adoption, then add volume tiers. 0–10k calls at $0.002, 10k–100k at $0.0015, 100k+ at $0.0010. Volume discounts protect large accounts while the headline rate remains attractive in marketing.</p>
+
+<h2>Hybrid: the pattern that works</h2>
+<p>Pure usage is hard to forecast, hard to sell, and volatile on the income statement. Pure subscription leaves expansion money on the table. The dominant pattern in 2026 is hybrid: a committed platform fee plus metered overage.</p>
+
+<p>Datadog: a monthly platform fee per host, plus usage charges for custom metrics, log ingestion, and APM events. MongoDB Atlas: a monthly cluster fee, plus usage for backup storage and data transfer. Snowflake: a minimum commit, plus compute credits. The structure forecasts revenue at the floor while uncapping upside at the ceiling.</p>
+
+<div class="callout">
+<strong>Pattern:</strong> platform fee covers 60-70% of account revenue at steady state. Metered usage covers the remaining 30-40% and drives NRR above 120%. The platform fee anchors the deal; the usage drives expansion.
+</div>
+
+<h2>CAC implications</h2>
+<p>Usage-based pricing changes the CAC conversation in three ways.</p>
+
+<p>First, <strong>CAC payback lengthens in the early months</strong>. If the customer lands at $500 month-one usage but grows to $2,500 month-twelve, reported CAC payback using month-one revenue looks terrible. Shift to a cohort-based payback view: total CAC divided by gross-margin-adjusted revenue across 12 months of the cohort.</p>
+
+<p>Second, <strong>expansion-first metrics matter more than land-first metrics</strong>. NRR, LTV, and cohort revenue curves dominate. Track them obsessively; the old CAC-to-ACV ratio is a misleading reference point.</p>
+
+<p>Third, <strong>sales comp structures change</strong>. An AE compensated on booked ARR under flat-rate pricing has the wrong incentive under usage pricing. Restructure comp around 12-month realised revenue or committed minimums, not pricing-page ACV.</p>
+
+<h2>The billing stack</h2>
+<p>Usage billing is a real engineering investment. The 2026 stack has three layers.</p>
+
+<ul>
+<li><strong>Metering:</strong> a real-time event counter with idempotency (Metronome, Orb, in-house). Must reconcile to customer-side logs for invoicing credibility.</li>
+<li><strong>Rating:</strong> the pricing rules engine that turns events into dollars. Supports tiers, credits, minimums, overage, commitment drawdown.</li>
+<li><strong>Billing:</strong> invoice generation, collection, tax, revenue recognition (Stripe Billing, Maxio, Chargebee, SAP billing).</li>
+</ul>
+
+<p>For pre-Series-A companies, Orb or Metronome handle metering and rating; Stripe handles billing. Between $5m and $30m ARR, most companies keep this stack and harden integrations. Above $30m ARR, some build metering in-house for performance and dispute-proofing but keep rating and billing on vendor stack.</p>
+
+<h2>Forecasting revenue under usage pricing</h2>
+<p>Usage revenue is lognormal: most accounts cluster, a few are outliers. Forecast by cohort, not account. Build three curves: the P25 usage growth, P50 usage growth, P75 usage growth for each acquisition cohort. Total revenue in month N is the sum of each cohort's P50, cross-checked against the P25 downside.</p>
+
+<p>Variance is high, especially in early cohorts. Present forecasts as ranges, not point estimates. The board will thank you; the alternative (point estimates that miss) destroys credibility.</p>
+
+<h2>Customer-facing controls</h2>
+<p>Bill shock is the single biggest source of churn in usage-based models. Build these controls before you need them.</p>
+<ul>
+<li>Spend caps (hard ceiling with customer-approved overrides).</li>
+<li>Spend alerts (80, 100, 120 percent of budget).</li>
+<li>Usage dashboards visible to the customer, in real time.</li>
+<li>A monthly usage report shipped to the economic buyer.</li>
+<li>A 60-day grace window on first-time overage spikes (goodwill).</li>
+</ul>
+
+<p>Snowflake, Datadog, and Twilio all run a version of these controls. Without them, a single surprise invoice can take out an enterprise account in the year it should have expanded.</p>
+
+<section class="crosslinks"><h3>Keep reading</h3><ul>
+<li><a href="/blog/blog-rrb-4/">The SaaS Pricing Strategy Bible</a></li>
+<li><a href="/blog/blog-rrb-4a/">Value-based pricing framework</a></li>
+<li><a href="/blog/blog-rrb-4c/">Tiered pricing strategy</a></li>
+<li><a href="/blog/blog-rrb-4d/">Pricing evolution</a></li>
+<li><a href="/blog/blog-rrb-2/">Unit Economics Bible</a></li>
+<li><a href="/blog/blog-rrb-3/">Benchmarks Bible</a></li>
+</ul></section>
+</article></main>
+<footer><p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p></footer>
+</body>
+</html>

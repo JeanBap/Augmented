@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Employee Option Pools: Sizing, 409A, Strike Price (2026) | Raise Ready</title>
+<meta name="description" content="How to size the SaaS option pool, set strike prices, run 409A valuations, and communicate option grants to employees. 2026 benchmarks and mechanics.">
+<meta name="keywords" content="option pool, 409A, strike price, ESOP, employee options, SaaS equity grants">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-5b/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.5rem;margin:32px 0 10px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;margin:20px 0;border-radius:4px}
+.crosslinks{background:var(--card);padding:16px 22px;border-radius:6px;margin:26px 0;border:1px solid var(--border)}
+footer{background:#0b1220;color:#cbd5e1;padding:24px 22px;margin-top:40px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+@media (max-width:640px){.hero h1{font-size:1.55rem}h2{font-size:1.25rem}main{padding:22px 16px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Employee Option Pools","description":"Sizing, 409A, strike price, grant communication.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready"},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-5b/"}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>Employee Option Pools</h1>
+<div class="meta">Spoke 5B · Raise Ready Editorial · ~9 min read</div>
+</div>
+
+<p>The option pool is the equity budget for every non-founder hire. Get the sizing right and hiring feels resource-rich. Get it wrong and the company either runs out of stock to hire or dilutes founders more than necessary.</p>
+
+<h2>Bottom-up sizing: the only correct method</h2>
+<p>The conventional advice is "reserve 10 percent at formation." This is a starting point, not a conclusion. The correct method is bottom-up: list every hire you intend to make in the next 12-18 months, assign a target equity grant to each role, sum the total.</p>
+
+<h3>2026 benchmark grants (SaaS, Series A-ready companies)</h3>
+<table>
+<tr><th>Role</th><th>Grant range (% fully diluted)</th></tr>
+<tr><td>CEO (hired, not founder)</td><td>4.0–8.0%</td></tr>
+<tr><td>CTO (hired)</td><td>2.0–5.0%</td></tr>
+<tr><td>CFO</td><td>1.0–2.0%</td></tr>
+<tr><td>VP Engineering</td><td>0.75–2.0%</td></tr>
+<tr><td>VP Sales</td><td>0.75–1.5%</td></tr>
+<tr><td>VP Product</td><td>0.5–1.25%</td></tr>
+<tr><td>VP Marketing</td><td>0.35–1.0%</td></tr>
+<tr><td>Director-level</td><td>0.15–0.5%</td></tr>
+<tr><td>Senior IC (principal engineer, staff PM)</td><td>0.25–0.75%</td></tr>
+<tr><td>Mid-level IC</td><td>0.08–0.25%</td></tr>
+<tr><td>Junior IC</td><td>0.02–0.10%</td></tr>
+</table>
+
+<p>Source basis: Carta's 2024 Q4 grants report and Index Ventures' 2025 Option Impact report, cross-referenced with Kruze Consulting public data. Ranges narrow at each successive stage (Seed grants tend to be higher; Series B grants lower for the same role).</p>
+
+<h2>The Series A "top-up" and why it matters</h2>
+<p>When a Series A lead negotiates a term sheet, they insist on a post-money option pool of 12-15 percent, created pre-money. This is important: the pool expansion is calculated <em>before</em> the new money is factored in, which means the dilution falls entirely on existing holders (founders, employees, Seed investors), not on the new Series A investor.</p>
+
+<p>Effect: a 5 percent pool top-up pre-money is equivalent to a 5 percent dilution of existing holders, with zero dilution to the new investor.</p>
+
+<p>Founder counter-move: negotiate the minimum viable pool size based on a bottom-up hiring plan for the next 12 months. If the plan justifies 3 percent in new grants, do not agree to a 5 percent top-up. The gap is a transfer of value from founders to the new investor.</p>
+
+<h2>409A valuation</h2>
+<p>A 409A valuation is a legally-required appraisal of the common-stock fair market value (FMV). Options must be granted at or above this FMV to avoid IRS Section 409A penalties (which include immediate taxation of the option plus a 20 percent excise tax).</p>
+
+<h3>When to refresh</h3>
+<ul>
+<li>At every priced round (Seed, Series A, Series B, Series C).</li>
+<li>Every 12 months, whichever comes first.</li>
+<li>On any "material event" (large new contract, acquisition offer, significant new investment).</li>
+</ul>
+
+<h3>Who performs it</h3>
+<p>Carta and Pulley each bundle 409A valuations into their equity-management subscriptions. Specialist firms (Scalar, Aranca, Preferred Return) offer standalone 409As for $3-10k. The output is a signed appraisal that establishes the defensible FMV for option grants.</p>
+
+<h3>The 409A discount</h3>
+<p>The gap between the preferred price (what investors paid in the last round) and the common price (what employees exercise at). Typical 2026 discounts by stage:</p>
+<ul>
+<li>Post-Seed: 70-85% discount to preferred price.</li>
+<li>Post-Series A: 55-75%.</li>
+<li>Post-Series B: 40-55%.</li>
+<li>Post-Series C: 25-40%.</li>
+<li>Within 12 months of IPO: 10-25%.</li>
+</ul>
+
+<h2>Grant mechanics</h2>
+<p>Every option grant requires:</p>
+<ol>
+<li>Board approval. A resolution passed by written consent or in a meeting.</li>
+<li>A signed grant letter specifying share count, strike price, vest schedule, expiration, early-exercise provisions.</li>
+<li>Grant agreement documentation filed in the cap table platform.</li>
+<li>An 83(b) election filing by the employee if they early-exercise (rare; needs disclosure).</li>
+</ol>
+
+<div class="callout">
+<strong>Do not backdate grants.</strong> The strike price must be the 409A FMV on the actual grant date, not on the date of hire or offer. Backdating to give employees a lower strike is a Section 409A violation and can create criminal liability for officers.</div>
+
+<h2>ISOs vs NSOs</h2>
+<p>Incentive Stock Options (ISOs) are tax-advantaged: no ordinary income tax at exercise (only AMT consideration), and long-term capital gains treatment at sale if holding periods are met. NSOs (Non-qualified Stock Options) are taxed as ordinary income on the spread at exercise.</p>
+
+<p>All employee grants in a venture-backed SaaS should be ISOs up to the IRS annual limit ($100k aggregate FMV per year of grant). Grants above the limit, or grants to non-employees (contractors, advisors), must be NSOs.</p>
+
+<h2>Early-exercise provisions</h2>
+<p>Some option plans allow employees to exercise vested and/or unvested options early. Benefits for the employee: starts the long-term capital gains clock earlier, minimises AMT if exercised when spread is zero. Cost: cash outlay to exercise, risk of forfeiture if the company fails.</p>
+
+<p>For founders and first engineers, early-exercise provisions combined with 83(b) elections are extremely tax-efficient. For later employees, whether to early-exercise is personal finance; the company's job is to make it legally permissible and clearly explained.</p>
+
+<h2>Post-termination exercise windows</h2>
+<p>The default is 90 days: an employee who leaves must exercise vested options within 90 days of termination or forfeit them. This is restrictive (exercise requires cash plus immediate tax); many employees simply forfeit.</p>
+
+<p>Some companies extend the window to 5 or 10 years post-termination. More employee-friendly; slightly diluting to the cap table because forfeitures no longer recycle. Trend in 2026: extended windows becoming common at well-funded companies (Series B+).</p>
+
+<h2>Communicating grants</h2>
+<p>An option grant is worth nothing if the employee does not understand it. The standard grant explanation should include:</p>
+
+<ul>
+<li>Share count granted.</li>
+<li>Strike price.</li>
+<li>Total company fully-diluted shares (so the percentage is interpretable).</li>
+<li>Current 409A FMV per share (so paper value is transparent).</li>
+<li>Vesting schedule in plain English.</li>
+<li>Exercise window post-termination.</li>
+<li>A worked example at a defensible exit scenario (e.g., "If the company sells for $500m, your shares would be worth approximately $X pre-tax").</li>
+</ul>
+
+<p>The worked example matters. Option grants are a recruiting tool only if candidates can connect them to life-changing dollars in a plausible scenario. A grant without a worked example is a grant the candidate undervalues.</p>
+
+<section class="crosslinks"><h3>Keep reading</h3><ul>
+<li><a href="/blog/blog-rrb-5/">The SaaS Cap Table Bible</a></li>
+<li><a href="/blog/blog-rrb-5a/">Founder equity split &amp; vesting</a></li>
+<li><a href="/blog/blog-rrb-5c/">Series A cap table dynamics</a></li>
+<li><a href="/blog/blog-rrb-5d/">Preference stacks &amp; exit waterfalls</a></li>
+<li><a href="/blog/blog-rrb-5e/">Real cap table case studies</a></li>
+</ul></section>
+</article></main>
+<footer><p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p></footer>
+</body>
+</html>

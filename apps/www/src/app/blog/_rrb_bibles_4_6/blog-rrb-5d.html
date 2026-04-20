@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preference Stacks and Exit Waterfalls (2026) | Raise Ready</title>
+<meta name="description" content="Model who gets paid at exit: liquidation preferences, participation, stacking, waterfall calculations, and worked examples by exit value.">
+<meta name="keywords" content="liquidation preference, exit waterfall, participating preferred, preference stack, SaaS exit, acquisition payout">
+<link rel="canonical" href="https://raisereadybook.com/blog/blog-rrb-5d/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<style>
+:root{--bg:#0b1220;--fg:#0b1220;--body:#1f2937;--muted:#4b5563;--accent:#1e3a5f;--gold:#b8860b;--card:#f8fafc;--border:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.65;color:var(--body);background:#fff;font-size:17px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+header{background:var(--accent);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:10}
+header .wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header nav a{margin-left:18px;font-weight:500}
+main{max-width:780px;margin:0 auto;padding:36px 22px 64px}
+.hero h1{font-size:2rem;line-height:1.18;margin:0 0 12px}
+.meta{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+h2{font-size:1.5rem;margin:32px 0 10px;border-bottom:2px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+th{background:var(--accent);color:#fff}
+tr:nth-child(even) td{background:var(--card)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:14px 16px;margin:20px 0;border-radius:4px}
+.crosslinks{background:var(--card);padding:16px 22px;border-radius:6px;margin:26px 0;border:1px solid var(--border)}
+footer{background:#0b1220;color:#cbd5e1;padding:24px 22px;margin-top:40px;text-align:center;font-size:.92rem}
+footer a{color:#cbd5e1}
+@media (max-width:640px){.hero h1{font-size:1.55rem}h2{font-size:1.25rem}main{padding:22px 16px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Preference Stacks and Exit Waterfalls","description":"Model who gets paid at different exit values.","datePublished":"2026-04-19T08:00:00Z","dateModified":"2026-04-19T08:00:00Z","author":{"@type":"Organization","name":"Raise Ready Editorial"},"publisher":{"@type":"Organization","name":"Raise Ready"},"mainEntityOfPage":"https://raisereadybook.com/blog/blog-rrb-5d/"}</script>
+</head>
+<body>
+<header><div class="wrap"><a href="/">Raise Ready</a><nav><a href="/bibles/">Bibles</a><a href="/blog/">Blog</a></nav></div></header>
+<main><article>
+<div class="hero">
+<h1>Preference Stacks and Exit Waterfalls</h1>
+<div class="meta">Spoke 5D · Raise Ready Editorial · ~10 min read</div>
+</div>
+
+<p>The preference stack is the ordered list of who gets paid first in an exit. The exit waterfall is the calculation of how proceeds flow through that stack at a given exit value. Founders who understand both negotiate better term sheets and set realistic expectations with employees holding options.</p>
+
+<h2>The mechanics of liquidation preference</h2>
+<p>Preferred stock holders, in an exit, choose between two outcomes:</p>
+<ol>
+<li>Take their liquidation preference (typically 1x invested capital).</li>
+<li>Convert to common and take their pro-rata share of total proceeds.</li>
+</ol>
+
+<p>The preferred holder rationally chooses the greater of the two. At low exit values, the preference is greater; at high exit values, the pro-rata share is greater. The crossover point is the "breakeven" where conversion becomes more attractive than taking the preference.</p>
+
+<h3>The 1x non-participating preferred</h3>
+<p>Invested $10m, owns 20 percent of a company that sells for $80m. Choice: take $10m (preference) or take 20 percent of $80m = $16m (pro-rata). Rational choice: convert and take $16m. Common shareholders share in the remaining $64m.</p>
+
+<p>Same company sells for $40m. Choice: take $10m (preference) or 20 percent of $40m = $8m. Rational choice: take the $10m preference. Common shareholders split the remaining $30m.</p>
+
+<h2>Stacking: the order of preferences</h2>
+<p>Multi-round companies have multiple preference layers. Market-standard stacking is reverse-chronological: latest round first, earliest round last, common at the bottom.</p>
+
+<p>Example company: Seed ($2m), Series A ($10m), Series B ($25m). Each round is 1x non-participating.</p>
+
+<table>
+<tr><th>Priority</th><th>Holder</th><th>Preference</th></tr>
+<tr><td>1 (first to be paid)</td><td>Series B</td><td>$25m</td></tr>
+<tr><td>2</td><td>Series A</td><td>$10m</td></tr>
+<tr><td>3</td><td>Seed</td><td>$2m</td></tr>
+<tr><td>4 (last)</td><td>Common</td><td>Remainder, pro-rata</td></tr>
+</table>
+
+<p>If the exit is $37m, Series B gets $25m, Series A gets $10m, Seed gets $2m, common gets zero. This is the "total wipeout" scenario.</p>
+
+<h3>Pari passu preferences</h3>
+<p>Some term sheets make all preferred pari passu (equal priority) rather than stacked. Under pari passu, the total preference pool is summed and paid out first; if there isn't enough, each preferred holder receives their pro-rata share of the available pool.</p>
+
+<p>Pari passu is rare in 2026 but favoured by founders because it reduces the "Series B preference consumes everything" risk at low exit values.</p>
+
+<h2>Worked waterfall example</h2>
+<p>Use the company above. Cap table: founders 50 percent common (25 percent each), Seed investors 15 percent (all preferred), Series A investors 20 percent (preferred), Series B investors 15 percent (preferred).</p>
+
+<table>
+<tr><th>Exit</th><th>Series B</th><th>Series A</th><th>Seed</th><th>Common (inc. founders)</th><th>Founders take</th></tr>
+<tr><td>$25m</td><td>$25m (pref)</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td></tr>
+<tr><td>$50m</td><td>$25m (pref)</td><td>$10m (pref)</td><td>$2m (pref)</td><td>$13m</td><td>$6.5m</td></tr>
+<tr><td>$100m</td><td>$15m (converts, pro-rata)</td><td>$20m (converts, pro-rata)</td><td>$2m (pref)</td><td>$63m</td><td>$31.5m</td></tr>
+<tr><td>$200m</td><td>$30m (converts)</td><td>$40m (converts)</td><td>$30m (converts)</td><td>$100m</td><td>$50m</td></tr>
+<tr><td>$500m</td><td>$75m</td><td>$100m</td><td>$75m</td><td>$250m</td><td>$125m</td></tr>
+</table>
+
+<p>Three features of this waterfall matter.</p>
+
+<p>First, <strong>the "zero to founders" zone</strong>. Below roughly $37m exit, founders receive nothing. This is why an early acquisition offer at Seed-preference-exceeding value is a complicated conversation: the founders are the ones who live with a low-return exit while investors get whole.</p>
+
+<p>Second, <strong>the conversion crossover</strong>. As exit value rises, preferred holders convert to common and participate in the upside. The transition is smooth for non-participating preferred and lumpy for participating preferred.</p>
+
+<p>Third, <strong>common share ownership dilutes through preference</strong>. Even at a $500m exit, founder take is smaller as a percentage of the company than the cap-table percentage would suggest, because preferred holders converted and took their pro-rata share of the proceeds.</p>
+
+<h2>Participating preferred: the double-dip</h2>
+<p>Participating preferred receive their preference AND then share pro-rata with common in the remainder. This materially changes the waterfall.</p>
+
+<p>Same company with 1x participating Series B: at a $100m sale, Series B gets $25m preference, then shares 15 percent of the remaining $75m = $11.25m. Total Series B take: $36.25m. Common's share drops correspondingly.</p>
+
+<p>Participating preferred is founder-unfriendly in almost all scenarios and is rare in 2026 outside distressed rounds.</p>
+
+<h3>Caps on participation</h3>
+<p>Some term sheets cap the participating preferred at 2x or 3x the original investment. After that cap is reached, the investor must choose between the capped amount and conversion to common, whichever is greater. Caps limit the damage of participating preferred but do not eliminate it.</p>
+
+<h2>Dividend accruals</h2>
+<p>Preferred stock sometimes carries cumulative dividends (usually 6-8 percent annually) that accrue unpaid until exit. At exit, the accrued dividends are paid as part of the liquidation preference, effectively raising the preference to 1x + accrued.</p>
+
+<p>Over a five-year holding period at 8 percent dividends, a 1x preference effectively becomes 1.47x. This materially affects the waterfall.</p>
+
+<p>Cumulative dividends are uncommon in US SaaS term sheets at Series A but more common in growth rounds and European deals.</p>
+
+<h2>Waterfall modelling: how to do it</h2>
+<p>For each round of preferred, compute:</p>
+<ol>
+<li>The preference amount (invested capital × preference multiple + any accrued dividends).</li>
+<li>The pro-rata share of total proceeds at conversion.</li>
+<li>The greater of (1) and (2) if non-participating; the sum if participating.</li>
+</ol>
+
+<p>Then compute the cumulative preferences paid out. Subtract from the exit value. The remainder flows to common (including converted preferred) on a pro-rata basis.</p>
+
+<div class="callout">
+<strong>Real-world complication:</strong> a class of preferred rationally converts only if <em>everyone in that class</em> does. Convertible classes often have class-vote requirements. Model at the class level, not the individual-investor level.</div>
+
+<h2>When a down round breaks the waterfall</h2>
+<p>If a later round is priced below an earlier round, anti-dilution adjustments kick in. The earlier class's preference may be increased (through share issuance or ratchet adjustment) to compensate. This cascades: a $50m preference stack can grow to $75m after a brutal down round.</p>
+
+<p>Founders should model the waterfall after any down round. The exit value required for common to receive proceeds often shifts materially.</p>
+
+<h2>Founder take-home estimation</h2>
+<p>Combine the waterfall with basic tax assumptions (long-term capital gains at federal plus state, roughly 30 percent in California, 20 percent in Texas/Florida) to estimate take-home from an exit. At a $500m exit with an 8 percent founder stake ($40m gross), California founder takes roughly $28m post-tax. Texas founder takes roughly $32m.</p>
+
+<p>QSBS (Qualified Small Business Stock, IRC Section 1202) can exempt up to $10m per founder from federal capital gains tax, provided the holding period is five years and the company was under $50m in gross assets at the time of stock issuance. Every founder should file the documentation; the tax savings can be mid-seven figures.</p>
+
+<section class="crosslinks"><h3>Keep reading</h3><ul>
+<li><a href="/blog/blog-rrb-5/">The SaaS Cap Table Bible</a></li>
+<li><a href="/blog/blog-rrb-5a/">Founder equity split &amp; vesting</a></li>
+<li><a href="/blog/blog-rrb-5b/">Employee option pools</a></li>
+<li><a href="/blog/blog-rrb-5c/">Series A cap table dynamics</a></li>
+<li><a href="/blog/blog-rrb-5e/">Real cap table case studies</a></li>
+</ul></section>
+</article></main>
+<footer><p>&copy; 2026 Raise Ready Book. All content original. <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p></footer>
+</body>
+</html>
