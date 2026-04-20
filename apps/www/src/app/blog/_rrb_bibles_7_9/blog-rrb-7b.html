@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Anti-Dilution Mechanics: Weighted Average vs Full Ratchet | Raise Ready</title>
+<meta name="description" content="Anti-dilution protects investors in down rounds. Here's the math of broad-based weighted average, narrow-based, and full ratchet - and when each kicks in.">
+<link rel="canonical" href="https://raisereadybook.com/blog/saas-term-sheet-negotiation-tactics.html">
+<meta property="og:title" content="Anti-Dilution Mechanics: Weighted Average vs Full Ratchet">
+<meta property="og:description" content="Anti-dilution protects investors in down rounds. Here's the math of broad-based weighted average, narrow-based, and full ratchet - and when each kicks in.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://raisereadybook.com/blog/saas-term-sheet-negotiation-tactics.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Anti-Dilution Mechanics: Weighted Average vs Full Ratchet",
+  "description": "Anti-dilution protects investors in down rounds. Here's the math of broad-based weighted average, narrow-based, and full ratchet - and when each kicks in.",
+  "author": {"@type":"Person","name":"Yanni Papoutsis"},
+  "publisher": {"@type":"Organization","name":"Raise Ready","logo":{"@type":"ImageObject","url":"https://raisereadybook.com/logo.png"}},
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://raisereadybook.com/blog/saas-term-sheet-negotiation-tactics.html"}
+}
+</script>
+</head>
+<body>
+<article>
+<h1>Anti-Dilution Mechanics: When Down Rounds Trigger Hidden Dilution</h1>
+<p><em>Spoke 2 of The SaaS Term Sheet Bible | 13 min read</em></p>
+
+<p>Anti-dilution sounds dull. Then you raise a down round and discover it's the single most punishing clause in a cap table. This spoke walks through the exact mechanics, real-world math, and negotiation strategy.</p>
+
+<h2>What Anti-Dilution Does</h2>
+<p>Anti-dilution adjusts the conversion price of preferred stock when the company issues new shares at a price below the original conversion price. The lower conversion price means preferred holders get more common shares on conversion, effectively diluting other holders (especially founders and option-holders).</p>
+
+<h2>The Three Variants</h2>
+<h3>1. Broad-Based Weighted Average (Market Standard)</h3>
+<p>Formula:</p>
+<pre>NCP = OCP × (A + B) / (A + C)</pre>
+<p>Where:</p>
+<ul>
+<li>NCP = new conversion price</li>
+<li>OCP = old conversion price</li>
+<li>A = total shares outstanding + shares reserved for options + shares issuable on conversion of all preferred (the "broad base")</li>
+<li>B = shares that would have been issued at OCP for the new consideration</li>
+<li>C = shares actually issued in the new round</li>
+</ul>
+
+<h3>2. Narrow-Based Weighted Average</h3>
+<p>Same formula but A only includes outstanding preferred, not common or options. This creates larger adjustments. Less common; watch for this in negotiations.</p>
+
+<h3>3. Full Ratchet</h3>
+<p>No formula. New conversion price = lowest price of any subsequent issuance. Brutal.</p>
+
+<h2>Worked Example: Down Round at 50% Lower Price</h2>
+<p>Setup: Series A raised $10M at $10/share (1M preferred shares). Total shares outstanding: 10M common + 1M Series A preferred = 11M fully diluted. No options pool.</p>
+<p>Series B raises $5M at $5/share (1M Series B preferred shares). This is a 50% reduction in price per share.</p>
+
+<h3>Broad-Based Weighted Average Adjustment</h3>
+<pre>NCP = $10 × (11M + $5M/$10) / (11M + 1M)
+NCP = $10 × (11M + 500K) / 12M
+NCP = $10 × 11.5M / 12M
+NCP = $9.58</pre>
+<p>Series A's conversion price drops from $10 to $9.58. On conversion, they now receive 1M × ($10/$9.58) = 1.044M common shares instead of 1M. Small dilution impact on founders.</p>
+
+<h3>Full Ratchet Adjustment</h3>
+<p>Series A's conversion price drops from $10 to $5. On conversion, they now receive 1M × ($10/$5) = 2M common shares instead of 1M. Massive dilution impact on founders.</p>
+
+<h2>The Founder Cost</h2>
+<p>Continuing the example. Before the down round:</p>
+<ul>
+<li>Founders: 10M common shares = 83.3% fully diluted</li>
+<li>Series A: 1M preferred = 8.3% fully diluted</li>
+<li>Total: 11M + 1M Series B = 12M (but preferred counted differently)</li>
+</ul>
+
+<p>After the down round with broad-based weighted average:</p>
+<ul>
+<li>Founders: 10M common = 70.6%</li>
+<li>Series A: 1.044M on conversion = 7.4%</li>
+<li>Series B: 1M = 7.1%</li>
+<li>(Fully diluted base: 14.17M)</li>
+</ul>
+
+<p>After with full ratchet:</p>
+<ul>
+<li>Founders: 10M common = 63%</li>
+<li>Series A: 2M on conversion = 12.6%</li>
+<li>Series B: 1M = 6.3%</li>
+<li>(Fully diluted: ~15.9M)</li>
+</ul>
+
+<p>Full ratchet transfers roughly 7 percentage points of ownership from founders to Series A. On a $100M exit, that's $7M out of founders' pockets.</p>
+
+<h2>Pay-to-Play: The Founder's Friend</h2>
+<p>Pay-to-play is a clause that strips anti-dilution protection from preferred holders who don't participate in the down round. It aligns incentives: if you want protection, you need to bring new money. Pay-to-play terms can save founders significant dilution by reducing the number of preferred holders who benefit from the ratchet.</p>
+
+<p>Example: 3 Series A investors. Series B prices at 50% of Series A. With pay-to-play, any Series A investor who doesn't invest pro-rata in Series B loses their anti-dilution protection. If 2 of 3 don't participate, their preferred converts to common with no adjustment. This dramatically reduces founder dilution.</p>
+
+<h2>Exceptions and Carve-Outs</h2>
+<p>Anti-dilution typically doesn't apply to:</p>
+<ul>
+<li>Shares issued under the option pool to employees</li>
+<li>Shares issued in a merger or acquisition</li>
+<li>Shares issued as debt warrants to lenders</li>
+<li>Shares issued to strategic partners below a certain threshold</li>
+<li>Shares issued at conversion of convertible notes from prior rounds</li>
+</ul>
+<p>Read the carve-out list carefully. Aggressive term sheets eliminate carve-outs, triggering anti-dilution on every future issuance.</p>
+
+<h2>Negotiation Strategy</h2>
+<ol>
+<li><strong>Insist on broad-based weighted average.</strong> This is market. Anything else is negotiable only in distressed deals.</li>
+<li><strong>Request pay-to-play.</strong> It protects you if not all existing investors participate in the down round. Many investors dislike pay-to-play but reasonable ones accept it.</li>
+<li><strong>Get standard carve-outs.</strong> Options pool, M&A, strategic warrants, conversions of existing notes.</li>
+<li><strong>Reject full ratchet.</strong> Full stop. Walk away unless the deal is otherwise impossible.</li>
+<li><strong>Narrow the triggering events.</strong> Some aggressive terms include any share issuance; push back to only priced equity rounds.</li>
+</ol>
+
+<h2>When Anti-Dilution Actually Matters</h2>
+<p>Anti-dilution only kicks in if you price a round below the prior round. In healthy markets (2010-2021), down rounds were ~5-10% of rounds. In 2022-2024, that climbed to 20-30% in some segments. Plan for the possibility.</p>
+<p>Even if you don't expect a down round, the clause sets the game theory. Investors who know they have full-ratchet protection will be more willing to push hard-to-hit milestones. Investors with broad-based protection are more collaborative because their downside is bounded.</p>
+
+<h2>Connect to the Cap Table</h2>
+<p>Anti-dilution adjustments ripple through the cap table. After a down round, your post-round cap table has: (a) new investors at new price, (b) prior investors with adjusted conversion prices (so more common shares on conversion), (c) founders and option-holders who absorbed the dilution, and (d) employees under the option pool who may face additional dilution if the pool is refilled.</p>
+<p>See <a href="/blog/saas-cap-table-bible-2026.html">The Cap Table Bible</a> for how anti-dilution shows up in cap table mechanics.</p>
+
+<h2>FAQs</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How common is full ratchet?</h3>
+<div itemscope itemprop=" acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Rare in priced rounds from reputable VCs. More common in bridge financings, distressed rounds, and some angel/strategic deals. If you see it in a first term sheet from a reputable fund, it's often a negotiating opening - push back hard.</p></div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does anti-dilution apply to convertible notes or SAFEs?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Convertible notes and SAFEs typically convert at the next priced round's price (or cap), so they don't have separate anti-dilution. However, their conversion can trigger anti-dilution adjustments for earlier priced rounds.</p></div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Can pay-to-play be abused?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">In theory, founders could structure a down round so small that existing investors can't participate proportionally. In practice, this is rare because existing investors have information rights and veto power through protective provisions.</p></div></div>
+</div>
+
+<p>Next: <a href="/blog/saas-term-sheet-negotiation-tactics.html">Spoke 3 - Control &amp; Board Seats</a>.</p>
+
+</article>
+</body>
+</html>

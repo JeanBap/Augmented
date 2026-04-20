@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Build Your 12-Month SaaS Cash Flow Model: Month-by-Month Template | Raise Ready</title>
+<meta name="description" content="Step-by-step guide to building a 12-month SaaS cash flow model with seasonality, deferred revenue, and realistic assumptions.">
+<link rel="canonical" href="https://raisereadybook.com/blog/saas-12-month-cash-flow-forecast-template.html">
+<meta property="og:title" content="Build Your 12-Month SaaS Cash Flow Model: Month-by-Month Template">
+<meta property="og:description" content="Step-by-step guide to building a 12-month SaaS cash flow model with seasonality, deferred revenue, and realistic assumptions.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Build Your 12-Month SaaS Cash Flow Model: Month-by-Month Template",
+  "description": "Step-by-step guide to building a 12-month SaaS cash flow model with seasonality, deferred revenue, and realistic assumptions.",
+  "author": {"@type":"Person","name":"Yanni Papoutsis"},
+  "publisher": {"@type":"Organization","name":"Raise Ready","logo":{"@type":"ImageObject","url":"https://raisereadybook.com/logo.png"}},
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://raisereadybook.com/blog/saas-12-month-cash-flow-forecast-template.html"}
+}
+</script>
+</head>
+<body>
+<article>
+<h1>Build Your 12-Month SaaS Cash Flow Model</h1>
+<p><em>Spoke 1 of The SaaS Cash Flow Forecasting Bible | 13 min read</em></p>
+
+<h2>Structure</h2>
+<p>A 12-month model is a spreadsheet with columns = months and rows = categories. Three major sections: inflows, outflows, and running balance. Plus a summary dashboard.</p>
+
+<h2>Setting Up the Spreadsheet</h2>
+<p>Row 1: Headers (Month 1 through Month 12, plus Total column).<br>
+Row 2: Starting cash balance (Month 1 only).<br>
+Rows 3-20: Cash inflows, itemized.<br>
+Row 21: Total inflows (SUM).<br>
+Rows 22-50: Cash outflows, itemized.<br>
+Row 51: Total outflows (SUM).<br>
+Row 52: Net cash flow (inflows - outflows).<br>
+Row 53: Ending balance (starting + net cash flow).<br>
+Row 54: Runway (ending balance / net burn).</p>
+
+<h2>Step 1: Cash Inflows</h2>
+<h3>Existing Customer Payments</h3>
+<p>Export your billing schedule. Map each invoice to its expected payment date (invoice date + payment terms + historical lag). Sum by month.</p>
+<p>Example: Customer A signed $120K annual on Jan 1, paid $60K upfront + $60K in month 7. Customer B signed $36K monthly. Customer C paid quarterly $30K in Jan, Apr, Jul, Oct.</p>
+<p>Your existing customer cash inflow for the year:</p>
+<ul>
+<li>Jan: $60K + $3K + $30K = $93K</li>
+<li>Feb: $3K</li>
+<li>Mar: $3K</li>
+<li>Apr: $3K + $30K = $33K</li>
+<li>(etc.)</li>
+</ul>
+
+<h3>New Customer Payments</h3>
+<p>Harder. Based on pipeline and conversion rates. Build:</p>
+<ul>
+<li>Weighted pipeline (probability × deal value) by expected close month</li>
+<li>Typical cash-collection lag (30-60 days for net-30 terms)</li>
+<li>% paying upfront vs monthly</li>
+</ul>
+
+<h3>Other Inflows</h3>
+<p>R&D tax credits, grants, interest income, one-time receipts.</p>
+
+<h3>Financing Inflows</h3>
+<p>Equity raise tranches, debt draws, convertible notes. If you plan to close Series A in Month 8, model the cash arrival date (typically 2-4 weeks after closing).</p>
+
+<h2>Step 2: Cash Outflows</h2>
+<h3>Payroll (Usually the Biggest Line)</h3>
+<p>Current headcount × fully-loaded cost + planned hires by start date. Fully-loaded = base + benefits (15-25%) + payroll taxes (7-10%) + bonus reserves.</p>
+<p>Example: 15 employees at average $180K fully-loaded = $2.7M annual = $225K/month.</p>
+<p>Timing: Monthly if salaried, semi-monthly if bi-weekly (allocate 2.17 payrolls per month on average).</p>
+
+<h3>Contractor Payments</h3>
+<p>1099s, agencies, freelancers. Usually paid per invoice with 30-day terms.</p>
+
+<h3>Cloud &amp; Infrastructure</h3>
+<p>AWS, GCP, Vercel, Supabase, etc. Model as a percentage of revenue (e.g., 8-12% of revenue) for early stage, or flat if capacity-based.</p>
+
+<h3>Software Subscriptions</h3>
+<p>Your SaaS stack. Export from accounting. Usually monthly charges. Include: Slack, Notion, GitHub, Linear, HubSpot, Zoom, analytics tools, etc.</p>
+
+<h3>Sales &amp; Marketing</h3>
+<ul>
+<li>Paid ads (Google, LinkedIn, Meta) - variable, typically modeled as CAC × new customers</li>
+<li>Events and sponsorships - lumpy, event-specific months</li>
+<li>Content and brand - flat monthly</li>
+<li>Sales tools (CRM, sales engagement) - monthly</li>
+</ul>
+
+<h3>Professional Services</h3>
+<p>Legal, accounting, consultants, auditors. Often lumpy (Q4 audit, Q2 tax filing, fundraise legal).</p>
+
+<h3>Office &amp; Facilities</h3>
+<p>Rent, utilities, office supplies. Usually fixed monthly.</p>
+
+<h3>Travel &amp; Entertainment</h3>
+<p>Customer visits, team offsites, conferences.</p>
+
+<h3>Taxes</h3>
+<p>Estimated tax payments (quarterly in US), sales tax, payroll tax.</p>
+
+<h3>Debt Payments</h3>
+<p>Interest and principal on any loans or venture debt.</p>
+
+<h3>One-Time Items</h3>
+<p>Insurance renewals, equipment purchases, legal retainers.</p>
+
+<h2>Step 3: Running Balance</h2>
+<p>Month 1: Starting balance + inflows - outflows = ending balance.<br>
+Month 2: Month 1 ending balance + Month 2 inflows - Month 2 outflows = Month 2 ending balance.<br>
+(And so on.)</p>
+
+<h2>Step 4: Runway Calculation</h2>
+<p>Runway at any point = Ending balance / Trailing 3-month average net burn.</p>
+<p>This smooths month-to-month noise. A single expensive month (annual insurance payment) shouldn't crash your runway signal.</p>
+
+<h2>Step 5: Seasonality Overlay</h2>
+<p>Apply seasonality to revenue, hiring, and S&M:</p>
+<ul>
+<li>Q4 enterprise bookings spike (+30% for enterprise SaaS)</li>
+<li>Summer slowdown (-15% in July-August)</li>
+<li>Conference months (Q3, Q4) have lumpy expenses</li>
+<li>Commission pay-outs in Q1 (for prior-year performance)</li>
+</ul>
+
+<h2>Step 6: Dashboard</h2>
+<p>Summary section with:</p>
+<ul>
+<li>Current cash balance</li>
+<li>Trailing 3-month net burn</li>
+<li>Current runway</li>
+<li>Next 90 days projected cash flow</li>
+<li>YTD actual vs budget</li>
+<li>Biggest cash flow risk (e.g., "Customer X's $500K payment is 45 days overdue")</li>
+</ul>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li>Using P&L numbers instead of cash timing</li>
+<li>Forgetting payroll tax and benefits</li>
+<li>Ignoring deferred revenue cash already collected</li>
+<li>Assuming all new business collects in the month it closes</li>
+<li>Not modeling DSO realistically</li>
+<li>Missing one-time annual items (insurance, audit fees)</li>
+<li>Linear revenue growth with no seasonality</li>
+</ul>
+
+<h2>Template Available</h2>
+<p>The Interactive Cash Flow Forecaster (lead magnet) includes a pre-built 12-month template with seasonality, scenario toggles, and runway dashboard. Populate your numbers and go.</p>
+
+<h2>FAQs</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How granular should my model be?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Monthly is the right granularity for 12-month planning. Weekly for the next 4-8 weeks. Daily only for very tight cash positions.</p></div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Should I include planned hires that haven't signed yet?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Yes, with a probability-weighted approach. A role that's open but not yet in offer stage might be 50% weighted. Offer accepted, start date Month 4 = 100% from Month 4.</p></div></div>
+</div>
+
+<p>Next: <a href="/blog/burn-rate-by-department-cash-flow-analysis.html">Burn Rate &amp; Runway</a>.</p>
+
+</article>
+</body>
+</html>

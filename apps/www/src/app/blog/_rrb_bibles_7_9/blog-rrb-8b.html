@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Burn Rate and Runway: Calculate How Long You Can Run | Raise Ready</title>
+<meta name="description" content="How to calculate burn rate correctly (gross vs net), compute runway, and track the right efficiency metrics.">
+<link rel="canonical" href="https://raisereadybook.com/blog/burn-rate-by-department-cash-flow-analysis.html">
+<meta property="og:title" content="Burn Rate and Runway: Calculate How Long You Can Run">
+<meta property="og:description" content="How to calculate burn rate correctly (gross vs net), compute runway, and track the right efficiency metrics.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Burn Rate and Runway: Calculate How Long You Can Run",
+  "description": "How to calculate burn rate correctly (gross vs net), compute runway, and track the right efficiency metrics.",
+  "author": {"@type":"Person","name":"Yanni Papoutsis"},
+  "publisher": {"@type":"Organization","name":"Raise Ready","logo":{"@type":"ImageObject","url":"https://raisereadybook.com/logo.png"}},
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://raisereadybook.com/blog/burn-rate-by-department-cash-flow-analysis.html"}
+}
+</script>
+</head>
+<body>
+<article>
+<h1>Burn Rate and Runway: How Long Can You Actually Run?</h1>
+<p><em>Spoke 2 of The SaaS Cash Flow Forecasting Bible | 12 min read</em></p>
+
+<h2>Burn Rate Definitions</h2>
+<p><strong>Gross burn:</strong> Total monthly cash outflow (all expenses, no revenue offset).<br>
+<strong>Net burn:</strong> Gross burn - revenue. This is what actually depletes the bank account.</p>
+
+<p>A company with $500K gross burn and $200K monthly revenue has $300K net burn. That's the runway number.</p>
+
+<h2>Calculating Runway Correctly</h2>
+<p>Runway = Cash balance / Net monthly burn.</p>
+
+<p>Key decision: use trailing 3-month average or current month? Trailing 3-month smooths noise. Current month reacts faster to changes. Use trailing 3-month for board reporting; use current month for operational decisions.</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li>Using gross burn instead of net burn (overstates runway consumption)</li>
+<li>Using accrual revenue instead of cash revenue (understates near-term burn if annual contracts prepaid)</li>
+<li>Ignoring upcoming one-time expenses (Q4 audit fees, annual insurance)</li>
+<li>Forgetting about committed-but-unpaid bills (AP at month-end)</li>
+<li>Using P&L loss as proxy for burn (includes non-cash items)</li>
+</ul>
+
+<h2>The Minimum Cash Balance Problem</h2>
+<p>Your actual operable cash is often less than your reported cash balance. Reasons:</p>
+<ul>
+<li><strong>Venture debt covenants:</strong> Often require minimum cash balance ($1-5M) or you're in default</li>
+<li><strong>Operational float:</strong> Can't spend cash 7-10 days before payroll (needs to clear)</li>
+<li><strong>Bank account minimums:</strong> Chase, SVB often require $10-100K minimum</li>
+<li><strong>FX reserves:</strong> Multi-currency operations need buffers</li>
+<li><strong>Credit card limits:</strong> Corporate cards hold reserves</li>
+</ul>
+
+<p>Operable cash = reported cash - covenant minimum - operational buffer. Calculate runway on operable cash, not reported cash.</p>
+
+<h2>Burn Multiple: The 2026 Metric</h2>
+<p>Burn multiple = Net burn / Net new ARR. Introduced by David Sacks in 2020, now standard in VC evaluation.</p>
+<p>Benchmarks:</p>
+<ul>
+<li><strong><1x:</strong> Exceptional efficiency</li>
+<li><strong>1-2x:</strong> Great (below Series A average)</li>
+<li><strong>2-3x:</strong> Good</li>
+<li><strong>3-5x:</strong> Acceptable for growth-stage</li>
+<li><strong>>5x:</strong> Problematic</li>
+</ul>
+
+<p>Burn multiple tells you "how many dollars do you burn to generate $1 of new ARR." Lower is better. 2026 VCs expect <3x for growth-stage raises.</p>
+
+<h2>CAC Payback Period</h2>
+<p>CAC payback = CAC / (ARPU × Gross margin).</p>
+<p>If CAC is $20K and the customer pays $2K/month at 75% gross margin:<br>
+CAC payback = $20K / ($2K × 0.75) = $20K / $1.5K = 13.3 months.</p>
+
+<p>Benchmarks:</p>
+<ul>
+<li><strong><12 months:</strong> Excellent</li>
+<li><strong>12-18 months:</strong> Good (Series A target)</li>
+<li><strong>18-24 months:</strong> Acceptable for enterprise</li>
+<li><strong>>24 months:</strong> Concerning</li>
+</ul>
+
+<h2>Runway Benchmarks by Stage</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse;margin:16px 0;">
+<thead><tr><th>Stage</th><th>Minimum Runway</th><th>Healthy Runway</th><th>Ideal Post-Raise</th></tr></thead>
+<tbody>
+<tr><td>Pre-seed</td><td>12 months</td><td>18 months</td><td>24 months</td></tr>
+<tr><td>Seed</td><td>12 months</td><td>18-24 months</td><td>30 months</td></tr>
+<tr><td>Series A</td><td>12 months</td><td>18-24 months</td><td>36 months</td></tr>
+<tr><td>Series B</td><td>12 months</td><td>24 months</td><td>36 months</td></tr>
+<tr><td>Series C+</td><td>18 months</td><td>30 months</td><td>48 months</td></tr>
+</tbody>
+</table>
+
+<h2>Extending Runway: Quick Wins</h2>
+<ol>
+<li><strong>Stretch AP from 30 to 45 days:</strong> Instant 15 days of cash.</li>
+<li><strong>Accelerate AR (offer 2% for net-10):</strong> 20-30 days of cash pulled forward.</li>
+<li><strong>Pause discretionary spend:</strong> Travel, conferences, non-critical tools.</li>
+<li><strong>Renegotiate cloud costs:</strong> 1-year commitment for 20-40% discount.</li>
+<li><strong>Freeze hiring:</strong> Most impactful long-term.</li>
+<li><strong>Push annual billing:</strong> Offer 10% discount for annual-upfront; cash spike.</li>
+</ol>
+
+<h2>When Runway Gets Critical</h2>
+<p>Runway under 9 months = red alert. Actions:</p>
+<ol>
+<li>Scenario planning: worst case, survival case.</li>
+<li>Begin emergency fundraise (bridge round, extension).</li>
+<li>Headcount review: who's non-essential?</li>
+<li>Vendor renegotiation: ask every vendor for relief.</li>
+<li>Customer renegotiation: can any prepay for multi-year?</li>
+<li>Board notification and alignment.</li>
+</ol>
+
+<h2>FAQs</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Should net burn include fundraising costs?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Yes, include legal and banking fees in the month paid. These are lumpy expenses that can distort month-by-month burn if ignored.</p></div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How does venture debt affect burn calculations?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Debt proceeds don't reduce burn (they're financing, not revenue). Interest payments add to burn. Principal payments are significant burn during repayment period. Model carefully.</p></div></div>
+</div>
+
+<p>Next: <a href="/blog/the-saas-cash-flow-forecasting-bible-the-complete-guide-for-founders.html">Stress Testing &amp; Scenarios</a>.</p>
+
+</article>
+</body>
+</html>

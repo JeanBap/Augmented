@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Predictive Cash Flow: Forecast Next 90 Days with Accuracy | Raise Ready</title>
+<meta name="description" content="How to build a 90-day cash flow forecast accurate to ±5%. Pipeline integration, billing discipline, and weekly cadence.">
+<link rel="canonical" href="https://raisereadybook.com/blog/cash-flow-forecasting.html">
+<meta property="og:title" content="Predictive Cash Flow: Forecast Next 90 Days with Accuracy">
+<meta property="og:description" content="How to build a 90-day cash flow forecast accurate to ±5%. Pipeline integration, billing discipline, and weekly cadence.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Predictive Cash Flow: Forecast Next 90 Days with Accuracy",
+  "description": "How to build a 90-day cash flow forecast accurate to ±5%. Pipeline integration, billing discipline, and weekly cadence.",
+  "author": {"@type":"Person","name":"Yanni Papoutsis"},
+  "publisher": {"@type":"Organization","name":"Raise Ready","logo":{"@type":"ImageObject","url":"https://raisereadybook.com/logo.png"}},
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://raisereadybook.com/blog/cash-flow-forecasting.html"}
+}
+</script>
+</head>
+<body>
+<article>
+<h1>Predictive Cash Flow: 90-Day Forecasting with ±5% Accuracy</h1>
+<p><em>Spoke 4 of The SaaS Cash Flow Forecasting Bible | 12 min read</em></p>
+
+<h2>Why 90-Day Accuracy Matters</h2>
+<p>12-month forecasts are strategic; 90-day forecasts are operational. The next 90 days determine payroll, vendor payments, and near-term decisions. Accuracy here is the difference between making informed choices and flying blind.</p>
+
+<p>Target: 90-day forecast within ±5% of actuals. Above 10% variance means your model is broken - rebuild.</p>
+
+<h2>Drivers of Accuracy</h2>
+<h3>1. Pipeline-Based Revenue Forecasting</h3>
+<p>Don't use historical averages. Use weighted pipeline: probability × deal value by expected close month. Probabilities should be disciplined:</p>
+<ul>
+<li><strong>Verbal commitment:</strong> 90%</li>
+<li><strong>Contract in legal review:</strong> 80%</li>
+<li><strong>Proposal sent, positive reception:</strong> 50%</li>
+<li><strong>Discovery stage, qualified:</strong> 20%</li>
+<li><strong>Top of funnel:</strong> 5%</li>
+</ul>
+
+<p>Weight by stage. Total weighted pipeline by month gives expected new bookings.</p>
+
+<h3>2. Collection Timing Overlay</h3>
+<p>Bookings don't equal cash. Apply your historical collection lag (DSO):</p>
+<ul>
+<li>Monthly billing customers: cash within 30-45 days</li>
+<li>Annual prepay: cash at signing</li>
+<li>Quarterly: cash at start of quarter</li>
+</ul>
+
+<h3>3. Existing Customer Payment Schedule</h3>
+<p>Export exact billing schedule from your billing system (Stripe, Chargebee, Recurly). Every scheduled invoice has a date and amount. Model actual due dates + lag.</p>
+
+<h3>4. Expense Precision</h3>
+<ul>
+<li><strong>Payroll:</strong> Exact numbers (contracted).</li>
+<li><strong>Software subscriptions:</strong> Exact numbers (contracted).</li>
+<li><strong>Cloud:</strong> 3-month rolling average with known modifications.</li>
+<li><strong>Paid ads:</strong> Committed spend + planned campaigns.</li>
+<li><strong>Contractors:</strong> Scheduled payments + estimated invoices.</li>
+<li><strong>One-offs:</strong> Listed individually with due dates.</li>
+</ul>
+
+<h2>Weekly Rolling Update</h2>
+<p>Run the 90-day forecast weekly:</p>
+<ol>
+<li>Update actuals for prior week</li>
+<li>Note variance vs forecast</li>
+<li>Adjust remaining weeks if systematic pattern emerging</li>
+<li>Update pipeline with new deals and probability changes</li>
+<li>Flag any cash timing risks (late payments, slipped deals)</li>
+</ol>
+
+<h2>The Pipeline Discipline</h2>
+<p>Your 90-day forecast is only as accurate as your pipeline discipline. Common failures:</p>
+<ul>
+<li>Reps over-state probability to look good</li>
+<li>Sales managers keep dead deals in pipeline</li>
+<li>No standardized probability definitions</li>
+<li>Stage transitions happen without clear criteria</li>
+</ul>
+
+<p>Enforce:</p>
+<ul>
+<li>Stage criteria published and audited monthly</li>
+<li>Deals stuck in stage >30 days auto-flagged for review</li>
+<li>Historical close rate by stage used for probability calibration</li>
+<li>Forecast vs actual variance tracked per rep</li>
+</ul>
+
+<h2>Cash Timing Risks</h2>
+<p>Specific risks to track:</p>
+<ul>
+<li><strong>Customer at risk of late payment:</strong> History of slow pay, recent churn signals</li>
+<li><strong>Large contract renewal in doubt:</strong> Customer communication, usage trends</li>
+<li><strong>Vendor prepayment required:</strong> Annual software renewals, event deposits</li>
+<li><strong>Regulatory payments:</strong> Tax estimates, annual filings</li>
+<li><strong>Operational surprises:</strong> Infrastructure overage, unexpected legal</li>
+</ul>
+
+<h2>Scenario Overlays for 90-Day</h2>
+<p>Even in 90-day forecasts, run light scenarios:</p>
+<ul>
+<li><strong>Best:</strong> All pipeline closes on time. Cash peaks.</li>
+<li><strong>Expected:</strong> Weighted pipeline + typical slippage.</li>
+<li><strong>Worst:</strong> 30% of pipeline slips one month, one top customer delays payment.</li>
+</ul>
+
+<h2>Tools for 90-Day Forecasting</h2>
+<ul>
+<li><strong>Spreadsheet:</strong> Weekly manual update. Works for Seed/Series A.</li>
+<li><strong>CRM integration:</strong> HubSpot or Salesforce weighted pipeline feeds directly into forecast. Reduces manual effort.</li>
+<li><strong>Mosaic / Runway / Pry:</strong> Pull from billing, accounting, and CRM automatically. Worth it at Series B+.</li>
+</ul>
+
+<h2>Reporting Cadence</h2>
+<p>Weekly: leadership team review.<br>
+Monthly: CFO/CEO report with variance analysis.<br>
+Quarterly: board report with 90-day and 12-month views.</p>
+
+<h2>Common Mistakes in 90-Day Forecasting</h2>
+<ul>
+<li>Using 3-month-old pipeline data</li>
+<li>Missing billing schedule for existing customers</li>
+<li>Forgetting about recurring annual items (insurance, audit)</li>
+<li>Not accounting for weekends/holidays in payment timing</li>
+<li>Modeling gross revenue instead of cash collection</li>
+<li>Ignoring sales tax (which you collect but must remit)</li>
+</ul>
+
+<h2>Building the Accuracy Habit</h2>
+<p>Track variance week by week. Weeks 1-4 should be within ±2%. Weeks 5-8 within ±5%. Weeks 9-12 within ±10%. If you're consistently off by more, the model has a systematic issue worth investigating.</p>
+
+<h2>FAQs</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Should I use weighted pipeline or commit-based forecasting?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">For cash flow, use weighted pipeline because it captures expected value. Use commit-based (what reps commit to close) for sales target tracking, which is a different purpose.</p></div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How do I handle a deal that keeps slipping?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Reduce probability each time it slips. After 2 slips, cap probability at 30%. After 3, consider marking as lost. Chronic slippers distort forecasts.</p></div></div>
+</div>
+
+<p>Return to <a href="/blog/saas-cash-flow-forecasting-bible-2026.html">The Cash Flow Forecasting Bible (pillar)</a>. Continue to Bible 9: <a href="/blog/saas-pitch-deck-bible-2026.html">The SaaS Pitch Deck Bible</a>.</p>
+
+</article>
+</body>
+</html>
