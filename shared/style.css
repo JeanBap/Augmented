@@ -1524,6 +1524,52 @@ details[open] .desc-arrow {
   letter-spacing: 1px;
 }
 
+/* Blog Article: Back link */
+.blog-article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--gold-text);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+.blog-article-back:hover {
+  color: var(--gold);
+}
+
+/* Blog Article: Meta strip (category + read time + date) */
+.blog-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-bottom: 24px;
+}
+.blog-article-meta .blog-cat {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--paper);
+  background: var(--gold-text);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.blog-article-meta .blog-time {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mid);
+}
+.blog-article-meta .blog-date {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mid);
+}
+
 .blog-article {
   max-width: 800px;
   margin: 0 auto 64px;
@@ -2764,6 +2810,7 @@ footer a {
   border-radius: 8px;
   text-align: center;
 }
+.newsletter-signup h2,
 .newsletter-signup h3 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -3166,4 +3213,56 @@ details.faq-card summary.faq-q:hover {
   .blog-post-layout li { font-size: 16px; }
   .blog-post-layout .table-of-contents ol { column-count: 1 !important; }
   .blog-post-layout table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ── Sticky mobile CTA bar (Section 13 CRO) ─────────────────────────────
+ * Appears only on blog article pages ([data-page="blog"]) on mobile,
+ * after the user scrolls 400px past the fold. Injected by components.js
+ * and shown/hidden via JS. Hidden on desktop. */
+.mobile-sticky-cta {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobile-sticky-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .mobile-sticky-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  /* Prevent sticky CTA from overlapping newsletter section */
+  body[data-page="blog"] {
+    padding-bottom: 0;
+  }
+}
+
+/* ── Reading progress bar ───────────────────────────────────────────────── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gold);
+  width: 0%;
+  z-index: 1001;
+  transition: width 0.1s linear;
 }

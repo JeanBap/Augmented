@@ -543,6 +543,38 @@
   }
 
   /**
+   * Reading progress bar for blog articles
+   */
+  function initReadingProgress() {
+    if (document.body.getAttribute('data-page') !== 'blog') return;
+    var article = document.querySelector('.blog-article');
+    if (!article) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'reading-progress';
+    bar.setAttribute('role', 'progressbar');
+    bar.setAttribute('aria-label', 'Reading progress');
+    bar.setAttribute('aria-valuenow', '0');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '100');
+    document.body.appendChild(bar);
+
+    function updateProgress() {
+      var articleTop = article.getBoundingClientRect().top + window.scrollY;
+      var articleBottom = articleTop + article.offsetHeight;
+      var scrolled = window.scrollY;
+      var docHeight = articleBottom - articleTop - window.innerHeight;
+      if (docHeight <= 0) return;
+      var pct = Math.min(100, Math.max(0, ((scrolled - articleTop) / docHeight) * 100));
+      bar.style.width = pct + '%';
+      bar.setAttribute('aria-valuenow', Math.round(pct));
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /**
    * Initialize all conversion elements
    */
   function initConversionElements() {
@@ -551,6 +583,7 @@
     try { initBlogParagraphCTA(); } catch (e) { console.error('initBlogParagraphCTA failed', e); }
     try { initBlogSchema(); } catch (e) { console.error('initBlogSchema failed', e); }
     try { initBlogCTAs(); } catch (e) { console.error('initBlogCTAs failed', e); }
+    try { initReadingProgress(); } catch (e) { console.error('initReadingProgress failed', e); }
   }
 
   // Attach Brevo handler immediately (document-level listener, safe before DOM ready)
