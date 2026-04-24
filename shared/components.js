@@ -423,7 +423,7 @@
       "@type": "BlogPosting",
       "headline": title,
       "description": description,
-      "author": {"@type": "Person", "name": "Yanni Papoutsi"},
+      "author": {"@type": "Person", "name": "Yanni Papoutsis"},
       "publisher": {"@type": "Organization", "name": "Raise Ready", "url": "https://www.raisereadybook.com"},
       "url": window.location.href,
       "mainEntityOfPage": window.location.href
