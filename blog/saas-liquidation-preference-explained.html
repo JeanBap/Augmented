@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Liquidation Preferences in SaaS: The Maths Behind Who Gets What</title>
 <meta name="description" content="How liquidation preferences work in practice. 1x non-participating vs 1x participating vs 2x participating at different exit values. Who gets paid when the company sells.">
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html">
@@ -24,7 +24,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Raise Ready">
-<meta property="article:author" content="Yanni Papoutsi">
+<meta property="article:author" content="Yanni Papoutsis">
 <meta property="article:section" content="Deep Dives">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Liquidation Preferences in SaaS: The Maths Behind Who Gets What">
@@ -38,7 +38,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap"></noscript>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" as="style">
 <link rel="stylesheet" href="/shared/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Liquidation Preferences in SaaS: The Maths Behind Who Gets What in a Sale", "description": "How liquidation preferences work. 1x non-participating vs 1x participating vs 2x participating. Exit economics at £10M, £30M, and £80M with worked examples.", "author": {"@type": "Person", "name": "Yanni Papoutski"}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "image": "https://www.raisereadybook.com/og-image.png", "datePublished": "2026-04-19", "dateModified": "2026-04-19", "articleSection": "Deep Dives", "wordCount": 2200, "timeRequired": "PT11M", "inLanguage": "en", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1", ".blog-article-content > h2:first-of-type + p"]}, "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Liquidation Preferences in SaaS: The Maths Behind Who Gets What in a Sale", "description": "How liquidation preferences work. 1x non-participating vs 1x participating vs 2x participating. Exit economics at £10M, £30M, and £80M with worked examples.", "author": {"@type": "Person", "name": "Yanni Papoutsis", "sameAs": ["https://www.linkedin.com/in/yannipapoutsis/", "https://www.amazon.com/stores/Yanni-Papoutsi/author/B0G1KFHW2R"], "knowsAbout": ["Startup Fundraising", "Financial Modeling", "Exit Planning", "Unit Economics", "Cap Tables", "Venture Capital"]}, "publisher": {"@type": "Organization", "name": "Raise Ready", "logo": {"@type": "ImageObject", "url": "https://www.raisereadybook.com/apple-touch-icon.png"}}, "url": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "mainEntityOfPage": "https://www.raisereadybook.com/blog/saas-liquidation-preference-explained.html", "image": "https://www.raisereadybook.com/og-image.png", "datePublished": "2026-04-19", "dateModified": "2026-04-19", "articleSection": "Deep Dives", "wordCount": 2200, "timeRequired": "PT11M", "inLanguage": "en", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".tldr", "h1", ".blog-article-content > h2:first-of-type + p"]}, "isPartOf": {"@type": "Blog", "@id": "https://www.raisereadybook.com/#blog", "name": "Raise Ready Book Blog"}}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -169,20 +169,20 @@
     </section>
     <div class="blog-article-author">
       <strong>About the author</strong>
-      <p>Yanni Papoutsi is the author of the Ready Series and a Finance and Strategy executive with a Master's in Finance and Leadership. Having raised across multiple rounds alongside investors including Creandum, Profounders, B2Ventures, and Boost Capital, and contributed to a successful exit, Yanni works with early-stage founders on financial modelling, fundraising preparation, and marketplace analytics. <a href="https://linkedin.com/in/theyanni/">Connect on LinkedIn</a></p>
+      <p>Yanni Papoutsis is the author of the Ready Series and a Finance and Strategy executive with a Master's in Finance and Leadership. Having raised across multiple rounds alongside investors including Creandum, Profounders, B2Ventures, and Boost Capital, and contributed to a successful exit, Yanni works with early-stage founders on financial modelling, fundraising preparation, and marketplace analytics. <a href="https://linkedin.com/in/theyanni/">Connect on LinkedIn</a></p>
     <h2>Benchmarks: What Good Actually Looks Like</h2>
 <p>SaaS benchmarks vary significantly by segment, go-to-market motion, and contract size. For SMB SaaS with monthly contracts: monthly logo churn of 2-4% is typical, below 2% is excellent. For mid-market SaaS: annual logo churn of 10-15% is normal, below 10% is strong. For enterprise: annual logo churn below 5% is expected.</p>
-<p>Net Revenue Retention is the metric that separates good SaaS from great SaaS. Below 100% means you are shrinking your existing base even as you add new logos — a structural problem. 100-110% is healthy. 120%+ is outstanding and signals genuine product stickiness with expansion opportunity. The best SaaS businesses (Snowflake, Datadog in their growth phase) have sustained NRR above 130%.</p>
+<p>Net Revenue Retention is the metric that separates good SaaS from great SaaS. Below 100% means you are shrinking your existing base even as you add new logos a structural problem. 100-110% is healthy. 120%+ is outstanding and signals genuine product stickiness with expansion opportunity. The best SaaS businesses (Snowflake, Datadog in their growth phase) have sustained NRR above 130%.</p>
 <p>CAC payback period benchmarks: for SMB SaaS, under 12 months is excellent, 12-18 months is acceptable. For mid-market, under 18 months is strong. For enterprise, 24-36 months is normal given longer sales cycles, though enterprise LTV is correspondingly higher. The LTV:CAC ratio below 3:1 is a red flag; 4:1+ is what investors want to see, with a clear path to improvement as the business scales.</p>
-<p>Gross margin is the foundation of all other SaaS metrics. Below 60% suggests infrastructure costs that need engineering attention. 70-75% is standard. 80%+ is excellent and gives you the unit economics to sustain aggressive growth investment without burning excessive capital. Below 50% typically indicates professional services revenue diluting the overall margin — separate and report these lines clearly.</p>
+<p>Gross margin is the foundation of all other SaaS metrics. Below 60% suggests infrastructure costs that need engineering attention. 70-75% is standard. 80%+ is excellent and gives you the unit economics to sustain aggressive growth investment without burning excessive capital. Below 50% typically indicates professional services revenue diluting the overall margin separate and report these lines clearly.</p>
 <h2>How to Present This Metric to Investors</h2>
 <p>Context matters more than the number. A 15% annual churn rate in an SMB market with a $50 ACV and 30-day cancellation windows is very different from 15% churn in an enterprise market with $50K ACVs and 12-month contracts. When you present your metrics, lead with the context that makes your number interpretable: what is your average contract value, what is your median customer tenure, and what is your go-to-market motion.</p>
 <p>Show trends, not snapshots. A metric that was 18 months ago and is 10% today tells a powerful story about systematic improvement. A metric that was 8% 18 months ago and is 10% today raises an immediate question about what changed. Investors model trends forward; give them a trend that supports their thesis.</p>
 <p>Segment before you present. Blended metrics almost always obscure important patterns. If your top-quartile customers have NRR of 140% and your bottom-quartile customers are churning at 30%, the blended number is misleading. Show the segmentation, explain what drives it, and articulate the plan to shift customer mix toward the higher-performing segment. This kind of analytical rigor builds confidence.</p>
 <h2>Worked Example</h2>
 <p>A concrete example clarifies what the mechanics actually mean in practice. Take a startup raising a $2M seed round at a $10M pre-money valuation. Post-money is $12M. The investors receive 16.7% of the company ($2M / $12M). If the founders started with a 10M share option pool and no previous investors, the post-round cap table might look like: Founder A 42%, Founder B 28%, Employee option pool 13.3%, Seed investors 16.7%.</p>
-<p>Now add a SAFE from 18 months earlier: $500K at a $5M cap. When the seed round closes at a $10M pre-money valuation, the SAFE converts at the $5M cap — which means it converts at the more favourable price ($5M cap / shares outstanding) not the current round price. The SAFE holder receives 2x as many shares per dollar as the new seed investors, because the cap protects them. This dilutes the founders more than a simple calculation of the seed round would suggest.</p>
-<p>Running a fully diluted cap table — including all SAFEs, convertible notes, and the fully vested option pool — before you price a new round is essential. Many founders are surprised by how much dilution accumulated SAFEs and notes represent. A cap table model that updates automatically when you enter new round terms is worth building before you enter any serious fundraising conversation.</p>
+<p>Now add a SAFE from 18 months earlier: $500K at a $5M cap. When the seed round closes at a $10M pre-money valuation, the SAFE converts at the $5M cap which means it converts at the more favourable price ($5M cap / shares outstanding) not the current round price. The SAFE holder receives 2x as many shares per dollar as the new seed investors, because the cap protects them. This dilutes the founders more than a simple calculation of the seed round would suggest.</p>
+<p>Running a fully diluted cap table including all SAFEs, convertible notes, and the fully vested option pool before you price a new round is essential. Many founders are surprised by how much dilution accumulated SAFEs and notes represent. A cap table model that updates automatically when you enter new round terms is worth building before you enter any serious fundraising conversation.</p>
 </div>
   </div>
   <section class="newsletter-signup rr-brevo-newsletter">
@@ -194,6 +194,12 @@
     </form>
     <p class="rr-brevo-msg" style="display:none;margin-top:0.75rem;font-size:0.85rem;"></p>
   </section>
+<div class="author-bio" style="margin-top:3rem; padding:1.5rem; border-top:1px solid #e8e4dd; display:flex; gap:1rem; align-items:flex-start;">
+  <div>
+    <p style="font-weight:700; margin:0 0 0.25rem;">Yanni Papoutsis</p>
+    <p style="font-size:0.9rem; color:#6e6a61; margin:0;">Yanni is a startup finance advisor and author of <em>Raise Ready</em>. He has worked with 100+ founders on financial modelling, fundraising strategy, and exit planning. <a href="/about/">Learn more</a>.</p>
+  </div>
+</div>
 </main>
 <div id="site-footer"><footer>
       <div class="footer-links">
