@@ -142,7 +142,7 @@ exports.handler = async function(event) {
         '<p style="font-size:15px;color:#555;line-height:1.6;">Thanks for signing up. The 90-Minute Financial Model Audit checklist is a step-by-step guide to stress-testing your model before investors do.</p>' +
         '<p style="margin:24px 0;"><a href="https://www.raisereadybook.com/assets/90-minute-model-audit.pdf" style="display:inline-block;padding:12px 28px;background:#c8a45a;color:#08080d;text-decoration:none;border-radius:6px;font-weight:bold;font-size:15px;">Download the Checklist (PDF)</a></p>' +
         '<p style="font-size:14px;color:#555;line-height:1.6;">You will also receive weekly insights on fundraising, financial modeling, and exit strategy.</p>' +
-        '<p style="font-size:14px;color:#555;">Yanni Papoutsi<br><a href="https://www.raisereadybook.com" style="color:#c8a45a;">raisereadybook.com</a></p>' +
+        '<p style="font-size:14px;color:#555;">Yanni Papoutsis<br><a href="https://www.raisereadybook.com" style="color:#c8a45a;">raisereadybook.com</a></p>' +
         '</div>'
       );
     }
