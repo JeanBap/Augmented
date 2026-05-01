@@ -58,7 +58,27 @@
     </nav>
     </header></div>
 
-<div id="site-nav"></div>
+<div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
+    <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
+      <div class="nav-tabs">
+        <a href="/book/" class="nav-tab" data-page="books">Books</a>
+        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
+        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
+        <a href="/software/" class="nav-tab" data-page="software">Software</a>
+        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
+        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
+        <a href="/services/" class="nav-tab" data-page="services">Services</a>
+        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
+      </div>
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    </header></div>
 <main class="page-content">
   <nav class="breadcrumb" aria-label="Breadcrumb" style="max-width:760px;margin:1.5rem auto 0;padding:0 1.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:#6e6a61;">
     <a href="/" style="color:#6e6a61;text-decoration:none;">Home</a> &rsaquo;
@@ -195,7 +215,22 @@
       </a>
   </section>
 </main>
-<div id="site-footer"></div>
+<div id="site-footer"><footer>
+      <div class="footer-links">
+        <a href="/book/">Books</a>
+        <a href="/templates/">Templates</a>
+        <a href="/tools/">Tools</a>
+        <a href="/software/">Software</a>
+        <a href="/blog/">Blog</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+      <span>&copy; <span class="footer-year"></span> Raise Ready</span>
+      <span>Fundraising Intelligence for Founders</span>
+    </footer></div>
 <script src="/shared/components.js" defer></script>
 </body>
 </html>
