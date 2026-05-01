@@ -208,7 +208,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -299,8 +299,8 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
             </select>
           </div>
         </div>
-        <button class="tool-btn" onclick="calculateMultiple()">Calculate</button>
-        <button class="tool-btn-reset" onclick="resetMultiple()">Reset</button>
+        <button type="button" class="tool-btn" onclick="calculateMultiple()">Calculate</button>
+        <button type="button" class="tool-btn-reset" onclick="resetMultiple()">Reset</button>
       </div>
     </div>
 

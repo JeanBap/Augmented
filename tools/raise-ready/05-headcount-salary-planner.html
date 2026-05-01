@@ -649,7 +649,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -733,7 +733,7 @@
           </div>
         </div>
 
-        <button onclick="calcHeadcount()">Calculate Team Cost</button>
+        <button type="button" onclick="calcHeadcount()">Calculate Team Cost</button>
 
         <div class="tool-results" id="hc-results">
           <div class="result-grid">
@@ -842,27 +842,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How much should a startup spend on salaries?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How much should a startup spend on salaries?</button>
         <div class="faq-a">Most startups spend 40-60% of revenue on fully-loaded salary costs. Early-stage startups (pre-revenue) allocate their entire burn budget to salary and core operating costs. As you scale and revenue grows, salaries typically decrease as a percentage of revenue.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a benefits burden rate?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a benefits burden rate?</button>
         <div class="faq-a">Benefits burden is the cost of health insurance, payroll taxes, equipment, and overhead per employee, expressed as a percentage of base salary. 25% is typical for early-stage startups offering basic health insurance. Mature companies often run 30-40% depending on location and benefits generosity.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How many engineers should a startup hire?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How many engineers should a startup hire?</button>
         <div class="faq-a">Pre-Seed startups are typically 80-100% technical. Seed-stage startups should be 60-70% engineering. Series A startups shift to 40-50% engineering and add sales, marketing, and ops. The exact ratio depends on your business model, market dynamics, and go-to-market strategy. Product-first businesses hire more engineers early. Sales-heavy businesses shift to sales hiring sooner.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is the average startup salary by role?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is the average startup salary by role?</button>
         <div class="faq-a">Average startup salaries vary by location, stage, and market competition. Engineering: $100K-$180K. Sales: $70K-$120K. Operations/Support: $60K-$90K. Leadership/G&A: $100K-$200K. Early-stage startups typically pay 20-30% below market rates in exchange for equity upside. As you scale, salaries approach market rates.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I plan headcount for fundraising?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I plan headcount for fundraising?</button>
         <div class="faq-a">Include a detailed hiring plan in your financial model showing headcount growth month-by-month. Show how hiring aligns with revenue milestones and growth targets. Investors expect you to hire sparingly until revenue validates your growth model. Overhiring before product-market fit is a red flag that signals poor capital discipline.</div>
       </div>
     </div>

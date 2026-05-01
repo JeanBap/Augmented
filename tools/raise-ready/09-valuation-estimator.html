@@ -589,7 +589,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -647,8 +647,8 @@
           </div>
         </div>
 
-        <button class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
-        <button class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
 
         <div class="tool-results" id="v-results">
           <div class="result-grid">
@@ -752,27 +752,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do you value a startup with no revenue?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do you value a startup with no revenue?</button>
         <div class="faq-a">Pre-revenue startups are valued on team, market opportunity, and product-market fit signals, not ARR multiples. Pre-seed investors typically invest $50K-$500K at valuations of $1M-$10M based entirely on the team's ability to execute and the market size. This calculator won't work for pre-revenue startups—focus instead on comparable rounds and what similar-stage companies have raised.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What ARR multiple should I expect?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What ARR multiple should I expect?</button>
         <div class="faq-a">Revenue multiples vary by stage: Pre-Seed ranges 10-40x ARR, Seed ranges 15-60x, Series A ranges 10-40x, Series B ranges 8-30x. Your growth rate and gross margin adjust these baselines significantly—high-growth, high-margin startups get premium multiples; slow-growth, low-margin startups get discounts. Use this calculator to adjust for your specific metrics.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How does growth rate affect valuation?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How does growth rate affect valuation?</button>
         <div class="faq-a">Growth rate is a primary valuation driver. Startups growing 300%+ YoY get a 1.3x multiple premium. Startups at 100-200% growth get baseline multiples. Startups below 50% growth get a 0.6x discount. This reflects investor willingness to pay premium prices for high-growth businesses. A 150% growth rate might be worth 2x what 50% growth is worth, all else equal.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a pre-money vs post-money valuation?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a pre-money vs post-money valuation?</button>
         <div class="faq-a">Pre-money valuation is what your company is worth before new investment. Post-money valuation = pre-money + investment amount. Example: if you raise $2M at a $8M pre-money valuation, the post-money is $10M and the investor owns 20% ($2M/$10M). This calculator gives you pre-money estimates, which is what you negotiate directly with investors.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors determine startup valuations?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors determine startup valuations?</button>
         <div class="faq-a">Investors start with ARR multiples as a baseline, then adjust for growth rate, gross margin, market size, competitive positioning, team quality, and product-market fit signals. They also look at comparable rounds (what did similar companies raise at what valuation?) and current market sentiment. In competitive markets, valuations go up; in cold markets, they compress.</div>
       </div>
     </div>

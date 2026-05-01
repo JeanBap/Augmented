@@ -749,7 +749,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -805,14 +805,14 @@
         <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 1rem 0 0.5rem;">Toggle scenarios to model changes:</p>
 
         <div class="tool-toggle-row">
-          <button class="tool-toggle" data-mod="hire" onclick="toggleScenario(this); calcRunway()">+ New Hire ($10K/mo)</button>
-          <button class="tool-toggle" data-mod="cut" onclick="toggleScenario(this); calcRunway()">- Cut 1 Head ($8K/mo)</button>
-          <button class="tool-toggle" data-mod="churn" onclick="toggleScenario(this); calcRunway()">+ Churn Spike ($5K/mo)</button>
-          <button class="tool-toggle" data-mod="deal" onclick="toggleScenario(this); calcRunway()">+ Close Deal ($10K/mo)</button>
-          <button class="tool-toggle" data-mod="halfmktg" onclick="toggleScenario(this); calcRunway()">- Halve Marketing</button>
+          <button type="button" class="tool-toggle" data-mod="hire" onclick="toggleScenario(this); calcRunway()">+ New Hire ($10K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="cut" onclick="toggleScenario(this); calcRunway()">- Cut 1 Head ($8K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="churn" onclick="toggleScenario(this); calcRunway()">+ Churn Spike ($5K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="deal" onclick="toggleScenario(this); calcRunway()">+ Close Deal ($10K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="halfmktg" onclick="toggleScenario(this); calcRunway()">- Halve Marketing</button>
         </div>
 
-        <button onclick="calcRunway()">Calculate Runway</button>
+        <button type="button" onclick="calcRunway()">Calculate Runway</button>
 
         <div class="tool-results" id="rw-results">
           <div class="result-grid">
@@ -904,27 +904,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How much runway should a startup have?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How much runway should a startup have?</button>
         <div class="faq-a">Most investors want to see 12-18 months of runway before you start fundraising. This gives you time to close a round (3-6 months) without running into critical cash shortfall. Less than 12 months puts you in a weaker negotiating position. Below 6 months is critical—you should be in fundraise mode or cutting costs.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good burn rate?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good burn rate?</button>
         <div class="faq-a">Burn rate depends on stage and growth. Seed-stage companies burning $50-150K/month are common. Series A companies often burn $150-500K/month as they scale. The key metric isn't the absolute burn—it's burn multiple. Your net burn divided by net new ARR should be below 3x for healthy unit economics.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I calculate burn rate?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I calculate burn rate?</button>
         <div class="faq-a">Monthly burn rate = total monthly expenses minus monthly revenue. It's your net monthly cash outflow. Calculate this from your actual P&L each month. If you burned $100K in expenses and made $30K in revenue, your burn is $70K. Track this consistently every month to see trends.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">When should I start raising based on runway?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">When should I start raising based on runway?</button>
         <div class="faq-a">Start fundraising when you have 12-18 months of runway remaining. Below 12 months, you're rushed and investors can sense it. Below 6 months, you're in crisis mode and investors will use it to negotiate hard terms or pass entirely. If you have less than 6 months, focus on extending runway through revenue or cost cuts first.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between gross and net burn?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is the difference between gross and net burn?</button>
         <div class="faq-a">Gross burn is your total monthly expenses. Net burn is expenses minus revenue. Net burn is what matters for runway—it's your actual cash outflow each month. If you spend $100K and make $30K, gross burn is $100K but net burn is $70K. The calculator uses net burn because that's what actually depletes your cash.</div>
       </div>
     </div>

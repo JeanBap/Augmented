@@ -750,7 +750,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -809,7 +809,7 @@
         <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--mid); margin: 1.5rem 0 0.5rem;"><strong>Matrix Explanation</strong></p>
         <p style="font-family: var(--sans); font-size: 0.92rem; color: var(--dim); margin-bottom: 1.5rem;">The table will show: <strong>rows</strong> = revenue change (-30% to +30%), <strong>columns</strong> = burn change (-30% to +30%)</p>
 
-        <button onclick="calcSensitivity()">Run Sensitivity</button>
+        <button type="button" onclick="calcSensitivity()">Run Sensitivity</button>
 
         <div class="tool-results" id="sens-results">
           <div id="sens-table-wrap"></div>
@@ -891,27 +891,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is sensitivity analysis for startups?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is sensitivity analysis for startups?</button>
         <div class="faq-a">Sensitivity analysis shows how changes in key variables (like revenue and burn) affect your financial outcomes like runway and cash flow. It identifies which variables have the biggest impact on your business and helps you understand which assumptions are most critical to your success.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I stress test my financial model?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I stress test my financial model?</button>
         <div class="faq-a">Stress testing means adjusting your assumptions downward to see what happens to key outcomes. Use a sensitivity matrix to test how runway changes if revenue drops 10-30% or burn increases 10-30%. This reveals your breaking point and helps you identify what safeguards you need (cost cuts, more capital, etc.).</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What variables should I test in my model?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What variables should I test in my model?</button>
         <div class="faq-a">Start with revenue and burn—these have the largest impact on runway and cash flow. Then test customer acquisition cost (CAC), which affects customer acquisition revenue. Test churn rate, which affects retention and growth. Test pricing, which affects ARR per customer. The highest-impact variables are your key business levers.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors use sensitivity analysis?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors use sensitivity analysis?</button>
         <div class="faq-a">Investors use sensitivity matrices to understand which assumptions are critical to your model and identify whether your business can survive scenarios where assumptions change. If your model only works if growth is 20% forever, that's a red flag. If runway survives a 30% revenue drop, that's a sign of resilience. Investors care about model robustness.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What does a revenue vs burn matrix show?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What does a revenue vs burn matrix show?</button>
         <div class="faq-a">A revenue vs burn matrix shows your runway (or cash flow) across combinations of revenue change and burn change. Rows show revenue shifts (-30% to +30%). Columns show burn shifts (-30% to +30%). Green cells are comfortable runway (18+ months). Yellow is caution (12-17 months). Red is danger (<12 months). "Inf" means revenue exceeds burn (profitable).</div>
       </div>
     </div>

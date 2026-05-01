@@ -422,7 +422,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -440,13 +440,13 @@
 
   <!-- Filter Bar -->
   <div class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" data-filter="all" onclick="filterTools('all', this)">All</button>
-    <button class="filter-btn" data-filter="readiness" onclick="filterTools('readiness', this)">Readiness</button>
-    <button class="filter-btn" data-filter="financial-model" onclick="filterTools('financial-model', this)">Financial Model</button>
-    <button class="filter-btn" data-filter="metrics" onclick="filterTools('metrics', this)">Metrics</button>
-    <button class="filter-btn" data-filter="fundraising" onclick="filterTools('fundraising', this)">Fundraising</button>
-    <button class="filter-btn" data-filter="cap-table" onclick="filterTools('cap-table', this)">Cap Table</button>
-    <button class="filter-btn" data-filter="exit" onclick="filterTools('exit', this)">Exit</button>
+    <button type="button" class="filter-btn active" data-filter="all" onclick="filterTools('all', this)">All</button>
+    <button type="button" class="filter-btn" data-filter="readiness" onclick="filterTools('readiness', this)">Readiness</button>
+    <button type="button" class="filter-btn" data-filter="financial-model" onclick="filterTools('financial-model', this)">Financial Model</button>
+    <button type="button" class="filter-btn" data-filter="metrics" onclick="filterTools('metrics', this)">Metrics</button>
+    <button type="button" class="filter-btn" data-filter="fundraising" onclick="filterTools('fundraising', this)">Fundraising</button>
+    <button type="button" class="filter-btn" data-filter="cap-table" onclick="filterTools('cap-table', this)">Cap Table</button>
+    <button type="button" class="filter-btn" data-filter="exit" onclick="filterTools('exit', this)">Exit</button>
   </div>
 
   <div class="no-results" id="no-results">No tools match this filter.</div>
@@ -524,8 +524,8 @@
             <input type="number" id="r-pmf" placeholder="3" min="1" max="5">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcReadiness()">Score My Readiness</button>
-        <button class="tool-btn-reset" onclick="resetTool('readiness')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcReadiness()">Score My Readiness</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('readiness')">Reset</button>
         <div class="tool-results" id="r-results">
           <div class="result-bar"><div class="result-bar-fill" id="r-bar"></div></div>
           <div class="result-grid">
@@ -575,14 +575,14 @@
         </div>
         <p class="tool-card-desc" style="padding:0">Toggle scenarios:</p>
         <div class="tool-toggle-row">
-          <button class="tool-toggle" data-mod="hire" onclick="toggleScenario(this)">+ New Hire ($10K/mo)</button>
-          <button class="tool-toggle" data-mod="cut" onclick="toggleScenario(this)">- Cut 1 Head ($8K/mo)</button>
-          <button class="tool-toggle" data-mod="churn" onclick="toggleScenario(this)">+ Churn Spike ($5K/mo)</button>
-          <button class="tool-toggle" data-mod="deal" onclick="toggleScenario(this)">+ Close Deal ($10K/mo)</button>
-          <button class="tool-toggle" data-mod="halfmktg" onclick="toggleScenario(this)">- Halve Marketing</button>
+          <button type="button" class="tool-toggle" data-mod="hire" onclick="toggleScenario(this)">+ New Hire ($10K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="cut" onclick="toggleScenario(this)">- Cut 1 Head ($8K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="churn" onclick="toggleScenario(this)">+ Churn Spike ($5K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="deal" onclick="toggleScenario(this)">+ Close Deal ($10K/mo)</button>
+          <button type="button" class="tool-toggle" data-mod="halfmktg" onclick="toggleScenario(this)">- Halve Marketing</button>
         </div>
-        <button class="tool-btn" onclick="calcRunway()">Calculate Runway</button>
-        <button class="tool-btn-reset" onclick="resetTool('runway')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcRunway()">Calculate Runway</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('runway')">Reset</button>
         <div class="tool-results" id="rw-results">
           <div class="result-grid">
             <div class="result-item">
@@ -643,8 +643,8 @@
             <input type="number" id="ue-nrr" placeholder="e.g. 100" step="0.1">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
-        <button class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
         <div class="tool-results" id="ue-results">
           <div class="result-grid">
             <div class="result-item">
@@ -841,8 +841,8 @@
             <input type="number" id="rev-expansion" placeholder="e.g. 2" step="0.1">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
-        <button class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
         <div class="tool-results" id="rev-results">
           <div class="result-grid">
             <div class="result-item">
@@ -925,8 +925,8 @@
             <input type="number" id="hc-burden" placeholder="e.g. 25" step="1">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcHeadcount()">Calculate Team Cost</button>
-        <button class="tool-btn-reset" onclick="resetTool('headcount')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcHeadcount()">Calculate Team Cost</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('headcount')">Reset</button>
         <div class="tool-results" id="hc-results">
           <div class="result-grid">
             <div class="result-item">
@@ -994,8 +994,8 @@
             <input type="number" id="pl-other" placeholder="e.g. 2000">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcPnL()">Generate P&L</button>
-        <button class="tool-btn-reset" onclick="resetTool('pnl')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcPnL()">Generate P&L</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('pnl')">Reset</button>
         <div class="tool-results" id="pl-results">
           <div class="result-grid">
             <div class="result-item">
@@ -1067,8 +1067,8 @@
             <input type="number" id="sc-months" placeholder="12" value="12" min="3" max="36">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcScenario()">Compare Scenarios</button>
-        <button class="tool-btn-reset" onclick="resetTool('scenario')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcScenario()">Compare Scenarios</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('scenario')">Reset</button>
         <div class="tool-results" id="sc-results">
           <div id="sc-table-wrap"></div>
           <div class="result-note" id="sc-note"></div>
@@ -1110,8 +1110,8 @@
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0">The table will show: <strong>rows</strong> = revenue change (-30% to +30%), <strong>columns</strong> = burn change (-30% to +30%)</p>
-        <button class="tool-btn" onclick="calcSensitivity()">Run Sensitivity</button>
-        <button class="tool-btn-reset" onclick="resetTool('sensitivity')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcSensitivity()">Run Sensitivity</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('sensitivity')">Reset</button>
         <div class="tool-results" id="sens-results">
           <div id="sens-table-wrap"></div>
           <div class="result-note" id="sens-note"></div>
@@ -1154,8 +1154,8 @@
             <input type="number" id="v-margin" placeholder="e.g. 75" step="0.1">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
-        <button class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('valuation')">Reset</button>
         <div class="tool-results" id="v-results">
           <div class="result-grid">
             <div class="result-item">
@@ -1206,8 +1206,8 @@
             <input type="number" id="d-pool" placeholder="e.g. 10" step="0.1">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
-        <button class="tool-btn-reset" onclick="resetTool('dilution')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('dilution')">Reset</button>
         <div class="tool-results" id="d-results">
           <div class="result-grid">
             <div class="result-item">
@@ -1273,8 +1273,8 @@
             <input type="number" id="s-nextinv" placeholder="e.g. 2000000">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcSafe()">Compare Dilution</button>
-        <button class="tool-btn-reset" onclick="resetTool('safe')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcSafe()">Compare Dilution</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('safe')">Reset</button>
         <div class="tool-results" id="s-results">
           <div class="result-grid">
             <div class="result-item">
@@ -1344,8 +1344,8 @@
             <input type="number" id="md-pool" placeholder="e.g. 10" step="0.1" value="10">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcMultiDilution()">Track Dilution</button>
-        <button class="tool-btn-reset" onclick="resetTool('multi-dilution')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcMultiDilution()">Track Dilution</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('multi-dilution')">Reset</button>
         <div class="tool-results" id="md-results">
           <div id="md-table-wrap"></div>
           <div class="result-note" id="md-note"></div>
@@ -1414,8 +1414,8 @@
             <input type="number" id="pd-design" min="1" max="5" placeholder="3">
           </div>
         </div>
-        <button class="tool-btn" onclick="calcDeckScore()">Score My Deck</button>
-        <button class="tool-btn-reset" onclick="resetTool('deck-score')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcDeckScore()">Score My Deck</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('deck-score')">Reset</button>
         <div class="tool-results" id="pd-results">
           <div class="result-bar"><div class="result-bar-fill" id="pd-bar"></div></div>
           <div class="result-grid">
@@ -1481,8 +1481,8 @@
             </select>
           </div>
         </div>
-        <button class="tool-btn" onclick="calcExit()">Estimate Proceeds</button>
-        <button class="tool-btn-reset" onclick="resetTool('exit-calc')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcExit()">Estimate Proceeds</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('exit-calc')">Reset</button>
         <div class="tool-results" id="e-results">
           <div class="result-grid">
             <div class="result-item">
@@ -1569,7 +1569,7 @@
   <!-- Email Gate Modal -->
   <div id="email-gate" class="gate-overlay hidden">
     <div class="gate-modal">
-      <button class="gate-close" onclick="closeGate()">&times;</button>
+      <button type="button" class="gate-close" onclick="closeGate()">&times;</button>
       <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,164,90,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.3rem;">&#9733;</div>
       <h3>Save Your Results</h3>
       <p>Enter your email to save your results and receive stage-specific benchmarks.</p>
@@ -1579,7 +1579,7 @@
       </div>
       <div id="gate-form-fields">
         <input id="gate-email" class="gate-input" type="email" placeholder="you@company.com">
-        <button class="gate-submit" onclick="submitGate()">Save My Results</button>
+        <button type="button" class="gate-submit" onclick="submitGate()">Save My Results</button>
       </div>
       <div class="gate-fine">No spam. Unsubscribe anytime.</div>
     </div>

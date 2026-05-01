@@ -215,7 +215,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -229,7 +229,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 </div>
 <div class="tool-container">
 <div class="section"><h2>Your Situation</h2><div style="margin-bottom:16px"><label style="font-weight:bold">Do you have dependants who rely on your income?</label><select id="dep" style="margin-top:4px"><option value="0">No</option><option value="1" selected>Yes, 1-2</option><option value="2">Yes, 3+</option></select></div><div style="margin-bottom:16px"><label style="font-weight:bold">Employment status?</label><select id="emp" style="margin-top:4px"><option value="0">Employed (employer benefits)</option><option value="1" selected>Self-employed</option><option value="2">Unemployed/transitioning</option></select></div><div style="margin-bottom:16px"><label style="font-weight:bold">Do you rent or own?</label><select id="home" style="margin-top:4px"><option value="0">Rent</option><option value="1" selected>Own (with mortgage)</option><option value="2">Own (no mortgage)</option></select></div><div style="margin-bottom:16px"><label style="font-weight:bold">Do you own a car?</label><select id="car" style="margin-top:4px"><option value="0">No</option><option value="1" selected>Yes, worth > $5K</option><option value="2">Yes, worth < $5K</option></select></div><div style="margin-bottom:16px"><label style="font-weight:bold">Annual income range?</label><select id="inc" style="margin-top:4px"><option value="0">Under $50K</option><option value="1" selected>$50K-$150K</option><option value="2">Over $150K</option></select></div><div style="margin-bottom:16px"><label style="font-weight:bold">Do you have significant savings/assets?</label><select id="save" style="margin-top:4px"><option value="0">Under $10K</option><option value="1" selected>$10K-$100K</option><option value="2">Over $100K</option></select></div>
-<button onclick="calc()">Get Recommendations</button>
+<button type="button" onclick="calc()">Get Recommendations</button>
 </div><div id="res"></div></div>
 </div>
 

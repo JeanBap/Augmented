@@ -734,7 +734,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -798,8 +798,8 @@
           </div>
         </div>
 
-        <button class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
-        <button class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('unit-econ')">Reset</button>
 
         <div class="tool-results" id="ue-results">
           <div class="result-grid">
@@ -1037,27 +1037,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good LTV:CAC ratio?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good LTV:CAC ratio?</button>
         <div class="faq-a">A healthy LTV:CAC ratio is 3:1 or above. This means for every dollar spent acquiring a customer, they generate three dollars in lifetime value. Ratios between 1-3x are common at early stages but need improvement for Series A. Below 1x indicates unsustainable unit economics—you're losing money on every customer.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I calculate customer acquisition cost?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I calculate customer acquisition cost?</button>
         <div class="faq-a">CAC is calculated by dividing total acquisition spend by the number of new customers acquired in a period. For example, if you spend $50,000 on marketing and acquire 25 customers, your CAC is $2,000 per customer. Include all sales and marketing costs in the acquisition spend—salaries, tools, advertising, events, etc.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is net revenue retention?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is net revenue retention?</button>
         <div class="faq-a">Net Revenue Retention (NRR) measures revenue from existing customers, including churn losses, expansion revenue, and upsells. An NRR of 110% means you're generating 110% of the prior period's revenue from the same cohort—you're growing even without adding new customers. NRR above 100% is a key signal of product-market fit and is highly valued by investors.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate unit economics?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate unit economics?</button>
         <div class="faq-a">Investors focus on three metrics: LTV:CAC ratio (3x+ is healthy), CAC payback period (under 12 months is excellent), and gross margin (60%+ for SaaS). Combined, these show whether your business model is scalable. A company with weak unit economics can't raise because growth burns cash without building sustainable profit.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good CAC payback period?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good CAC payback period?</button>
         <div class="faq-a">CAC payback periods under 12 months are considered excellent. 12-18 months is acceptable for Seed-stage startups but tight for Series A. Over 18 months is a red flag for investors—it signals you're not efficiently turning customer spend into profit.</div>
       </div>
     </div>

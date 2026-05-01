@@ -589,7 +589,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -642,8 +642,8 @@
           </div>
         </div>
 
-        <button class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
-        <button class="tool-btn-reset" onclick="resetTool('dilution')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('dilution')">Reset</button>
 
         <div class="tool-results" id="d-results">
           <div class="result-grid">
@@ -754,27 +754,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How much equity do founders lose each round?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How much equity do founders lose each round?</button>
         <div class="faq-a">Typical dilution per round: Pre-Seed 10-15%, Seed 15-25%, Series A 20-30%, Series B 15-25%. Most successful founders maintain 15-30% ownership after all rounds through Series B. The exact percentage depends on your valuation relative to the check size and your option pool size at that round.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good option pool size?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good option pool size?</button>
         <div class="faq-a">Standard option pools are 10-20% of fully diluted shares. Early-stage startups typically use 10-15%. Growth-stage companies raising Series B or later might expand to 15-20% to attract senior talent. Option pool size should match your hiring plan for the next 12-24 months and be competitive with similar-stage companies in your market.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How does dilution work in startup funding?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How does dilution work in startup funding?</button>
         <div class="faq-a">Each funding round creates new shares sold to investors at a negotiated price per share. Your ownership percentage shrinks because new shares are issued and distributed. Example: if you own 100% of 1M shares and issue 250K new shares to an investor, you still own 1M shares but now own only 80% (1M out of 1.25M total).</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What ownership should founders have after Series A?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What ownership should founders have after Series A?</button>
         <div class="faq-a">After Series A, healthy founder ownership is 50-70% fully diluted, depending on your stage and dilution from prior rounds. If you started at 100% and had 20% Seed dilution and 25% Series A dilution, you'd be at roughly 60% ownership. This leaves room for Series B and employee equity while maintaining founder control.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I minimize dilution?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I minimize dilution?</button>
         <div class="faq-a">Minimize dilution by: (1) raising at higher valuations (grow faster to justify it), (2) raising smaller checks in early rounds and bigger checks in later rounds, (3) negotiating lower option pool sizes if you don't have aggressive hiring plans, and (4) deferring fundraising until you have stronger metrics that justify higher valuations. Every round is a tradeoff between capital and dilution.</div>
       </div>
     </div>

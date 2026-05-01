@@ -215,7 +215,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -236,7 +236,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <option value="married">Married Filing Jointly</option>
 </select></div>
 </div>
-<button onclick="calc()">Visualise Brackets</button>
+<button type="button" onclick="calc()">Visualise Brackets</button>
 </div>
 <div class="chart-wrap"><canvas id="chart"></canvas></div>
 <div style="background:#1B2A4A;border-radius:10px;padding:1rem;margin:1.25rem 0;max-width:800px;"><canvas id="taxBreakdownChart" style="max-height:280px;"></canvas></div>

@@ -729,7 +729,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -782,8 +782,8 @@
           </div>
         </div>
 
-        <button class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
-        <button class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
+        <button type="button" class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
+        <button type="button" class="tool-btn-reset" onclick="resetTool('revenue-model')">Reset</button>
 
         <div class="tool-results" id="rev-results">
           <div class="result-grid">
@@ -890,27 +890,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I build a revenue model for my startup?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I build a revenue model for my startup?</button>
         <div class="faq-a">A revenue model projects your MRR (monthly recurring revenue) forward by applying growth, churn, and expansion rates each month. Start with your current MRR, define your monthly growth rate (new customer revenue), monthly churn rate (lost revenue), and expansion rate (upsells from existing customers). Apply these rates month-to-month to forecast 12-18 months of revenue. This model becomes the foundation of your financial projections shown to investors.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good MRR growth rate?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good MRR growth rate?</button>
         <div class="faq-a">Growth rates vary by stage: Pre-Seed founders should demonstrate 15-20% MoM growth to prove traction, Seed-stage startups 10-15% MoM to sustain momentum, Series A companies 7-10% MoM to show efficient scaling, and Series B companies 5-7% MoM to maintain growth at larger scale. Higher growth at early stages proves product-market fit. At scale, consistent single-digit growth still impresses investors.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How does churn affect revenue projections?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How does churn affect revenue projections?</button>
         <div class="faq-a">Churn compounds monthly and is your primary headwind to growth. A 5% monthly churn rate means you lose 5% of your customer base every month. Even with 10% new revenue growth, if churn is 7%, your net growth is only 3% monthly—your business barely grows. Keep churn low and model it accurately. Enterprise SaaS targets 1-2% churn. SaaS generally targets 3-5%. Above 5% is a serious problem.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is expansion revenue?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is expansion revenue?</button>
         <div class="faq-a">Expansion revenue comes from upsells, add-ons, and cross-sells to existing customers. For example, a $1,000/month customer buying $100 of add-ons generates $100 monthly expansion revenue. Expansion rates of 2-5% monthly indicate a strong product with good customer satisfaction. Expansion revenue is the highest-margin growth because you don't pay CAC again and don't depend on new customer acquisition.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate revenue models?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate revenue models?</button>
         <div class="faq-a">Investors focus on four things: (1) Growth rate—are you accelerating or decelerating? (2) Churn—is it low and stable? (3) Expansion—is your existing customer base growing in value? (4) Realistic assumptions—do your numbers align with industry benchmarks? A model showing stable, healthy growth with low churn and positive expansion signals a business with durable, scalable unit economics.</div>
       </div>
     </div>

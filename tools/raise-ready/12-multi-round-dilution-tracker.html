@@ -700,7 +700,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -774,8 +774,8 @@
           </div>
         </div>
 
-        <button onclick="calcMultiDilution()">Track Dilution</button>
-        <button style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('multi-dilution')">Reset</button>
+        <button type="button" onclick="calcMultiDilution()">Track Dilution</button>
+        <button type="button" style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('multi-dilution')">Reset</button>
 
         <div class="tool-results" id="md-results">
           <div id="md-table-wrap"></div>
@@ -880,27 +880,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How much equity do founders have after Series B?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How much equity do founders have after Series B?</button>
         <div class="faq-a">Typical founder ownership after Series B is 25-40%, depending on how many SAFEs converted, option pool size, and founders selling shares to investors along the way. This varies widely by company. Some founders own 50%+ after Series B (usually founders who grew capital-efficiently). Others own 15-20% (usually founders who raised larger rounds or diluted significantly). The important thing: founders with even 15-30% ownership often exit profitably if the company scales.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do option pools affect dilution?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do option pools affect dilution?</button>
         <div class="faq-a">Option pools dilute founder ownership because they're typically allocated as new shares (increasing the company's total shares outstanding) before new investors convert. This shrinks founder ownership as a percentage of the whole. A 10% option pool at Seed dilutes founders by 10% right there. Then option pools at Series A and B compound the effect. Total cumulative dilution from three 10% option pools is roughly 27% (not 30%, because each pool is applied to the shrinking founder ownership from the previous round).</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">Is 10% option pool standard?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">Is 10% option pool standard?</button>
         <div class="faq-a">10% is common, especially at Seed and Series A. Some Seed rounds use 12-15% to attract better early employees. Series B rounds sometimes shrink to 8-10%. Negotiate aggressively. VCs often ask for 15% knowing founders will push back to 10% or 8%. Smaller pools are better for founders—every point counts across multiple rounds.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How can founders minimize cumulative dilution?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How can founders minimize cumulative dilution?</button>
         <div class="faq-a">Five strategies: (1) Raise less capital per round—capital efficiency is your biggest lever. (2) Grow revenue aggressively—higher revenue justifies higher valuations and lower dilution percentages. (3) Negotiate lower option pools—push for 8% or less. (4) Consolidate SAFEs before priced rounds—fewer instruments means less dilution stacking. (5) Keep committed co-founders—replacing people later costs more ownership than building together from the start.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is anti-dilution protection?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is anti-dilution protection?</button>
         <div class="faq-a">Anti-dilution protection allows investors to buy more shares at preferential prices if a future round happens at a lower valuation. There are two types: broad-based weighted average (founder-friendly—protects investors but not excessively) and full ratchet (harsh on founders—investors get lots of free shares if valuation drops). Most Series A/B rounds include broad-based anti-dilution. Avoid full ratchet at all costs—it can wipe out founder ownership if a down round happens.</div>
       </div>
     </div>

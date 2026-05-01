@@ -723,7 +723,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -821,7 +821,7 @@
           </div>
         </div>
 
-        <button onclick="calcReadiness()">Score My Readiness</button>
+        <button type="button" onclick="calcReadiness()">Score My Readiness</button>
 
         <div class="tool-results" id="r-results">
           <div class="result-bar"><div class="result-bar-fill" id="r-bar"></div></div>
@@ -910,27 +910,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a funding readiness score?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a funding readiness score?</button>
         <div class="faq-a">A funding readiness score evaluates your startup across 10 key metrics that professional investors assess: ARR, growth rate, gross margin, net revenue retention, burn multiple, CAC payback, team strength, and product-market fit signals. You get a single 0-100 score that tells you if you're ready to fundraise, close to ready, or should focus on building first.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What ARR do I need for Series A?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What ARR do I need for Series A?</button>
         <div class="faq-a">Most Series A investors expect ARR between $500K-$2M with 12%+ monthly growth. This isn't a hard floor—some startups raise Series A below $500K if they have exceptional growth or product-market fit signals. But $500K+ ARR and double-digit growth is the consensus benchmark.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good burn multiple?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good burn multiple?</button>
         <div class="faq-a">Burn multiple measures how much you burn to acquire net new ARR. A burn multiple of 1-1.5x is excellent. 2-3x is acceptable. Above 3x signals inefficiency. Lower burn multiples suggest you're spending capital wisely to drive growth, which investors reward.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate startups?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate startups?</button>
         <div class="faq-a">Professional investors evaluate startups across traction (ARR and growth), unit economics (CAC payback, LTV:CAC ratio, burn multiple), team strength and experience, product-market fit signals (NRR above 100%, retention metrics), market size, competitive positioning, and fundraising momentum. This calculator focuses on the quantitative metrics; qualitative factors like team and market come through the team strength and PMF ratings.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">When should I start fundraising?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">When should I start fundraising?</button>
         <div class="faq-a">Start fundraising when you have 12-18 months of runway and a readiness score of 50+. Most rounds take 3-6 months to close, so you want enough buffer to weather the fundraise timeline. If you have less than 6 months of runway, focus on extending your runway first—you'll be in a weaker negotiating position in that scenario.</div>
       </div>
     </div>

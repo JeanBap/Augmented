@@ -215,7 +215,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -235,7 +235,7 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div><label>Monthly Survival Spending (bare minimum) ($)</label><input type="number" id="surv" value="2800"></div>
 <div><label>Expected Monthly Income During Startup ($)</label><input type="number" id="inc" value="0"></div>
 </div>
-<button onclick="calc()">Calculate Runway</button>
+<button type="button" onclick="calc()">Calculate Runway</button>
 </div><div id="res"></div></div>
 </div>
 

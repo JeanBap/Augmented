@@ -729,7 +729,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -801,7 +801,7 @@
           </div>
         </div>
 
-        <button onclick="calcExit()">Estimate Proceeds</button>
+        <button type="button" onclick="calcExit()">Estimate Proceeds</button>
 
         <div class="tool-results" id="e-results">
           <div class="result-grid">
@@ -899,27 +899,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How are startup exit proceeds distributed?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How are startup exit proceeds distributed?</button>
         <div class="faq-a">Exit proceeds are distributed according to the company's cap table and term sheet agreements. Preferred shareholders (investors) get paid according to their liquidation preference. Common shareholders (founders and employees) get whatever remains. The type of preferred stock (participating vs. non-participating) determines if investors get their preference AND a pro-rata share of remaining proceeds, or just the better of the two.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a liquidation preference?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a liquidation preference?</button>
         <div class="faq-a">A liquidation preference is an investor protection that guarantees they get paid first in an exit before common shareholders. A 1x preference means they get their investment amount first. A 2x preference means they get double their investment first. Non-participating preferred stock means they choose the better outcome: their preference OR their pro-rata share. Participating preferred stock means they get BOTH.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is participating preferred stock?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is participating preferred stock?</button>
         <div class="faq-a">Participating preferred allows investors to receive their liquidation preference AND also participate in remaining proceeds as if they were common shareholders. This is a double-dip scenario. In a $50M exit where investors invested $10M with 1x participating, they get $10M preference plus their pro-rata share of the remaining $40M. Capped participation limits this total benefit (usually to 3x returns). Full participation has no cap.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How much do founders make in an exit?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How much do founders make in an exit?</button>
         <div class="faq-a">Founder take-home depends on exit valuation, founder ownership percentage, and investor liquidation preferences and participation. In a $50M exit where you own 35% with 1x standard preferences, you might make 60-70% of proceeds. In the same exit with 2x participating, you might make 20-30%. The gap is massive, which is why preference and participation terms matter as much as valuation.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between 1x and 2x liquidation preference?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is the difference between 1x and 2x liquidation preference?</button>
         <div class="faq-a">A 1x preference means investors get their investment back before anyone else. A 2x preference means they get double their investment. In a $50M exit after raising $10M: with 1x, investors take the first $10M and common shareholders split the remaining $40M. With 2x, investors take the first $20M and common shareholders split the remaining $30M. Higher multiples protect investors in smaller exits but can eliminate founder upside entirely in mediocre outcomes.</div>
       </div>
     </div>

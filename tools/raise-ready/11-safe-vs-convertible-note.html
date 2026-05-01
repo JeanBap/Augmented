@@ -707,7 +707,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -775,8 +775,8 @@
           </div>
         </div>
 
-        <button onclick="calcSafe()">Compare Dilution</button>
-        <button style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('safe')">Reset</button>
+        <button type="button" onclick="calcSafe()">Compare Dilution</button>
+        <button type="button" style="background: var(--mid); margin-top: 0.5rem;" onclick="resetTool('safe')">Reset</button>
 
         <div class="tool-results" id="s-results">
           <div class="result-grid">
@@ -925,27 +925,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between a SAFE and convertible note?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is the difference between a SAFE and convertible note?</button>
         <div class="faq-a">A SAFE (Simple Agreement for Future Equity) is a straightforward instrument without interest or maturity date. It converts to equity at the next funding round. A convertible note is debt that also converts to equity, but it carries an interest rate (typically 2-8%) and a maturity date (usually 2 years). If you don't raise another round by maturity, the note becomes actual debt you owe.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a post-money SAFE?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a post-money SAFE?</button>
         <div class="faq-a">A post-money SAFE gives the investor a fixed ownership percentage that doesn't change if you issue additional SAFEs. It's called "post-money" because the valuation cap is calculated on the post-money valuation (value after this investment). Post-money SAFEs are the modern default since 2020 because they're simpler to explain and protect earlier investors from later dilution.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How does a valuation cap work?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How does a valuation cap work?</button>
         <div class="faq-a">A valuation cap sets a maximum price per share at conversion. When your next round happens, if the per-share price is higher than the cap price, the SAFE investor converts at the cap price and gets more shares. If the per-share price is lower, they convert at the actual round price. The cap protects early investors from huge valuations between rounds while rewarding founders who raise at high valuations.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">Should I use a discount or cap?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">Should I use a discount or cap?</button>
         <div class="faq-a">Use both. Most SAFEs and convertible notes include both a valuation cap and a discount rate. The investor gets whichever is more favorable to them: they compare the per-share price from the cap with the per-share price from the discount, then use the lower one. This double protection benefits investors while still giving founders an incentive to raise at higher valuations.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a reasonable valuation cap for a seed round?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a reasonable valuation cap for a seed round?</button>
         <div class="faq-a">Typical valuation caps: $3-6M for pre-seed (almost no traction), $6-12M for seed (product-market fit, some traction), $15-25M for post-seed (established product, clear growth). The cap should reflect your stage, traction, and team strength. Higher caps favor founders because investors convert at higher prices. Lower caps favor investors because they get more ownership for the same capital.</div>
       </div>
     </div>

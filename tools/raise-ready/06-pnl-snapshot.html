@@ -649,7 +649,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -721,7 +721,7 @@
           </div>
         </div>
 
-        <button onclick="calcPnL()">Generate P&L</button>
+        <button type="button" onclick="calcPnL()">Generate P&L</button>
 
         <div class="tool-results" id="pl-results">
           <div class="result-grid">
@@ -837,27 +837,27 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is a good gross margin for a SaaS startup?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is a good gross margin for a SaaS startup?</button>
         <div class="faq-a">SaaS startups typically aim for 70-85% gross margin. Gross margin measures revenue minus cost of goods sold (direct costs to deliver product), expressed as a percentage. Higher gross margins indicate strong unit economics and pricing power. If your gross margin is below 50%, examine your COGS and pricing strategy.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do I build a P&L statement?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do I build a P&L statement?</button>
         <div class="faq-a">A P&L statement starts with revenue, subtracts cost of goods sold (COGS) to get gross profit, then subtracts operating expenses (salaries, marketing, tools, rent, etc.) to get net income. The format is: Revenue - COGS = Gross Profit - Operating Expenses = Net Income. Break operating expenses into categories (salaries, marketing, tools, rent, G&A) for clarity.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What should my burn rate be relative to revenue?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What should my burn rate be relative to revenue?</button>
         <div class="faq-a">Burn rate should decrease as a percentage of revenue as you grow. Early-stage startups often have negative burn (spending more than revenue). By Series A, you should be burning less than 3-4x net new ARR. By Series B+, unit economics should approach breakeven. The goal is to improve burn multiple and path to profitability with each milestone.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate P&L statements?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">How do investors evaluate P&L statements?</button>
         <div class="faq-a">Investors evaluate gross margin trends (are margins improving?), operating expense ratio as percentage of revenue, path to profitability, and unit economics quality. They look for evidence that you're building a scalable, profitable business—not just one burning cash. A startup with improving gross margin and disciplined opex allocation is more attractive than one with high revenue but deteriorating margins.</div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFAQ(this)">What is the difference between gross margin and net margin?</button>
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)">What is the difference between gross margin and net margin?</button>
         <div class="faq-a">Gross margin is revenue minus cost of goods sold (variable product costs). Net margin is revenue minus all expenses including operating costs. A business can have high gross margin (70%) but negative net margin if operating expenses (salaries, marketing, rent) are too high. Both metrics matter—gross margin shows product health, net margin shows business profitability.</div>
       </div>
     </div>

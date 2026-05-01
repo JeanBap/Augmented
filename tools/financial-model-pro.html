@@ -129,7 +129,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -139,7 +139,7 @@
 <!-- Export Paywall Modal -->
 <div id="export-gate" class="export-overlay hidden">
   <div class="export-modal">
-    <button class="export-close" onclick="closeExportGate()">&times;</button>
+    <button type="button" class="export-close" onclick="closeExportGate()">&times;</button>
     <h3>Need Exports?</h3>
     <p>Exports, saving, and advanced modelling are available in <strong>Financial Model Builder</strong>.</p>
     <div style="background: #1B2A4A; color: white; padding: 1.25rem; border-radius: 10px; margin-bottom: 1rem; text-align: left;">
@@ -161,7 +161,7 @@
 <!-- Post-Purchase Success Modal -->
 <div id="purchase-success" class="export-overlay hidden">
   <div class="export-modal" style="max-width: 460px;">
-    <button class="export-close" onclick="document.getElementById('purchase-success').classList.add('hidden')">&times;</button>
+    <button type="button" class="export-close" onclick="document.getElementById('purchase-success').classList.add('hidden')">&times;</button>
     <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127881;</div>
     <h3>You're all set!</h3>
     <p id="success-msg" style="color: #333; margin-bottom: 1rem;">Your file is downloading now.</p>
@@ -171,14 +171,14 @@
       <div style="font-size: 0.82rem; color: #166534;">&#10003; Unlimited exports unlocked forever</div>
     </div>
     <div id="success-redownload" style="margin-bottom: 1rem;">
-      <button class="export-btn" onclick="window._fmExcelExport && window._fmExcelExport()" style="margin-bottom: 0.5rem; background: #10B981;">&#128196; Download Excel</button>
-      <button class="export-btn" onclick="window._fmPdfExport && window._fmPdfExport()" style="background: #7C5CFC;">&#128196; Download PDF</button>
+      <button type="button" class="export-btn" onclick="window._fmExcelExport && window._fmExcelExport()" style="margin-bottom: 0.5rem; background: #10B981;">&#128196; Download Excel</button>
+      <button type="button" class="export-btn" onclick="window._fmPdfExport && window._fmPdfExport()" style="background: #7C5CFC;">&#128196; Download PDF</button>
     </div>
     <div style="border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 0.5rem;">
       <p style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Get fundraising tips &amp; model updates:</p>
       <div style="display: flex; gap: 0.5rem;">
         <input id="success-newsletter" class="export-input" type="email" placeholder="you@company.com" style="margin-bottom: 0; flex: 1;">
-        <button class="export-btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="subscribeNewsletter()">Subscribe</button>
+        <button type="button" class="export-btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="subscribeNewsletter()">Subscribe</button>
       </div>
       <div id="subscribe-msg" style="font-size: 0.75rem; color: #10B981; margin-top: 0.3rem; display: none;">Subscribed!</div>
     </div>
@@ -3301,10 +3301,10 @@ function buildPitchHTML(p, fm) {
 <div class="deck">
   <div class="slides">${slides.join("\n")}</div>
   <div class="nav">
-    <button class="nav-btn" id="np" onclick="prev()" title="Previous (←)">&#8592;</button>
+    <button type="button" class="nav-btn" id="np" onclick="prev()" title="Previous (←)">&#8592;</button>
     <div class="nav-dots">${dotsHtml}</div>
     <span class="nav-count" id="nc">1 / ${totalSlides}</span>
-    <button class="nav-btn" id="nn" onclick="next()" title="Next (→)">&#8594;</button>
+    <button type="button" class="nav-btn" id="nn" onclick="next()" title="Next (→)">&#8594;</button>
   </div>
 </div>
 <script>${js}<\/script>

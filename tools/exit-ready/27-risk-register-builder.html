@@ -196,7 +196,7 @@
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
+        <button type="button" class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -230,43 +230,43 @@
 				<div class="risk-category">
 					<div class="category-title">1. Financial Risks</div>
 					<ul class="risk-list" id="financial-risks"></ul>
-					<button class="btn-add" onclick="addRisk('financial')">+ Add Financial Risk</button>
+					<button type="button" class="btn-add" onclick="addRisk('financial')">+ Add Financial Risk</button>
 				</div>
 
 				<!-- Operational Risks -->
 				<div class="risk-category">
 					<div class="category-title">2. Operational Risks</div>
 					<ul class="risk-list" id="operational-risks"></ul>
-					<button class="btn-add" onclick="addRisk('operational')">+ Add Operational Risk</button>
+					<button type="button" class="btn-add" onclick="addRisk('operational')">+ Add Operational Risk</button>
 				</div>
 
 				<!-- Legal/Regulatory Risks -->
 				<div class="risk-category">
 					<div class="category-title">3. Legal & Regulatory Risks</div>
 					<ul class="risk-list" id="legal-risks"></ul>
-					<button class="btn-add" onclick="addRisk('legal')">+ Add Legal Risk</button>
+					<button type="button" class="btn-add" onclick="addRisk('legal')">+ Add Legal Risk</button>
 				</div>
 
 				<!-- Market/Competitive Risks -->
 				<div class="risk-category">
 					<div class="category-title">4. Market & Competitive Risks</div>
 					<ul class="risk-list" id="market-risks"></ul>
-					<button class="btn-add" onclick="addRisk('market')">+ Add Market Risk</button>
+					<button type="button" class="btn-add" onclick="addRisk('market')">+ Add Market Risk</button>
 				</div>
 
 				<!-- People Risks -->
 				<div class="risk-category">
 					<div class="category-title">5. People Risks</div>
 					<ul class="risk-list" id="people-risks"></ul>
-					<button class="btn-add" onclick="addRisk('people')">+ Add People Risk</button>
+					<button type="button" class="btn-add" onclick="addRisk('people')">+ Add People Risk</button>
 				</div>
 			</div>
 		</div>
 
 		<!-- Buttons -->
 		<div style="padding: 0 2rem;">
-			<button class="tool-btn" id="analyzeBtn">Analyze & Generate Report</button>
-			<button class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
+			<button type="button" class="tool-btn" id="analyzeBtn">Analyze & Generate Report</button>
+			<button type="button" class="tool-btn" style="background: transparent; color: var(--mid); border: 1px solid var(--rule); margin-left: 0.5rem;" id="resetBtn">Reset</button>
 		</div>
 
 		<!-- Results -->
@@ -444,7 +444,7 @@
 								</select>
 							</div>
 							<div style="display: flex; align-items: flex-end;">
-								<button class="btn-small" onclick="removeRisk('${category}', ${risk.id})">Delete</button>
+								<button type="button" class="btn-small" onclick="removeRisk('${category}', ${risk.id})">Delete</button>
 							</div>
 						</div>
 					</div>
