@@ -16,14 +16,5 @@
     "budget": "1000-2500",
     "status": "new",
     "date": "2026-03-11T11:42:25.315Z"
-  },
-  {
-    "name": "smoke",
-    "email": "smoke@test.com",
-    "company": "x",
-    "description": "long enough description",
-    "budget": "1000-2500",
-    "status": "new",
-    "date": "2026-05-02T14:57:44.308Z"
   }
 ]
