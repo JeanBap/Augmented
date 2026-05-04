@@ -21,6 +21,40 @@
   status = 301
   force = true
 
+# Nav simplification (Apr 2026): /services hidden from nav. Keep page reachable
+# for any direct/external link, but funnel browsing users to the start-here flow.
+[[redirects]]
+  from = "/services"
+  to = "/founder-questionnaire.html"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/services/"
+  to = "/founder-questionnaire.html"
+  status = 301
+  force = false
+
+# Templates folded into Tools. Keep deep-link to /templates/ working but
+# soft-redirect /templates -> /tools so any old menu link lands on the new home.
+[[redirects]]
+  from = "/templates"
+  to = "/tools/#premium-templates"
+  status = 301
+  force = false
+
+# Pillar guides folded into Blog. Keep deep links to individual pillars working
+# (they still live at /pillars/<topic>/) but redirect the index to /blog/.
+[[redirects]]
+  from = "/pillars"
+  to = "/blog/"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/pillars/"
+  to = "/blog/"
+  status = 301
+  force = false
+
 [[headers]]
   for = "/*"
   [headers.values]

@@ -98,11 +98,8 @@
       <div class="nav-tabs">
         <a href="/book/" class="nav-tab" data-page="books">Books</a>
         <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
-        <a href="/templates/" class="nav-tab" data-page="templates">Templates</a>
         <a href="/software/" class="nav-tab" data-page="software">Software</a>
         <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/pillars/" class="nav-tab" data-page="pillars">Guides</a>
-        <a href="/services/" class="nav-tab" data-page="services">Services</a>
         <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
       </div>
       <div class="nav-right">
@@ -365,20 +362,41 @@
   </section>
   <!-- END: TOPIC HUBS -->
 
-  <!-- Guides (moved from tools page) -->
-    <section style="max-width:800px;margin:2rem auto;padding:0 2rem;">
-      <h2 style="font-family:var(--serif);font-size:1.6rem;margin-bottom:1.5rem;text-align:center;">Guides &amp; Resources</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
-        <div style="border:1px solid var(--rule);border-radius:8px;padding:1.5rem;transition:border-color 0.3s;">
-          <h3 style="font-family:var(--serif);font-size:1.1rem;margin-bottom:0.5rem;">101 VCs &amp; Angels</h3>
-          <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;margin-bottom:1rem;">Everything you need to know about VC investors, how they think, and how to get their attention.</p>
-          <a href="/tools/101-vcs-angels-cold-outreach-2026.html" style="font-family:var(--mono);font-size:0.85rem;color:var(--gold);text-decoration:none;">Read the guide &rarr;</a>
-        </div>
-        <div style="border:1px solid var(--rule);border-radius:8px;padding:1.5rem;transition:border-color 0.3s;">
-          <h3 style="font-family:var(--serif);font-size:1.1rem;margin-bottom:0.5rem;">Best Business Tools 2026</h3>
-          <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;margin-bottom:1rem;">Curated list of top software, services, and resources founders rely on to build and scale.</p>
-          <a href="/tools/best-business-tools-2026.html" style="font-family:var(--mono);font-size:0.85rem;color:var(--gold);text-decoration:none;">Read the guide &rarr;</a>
-        </div>
+  <!-- Guides &amp; Pillars (folded in from /pillars/ + /tools/ guides) -->
+    <section style="max-width:1100px;margin:2.5rem auto;padding:0 2rem;">
+      <h2 style="font-family:var(--serif);font-size:1.6rem;margin-bottom:0.4rem;text-align:center;">Guides</h2>
+      <p style="color:var(--mid);font-size:0.95rem;text-align:center;margin:0 auto 1.6rem;max-width:620px;line-height:1.6;">Long-form playbooks. Pillar guides cover entire disciplines (modelling, fundraising, metrics, ops). Resource guides curate the best tools and people for a specific job.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+        <a href="/pillars/financial-modelling/" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Pillar Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">Financial Modelling</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">Building investor-grade 5-year models from first principles.</p>
+        </a>
+        <a href="/pillars/fundraising/" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Pillar Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">Fundraising</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">Pre-seed to Series B: timing, process, materials, term sheets.</p>
+        </a>
+        <a href="/pillars/metrics/" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Pillar Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">Startup Metrics</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">LTV, CAC, NRR, burn multiple, Rule of 40 with benchmarks.</p>
+        </a>
+        <a href="/pillars/operations/" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Pillar Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">Financial Operations</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">Closing the books, accounting stack, R&amp;D credits, fractional CFO.</p>
+        </a>
+        <a href="/tools/101-vcs-angels-cold-outreach-2026.html" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Resource Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">101 VCs &amp; Angels</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">VCs who actually answer cold emails, with how to reach them.</p>
+        </a>
+        <a href="/tools/best-business-tools-2026.html" style="display:block;border:1px solid var(--rule);border-radius:8px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.3s;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Resource Guide</div>
+          <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 0.4rem;">Best Business Tools 2026</h3>
+          <p style="color:var(--mid);font-size:0.88rem;line-height:1.55;margin:0;">Curated software stack: accounting, sales, comms, infra.</p>
+        </a>
       </div>
     </section>
 
@@ -402,7 +420,7 @@
 <div id="site-footer"><footer>
       <div class="footer-links">
         <a href="/book/">Books</a>
-        <a href="/templates/">Templates</a>
+        
         <a href="/tools/">Tools</a>
         <a href="/software/">Software</a>
         <a href="/blog/">Blog</a>
