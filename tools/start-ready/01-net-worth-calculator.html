@@ -219,27 +219,27 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section"><h2>Assets</h2>
 <div class="grid">
-<div><label>Checking Account</label><input type="number" id="a1" placeholder="0" value="5000"></div>
-<div><label>Savings Account</label><input type="number" id="a2" placeholder="0" value="12000"></div>
-<div><label>Retirement Accounts (401k, IRA)</label><input type="number" id="a3" placeholder="0" value="45000"></div>
-<div><label>Investment/Brokerage</label><input type="number" id="a4" placeholder="0" value="15000"></div>
-<div><label>Car (Resale Value)</label><input type="number" id="a5" placeholder="0" value="8000"></div>
-<div><label>Real Estate Equity</label><input type="number" id="a6" placeholder="0" value="250000"></div>
-<div><label>Other Assets</label><input type="number" id="a7" placeholder="0" value="3000"></div>
+<div><label>Checking Account</label><input type="number" inputmode="decimal" id="a1" placeholder="0" value="5000"></div>
+<div><label>Savings Account</label><input type="number" inputmode="decimal" id="a2" placeholder="0" value="12000"></div>
+<div><label>Retirement Accounts (401k, IRA)</label><input type="number" inputmode="decimal" id="a3" placeholder="0" value="45000"></div>
+<div><label>Investment/Brokerage</label><input type="number" inputmode="decimal" id="a4" placeholder="0" value="15000"></div>
+<div><label>Car (Resale Value)</label><input type="number" inputmode="decimal" id="a5" placeholder="0" value="8000"></div>
+<div><label>Real Estate Equity</label><input type="number" inputmode="decimal" id="a6" placeholder="0" value="250000"></div>
+<div><label>Other Assets</label><input type="number" inputmode="decimal" id="a7" placeholder="0" value="3000"></div>
 </div></div>
 <div class="section"><h2>Liabilities</h2>
 <div class="grid">
-<div><label>Student Loans</label><input type="number" id="l1" placeholder="0" value="18000"></div>
-<div><label>Credit Card Balances</label><input type="number" id="l2" placeholder="0" value="3000"></div>
-<div><label>Car Loan</label><input type="number" id="l3" placeholder="0" value="8000"></div>
-<div><label>Mortgage Balance</label><input type="number" id="l4" placeholder="0" value="180000"></div>
-<div><label>Personal Loans</label><input type="number" id="l5" placeholder="0" value="5000"></div>
-<div><label>Other Liabilities</label><input type="number" id="l6" placeholder="0" value="2000"></div>
+<div><label>Student Loans</label><input type="number" inputmode="decimal" id="l1" placeholder="0" value="18000"></div>
+<div><label>Credit Card Balances</label><input type="number" inputmode="decimal" id="l2" placeholder="0" value="3000"></div>
+<div><label>Car Loan</label><input type="number" inputmode="decimal" id="l3" placeholder="0" value="8000"></div>
+<div><label>Mortgage Balance</label><input type="number" inputmode="decimal" id="l4" placeholder="0" value="180000"></div>
+<div><label>Personal Loans</label><input type="number" inputmode="decimal" id="l5" placeholder="0" value="5000"></div>
+<div><label>Other Liabilities</label><input type="number" inputmode="decimal" id="l6" placeholder="0" value="2000"></div>
 </div></div>
 <div class="section"><h2>Monthly Cash Flow</h2>
 <div class="grid">
-<div><label>Monthly After-Tax Income</label><input type="number" id="inc" placeholder="0" value="6500"></div>
-<div><label>Monthly Total Expenses</label><input type="number" id="exp" placeholder="0" value="4800"></div>
+<div><label>Monthly After-Tax Income</label><input type="number" inputmode="decimal" id="inc" placeholder="0" value="6500"></div>
+<div><label>Monthly Total Expenses</label><input type="number" inputmode="decimal" id="exp" placeholder="0" value="4800"></div>
 </div></div>
 <button type="button" onclick="calc()">Calculate Net Worth</button>
 <div id="res" class="hidden"></div>
@@ -365,7 +365,7 @@ function calc(){
     <h2>Go Deeper</h2>
     <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to build lasting financial health.</p>
     <div class="upsell-grid">
-      <a href="https://app.raisereadybook.com/" class="upsell-link" target="_blank">
+      <a href="https://app.raisereadybook.com/" class="upsell-link" target="_blank" rel="noopener noreferrer">
         <span class="upsell-icon">&#9889;</span>
         <span class="upsell-text"><span class="upsell-name">Personal Finance App</span><span class="upsell-price">From $4.99/mo</span></span>
       </a>

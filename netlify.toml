@@ -55,6 +55,23 @@
   status = 301
   force = false
 
+# Paid product files live under /products/<guid>/<file>. The GUIDs are not
+# secret (products.js is in a public repo) so we must block direct access.
+# Real downloads should go through /.netlify/functions/download which verifies
+# Stripe payment before issuing a signed URL or buffered response.
+[[redirects]]
+  from = "/products/*"
+  to = "/404"
+  status = 404
+  force = true
+
+# Defence-in-depth: even if a /products/ path is fetched directly, search
+# engines never index it.
+[[headers]]
+  for = "/products/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
 [[headers]]
   for = "/*"
   [headers.values]

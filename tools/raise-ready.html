@@ -503,42 +503,42 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Annual Recurring Revenue ($)</label>
-            <input type="number" id="r-arr" placeholder="e.g. 500000">
+            <input type="number" inputmode="decimal" id="r-arr" placeholder="e.g. 500000">
           </div>
           <div class="tool-field">
             <label>MoM Growth Rate (%)</label>
-            <input type="number" id="r-growth" placeholder="e.g. 15" step="0.1">
+            <input type="number" inputmode="decimal" id="r-growth" placeholder="e.g. 15" step="0.1">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Gross Margin (%)</label>
-            <input type="number" id="r-margin" placeholder="e.g. 70" step="0.1">
+            <input type="number" inputmode="decimal" id="r-margin" placeholder="e.g. 70" step="0.1">
           </div>
           <div class="tool-field">
             <label>Net Revenue Retention (%)</label>
-            <input type="number" id="r-nrr" placeholder="e.g. 110" step="0.1">
+            <input type="number" inputmode="decimal" id="r-nrr" placeholder="e.g. 110" step="0.1">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Burn Multiple (Net Burn / Net New ARR)</label>
-            <input type="number" id="r-burn" placeholder="e.g. 2.5" step="0.1">
+            <input type="number" inputmode="decimal" id="r-burn" placeholder="e.g. 2.5" step="0.1">
           </div>
           <div class="tool-field">
             <label>CAC Payback (months)</label>
-            <input type="number" id="r-payback" placeholder="e.g. 12" step="0.1">
+            <input type="number" inputmode="decimal" id="r-payback" placeholder="e.g. 12" step="0.1">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0">Team & Product (self-assess 1-5)</p>
         <div class="tool-row">
           <div class="tool-field">
             <label>Team Strength (1-5)</label>
-            <input type="number" id="r-team" placeholder="3" min="1" max="5">
+            <input type="number" inputmode="decimal" id="r-team" placeholder="3" min="1" max="5">
           </div>
           <div class="tool-field">
             <label>Product-Market Fit (1-5)</label>
-            <input type="number" id="r-pmf" placeholder="3" min="1" max="5">
+            <input type="number" inputmode="decimal" id="r-pmf" placeholder="3" min="1" max="5">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcReadiness()">Score My Readiness</button>
@@ -573,21 +573,21 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Cash on Hand ($)</label>
-            <input type="number" id="rw-cash" placeholder="e.g. 1500000">
+            <input type="number" inputmode="decimal" id="rw-cash" placeholder="e.g. 1500000">
           </div>
           <div class="tool-field">
             <label>Monthly Burn ($)</label>
-            <input type="number" id="rw-burn" placeholder="e.g. 80000">
+            <input type="number" inputmode="decimal" id="rw-burn" placeholder="e.g. 80000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Monthly Revenue ($)</label>
-            <input type="number" id="rw-rev" placeholder="e.g. 30000">
+            <input type="number" inputmode="decimal" id="rw-rev" placeholder="e.g. 30000">
           </div>
           <div class="tool-field">
             <label>MoM Revenue Growth (%)</label>
-            <input type="number" id="rw-growth" placeholder="e.g. 10" step="0.1">
+            <input type="number" inputmode="decimal" id="rw-growth" placeholder="e.g. 10" step="0.1">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0">Toggle scenarios:</p>
@@ -633,31 +633,31 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Total Acquisition Spend ($/mo)</label>
-            <input type="number" id="ue-spend" placeholder="e.g. 50000">
+            <input type="number" inputmode="decimal" id="ue-spend" placeholder="e.g. 50000">
           </div>
           <div class="tool-field">
             <label>New Customers Acquired (per month)</label>
-            <input type="number" id="ue-customers" placeholder="e.g. 100">
+            <input type="number" inputmode="decimal" id="ue-customers" placeholder="e.g. 100">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Avg Revenue Per Customer ($/mo)</label>
-            <input type="number" id="ue-arpc" placeholder="e.g. 200" step="0.01">
+            <input type="number" inputmode="decimal" id="ue-arpc" placeholder="e.g. 200" step="0.01">
           </div>
           <div class="tool-field">
             <label>Gross Margin (%)</label>
-            <input type="number" id="ue-margin" placeholder="e.g. 75" step="0.1">
+            <input type="number" inputmode="decimal" id="ue-margin" placeholder="e.g. 75" step="0.1">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Monthly Churn Rate (%)</label>
-            <input type="number" id="ue-churn" placeholder="e.g. 5" step="0.1">
+            <input type="number" inputmode="decimal" id="ue-churn" placeholder="e.g. 5" step="0.1">
           </div>
           <div class="tool-field">
             <label>Net Revenue Retention (%)</label>
-            <input type="number" id="ue-nrr" placeholder="e.g. 100" step="0.1">
+            <input type="number" inputmode="decimal" id="ue-nrr" placeholder="e.g. 100" step="0.1">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcUnitEcon()">Calculate Unit Economics</button>
@@ -841,21 +841,21 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Starting MRR ($)</label>
-            <input type="number" id="rev-mrr" placeholder="e.g. 20000">
+            <input type="number" inputmode="decimal" id="rev-mrr" placeholder="e.g. 20000">
           </div>
           <div class="tool-field">
             <label>MoM New Revenue Growth (%)</label>
-            <input type="number" id="rev-growth" placeholder="e.g. 12" step="0.1">
+            <input type="number" inputmode="decimal" id="rev-growth" placeholder="e.g. 12" step="0.1">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Monthly Churn Rate (%)</label>
-            <input type="number" id="rev-churn" placeholder="e.g. 3" step="0.1">
+            <input type="number" inputmode="decimal" id="rev-churn" placeholder="e.g. 3" step="0.1">
           </div>
           <div class="tool-field">
             <label>Avg Expansion Rate (% of existing MRR/mo)</label>
-            <input type="number" id="rev-expansion" placeholder="e.g. 2" step="0.1">
+            <input type="number" inputmode="decimal" id="rev-expansion" placeholder="e.g. 2" step="0.1">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcRevenueModel()">Project Revenue</button>
@@ -899,47 +899,47 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Engineering (# people)</label>
-            <input type="number" id="hc-eng" placeholder="e.g. 5">
+            <input type="number" inputmode="decimal" id="hc-eng" placeholder="e.g. 5">
           </div>
           <div class="tool-field">
             <label>Avg Eng Salary ($)</label>
-            <input type="number" id="hc-eng-sal" placeholder="e.g. 150000">
+            <input type="number" inputmode="decimal" id="hc-eng-sal" placeholder="e.g. 150000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Sales & Marketing (# people)</label>
-            <input type="number" id="hc-sales" placeholder="e.g. 3">
+            <input type="number" inputmode="decimal" id="hc-sales" placeholder="e.g. 3">
           </div>
           <div class="tool-field">
             <label>Avg Sales Salary ($)</label>
-            <input type="number" id="hc-sales-sal" placeholder="e.g. 120000">
+            <input type="number" inputmode="decimal" id="hc-sales-sal" placeholder="e.g. 120000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Operations & Support (# people)</label>
-            <input type="number" id="hc-ops" placeholder="e.g. 2">
+            <input type="number" inputmode="decimal" id="hc-ops" placeholder="e.g. 2">
           </div>
           <div class="tool-field">
             <label>Avg Ops Salary ($)</label>
-            <input type="number" id="hc-ops-sal" placeholder="e.g. 90000">
+            <input type="number" inputmode="decimal" id="hc-ops-sal" placeholder="e.g. 90000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Leadership / G&A (# people)</label>
-            <input type="number" id="hc-ga" placeholder="e.g. 2">
+            <input type="number" inputmode="decimal" id="hc-ga" placeholder="e.g. 2">
           </div>
           <div class="tool-field">
             <label>Avg G&A Salary ($)</label>
-            <input type="number" id="hc-ga-sal" placeholder="e.g. 175000">
+            <input type="number" inputmode="decimal" id="hc-ga-sal" placeholder="e.g. 175000">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label>Benefits & Tax Burden (% of salary)</label>
-            <input type="number" id="hc-burden" placeholder="e.g. 25" step="1">
+            <input type="number" inputmode="decimal" id="hc-burden" placeholder="e.g. 25" step="1">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcHeadcount()">Calculate Team Cost</button>
@@ -979,36 +979,36 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Monthly Revenue ($)</label>
-            <input type="number" id="pl-rev" placeholder="e.g. 80000">
+            <input type="number" inputmode="decimal" id="pl-rev" placeholder="e.g. 80000">
           </div>
           <div class="tool-field">
             <label>COGS / Cost of Revenue ($)</label>
-            <input type="number" id="pl-cogs" placeholder="e.g. 20000">
+            <input type="number" inputmode="decimal" id="pl-cogs" placeholder="e.g. 20000">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0"><strong>Operating Expenses</strong></p>
         <div class="tool-row triple">
           <div class="tool-field">
             <label>Salaries & Wages ($)</label>
-            <input type="number" id="pl-salaries" placeholder="e.g. 60000">
+            <input type="number" inputmode="decimal" id="pl-salaries" placeholder="e.g. 60000">
           </div>
           <div class="tool-field">
             <label>Marketing & Sales ($)</label>
-            <input type="number" id="pl-marketing" placeholder="e.g. 15000">
+            <input type="number" inputmode="decimal" id="pl-marketing" placeholder="e.g. 15000">
           </div>
           <div class="tool-field">
             <label>Tools & Infrastructure ($)</label>
-            <input type="number" id="pl-tools" placeholder="e.g. 5000">
+            <input type="number" inputmode="decimal" id="pl-tools" placeholder="e.g. 5000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Rent & Office ($)</label>
-            <input type="number" id="pl-rent" placeholder="e.g. 3000">
+            <input type="number" inputmode="decimal" id="pl-rent" placeholder="e.g. 3000">
           </div>
           <div class="tool-field">
             <label>Other Expenses ($)</label>
-            <input type="number" id="pl-other" placeholder="e.g. 2000">
+            <input type="number" inputmode="decimal" id="pl-other" placeholder="e.g. 2000">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcPnL()">Generate P&L</button>
@@ -1052,36 +1052,36 @@
         <div class="tool-row triple">
           <div class="tool-field">
             <label>Starting MRR ($)</label>
-            <input type="number" id="sc-mrr" placeholder="e.g. 30000">
+            <input type="number" inputmode="decimal" id="sc-mrr" placeholder="e.g. 30000">
           </div>
           <div class="tool-field">
             <label>MoM Growth (%)</label>
-            <input type="number" id="sc-growth-base" placeholder="e.g. 10" step="0.1">
+            <input type="number" inputmode="decimal" id="sc-growth-base" placeholder="e.g. 10" step="0.1">
           </div>
           <div class="tool-field">
             <label>Monthly Burn ($)</label>
-            <input type="number" id="sc-burn-base" placeholder="e.g. 80000">
+            <input type="number" inputmode="decimal" id="sc-burn-base" placeholder="e.g. 80000">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0"><strong>Adjustment Multipliers</strong></p>
         <div class="tool-row">
           <div class="tool-field">
             <label>Bull Case Growth Multiplier</label>
-            <input type="number" id="sc-bull-mult" placeholder="e.g. 1.5" step="0.1" value="1.5">
+            <input type="number" inputmode="decimal" id="sc-bull-mult" placeholder="e.g. 1.5" step="0.1" value="1.5">
           </div>
           <div class="tool-field">
             <label>Bear Case Growth Multiplier</label>
-            <input type="number" id="sc-bear-mult" placeholder="e.g. 0.5" step="0.1" value="0.5">
+            <input type="number" inputmode="decimal" id="sc-bear-mult" placeholder="e.g. 0.5" step="0.1" value="0.5">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Cash on Hand ($)</label>
-            <input type="number" id="sc-cash" placeholder="e.g. 1000000">
+            <input type="number" inputmode="decimal" id="sc-cash" placeholder="e.g. 1000000">
           </div>
           <div class="tool-field">
             <label>Projection Period (months)</label>
-            <input type="number" id="sc-months" placeholder="12" value="12" min="3" max="36">
+            <input type="number" inputmode="decimal" id="sc-months" placeholder="12" value="12" min="3" max="36">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcScenario()">Compare Scenarios</button>
@@ -1106,17 +1106,17 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Base Monthly Revenue ($)</label>
-            <input type="number" id="sens-rev" placeholder="e.g. 50000">
+            <input type="number" inputmode="decimal" id="sens-rev" placeholder="e.g. 50000">
           </div>
           <div class="tool-field">
             <label>Base Monthly Burn ($)</label>
-            <input type="number" id="sens-burn" placeholder="e.g. 80000">
+            <input type="number" inputmode="decimal" id="sens-burn" placeholder="e.g. 80000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Cash on Hand ($)</label>
-            <input type="number" id="sens-cash" placeholder="e.g. 1000000">
+            <input type="number" inputmode="decimal" id="sens-cash" placeholder="e.g. 1000000">
           </div>
           <div class="tool-field">
             <label>Output Metric</label>
@@ -1158,17 +1158,17 @@
           </div>
           <div class="tool-field">
             <label>Annual Recurring Revenue ($)</label>
-            <input type="number" id="v-arr" placeholder="e.g. 500000">
+            <input type="number" inputmode="decimal" id="v-arr" placeholder="e.g. 500000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>YoY Growth Rate (%)</label>
-            <input type="number" id="v-growth" placeholder="e.g. 200" step="1">
+            <input type="number" inputmode="decimal" id="v-growth" placeholder="e.g. 200" step="1">
           </div>
           <div class="tool-field">
             <label>Gross Margin (%)</label>
-            <input type="number" id="v-margin" placeholder="e.g. 75" step="0.1">
+            <input type="number" inputmode="decimal" id="v-margin" placeholder="e.g. 75" step="0.1">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcValuation()">Estimate Valuation</button>
@@ -1206,21 +1206,21 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Founder Ownership Before Round (%)</label>
-            <input type="number" id="d-ownership" placeholder="e.g. 80" step="0.1">
+            <input type="number" inputmode="decimal" id="d-ownership" placeholder="e.g. 80" step="0.1">
           </div>
           <div class="tool-field">
             <label>Pre-Money Valuation ($)</label>
-            <input type="number" id="d-premoney" placeholder="e.g. 5000000">
+            <input type="number" inputmode="decimal" id="d-premoney" placeholder="e.g. 5000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Investment Amount ($)</label>
-            <input type="number" id="d-investment" placeholder="e.g. 1500000">
+            <input type="number" inputmode="decimal" id="d-investment" placeholder="e.g. 1500000">
           </div>
           <div class="tool-field">
             <label>Option Pool Increase (%)</label>
-            <input type="number" id="d-pool" placeholder="e.g. 10" step="0.1">
+            <input type="number" inputmode="decimal" id="d-pool" placeholder="e.g. 10" step="0.1">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcDilution()">Simulate Dilution</button>
@@ -1267,27 +1267,27 @@
           </div>
           <div class="tool-field">
             <label>Investment Amount ($)</label>
-            <input type="number" id="s-amount" placeholder="e.g. 500000">
+            <input type="number" inputmode="decimal" id="s-amount" placeholder="e.g. 500000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Valuation Cap ($)</label>
-            <input type="number" id="s-cap" placeholder="e.g. 5000000">
+            <input type="number" inputmode="decimal" id="s-cap" placeholder="e.g. 5000000">
           </div>
           <div class="tool-field">
             <label>Discount Rate (%)</label>
-            <input type="number" id="s-discount" placeholder="e.g. 20" step="1">
+            <input type="number" inputmode="decimal" id="s-discount" placeholder="e.g. 20" step="1">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Next Round Pre-Money Valuation ($)</label>
-            <input type="number" id="s-nextround" placeholder="e.g. 10000000">
+            <input type="number" inputmode="decimal" id="s-nextround" placeholder="e.g. 10000000">
           </div>
           <div class="tool-field">
             <label>Next Round Investment ($)</label>
-            <input type="number" id="s-nextinv" placeholder="e.g. 2000000">
+            <input type="number" inputmode="decimal" id="s-nextinv" placeholder="e.g. 2000000">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcSafe()">Compare Dilution</button>
@@ -1326,39 +1326,39 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Seed Pre-Money ($)</label>
-            <input type="number" id="md-seed-pre" placeholder="e.g. 5000000">
+            <input type="number" inputmode="decimal" id="md-seed-pre" placeholder="e.g. 5000000">
           </div>
           <div class="tool-field">
             <label>Seed Investment ($)</label>
-            <input type="number" id="md-seed-inv" placeholder="e.g. 1500000">
+            <input type="number" inputmode="decimal" id="md-seed-inv" placeholder="e.g. 1500000">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0"><strong>Series A</strong></p>
         <div class="tool-row">
           <div class="tool-field">
             <label>Series A Pre-Money ($)</label>
-            <input type="number" id="md-a-pre" placeholder="e.g. 20000000">
+            <input type="number" inputmode="decimal" id="md-a-pre" placeholder="e.g. 20000000">
           </div>
           <div class="tool-field">
             <label>Series A Investment ($)</label>
-            <input type="number" id="md-a-inv" placeholder="e.g. 5000000">
+            <input type="number" inputmode="decimal" id="md-a-inv" placeholder="e.g. 5000000">
           </div>
         </div>
         <p class="tool-card-desc" style="padding:0"><strong>Series B</strong></p>
         <div class="tool-row">
           <div class="tool-field">
             <label>Series B Pre-Money ($)</label>
-            <input type="number" id="md-b-pre" placeholder="e.g. 80000000">
+            <input type="number" inputmode="decimal" id="md-b-pre" placeholder="e.g. 80000000">
           </div>
           <div class="tool-field">
             <label>Series B Investment ($)</label>
-            <input type="number" id="md-b-inv" placeholder="e.g. 15000000">
+            <input type="number" inputmode="decimal" id="md-b-inv" placeholder="e.g. 15000000">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label>Option Pool (% at each round)</label>
-            <input type="number" id="md-pool" placeholder="e.g. 10" step="0.1" value="10">
+            <input type="number" inputmode="decimal" id="md-pool" placeholder="e.g. 10" step="0.1" value="10">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcMultiDilution()">Track Dilution</button>
@@ -1384,51 +1384,51 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Problem clarity (1-5)</label>
-            <input type="number" id="pd-problem" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-problem" min="1" max="5" placeholder="3">
           </div>
           <div class="tool-field">
             <label>Solution uniqueness (1-5)</label>
-            <input type="number" id="pd-solution" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-solution" min="1" max="5" placeholder="3">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Market size credibility (1-5)</label>
-            <input type="number" id="pd-market" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-market" min="1" max="5" placeholder="3">
           </div>
           <div class="tool-field">
             <label>Traction evidence (1-5)</label>
-            <input type="number" id="pd-traction" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-traction" min="1" max="5" placeholder="3">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Business model clarity (1-5)</label>
-            <input type="number" id="pd-bizmodel" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-bizmodel" min="1" max="5" placeholder="3">
           </div>
           <div class="tool-field">
             <label>Team credibility (1-5)</label>
-            <input type="number" id="pd-team" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-team" min="1" max="5" placeholder="3">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Competitive moat (1-5)</label>
-            <input type="number" id="pd-moat" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-moat" min="1" max="5" placeholder="3">
           </div>
           <div class="tool-field">
             <label>Financial model quality (1-5)</label>
-            <input type="number" id="pd-financials" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-financials" min="1" max="5" placeholder="3">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Ask clarity (amount, use, timeline) (1-5)</label>
-            <input type="number" id="pd-ask" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-ask" min="1" max="5" placeholder="3">
           </div>
           <div class="tool-field">
             <label>Design and narrative flow (1-5)</label>
-            <input type="number" id="pd-design" min="1" max="5" placeholder="3">
+            <input type="number" inputmode="decimal" id="pd-design" min="1" max="5" placeholder="3">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calcDeckScore()">Score My Deck</button>
@@ -1463,21 +1463,21 @@
         <div class="tool-row">
           <div class="tool-field">
             <label>Exit Valuation ($)</label>
-            <input type="number" id="e-valuation" placeholder="e.g. 50000000">
+            <input type="number" inputmode="decimal" id="e-valuation" placeholder="e.g. 50000000">
           </div>
           <div class="tool-field">
             <label>Total Raised ($)</label>
-            <input type="number" id="e-raised" placeholder="e.g. 8000000">
+            <input type="number" inputmode="decimal" id="e-raised" placeholder="e.g. 8000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label>Founder Ownership (%)</label>
-            <input type="number" id="e-founder" placeholder="e.g. 35" step="0.1">
+            <input type="number" inputmode="decimal" id="e-founder" placeholder="e.g. 35" step="0.1">
           </div>
           <div class="tool-field">
             <label>Option Pool (%)</label>
-            <input type="number" id="e-options" placeholder="e.g. 10" step="0.1">
+            <input type="number" inputmode="decimal" id="e-options" placeholder="e.g. 10" step="0.1">
           </div>
         </div>
         <div class="tool-row">

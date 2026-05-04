@@ -225,17 +225,17 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="revenue">Annual Revenue ($)</label>
-            <input type="number" id="revenue" placeholder="0" / value="5000000">
+            <input type="number" inputmode="decimal" id="revenue" placeholder="0" / value="5000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="growth">Revenue Growth Rate (% YoY)</label>
-            <input type="number" id="growth" placeholder="0" / value="25">
+            <input type="number" inputmode="decimal" id="growth" placeholder="0" / value="25">
           </div>
           <div class="tool-field">
             <label for="ebitdaMargin">EBITDA Margin (%)</label>
-            <input type="number" id="ebitdaMargin" placeholder="0" / value="20">
+            <input type="number" inputmode="decimal" id="ebitdaMargin" placeholder="0" / value="20">
           </div>
         </div>
         <div class="tool-row single">
@@ -252,7 +252,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="concentration">Top Client % of Revenue</label>
-            <input type="number" id="concentration" placeholder="0" min="0" max="100" / value="15">
+            <input type="number" inputmode="decimal" id="concentration" placeholder="0" min="0" max="100" / value="15">
           </div>
         </div>
         <div class="tool-row">

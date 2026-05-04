@@ -92,11 +92,56 @@
     }, true); // capture phase
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // Shared utilities (window.RR) — single source of truth for cross-tool
+  // formatters. Each tool used to define its own fmt() / pct() / toggleFAQ
+  // (~62 copies), which made global changes a 62-file edit. New tools should
+  // call RR.fmt(n) / RR.pct(n) / RR.fmtCurrency(cents) instead.
+  // ─────────────────────────────────────────────────────────────────────────
+  window.RR = window.RR || {};
+
+  // fmt(n): readable currency. Big numbers compact (B/M/K), small numbers get
+  // proper thousands separators ($450,000 not $450000).
+  window.RR.fmt = function fmt(n) {
+    if (n == null || isNaN(n)) return '$0';
+    const abs = Math.abs(n);
+    const sign = n < 0 ? '-' : '';
+    if (abs >= 1e9) return sign + '$' + (abs / 1e9).toFixed(2).replace(/\.00$/, '') + 'B';
+    if (abs >= 1e6) return sign + '$' + (abs / 1e6).toFixed(2).replace(/\.00$/, '') + 'M';
+    if (abs >= 1e4) return sign + '$' + (abs / 1e3).toFixed(0) + 'K';
+    return sign + '$' + Math.round(abs).toLocaleString('en-US');
+  };
+
+  // fmtCurrency(cents): convert Stripe cents to display string. Use this
+  // wherever a price is shown so the price field in products.js is the
+  // single source of truth — never hard-code "$9.99" in UI copy.
+  window.RR.fmtCurrency = function fmtCurrency(cents) {
+    if (cents == null || isNaN(cents)) return '$0.00';
+    return '$' + (cents / 100).toFixed(2);
+  };
+
+  window.RR.pct = function pct(n, decimals) {
+    if (n == null || isNaN(n)) return '0%';
+    return Number(n).toFixed(decimals == null ? 1 : decimals) + '%';
+  };
+
+  // Standard FAQ toggle. Use the same data-attr pattern across all tools so
+  // we get a single, consistent open/close behaviour with aria-expanded.
+  window.RR.toggleFAQ = function toggleFAQ(btn) {
+    if (!btn) return;
+    const item = btn.closest('.faq-item') || btn.parentElement;
+    if (!item) return;
+    const isOpen = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const panel = item.querySelector('.faq-answer, [role="region"]');
+    if (panel) panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
   const NAV_HTML = `
     <a href="#main" class="skip-to-content">Skip to main content</a>
     <header>
     <nav aria-label="Main navigation">
-      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
+      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" width="152" height="38" style="height:38px;" fetchpriority="high"></a>
       <div class="nav-tabs">
         <a href="/book/" class="nav-tab" data-page="books">Books</a>
         <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>

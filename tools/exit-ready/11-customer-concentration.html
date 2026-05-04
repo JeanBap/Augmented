@@ -368,7 +368,7 @@ function initializeCustomers() {
     row.id = 'customer-' + id;
     row.innerHTML = `
       <div class="tool-field"><label>Customer Name</label><input type="text" class="cust-name" placeholder="Customer ${i+1}" /></div>
-      <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" class="cust-revenue" placeholder="0" /></div>
+      <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" inputmode="decimal" class="cust-revenue" placeholder="0" /></div>
       <button type="button" class="remove-btn" onclick="removeCustomer(${id})">Remove</button>
     `;
     container.appendChild(row);
@@ -383,7 +383,7 @@ function addCustomer() {
   row.id = 'customer-' + id;
   row.innerHTML = `
     <div class="tool-field"><label>Customer Name</label><input type="text" class="cust-name" placeholder="Customer" /></div>
-    <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" class="cust-revenue" placeholder="0" /></div>
+    <div class="tool-field"><label>Annual Revenue ($)</label><input type="number" inputmode="decimal" class="cust-revenue" placeholder="0" /></div>
     <button type="button" class="remove-btn" onclick="removeCustomer(${id})">Remove</button>
   `;
   container.appendChild(row);

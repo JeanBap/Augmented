@@ -204,12 +204,12 @@ tr:nth-child(even){background:rgba(200,164,90,.03)}
 <div class="tool-container">
 <div class="section">
 <div class="grid">
-<div><label>Desired Annual Spending in Retirement ($)</label><input type="number" id="spend" value="60000"></div>
-<div><label>Current Age</label><input type="number" id="age" value="30"></div>
-<div><label>Target Retirement Age</label><input type="number" id="retire" value="55"></div>
-<div><label>Current Retirement Savings ($)</label><input type="number" id="cur" value="25000"></div>
-<div><label>Expected Annual Return (%)</label><input type="number" id="rate" value="7" step="0.1"></div>
-<div><label>Withdrawal Rate (%)</label><input type="number" id="wr" value="4" step="0.1"></div>
+<div><label>Desired Annual Spending in Retirement ($)</label><input type="number" inputmode="decimal" id="spend" value="60000"></div>
+<div><label>Current Age</label><input type="number" inputmode="decimal" id="age" value="30"></div>
+<div><label>Target Retirement Age</label><input type="number" inputmode="decimal" id="retire" value="55"></div>
+<div><label>Current Retirement Savings ($)</label><input type="number" inputmode="decimal" id="cur" value="25000"></div>
+<div><label>Expected Annual Return (%)</label><input type="number" inputmode="decimal" id="rate" value="7" step="0.1"></div>
+<div><label>Withdrawal Rate (%)</label><input type="number" inputmode="decimal" id="wr" value="4" step="0.1"></div>
 </div>
 <button type="button" onclick="calc()">Calculate</button>
 </div><div id="res"></div></div>
@@ -340,7 +340,7 @@ function calc(){
     <h2>Go Deeper</h2>
     <p>These free tools give you the snapshot. Our software, templates, and books give you the full system to build lasting financial health.</p>
     <div class="upsell-grid">
-      <a href="https://app.raisereadybook.com/" class="upsell-link" target="_blank">
+      <a href="https://app.raisereadybook.com/" class="upsell-link" target="_blank" rel="noopener noreferrer">
         <span class="upsell-icon">&#9889;</span>
         <span class="upsell-text"><span class="upsell-name">Personal Finance App</span><span class="upsell-price">From $4.99/mo</span></span>
       </a>

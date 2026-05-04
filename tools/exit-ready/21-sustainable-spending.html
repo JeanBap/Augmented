@@ -203,27 +203,27 @@
 				<div class="tool-row">
 					<div class="tool-field">
 						<label for="totalWealth">Total Post-Exit Liquid Wealth ($)</label>
-						<input type="number" id="totalWealth" placeholder="1000000" value="1000000">
+						<input type="number" inputmode="decimal" id="totalWealth" placeholder="1000000" value="1000000">
 					</div>
 					<div class="tool-field">
 						<label for="investmentReturn">Expected Investment Return (%)</label>
-						<input type="number" id="investmentReturn" placeholder="5" value="5" step="0.1">
+						<input type="number" inputmode="decimal" id="investmentReturn" placeholder="5" value="5" step="0.1">
 					</div>
 				</div>
 				<div class="tool-row">
 					<div class="tool-field">
 						<label for="inflationRate">Inflation Rate (%)</label>
-						<input type="number" id="inflationRate" placeholder="2.5" value="2.5" step="0.1">
+						<input type="number" inputmode="decimal" id="inflationRate" placeholder="2.5" value="2.5" step="0.1">
 					</div>
 					<div class="tool-field">
 						<label for="safeWithdrawal">Safe Withdrawal Rate (%)</label>
-						<input type="number" id="safeWithdrawal" placeholder="4" value="4" step="0.1">
+						<input type="number" inputmode="decimal" id="safeWithdrawal" placeholder="4" value="4" step="0.1">
 					</div>
 				</div>
 				<div class="tool-row single">
 					<div class="tool-field">
 						<label for="desiredSpending">Desired Annual Lifestyle Spend ($)</label>
-						<input type="number" id="desiredSpending" placeholder="80000" value="80000">
+						<input type="number" inputmode="decimal" id="desiredSpending" placeholder="80000" value="80000">
 					</div>
 				</div>
 			</div>
@@ -240,27 +240,27 @@
 					<ul class="category-list" id="categoryList">
 						<li class="category-item">
 							<input type="text" placeholder="Category name" value="Housing" class="category-name" readonly>
-							<input type="number" placeholder="Amount" class="category-amount" value="24000">
+							<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="24000">
 							<button type="button" class="remove-category">Remove</button>
 						</li>
 						<li class="category-item">
 							<input type="text" placeholder="Category name" value="Travel" class="category-name" readonly>
-							<input type="number" placeholder="Amount" class="category-amount" value="18000">
+							<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="18000">
 							<button type="button" class="remove-category">Remove</button>
 						</li>
 						<li class="category-item">
 							<input type="text" placeholder="Category name" value="Education" class="category-name" readonly>
-							<input type="number" placeholder="Amount" class="category-amount" value="12000">
+							<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="12000">
 							<button type="button" class="remove-category">Remove</button>
 						</li>
 						<li class="category-item">
 							<input type="text" placeholder="Category name" value="Healthcare" class="category-name" readonly>
-							<input type="number" placeholder="Amount" class="category-amount" value="8000">
+							<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="8000">
 							<button type="button" class="remove-category">Remove</button>
 						</li>
 						<li class="category-item">
 							<input type="text" placeholder="Category name" value="Entertainment" class="category-name" readonly>
-							<input type="number" placeholder="Amount" class="category-amount" value="10000">
+							<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="10000">
 							<button type="button" class="remove-category">Remove</button>
 						</li>
 					</ul>
@@ -410,7 +410,7 @@
 			li.className = 'category-item';
 			li.innerHTML = `
 				<input type="text" placeholder="Category name" value="${category}" class="category-name" readonly>
-				<input type="number" placeholder="Amount" class="category-amount" value="5000">
+				<input type="number" inputmode="decimal" placeholder="Amount" class="category-amount" value="5000">
 				<button type="button" class="remove-category">Remove</button>
 			`;
 			li.querySelector('.remove-category').addEventListener('click', () => li.remove());

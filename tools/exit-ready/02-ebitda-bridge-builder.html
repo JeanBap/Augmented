@@ -215,7 +215,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="reportedEbitda">Reported EBITDA ($)</label>
-            <input type="number" id="reportedEbitda" placeholder="0" / value="1200000">
+            <input type="number" inputmode="decimal" id="reportedEbitda" placeholder="0" / value="1200000">
           </div>
         </div>
       </div>
@@ -414,7 +414,7 @@ function addAdjustment(desc = '', type = 'add-back') {
   row.id = `adj-${id}`;
   row.innerHTML = `
     <input type="text" class="adj-desc" placeholder="Description" value="${desc}" />
-    <input type="number" class="adj-amount" placeholder="Amount" />
+    <input type="number" inputmode="decimal" class="adj-amount" placeholder="Amount" />
     <select class="adj-type">
       <option value="add-back" ${type === 'add-back' ? 'selected' : ''}>Add-back</option>
       <option value="subtraction" ${type === 'subtraction' ? 'selected' : ''}>Subtraction</option>

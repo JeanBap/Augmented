@@ -171,7 +171,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="cashAtClose">Cash at Close ($)</label>
-            <input type="number" id="cashAtClose" placeholder="0" / value="4000000">
+            <input type="number" inputmode="decimal" id="cashAtClose" placeholder="0" / value="4000000">
           </div>
         </div>
       </div>
@@ -195,7 +195,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="discountRate">Discount Rate for Time Value (% per year)</label>
-            <input type="number" id="discountRate" placeholder="10" value="12" />
+            <input type="number" inputmode="decimal" id="discountRate" placeholder="10" value="12" />
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calculateEarnout()">Calculate</button>
@@ -340,8 +340,8 @@ function addEarnout() {
   row.id = `earnout-${id}`;
   row.innerHTML = `
     <input type="text" class="eo-desc" placeholder="Target description (e.g., Revenue $5M)" />
-    <input type="number" class="eo-amount" placeholder="Amount if achieved" />
-    <input type="number" class="eo-probability" placeholder="Probability %" min="0" max="100" />
+    <input type="number" inputmode="decimal" class="eo-amount" placeholder="Amount if achieved" />
+    <input type="number" inputmode="decimal" class="eo-probability" placeholder="Probability %" min="0" max="100" />
     <button type="button" class="btn-remove" onclick="removeEarnout(${id})">Remove</button>
   `;
   container.appendChild(row);

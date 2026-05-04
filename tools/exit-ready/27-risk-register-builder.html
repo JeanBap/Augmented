@@ -402,11 +402,11 @@
 						<div class="risk-form-row">
 							<div>
 								<label class="risk-label">Likelihood (1-5)</label>
-								<input type="number" class="risk-input" min="1" max="5" value="${risk.likelihood}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'likelihood', this.value)">
+								<input type="number" inputmode="decimal" class="risk-input" min="1" max="5" value="${risk.likelihood}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'likelihood', this.value)">
 							</div>
 							<div>
 								<label class="risk-label">Impact (1-5)</label>
-								<input type="number" class="risk-input" min="1" max="5" value="${risk.impact}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'impact', this.value)">
+								<input type="number" inputmode="decimal" class="risk-input" min="1" max="5" value="${risk.impact}" data-id="${risk.id}" data-cat="${category}" onchange="updateRisk('${category}', ${risk.id}, 'impact', this.value)">
 							</div>
 						</div>
 						<div class="risk-form-row full">

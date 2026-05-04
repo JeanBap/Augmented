@@ -179,11 +179,11 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="originalInvest">Original Investment ($)</label>
-            <input type="number" id="originalInvest" placeholder="0" / value="100000">
+            <input type="number" inputmode="decimal" id="originalInvest" placeholder="0" / value="100000">
           </div>
           <div class="tool-field">
             <label for="saleProceeds">Sale Proceeds ($)</label>
-            <input type="number" id="saleProceeds" placeholder="0" / value="5000000">
+            <input type="number" inputmode="decimal" id="saleProceeds" placeholder="0" / value="5000000">
           </div>
         </div>
         <div class="tool-row single">
@@ -214,7 +214,7 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
           </div>
           <div class="tool-field">
             <label for="otherExclusions">Other QSBS Exclusions Used ($)</label>
-            <input type="number" id="otherExclusions" placeholder="0" / value="0">
+            <input type="number" inputmode="decimal" id="otherExclusions" placeholder="0" / value="0">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calculateQSBS()">Calculate</button>

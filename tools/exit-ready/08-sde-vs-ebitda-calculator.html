@@ -172,17 +172,17 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row single">
           <div class="tool-field">
             <label for="revenue">Annual Revenue ($)</label>
-            <input type="number" id="revenue" placeholder="0" / value="3000000">
+            <input type="number" inputmode="decimal" id="revenue" placeholder="0" / value="3000000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="cogs">Cost of Goods Sold ($)</label>
-            <input type="number" id="cogs" placeholder="0" / value="900000">
+            <input type="number" inputmode="decimal" id="cogs" placeholder="0" / value="900000">
           </div>
           <div class="tool-field">
             <label for="opex">Operating Expenses ($)</label>
-            <input type="number" id="opex" placeholder="0" / value="1200000">
+            <input type="number" inputmode="decimal" id="opex" placeholder="0" / value="1200000">
           </div>
         </div>
         <div class="tool-card-header" style="padding: 1rem 0 0.5rem; border: none;">
@@ -191,37 +191,37 @@ body { font-family: var(--sans); color: var(--ink); background: var(--paper); }
         <div class="tool-row">
           <div class="tool-field">
             <label for="ownerSalary">Owner Salary ($)</label>
-            <input type="number" id="ownerSalary" placeholder="0" / value="250000">
+            <input type="number" inputmode="decimal" id="ownerSalary" placeholder="0" / value="250000">
           </div>
           <div class="tool-field">
             <label for="ownerBenefits">Owner Benefits ($)</label>
-            <input type="number" id="ownerBenefits" placeholder="0" / value="30000">
+            <input type="number" inputmode="decimal" id="ownerBenefits" placeholder="0" / value="30000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="ownerPerks">Owner Perks ($)</label>
-            <input type="number" id="ownerPerks" placeholder="0" / value="40000">
+            <input type="number" inputmode="decimal" id="ownerPerks" placeholder="0" / value="40000">
           </div>
           <div class="tool-field">
             <label for="interest">Interest Expense ($)</label>
-            <input type="number" id="interest" placeholder="0" / value="15000">
+            <input type="number" inputmode="decimal" id="interest" placeholder="0" / value="15000">
           </div>
         </div>
         <div class="tool-row">
           <div class="tool-field">
             <label for="depreciation">Depreciation ($)</label>
-            <input type="number" id="depreciation" placeholder="0" / value="25000">
+            <input type="number" inputmode="decimal" id="depreciation" placeholder="0" / value="25000">
           </div>
           <div class="tool-field">
             <label for="amortization">Amortization ($)</label>
-            <input type="number" id="amortization" placeholder="0" / value="10000">
+            <input type="number" inputmode="decimal" id="amortization" placeholder="0" / value="10000">
           </div>
         </div>
         <div class="tool-row single">
           <div class="tool-field">
             <label for="oneTime">One-time Expenses ($)</label>
-            <input type="number" id="oneTime" placeholder="0" / value="50000">
+            <input type="number" inputmode="decimal" id="oneTime" placeholder="0" / value="50000">
           </div>
         </div>
         <button type="button" class="tool-btn" onclick="calculateSDEvsEBITDA()">Calculate</button>

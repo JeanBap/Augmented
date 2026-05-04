@@ -180,7 +180,7 @@
 				<div class="tool-row single">
 					<div class="tool-field">
 						<label for="totalPrice">Total Purchase Price ($)</label>
-						<input type="number" id="totalPrice" placeholder="5000000" value="5000000">
+						<input type="number" inputmode="decimal" id="totalPrice" placeholder="5000000" value="5000000">
 					</div>
 				</div>
 			</div>
@@ -197,7 +197,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Cash & Cash Equivalents ($)</label>
-						<input type="number" class="allocation-input" id="cash" placeholder="0" value="0">
+						<input type="number" inputmode="decimal" class="allocation-input" id="cash" placeholder="0" value="0">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
 				</div>
@@ -205,7 +205,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Accounts Receivable ($)</label>
-						<input type="number" class="allocation-input" id="ar" placeholder="100000" value="100000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="ar" placeholder="100000" value="100000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
 				</div>
@@ -213,7 +213,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Inventory ($)</label>
-						<input type="number" class="allocation-input" id="inventory" placeholder="200000" value="200000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="inventory" placeholder="200000" value="200000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Ordinary Income</div>
 				</div>
@@ -221,7 +221,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Equipment & Machinery ($)</label>
-						<input type="number" class="allocation-input" id="equipment" placeholder="300000" value="300000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="equipment" placeholder="300000" value="300000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Section 1250 Recapture</div>
 				</div>
@@ -229,7 +229,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Real Property ($)</label>
-						<input type="number" class="allocation-input" id="realprop" placeholder="500000" value="500000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="realprop" placeholder="500000" value="500000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Section 1250</div>
 				</div>
@@ -237,7 +237,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Intellectual Property ($)</label>
-						<input type="number" class="allocation-input" id="ip" placeholder="800000" value="800000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="ip" placeholder="800000" value="800000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
 				</div>
@@ -245,7 +245,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Customer Relationships ($)</label>
-						<input type="number" class="allocation-input" id="customers" placeholder="600000" value="600000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="customers" placeholder="600000" value="600000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
 				</div>
@@ -253,7 +253,7 @@
 				<div class="allocation-item">
 					<div>
 						<label class="allocation-label">Non-Compete Agreements ($)</label>
-						<input type="number" class="allocation-input" id="noncompete" placeholder="200000" value="200000">
+						<input type="number" inputmode="decimal" class="allocation-input" id="noncompete" placeholder="200000" value="200000">
 					</div>
 					<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--mid); padding-top: 1.5rem;">Capital Gains</div>
 				</div>
@@ -275,15 +275,15 @@
 				<div class="tool-row triple">
 					<div class="tool-field">
 						<label for="ordinaryRate">Ordinary Income Tax Rate (%)</label>
-						<input type="number" id="ordinaryRate" placeholder="45.3" value="45.3" step="0.1">
+						<input type="number" inputmode="decimal" id="ordinaryRate" placeholder="45.3" value="45.3" step="0.1">
 					</div>
 					<div class="tool-field">
 						<label for="capGainsRate">Capital Gains Tax Rate (%)</label>
-						<input type="number" id="capGainsRate" placeholder="23.8" value="23.8" step="0.1">
+						<input type="number" inputmode="decimal" id="capGainsRate" placeholder="23.8" value="23.8" step="0.1">
 					</div>
 					<div class="tool-field">
 						<label for="recaptureRate">Section 1250 Recapture Rate (%)</label>
-						<input type="number" id="recaptureRate" placeholder="25" value="25" step="0.1">
+						<input type="number" inputmode="decimal" id="recaptureRate" placeholder="25" value="25" step="0.1">
 					</div>
 				</div>
 			</div>
