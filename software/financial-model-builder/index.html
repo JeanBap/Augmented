@@ -115,24 +115,6 @@
     </nav>
     </header></div>
 
-  <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
-    <header>
-    <nav aria-label="Main navigation">
-      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
-      <div class="nav-tabs">
-        <a href="/book/" class="nav-tab" data-page="books">Books</a>
-        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
-        <a href="/software/" class="nav-tab" data-page="software">Software</a>
-        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
-      </div>
-      <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    </header></div>
   <main class="page-content">
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/software/">Software</a> &rsaquo; Financial Model Builder</div>
 
@@ -219,10 +201,40 @@
       </div>
     </section>
 
+    <!-- Pricing — answers "what do I get at $9.99?" without making the user open the app. -->
+    <section class="cta-block" aria-labelledby="pricing-heading" style="padding-top:2rem;">
+      <h2 id="pricing-heading">Pricing</h2>
+      <p>Free to explore. Pay only when you need exports.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:780px;margin:1.5rem auto 0;text-align:left;">
+        <div style="border:1px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Free</div>
+          <div style="font-family:var(--serif);font-size:1.6rem;line-height:1;margin-bottom:0.4rem;">$0</div>
+          <ul style="font-size:0.88rem;color:var(--dim);line-height:1.6;list-style:none;padding:0;margin:0.6rem 0 0;">
+            <li>Build unlimited models</li>
+            <li>13 live views (Assumptions → Pitch Deck)</li>
+            <li>Save + version history</li>
+            <li><span style="color:var(--mid);">No exports</span></li>
+          </ul>
+        </div>
+        <div style="border:2px solid var(--gold);border-radius:10px;padding:1.25rem 1.5rem;background:rgba(200,164,90,0.04);">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Pro</div>
+          <div style="font-family:var(--serif);font-size:1.6rem;line-height:1;margin-bottom:0.4rem;">$9.99 <span style="font-size:0.8rem;color:var(--mid);">/ month</span></div>
+          <ul style="font-size:0.88rem;color:var(--dim);line-height:1.6;list-style:none;padding:0;margin:0.6rem 0 0;">
+            <li>Everything in Free</li>
+            <li>Excel export (formulas preserved)</li>
+            <li>PDF board pack</li>
+            <li>Pitch deck PPTX export</li>
+            <li>Cancel any time</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--mid);margin-top:1.25rem;">No credit card required for the free tier.</p>
+    </section>
+
     <section class="cta-block">
       <h2>Need a custom model?</h2>
       <p>Our services team builds investor-ready financial models tailored to your business.</p>
-      <a href="/services/" class="sw-btn sw-btn-primary">View Services</a>
+      <a href="/founder-questionnaire.html" class="sw-btn sw-btn-primary">Get in touch</a>
     </section>
   </main>
   <div id="site-footer"><footer>

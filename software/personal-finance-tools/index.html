@@ -115,24 +115,6 @@
     </nav>
     </header></div>
 
-  <div id="site-nav"><a href="#main" class="skip-to-content">Skip to main content</a>
-    <header>
-    <nav aria-label="Main navigation">
-      <a href="/" class="logo"><img src="/logo.svg" alt="Raise Ready" style="height:38px;"></a>
-      <div class="nav-tabs">
-        <a href="/book/" class="nav-tab" data-page="books">Books</a>
-        <a href="/tools/" class="nav-tab" data-page="tools">Tools</a>
-        <a href="/software/" class="nav-tab" data-page="software">Software</a>
-        <a href="/blog/" class="nav-tab" data-page="blog">Blog</a>
-        <a href="/founder-questionnaire.html" class="nav-tab nav-tab-cta" data-page="questionnaire" style="background:var(--gold,#c8a45a);color:var(--ink,#08080d);padding:0.35rem 1rem;border-radius:6px;font-weight:700;font-size:0.85rem;white-space:nowrap;">Start Here</a>
-      </div>
-      <div class="nav-right">
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-tabs').classList.toggle('mobile-open'); this.classList.toggle('open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    </header></div>
   <main class="page-content">
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/software/">Software</a> &rsaquo; Personal Finance &amp; Startup Tools</div>
 
@@ -236,6 +218,33 @@
           <p class="view-card-desc">Full 5-year financial model builder matching the standalone Financial Model Builder app. Build P&amp;L, cash flow, hiring plans, and investor-ready projections directly within the personal finance toolkit.</p>
         </div>
       </div>
+    </section>
+
+    <!-- Pricing — clarifies what's free vs paid before users open the app. -->
+    <section class="cta-block" aria-labelledby="pricing-heading-pf" style="padding-top:1.5rem;">
+      <h2 id="pricing-heading-pf">Pricing</h2>
+      <p>Free forever for one profile. Upgrade to save unlimited profiles + exports.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:680px;margin:1.25rem auto 0;text-align:left;">
+        <div style="border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.4rem;">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Free</div>
+          <div style="font-family:var(--serif);font-size:1.5rem;line-height:1;margin-bottom:0.4rem;">$0</div>
+          <ul style="font-size:0.86rem;color:var(--dim);line-height:1.55;list-style:none;padding:0;margin:0.5rem 0 0;">
+            <li>1 profile</li>
+            <li>All 8 reports</li>
+            <li>96-point Health Score</li>
+          </ul>
+        </div>
+        <div style="border:2px solid var(--gold);border-radius:10px;padding:1.1rem 1.4rem;background:rgba(200,164,90,0.04);">
+          <div style="font-family:var(--mono);font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Pro</div>
+          <div style="font-family:var(--serif);font-size:1.5rem;line-height:1;margin-bottom:0.4rem;">$4.99 <span style="font-size:0.78rem;color:var(--mid);">/ month</span></div>
+          <ul style="font-size:0.86rem;color:var(--dim);line-height:1.55;list-style:none;padding:0;margin:0.5rem 0 0;">
+            <li>Unlimited profiles</li>
+            <li>PDF + Excel exports</li>
+            <li>Cancel any time</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--mid);margin-top:1rem;">No credit card to start.</p>
     </section>
 
     <section class="cta-block">
