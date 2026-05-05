@@ -42,6 +42,28 @@
   status = 301
   force = false
 
+# Force the .html canonical for blog and tools. Both /foo and /foo.html were
+# returning 200 (Netlify Pretty URLs not configured), which Search Console
+# flagged as duplicate content. Canonicals across 380 blog files and 250+
+# tools already point to .html, so force the extensionless variant to
+# 301-redirect to the .html canonical instead of rewriting all the canonical
+# tags.
+#
+# Netlify processes static files BEFORE applying redirects, so /blog/foo.html
+# serves the actual file directly and never hits this rule. Only the
+# extensionless /blog/foo path falls through to the redirect.
+[[redirects]]
+  from = "/blog/:slug"
+  to = "/blog/:slug.html"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/tools/:slug"
+  to = "/tools/:slug.html"
+  status = 301
+  force = false
+
 # Pillar guides folded into Blog. Keep deep links to individual pillars working
 # (they still live at /pillars/<topic>/) but redirect the index to /blog/.
 [[redirects]]
