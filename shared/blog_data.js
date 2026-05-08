@@ -22671,4 +22671,401 @@ margin-bottom:2rem;">
     "imageAlt": "Privacy-first budgeting apps comparison for founders",
     "body": "<article><p>The personal finance market is segmenting. Manual-first budgeting is gaining traction among privacy-conscious users, founders, and expats who distrust Plaid. This article compares five personal finance apps through the lens of manual-first philosophy.</p></article>"
   }
+,
+{num:"280",title:"Unit Economics Bible: CAC, LTV, and Payback Period Explained with Real Founder Maths",slug:"unit-economics-cac-ltv-payback-2026-guide",pillar:"B",category:"Unit Economics",readTime:16,publishDate:"2026-05-11",tldr:"Unit economics (CAC, LTV, payback period) are the metrics investors check first. This guide breaks down each formula, explains why simple LTV calculations are almost always wrong, provides stage-specific benchmarks, and walks through 5 anonymised founder case studies showing how to diagnose and fix broken unit economics.",body:`
+<div class="article-header">
+<div class="article-meta">
+<span><strong>Published</strong> 11 May 2026</span>
+<span><strong>Reading time</strong> 18 minutes</span>
+<span><strong>By</strong> Yanni Papoutsis</span>
+</div>
+<h1>Unit Economics Bible: CAC, LTV, and Payback Period Explained with Real Founder Maths</h1>
+<p class="article-description">Everything you need to understand customer unit economics. Master CAC, LTV, and payback period with formulas, worked examples, and real founder scenarios. Download a free spreadsheet template to analyse your own metrics.</p>
+</div>
+<details class="tl-dr">
+<summary>TL;DR: Unit Economics in 90 Seconds</summary>
+<div class="tl-dr-content">
+<ul>
+<li><strong>CAC (Customer Acquisition Cost):</strong> Total marketing spend ÷ customers acquired. Must be fully loaded. Channel-specific CAC matters more than blended.</li>
+<li><strong>LTV (Lifetime Value):</strong> Cohort-based LTV is the only honest version. Simple LTV (ARPU ÷ churn) is almost always wrong. Apply discount rates to account for time value.</li>
+<li><strong>Payback Period:</strong> Months to recover CAC from gross margin. Seed founders target 18–24mo; Series A 12–18mo; Series B+ under 12mo. VCs anchor on this.</li>
+<li><strong>The ratio trap:</strong> A 3:1 LTV/CAC ratio means nothing without payback, cohort decay, and contribution margin. You need the full picture.</li>
+<li><strong>Action:</strong> Build channel-specific cohort analysis. Track payback curves by acquisition month. Analyse contribution margin, not just gross margin.</li>
+</ul>
+</div>
+</details>
+<h2>Why Unit Economics Matter More Than Revenue (and Why Investors Check Them First)</h2>
+<p>Unit economics are the truth serum of startup finance. Revenue is a vanity metric. You can buy growth. What investors actually care about is: how much do you spend to acquire a customer, how much do they generate in profit, and how fast do you recoup that spend?</p>
+<p>Between 2022 and 2025, the startup world's relationship with unit economics changed fundamentally. The "growth at all costs" era evaporated when interest rates rose. Suddenly, founder decks that celebrated "we're burning £2M per month and scaling 200%" stopped raising money. The VCs and late-stage investors who had been drunk on growth shifted to sobriety. They started asking questions that had been polite background noise:</p>
+<ul>
+<li>What is your actual CAC by channel?</li>
+<li>Is your LTV real, or are you using a spreadsheet formula that assumes customers live forever?</li>
+<li>How long until you pay back the cost of acquiring a customer?</li>
+<li>Is your gross margin actually increasing, or are you cutting prices to boost growth?</li>
+<li>Are your cohorts getting better, or worse?</li>
+</ul>
+<p>This shift is structural, not cyclical. Even in a lower-rate environment, founders who understand their unit economics are fundable. Founders who don't are risky.</p>
+<p><strong>What to do with this:</strong> If you can't answer the five questions above with confidence, stop reading this introduction and go build a data model to track them. Everything else in this post assumes you have clean, daily-updated numbers.</p>
+<h2>CAC Deep-Dive: Fully Loaded Calculation, Channels, and Reality</h2>
+<p>CAC looks simple but most founders get it wrong. They calculate it backwards, forget costs, or use metrics that make them feel good instead of metrics that are honest.</p>
+<h3>The Fully Loaded CAC Formula</h3>
+<div class="formula-block">
+<div class="formula-label">Fully Loaded CAC =</div>
+<div style="margin-bottom: 12px;">
+                (Salary + Commission + Benefits + Overhead) + (Advertising Spend) + (Tools &amp; Software) + (Travel &amp; Events) + (Content &amp; Agency) / Number of New Customers Acquired
+            </div>
+<div style="color: #666; font-size: 13px; margin-top: 12px;">
+                Do this for each month, then average over 12 months to smooth seasonality.
+            </div>
+</div>
+<p>Most founders stop at advertising spend. That's a mistake. A customer acquired by a salesperson costs the salary, commission, benefits, and overhead of that salesperson, plus the sales tools they use, the events they attend, the travel, and the enablement. A customer acquired by a paid ad costs the ad spend, plus the tools to run ads, the person managing those ads, and the landing page development.</p>
+<h3>Blended vs. Channel-Specific CAC</h3>
+<p>Blended CAC (total spend ÷ all customers) hides the truth. Different channels have wildly different economics:</p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Typical CAC Range</th>
+<th>Payback</th>
+<th>Scaling Curve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organic / Referral</td>
+<td>£100–500</td>
+<td>3–8 months</td>
+<td>Slow, compound, sticky</td>
+</tr>
+<tr>
+<td>Content / SEO</td>
+<td>£200–800</td>
+<td>6–12 months</td>
+<td>Slow to start, then accelerates</td>
+</tr>
+<tr>
+<td>Paid Search</td>
+<td>£400–1200</td>
+<td>4–8 months</td>
+<td>Immediate, hits ceiling</td>
+</tr>
+<tr>
+<td>Partnerships / Channel</td>
+<td>£300–1500</td>
+<td>8–16 months</td>
+<td>Variable, dependent on partner</td>
+</tr>
+<tr>
+<td>Direct Sales</td>
+<td>£2000–10000+</td>
+<td>12–24 months</td>
+<td>Slow setup, then scales</td>
+</tr>
+</tbody>
+</table>
+<p>Organic is cheap but slow. Paid search is fast but expensive and hits a ceiling. Direct sales has massive CAC but often closes bigger deals and builds retention. A founder saying "our CAC is £500" without specifying channel is either hiding something or hasn't done the analysis.</p>
+<h3>Organic CAC: Not Zero</h3>
+<p>The biggest myth: "Organic is free." It isn't. Organic customers still cost something to acquire:</p>
+<ul>
+<li>Developer time to build the product (opportunity cost)</li>
+<li>Content person writing SEO articles (salary + time)</li>
+<li>Community manager (salary + community tools)</li>
+<li>Product engineering to make the product shareable (word-of-mouth mechanics cost money)</li>
+</ul>
+<p>Estimate organic CAC as (annual marketing and product spend related to organic growth) ÷ (new customers from organic channels). For early-stage founders with no ad spend, this might be £150–500 per customer. That's still better than paid, but it's not zero.</p>
+<h3>Worked Example: B2B SaaS in the DevTools Space</h3>
+<div class="example-box">
+<strong>Scenario:</strong> Your developer-tools SaaS acquired 120 customers last month.<br/><br/>
+<strong>Costs breakdown:</strong>
+<ul style="margin-top: 8px;">
+<li>Sales salary (1 AE, fully loaded): £6,000</li>
+<li>Advertising (Google Ads, Indie Hackers): £4,200</li>
+<li>Sales tools (Salesforce, email sequences): £800</li>
+<li>Content + marketing person (1/3 of their time): £2,000</li>
+<li>Sponsorships + events: £1,500</li>
+</ul>
+<strong style="display: block; margin-top: 12px;">Total: £14,500</strong><br/><br/>
+<strong>CAC: £14,500 ÷ 120 = £120.83</strong><br/><br/>
+<strong>But broken by channel:</strong><br/>
+<ul style="margin-top: 8px;">
+<li>Organic (referrals + SEO): 40 customers = £5,000 spend ÷ 40 = £125 CAC</li>
+<li>Paid ads: 50 customers = £4,200 spend ÷ 50 = £84 CAC</li>
+<li>Sales outreach: 30 customers = £5,300 spend ÷ 30 = £177 CAC</li>
+</ul>
+<strong style="display: block; margin-top: 12px;">Channel-specific analysis shows: Paid ads are your most efficient channel right now. Organic has room to scale. Sales is expensive but building relationships.</strong>
+</div>
+<p><strong>What to do with this:</strong> Calculate CAC by channel monthly. Watch trends. If paid CAC is rising month-over-month, you're hitting saturation. If organic CAC is falling, your content is working. If sales CAC is flat, your AE isn't improving. Use these trends to decide where to double down and where to cut.</p>
+<h2>LTV Deep-Dive: Why Simple LTV Is Almost Always Wrong</h2>
+<p>Most founders calculate LTV like this:</p>
+<div class="formula-block">
+<div class="formula-label">Simple LTV (Wrong):</div>
+<div>ARPU (Annual Revenue Per User) ÷ Annual Churn Rate</div>
+</div>
+<p>This formula is elegant. It's also fictional. It assumes a customer generates revenue forever, or that churn is constant, or that revenue per customer stays flat. None of that is true.</p>
+<h3>The Cohort-Based LTV: The Honest Version</h3>
+<p>Cohort analysis tracks a group of customers acquired in the same month and watches their behaviour over time. Real data looks like this:</p>
+<table class="benchmark-table">
+<thead>
+<tr>
+<th>Cohort</th>
+<th>Month 1</th>
+<th>Month 6</th>
+<th>Month 12</th>
+<th>Month 24</th>
+<th>Cumulative Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jan 2025</td>
+<td>100 customers</td>
+<td>78 customers</td>
+<td>62 customers</td>
+<td>41 customers</td>
+<td>£12,400</td>
+</tr>
+<tr>
+<td>Feb 2025</td>
+<td>100 customers</td>
+<td>82 customers</td>
+<td>68 customers</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Mar 2025</td>
+<td>100 customers</td>
+<td>85 customers</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p>Now you see what's actually happening: the Jan cohort has a 41% retention rate after 24 months and generated £12,400 in cumulative revenue. That's your real LTV for that cohort: <strong>£12,400 ÷ 100 = £124 per customer acquired</strong>.</p>
+<p>But wait. That £124 is undiscounted revenue across 24 months. Money today is worth more than money tomorrow. If you're paying 5% annually to borrow money (your cost of capital), you should discount future revenue back to today's pounds.</p>
+<h3>Discount Rate Adjustment</h3>
+<div class="formula-block">
+<div class="formula-label">Discounted LTV =</div>
+<div style="margin-bottom: 12px;">
+                Sum of (Monthly Revenue / (1 + Discount Rate) ^ Month Number)
+            </div>
+<div style="color: #666; font-size: 13px; margin-top: 12px;">
+                Use a 10% annual discount rate (0.83% monthly) as a baseline. Adjust if your cost of capital is higher.
+            </div>
+</div>
+<p>Applied to the Jan cohort example:</p>
+<div class="example-box">
+<strong>Scenario:</strong> Jan cohort generates £500/month gross revenue in month 1, declining to £200/month in month 24, then churn to zero.<br/><br/>
+<strong>Undiscounted:</strong> £12,400<br/>
+<strong>Discounted (10% annual):</strong> approximately £10,200<br/><br/>
+<strong>Implication:</strong> Your real LTV is about 18% lower when you account for the time value of money.
+        </div>
+<p><strong>Critical insight:</strong> If your payback period is 24 months, and you're at 10% cost of capital, you're barely profitable on a customer basis. If payback is 36 months, you're losing money on every customer.</p>
+<h3>Gross Margin Adjustment</h3>
+<p>Revenue isn't profit. If you generate £124 in revenue from a customer but 40% of that goes to hosting, payment processing, and support, your actual LTV is:</p>
+<div class="formula-block">
+<div class="formula-label">Gross Margin–Adjusted LTV =</div>
+<div>Cohort Revenue × Gross Margin %</div>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Jan cohort generates £124 in revenue. Your gross margin is 70%.<br/><br/>
+<strong>Gross Margin–Adjusted LTV: £124 × 70% = £86.80</strong><br/><br/>
+<strong>But if you also apply a 10% discount rate:</strong><br/>
+<strong>Discounted, Margin-Adjusted LTV: approximately £71.50</strong>
+</div>
+<p>Now you have honest numbers. That customer is worth £71.50 today. If CAC was £120, you're losing money on every customer. If CAC was £50, you have a profitable unit economics.</p>
+<p><strong>What to do with this:</strong> Build a cohort analysis spreadsheet. For every cohort you've acquired, track revenue, retention, and margin by month. Calculate discounted LTV. Compare against CAC by channel. This is where you'll find the real unit economic problems in your business.</p>
+<h2>Payback Period: The Metric VCs Anchor On</h2>
+<p>If CAC and LTV are the health indicators of a business, payback period is the credit score. It's the single metric that VCs care about most, because it's the least bullshit metric in the bunch.</p>
+<h3>What Payback Period Actually Means</h3>
+<div class="formula-block">
+<div class="formula-label">Payback Period (Months) =</div>
+<div>CAC ÷ (Monthly Gross Profit per Customer)</div>
+</div>
+<p>Example: CAC is £500. Customer generates £100/month in gross profit. Payback = 500 ÷ 100 = 5 months.</p>
+<p>What this means: it takes 5 months of a customer's gross profit to recover the cost of acquiring them. After month 5, every pound of gross profit is pure contribution to your business (assuming no churn). This is the metric that tells you if you can afford to grow fast.</p>
+<h3>Payback Benchmarks by Stage</h3>
+<table class="benchmark-table">
+<thead>
+<tr>
+<th>Stage</th>
+<th>Target Payback</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seed</strong></td>
+<td>18–24 months</td>
+<td>You don't have unit economics figured out yet. Investors expect this. Focus on product-market fit.</td>
+</tr>
+<tr>
+<td><strong>Series A</strong></td>
+<td>12–18 months</td>
+<td>You've proven the model works. Payback should be improving. If it's not, growth is unsustainable.</td>
+</tr>
+<tr>
+<td><strong>Series B+</strong></td>
+<td>Under 12 months</td>
+<td>Unit economics should be tight. Anything over 12 months is a red flag. Over 18 months is a deal-breaker.</td>
+</tr>
+</tbody>
+</table>
+<p>Why? Because of the math of fundraising. If you raise £2M and your payback is 24 months, you're burning capital slowly and can survive longer. If payback is 6 months, you can recycle capital and grow faster. At Series B, investors expect you to have solved the economics problem. They're now asking: how fast can you grow profitably?</p>
+<h3>The Payback Curve: Cohort-Level Analysis</h3>
+<p>Honest founders don't report a single payback number. They report payback by cohort, because it tells the real story:</p>
+<div class="example-box">
+<strong>Payback by acquisition cohort:</strong><br/><br/>
+<ul style="margin-top: 8px;">
+<li>Oct 2024 cohort: 14 months payback</li>
+<li>Nov 2024 cohort: 12 months payback</li>
+<li>Dec 2024 cohort: 11 months payback</li>
+<li>Jan 2025 cohort: 9 months payback</li>
+<li>Feb 2025 cohort: 8 months payback</li>
+</ul>
+<strong style="display: block; margin-top: 12px;">Interpretation:</strong> You're improving. Each new cohort is more efficient. Your product is getting stickier, your sales is getting tighter, your CAC is coming down, or a combination. This is a Series B company starting to fire on all cylinders.
+        </div>
+<p>Contrast that with this story:</p>
+<div class="warning-box">
+<strong>Payback by acquisition cohort (the nightmare scenario):</strong><br/><br/>
+<ul style="margin-top: 8px;">
+<li>Oct 2024 cohort: 8 months payback</li>
+<li>Nov 2024 cohort: 10 months payback</li>
+<li>Dec 2024 cohort: 12 months payback</li>
+<li>Jan 2025 cohort: 15 months payback</li>
+<li>Feb 2025 cohort: 18 months payback</li>
+</ul>
+<strong style="display: block; margin-top: 12px;">Interpretation:</strong> Unit economics are deteriorating. New cohorts churn faster, have lower ARPU, or CAC is rising. This business is heading into a wall. If this happens, you need to cut growth spend immediately or risk becoming unfundable.
+        </div>
+<p><strong>What to do with this:</strong> Report payback by cohort in every investor update. If cohorts are getting better, lead with that. If they're getting worse, don't hide it - explain what you're fixing. VCs respect founders who understand their numbers and act on the data.</p>
+<h2>Case Studies: Five Founder Scenarios Who Fixed Broken Unit Economics</h2>
+<h3>Case Study 1: The Paid Spend Trap</h3>
+<div class="case-study">
+<h4>B2B SaaS for Logistics (Series A, £1.2M raised)</h4>
+<p><strong>The problem:</strong> Founder was spending £20k/month on Google Ads and Facebook. CAC was £800, but payback was 18 months. LTV (cohort-based) was £950. Unit economics looked barely profitable on paper, catastrophic in reality.</p>
+<p><strong>Root cause:</strong> Paid channels were the only acquisition channel tracked. Organic referrals existed but were counted as "luck," not as a measurable channel. The founder hadn't segmented organic from paid.</p>
+<p><strong>The fix:</strong> Implemented UTM tracking and cohort analysis by channel. Discovered that organic customers (15% of new customers) had 22% lower CAC (£650) and 40% better retention. Shifted marketing budget to content and referral incentives. Cut paid spend by 40% and accelerated organic growth.</p>
+<div class="outcome">Result: Payback improved from 18 to 11 months within 6 months. Series A follow-on was approved.</div>
+</div>
+<h3>Case Study 2: The Gross Margin Blind Spot</h3>
+<div class="case-study">
+<h4>Consumer Fintech App (Seed, not yet funded)</h4>
+<p><strong>The problem:</strong> "Our LTV is £180 and CAC is only £20. The ratio is 9:1. This is venture-scale!" In reality, the company was burning cash on infrastructure costs.</p>
+<p><strong>Root cause:</strong> LTV was calculated on revenue, not gross margin. The fintech was paying 15% of customer revenue to payment processors and banking partners. Actual gross margin was 45%, not 100%.</p>
+<p><strong>The fix:</strong> Recalculated LTV with margin adjustment: £180 × 45% = £81. Compared against CAC of £20, now the ratio is 4:1, still good but not venture-scale. Negotiated payment processing fees down by 2%, which raised gross margin to 48% and LTV to £86. Rewrote investor pitch to include the honest math.</p>
+<div class="outcome">Result: First cheque came 3 weeks later from a founder-focused angel investor who respected the transparency.</div>
+</div>
+<h3>Case Study 3: The Cohort Deterioration Signal</h3>
+<div class="case-study">
+<h4>B2B HR SaaS (Series B, £4M raised, burning £300k/month)</h4>
+<p><strong>The problem:</strong> Board reports showed "unit economics stable" but investors were nervous. CFO discovered that while average metrics looked flat, individual cohorts were deteriorating quietly.</p>
+<p><strong>Root cause:</strong> The company had launched a new pricing tier 6 months prior to attract SMBs. New SMB cohorts had 30% lower ARPU than the original cohorts, dragging down future LTV. The growth looked good on SARRRs (new ARR) but was actually profitable growth becoming less profitable.</p>
+<p><strong>The fix:</strong> Separated cohorts into "Enterprise" and "SMB" tracks. SMB payback was 16 months (Series B unacceptable). Enterprise payback was 8 months (excellent). Reallocated 70% of growth spend back to Enterprise. For SMB, reduced CAC by refocusing on product-led growth instead of sales-intensive acquisition.</p>
+<div class="outcome">Result: Blended payback improved from 12 months to 10 months over the next 2 quarters. Series C was raised at 2.5x valuation.</div>
+</div>
+<h3>Case Study 4: The Free Trial Trap</h3>
+<div class="case-study">
+<h4>Vertical SaaS for Construction (Seed, £500k raised)</h4>
+<p><strong>The problem:</strong> Free trial signup growth looked fantastic: 200 signups per week. But conversion to paid was 2%, and payback was 22 months (unacceptable for Seed).</p>
+<p><strong>Root cause:</strong> The founder had optimised for signup volume, not quality. Free trials attracted price-sensitive small contractors who had no budget and low willingness to pay. CAC was low (£15 per signup) but conversion cost meant true CAC per paying customer was £750.</p>
+<p><strong>The fix:</strong> Shifted free trial qualification upstream. Added 3 qualifying questions: "Do you have a project budget?" "How many projects per year?" "Are you already using another tool?" Only qualified leads got free trials. Signup growth dropped 60%, but conversion jumped to 8% and CAC per paying customer fell to £300. Payback dropped to 14 months.</p>
+<div class="outcome">Result: Seed extension from existing investor came immediately. Founder is now positioned for Series A.</div>
+</div>
+<h3>Case Study 5: The Discount Bomb</h3>
+<div class="case-study">
+<h4>Mid-market SaaS (Series A, £2.5M raised, sales-driven)</h4>
+<p><strong>The problem:</strong> Sales team was handing out "close rate" discounts, especially for annual contracts. Deals looked profitable initially but killed LTV when cohort analysis was done.</p>
+<p><strong>Root cause:</strong> Discounts ranged from 10% to 30%. A customer paying £2k/month instead of £2.5k/month dropped LTV by 20%. CAC was £6k, so payback went from 8 months to 10 months. When multiplied across 50% of the sales team's pipeline, this was destroying unit economics.</p>
+<p><strong>The fix:</strong> Implemented a pricing approval matrix. Discounts over 10% required CEO approval. Discounts over 20% required board approval. Sales team was incentivised on payback and LTV, not just ARR. Within 3 months, average discount dropped from 18% to 8%.</p>
+<div class="outcome">Result: Payback improved by 1.5 months. Series B was oversubscribed due to demonstrably improving unit economics.</div>
+</div>
+<h2>The LTV/CAC Ratio Is Not Enough: Why You Need the Full Picture</h2>
+<p>Investors often anchor on the LTV/CAC ratio because it's easy to remember and compare. "We have a 5:1 ratio" sounds great. But the ratio alone is a trap. Here's why:</p>
+<h3>The Ratio Can Be Misleading</h3>
+<div class="example-box">
+<strong>Two companies, both with 3:1 LTV/CAC ratios:</strong><br/><br/>
+<strong>Company A:</strong> CAC £300, LTV £900, Payback 6 months<br/>
+<strong>Company B:</strong> CAC £3k, LTV £9k, Payback 36 months<br/><br/>
+<strong>Same ratio. Completely different unit economics.</strong> Company A is investable. Company B is burning cash.
+        </div>
+<p>The ratio doesn't tell you payback. It doesn't tell you whether you're improving or deteriorating. It doesn't tell you gross margin. It's useful as a sanity check (if LTV/CAC is under 1.5:1, your business is probably broken), but it's not sufficient.</p>
+<h3>Cohort Curves: The Real Story</h3>
+<p>Cohort curves show revenue retention and decay over time. Some businesses have perfect flat curves (enterprise SaaS with low churn). Others have sharp drops (SMB freemium with high early churn). Your cohort curve shapes your actual LTV more than any formula.</p>
+<p><strong>What to do:</strong> Plot cohort revenue curves for your last 6 months of customer acquisition. Can you see the shape stabilise after 6 months? If yes, that's where true LTV begins. If no, you have a retention problem that no amount of CAC optimisation will fix.</p>
+<h3>Contribution Margin: Unit Economics or Marketing Math?</h3>
+<p>Contribution margin (gross profit, minus sales and marketing costs, per customer) is the metric that actually matters for growth planning:</p>
+<div class="formula-block">
+<div class="formula-label">Monthly Contribution Margin =</div>
+<div>(Monthly Revenue × Gross Margin %) – (Allocated S&amp;M Cost)</div>
+</div>
+<p>If contribution margin is negative in months 1–6, your payback period is infinite until it turns positive. If contribution margin is £50/month but you're spending £100 to acquire a customer, that's a 24-month payback (or longer if the customer churns). Contribution margin is where CAC, LTV, payback, and churn all come together.</p>
+<h3>Payback Variance by Cohort</h3>
+<p>Just as important as average payback is the variance in payback. If your Oct cohort has 8-month payback but your Nov cohort has 12-month payback, something changed. Maybe CAC rose. Maybe churn increased. Maybe ARPU fell. Finding which metric moved is more valuable than any single number.</p>
+<p><strong>What to do with this:</strong> Build a dashboard that tracks:</p>
+<ul>
+<li>CAC by channel and cohort</li>
+<li>Cohort retention curves (what % of customers are still paying in month 1, 3, 6, 12?)</li>
+<li>Monthly contribution margin by cohort</li>
+<li>Payback period by channel and cohort</li>
+<li>LTV (margin-adjusted, discounted) compared against CAC</li>
+</ul>
+<p>This is your unit economics dashboard. Update it weekly. Share it with your board monthly. When something moves, you'll see it immediately, and you can act.</p>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-section">
+<div class="faq-item">
+<div class="faq-question">1. What if we don't have 12 months of cohort data yet?</div>
+<div class="faq-answer">You don't need full data. Calculate LTV based on the months you have, but be transparent about it. "6-month LTV is £200, extrapolated to 12-month LTV might be £350" is honest. Apply a retention decay assumption based on your product type (SaaS typically sees 90–95% m/m retention after month 3) to project forward. But don't claim 12-month LTV if you only have 4 months of data.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">2. How do I calculate CAC if I'm doing product-led growth with no sales team?</div>
+<div class="faq-answer">Allocate 100% of marketing spend to CAC. This includes your salary (opportunity cost), content creation, community, the cost of free trial infrastructure, and any paid acquisition. If you spent £10k last month on all of this and got 50 paying customers, your CAC is £200. Product-led growth is cheaper than sales-driven growth, but it's not free.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">3. What discount rate should I use for LTV calculation?</div>
+<div class="faq-answer">Start with 10% annually (0.83% monthly) as a baseline. If your actual cost of capital is higher (e.g., you're paying 15% to venture debt), use that. If you're profitable and have no debt, use your WACC (weighted average cost of capital) or 8%. Sensitivity-test your model: see what happens if you use 5%, 10%, 15%. If your story changes dramatically, your payback margin is too thin.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">4. Is "land and expand" (upselling) counted in LTV or as a separate CAC?</div>
+<div class="faq-answer">Upsell revenue goes into the original cohort's LTV. But if you're spending money to drive expansion (success team, onboarding, etc.), that cost should reduce contribution margin. The best practice: segment new-logo customers from expansion revenue in your cohort analysis. Calculate payback on new logos only, then track expansion as profit on top. This shows you the true "did we acquire this customer profitably?" question.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">5. How often should I recalculate unit economics?</div>
+<div class="faq-answer">Monthly for tactical decisions (is this channel working?). Quarterly for strategic decisions (should we change pricing, raise CAC, or refocus?). The fastest-moving variable is usually CAC (because you control marketing spend), so track it weekly. LTV and payback move slowly, so monthly is sufficient. Never present 12-month-old data as current metrics.</div>
+</div>
+</div>
+<div class="cta-box">
+<h3>Get Serious About Your Unit Economics</h3>
+<p>Download our free Unit Economics Spreadsheet Template. It includes:</p>
+<ul style="text-align: left; margin: 16px auto; max-width: 400px;">
+<li>Cohort analysis by acquisition month</li>
+<li>Channel-specific CAC calculation</li>
+<li>Discounted LTV with margin adjustment</li>
+<li>Payback period tracking</li>
+<li>Contribution margin dashboard</li>
+<li>Sample data and formulas pre-built</li>
+</ul>
+<p><strong>Built for Google Sheets. Copy, plug in your numbers, and you're done.</strong></p>
+<a class="cta-button" href="#download">Download Free Template</a>
+</div>
+<h2>Next Steps: Your Unit Economics Action Plan</h2>
+<p>Unit economics are not a one-time exercise. They're the backbone of sustainable growth. Here's what to do this week:</p>
+<ol>
+<li><strong>Audit your current metrics.</strong> Pull your last 12 months of customer acquisition data. Calculate blended CAC and CAC by channel. Be brutal about including all costs.</li>
+<li><strong>Build cohort analysis.</strong> Segment your customers by acquisition cohort (month). Track monthly revenue retention. Calculate LTV (simple first, then margin-adjusted).</li>
+<li><strong>Calculate payback.</strong> For each cohort, divide CAC by monthly contribution margin. Track this monthly. If it's getting worse, that's a red flag.</li>
+<li><strong>Find the problem.</strong> Is CAC rising? Is churn increasing? Is ARPU falling? One of these is typically the issue. Fix the biggest lever first.</li>
+<li><strong>Communicate the story.</strong> Board and investors don't want a spreadsheet. They want a narrative: "Payback was 14 months, now it's 11. Here's why. Here's what's next."</li>
+</ol>
+<p>Founders who understand unit economics are founders who scale sustainably. Investors notice. VCs fund them. And most importantly, they build businesses that don't burn out.</p>
+<hr style="margin: 48px 0; border: none; border-top: 1px solid #e0e0e0;"/>
+<p style="font-size: 14px; color: #666; margin-top: 32px;"><strong>Read Next:</strong></p>
+<ul style="font-size: 14px; margin-top: 12px;">
+<li><a class="internal-link" href="https://www.raisereadybook.com/blog/founder-financial-model-series-a-2026">Build Your Series A Financial Model: A Founder's Template</a></li>
+<li><a class="internal-link" href="https://www.raisereadybook.com/blog/saas-benchmarks-2026-nrr-rule-of-40">SaaS Benchmarks 2026: NRR, Rule of 40, and Industry Data</a></li>
+<li><a class="internal-link" href="https://www.raisereadybook.com/blog/pricing-strategy-saas-2026-framework">Pricing Strategy for SaaS: Value-Based, Willingness-to-Pay, and Metrics</a></li>
+<li><a class="internal-link" href="https://www.raisereadybook.com/blog/cap-table-dilution-waterfall-2026">Cap Table, Dilution, and Waterfall Analysis Explained</a></li>
+<li><a class="internal-link" href="https://www.raisereadybook.com/bibles/financial-modeling">The Financial Modelling Bible: SaaS Edition</a></li>
+</ul>
+`}
 ];
